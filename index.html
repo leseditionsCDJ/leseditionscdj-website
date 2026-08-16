@@ -9,51 +9,175 @@
 
     <style>
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background-color: #EAF6FC;
-
-            font-family: Arial, Helvetica, sans-serif;
-            color: #2F3A45;
-            text-align: center;
+        * {
+            box-sizing: border-box;
         }
 
-        .page {
-            width: 90%;
-            max-width: 900px;
-            padding: 40px;
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #203040;
+            background-color: #FFFDF7;
+        }
+
+        /* EN-TÊTE */
+
+        header {
+            background-color: white;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border-bottom: 2px solid #E7EEF3;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            width: 450px;
-            max-width: 90%;
+            width: 230px;
+            max-width: 35vw;
             height: auto;
-            margin-bottom: 30px;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            color: #1D3557;
-            margin-bottom: 15px;
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 24px;
+            flex-wrap: wrap;
         }
 
-        h2 {
-            font-size: 2rem;
-            color: #D4A017;
-            margin-bottom: 25px;
+        nav a {
+            text-decoration: none;
+            color: #174E78;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.2s;
         }
 
-        p {
-            font-size: 1.2rem;
+        nav a:hover {
+            color: #2F8F46;
+        }
+
+        .secret-button {
+            background-color: #174E78;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 25px;
+        }
+
+        .secret-button:hover {
+            background-color: #2F8F46;
+            color: white;
+        }
+
+        /* GRANDE BANNIÈRE D'ACCUEIL */
+
+        .hero {
+            min-height: 620px;
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            background: linear-gradient(
+                rgba(255, 253, 247, 0.94),
+                rgba(234, 246, 252, 0.96)
+            );
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            margin: 0 0 20px;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: #174E78;
+        }
+
+        .hero h1 span {
+            color: #2F8F46;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 35px;
+            font-size: 1.35rem;
             line-height: 1.7;
-            max-width: 700px;
-            margin: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button-books {
+            background-color: #2F8F46;
+            color: white;
+        }
+
+        .button-books:hover {
+            background-color: #246F37;
+        }
+
+        .button-secret {
+            background-color: #174E78;
+            color: white;
+        }
+
+        .button-secret:hover {
+            background-color: #103C5D;
+        }
+
+        /* VERSION MOBILE */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                width: 220px;
+                max-width: 80%;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                min-height: 520px;
+                padding: 60px 25px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.15rem;
+            }
         }
 
     </style>
@@ -62,29 +186,72 @@
 
 <body>
 
-    <main class="page">
+    <!-- EN-TÊTE -->
 
-        <img src="logo.png"
-             alt="Logo des Éditions Cap Découvertes Jeunesse"
-             class="logo">
+    <header>
 
-        <h1>Les Éditions Cap Découvertes Jeunesse</h1>
+        <a href="#accueil">
+            <img
+                src="logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse"
+                class="logo">
+        </a>
 
-        <h2>🚧 Site en construction 🚧</h2>
+        <nav>
 
-        <p>
-            Notre site est actuellement en préparation.
-            Nous avons hâte de vous faire découvrir nos livres, nos personnages,
-            nos activités et notre univers rempli d'aventures.
-        </p>
+            <a href="#accueil">Accueil</a>
 
-        <br>
+            <a href="#livres">Nos livres</a>
 
-        <p>
-            Revenez bientôt !
-        </p>
+            <a href="#activites">Activités</a>
 
-    </main>
+            <a href="#explorateurs">Coin des explorateurs</a>
+
+            <a href="#apropos">À propos</a>
+
+            <a href="#contact">Contact</a>
+
+            <a href="#code-secret" class="secret-button">
+                🔐 Code secret
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ACCUEIL -->
+
+    <section class="hero" id="accueil">
+
+        <div class="hero-content">
+
+            <h1>
+                Des histoires qui ouvrent
+                <span>sur le monde</span>
+            </h1>
+
+            <p>
+                Aux Éditions Cap Découvertes Jeunesse,
+                les histoires deviennent des aventures pour
+                apprendre, comprendre et s'émerveiller.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#livres" class="button button-books">
+                    Découvrir nos livres
+                </a>
+
+                <a href="#code-secret" class="button button-secret">
+                    🔐 J'ai un code secret
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </body>
 
