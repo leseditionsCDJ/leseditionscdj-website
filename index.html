@@ -24,6 +24,7 @@
             background-color: #FFFDF7;
         }
 
+
         /* =========================
            EN-TÊTE
         ========================== */
@@ -80,8 +81,9 @@
             color: white;
         }
 
+
         /* =========================
-           GRANDE BANNIÈRE D'ACCUEIL
+           ACCUEIL
         ========================== */
 
         .hero {
@@ -106,10 +108,8 @@
 
         .hero h1 {
             margin: 0 0 20px;
-
             font-size: 3.5rem;
             line-height: 1.1;
-
             color: #174E78;
         }
 
@@ -120,7 +120,6 @@
         .hero p {
             max-width: 750px;
             margin: 0 auto 35px;
-
             font-size: 1.35rem;
             line-height: 1.7;
         }
@@ -134,14 +133,11 @@
 
         .button {
             display: inline-block;
-
             padding: 15px 25px;
             border-radius: 30px;
-
             text-decoration: none;
             font-size: 1.05rem;
             font-weight: bold;
-
             transition: 0.2s;
         }
 
@@ -163,6 +159,7 @@
             background-color: #103C5D;
         }
 
+
         /* =========================
            CONTACT
         ========================== */
@@ -180,41 +177,113 @@
 
         .contact h2 {
             margin-top: 0;
-            margin-bottom: 18px;
-
+            margin-bottom: 15px;
             color: #174E78;
             font-size: 2.6rem;
         }
 
         .contact-intro {
+            max-width: 650px;
+            margin: 0 auto 35px;
             font-size: 1.15rem;
             line-height: 1.7;
-            margin: 0 auto 35px;
-            max-width: 650px;
         }
 
-        .contact-email {
-            display: inline-block;
+
+        /* =========================
+           FORMULAIRE
+        ========================== */
+
+        .contact-form {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 35px;
+
+            background-color: #F7FBFD;
+
+            border: 2px solid #DDECF3;
+            border-radius: 22px;
+
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: bold;
+            color: #174E78;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 15px;
+
+            border: 1px solid #BFCFD8;
+            border-radius: 10px;
+
+            background-color: white;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #2F8F46;
+            box-shadow: 0 0 0 3px rgba(47, 143, 70, 0.12);
+        }
+
+        .form-group textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .send-button {
+            width: 100%;
+
+            border: none;
+            border-radius: 30px;
+
+            padding: 15px 25px;
 
             background-color: #2F8F46;
             color: white;
 
-            text-decoration: none;
-            font-weight: bold;
             font-size: 1.05rem;
+            font-weight: bold;
 
-            padding: 15px 28px;
-            border-radius: 30px;
+            cursor: pointer;
 
             transition: 0.2s;
         }
 
-        .contact-email:hover {
+        .send-button:hover {
             background-color: #246F37;
         }
 
+        .send-button:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        #result {
+            margin-top: 18px;
+
+            text-align: center;
+            font-weight: bold;
+            min-height: 24px;
+        }
+
         .contact-name {
-            margin-top: 30px;
+            margin-top: 35px;
             margin-bottom: 5px;
 
             color: #174E78;
@@ -224,10 +293,12 @@
 
         .contact-slogan {
             margin-top: 5px;
-            font-size: 0.95rem;
+
             color: #2F8F46;
+            font-size: 0.95rem;
             font-style: italic;
         }
+
 
         /* =========================
            VERSION MOBILE
@@ -264,11 +335,15 @@
             }
 
             .contact {
-                padding: 65px 25px;
+                padding: 65px 20px;
             }
 
             .contact h2 {
                 font-size: 2.2rem;
+            }
+
+            .contact-form {
+                padding: 25px 20px;
             }
         }
 
@@ -364,14 +439,87 @@
             <p class="contact-intro">
                 Une question sur nos livres, nos activités
                 ou Les Éditions Cap Découvertes Jeunesse?
-                Il nous fera plaisir de vous répondre.
+                Écrivez-nous directement à l'aide du formulaire.
             </p>
 
-            <a
-                href="mailto:leseditionsCDJ@hotmail.com"
-                class="contact-email">
-                ✉️ Nous écrire
-            </a>
+
+            <form class="contact-form" id="contact-form">
+
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="8c0620dc-ab7a-4924-80f8-6408190e196f">
+
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="Nouveau message reçu sur leseditionscdj.ca">
+
+                <input
+                    type="hidden"
+                    name="from_name"
+                    value="Site des Éditions Cap Découvertes Jeunesse">
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Votre nom
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Votre nom"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Votre adresse courriel
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="exemple@courriel.com"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Votre message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Écrivez votre message ici..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="send-button"
+                    id="send-button">
+                    ✉️ Envoyer le message
+                </button>
+
+
+                <div id="result"></div>
+
+            </form>
+
 
             <p class="contact-name">
                 Les Éditions Cap Découvertes Jeunesse
@@ -384,6 +532,98 @@
         </div>
 
     </section>
+
+
+    <!-- =========================
+         ENVOI DU FORMULAIRE
+    ========================== -->
+
+    <script>
+
+        const form = document.getElementById("contact-form");
+        const result = document.getElementById("result");
+        const sendButton = document.getElementById("send-button");
+
+
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            result.style.color = "#174E78";
+            result.textContent = "Envoi du message...";
+
+            sendButton.disabled = true;
+            sendButton.textContent = "Envoi en cours...";
+
+
+            const formData = new FormData(form);
+
+            const object = Object.fromEntries(formData);
+
+            const json = JSON.stringify(object);
+
+
+            try {
+
+                const response = await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+
+                        body: json
+                    }
+                );
+
+
+                const data = await response.json();
+
+
+                if (data.success) {
+
+                    result.style.color = "#2F8F46";
+
+                    result.textContent =
+                        "Merci! Votre message a bien été envoyé.";
+
+                    form.reset();
+
+                }
+
+                else {
+
+                    result.style.color = "#C0392B";
+
+                    result.textContent =
+                        "Une erreur est survenue. Veuillez réessayer.";
+
+                }
+
+            }
+
+            catch (error) {
+
+                result.style.color = "#C0392B";
+
+                result.textContent =
+                    "Impossible d'envoyer le message pour le moment. Veuillez réessayer.";
+
+            }
+
+
+            sendButton.disabled = false;
+
+            sendButton.textContent =
+                "✉️ Envoyer le message";
+
+        });
+
+    </script>
 
 
 </body>
