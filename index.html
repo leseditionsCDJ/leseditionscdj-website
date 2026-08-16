@@ -13,6 +13,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -20,7 +24,9 @@
             background-color: #FFFDF7;
         }
 
-        /* EN-TÊTE */
+        /* =========================
+           EN-TÊTE
+        ========================== */
 
         header {
             background-color: white;
@@ -74,14 +80,18 @@
             color: white;
         }
 
-        /* GRANDE BANNIÈRE D'ACCUEIL */
+        /* =========================
+           GRANDE BANNIÈRE D'ACCUEIL
+        ========================== */
 
         .hero {
             min-height: 620px;
             padding: 80px 8%;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-align: center;
 
             background: linear-gradient(
@@ -96,8 +106,10 @@
 
         .hero h1 {
             margin: 0 0 20px;
+
             font-size: 3.5rem;
             line-height: 1.1;
+
             color: #174E78;
         }
 
@@ -108,6 +120,7 @@
         .hero p {
             max-width: 750px;
             margin: 0 auto 35px;
+
             font-size: 1.35rem;
             line-height: 1.7;
         }
@@ -121,11 +134,14 @@
 
         .button {
             display: inline-block;
+
             padding: 15px 25px;
             border-radius: 30px;
+
             text-decoration: none;
             font-size: 1.05rem;
             font-weight: bold;
+
             transition: 0.2s;
         }
 
@@ -147,7 +163,75 @@
             background-color: #103C5D;
         }
 
-        /* VERSION MOBILE */
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            padding: 90px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .contact h2 {
+            margin-top: 0;
+            margin-bottom: 18px;
+
+            color: #174E78;
+            font-size: 2.6rem;
+        }
+
+        .contact-intro {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin: 0 auto 35px;
+            max-width: 650px;
+        }
+
+        .contact-email {
+            display: inline-block;
+
+            background-color: #2F8F46;
+            color: white;
+
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+
+            padding: 15px 28px;
+            border-radius: 30px;
+
+            transition: 0.2s;
+        }
+
+        .contact-email:hover {
+            background-color: #246F37;
+        }
+
+        .contact-name {
+            margin-top: 30px;
+            margin-bottom: 5px;
+
+            color: #174E78;
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+
+        .contact-slogan {
+            margin-top: 5px;
+            font-size: 0.95rem;
+            color: #2F8F46;
+            font-style: italic;
+        }
+
+        /* =========================
+           VERSION MOBILE
+        ========================== */
 
         @media (max-width: 900px) {
 
@@ -178,6 +262,14 @@
             .hero p {
                 font-size: 1.15rem;
             }
+
+            .contact {
+                padding: 65px 25px;
+            }
+
+            .contact h2 {
+                font-size: 2.2rem;
+            }
         }
 
     </style>
@@ -186,7 +278,10 @@
 
 <body>
 
-    <!-- EN-TÊTE -->
+
+    <!-- =========================
+         EN-TÊTE
+    ========================== -->
 
     <header>
 
@@ -220,7 +315,9 @@
     </header>
 
 
-    <!-- ACCUEIL -->
+    <!-- =========================
+         ACCUEIL
+    ========================== -->
 
     <section class="hero" id="accueil">
 
@@ -252,6 +349,42 @@
         </div>
 
     </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact" id="contact">
+
+        <div class="contact-content">
+
+            <h2>Nous joindre</h2>
+
+            <p class="contact-intro">
+                Une question sur nos livres, nos activités
+                ou Les Éditions Cap Découvertes Jeunesse?
+                Il nous fera plaisir de vous répondre.
+            </p>
+
+            <a
+                href="mailto:leseditionsCDJ@hotmail.com"
+                class="contact-email">
+                ✉️ Nous écrire
+            </a>
+
+            <p class="contact-name">
+                Les Éditions Cap Découvertes Jeunesse
+            </p>
+
+            <p class="contact-slogan">
+                Des histoires qui ouvrent sur le monde
+            </p>
+
+        </div>
+
+    </section>
+
 
 </body>
 
