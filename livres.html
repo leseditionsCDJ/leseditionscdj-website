@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nos collections | Les Éditions Cap Découvertes Jeunesse</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: #203040;
+
+            background-color: #FFFDF7;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom: 2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 24px;
+
+            flex-wrap: wrap;
+        }
+
+
+        nav a {
+            text-decoration: none;
+
+            color: #174E78;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        nav a:hover {
+            color: #2F8F46;
+        }
+
+
+        .active-link {
+            color: #2F8F46;
+        }
+
+
+        .secret-button {
+            background-color: #174E78;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 25px;
+        }
+
+
+        .secret-button:hover {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+
+
+        /* =========================
+           INTRODUCTION
+        ========================== */
+
+        .collections-intro {
+            padding: 70px 20px 45px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(255, 253, 247, 1),
+                    rgba(234, 246, 252, 0.75)
+                );
+        }
+
+
+        .collections-intro h1 {
+            margin: 0 0 15px;
+
+            color: #174E78;
+
+            font-size: 3rem;
+        }
+
+
+        .collections-intro h1 span {
+            color: #2F8F46;
+        }
+
+
+        .collections-intro p {
+            max-width: 780px;
+
+            margin: auto;
+
+            font-size: 1.2rem;
+
+            line-height: 1.7;
+
+            color: #40515F;
+        }
+
+
+
+        /* =========================
+           CARTES DES COLLECTIONS
+        ========================== */
+
+        .collections-section {
+            padding: 60px 5% 90px;
+        }
+
+
+        .collections-grid {
+            max-width: 1300px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+
+            align-items: stretch;
+        }
+
+
+        .collection-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background-color: white;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(25, 55, 75, 0.10);
+
+            display: flex;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+        }
+
+
+        .collection-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 16px 38px
+                rgba(25, 55, 75, 0.16);
+        }
+
+
+        /* Couleurs propres à chaque collection */
+
+        .matteo-card {
+            border-top: 7px solid #1763B0;
+        }
+
+
+        .daphnee-card {
+            border-top: 7px solid #D83B77;
+        }
+
+
+        .zak-card {
+            border-top: 7px solid #2F7C3D;
+        }
+
+
+
+        /* =========================
+           PERSONNAGES
+        ========================== */
+
+        .character-zone {
+            height: 400px;
+
+            padding: 25px 25px 0;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            position: relative;
+        }
+
+
+        .matteo-card .character-zone {
+            background:
+                linear-gradient(
+                    #EDF7FF,
+                    #FFFFFF
+                );
+        }
+
+
+        .daphnee-card .character-zone {
+            background:
+                linear-gradient(
+                    #FFF0F6,
+                    #FFFFFF
+                );
+        }
+
+
+        .zak-card .character-zone {
+            background:
+                linear-gradient(
+                    #EFF8ED,
+                    #FFFFFF
+                );
+        }
+
+
+        .character-image {
+            max-width: 100%;
+
+            max-height: 375px;
+
+            object-fit: contain;
+
+            transition: transform 0.25s;
+        }
+
+
+        .character-link:hover .character-image,
+        .construction-character:hover .character-image {
+            transform: scale(1.035);
+        }
+
+
+        .character-link {
+            height: 100%;
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-end;
+
+            cursor: pointer;
+        }
+
+
+        .construction-character {
+            border: none;
+
+            background: none;
+
+            height: 100%;
+
+            width: 100%;
+
+            padding: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-end;
+
+            cursor: pointer;
+        }
+
+
+
+        /* =========================
+           INFORMATIONS COLLECTION
+        ========================== */
+
+        .card-content {
+            padding: 25px 28px 32px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            flex-grow: 1;
+        }
+
+
+        .collection-label {
+            margin: 0 0 8px;
+
+            font-size: 0.9rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            font-weight: bold;
+
+            color: #7B8790;
+        }
+
+
+        .collection-card h2 {
+            margin: 0 0 13px;
+
+            font-size: 2rem;
+        }
+
+
+        .matteo-card h2 {
+            color: #1763B0;
+        }
+
+
+        .daphnee-card h2 {
+            color: #D83B77;
+        }
+
+
+        .zak-card h2 {
+            color: #2F7C3D;
+        }
+
+
+
+        /* =========================
+           ÂGE
+        ========================== */
+
+        .age {
+            display: inline-block;
+
+            align-self: center;
+
+            padding: 8px 16px;
+
+            margin-bottom: 20px;
+
+            border-radius: 20px;
+
+            font-size: 0.95rem;
+
+            font-weight: bold;
+        }
+
+
+        .age-matteo {
+            color: #0D4F8D;
+
+            background-color: #E5F2FF;
+        }
+
+
+        .age-daphnee {
+            color: #A8285B;
+
+            background-color: #FFE5F0;
+        }
+
+
+        .age-zak {
+            color: #245E30;
+
+            background-color: #E5F4E3;
+        }
+
+
+
+        /* =========================
+           DESCRIPTIONS
+        ========================== */
+
+        .description {
+            margin: 0 0 25px;
+
+            font-size: 1.05rem;
+
+            line-height: 1.65;
+
+            color: #40515F;
+
+            flex-grow: 1;
+        }
+
+
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
+        .collection-button {
+            display: inline-block;
+
+            width: 100%;
+
+            padding: 14px 20px;
+
+            border: none;
+
+            border-radius: 28px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .matteo-button {
+            background-color: #1763B0;
+        }
+
+
+        .matteo-button:hover {
+            background-color: #104D89;
+        }
+
+
+        .daphnee-button {
+            background-color: #D83B77;
+        }
+
+
+        .daphnee-button:hover {
+            background-color: #B92E64;
+        }
+
+
+        .zak-button {
+            background-color: #2F7C3D;
+        }
+
+
+        .zak-button:hover {
+            background-color: #256431;
+        }
+
+
+
+        /* =========================
+           BADGE EN PRÉPARATION
+        ========================== */
+
+        .coming-soon {
+            position: absolute;
+
+            top: 20px;
+
+            right: 20px;
+
+            z-index: 10;
+
+            background-color: #F4A623;
+
+            color: white;
+
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            font-size: 0.78rem;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            box-shadow:
+                0 4px 10px
+                rgba(0, 0, 0, 0.12);
+        }
+
+
+
+        /* =========================
+           POP-UP
+        ========================== */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 5000;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color:
+                rgba(20, 40, 55, 0.65);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+
+        .modal.show {
+            display: flex;
+        }
+
+
+        .modal-box {
+            width: 100%;
+
+            max-width: 480px;
+
+            position: relative;
+
+            background-color: white;
+
+            padding: 40px 35px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 50px
+                rgba(0, 0, 0, 0.25);
+
+            animation: modalAppear 0.25s ease;
+        }
+
+
+        @keyframes modalAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(15px)
+                    scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .modal-icon {
+            font-size: 3.2rem;
+
+            margin-bottom: 12px;
+        }
+
+
+        .modal-box h3 {
+            color: #174E78;
+
+            font-size: 1.8rem;
+
+            margin: 0 0 12px;
+        }
+
+
+        .modal-box p {
+            font-size: 1.05rem;
+
+            line-height: 1.6;
+
+            margin: 0 0 25px;
+        }
+
+
+        .modal-close {
+            background-color: #2F8F46;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 25px;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .modal-close:hover {
+            background-color: #246F37;
+        }
+
+
+
+        /* =========================
+           BAS DE PAGE
+        ========================== */
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background-color: #174E78;
+
+            color: white;
+        }
+
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        .footer-slogan {
+            color: #D9F0DD;
+
+            font-style: italic;
+        }
+
+
+
+        /* =========================
+           TABLETTE
+        ========================== */
+
+        @media (max-width: 1050px) {
+
+            .collections-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .zak-card {
+                grid-column:
+                    1 / -1;
+
+                max-width: 600px;
+
+                width: 100%;
+
+                margin: auto;
+            }
+
+        }
+
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+
+            .logo {
+                width: 220px;
+
+                max-width: 80%;
+            }
+
+
+            nav {
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .collections-intro {
+                padding-top: 50px;
+            }
+
+
+            .collections-intro h1 {
+                font-size: 2.3rem;
+            }
+
+
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .zak-card {
+                grid-column: auto;
+
+                max-width: none;
+            }
+
+
+            .character-zone {
+                height: 360px;
+            }
+
+
+            .character-image {
+                max-height: 340px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         EN-TÊTE
+    ========================== -->
+
+    <header>
+
+        <a href="index.html#accueil">
+
+            <img
+                src="logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse"
+                class="logo">
+
+        </a>
+
+
+        <nav>
+
+            <a href="index.html#accueil">
+                Accueil
+            </a>
+
+            <a href="livres.html"
+               class="active-link">
+                Nos livres
+            </a>
+
+            <a href="activites.html">
+                Activités
+            </a>
+
+            <a href="explorateurs.html">
+                Coin des explorateurs
+            </a>
+
+            <a href="index.html#apropos">
+                À propos
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+            <a href="code-secret.html"
+               class="secret-button">
+                🔐 Code secret
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
+
+    <section class="collections-intro">
+
+        <h1>
+            Découvrez
+            <span>nos collections</span>
+        </h1>
+
+        <p>
+            Des univers différents, une même envie :
+            faire découvrir, apprendre et s'émerveiller
+            à travers des histoires pensées pour les jeunes lecteurs.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         COLLECTIONS
+    ========================== -->
+
+    <main class="collections-section">
+
+        <div class="collections-grid">
+
+
+            <!-- =========================
+                 COLLECTION MATTÉO
+            ========================== -->
+
+            <article class="collection-card matteo-card">
+
+
+                <div class="character-zone">
+
+                    <a href="matteo.html"
+                       class="character-link"
+                       aria-label="Découvrir la collection Mattéo">
+
+                        <img
+                            src="images/Image_Officielle_Matteo.png"
+                            alt="Mattéo le vétérinaire"
+                            class="character-image">
+
+                    </a>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <p class="collection-label">
+                        Collection
+                    </p>
+
+
+                    <h2>
+                        Mattéo le vétérinaire
+                    </h2>
+
+
+                    <span class="age age-matteo">
+                        Âge recommandé : 4 à 7 ans
+                    </span>
+
+
+                    <p class="description">
+                        Aux côtés de Mattéo, les jeunes lecteurs
+                        rencontrent différents animaux et découvrent
+                        leurs caractéristiques, leur mode de vie
+                        et une foule de faits fascinants.
+                        Des aventures amusantes où l'on apprend
+                        tout en passant un bon moment.
+                    </p>
+
+
+                    <a href="matteo.html"
+                       class="collection-button matteo-button">
+
+                        Découvrir la collection
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =========================
+                 COLLECTION DAPHNÉE
+            ========================== -->
+
+            <article class="collection-card daphnee-card">
+
+
+                <span class="coming-soon">
+                    En préparation
+                </span>
+
+
+                <div class="character-zone">
+
+                    <button
+                        type="button"
+                        class="construction-character"
+                        onclick="openConstruction('Daphnée')"
+                        aria-label="Collection Daphnée en préparation">
+
+                        <img
+                            src="images/Image_Officielle_Daphnee.png"
+                            alt="Daphnée la voyageuse"
+                            class="character-image">
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <p class="collection-label">
+                        Collection
+                    </p>
+
+
+                    <h2>
+                        Daphnée la voyageuse
+                    </h2>
+
+
+                    <span class="age age-daphnee">
+                        Âge recommandé : 8 à 12 ans
+                    </span>
+
+
+                    <p class="description">
+                        Daphnée part à la découverte du monde.
+                        Pays, provinces et régions, géographie,
+                        cultures, traditions et façons de vivre :
+                        chaque aventure devient une occasion
+                        de mieux comprendre ce qui rend
+                        notre monde si riche et fascinant.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="collection-button daphnee-button"
+                        onclick="openConstruction('Daphnée')">
+
+                        Découvrir la collection
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =========================
+                 COLLECTION ZAK
+            ========================== -->
+
+            <article class="collection-card zak-card">
+
+
+                <span class="coming-soon">
+                    En préparation
+                </span>
+
+
+                <div class="character-zone">
+
+                    <button
+                        type="button"
+                        class="construction-character"
+                        onclick="openConstruction('Zak')"
+                        aria-label="Collection Zak en préparation">
+
+                        <img
+                            src="images/Image_Officielle_Zak.png"
+                            alt="Zak l'explorateur"
+                            class="character-image">
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <p class="collection-label">
+                        Collection
+                    </p>
+
+
+                    <h2>
+                        Zak l'explorateur
+                    </h2>
+
+
+                    <span class="age age-zak">
+                        Âge recommandé : 6 ans et +
+                    </span>
+
+
+                    <p class="description">
+                        Curieux de tout, Zak explore une foule
+                        de sujets au fil de ses aventures.
+                        Sciences, inventions, espace, véhicules,
+                        dinosaures, histoire et découvertes
+                        en tout genre : avec Zak, chaque nouvelle
+                        aventure est une occasion d'apprendre
+                        quelque chose de surprenant.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="collection-button zak-button"
+                        onclick="openConstruction('Zak')">
+
+                        Découvrir la collection
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         POP-UP EN CONSTRUCTION
+    ========================== -->
+
+    <div
+        class="modal"
+        id="construction-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title">
+
+
+        <div class="modal-box">
+
+
+            <div class="modal-icon">
+                🚧
+            </div>
+
+
+            <h3 id="modal-title">
+                Collection en préparation
+            </h3>
+
+
+            <p id="modal-message">
+
+                Cette collection est actuellement
+                en préparation.
+
+            </p>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeConstruction()">
+
+                D'accord
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         BAS DE PAGE
+    ========================== -->
+
+    <footer>
+
+        <p>
+            <strong>
+                Les Éditions Cap Découvertes Jeunesse
+            </strong>
+        </p>
+
+        <p class="footer-slogan">
+            Des histoires qui ouvrent sur le monde
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT DU POP-UP
+    ========================== -->
+
+    <script>
+
+        const modal =
+            document.getElementById(
+                "construction-modal"
+            );
+
+        const modalMessage =
+            document.getElementById(
+                "modal-message"
+            );
+
+
+        function openConstruction(collection) {
+
+            modalMessage.textContent =
+                "La collection " +
+                collection +
+                " est actuellement en préparation. " +
+                "De nouvelles aventures arrivent bientôt!";
+
+            modal.classList.add("show");
+
+        }
+
+
+        function closeConstruction() {
+
+            modal.classList.remove("show");
+
+        }
+
+
+        modal.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === modal) {
+
+                    closeConstruction();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                    &&
+                    modal.classList.contains("show")
+                ) {
+
+                    closeConstruction();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
