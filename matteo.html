@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collection Mattéo | Les Éditions Cap Découvertes Jeunesse</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4fbff;
+      color: #243447;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #d9e8f2;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .topbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 80px;
+      width: auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-weight: bold;
+      color: #14558c;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #2f9e44;
+    }
+
+    .secret-btn {
+      background-color: #14558c;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .secret-btn:hover {
+      background-color: #0d436e;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(180deg, #eef8fd 0%, #f8fcff 100%);
+      padding: 70px 20px 50px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0 0 18px;
+      color: #14558c;
+    }
+
+    .hero h1 span {
+      color: #2f9e44;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #334e68;
+    }
+
+    /* SECTION */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: #14558c;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: #557086;
+      margin: 0;
+    }
+
+    /* BOOK CARD */
+    .book-card {
+      background-color: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(20, 85, 140, 0.08);
+      padding: 35px;
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .book-image {
+      flex: 0 0 280px;
+      text-align: center;
+    }
+
+    .book-image img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+    }
+
+    .book-info {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .book-badge {
+      display: inline-block;
+      background-color: #2f9e44;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .book-info h3 {
+      font-size: 2rem;
+      color: #14558c;
+      margin: 0 0 10px;
+    }
+
+    .book-subtitle {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #d48806;
+      margin-bottom: 20px;
+    }
+
+    .book-info p {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      margin: 0 0 24px;
+      color: #354a5f;
+    }
+
+    .book-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #14558c;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d436e;
+    }
+
+    .btn-secondary {
+      background-color: #2f9e44;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #247a35;
+    }
+
+    /* UPCOMING */
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .upcoming-card {
+      background-color: #ffffff;
+      border: 2px dashed #b7cfe0;
+      border-radius: 22px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(20, 85, 140, 0.05);
+    }
+
+    .upcoming-card h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #14558c;
+    }
+
+    .upcoming-card .coming {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #fff4cc;
+      color: #9c6b00;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 999px;
+    }
+
+    .upcoming-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #536b7b;
+      margin-top: 15px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #14558c;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .book-card {
+        padding: 24px;
+      }
+
+      .book-info h3 {
+        font-size: 1.7rem;
+      }
+
+      .topbar {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo Les Éditions Cap Découvertes Jeunesse">
+      </a>
+
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="livres.html">Nos livres</a>
+        <a href="index.html#apropos">À propos</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="#" class="secret-btn">🔐 Code secret</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Collection <span>Mattéo</span></h1>
+      <p>
+        Découvre les aventures de Mattéo, un petit vétérinaire curieux et bienveillant
+        qui aide les animaux tout en faisant découvrir aux enfants de vrais faits
+        scientifiques de façon simple, amusante et rassurante.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>Les tomes de la collection</h2>
+      <p>Voici les livres disponibles et ceux qui arriveront bientôt.</p>
+    </div>
+
+    <div class="book-card">
+      <div class="book-image">
+        <img src="images/image_officielle_Tina.png" alt="Tina la tortue voyageuse">
+      </div>
+
+      <div class="book-info">
+        <div class="book-badge">Tome 1 disponible</div>
+        <h3>Tina la tortue voyageuse</h3>
+        <div class="book-subtitle">Collection Mattéo • 4 à 7 ans</div>
+
+        <p>
+          Une drôle de patiente frappe à la porte de la clinique de Mattéo...<br>
+          Tina la tortue semble très fatiguée.<br>
+          Pourquoi avance-t-elle si lentement ?<br>
+          Que transporte-t-elle sur sa carapace ?<br>
+          En voulant l’aider, Mattéo découvrira que les tortues cachent des secrets fascinants !<br>
+          Au fil de cette aventure pleine de douceur et d’humour, les jeunes lecteurs apprendront de véritables faits scientifiques tout en s’amusant.
+        </p>
+
+        <div class="book-actions">
+          <a href="#" class="btn-primary">Voir ce livre</a>
+          <a href="#" class="btn-secondary">Activités liées</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top: 60px;">
+      <h2>Les prochains tomes</h2>
+      <p>La collection de Mattéo continuera bientôt avec de nouvelles aventures.</p>
+    </div>
+
+    <div class="upcoming-grid">
+      <div class="upcoming-card">
+        <h3>Tome 2</h3>
+        <div class="coming">À venir</div>
+        <p>
+          Une nouvelle aventure de Mattéo arrivera bientôt pour faire découvrir
+          d’autres animaux et de nouvelles informations fascinantes.
+        </p>
+      </div>
+
+      <div class="upcoming-card">
+        <h3>Tome 3</h3>
+        <div class="coming">À venir</div>
+        <p>
+          La collection continue ! Un autre tome est en préparation
+          et sera annoncé dès qu’il sera prêt.
+        </p>
+      </div>
+
+      <div class="upcoming-card">
+        <h3>Encore plus d’aventures</h3>
+        <div class="coming">À venir</div>
+        <p>
+          D’autres livres de la collection Mattéo viendront enrichir
+          la série avec douceur, humour et découvertes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Les Éditions Cap Découvertes Jeunesse — Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
