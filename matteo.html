@@ -1,414 +1,446 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collection Mattéo | Les Éditions Cap Découvertes Jeunesse</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
 
-    html {
-      scroll-behavior: smooth;
-    }
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f4fbff;
-      color: #243447;
-    }
+    <title>
+        Collection Mattéo | Les Éditions Cap Découvertes Jeunesse
+    </title>
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
 
-    /* HEADER */
-    header {
-      background-color: #ffffff;
-      border-bottom: 1px solid #d9e8f2;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+    <style>
 
-    .topbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .logo img {
-      height: 80px;
-      width: auto;
-    }
+        body {
+            margin: 0;
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-    nav a {
-      font-weight: bold;
-      color: #14558c;
-      transition: 0.2s;
-    }
+            background-color: #F4FBFF;
 
-    nav a:hover {
-      color: #2f9e44;
-    }
+            color: #243447;
+        }
 
-    .secret-btn {
-      background-color: #14558c;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: bold;
-      display: inline-block;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .secret-btn:hover {
-      background-color: #0d436e;
-    }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(180deg, #eef8fd 0%, #f8fcff 100%);
-      padding: 70px 20px 50px;
-      text-align: center;
-    }
+        /* =========================
+           EN-TÊTE
+        ========================== */
 
-    .hero-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+        header {
+            background-color: #FFFFFF;
 
-    .hero h1 {
-      font-size: 3rem;
-      margin: 0 0 18px;
-      color: #14558c;
-    }
+            border-bottom: 1px solid #D9E8F2;
 
-    .hero h1 span {
-      color: #2f9e44;
-    }
+            position: sticky;
 
-    .hero p {
-      font-size: 1.2rem;
-      line-height: 1.7;
-      max-width: 800px;
-      margin: 0 auto;
-      color: #334e68;
-    }
+            top: 0;
 
-    /* SECTION */
-    .section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
+            z-index: 1000;
+        }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
 
-    .section-title h2 {
-      font-size: 2.2rem;
-      color: #14558c;
-      margin-bottom: 10px;
-    }
+        .topbar {
+            max-width: 1200px;
 
-    .section-title p {
-      font-size: 1.1rem;
-      color: #557086;
-      margin: 0;
-    }
+            margin: 0 auto;
 
-    /* BOOK CARD */
-    .book-card {
-      background-color: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 12px 30px rgba(20, 85, 140, 0.08);
-      padding: 35px;
-      display: flex;
-      align-items: center;
-      gap: 35px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
+            padding: 18px 24px;
 
-    .book-image {
-      flex: 0 0 280px;
-      text-align: center;
-    }
+            display: flex;
 
-    .book-image img {
-      max-width: 100%;
-      max-height: 320px;
-      object-fit: contain;
-    }
+            align-items: center;
 
-    .book-info {
-      flex: 1;
-      min-width: 280px;
-    }
+            justify-content: space-between;
 
-    .book-badge {
-      display: inline-block;
-      background-color: #2f9e44;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: bold;
-      margin-bottom: 14px;
-    }
+            gap: 20px;
 
-    .book-info h3 {
-      font-size: 2rem;
-      color: #14558c;
-      margin: 0 0 10px;
-    }
+            flex-wrap: wrap;
+        }
 
-    .book-subtitle {
-      font-size: 1.05rem;
-      font-weight: bold;
-      color: #d48806;
-      margin-bottom: 20px;
-    }
 
-    .book-info p {
-      font-size: 1.08rem;
-      line-height: 1.8;
-      margin: 0 0 24px;
-      color: #354a5f;
-    }
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
 
-    .book-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
 
-    .btn-primary,
-    .btn-secondary {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
+        nav {
+            display: flex;
 
-    .btn-primary {
-      background-color: #14558c;
-      color: white;
-    }
+            align-items: center;
 
-    .btn-primary:hover {
-      background-color: #0d436e;
-    }
+            gap: 28px;
 
-    .btn-secondary {
-      background-color: #2f9e44;
-      color: white;
-    }
+            flex-wrap: wrap;
+        }
 
-    .btn-secondary:hover {
-      background-color: #247a35;
-    }
 
-    /* UPCOMING */
-    .upcoming-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
+        nav a {
+            font-weight: bold;
 
-    .upcoming-card {
-      background-color: #ffffff;
-      border: 2px dashed #b7cfe0;
-      border-radius: 22px;
-      padding: 30px 24px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(20, 85, 140, 0.05);
-    }
+            color: #14558C;
 
-    .upcoming-card h3 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: #14558c;
-    }
+            transition: 0.2s;
+        }
 
-    .upcoming-card .coming {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #fff4cc;
-      color: #9c6b00;
-      font-weight: bold;
-      padding: 10px 18px;
-      border-radius: 999px;
-    }
 
-    .upcoming-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #536b7b;
-      margin-top: 15px;
-    }
+        nav a:hover {
+            color: #2F9E44;
+        }
 
-    /* FOOTER */
-    footer {
-      background-color: #14558c;
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 40px;
-    }
 
-    footer p {
-      margin: 0;
-      font-size: 0.95rem;
-    }
+        .secret-btn {
+            background-color: #14558C;
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
+            color: white;
 
-      .book-card {
-        padding: 24px;
-      }
+            padding: 12px 22px;
 
-      .book-info h3 {
-        font-size: 1.7rem;
-      }
+            border-radius: 999px;
 
-      .topbar {
-        justify-content: center;
-      }
+            font-weight: bold;
+        }
 
-      nav {
-        justify-content: center;
-      }
-    }
-  </style>
-</head>
-<body>
 
-  <header>
-    <div class="topbar">
-      <a href="index.html" class="logo">
-        <img src="logo.png" alt="Logo Les Éditions Cap Découvertes Jeunesse">
-      </a>
+        .secret-btn:hover {
+            background-color: #0D436E;
 
-      <nav>
-        <a href="index.html">Accueil</a>
-        <a href="livres.html">Nos livres</a>
-        <a href="index.html#apropos">À propos</a>
-        <a href="index.html#contact">Contact</a>
-        <a href="#" class="secret-btn">🔐 Code secret</a>
-      </nav>
-    </div>
-  </header>
+            color: white;
+        }
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>Collection <span>Mattéo</span></h1>
-      <p>
-        Découvre les aventures de Mattéo, un petit vétérinaire curieux et bienveillant
-        qui aide les animaux tout en faisant découvrir aux enfants de vrais faits
-        scientifiques de façon simple, amusante et rassurante.
-      </p>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="section-title">
-      <h2>Les tomes de la collection</h2>
-      <p>Voici les livres disponibles et ceux qui arriveront bientôt.</p>
-    </div>
+        /* =========================
+           PRÉSENTATION COLLECTION
+        ========================== */
 
-    <div class="book-card">
-      <div class="book-image">
-        <img src="images/image_officielle_Tina.png" alt="Tina la tortue voyageuse">
-      </div>
+        .hero {
+            background:
+                linear-gradient(
+                    180deg,
+                    #EEF8FD 0%,
+                    #F8FCFF 100%
+                );
 
-      <div class="book-info">
-        <div class="book-badge">Tome 1 disponible</div>
-        <h3>Tina la tortue voyageuse</h3>
-        <div class="book-subtitle">Collection Mattéo • 4 à 7 ans</div>
+            padding: 70px 20px 55px;
 
-        <p>
-          Une drôle de patiente frappe à la porte de la clinique de Mattéo...<br>
-          Tina la tortue semble très fatiguée.<br>
-          Pourquoi avance-t-elle si lentement ?<br>
-          Que transporte-t-elle sur sa carapace ?<br>
-          En voulant l’aider, Mattéo découvrira que les tortues cachent des secrets fascinants !<br>
-          Au fil de cette aventure pleine de douceur et d’humour, les jeunes lecteurs apprendront de véritables faits scientifiques tout en s’amusant.
-        </p>
+            text-align: center;
+        }
 
-        <div class="book-actions">
-          <a href="#" class="btn-primary">Voir ce livre</a>
-          <a href="#" class="btn-secondary">Activités liées</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="section-title" style="margin-top: 60px;">
-      <h2>Les prochains tomes</h2>
-      <p>La collection de Mattéo continuera bientôt avec de nouvelles aventures.</p>
-    </div>
+        .hero-inner {
+            max-width: 900px;
 
-    <div class="upcoming-grid">
-      <div class="upcoming-card">
-        <h3>Tome 2</h3>
-        <div class="coming">À venir</div>
-        <p>
-          Une nouvelle aventure de Mattéo arrivera bientôt pour faire découvrir
-          d’autres animaux et de nouvelles informations fascinantes.
-        </p>
-      </div>
+            margin: 0 auto;
+        }
 
-      <div class="upcoming-card">
-        <h3>Tome 3</h3>
-        <div class="coming">À venir</div>
-        <p>
-          La collection continue ! Un autre tome est en préparation
-          et sera annoncé dès qu’il sera prêt.
-        </p>
-      </div>
 
-      <div class="upcoming-card">
-        <h3>Encore plus d’aventures</h3>
-        <div class="coming">À venir</div>
-        <p>
-          D’autres livres de la collection Mattéo viendront enrichir
-          la série avec douceur, humour et découvertes.
-        </p>
-      </div>
-    </div>
-  </section>
+        .hero h1 {
+            margin: 0 0 15px;
 
-  <footer>
-    <p>© 2026 Les Éditions Cap Découvertes Jeunesse — Tous droits réservés.</p>
-  </footer>
+            font-size: 3rem;
 
-</body>
-</html>
+            color: #14558C;
+        }
+
+
+        .hero h1 span {
+            color: #2F9E44;
+        }
+
+
+        .age-badge {
+            display: inline-block;
+
+            margin-bottom: 22px;
+
+            padding: 9px 18px;
+
+            border-radius: 999px;
+
+            background-color: #E4F4EA;
+
+            color: #267A3B;
+
+            font-weight: bold;
+        }
+
+
+        .hero p {
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            font-size: 1.18rem;
+
+            line-height: 1.75;
+
+            color: #40586C;
+        }
+
+
+        /* =========================
+           CONTENU
+        ========================== */
+
+        .section {
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            padding: 65px 20px;
+        }
+
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .section-title h2 {
+            margin: 0 0 10px;
+
+            font-size: 2.3rem;
+
+            color: #14558C;
+        }
+
+
+        .section-title p {
+            margin: 0;
+
+            font-size: 1.08rem;
+
+            color: #60788B;
+        }
+
+
+        /* =========================
+           TOME 1
+        ========================== */
+
+        .book-card {
+            background-color: #FFFFFF;
+
+            border-radius: 26px;
+
+            padding: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 45px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(20, 85, 140, 0.09);
+        }
+
+
+        .book-image {
+            flex: 0 0 300px;
+
+            text-align: center;
+        }
+
+
+        .book-image img {
+            width: 100%;
+
+            max-width: 280px;
+
+            height: 300px;
+
+            object-fit: contain;
+        }
+
+
+        .book-info {
+            flex: 1;
+
+            min-width: 280px;
+        }
+
+
+        .book-badge {
+            display: inline-block;
+
+            margin-bottom: 14px;
+
+            padding: 8px 17px;
+
+            border-radius: 999px;
+
+            background-color: #2F9E44;
+
+            color: white;
+
+            font-size: 0.95rem;
+
+            font-weight: bold;
+        }
+
+
+        .book-info h3 {
+            margin: 0 0 8px;
+
+            font-size: 2.15rem;
+
+            color: #14558C;
+        }
+
+
+        .book-subtitle {
+            margin-bottom: 23px;
+
+            color: #D48806;
+
+            font-weight: bold;
+
+            font-size: 1.05rem;
+        }
+
+
+        .book-summary {
+            font-size: 1.08rem;
+
+            line-height: 1.8;
+
+            color: #354A5F;
+        }
+
+
+        .book-summary p {
+            margin: 0 0 14px;
+        }
+
+
+        .book-details {
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-top: 28px;
+        }
+
+
+        .detail {
+            background-color: #EEF7FC;
+
+            color: #14558C;
+
+            padding: 10px 16px;
+
+            border-radius: 999px;
+
+            font-size: 0.95rem;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PROCHAINS TOMES
+        ========================== */
+
+        .upcoming-section {
+            margin-top: 75px;
+        }
+
+
+        .upcoming-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 24px;
+        }
+
+
+        .upcoming-card {
+            min-height: 230px;
+
+            padding: 32px 25px;
+
+            background-color: #FFFFFF;
+
+            border:
+                2px dashed
+                #B7CFE0;
+
+            border-radius: 24px;
+
+            text-align: center;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .upcoming-icon {
+            font-size: 2.4rem;
+
+            margin-bottom: 12px;
+        }
+
+
+        .upcoming-card h3 {
+            margin: 0 0 15px;
+
+            color: #14558C;
+
+            font-size: 1.45rem;
+        }
+
+
+        .coming-badge {
+            display: inline-block;
+
+            margin-bottom: 14px;
+
+            padding: 9px 18px;
+
+            border-radius: 999px;
+
+            background-color: #FFF3CA;
+
+            color: #966600;
+
+            font-weight: bold;
+        }
+
+
+        .upcoming-card p {
+            margin: 0;
+
+           
