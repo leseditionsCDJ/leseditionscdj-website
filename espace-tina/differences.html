@@ -20,12 +20,7 @@
 
         body {
             margin: 0;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             color: #203040;
 
             background:
@@ -38,39 +33,31 @@
             min-height: 100vh;
         }
 
-
         /* =========================
            EN-TÊTE
         ========================== */
 
         header {
             background-color: white;
-
             padding: 15px 5%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             gap: 25px;
 
-            border-bottom:
-                2px solid #E7EEF3;
+            border-bottom: 2px solid #E7EEF3;
         }
 
         .logo {
             width: 220px;
-
             max-width: 45vw;
-
             height: auto;
         }
 
         .back-button {
             background-color: #174E78;
-
             color: white;
 
             padding: 12px 20px;
@@ -78,7 +65,6 @@
             border-radius: 25px;
 
             text-decoration: none;
-
             font-weight: bold;
 
             transition: 0.2s;
@@ -88,27 +74,23 @@
             background-color: #2F8F46;
         }
 
-
         /* =========================
            CONTENU
         ========================== */
 
         main {
             width: 96%;
-
             max-width: 1450px;
 
             margin: auto;
 
-            padding:
-                40px 15px 70px;
+            padding: 40px 15px 70px;
 
             text-align: center;
         }
 
         h1 {
-            margin:
-                0 0 10px;
+            margin: 0 0 10px;
 
             color: #174E78;
 
@@ -118,8 +100,7 @@
         .intro {
             max-width: 760px;
 
-            margin:
-                0 auto 25px;
+            margin: 0 auto 25px;
 
             color: #536B7B;
 
@@ -127,7 +108,6 @@
 
             line-height: 1.6;
         }
-
 
         /* =========================
            JEU
@@ -142,8 +122,7 @@
 
             background-color: white;
 
-            border:
-                2px solid #DDECF3;
+            border: 2px solid #DDECF3;
 
             border-radius: 25px;
 
@@ -170,7 +149,6 @@
             display: block;
 
             width: 100%;
-
             height: auto;
 
             cursor: default;
@@ -182,7 +160,6 @@
             -webkit-user-drag: none;
         }
 
-
         /* =========================
            CERCLES TROUVÉS
         ========================== */
@@ -190,8 +167,7 @@
         .found-marker {
             position: absolute;
 
-            border:
-                4px solid #2F8F46;
+            border: 4px solid #2F8F46;
 
             border-radius: 50%;
 
@@ -213,17 +189,13 @@
             position: absolute;
 
             right: -9px;
-
             top: -12px;
 
             width: 25px;
-
             height: 25px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             background-color: #2F8F46;
@@ -251,7 +223,6 @@
 
         }
 
-
         /* =========================
            INDICE
         ========================== */
@@ -259,8 +230,7 @@
         .hint-marker {
             position: absolute;
 
-            border:
-                5px dashed #F1B83B;
+            border: 5px dashed #F1B83B;
 
             border-radius: 50%;
 
@@ -287,7 +257,6 @@
 
         }
 
-
         /* =========================
            MAUVAIS CLIC
         ========================== */
@@ -296,16 +265,13 @@
             position: absolute;
 
             width: 55px;
-
             height: 55px;
 
             transform:
                 translate(-50%, -50%);
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             color: #D93E3E;
@@ -320,7 +286,9 @@
                 0 2px 3px white;
 
             animation:
-                wrongPop 0.7s ease-out forwards;
+                wrongPop 0.7s
+                ease-out
+                forwards;
         }
 
         @keyframes wrongPop {
@@ -351,16 +319,14 @@
 
         }
 
-
         /* =========================
-           INFORMATIONS
+           INFOS DU JEU
         ========================== */
 
         .game-info {
             max-width: 1000px;
 
-            margin:
-                25px auto 0;
+            margin: 25px auto 0;
 
             padding: 24px;
 
@@ -395,7 +361,6 @@
             letter-spacing: 4px;
         }
 
-
         /* =========================
            PROGRESSION
         ========================== */
@@ -427,9 +392,8 @@
                 width 0.35s ease;
         }
 
-
         /* =========================
-           LISTE
+           LISTE DES DIFFÉRENCES
         ========================== */
 
         .difference-list {
@@ -444,8 +408,7 @@
         }
 
         .difference-item {
-            padding:
-                10px 12px;
+            padding: 10px 12px;
 
             border-radius: 15px;
 
@@ -464,7 +427,6 @@
             color: #2F8F46;
         }
 
-
         /* =========================
            MESSAGE
         ========================== */
@@ -480,7 +442,6 @@
 
             font-weight: bold;
         }
-
 
         /* =========================
            BOUTONS
@@ -503,8 +464,7 @@
 
             border-radius: 25px;
 
-            padding:
-                13px 20px;
+            padding: 13px 20px;
 
             font-size: 1rem;
 
@@ -544,7 +504,6 @@
             color: white;
         }
 
-
         /* =========================
            VICTOIRE
         ========================== */
@@ -554,8 +513,7 @@
 
             max-width: 700px;
 
-            margin:
-                25px auto 0;
+            margin: 25px auto 0;
 
             padding: 25px;
 
@@ -577,7 +535,6 @@
                 markerPop 0.35s ease-out;
         }
 
-
         /* =========================
            CONFETTIS
         ========================== */
@@ -588,7 +545,6 @@
             top: -20px;
 
             width: 10px;
-
             height: 16px;
 
             z-index: 9999;
@@ -613,7 +569,6 @@
             }
 
         }
-
 
         /* =========================
            MOBILE
@@ -640,6 +595,14 @@
 
             .found-marker {
                 border-width: 3px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .difference-list {
+                grid-template-columns: 1fr;
             }
 
         }
@@ -677,7 +640,6 @@
 
 <main>
 
-
     <h1>
         🔎 Trouve les 7 différences !
     </h1>
@@ -703,7 +665,7 @@
 
 
             <img
-                src="../images/differences_tina.png?v=2"
+                src="../images/differences_tina.png?v=3"
                 alt="Trouve les 7 différences avec Mattéo et Tina"
                 id="game-image">
 
@@ -825,19 +787,24 @@
 
 <script>
 
-
     /* =====================================================
-       DIFFÉRENCES
+       7 DIFFÉRENCES
 
-       hit = zone assez grande pour faciliter le clic
-       marker = cercle précis qui apparaît sur la différence
+       hit =
+       zone invisible assez grande pour que
+       l'enfant puisse facilement cliquer.
+
+       marker =
+       cercle précis affiché autour de la
+       véritable différence.
     ===================================================== */
-
 
     const differences = [
 
 
-        /* 1 - COUVERCLE DU POT */
+        /* =========================
+           1 — COUVERCLE DU POT
+        ========================== */
 
         {
             id: "jar",
@@ -849,33 +816,33 @@
 
                 {
                     hit: {
-                        left: 5.39,
-                        top: 37.29,
-                        width: 8.98,
-                        height: 6.91
+                        left: 5.20,
+                        top: 37.40,
+                        width: 9.20,
+                        height: 6.80
                     },
 
                     marker: {
-                        left: 6.35,
-                        top: 38.40,
-                        width: 6.91,
-                        height: 4.42
+                        left: 5.80,
+                        top: 39.23,
+                        width: 7.60,
+                        height: 3.68
                     }
                 },
 
                 {
                     hit: {
-                        left: 5.39,
-                        top: 77.16,
-                        width: 8.98,
-                        height: 6.63
+                        left: 5.20,
+                        top: 77.20,
+                        width: 9.20,
+                        height: 6.80
                     },
 
                     marker: {
-                        left: 6.35,
-                        top: 78.27,
-                        width: 6.91,
-                        height: 4.05
+                        left: 5.73,
+                        top: 78.36,
+                        width: 7.67,
+                        height: 3.68
                     }
                 }
 
@@ -883,7 +850,9 @@
         },
 
 
-        /* 2 - ÉLASTIQUE */
+        /* =========================
+           2 — ÉLASTIQUE
+        ========================== */
 
         {
             id: "hair",
@@ -895,33 +864,33 @@
 
                 {
                     hit: {
-                        left: 63.88,
-                        top: 16.57,
-                        width: 5.46,
-                        height: 6.08
+                        left: 63.70,
+                        top: 16.80,
+                        width: 5.80,
+                        height: 6.10
                     },
 
                     marker: {
-                        left: 65.12,
-                        top: 18.23,
-                        width: 3.04,
-                        height: 3.13
+                        left: 64.30,
+                        top: 18.69,
+                        width: 3.80,
+                        height: 3.68
                     }
                 },
 
                 {
                     hit: {
-                        left: 63.95,
-                        top: 58.47,
-                        width: 5.46,
-                        height: 5.99
+                        left: 63.70,
+                        top: 57.80,
+                        width: 5.80,
+                        height: 6.20
                     },
 
                     marker: {
-                        left: 65.19,
-                        top: 59.85,
-                        width: 3.04,
-                        height: 3.13
+                        left: 64.36,
+                        top: 58.66,
+                        width: 3.73,
+                        height: 3.78
                     }
                 }
 
@@ -929,7 +898,9 @@
         },
 
 
-        /* 3 - PANNEAU DE LA PORTE */
+        /* =========================
+           3 — PANNEAU DE PORTE
+        ========================== */
 
         {
             id: "door-sign",
@@ -941,33 +912,33 @@
 
                 {
                     hit: {
-                        left: 72.17,
-                        top: 13.35,
-                        width: 10.36,
-                        height: 15.19
+                        left: 72.40,
+                        top: 14.00,
+                        width: 10.20,
+                        height: 14.80
                     },
 
                     marker: {
-                        left: 73.34,
-                        top: 15.10,
-                        width: 8.15,
-                        height: 12.06
+                        left: 73.83,
+                        top: 15.93,
+                        width: 8.01,
+                        height: 10.77
                     }
                 },
 
                 {
                     hit: {
-                        left: 72.17,
-                        top: 53.87,
-                        width: 10.70,
-                        height: 15.38
+                        left: 72.40,
+                        top: 54.20,
+                        width: 10.20,
+                        height: 14.80
                     },
 
                     marker: {
-                        left: 73.48,
-                        top: 55.43,
-                        width: 8.22,
-                        height: 12.62
+                        left: 73.83,
+                        top: 56.17,
+                        width: 7.94,
+                        height: 10.77
                     }
                 }
 
@@ -975,7 +946,9 @@
         },
 
 
-        /* 4 - POIGNÉE DE PORTE */
+        /* =========================
+           4 — POIGNÉE DE PORTE
+        ========================== */
 
         {
             id: "door-handle",
@@ -987,33 +960,33 @@
 
                 {
                     hit: {
-                        left: 70.86,
-                        top: 28.82,
-                        width: 5.94,
-                        height: 9.67
+                        left: 70.50,
+                        top: 29.00,
+                        width: 7.00,
+                        height: 10.00
                     },
 
                     marker: {
-                        left: 72.17,
-                        top: 30.39,
-                        width: 3.25,
-                        height: 6.81
+                        left: 71.27,
+                        top: 31.86,
+                        width: 5.66,
+                        height: 6.26
                     }
                 },
 
                 {
                     hit: {
-                        left: 70.93,
-                        top: 68.88,
-                        width: 6.08,
-                        height: 9.02
+                        left: 70.50,
+                        top: 69.60,
+                        width: 7.00,
+                        height: 9.50
                     },
 
                     marker: {
-                        left: 72.24,
-                        top: 70.53,
-                        width: 3.38,
-                        height: 5.99
+                        left: 71.41,
+                        top: 72.65,
+                        width: 5.52,
+                        height: 6.17
                     }
                 }
 
@@ -1021,7 +994,9 @@
         },
 
 
-        /* 5 - PATTE SUR L'AFFICHE */
+        /* =========================
+           5 — PATTE SUR L'AFFICHE
+        ========================== */
 
         {
             id: "poster-paw",
@@ -1033,33 +1008,33 @@
 
                 {
                     hit: {
-                        left: 41.16,
-                        top: 28.08,
-                        width: 6.15,
-                        height: 7.37
+                        left: 41.50,
+                        top: 28.30,
+                        width: 5.50,
+                        height: 7.00
                     },
 
                     marker: {
-                        left: 42.75,
-                        top: 30.11,
-                        width: 3.11,
-                        height: 3.59
+                        left: 43.51,
+                        top: 30.02,
+                        width: 2.62,
+                        height: 3.50
                     }
                 },
 
                 {
                     hit: {
-                        left: 41.23,
-                        top: 67.22,
-                        width: 6.15,
-                        height: 7.37
+                        left: 41.50,
+                        top: 68.20,
+                        width: 5.50,
+                        height: 7.00
                     },
 
                     marker: {
-                        left: 42.82,
-                        top: 69.15,
-                        width: 3.11,
-                        height: 3.87
+                        left: 43.37,
+                        top: 69.98,
+                        width: 2.83,
+                        height: 3.59
                     }
                 }
 
@@ -1067,7 +1042,9 @@
         },
 
 
-        /* 6 - POT DE LA PLANTE */
+        /* =========================
+           6 — POT DE LA PLANTE
+        ========================== */
 
         {
             id: "plant",
@@ -1079,33 +1056,33 @@
 
                 {
                     hit: {
-                        left: 52.14,
-                        top: 28.55,
-                        width: 6.35,
-                        height: 8.47
+                        left: 52.50,
+                        top: 29.50,
+                        width: 6.20,
+                        height: 8.00
                     },
 
                     marker: {
-                        left: 53.66,
-                        top: 30.48,
-                        width: 3.45,
-                        height: 4.79
+                        left: 54.49,
+                        top: 33.52,
+                        width: 3.04,
+                        height: 3.59
                     }
                 },
 
                 {
                     hit: {
-                        left: 52.35,
-                        top: 69.34,
-                        width: 6.35,
-                        height: 8.75
+                        left: 52.50,
+                        top: 70.00,
+                        width: 6.20,
+                        height: 8.00
                     },
 
                     marker: {
-                        left: 53.87,
-                        top: 71.36,
-                        width: 3.52,
-                        height: 4.79
+                        left: 54.63,
+                        top: 74.13,
+                        width: 2.97,
+                        height: 3.68
                     }
                 }
 
@@ -1113,7 +1090,9 @@
         },
 
 
-        /* 7 - PATTE SUR LE GOBELET */
+        /* =========================
+           7 — PATTE SUR LE GOBELET
+        ========================== */
 
         {
             id: "cup-paw",
@@ -1125,32 +1104,32 @@
 
                 {
                     hit: {
-                        left: 65.61,
-                        top: 42.54,
-                        width: 5.18,
-                        height: 7.92
+                        left: 65.50,
+                        top: 42.50,
+                        width: 5.40,
+                        height: 8.00
                     },
 
                     marker: {
-                        left: 67.13,
-                        top: 44.75,
-                        width: 2.28,
-                        height: 3.59
+                        left: 67.20,
+                        top: 45.03,
+                        width: 2.69,
+                        height: 3.50
                     }
                 },
 
                 {
                     hit: {
-                        left: 65.75,
-                        top: 82.69,
-                        width: 5.18,
-                        height: 7.73
+                        left: 65.50,
+                        top: 83.00,
+                        width: 5.40,
+                        height: 8.00
                     },
 
                     marker: {
-                        left: 67.27,
-                        top: 84.81,
-                        width: 2.21,
+                        left: 67.20,
+                        top: 85.54,
+                        width: 2.69,
                         height: 3.50
                     }
                 }
@@ -1228,7 +1207,7 @@
 
 
     /* =========================
-       LISTE
+       LISTE DES DIFFÉRENCES
     ========================== */
 
     function buildDifferenceList() {
@@ -1279,7 +1258,9 @@
        POSITION DU CLIC
     ========================== */
 
-    function getClickPercent(event) {
+    function getClickPercent(
+        event
+    ) {
 
         const rect =
             board.getBoundingClientRect();
@@ -1317,13 +1298,15 @@
 
         return (
 
-            x >= area.left &&
+            x >=
+                area.left &&
 
             x <=
                 area.left +
                 area.width &&
 
-            y >= area.top &&
+            y >=
+                area.top &&
 
             y <=
                 area.top +
@@ -1335,7 +1318,7 @@
 
 
     /* =========================
-       CLIC
+       CLIC SUR LE JEU
     ========================== */
 
     board.addEventListener(
@@ -1398,7 +1381,9 @@
             );
 
 
-            /* BONNE RÉPONSE */
+            /* =========================
+               BONNE RÉPONSE
+            ========================== */
 
             if (
                 matched
@@ -1466,7 +1451,9 @@
             }
 
 
-            /* MAUVAIS ENDROIT */
+            /* =========================
+               MAUVAISE RÉPONSE
+            ========================== */
 
             showWrongMark(
                 point.x,
@@ -1487,7 +1474,7 @@
 
 
     /* =========================
-       CERCLES PRÉCIS
+       CRÉER UN CERCLE
     ========================== */
 
     function createMarker(
@@ -1507,19 +1494,23 @@
 
 
         marker.style.left =
-            area.left + "%";
+            area.left +
+            "%";
 
 
         marker.style.top =
-            area.top + "%";
+            area.top +
+            "%";
 
 
         marker.style.width =
-            area.width + "%";
+            area.width +
+            "%";
 
 
         marker.style.height =
-            area.height + "%";
+            area.height +
+            "%";
 
 
         board.appendChild(
@@ -1531,6 +1522,10 @@
 
     }
 
+
+    /* =========================
+       CERCLES DE RÉPONSE
+    ========================== */
 
     function addFoundMarkers(
         diff
@@ -1559,6 +1554,10 @@
     }
 
 
+    /* =========================
+       CROIX ROUGE
+    ========================== */
+
     function showWrongMark(
         x,
         y
@@ -1580,11 +1579,13 @@
 
 
         mark.style.left =
-            x + "%";
+            x +
+            "%";
 
 
         mark.style.top =
-            y + "%";
+            y +
+            "%";
 
 
         board.appendChild(
@@ -1688,6 +1689,10 @@
     }
 
 
+    /* =========================
+       ÉTOILES
+    ========================== */
+
     function updateStars() {
 
 
@@ -1704,8 +1709,8 @@
 
             text +=
                 i < stars
-                ? "⭐"
-                : "☆";
+                    ? "⭐"
+                    : "☆";
 
 
         }
@@ -1788,7 +1793,8 @@
             const side =
                 target.areas[
                     Math.floor(
-                        Math.random() * 2
+                        Math.random() *
+                        target.areas.length
                     )
                 ];
 
@@ -1912,7 +1918,7 @@
 
 
             showMessage(
-                "👀 Voici les 7 différences !"
+                "👀 Voici les 7 différences ! Tu peux recommencer pour essayer sans aide."
             );
 
 
@@ -2080,6 +2086,15 @@
                 "s";
 
 
+            piece.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() *
+                    1.5
+                ) +
+                "s";
+
+
             document.body.appendChild(
                 piece
             );
@@ -2120,8 +2135,8 @@
 
             this.textContent =
                 soundEnabled
-                ? "🔊 Son activé"
-                : "🔇 Son désactivé";
+                    ? "🔊 Son activé"
+                    : "🔇 Son désactivé";
 
 
         }
@@ -2280,7 +2295,8 @@
 
 
                     },
-                    index * 120
+                    index *
+                    120
                 );
 
 
@@ -2312,7 +2328,6 @@
     ========================== */
 
     updateGame();
-
 
 </script>
 
