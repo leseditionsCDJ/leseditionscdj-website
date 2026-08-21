@@ -20,12 +20,7 @@
 
         body {
             margin: 0;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             color: #203040;
 
             background:
@@ -38,20 +33,16 @@
             min-height: 100vh;
         }
 
-
         /* =========================
            EN-TÊTE
         ========================== */
 
         header {
             background-color: white;
-
             padding: 15px 5%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             gap: 25px;
@@ -62,15 +53,12 @@
 
         .logo {
             width: 220px;
-
             max-width: 45vw;
-
             height: auto;
         }
 
         .back-button {
             background-color: #174E78;
-
             color: white;
 
             padding: 12px 20px;
@@ -78,7 +66,6 @@
             border-radius: 25px;
 
             text-decoration: none;
-
             font-weight: bold;
 
             transition: 0.2s;
@@ -88,14 +75,12 @@
             background-color: #2F8F46;
         }
 
-
         /* =========================
            CONTENU
         ========================== */
 
         main {
             width: 95%;
-
             max-width: 1250px;
 
             margin: auto;
@@ -127,7 +112,6 @@
             line-height: 1.6;
         }
 
-
         /* =========================
            PALETTE
         ========================== */
@@ -153,7 +137,8 @@
         }
 
         .color-panel h2 {
-            margin: 0 0 15px;
+            margin:
+                0 0 15px;
 
             color: #2F8F46;
 
@@ -162,9 +147,7 @@
 
         .colors {
             display: flex;
-
             flex-wrap: wrap;
-
             justify-content: center;
 
             gap: 12px;
@@ -172,7 +155,6 @@
 
         .color {
             width: 46px;
-
             height: 46px;
 
             border-radius: 50%;
@@ -211,13 +193,10 @@
             inset: 0;
 
             display: flex;
-
             justify-content: center;
-
             align-items: center;
 
             font-size: 1.3rem;
-
             font-weight: bold;
 
             color: white;
@@ -226,7 +205,6 @@
                 0 1px 3px
                 rgba(0,0,0,0.7);
         }
-
 
         /* =========================
            DESSIN
@@ -265,7 +243,6 @@
             display: block;
 
             width: 100%;
-
             height: auto;
 
             cursor: pointer;
@@ -273,16 +250,13 @@
             touch-action: manipulation;
         }
 
-
         /* =========================
            BOUTONS
         ========================== */
 
         .tools {
             display: flex;
-
             flex-wrap: wrap;
-
             justify-content: center;
 
             gap: 12px;
@@ -298,7 +272,6 @@
             padding: 13px 20px;
 
             font-size: 1rem;
-
             font-weight: bold;
 
             cursor: pointer;
@@ -313,31 +286,33 @@
 
         .undo {
             background-color: #F1B83B;
-
             color: #263238;
         }
 
         .eraser {
             background-color: #E7EEF3;
-
             color: #174E78;
+        }
+
+        .eraser.active {
+            background-color: #174E78;
+            color: white;
+            outline:
+                4px solid rgba(23, 78, 120, 0.20);
         }
 
         .restart {
             background-color: #D95C5C;
-
             color: white;
         }
 
         .print {
             background-color: #174E78;
-
             color: white;
         }
 
         .save {
             background-color: #2F8F46;
-
             color: white;
         }
 
@@ -364,7 +339,6 @@
             font-size: 0.95rem;
         }
 
-
         /* =========================
            MOBILE
         ========================== */
@@ -381,7 +355,6 @@
 
             .color {
                 width: 40px;
-
                 height: 40px;
             }
 
@@ -391,7 +364,6 @@
 
             .tool-button {
                 flex-grow: 1;
-
                 min-width: 145px;
             }
 
@@ -430,7 +402,6 @@
 
 <main>
 
-
     <h1>
         🎨 Colorie Tina !
     </h1>
@@ -447,9 +418,7 @@
     </p>
 
 
-    <!-- =========================
-         PALETTE
-    ========================== -->
+    <!-- PALETTE -->
 
     <section class="color-panel">
 
@@ -460,14 +429,12 @@
 
         <div class="colors">
 
-
             <button
                 class="color selected"
                 style="background:#EF4444"
                 data-color="#EF4444"
                 aria-label="Rouge">
             </button>
-
 
             <button
                 class="color"
@@ -476,14 +443,12 @@
                 aria-label="Orange">
             </button>
 
-
             <button
                 class="color"
                 style="background:#FACC15"
                 data-color="#FACC15"
                 aria-label="Jaune">
             </button>
-
 
             <button
                 class="color"
@@ -492,14 +457,12 @@
                 aria-label="Vert clair">
             </button>
 
-
             <button
                 class="color"
                 style="background:#22C55E"
                 data-color="#22C55E"
                 aria-label="Vert">
             </button>
-
 
             <button
                 class="color"
@@ -508,14 +471,12 @@
                 aria-label="Turquoise">
             </button>
 
-
             <button
                 class="color"
                 style="background:#3B82F6"
                 data-color="#3B82F6"
                 aria-label="Bleu">
             </button>
-
 
             <button
                 class="color"
@@ -524,14 +485,12 @@
                 aria-label="Mauve">
             </button>
 
-
             <button
                 class="color"
                 style="background:#EC4899"
                 data-color="#EC4899"
                 aria-label="Rose">
             </button>
-
 
             <button
                 class="color"
@@ -540,14 +499,12 @@
                 aria-label="Brun">
             </button>
 
-
             <button
                 class="color"
                 style="background:#64748B"
                 data-color="#64748B"
                 aria-label="Gris">
             </button>
-
 
             <button
                 class="color"
@@ -556,18 +513,14 @@
                 aria-label="Noir">
             </button>
 
-
         </div>
 
     </section>
 
 
-    <!-- =========================
-         DESSIN
-    ========================== -->
+    <!-- DESSIN -->
 
     <section class="drawing-card">
-
 
         <div class="canvas-wrapper">
 
@@ -578,7 +531,6 @@
 
 
         <div class="tools">
-
 
             <button
                 class="tool-button undo"
@@ -633,7 +585,6 @@
 
             </button>
 
-
         </div>
 
 
@@ -645,22 +596,39 @@
 
         </div>
 
-
     </section>
 
 
     <p class="tip">
 
-        💡 Clique bien à l'intérieur d'une zone blanche,
-        sans cliquer directement sur un trait noir.
+        💡 Pour effacer une couleur, clique sur
+        « Effacer une zone », puis directement
+        dans la partie que tu veux remettre en blanc.
 
     </p>
-
 
 </main>
 
 
 <script>
+
+    /* =========================
+       IMAGE
+    ========================== */
+
+    const IMAGE_PATH =
+        "../images/dessin_tina_v2.png";
+
+
+    /*
+        Le ?v=3 oblige le navigateur
+        à demander la nouvelle version
+        de l'image plutôt qu'une ancienne
+        version en cache.
+    */
+
+    const IMAGE_URL =
+        IMAGE_PATH + "?v=3";
 
 
     /* =========================
@@ -687,7 +655,7 @@
 
 
     image.src =
-        "../images/dessin_tina.png";
+        IMAGE_URL;
 
 
     let originalImageData =
@@ -706,13 +674,24 @@
         false;
 
 
+    const colorButtons =
+        document.querySelectorAll(
+            ".color"
+        );
+
+
+    const eraserButton =
+        document.getElementById(
+            "eraser-button"
+        );
+
+
     /* =========================
-       CHARGEMENT IMAGE
+       CHARGEMENT
     ========================== */
 
     image.onload =
         function() {
-
 
             canvas.width =
                 image.naturalWidth;
@@ -742,19 +721,16 @@
                 "Prêt ! Choisis une couleur. 🎨"
             );
 
-
         };
 
 
     image.onerror =
         function() {
 
-
             document.getElementById(
                 "message"
             ).textContent =
                 "Le dessin de Tina n'a pas pu être chargé.";
-
 
         };
 
@@ -763,29 +739,19 @@
        PALETTE
     ========================== */
 
-    const colorButtons =
-        document.querySelectorAll(
-            ".color"
-        );
-
-
     colorButtons.forEach(
         function(button) {
-
 
             button.addEventListener(
                 "click",
                 function() {
 
-
                     colorButtons.forEach(
                         function(item) {
-
 
                             item.classList.remove(
                                 "selected"
                             );
-
 
                         }
                     );
@@ -804,9 +770,12 @@
                         false;
 
 
+                    eraserButton.classList.remove(
+                        "active"
+                    );
+
                 }
             );
-
 
         }
     );
@@ -818,7 +787,6 @@
 
     function hexToRgb(hex) {
 
-
         const value =
             hex.replace(
                 "#",
@@ -827,7 +795,6 @@
 
 
         return {
-
 
             r:
                 parseInt(
@@ -838,7 +805,6 @@
                     16
                 ),
 
-
             g:
                 parseInt(
                     value.substring(
@@ -847,7 +813,6 @@
                     ),
                     16
                 ),
-
 
             b:
                 parseInt(
@@ -858,15 +823,13 @@
                     16
                 )
 
-
         };
-
 
     }
 
 
     /* =========================
-       COMPARAISON PIXELS
+       COMPARAISON COULEUR
     ========================== */
 
     function similarColor(
@@ -878,7 +841,6 @@
         b2
     ) {
 
-
         const tolerance =
             46;
 
@@ -889,18 +851,15 @@
                 r1 - r2
             ) <= tolerance &&
 
-
             Math.abs(
                 g1 - g2
             ) <= tolerance &&
-
 
             Math.abs(
                 b1 - b2
             ) <= tolerance
 
         );
-
 
     }
 
@@ -911,14 +870,11 @@
 
     function saveHistory() {
 
-
         if (
             !canvas.width ||
             !canvas.height
         ) {
-
             return;
-
         }
 
 
@@ -932,20 +888,13 @@
         );
 
 
-        /*
-            On garde les 8 dernières actions.
-        */
-
         if (
             history.length > 8
         ) {
 
-
             history.shift();
 
-
         }
-
 
     }
 
@@ -956,10 +905,8 @@
 
     function floodFill(
         startX,
-        startY,
-        fillHex
+        startY
     ) {
-
 
         const width =
             canvas.width;
@@ -982,6 +929,22 @@
             imageData.data;
 
 
+        /*
+            Très important :
+
+            Le dessin ORIGINAL sert
+            toujours à déterminer où
+            sont les véritables traits.
+
+            Donc une couleur ajoutée
+            par l'enfant n'est jamais
+            confondue avec un contour.
+        */
+
+        const originalData =
+            originalImageData.data;
+
+
         const startIndex =
             (
                 startY *
@@ -991,61 +954,65 @@
 
 
         const startR =
-            data[
-                startIndex
-            ];
-
+            data[startIndex];
 
         const startG =
-            data[
-                startIndex + 1
-            ];
-
+            data[startIndex + 1];
 
         const startB =
-            data[
-                startIndex + 2
-            ];
+            data[startIndex + 2];
+
+
+        const originalStartR =
+            originalData[startIndex];
+
+        const originalStartG =
+            originalData[startIndex + 1];
+
+        const originalStartB =
+            originalData[startIndex + 2];
+
+
+        const originalStartBrightness =
+            (
+                originalStartR +
+                originalStartG +
+                originalStartB
+            ) / 3;
 
 
         /*
-            Empêche de cliquer
+            Impossible de commencer
             directement sur un trait noir.
         */
 
         if (
-
-            startR < 110 &&
-            startG < 110 &&
-            startB < 110
-
+            originalStartBrightness < 165
         ) {
 
-
             showMessage(
-                "Clique à l'intérieur d'une zone blanche. 🎨"
+                "Clique à l'intérieur d'une zone. 🎨"
             );
 
-
             return false;
-
 
         }
 
 
         const fill =
             hexToRgb(
-                fillHex
+                selectedColor
             );
 
 
         /*
-            Si la zone possède déjà
-            cette couleur, on ne fait rien.
+            Si on colorie et que la zone
+            possède déjà cette couleur,
+            aucune modification.
         */
 
         if (
-
+            !eraserMode &&
             similarColor(
                 startR,
                 startG,
@@ -1054,12 +1021,32 @@
                 fill.g,
                 fill.b
             )
-
         ) {
-
 
             return false;
 
+        }
+
+
+        /*
+            Si on utilise l'effaceur et que
+            la zone ressemble déjà au dessin
+            original, il n'y a rien à effacer.
+        */
+
+        if (
+            eraserMode &&
+            similarColor(
+                startR,
+                startG,
+                startB,
+                originalStartR,
+                originalStartG,
+                originalStartB
+            )
+        ) {
+
+            return false;
 
         }
 
@@ -1070,11 +1057,6 @@
                 height
             );
 
-
-        /*
-            Tableau contenant les pixels
-            à analyser.
-        */
 
         const stack =
             [];
@@ -1091,10 +1073,8 @@
 
 
         /*
-            Sécurité :
-            si une zone représente une
-            énorme partie de la page,
-            c'est probablement le fond.
+            Empêche de remplir accidentellement
+            tout le fond de la page.
         */
 
         const maximumPixels =
@@ -1107,7 +1087,6 @@
             stack.length > 0
         ) {
 
-
             const y =
                 stack.pop();
 
@@ -1117,17 +1096,13 @@
 
 
             if (
-
                 x < 0 ||
                 x >= width ||
                 y < 0 ||
                 y >= height
-
             ) {
 
-
                 continue;
-
 
             }
 
@@ -1144,9 +1119,7 @@
                 ]
             ) {
 
-
                 continue;
-
 
             }
 
@@ -1162,60 +1135,62 @@
                 4;
 
 
-            const r =
-                data[
-                    index
-                ];
+            /*
+                Couleur actuellement visible.
+            */
 
+            const r =
+                data[index];
 
             const g =
-                data[
-                    index + 1
-                ];
-
+                data[index + 1];
 
             const b =
-                data[
-                    index + 2
-                ];
+                data[index + 2];
 
 
             /*
-                Tous les pixels foncés
-                deviennent des barrières.
-
-                Cela inclut les contours
-                noirs et les bords
-                anti-crénelés du dessin.
+                Pixel du dessin original.
             */
 
-            const brightness =
+            const originalR =
+                originalData[index];
+
+            const originalG =
+                originalData[index + 1];
+
+            const originalB =
+                originalData[index + 2];
+
+
+            const originalBrightness =
                 (
-                    r +
-                    g +
-                    b
+                    originalR +
+                    originalG +
+                    originalB
                 ) / 3;
 
 
+            /*
+                Les vrais traits du dessin
+                sont les seules barrières.
+            */
+
             if (
-                brightness < 165
+                originalBrightness < 165
             ) {
 
-
                 continue;
-
 
             }
 
 
             /*
-                Ne remplit que les pixels
-                ressemblant à la couleur
-                du point de départ.
+                On reste dans la même zone
+                actuellement affichée.
             */
 
             if (
-
                 !similarColor(
                     r,
                     g,
@@ -1224,55 +1199,80 @@
                     startG,
                     startB
                 )
-
             ) {
 
-
                 continue;
-
 
             }
 
 
-            data[
-                index
-            ] =
-                fill.r;
+            /*
+                MODE EFFACEUR :
+
+                On remet exactement le pixel
+                du dessin original.
+
+                Cela préserve le blanc,
+                les petits gris et les
+                contours anti-crénelés.
+            */
+
+            if (
+                eraserMode
+            ) {
+
+                data[index] =
+                    originalR;
 
 
-            data[
-                index + 1
-            ] =
-                fill.g;
+                data[index + 1] =
+                    originalG;
 
 
-            data[
-                index + 2
-            ] =
-                fill.b;
+                data[index + 2] =
+                    originalB;
+
+
+                data[index + 3] =
+                    originalData[
+                        index + 3
+                    ];
+
+            }
+
+            /*
+                MODE COLORIAGE
+            */
+
+            else {
+
+                data[index] =
+                    fill.r;
+
+
+                data[index + 1] =
+                    fill.g;
+
+
+                data[index + 2] =
+                    fill.b;
+
+            }
 
 
             changedPixels++;
 
-
-            /*
-                Protection contre le clic
-                dans le grand fond blanc.
-            */
 
             if (
                 changedPixels >
                 maximumPixels
             ) {
 
-
                 showMessage(
                     "Choisis une partie de Tina ou un objet à colorier. 🎨"
                 );
 
-
                 return false;
-
 
             }
 
@@ -1300,18 +1300,14 @@
                 y - 1
             );
 
-
         }
 
 
         if (
-            changedPixels <
-            3
+            changedPixels < 3
         ) {
 
-
             return false;
-
 
         }
 
@@ -1325,7 +1321,6 @@
 
         return true;
 
-
     }
 
 
@@ -1337,14 +1332,11 @@
         "pointerdown",
         function(event) {
 
-
             if (
                 !originalImageData
             ) {
 
-
                 return;
-
 
             }
 
@@ -1386,27 +1378,10 @@
             saveHistory();
 
 
-            let fillColor =
-                selectedColor;
-
-
-            if (
-                eraserMode
-            ) {
-
-
-                fillColor =
-                    "#FFFFFF";
-
-
-            }
-
-
             const changed =
                 floodFill(
                     x,
-                    y,
-                    fillColor
+                    y
                 );
 
 
@@ -1414,40 +1389,30 @@
                 !changed
             ) {
 
-
                 history.pop();
 
+                return;
+
+            }
+
+
+            if (
+                eraserMode
+            ) {
+
+                showMessage(
+                    "Zone effacée. 🧽"
+                );
 
             }
 
             else {
 
-
-                if (
-                    eraserMode
-                ) {
-
-
-                    showMessage(
-                        "Zone effacée. 🧽"
-                    );
-
-
-                }
-
-                else {
-
-
-                    showMessage(
-                        "Jolie couleur ! ✨"
-                    );
-
-
-                }
-
+                showMessage(
+                    "Jolie couleur ! ✨"
+                );
 
             }
-
 
         }
     );
@@ -1463,19 +1428,15 @@
         "click",
         function() {
 
-
             if (
                 history.length === 0
             ) {
-
 
                 showMessage(
                     "Il n'y a rien à annuler."
                 );
 
-
                 return;
-
 
             }
 
@@ -1495,7 +1456,6 @@
                 "Dernière action annulée. ↩️"
             );
 
-
         }
     );
 
@@ -1504,12 +1464,9 @@
        EFFACER UNE ZONE
     ========================== */
 
-    document.getElementById(
-        "eraser-button"
-    ).addEventListener(
+    eraserButton.addEventListener(
         "click",
         function() {
-
 
             eraserMode =
                 true;
@@ -1518,20 +1475,22 @@
             colorButtons.forEach(
                 function(item) {
 
-
                     item.classList.remove(
                         "selected"
                     );
-
 
                 }
             );
 
 
-            showMessage(
-                "🧽 Clique sur la zone que tu veux effacer."
+            eraserButton.classList.add(
+                "active"
             );
 
+
+            showMessage(
+                "🧽 Clique maintenant sur la zone que tu veux effacer."
+            );
 
         }
     );
@@ -1547,14 +1506,11 @@
         "click",
         function() {
 
-
             if (
                 !originalImageData
             ) {
 
-
                 return;
-
 
             }
 
@@ -1569,9 +1525,7 @@
                 !confirmation
             ) {
 
-
                 return;
-
 
             }
 
@@ -1595,14 +1549,17 @@
                 "#EF4444";
 
 
+            eraserButton.classList.remove(
+                "active"
+            );
+
+
             colorButtons.forEach(
                 function(item) {
-
 
                     item.classList.remove(
                         "selected"
                     );
-
 
                 }
             );
@@ -1618,7 +1575,6 @@
                 "Le dessin est prêt pour un nouveau coloriage ! 🎨"
             );
 
-
         }
     );
 
@@ -1631,7 +1587,6 @@
         imageSource
     ) {
 
-
         const printWindow =
             window.open(
                 "",
@@ -1643,14 +1598,11 @@
             !printWindow
         ) {
 
-
             showMessage(
                 "Ton navigateur a bloqué la fenêtre d'impression."
             );
 
-
             return;
-
 
         }
 
@@ -1719,18 +1671,14 @@
                     img.onload =
                         function() {
 
-
                             setTimeout(
                                 function() {
 
-
                                     window.print();
-
 
                                 },
                                 250
                             );
-
 
                         };
 
@@ -1745,7 +1693,6 @@
 
         printWindow.document.close();
 
-
     }
 
 
@@ -1759,10 +1706,9 @@
         "click",
         function() {
 
-
             const imageUrl =
                 new URL(
-                    "../images/dessin_tina.png",
+                    IMAGE_URL,
                     window.location.href
                 ).href;
 
@@ -1770,7 +1716,6 @@
             openPrintWindow(
                 imageUrl
             );
-
 
         }
     );
@@ -1786,28 +1731,20 @@
         "click",
         function() {
 
-
             if (
                 !originalImageData
             ) {
 
-
                 return;
-
 
             }
 
 
-            const coloredImage =
+            openPrintWindow(
                 canvas.toDataURL(
                     "image/png"
-                );
-
-
-            openPrintWindow(
-                coloredImage
+                )
             );
-
 
         }
     );
@@ -1823,14 +1760,11 @@
         "click",
         function() {
 
-
             if (
                 !originalImageData
             ) {
 
-
                 return;
-
 
             }
 
@@ -1858,7 +1792,6 @@
                 "Ton coloriage est enregistré ! 💚"
             );
 
-
         }
     );
 
@@ -1870,7 +1803,6 @@
     function showMessage(
         text
     ) {
-
 
         const message =
             document.getElementById(
@@ -1891,18 +1823,14 @@
             setTimeout(
                 function() {
 
-
                     message.textContent =
                         "";
-
 
                 },
                 3000
             );
 
-
     }
-
 
 </script>
 
