@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
@@ -21,31 +20,22 @@
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             color: #203040;
-
             background:
                 linear-gradient(
                     180deg,
                     #EAF6FC 0%,
                     #FFFDF7 100%
                 );
-
             min-height: 100vh;
         }
-
-        /* =========================
-           EN-TÊTE
-        ========================== */
 
         header {
             background-color: white;
             padding: 15px 5%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             gap: 25px;
-
             border-bottom: 2px solid #E7EEF3;
         }
 
@@ -58,15 +48,10 @@
         .back-button {
             background-color: #174E78;
             color: white;
-
             padding: 12px 20px;
-
             border-radius: 25px;
-
             text-decoration: none;
-
             font-weight: bold;
-
             transition: 0.2s;
         }
 
@@ -74,58 +59,35 @@
             background-color: #2F8F46;
         }
 
-        /* =========================
-           CONTENU
-        ========================== */
-
         main {
             width: 95%;
             max-width: 1250px;
-
             margin: auto;
-
             padding: 45px 15px 70px;
-
             text-align: center;
         }
 
         h1 {
             margin: 0 0 10px;
-
             color: #174E78;
-
             font-size: 2.7rem;
         }
 
         .intro {
             max-width: 760px;
-
             margin: 0 auto 30px;
-
             color: #536B7B;
-
             font-size: 1.15rem;
-
             line-height: 1.6;
         }
 
-        /* =========================
-           PALETTE
-        ========================== */
-
         .color-panel {
             background-color: white;
-
             max-width: 900px;
-
             margin: 0 auto 25px;
-
             padding: 22px;
-
             border-radius: 25px;
-
             border: 2px solid #DDECF3;
-
             box-shadow:
                 0 10px 25px
                 rgba(23, 78, 120, 0.08);
@@ -133,36 +95,25 @@
 
         .color-panel h2 {
             margin: 0 0 15px;
-
             color: #2F8F46;
-
             font-size: 1.35rem;
         }
 
         .colors {
             display: flex;
-
             flex-wrap: wrap;
-
             justify-content: center;
-
             gap: 12px;
         }
 
         .color {
             width: 46px;
             height: 46px;
-
             border-radius: 50%;
-
             border: 3px solid white;
-
             outline: 2px solid #CBD8DF;
-
             cursor: pointer;
-
             transition: 0.15s;
-
             position: relative;
         }
 
@@ -172,104 +123,94 @@
 
         .color.selected {
             outline: 4px solid #174E78;
-
             transform: scale(1.12);
         }
 
         .color.selected::after {
             content: "✓";
-
             position: absolute;
-
             inset: 0;
-
             display: flex;
-
             justify-content: center;
             align-items: center;
-
             font-size: 1.3rem;
-
             font-weight: bold;
-
             color: white;
-
             text-shadow:
                 0 1px 3px rgba(0,0,0,0.7);
         }
 
-        /* =========================
-           DESSIN
-        ========================== */
-
         .drawing-card {
             background-color: white;
-
             padding: 15px;
-
             border-radius: 25px;
-
             border: 2px solid #DDECF3;
-
             box-shadow:
                 0 15px 35px
                 rgba(23, 78, 120, 0.10);
-
             max-width: 1150px;
-
             margin: auto;
         }
 
-        .canvas-wrapper {
+        .artboard {
+            position: relative;
             width: 100%;
-
-            overflow: hidden;
-
+            max-width: 1050px;
+            margin: auto;
+            aspect-ratio: 1426 / 1103;
+            background: white;
             border-radius: 16px;
-
-            background-color: white;
+            overflow: hidden;
         }
 
-        canvas {
-            display: block;
-
+        #zones-svg,
+        #lineart {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            height: auto;
-
-            cursor: pointer;
-
-            touch-action: manipulation;
+            height: 100%;
+            display: block;
         }
 
-        /* =========================
-           BOUTONS
-        ========================== */
+        #zones-svg {
+            z-index: 1;
+            background: white;
+        }
+
+        #lineart {
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .zone {
+            fill: #FFFFFF;
+            stroke: none;
+            cursor: pointer;
+            transition: filter 0.12s;
+        }
+
+        .zone:hover {
+            filter: brightness(0.96);
+        }
 
         .tools {
             display: flex;
-
             flex-wrap: wrap;
-
             justify-content: center;
-
             gap: 12px;
-
             margin-top: 25px;
         }
 
         .tool-button {
             border: none;
-
             border-radius: 25px;
-
             padding: 13px 20px;
-
             font-size: 1rem;
-
             font-weight: bold;
-
             cursor: pointer;
-
             transition: 0.2s;
         }
 
@@ -304,32 +245,20 @@
 
         #message {
             min-height: 28px;
-
             margin-top: 18px;
-
             color: #2F8F46;
-
             font-weight: bold;
         }
 
         .tip {
             margin: 20px auto 0;
-
             max-width: 800px;
-
             color: #667C89;
-
             line-height: 1.5;
-
             font-size: 0.95rem;
         }
 
-        /* =========================
-           MOBILE
-        ========================== */
-
         @media (max-width: 700px) {
-
             header {
                 flex-direction: column;
             }
@@ -351,12 +280,7 @@
                 flex-grow: 1;
                 min-width: 145px;
             }
-
         }
-
-        /* =========================
-           IMPRESSION DE LA PAGE
-        ========================== */
 
         @media print {
 
@@ -369,36 +293,26 @@
                 visibility: hidden;
             }
 
-            .canvas-wrapper,
-            .canvas-wrapper * {
+            .artboard,
+            .artboard * {
                 visibility: visible;
             }
 
-            .canvas-wrapper {
+            .artboard {
                 position: absolute;
-
                 left: 0;
                 top: 0;
-
                 width: 100%;
+                max-width: none;
             }
-
-            canvas {
-                width: 100%;
-                height: auto;
-            }
-
         }
 
     </style>
-
 </head>
-
 
 <body>
 
 <header>
-
     <a href="../index.html">
         <img
             src="../logo.png"
@@ -406,14 +320,11 @@
             class="logo">
     </a>
 
-    <a
-        href="./"
-        class="back-button">
+    <a href="./"
+       class="back-button">
         ← Retour à l'espace Tina
     </a>
-
 </header>
-
 
 <main>
 
@@ -422,886 +333,603 @@
     </h1>
 
     <p class="intro">
-        Choisis une couleur, puis clique sur une partie du dessin
-        pour la colorier. Tu peux changer de couleur autant de fois
-        que tu veux !
+        Choisis une couleur, puis clique sur une zone du dessin
+        pour la colorier. Cette version utilise des zones invisibles
+        pour un coloriage plus précis.
     </p>
 
-
-    <!-- PALETTE -->
-
     <section class="color-panel">
-
-        <h2>
-            Choisis ta couleur
-        </h2>
+        <h2>Choisis ta couleur</h2>
 
         <div class="colors">
 
-            <button
-                class="color selected"
-                style="background:#EF4444"
-                data-color="#EF4444"
-                aria-label="Rouge">
-            </button>
+            <button class="color selected"
+                    style="background:#EF4444"
+                    data-color="#EF4444"
+                    aria-label="Rouge"></button>
 
-            <button
-                class="color"
-                style="background:#F97316"
-                data-color="#F97316"
-                aria-label="Orange">
-            </button>
+            <button class="color"
+                    style="background:#F97316"
+                    data-color="#F97316"
+                    aria-label="Orange"></button>
 
-            <button
-                class="color"
-                style="background:#FACC15"
-                data-color="#FACC15"
-                aria-label="Jaune">
-            </button>
+            <button class="color"
+                    style="background:#FACC15"
+                    data-color="#FACC15"
+                    aria-label="Jaune"></button>
 
-            <button
-                class="color"
-                style="background:#84CC16"
-                data-color="#84CC16"
-                aria-label="Vert clair">
-            </button>
+            <button class="color"
+                    style="background:#84CC16"
+                    data-color="#84CC16"
+                    aria-label="Vert clair"></button>
 
-            <button
-                class="color"
-                style="background:#22C55E"
-                data-color="#22C55E"
-                aria-label="Vert">
-            </button>
+            <button class="color"
+                    style="background:#22C55E"
+                    data-color="#22C55E"
+                    aria-label="Vert"></button>
 
-            <button
-                class="color"
-                style="background:#14B8A6"
-                data-color="#14B8A6"
-                aria-label="Turquoise">
-            </button>
+            <button class="color"
+                    style="background:#14B8A6"
+                    data-color="#14B8A6"
+                    aria-label="Turquoise"></button>
 
-            <button
-                class="color"
-                style="background:#3B82F6"
-                data-color="#3B82F6"
-                aria-label="Bleu">
-            </button>
+            <button class="color"
+                    style="background:#3B82F6"
+                    data-color="#3B82F6"
+                    aria-label="Bleu"></button>
 
-            <button
-                class="color"
-                style="background:#8B5CF6"
-                data-color="#8B5CF6"
-                aria-label="Mauve">
-            </button>
+            <button class="color"
+                    style="background:#8B5CF6"
+                    data-color="#8B5CF6"
+                    aria-label="Mauve"></button>
 
-            <button
-                class="color"
-                style="background:#EC4899"
-                data-color="#EC4899"
-                aria-label="Rose">
-            </button>
+            <button class="color"
+                    style="background:#EC4899"
+                    data-color="#EC4899"
+                    aria-label="Rose"></button>
 
-            <button
-                class="color"
-                style="background:#A16207"
-                data-color="#A16207"
-                aria-label="Brun">
-            </button>
+            <button class="color"
+                    style="background:#A16207"
+                    data-color="#A16207"
+                    aria-label="Brun"></button>
 
-            <button
-                class="color"
-                style="background:#64748B"
-                data-color="#64748B"
-                aria-label="Gris">
-            </button>
+            <button class="color"
+                    style="background:#64748B"
+                    data-color="#64748B"
+                    aria-label="Gris"></button>
 
-            <button
-                class="color"
-                style="background:#111827"
-                data-color="#111827"
-                aria-label="Noir">
-            </button>
+            <button class="color"
+                    style="background:#111827"
+                    data-color="#111827"
+                    aria-label="Noir"></button>
 
         </div>
-
     </section>
-
-
-    <!-- DESSIN -->
 
     <section class="drawing-card">
 
-        <div class="canvas-wrapper">
+        <div class="artboard"
+             id="artboard">
 
-            <canvas id="coloring-canvas">
-            </canvas>
+            <svg id="zones-svg"
+                 viewBox="0 0 1426 1103"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <!-- PATTE ARRIÈRE GAUCHE -->
+                <ellipse class="zone"
+                         id="zone-leg-back-left"
+                         cx="1112"
+                         cy="816"
+                         rx="112"
+                         ry="116" />
+
+                <!-- PATTE ARRIÈRE DROITE -->
+                <ellipse class="zone"
+                         id="zone-leg-back-right"
+                         cx="330"
+                         cy="785"
+                         rx="112"
+                         ry="116" />
+
+                <!-- PATTE AVANT GAUCHE -->
+                <ellipse class="zone"
+                         id="zone-leg-front-left"
+                         cx="560"
+                         cy="886"
+                         rx="114"
+                         ry="135" />
+
+                <!-- PATTE AVANT DROITE -->
+                <ellipse class="zone"
+                         id="zone-leg-front-right"
+                         cx="1260"
+                         cy="865"
+                         rx="105"
+                         ry="110" />
+
+                <!-- TÊTE -->
+                <ellipse class="zone"
+                         id="zone-head"
+                         cx="258"
+                         cy="499"
+                         rx="155"
+                         ry="138" />
+
+                <!-- COU -->
+                <polygon class="zone"
+                         id="zone-neck"
+                         points="316,545 445,560 545,670 475,790 325,698 268,600" />
+
+                <!-- DESSOUS DU CORPS -->
+                <ellipse class="zone"
+                         id="zone-body-bottom"
+                         cx="777"
+                         cy="827"
+                         rx="245"
+                         ry="112" />
+
+                <!-- CARAPACE PRINCIPALE -->
+                <polygon class="zone"
+                         id="zone-shell-main"
+                         points="434,395 603,290 876,258 1060,363 1072,607 891,684 635,708 456,606" />
+
+                <!-- CARAPACE PANNEAU 1 -->
+                <polygon class="zone"
+                         id="zone-shell-panel-1"
+                         points="528,495 606,438 690,500 610,580 520,535" />
+
+                <!-- CARAPACE PANNEAU 2 -->
+                <polygon class="zone"
+                         id="zone-shell-panel-2"
+                         points="674,457 760,407 842,470 758,548 668,508" />
+
+                <!-- CARAPACE PANNEAU 3 -->
+                <polygon class="zone"
+                         id="zone-shell-panel-3"
+                         points="828,457 906,424 969,485 892,553 812,512" />
+
+                <!-- CARAPACE PANNEAU 4 -->
+                <polygon class="zone"
+                         id="zone-shell-panel-4"
+                         points="565,620 652,565 730,635 650,716 560,668" />
+
+                <!-- CARAPACE PANNEAU 5 -->
+                <polygon class="zone"
+                         id="zone-shell-panel-5"
+                         points="741,595 825,550 900,620 820,702 730,650" />
+
+                <!-- BORDURE BASSE DE CARAPACE -->
+                <polygon class="zone"
+                         id="zone-shell-rim"
+                         points="593,706 1025,689 1074,758 884,834 624,806 540,748" />
+
+                <!-- PANNEAU BAS 1 -->
+                <polygon class="zone"
+                         id="zone-shell-rim-panel-1"
+                         points="674,722 783,706 829,778 717,809 640,760" />
+
+                <!-- PANNEAU BAS 2 -->
+                <polygon class="zone"
+                         id="zone-shell-rim-panel-2"
+                         points="829,711 948,697 988,767 882,803 806,756" />
+
+                <!-- PANNEAU BAS 3 -->
+                <polygon class="zone"
+                         id="zone-shell-rim-panel-3"
+                         points="970,706 1060,701 1072,751 1012,794 942,758" />
+
+                <!-- BOÎTE À OUTILS - BASE -->
+                <rect class="zone"
+                      id="zone-toolbox-base"
+                      x="592"
+                      y="394"
+                      width="195"
+                      height="151"
+                      rx="18" />
+
+                <!-- BOÎTE À OUTILS - COUVERCLE -->
+                <rect class="zone"
+                      id="zone-toolbox-lid"
+                      x="592"
+                      y="302"
+                      width="195"
+                      height="108"
+                      rx="20" />
+
+                <!-- BOÎTE À OUTILS - POIGNÉE -->
+                <rect class="zone"
+                      id="zone-toolbox-handle"
+                      x="648"
+                      y="245"
+                      width="92"
+                      height="58"
+                      rx="16" />
+
+                <!-- BOÎTE À OUTILS - LOQUET -->
+                <rect class="zone"
+                      id="zone-toolbox-latch"
+                      x="673"
+                      y="370"
+                      width="43"
+                      height="74"
+                      rx="8" />
+
+                <!-- ARROSOIR - CORPS -->
+                <rect class="zone"
+                      id="zone-watering-body"
+                      x="875"
+                      y="283"
+                      width="263"
+                      height="232"
+                      rx="86" />
+
+                <!-- ARROSOIR - OUVERTURE -->
+                <ellipse class="zone"
+                         id="zone-watering-opening"
+                         cx="983"
+                         cy="344"
+                         rx="74"
+                         ry="30" />
+
+                <!-- ARROSOIR - BEC -->
+                <polygon class="zone"
+                         id="zone-watering-spout"
+                         points="1098,372 1244,308 1286,356 1122,434" />
+
+                <!-- LIVRE DU HAUT -->
+                <polygon class="zone"
+                         id="zone-book-top"
+                         points="826,553 1082,555 1062,655 803,655" />
+
+                <!-- LIVRE DU BAS -->
+                <polygon class="zone"
+                         id="zone-book-bottom"
+                         points="833,656 1093,661 1076,747 811,745" />
+
+                <!-- CORDES -->
+                <polygon class="zone"
+                         id="zone-rope-left"
+                         points="776,132 807,131 838,742 804,748" />
+
+                <polygon class="zone"
+                         id="zone-rope-center"
+                         points="903,108 934,108 978,825 943,829" />
+
+                <polygon class="zone"
+                         id="zone-rope-right"
+                         points="1094,505 1126,505 1159,860 1125,867" />
+
+                <polygon class="zone"
+                         id="zone-rope-far-right"
+                         points="1174,324 1206,324 1243,879 1210,881" />
+
+                <!-- BOUCLE DU HAUT -->
+                <polygon class="zone"
+                         id="zone-bow"
+                         points="805,72 834,48 862,62 882,45 907,68 890,91 858,92 824,96" />
+
+            </svg>
+
+            <img id="lineart"
+                 src="../images/dessin_tina.png"
+                 alt="Coloriage de Tina">
 
         </div>
 
-
         <div class="tools">
 
-            <button
-                class="tool-button undo"
-                id="undo-button">
+            <button class="tool-button undo"
+                    id="undo-button">
                 ↩️ Annuler
             </button>
 
-            <button
-                class="tool-button eraser"
-                id="eraser-button">
+            <button class="tool-button eraser"
+                    id="eraser-button">
                 🧽 Effacer une zone
             </button>
 
-            <button
-                class="tool-button restart"
-                id="restart-button">
+            <button class="tool-button restart"
+                    id="restart-button">
                 🔄 Recommencer
             </button>
 
-            <button
-                class="tool-button print"
-                id="print-original-button">
+            <button class="tool-button print"
+                    id="print-original-button">
                 🖨️ Imprimer à colorier
             </button>
 
-            <button
-                class="tool-button print"
-                id="print-colored-button">
+            <button class="tool-button print"
+                    id="print-colored-button">
                 🖨️ Imprimer mon dessin
             </button>
 
-            <button
-                class="tool-button save"
-                id="save-button">
+            <button class="tool-button save"
+                    id="save-button">
                 💾 Enregistrer mon dessin
             </button>
 
         </div>
 
-        <div
-            id="message"
-            aria-live="polite">
-        </div>
+        <div id="message"
+             aria-live="polite"></div>
 
     </section>
 
-
     <p class="tip">
-        💡 Astuce : si tu veux changer une couleur,
-        choisis simplement une nouvelle couleur et clique de nouveau
-        dans la même zone.
+        💡 Cette version évite les débordements entre les zones.
+        Si certaines zones doivent être découpées encore plus finement,
+        on pourra les ajuster ensuite.
     </p>
 
 </main>
 
-
 <script>
 
-    /* =========================
-       IMAGE ET CANVAS
-    ========================== */
-
-    const canvas =
-        document.getElementById(
-            "coloring-canvas"
-        );
-
-    const ctx =
-        canvas.getContext(
-            "2d",
-            {
-                willReadFrequently: true
-            }
-        );
-
-    const image =
-        new Image();
-
-    image.src =
-        "../images/dessin_tina.png";
-
-
-    let originalImageData = null;
-
-    let selectedColor =
-        "#EF4444";
-
+    const DEFAULT_COLOR = "#EF4444";
+    let selectedColor = DEFAULT_COLOR;
     let history = [];
 
-
-    image.onload =
-        function() {
-
-            canvas.width =
-                image.naturalWidth;
-
-            canvas.height =
-                image.naturalHeight;
-
-            ctx.drawImage(
-                image,
-                0,
-                0
-            );
-
-            originalImageData =
-                ctx.getImageData(
-                    0,
-                    0,
-                    canvas.width,
-                    canvas.height
-                );
-
-        };
-
-
-    image.onerror =
-        function() {
-
-            document.getElementById(
-                "message"
-            ).textContent =
-                "Le dessin n'a pas pu être chargé.";
-
-        };
-
-
-    /* =========================
-       PALETTE
-    ========================== */
-
     const colorButtons =
-        document.querySelectorAll(
-            ".color"
-        );
+        document.querySelectorAll(".color");
 
+    const zones =
+        document.querySelectorAll(".zone");
 
-    colorButtons.forEach(
-        function(button) {
+    const lineart =
+        document.getElementById("lineart");
 
-            button.addEventListener(
-                "click",
-                function() {
+    function showMessage(text) {
+        const message =
+            document.getElementById("message");
 
-                    colorButtons.forEach(
-                        function(item) {
-                            item.classList.remove(
-                                "selected"
-                            );
-                        }
-                    );
+        message.textContent = text;
 
-                    button.classList.add(
-                        "selected"
-                    );
+        clearTimeout(showMessage.timer);
 
-                    selectedColor =
-                        button.dataset.color;
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =========================
-       CONVERSION COULEUR
-    ========================== */
-
-    function hexToRgb(hex) {
-
-        const value =
-            hex.replace(
-                "#",
-                ""
-            );
-
-        return {
-            r:
-                parseInt(
-                    value.substring(
-                        0,
-                        2
-                    ),
-                    16
-                ),
-
-            g:
-                parseInt(
-                    value.substring(
-                        2,
-                        4
-                    ),
-                    16
-                ),
-
-            b:
-                parseInt(
-                    value.substring(
-                        4,
-                        6
-                    ),
-                    16
-                )
-        };
-
+        showMessage.timer =
+            setTimeout(function () {
+                message.textContent = "";
+            }, 3000);
     }
 
-
-    /* =========================
-       SAUVEGARDE POUR ANNULER
-    ========================== */
-
-    function saveHistory() {
-
-        if (
-            canvas.width === 0 ||
-            canvas.height === 0
-        ) {
-            return;
-        }
-
-        history.push(
-            ctx.getImageData(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            )
-        );
-
-        /*
-           On garde seulement les
-           6 dernières actions pour
-           éviter d'utiliser trop
-           de mémoire sur tablette.
-        */
-
-        if (
-            history.length > 6
-        ) {
-            history.shift();
-        }
-
+    function setSelectedColor(color) {
+        selectedColor = color;
     }
 
+    colorButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            colorButtons.forEach(function(item) {
+                item.classList.remove("selected");
+            });
 
-    /* =========================
-       DÉTECTION DES PIXELS
-    ========================== */
+            button.classList.add("selected");
+            setSelectedColor(button.dataset.color);
+        });
+    });
 
-    function similarColor(
-        r1,
-        g1,
-        b1,
-        r2,
-        g2,
-        b2
-    ) {
+    zones.forEach(function(zone) {
+        zone.addEventListener("click", function() {
+            const previousFill =
+                zone.getAttribute("fill") || "#FFFFFF";
 
-        const tolerance = 38;
+            history.push({
+                id: zone.id,
+                previousFill: previousFill
+            });
 
-        return (
-            Math.abs(r1 - r2)
-                <= tolerance &&
-
-            Math.abs(g1 - g2)
-                <= tolerance &&
-
-            Math.abs(b1 - b2)
-                <= tolerance
-        );
-
-    }
-
-
-    /* =========================
-       POT DE PEINTURE
-    ========================== */
-
-    function floodFill(
-        startX,
-        startY,
-        fillHex
-    ) {
-
-        const width =
-            canvas.width;
-
-        const height =
-            canvas.height;
-
-
-        const imageData =
-            ctx.getImageData(
-                0,
-                0,
-                width,
-                height
-            );
-
-
-        const data =
-            imageData.data;
-
-
-        const startIndex =
-            (
-                startY * width +
-                startX
-            ) * 4;
-
-
-        const startR =
-            data[startIndex];
-
-        const startG =
-            data[startIndex + 1];
-
-        const startB =
-            data[startIndex + 2];
-
-
-        /*
-           On évite de colorier
-           directement un trait noir.
-        */
-
-        if (
-            startR < 70 &&
-            startG < 70 &&
-            startB < 70
-        ) {
-
-            showMessage(
-                "Clique à l'intérieur d'une zone blanche. 🎨"
-            );
-
-            return false;
-
-        }
-
-
-        const fill =
-            hexToRgb(
-                fillHex
-            );
-
-
-        if (
-            similarColor(
-                startR,
-                startG,
-                startB,
-                fill.r,
-                fill.g,
-                fill.b
-            )
-        ) {
-            return false;
-        }
-
-
-        const visited =
-            new Uint8Array(
-                width * height
-            );
-
-
-        const stack =
-            new Int32Array(
-                width *
-                height *
-                2
-            );
-
-
-        let stackSize = 0;
-
-
-        stack[stackSize++] =
-            startX;
-
-        stack[stackSize++] =
-            startY;
-
-
-        while (
-            stackSize > 0
-        ) {
-
-            const y =
-                stack[
-                    --stackSize
-                ];
-
-            const x =
-                stack[
-                    --stackSize
-                ];
-
-
-            if (
-                x < 0 ||
-                x >= width ||
-                y < 0 ||
-                y >= height
-            ) {
-                continue;
+            if (history.length > 50) {
+                history.shift();
             }
 
+            zone.setAttribute("fill", selectedColor);
+            showMessage("Jolie couleur ! ✨");
+        });
+    });
 
-            const pixelNumber =
-                y * width + x;
+    document.getElementById("undo-button")
+        .addEventListener("click", function() {
 
-
-            if (
-                visited[
-                    pixelNumber
-                ]
-            ) {
-                continue;
-            }
-
-
-            visited[
-                pixelNumber
-            ] = 1;
-
-
-            const index =
-                pixelNumber * 4;
-
-
-            const r =
-                data[index];
-
-            const g =
-                data[index + 1];
-
-            const b =
-                data[index + 2];
-
-
-            /*
-               Les traits foncés
-               servent de frontière.
-            */
-
-            if (
-                r < 105 &&
-                g < 105 &&
-                b < 105
-            ) {
-                continue;
-            }
-
-
-            if (
-                !similarColor(
-                    r,
-                    g,
-                    b,
-                    startR,
-                    startG,
-                    startB
-                )
-            ) {
-                continue;
-            }
-
-
-            data[index] =
-                fill.r;
-
-            data[index + 1] =
-                fill.g;
-
-            data[index + 2] =
-                fill.b;
-
-
-            stack[
-                stackSize++
-            ] = x + 1;
-
-            stack[
-                stackSize++
-            ] = y;
-
-
-            stack[
-                stackSize++
-            ] = x - 1;
-
-            stack[
-                stackSize++
-            ] = y;
-
-
-            stack[
-                stackSize++
-            ] = x;
-
-            stack[
-                stackSize++
-            ] = y + 1;
-
-
-            stack[
-                stackSize++
-            ] = x;
-
-            stack[
-                stackSize++
-            ] = y - 1;
-
-        }
-
-
-        ctx.putImageData(
-            imageData,
-            0,
-            0
-        );
-
-
-        return true;
-
-    }
-
-
-    /* =========================
-       CLIC SUR LE DESSIN
-    ========================== */
-
-    canvas.addEventListener(
-        "pointerdown",
-        function(event) {
-
-            if (
-                !originalImageData
-            ) {
+            if (history.length === 0) {
+                showMessage("Il n'y a rien à annuler.");
                 return;
             }
 
+            const lastAction = history.pop();
+            const zone =
+                document.getElementById(lastAction.id);
 
-            const rect =
-                canvas.getBoundingClientRect();
-
-
-            const x =
-                Math.floor(
-                    (
-                        event.clientX -
-                        rect.left
-                    ) *
-                    canvas.width /
-                    rect.width
-                );
-
-
-            const y =
-                Math.floor(
-                    (
-                        event.clientY -
-                        rect.top
-                    ) *
-                    canvas.height /
-                    rect.height
-                );
-
-
-            saveHistory();
-
-
-            const changed =
-                floodFill(
-                    x,
-                    y,
-                    selectedColor
-                );
-
-
-            if (
-                !changed
-            ) {
-
-                /*
-                   L'action n'a rien changé,
-                   donc on retire l'état
-                   ajouté inutilement.
-                */
-
-                history.pop();
-
-            } else {
-
-                showMessage(
-                    "Jolie couleur ! ✨"
-                );
-
-            }
-
-        }
-    );
-
-
-    /* =========================
-       ANNULER
-    ========================== */
-
-    document.getElementById(
-        "undo-button"
-    ).addEventListener(
-        "click",
-        function() {
-
-            if (
-                history.length === 0
-            ) {
-
-                showMessage(
-                    "Il n'y a rien à annuler."
-                );
-
-                return;
-
-            }
-
-
-            const previous =
-                history.pop();
-
-
-            ctx.putImageData(
-                previous,
-                0,
-                0
+            zone.setAttribute(
+                "fill",
+                lastAction.previousFill
             );
 
+            showMessage("Dernière action annulée. ↩️");
+        });
 
-            showMessage(
-                "Dernière couleur annulée. ↩️"
-            );
+    document.getElementById("eraser-button")
+        .addEventListener("click", function() {
 
-        }
-    );
+            setSelectedColor("#FFFFFF");
 
+            colorButtons.forEach(function(item) {
+                item.classList.remove("selected");
+            });
 
-    /* =========================
-       EFFACER UNE ZONE
-    ========================== */
+            showMessage("🧽 Clique sur une zone pour l'effacer.");
+        });
 
-    document.getElementById(
-        "eraser-button"
-    ).addEventListener(
-        "click",
-        function() {
-
-            selectedColor =
-                "#FFFFFF";
-
-
-            colorButtons.forEach(
-                function(item) {
-
-                    item.classList.remove(
-                        "selected"
-                    );
-
-                }
-            );
-
-
-            showMessage(
-                "🧽 Clique sur la zone que tu veux effacer."
-            );
-
-        }
-    );
-
-
-    /* =========================
-       RECOMMENCER
-    ========================== */
-
-    document.getElementById(
-        "restart-button"
-    ).addEventListener(
-        "click",
-        function() {
-
-            if (
-                !originalImageData
-            ) {
-                return;
-            }
-
+    document.getElementById("restart-button")
+        .addEventListener("click", function() {
 
             const confirmation =
                 confirm(
                     "Veux-tu vraiment effacer tout ton coloriage ?"
                 );
 
-
-            if (
-                !confirmation
-            ) {
+            if (!confirmation) {
                 return;
             }
 
-
-            ctx.putImageData(
-                originalImageData,
-                0,
-                0
-            );
-
+            zones.forEach(function(zone) {
+                zone.setAttribute("fill", "#FFFFFF");
+            });
 
             history = [];
+            setSelectedColor(DEFAULT_COLOR);
 
+            colorButtons.forEach(function(item) {
+                item.classList.remove("selected");
+            });
 
-            selectedColor =
-                "#EF4444";
-
-
-            colorButtons.forEach(
-                function(item) {
-
-                    item.classList.remove(
-                        "selected"
-                    );
-
-                }
-            );
-
-
-            colorButtons[0]
-                .classList.add(
-                    "selected"
-                );
-
+            colorButtons[0].classList.add("selected");
 
             showMessage(
                 "Le dessin est prêt pour un nouveau coloriage ! 🎨"
             );
+        });
 
+    function loadImage(src) {
+        return new Promise(function(resolve, reject) {
+            const img = new Image();
+
+            img.onload = function() {
+                resolve(img);
+            };
+
+            img.onerror = reject;
+            img.src = src;
+        });
+    }
+
+    async function generateColoredImageDataUrl() {
+
+        const clonedSvg =
+            document.getElementById("zones-svg")
+                .cloneNode(true);
+
+        clonedSvg.setAttribute(
+            "xmlns",
+            "http://www.w3.org/2000/svg"
+        );
+
+        const background =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect"
+            );
+
+        background.setAttribute("x", "0");
+        background.setAttribute("y", "0");
+        background.setAttribute("width", "1426");
+        background.setAttribute("height", "1103");
+        background.setAttribute("fill", "#FFFFFF");
+
+        clonedSvg.insertBefore(
+            background,
+            clonedSvg.firstChild
+        );
+
+        const serializer =
+            new XMLSerializer();
+
+        const svgString =
+            serializer.serializeToString(clonedSvg);
+
+        const svgDataUrl =
+            "data:image/svg+xml;charset=utf-8," +
+            encodeURIComponent(svgString);
+
+        const svgImage =
+            await loadImage(svgDataUrl);
+
+        const outputCanvas =
+            document.createElement("canvas");
+
+        outputCanvas.width = 1426;
+        outputCanvas.height = 1103;
+
+        const ctx =
+            outputCanvas.getContext("2d");
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, 1426, 1103);
+
+        ctx.drawImage(svgImage, 0, 0, 1426, 1103);
+        ctx.drawImage(lineart, 0, 0, 1426, 1103);
+
+        return outputCanvas.toDataURL("image/png");
+    }
+
+    function openPrintWindow(imageSource) {
+
+        const printWindow =
+            window.open("", "_blank");
+
+        if (!printWindow) {
+            showMessage(
+                "Ton navigateur a bloqué la fenêtre d'impression."
+            );
+            return;
         }
-    );
 
+        printWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Coloriage de Tina</title>
+                <style>
+                    @page {
+                        size: letter landscape;
+                        margin: 0.5in;
+                    }
 
-    /* =========================
-       IMPRIMER ORIGINAL
-    ========================== */
+                    html, body {
+                        margin: 0;
+                        padding: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
 
-    document.getElementById(
-        "print-original-button"
-    ).addEventListener(
-        "click",
-        function() {
+                    body {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    img {
+                        display: block;
+                        max-width: 100%;
+                        max-height: 7.5in;
+                        width: auto;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                </style>
+            </head>
+            <body>
+                <img id="print-image"
+                     src="${imageSource}"
+                     alt="Coloriage de Tina">
+
+                <script>
+                    const image =
+                        document.getElementById("print-image");
+
+                    image.onload = function() {
+                        setTimeout(function() {
+                            window.print();
+                        }, 250);
+                    };
+                <\/script>
+            </body>
+            </html>
+        `);
+
+        printWindow.document.close();
+    }
+
+    document.getElementById("print-original-button")
+        .addEventListener("click", function() {
 
             const imageUrl =
                 new URL(
@@ -1309,236 +937,53 @@
                     window.location.href
                 ).href;
 
+            openPrintWindow(imageUrl);
+        });
 
-            openPrintWindow(
-                imageUrl
-            );
+    document.getElementById("print-colored-button")
+        .addEventListener("click", async function() {
 
-        }
-    );
+            try {
+                const dataUrl =
+                    await generateColoredImageDataUrl();
 
+                openPrintWindow(dataUrl);
 
-    /* =========================
-       IMPRIMER COLORIAGE
-    ========================== */
+            } catch (error) {
+                showMessage(
+                    "Impossible de préparer l'impression du coloriage."
+                );
+            }
+        });
 
-    document.getElementById(
-        "print-colored-button"
-    ).addEventListener(
-        "click",
-        function() {
+    document.getElementById("save-button")
+        .addEventListener("click", async function() {
 
-            const coloredImage =
-                canvas.toDataURL(
-                    "image/png"
+            try {
+                const dataUrl =
+                    await generateColoredImageDataUrl();
+
+                const link =
+                    document.createElement("a");
+
+                link.download =
+                    "mon-coloriage-de-tina.png";
+
+                link.href = dataUrl;
+                link.click();
+
+                showMessage(
+                    "Ton coloriage est enregistré ! 💚"
                 );
 
-
-            openPrintWindow(
-                coloredImage
-            );
-
-        }
-    );
-
-
-    /* =========================
-       FENÊTRE D'IMPRESSION
-    ========================== */
-
-    function openPrintWindow(
-        imageSource
-    ) {
-
-        const printWindow =
-            window.open(
-                "",
-                "_blank"
-            );
-
-
-        if (
-            !printWindow
-        ) {
-
-            showMessage(
-                "Ton navigateur a bloqué la fenêtre d'impression."
-            );
-
-            return;
-
-        }
-
-
-        printWindow.document.write(
-            `
-            <!DOCTYPE html>
-
-            <html>
-
-            <head>
-
-                <title>
-                    Coloriage de Tina
-                </title>
-
-                <style>
-
-                    @page {
-                        size: letter landscape;
-                        margin: 0.5in;
-                    }
-
-                    html,
-                    body {
-                        margin: 0;
-                        padding: 0;
-
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    body {
-                        display: flex;
-
-                        justify-content: center;
-                        align-items: center;
-                    }
-
-                    img {
-                        display: block;
-
-                        max-width: 100%;
-                        max-height: 7.5in;
-
-                        width: auto;
-                        height: auto;
-
-                        object-fit: contain;
-                    }
-
-                </style>
-
-            </head>
-
-            <body>
-
-                <img
-                    id="print-image"
-                    src="${imageSource}"
-                    alt="Coloriage de Tina">
-
-                <script>
-
-                    const image =
-                        document.getElementById(
-                            "print-image"
-                        );
-
-                    image.onload =
-                        function() {
-
-                            setTimeout(
-                                function() {
-
-                                    window.print();
-
-                                },
-                                250
-                            );
-
-                        };
-
-                <\/script>
-
-            </body>
-
-            </html>
-            `
-        );
-
-
-        printWindow.document.close();
-
-    }
-
-
-    /* =========================
-       ENREGISTRER LE DESSIN
-    ========================== */
-
-    document.getElementById(
-        "save-button"
-    ).addEventListener(
-        "click",
-        function() {
-
-            const link =
-                document.createElement(
-                    "a"
+            } catch (error) {
+                showMessage(
+                    "Impossible d'enregistrer le coloriage."
                 );
-
-
-            link.download =
-                "mon-coloriage-de-tina.png";
-
-
-            link.href =
-                canvas.toDataURL(
-                    "image/png"
-                );
-
-
-            link.click();
-
-
-            showMessage(
-                "Ton coloriage est enregistré ! 💚"
-            );
-
-        }
-    );
-
-
-    /* =========================
-       MESSAGE
-    ========================== */
-
-    function showMessage(
-        text
-    ) {
-
-        const message =
-            document.getElementById(
-                "message"
-            );
-
-
-        message.textContent =
-            text;
-
-
-        clearTimeout(
-            showMessage.timer
-        );
-
-
-        showMessage.timer =
-            setTimeout(
-                function() {
-
-                    message.textContent =
-                        "";
-
-                },
-                3000
-            );
-
-    }
+            }
+        });
 
 </script>
 
-
 </body>
-
 </html>
