@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
     <title>
-        Trouve les 6 différences | Les Éditions Cap Découvertes Jeunesse
+        Trouve les 7 différences | Les Éditions Cap Découvertes Jeunesse
     </title>
 
     <style>
@@ -20,7 +20,12 @@
 
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             color: #203040;
 
             background:
@@ -33,6 +38,7 @@
             min-height: 100vh;
         }
 
+
         /* =========================
            EN-TÊTE
         ========================== */
@@ -43,7 +49,9 @@
             padding: 15px 5%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             gap: 25px;
@@ -54,12 +62,15 @@
 
         .logo {
             width: 220px;
+
             max-width: 45vw;
+
             height: auto;
         }
 
         .back-button {
             background-color: #174E78;
+
             color: white;
 
             padding: 12px 20px;
@@ -67,6 +78,7 @@
             border-radius: 25px;
 
             text-decoration: none;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -76,12 +88,14 @@
             background-color: #2F8F46;
         }
 
+
         /* =========================
            CONTENU
         ========================== */
 
         main {
             width: 96%;
+
             max-width: 1450px;
 
             margin: auto;
@@ -114,8 +128,9 @@
             line-height: 1.6;
         }
 
+
         /* =========================
-           TABLEAU DE JEU
+           JEU
         ========================== */
 
         .game-card {
@@ -167,24 +182,24 @@
             -webkit-user-drag: none;
         }
 
+
         /* =========================
-           CERCLES DES RÉPONSES
+           CERCLES TROUVÉS
         ========================== */
 
         .found-marker {
             position: absolute;
 
             border:
-                5px solid #2F8F46;
+                4px solid #2F8F46;
 
             border-radius: 50%;
 
             background:
-                rgba(47, 143, 70, 0.08);
+                rgba(47, 143, 70, 0.07);
 
             box-shadow:
-                0 0 0 3px
-                rgba(255,255,255,0.80);
+                0 0 0 2px white;
 
             pointer-events: none;
 
@@ -197,30 +212,35 @@
 
             position: absolute;
 
-            right: -10px;
-            top: -14px;
+            right: -9px;
 
-            width: 28px;
-            height: 28px;
+            top: -12px;
+
+            width: 25px;
+
+            height: 25px;
 
             display: flex;
-            align-items: center;
-            justify-content: center;
 
-            border-radius: 50%;
+            align-items: center;
+
+            justify-content: center;
 
             background-color: #2F8F46;
 
             color: white;
 
-            font-size: 1rem;
+            border-radius: 50%;
+
             font-weight: bold;
+
+            font-size: 0.95rem;
         }
 
         @keyframes markerPop {
 
             from {
-                transform: scale(0.7);
+                transform: scale(0.65);
                 opacity: 0;
             }
 
@@ -230,6 +250,7 @@
             }
 
         }
+
 
         /* =========================
            INDICE
@@ -257,7 +278,7 @@
         @keyframes hintPulse {
 
             from {
-                opacity: 0.45;
+                opacity: 0.4;
             }
 
             to {
@@ -266,6 +287,7 @@
 
         }
 
+
         /* =========================
            MAUVAIS CLIC
         ========================== */
@@ -273,37 +295,39 @@
         .wrong-mark {
             position: absolute;
 
-            width: 56px;
-            height: 56px;
+            width: 55px;
+
+            height: 55px;
 
             transform:
                 translate(-50%, -50%);
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             color: #D93E3E;
 
-            font-size: 3.3rem;
+            font-size: 3.2rem;
+
             font-weight: bold;
-
-            line-height: 1;
-
-            text-shadow:
-                0 2px 2px white;
 
             pointer-events: none;
 
+            text-shadow:
+                0 2px 3px white;
+
             animation:
-                wrongPop 0.7s ease-out
-                forwards;
+                wrongPop 0.7s ease-out forwards;
         }
 
         @keyframes wrongPop {
 
             0% {
                 opacity: 0;
+
                 transform:
                     translate(-50%, -50%)
                     scale(0.5);
@@ -311,6 +335,7 @@
 
             30% {
                 opacity: 1;
+
                 transform:
                     translate(-50%, -50%)
                     scale(1.15);
@@ -318,6 +343,7 @@
 
             100% {
                 opacity: 0;
+
                 transform:
                     translate(-50%, -50%)
                     scale(0.9);
@@ -325,46 +351,9 @@
 
         }
 
-        /* =========================
-           BONUS
-        ========================== */
-
-        .bonus-marker {
-            position: absolute;
-
-            border:
-                5px dashed #8B5CF6;
-
-            border-radius: 50%;
-
-            background:
-                rgba(139, 92, 246, 0.10);
-
-            pointer-events: none;
-
-            animation:
-                bonusFade 2.2s ease-out
-                forwards;
-        }
-
-        @keyframes bonusFade {
-
-            0% {
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-
-        }
 
         /* =========================
-           PROGRESSION
+           INFORMATIONS
         ========================== */
 
         .game-info {
@@ -373,8 +362,7 @@
             margin:
                 25px auto 0;
 
-            padding:
-                24px;
+            padding: 24px;
 
             background-color: #F7FBFD;
 
@@ -397,6 +385,7 @@
             color: #174E78;
 
             font-size: 1.25rem;
+
             font-weight: bold;
         }
 
@@ -406,6 +395,11 @@
             letter-spacing: 4px;
         }
 
+
+        /* =========================
+           PROGRESSION
+        ========================== */
+
         .progress-track {
             width: 100%;
 
@@ -413,11 +407,11 @@
 
             margin-top: 16px;
 
-            overflow: hidden;
+            background-color: #DDECF3;
 
             border-radius: 20px;
 
-            background-color: #DDECF3;
+            overflow: hidden;
         }
 
         .progress-bar {
@@ -425,23 +419,24 @@
 
             height: 100%;
 
-            border-radius: inherit;
-
             background-color: #2F8F46;
+
+            border-radius: inherit;
 
             transition:
                 width 0.35s ease;
         }
 
+
         /* =========================
-           6 DIFFÉRENCES
+           LISTE
         ========================== */
 
         .difference-list {
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(4, 1fr);
 
             gap: 10px;
 
@@ -469,6 +464,7 @@
             color: #2F8F46;
         }
 
+
         /* =========================
            MESSAGE
         ========================== */
@@ -484,6 +480,7 @@
 
             font-weight: bold;
         }
+
 
         /* =========================
            BOUTONS
@@ -547,8 +544,9 @@
             color: white;
         }
 
+
         /* =========================
-           BRAVO
+           VICTOIRE
         ========================== */
 
         .victory {
@@ -561,11 +559,11 @@
 
             padding: 25px;
 
-            border-radius: 22px;
-
             background-color: #EFF8E9;
 
             color: #2F8F46;
+
+            border-radius: 22px;
 
             font-size: 1.25rem;
 
@@ -579,6 +577,7 @@
                 markerPop 0.35s ease-out;
         }
 
+
         /* =========================
            CONFETTIS
         ========================== */
@@ -589,6 +588,7 @@
             top: -20px;
 
             width: 10px;
+
             height: 16px;
 
             z-index: 9999;
@@ -596,8 +596,10 @@
             pointer-events: none;
 
             animation:
-                confettiFall 2.5s
-                linear forwards;
+                confettiFall
+                2.5s
+                linear
+                forwards;
         }
 
         @keyframes confettiFall {
@@ -607,10 +609,11 @@
                     translateY(110vh)
                     rotate(720deg);
 
-                opacity: 0.3;
+                opacity: 0.2;
             }
 
         }
+
 
         /* =========================
            MOBILE
@@ -637,14 +640,6 @@
 
             .found-marker {
                 border-width: 3px;
-            }
-
-        }
-
-        @media (max-width: 450px) {
-
-            .difference-list {
-                grid-template-columns: 1fr;
             }
 
         }
@@ -684,15 +679,16 @@
 
 
     <h1>
-        🔎 Trouve les 6 différences !
+        🔎 Trouve les 7 différences !
     </h1>
 
 
     <p class="intro">
 
         Observe attentivement les deux images.
+
         Quand tu trouves une différence,
-        clique directement dessus dans l'image du haut
+        clique dessus dans l'image du haut
         ou dans celle du bas.
 
     </p>
@@ -707,8 +703,8 @@
 
 
             <img
-                src="../images/differences_tina.png"
-                alt="Jeu Trouve les 6 différences avec Mattéo et Tina"
+                src="../images/differences_tina.png?v=2"
+                alt="Trouve les 7 différences avec Mattéo et Tina"
                 id="game-image">
 
 
@@ -725,15 +721,14 @@
                     class="counter"
                     id="counter">
 
-                    0 / 6 différences trouvées
+                    0 / 7 différences trouvées
 
                 </div>
 
 
                 <div
                     class="stars"
-                    id="stars"
-                    aria-label="3 étoiles">
+                    id="stars">
 
                     ⭐⭐⭐
 
@@ -817,7 +812,7 @@
             class="victory"
             id="victory">
 
-            🎉 Bravo ! Tu as trouvé les 6 différences !
+            🎉 Bravo ! Tu as trouvé les 7 différences !
 
         </div>
 
@@ -830,23 +825,22 @@
 
 <script>
 
-    /* =========================
-       CONFIGURATION
-    ========================== */
 
-    /*
-        Toutes les positions sont
-        en pourcentages de l'image.
+    /* =====================================================
+       DIFFÉRENCES
 
-        Chaque différence possède
-        une zone dans l'image du haut
-        ET une zone dans l'image du bas.
-    */
+       hit = zone assez grande pour faciliter le clic
+       marker = cercle précis qui apparaît sur la différence
+    ===================================================== */
+
 
     const differences = [
 
+
+        /* 1 - COUVERCLE DU POT */
+
         {
-            id: "lid",
+            id: "jar",
 
             name:
                 "Le couvercle du pot",
@@ -854,22 +848,42 @@
             areas: [
 
                 {
-                    left: 5.87,
-                    top: 38.95,
-                    width: 6.22,
-                    height: 3.68
+                    hit: {
+                        left: 5.39,
+                        top: 37.29,
+                        width: 8.98,
+                        height: 6.91
+                    },
+
+                    marker: {
+                        left: 6.35,
+                        top: 38.40,
+                        width: 6.91,
+                        height: 4.42
+                    }
                 },
 
                 {
-                    left: 5.73,
-                    top: 79.01,
-                    width: 6.56,
-                    height: 3.87
+                    hit: {
+                        left: 5.39,
+                        top: 77.16,
+                        width: 8.98,
+                        height: 6.63
+                    },
+
+                    marker: {
+                        left: 6.35,
+                        top: 78.27,
+                        width: 6.91,
+                        height: 4.05
+                    }
                 }
 
             ]
         },
 
+
+        /* 2 - ÉLASTIQUE */
 
         {
             id: "hair",
@@ -880,48 +894,88 @@
             areas: [
 
                 {
-                    left: 66.44,
-                    top: 18.88,
-                    width: 2.90,
-                    height: 3.59
+                    hit: {
+                        left: 63.88,
+                        top: 16.57,
+                        width: 5.46,
+                        height: 6.08
+                    },
+
+                    marker: {
+                        left: 65.12,
+                        top: 18.23,
+                        width: 3.04,
+                        height: 3.13
+                    }
                 },
 
                 {
-                    left: 66.44,
-                    top: 58.01,
-                    width: 3.04,
-                    height: 3.59
+                    hit: {
+                        left: 63.95,
+                        top: 58.47,
+                        width: 5.46,
+                        height: 5.99
+                    },
+
+                    marker: {
+                        left: 65.19,
+                        top: 59.85,
+                        width: 3.04,
+                        height: 3.13
+                    }
                 }
 
             ]
         },
 
+
+        /* 3 - PANNEAU DE LA PORTE */
 
         {
             id: "door-sign",
 
             name:
-                "L'affiche sur la porte",
+                "Le panneau de la porte",
 
             areas: [
 
                 {
-                    left: 74.79,
-                    top: 16.30,
-                    width: 7.11,
-                    height: 11.33
+                    hit: {
+                        left: 72.17,
+                        top: 13.35,
+                        width: 10.36,
+                        height: 15.19
+                    },
+
+                    marker: {
+                        left: 73.34,
+                        top: 15.10,
+                        width: 8.15,
+                        height: 12.06
+                    }
                 },
 
                 {
-                    left: 74.65,
-                    top: 56.17,
-                    width: 7.39,
-                    height: 10.96
+                    hit: {
+                        left: 72.17,
+                        top: 53.87,
+                        width: 10.70,
+                        height: 15.38
+                    },
+
+                    marker: {
+                        left: 73.48,
+                        top: 55.43,
+                        width: 8.22,
+                        height: 12.62
+                    }
                 }
 
             ]
         },
 
+
+        /* 4 - POIGNÉE DE PORTE */
 
         {
             id: "door-handle",
@@ -932,22 +986,42 @@
             areas: [
 
                 {
-                    left: 72.72,
-                    top: 31.49,
-                    width: 3.52,
-                    height: 4.42
+                    hit: {
+                        left: 70.86,
+                        top: 28.82,
+                        width: 5.94,
+                        height: 9.67
+                    },
+
+                    marker: {
+                        left: 72.17,
+                        top: 30.39,
+                        width: 3.25,
+                        height: 6.81
+                    }
                 },
 
                 {
-                    left: 72.51,
-                    top: 71.27,
-                    width: 3.59,
-                    height: 4.51
+                    hit: {
+                        left: 70.93,
+                        top: 68.88,
+                        width: 6.08,
+                        height: 9.02
+                    },
+
+                    marker: {
+                        left: 72.24,
+                        top: 70.53,
+                        width: 3.38,
+                        height: 5.99
+                    }
                 }
 
             ]
         },
 
+
+        /* 5 - PATTE SUR L'AFFICHE */
 
         {
             id: "poster-paw",
@@ -958,22 +1032,42 @@
             areas: [
 
                 {
-                    left: 42.89,
-                    top: 29.83,
-                    width: 3.66,
-                    height: 4.14
+                    hit: {
+                        left: 41.16,
+                        top: 28.08,
+                        width: 6.15,
+                        height: 7.37
+                    },
+
+                    marker: {
+                        left: 42.75,
+                        top: 30.11,
+                        width: 3.11,
+                        height: 3.59
+                    }
                 },
 
                 {
-                    left: 42.82,
-                    top: 68.69,
-                    width: 3.80,
-                    height: 4.79
+                    hit: {
+                        left: 41.23,
+                        top: 67.22,
+                        width: 6.15,
+                        height: 7.37
+                    },
+
+                    marker: {
+                        left: 42.82,
+                        top: 69.15,
+                        width: 3.11,
+                        height: 3.87
+                    }
                 }
 
             ]
         },
 
+
+        /* 6 - POT DE LA PLANTE */
 
         {
             id: "plant",
@@ -984,48 +1078,84 @@
             areas: [
 
                 {
-                    left: 54.01,
-                    top: 30.66,
-                    width: 3.80,
-                    height: 4.97
+                    hit: {
+                        left: 52.14,
+                        top: 28.55,
+                        width: 6.35,
+                        height: 8.47
+                    },
+
+                    marker: {
+                        left: 53.66,
+                        top: 30.48,
+                        width: 3.45,
+                        height: 4.79
+                    }
                 },
 
                 {
-                    left: 54.07,
-                    top: 69.80,
-                    width: 4.01,
-                    height: 5.52
+                    hit: {
+                        left: 52.35,
+                        top: 69.34,
+                        width: 6.35,
+                        height: 8.75
+                    },
+
+                    marker: {
+                        left: 53.87,
+                        top: 71.36,
+                        width: 3.52,
+                        height: 4.79
+                    }
                 }
 
             ]
-        }
-
-    ];
-
-
-    /*
-        Petite 7e différence accidentelle
-        présente dans l'illustration :
-        la patte sur le gobelet métallique.
-
-        Elle est reconnue comme BONUS,
-        mais elle ne compte pas dans les 6.
-    */
-
-    const bonusAreas = [
-
-        {
-            left: 66.16,
-            top: 41.16,
-            width: 4.35,
-            height: 7.55
         },
 
+
+        /* 7 - PATTE SUR LE GOBELET */
+
         {
-            left: 66.16,
-            top: 81.40,
-            width: 4.42,
-            height: 7.83
+            id: "cup-paw",
+
+            name:
+                "La patte sur le gobelet",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 65.61,
+                        top: 42.54,
+                        width: 5.18,
+                        height: 7.92
+                    },
+
+                    marker: {
+                        left: 67.13,
+                        top: 44.75,
+                        width: 2.28,
+                        height: 3.59
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 65.75,
+                        top: 82.69,
+                        width: 5.18,
+                        height: 7.73
+                    },
+
+                    marker: {
+                        left: 67.27,
+                        top: 84.81,
+                        width: 2.21,
+                        height: 3.50
+                    }
+                }
+
+            ]
         }
 
     ];
@@ -1098,7 +1228,7 @@
 
 
     /* =========================
-       LISTE DES 6 DIFFÉRENCES
+       LISTE
     ========================== */
 
     function buildDifferenceList() {
@@ -1146,7 +1276,7 @@
 
 
     /* =========================
-       POSITION DES CLICS
+       POSITION DU CLIC
     ========================== */
 
     function getClickPercent(event) {
@@ -1164,6 +1294,7 @@
                 ) /
                 rect.width *
                 100,
+
 
             y:
                 (
@@ -1204,7 +1335,7 @@
 
 
     /* =========================
-       TROUVER UNE DIFFÉRENCE
+       CLIC
     ========================== */
 
     board.addEventListener(
@@ -1239,11 +1370,13 @@
                         diff.areas.some(
                             function(area) {
 
+
                                 return pointInsideArea(
                                     point.x,
                                     point.y,
-                                    area
+                                    area.hit
                                 );
+
 
                             }
                         );
@@ -1253,8 +1386,10 @@
                         hit
                     ) {
 
+
                         matched =
                             diff;
+
 
                     }
 
@@ -1263,9 +1398,7 @@
             );
 
 
-            /*
-                BONNE RÉPONSE
-            */
+            /* BONNE RÉPONSE */
 
             if (
                 matched
@@ -1280,16 +1413,12 @@
 
 
                     showMessage(
-                        "Tu as déjà trouvé celle-là ! ✅"
-                    );
-
-
-                    playSound(
-                        "already"
+                        "Tu as déjà trouvé cette différence ! ✅"
                     );
 
 
                     return;
+
 
                 }
 
@@ -1311,13 +1440,11 @@
 
 
                 showMessage(
-                    "Bravo ! Tu as trouvé une différence ! ✅"
+                    "Bravo ! Une différence de trouvée ! ✅"
                 );
 
 
-                playSound(
-                    "good"
-                );
+                playGoodSound();
 
 
                 if (
@@ -1335,53 +1462,11 @@
 
                 return;
 
-            }
-
-
-            /*
-                PETIT DÉTAIL BONUS
-            */
-
-            const bonusHit =
-                bonusAreas.some(
-                    function(area) {
-
-                        return pointInsideArea(
-                            point.x,
-                            point.y,
-                            area
-                        );
-
-                    }
-                );
-
-
-            if (
-                bonusHit
-            ) {
-
-
-                showBonusMarkers();
-
-
-                showMessage(
-                    "👀 Bien vu ! Tu as trouvé un petit détail bonus !"
-                );
-
-
-                playSound(
-                    "bonus"
-                );
-
-
-                return;
 
             }
 
 
-            /*
-                MAUVAIS ENDROIT
-            */
+            /* MAUVAIS ENDROIT */
 
             showWrongMark(
                 point.x,
@@ -1394,9 +1479,7 @@
             );
 
 
-            playSound(
-                "wrong"
-            );
+            playWrongSound();
 
 
         }
@@ -1404,13 +1487,14 @@
 
 
     /* =========================
-       MARQUEURS
+       CERCLES PRÉCIS
     ========================== */
 
     function createMarker(
         area,
         className
     ) {
+
 
         const marker =
             document.createElement(
@@ -1422,42 +1506,20 @@
             className;
 
 
-        /*
-            On agrandit légèrement
-            le cercle par rapport
-            à la zone cliquable.
-        */
-
-        const padding =
-            0.6;
-
-
         marker.style.left =
-            (
-                area.left -
-                padding
-            ) + "%";
+            area.left + "%";
 
 
         marker.style.top =
-            (
-                area.top -
-                padding
-            ) + "%";
+            area.top + "%";
 
 
         marker.style.width =
-            (
-                area.width +
-                padding * 2
-            ) + "%";
+            area.width + "%";
 
 
         marker.style.height =
-            (
-                area.height +
-                padding * 2
-            ) + "%";
+            area.height + "%";
 
 
         board.appendChild(
@@ -1470,7 +1532,10 @@
     }
 
 
-    function addFoundMarkers(diff) {
+    function addFoundMarkers(
+        diff
+    ) {
+
 
         diff.areas.forEach(
             function(area) {
@@ -1478,7 +1543,7 @@
 
                 const marker =
                     createMarker(
-                        area,
+                        area.marker,
                         "found-marker"
                     );
 
@@ -1490,6 +1555,7 @@
             }
         );
 
+
     }
 
 
@@ -1497,6 +1563,7 @@
         x,
         y
     ) {
+
 
         const mark =
             document.createElement(
@@ -1528,53 +1595,14 @@
         setTimeout(
             function() {
 
+
                 mark.remove();
+
 
             },
             750
         );
 
-    }
-
-
-    function showBonusMarkers() {
-
-        board
-            .querySelectorAll(
-                ".bonus-marker"
-            )
-            .forEach(
-                function(item) {
-
-                    item.remove();
-
-                }
-            );
-
-
-        bonusAreas.forEach(
-            function(area) {
-
-
-                const marker =
-                    createMarker(
-                        area,
-                        "bonus-marker"
-                    );
-
-
-                setTimeout(
-                    function() {
-
-                        marker.remove();
-
-                    },
-                    2200
-                );
-
-
-            }
-        );
 
     }
 
@@ -1585,13 +1613,14 @@
 
     function updateGame() {
 
+
         const count =
             found.size;
 
 
         counter.textContent =
             count +
-            " / 6 différences trouvées";
+            " / 7 différences trouvées";
 
 
         progressBar.style.width =
@@ -1599,7 +1628,8 @@
                 count /
                 differences.length *
                 100
-            ) + "%";
+            ) +
+            "%";
 
 
         differences.forEach(
@@ -1654,10 +1684,12 @@
 
         updateStars();
 
+
     }
 
 
     function updateStars() {
+
 
         let text =
             "";
@@ -1670,21 +1702,10 @@
         ) {
 
 
-            if (
+            text +=
                 i < stars
-            ) {
-
-                text +=
-                    "⭐";
-
-            }
-
-            else {
-
-                text +=
-                    "☆";
-
-            }
+                ? "⭐"
+                : "☆";
 
 
         }
@@ -1692,6 +1713,7 @@
 
         starsDisplay.textContent =
             text;
+
 
     }
 
@@ -1711,9 +1733,11 @@
                 differences.filter(
                     function(diff) {
 
+
                         return !found.has(
                             diff.id
                         );
+
 
                     }
                 );
@@ -1731,6 +1755,7 @@
 
                 return;
 
+
             }
 
 
@@ -1741,7 +1766,9 @@
                 stars > 1
             ) {
 
+
                 stars--;
+
 
             }
 
@@ -1758,12 +1785,7 @@
                 ];
 
 
-            /*
-                L'indice montre seulement
-                UNE des deux images.
-            */
-
-            const area =
+            const side =
                 target.areas[
                     Math.floor(
                         Math.random() * 2
@@ -1773,7 +1795,7 @@
 
             const marker =
                 createMarker(
-                    area,
+                    side.marker,
                     "hint-marker"
                 );
 
@@ -1784,12 +1806,7 @@
 
 
             showMessage(
-                "💡 Regarde bien dans la zone qui clignote !"
-            );
-
-
-            playSound(
-                "hint"
+                "💡 Regarde bien la zone qui clignote !"
             );
 
 
@@ -1805,10 +1822,13 @@
 
     function clearHints() {
 
+
         hintMarkers.forEach(
             function(marker) {
 
+
                 marker.remove();
+
 
             }
         );
@@ -1816,6 +1836,7 @@
 
         hintMarkers =
             [];
+
 
     }
 
@@ -1833,7 +1854,7 @@
 
             const confirmation =
                 confirm(
-                    "Veux-tu vraiment voir les 6 réponses ?"
+                    "Veux-tu vraiment voir les 7 réponses ?"
                 );
 
 
@@ -1841,7 +1862,9 @@
                 !confirmation
             ) {
 
+
                 return;
+
 
             }
 
@@ -1889,12 +1912,7 @@
 
 
             showMessage(
-                "👀 Voici les 6 différences ! Tu peux recommencer pour essayer sans aide."
-            );
-
-
-            playSound(
-                "answers"
+                "👀 Voici les 7 différences !"
             );
 
 
@@ -1923,7 +1941,9 @@
                 !confirmation
             ) {
 
+
                 return;
+
 
             }
 
@@ -1944,12 +1964,14 @@
 
             board
                 .querySelectorAll(
-                    ".found-marker, .bonus-marker, .wrong-mark"
+                    ".found-marker, .wrong-mark"
                 )
                 .forEach(
                     function(marker) {
 
+
                         marker.remove();
+
 
                     }
                 );
@@ -1964,7 +1986,7 @@
 
 
             showMessage(
-                "C'est reparti ! Trouve les 6 différences. 🔎"
+                "C'est reparti ! Trouve les 7 différences. 🔎"
             );
 
 
@@ -1978,13 +2000,14 @@
 
     function showVictory() {
 
+
         victory.classList.add(
             "show"
         );
 
 
         victory.innerHTML =
-            "🎉 Bravo ! Tu as trouvé les 6 différences !<br>" +
+            "🎉 Bravo ! Tu as trouvé les 7 différences !<br>" +
             "<span style='font-size:1rem'>" +
             "Résultat : " +
             starsDisplay.textContent +
@@ -1994,9 +2017,8 @@
         launchConfetti();
 
 
-        playSound(
-            "victory"
-        );
+        playVictorySound();
+
 
     }
 
@@ -2007,13 +2029,16 @@
 
     function launchConfetti() {
 
+
         const colors = [
+
             "#2F8F46",
             "#174E78",
             "#F1B83B",
             "#EC4899",
             "#8B5CF6",
             "#F97316"
+
         ];
 
 
@@ -2055,15 +2080,6 @@
                 "s";
 
 
-            piece.style.animationDuration =
-                (
-                    1.8 +
-                    Math.random() *
-                    1.5
-                ) +
-                "s";
-
-
             document.body.appendChild(
                 piece
             );
@@ -2072,7 +2088,9 @@
             setTimeout(
                 function() {
 
+
                     piece.remove();
+
 
                 },
                 4000
@@ -2080,6 +2098,7 @@
 
 
         }
+
 
     }
 
@@ -2111,15 +2130,17 @@
 
     function playTone(
         frequency,
-        duration,
-        volume
+        duration
     ) {
+
 
         if (
             !soundEnabled
         ) {
 
+
             return;
+
 
         }
 
@@ -2163,7 +2184,7 @@
 
 
             gain.gain.value =
-                volume;
+                0.06;
 
 
             oscillator.start();
@@ -2186,142 +2207,86 @@
 
         catch (error) {
 
-            /*
-                Si le navigateur bloque
-                le son, le jeu continue.
-            */
-
         }
+
 
     }
 
 
-    function playSound(type) {
-
-        if (
-            type === "good"
-        ) {
-
-            playTone(
-                620,
-                0.16,
-                0.08
-            );
+    function playGoodSound() {
 
 
-            setTimeout(
-                function() {
-
-                    playTone(
-                        820,
-                        0.18,
-                        0.08
-                    );
-
-                },
-                100
-            );
-
-        }
+        playTone(
+            620,
+            0.15
+        );
 
 
-        else if (
-            type === "wrong"
-        ) {
-
-            playTone(
-                190,
-                0.22,
-                0.06
-            );
-
-        }
+        setTimeout(
+            function() {
 
 
-        else if (
-            type === "hint"
-        ) {
-
-            playTone(
-                480,
-                0.16,
-                0.05
-            );
-
-        }
+                playTone(
+                    820,
+                    0.17
+                );
 
 
-        else if (
-            type === "bonus"
-        ) {
-
-            playTone(
-                720,
-                0.12,
-                0.06
-            );
+            },
+            100
+        );
 
 
-            setTimeout(
-                function() {
-
-                    playTone(
-                        980,
-                        0.16,
-                        0.06
-                    );
-
-                },
-                90
-            );
-
-        }
+    }
 
 
-        else if (
-            type === "victory"
-        ) {
+    function playWrongSound() {
 
 
-            [
-                523,
-                659,
-                784,
-                1046
-            ].forEach(
-                function(note, index) {
+        playTone(
+            190,
+            0.22
+        );
 
 
-                    setTimeout(
-                        function() {
-
-                            playTone(
-                                note,
-                                0.28,
-                                0.07
-                            );
-
-                        },
-                        index *
-                        120
-                    );
+    }
 
 
-                }
-            );
-
-        }
+    function playVictorySound() {
 
 
-        else {
+        const notes = [
 
-            playTone(
-                420,
-                0.12,
-                0.04
-            );
+            523,
+            659,
+            784,
+            1046
 
-        }
+        ];
+
+
+        notes.forEach(
+            function(note, index) {
+
+
+                setTimeout(
+                    function() {
+
+
+                        playTone(
+                            note,
+                            0.27
+                        );
+
+
+                    },
+                    index * 120
+                );
+
+
+            }
+        );
+
 
     }
 
@@ -2330,10 +2295,14 @@
        MESSAGE
     ========================== */
 
-    function showMessage(text) {
+    function showMessage(
+        text
+    ) {
+
 
         message.textContent =
             text;
+
 
     }
 
@@ -2343,6 +2312,7 @@
     ========================== */
 
     updateGame();
+
 
 </script>
 
