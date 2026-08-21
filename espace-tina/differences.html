@@ -1,1 +1,2352 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Trouve les 6 différences | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+            max-width: 45vw;
+            height: auto;
+        }
+
+        .back-button {
+            background-color: #174E78;
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        /* =========================
+           CONTENU
+        ========================== */
+
+        main {
+            width: 96%;
+            max-width: 1450px;
+
+            margin: auto;
+
+            padding:
+                40px 15px 70px;
+
+            text-align: center;
+        }
+
+        h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .intro {
+            max-width: 760px;
+
+            margin:
+                0 auto 25px;
+
+            color: #536B7B;
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           TABLEAU DE JEU
+        ========================== */
+
+        .game-card {
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding: 15px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, 0.10);
+        }
+
+        .game-board {
+            position: relative;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            cursor: default;
+
+            user-select: none;
+        }
+
+        .game-board img {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            cursor: default;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
+        }
+
+        /* =========================
+           CERCLES DES RÉPONSES
+        ========================== */
+
+        .found-marker {
+            position: absolute;
+
+            border:
+                5px solid #2F8F46;
+
+            border-radius: 50%;
+
+            background:
+                rgba(47, 143, 70, 0.08);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255,255,255,0.80);
+
+            pointer-events: none;
+
+            animation:
+                markerPop 0.25s ease-out;
+        }
+
+        .found-marker::after {
+            content: "✓";
+
+            position: absolute;
+
+            right: -10px;
+            top: -14px;
+
+            width: 28px;
+            height: 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        @keyframes markerPop {
+
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+        /* =========================
+           INDICE
+        ========================== */
+
+        .hint-marker {
+            position: absolute;
+
+            border:
+                5px dashed #F1B83B;
+
+            border-radius: 50%;
+
+            background:
+                rgba(241, 184, 59, 0.13);
+
+            pointer-events: none;
+
+            animation:
+                hintPulse 0.7s
+                ease-in-out
+                infinite alternate;
+        }
+
+        @keyframes hintPulse {
+
+            from {
+                opacity: 0.45;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        /* =========================
+           MAUVAIS CLIC
+        ========================== */
+
+        .wrong-mark {
+            position: absolute;
+
+            width: 56px;
+            height: 56px;
+
+            transform:
+                translate(-50%, -50%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #D93E3E;
+
+            font-size: 3.3rem;
+            font-weight: bold;
+
+            line-height: 1;
+
+            text-shadow:
+                0 2px 2px white;
+
+            pointer-events: none;
+
+            animation:
+                wrongPop 0.7s ease-out
+                forwards;
+        }
+
+        @keyframes wrongPop {
+
+            0% {
+                opacity: 0;
+                transform:
+                    translate(-50%, -50%)
+                    scale(0.5);
+            }
+
+            30% {
+                opacity: 1;
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    translate(-50%, -50%)
+                    scale(0.9);
+            }
+
+        }
+
+        /* =========================
+           BONUS
+        ========================== */
+
+        .bonus-marker {
+            position: absolute;
+
+            border:
+                5px dashed #8B5CF6;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139, 92, 246, 0.10);
+
+            pointer-events: none;
+
+            animation:
+                bonusFade 2.2s ease-out
+                forwards;
+        }
+
+        @keyframes bonusFade {
+
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        /* =========================
+           PROGRESSION
+        ========================== */
+
+        .game-info {
+            max-width: 1000px;
+
+            margin:
+                25px auto 0;
+
+            padding:
+                24px;
+
+            background-color: #F7FBFD;
+
+            border-radius: 22px;
+        }
+
+        .top-info {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+        .counter {
+            color: #174E78;
+
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .stars {
+            font-size: 1.6rem;
+
+            letter-spacing: 4px;
+        }
+
+        .progress-track {
+            width: 100%;
+
+            height: 18px;
+
+            margin-top: 16px;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background-color: #DDECF3;
+        }
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background-color: #2F8F46;
+
+            transition:
+                width 0.35s ease;
+        }
+
+        /* =========================
+           6 DIFFÉRENCES
+        ========================== */
+
+        .difference-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .difference-item {
+            padding:
+                10px 12px;
+
+            border-radius: 15px;
+
+            background-color: white;
+
+            color: #617789;
+
+            font-size: 0.95rem;
+
+            font-weight: bold;
+        }
+
+        .difference-item.found {
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+        }
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 32px;
+
+            margin-top: 18px;
+
+            color: #174E78;
+
+            font-size: 1.05rem;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
+        .tools {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 18px;
+        }
+
+        .tool-button {
+            border: none;
+
+            border-radius: 25px;
+
+            padding:
+                13px 20px;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .hint-button {
+            background-color: #F1B83B;
+
+            color: #263238;
+        }
+
+        .answers-button {
+            background-color: #8B5CF6;
+
+            color: white;
+        }
+
+        .restart-button {
+            background-color: #D95C5C;
+
+            color: white;
+        }
+
+        .sound-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        /* =========================
+           BRAVO
+        ========================== */
+
+        .victory {
+            display: none;
+
+            max-width: 700px;
+
+            margin:
+                25px auto 0;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+
+            font-size: 1.25rem;
+
+            font-weight: bold;
+        }
+
+        .victory.show {
+            display: block;
+
+            animation:
+                markerPop 0.35s ease-out;
+        }
+
+        /* =========================
+           CONFETTIS
+        ========================== */
+
+        .confetti {
+            position: fixed;
+
+            top: -20px;
+
+            width: 10px;
+            height: 16px;
+
+            z-index: 9999;
+
+            pointer-events: none;
+
+            animation:
+                confettiFall 2.5s
+                linear forwards;
+        }
+
+        @keyframes confettiFall {
+
+            to {
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: 0.3;
+            }
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .difference-list {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .game-card {
+                padding: 7px;
+            }
+
+            .found-marker {
+                border-width: 3px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .difference-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="../index.html">
+
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <a
+        href="./"
+        class="back-button">
+
+        ← Retour à l'espace Tina
+
+    </a>
+
+</header>
+
+
+<main>
+
+
+    <h1>
+        🔎 Trouve les 6 différences !
+    </h1>
+
+
+    <p class="intro">
+
+        Observe attentivement les deux images.
+        Quand tu trouves une différence,
+        clique directement dessus dans l'image du haut
+        ou dans celle du bas.
+
+    </p>
+
+
+    <section class="game-card">
+
+
+        <div
+            class="game-board"
+            id="game-board">
+
+
+            <img
+                src="../images/differences_tina.png"
+                alt="Jeu Trouve les 6 différences avec Mattéo et Tina"
+                id="game-image">
+
+
+        </div>
+
+
+        <div class="game-info">
+
+
+            <div class="top-info">
+
+
+                <div
+                    class="counter"
+                    id="counter">
+
+                    0 / 6 différences trouvées
+
+                </div>
+
+
+                <div
+                    class="stars"
+                    id="stars"
+                    aria-label="3 étoiles">
+
+                    ⭐⭐⭐
+
+                </div>
+
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-bar"
+                    id="progress-bar">
+                </div>
+
+            </div>
+
+
+            <div
+                class="difference-list"
+                id="difference-list">
+            </div>
+
+
+            <div
+                id="message"
+                aria-live="polite">
+
+                À toi de jouer ! 👀
+
+            </div>
+
+
+            <div class="tools">
+
+
+                <button
+                    class="tool-button hint-button"
+                    id="hint-button">
+
+                    💡 Un indice
+
+                </button>
+
+
+                <button
+                    class="tool-button answers-button"
+                    id="answers-button">
+
+                    👀 Voir les réponses
+
+                </button>
+
+
+                <button
+                    class="tool-button restart-button"
+                    id="restart-button">
+
+                    🔄 Recommencer
+
+                </button>
+
+
+                <button
+                    class="tool-button sound-button"
+                    id="sound-button">
+
+                    🔊 Son activé
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="victory"
+            id="victory">
+
+            🎉 Bravo ! Tu as trouvé les 6 différences !
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+    /* =========================
+       CONFIGURATION
+    ========================== */
+
+    /*
+        Toutes les positions sont
+        en pourcentages de l'image.
+
+        Chaque différence possède
+        une zone dans l'image du haut
+        ET une zone dans l'image du bas.
+    */
+
+    const differences = [
+
+        {
+            id: "lid",
+
+            name:
+                "Le couvercle du pot",
+
+            areas: [
+
+                {
+                    left: 5.87,
+                    top: 38.95,
+                    width: 6.22,
+                    height: 3.68
+                },
+
+                {
+                    left: 5.73,
+                    top: 79.01,
+                    width: 6.56,
+                    height: 3.87
+                }
+
+            ]
+        },
+
+
+        {
+            id: "hair",
+
+            name:
+                "L'élastique dans les cheveux",
+
+            areas: [
+
+                {
+                    left: 66.44,
+                    top: 18.88,
+                    width: 2.90,
+                    height: 3.59
+                },
+
+                {
+                    left: 66.44,
+                    top: 58.01,
+                    width: 3.04,
+                    height: 3.59
+                }
+
+            ]
+        },
+
+
+        {
+            id: "door-sign",
+
+            name:
+                "L'affiche sur la porte",
+
+            areas: [
+
+                {
+                    left: 74.79,
+                    top: 16.30,
+                    width: 7.11,
+                    height: 11.33
+                },
+
+                {
+                    left: 74.65,
+                    top: 56.17,
+                    width: 7.39,
+                    height: 10.96
+                }
+
+            ]
+        },
+
+
+        {
+            id: "door-handle",
+
+            name:
+                "La poignée de porte",
+
+            areas: [
+
+                {
+                    left: 72.72,
+                    top: 31.49,
+                    width: 3.52,
+                    height: 4.42
+                },
+
+                {
+                    left: 72.51,
+                    top: 71.27,
+                    width: 3.59,
+                    height: 4.51
+                }
+
+            ]
+        },
+
+
+        {
+            id: "poster-paw",
+
+            name:
+                "La patte sur l'affiche",
+
+            areas: [
+
+                {
+                    left: 42.89,
+                    top: 29.83,
+                    width: 3.66,
+                    height: 4.14
+                },
+
+                {
+                    left: 42.82,
+                    top: 68.69,
+                    width: 3.80,
+                    height: 4.79
+                }
+
+            ]
+        },
+
+
+        {
+            id: "plant",
+
+            name:
+                "Le pot de la plante",
+
+            areas: [
+
+                {
+                    left: 54.01,
+                    top: 30.66,
+                    width: 3.80,
+                    height: 4.97
+                },
+
+                {
+                    left: 54.07,
+                    top: 69.80,
+                    width: 4.01,
+                    height: 5.52
+                }
+
+            ]
+        }
+
+    ];
+
+
+    /*
+        Petite 7e différence accidentelle
+        présente dans l'illustration :
+        la patte sur le gobelet métallique.
+
+        Elle est reconnue comme BONUS,
+        mais elle ne compte pas dans les 6.
+    */
+
+    const bonusAreas = [
+
+        {
+            left: 66.16,
+            top: 41.16,
+            width: 4.35,
+            height: 7.55
+        },
+
+        {
+            left: 66.16,
+            top: 81.40,
+            width: 4.42,
+            height: 7.83
+        }
+
+    ];
+
+
+    /* =========================
+       VARIABLES
+    ========================== */
+
+    const board =
+        document.getElementById(
+            "game-board"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "counter"
+        );
+
+
+    const progressBar =
+        document.getElementById(
+            "progress-bar"
+        );
+
+
+    const starsDisplay =
+        document.getElementById(
+            "stars"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    const victory =
+        document.getElementById(
+            "victory"
+        );
+
+
+    const differenceList =
+        document.getElementById(
+            "difference-list"
+        );
+
+
+    let found =
+        new Set();
+
+
+    let stars =
+        3;
+
+
+    let soundEnabled =
+        true;
+
+
+    let answersRevealed =
+        false;
+
+
+    let hintMarkers =
+        [];
+
+
+    /* =========================
+       LISTE DES 6 DIFFÉRENCES
+    ========================== */
+
+    function buildDifferenceList() {
+
+        differenceList.innerHTML =
+            "";
+
+
+        differences.forEach(
+            function(diff, index) {
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "difference-item";
+
+
+                item.id =
+                    "list-" +
+                    diff.id;
+
+
+                item.textContent =
+                    "Différence " +
+                    (index + 1);
+
+
+                differenceList.appendChild(
+                    item
+                );
+
+
+            }
+        );
+
+    }
+
+
+    buildDifferenceList();
+
+
+    /* =========================
+       POSITION DES CLICS
+    ========================== */
+
+    function getClickPercent(event) {
+
+        const rect =
+            board.getBoundingClientRect();
+
+
+        return {
+
+            x:
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width *
+                100,
+
+            y:
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height *
+                100
+
+        };
+
+    }
+
+
+    function pointInsideArea(
+        x,
+        y,
+        area
+    ) {
+
+        return (
+
+            x >= area.left &&
+
+            x <=
+                area.left +
+                area.width &&
+
+            y >= area.top &&
+
+            y <=
+                area.top +
+                area.height
+
+        );
+
+    }
+
+
+    /* =========================
+       TROUVER UNE DIFFÉRENCE
+    ========================== */
+
+    board.addEventListener(
+        "pointerdown",
+        function(event) {
+
+
+            const point =
+                getClickPercent(
+                    event
+                );
+
+
+            let matched =
+                null;
+
+
+            differences.forEach(
+                function(diff) {
+
+
+                    if (
+                        matched
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const hit =
+                        diff.areas.some(
+                            function(area) {
+
+                                return pointInsideArea(
+                                    point.x,
+                                    point.y,
+                                    area
+                                );
+
+                            }
+                        );
+
+
+                    if (
+                        hit
+                    ) {
+
+                        matched =
+                            diff;
+
+                    }
+
+
+                }
+            );
+
+
+            /*
+                BONNE RÉPONSE
+            */
+
+            if (
+                matched
+            ) {
+
+
+                if (
+                    found.has(
+                        matched.id
+                    )
+                ) {
+
+
+                    showMessage(
+                        "Tu as déjà trouvé celle-là ! ✅"
+                    );
+
+
+                    playSound(
+                        "already"
+                    );
+
+
+                    return;
+
+                }
+
+
+                found.add(
+                    matched.id
+                );
+
+
+                clearHints();
+
+
+                addFoundMarkers(
+                    matched
+                );
+
+
+                updateGame();
+
+
+                showMessage(
+                    "Bravo ! Tu as trouvé une différence ! ✅"
+                );
+
+
+                playSound(
+                    "good"
+                );
+
+
+                if (
+                    found.size ===
+                    differences.length &&
+                    !answersRevealed
+                ) {
+
+
+                    showVictory();
+
+
+                }
+
+
+                return;
+
+            }
+
+
+            /*
+                PETIT DÉTAIL BONUS
+            */
+
+            const bonusHit =
+                bonusAreas.some(
+                    function(area) {
+
+                        return pointInsideArea(
+                            point.x,
+                            point.y,
+                            area
+                        );
+
+                    }
+                );
+
+
+            if (
+                bonusHit
+            ) {
+
+
+                showBonusMarkers();
+
+
+                showMessage(
+                    "👀 Bien vu ! Tu as trouvé un petit détail bonus !"
+                );
+
+
+                playSound(
+                    "bonus"
+                );
+
+
+                return;
+
+            }
+
+
+            /*
+                MAUVAIS ENDROIT
+            */
+
+            showWrongMark(
+                point.x,
+                point.y
+            );
+
+
+            showMessage(
+                "Essaie encore ! Regarde bien les petits détails. 👀"
+            );
+
+
+            playSound(
+                "wrong"
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       MARQUEURS
+    ========================== */
+
+    function createMarker(
+        area,
+        className
+    ) {
+
+        const marker =
+            document.createElement(
+                "div"
+            );
+
+
+        marker.className =
+            className;
+
+
+        /*
+            On agrandit légèrement
+            le cercle par rapport
+            à la zone cliquable.
+        */
+
+        const padding =
+            0.6;
+
+
+        marker.style.left =
+            (
+                area.left -
+                padding
+            ) + "%";
+
+
+        marker.style.top =
+            (
+                area.top -
+                padding
+            ) + "%";
+
+
+        marker.style.width =
+            (
+                area.width +
+                padding * 2
+            ) + "%";
+
+
+        marker.style.height =
+            (
+                area.height +
+                padding * 2
+            ) + "%";
+
+
+        board.appendChild(
+            marker
+        );
+
+
+        return marker;
+
+    }
+
+
+    function addFoundMarkers(diff) {
+
+        diff.areas.forEach(
+            function(area) {
+
+
+                const marker =
+                    createMarker(
+                        area,
+                        "found-marker"
+                    );
+
+
+                marker.dataset.difference =
+                    diff.id;
+
+
+            }
+        );
+
+    }
+
+
+    function showWrongMark(
+        x,
+        y
+    ) {
+
+        const mark =
+            document.createElement(
+                "div"
+            );
+
+
+        mark.className =
+            "wrong-mark";
+
+
+        mark.textContent =
+            "✕";
+
+
+        mark.style.left =
+            x + "%";
+
+
+        mark.style.top =
+            y + "%";
+
+
+        board.appendChild(
+            mark
+        );
+
+
+        setTimeout(
+            function() {
+
+                mark.remove();
+
+            },
+            750
+        );
+
+    }
+
+
+    function showBonusMarkers() {
+
+        board
+            .querySelectorAll(
+                ".bonus-marker"
+            )
+            .forEach(
+                function(item) {
+
+                    item.remove();
+
+                }
+            );
+
+
+        bonusAreas.forEach(
+            function(area) {
+
+
+                const marker =
+                    createMarker(
+                        area,
+                        "bonus-marker"
+                    );
+
+
+                setTimeout(
+                    function() {
+
+                        marker.remove();
+
+                    },
+                    2200
+                );
+
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       PROGRESSION
+    ========================== */
+
+    function updateGame() {
+
+        const count =
+            found.size;
+
+
+        counter.textContent =
+            count +
+            " / 6 différences trouvées";
+
+
+        progressBar.style.width =
+            (
+                count /
+                differences.length *
+                100
+            ) + "%";
+
+
+        differences.forEach(
+            function(diff, index) {
+
+
+                const item =
+                    document.getElementById(
+                        "list-" +
+                        diff.id
+                    );
+
+
+                if (
+                    found.has(
+                        diff.id
+                    )
+                ) {
+
+
+                    item.classList.add(
+                        "found"
+                    );
+
+
+                    item.textContent =
+                        "✅ " +
+                        diff.name;
+
+
+                }
+
+                else {
+
+
+                    item.classList.remove(
+                        "found"
+                    );
+
+
+                    item.textContent =
+                        "Différence " +
+                        (index + 1);
+
+
+                }
+
+
+            }
+        );
+
+
+        updateStars();
+
+    }
+
+
+    function updateStars() {
+
+        let text =
+            "";
+
+
+        for (
+            let i = 0;
+            i < 3;
+            i++
+        ) {
+
+
+            if (
+                i < stars
+            ) {
+
+                text +=
+                    "⭐";
+
+            }
+
+            else {
+
+                text +=
+                    "☆";
+
+            }
+
+
+        }
+
+
+        starsDisplay.textContent =
+            text;
+
+    }
+
+
+    /* =========================
+       INDICE
+    ========================== */
+
+    document.getElementById(
+        "hint-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            const remaining =
+                differences.filter(
+                    function(diff) {
+
+                        return !found.has(
+                            diff.id
+                        );
+
+                    }
+                );
+
+
+            if (
+                remaining.length === 0
+            ) {
+
+
+                showMessage(
+                    "Tu as déjà tout trouvé ! 🎉"
+                );
+
+
+                return;
+
+            }
+
+
+            clearHints();
+
+
+            if (
+                stars > 1
+            ) {
+
+                stars--;
+
+            }
+
+
+            updateStars();
+
+
+            const target =
+                remaining[
+                    Math.floor(
+                        Math.random() *
+                        remaining.length
+                    )
+                ];
+
+
+            /*
+                L'indice montre seulement
+                UNE des deux images.
+            */
+
+            const area =
+                target.areas[
+                    Math.floor(
+                        Math.random() * 2
+                    )
+                ];
+
+
+            const marker =
+                createMarker(
+                    area,
+                    "hint-marker"
+                );
+
+
+            hintMarkers.push(
+                marker
+            );
+
+
+            showMessage(
+                "💡 Regarde bien dans la zone qui clignote !"
+            );
+
+
+            playSound(
+                "hint"
+            );
+
+
+            setTimeout(
+                clearHints,
+                2500
+            );
+
+
+        }
+    );
+
+
+    function clearHints() {
+
+        hintMarkers.forEach(
+            function(marker) {
+
+                marker.remove();
+
+            }
+        );
+
+
+        hintMarkers =
+            [];
+
+    }
+
+
+    /* =========================
+       VOIR LES RÉPONSES
+    ========================== */
+
+    document.getElementById(
+        "answers-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Veux-tu vraiment voir les 6 réponses ?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+                return;
+
+            }
+
+
+            clearHints();
+
+
+            answersRevealed =
+                true;
+
+
+            stars =
+                1;
+
+
+            differences.forEach(
+                function(diff) {
+
+
+                    if (
+                        !found.has(
+                            diff.id
+                        )
+                    ) {
+
+
+                        found.add(
+                            diff.id
+                        );
+
+
+                        addFoundMarkers(
+                            diff
+                        );
+
+
+                    }
+
+
+                }
+            );
+
+
+            updateGame();
+
+
+            showMessage(
+                "👀 Voici les 6 différences ! Tu peux recommencer pour essayer sans aide."
+            );
+
+
+            playSound(
+                "answers"
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
+
+    document.getElementById(
+        "restart-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Veux-tu recommencer le jeu ?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+                return;
+
+            }
+
+
+            found.clear();
+
+
+            stars =
+                3;
+
+
+            answersRevealed =
+                false;
+
+
+            clearHints();
+
+
+            board
+                .querySelectorAll(
+                    ".found-marker, .bonus-marker, .wrong-mark"
+                )
+                .forEach(
+                    function(marker) {
+
+                        marker.remove();
+
+                    }
+                );
+
+
+            victory.classList.remove(
+                "show"
+            );
+
+
+            updateGame();
+
+
+            showMessage(
+                "C'est reparti ! Trouve les 6 différences. 🔎"
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       VICTOIRE
+    ========================== */
+
+    function showVictory() {
+
+        victory.classList.add(
+            "show"
+        );
+
+
+        victory.innerHTML =
+            "🎉 Bravo ! Tu as trouvé les 6 différences !<br>" +
+            "<span style='font-size:1rem'>" +
+            "Résultat : " +
+            starsDisplay.textContent +
+            "</span>";
+
+
+        launchConfetti();
+
+
+        playSound(
+            "victory"
+        );
+
+    }
+
+
+    /* =========================
+       CONFETTIS
+    ========================== */
+
+    function launchConfetti() {
+
+        const colors = [
+            "#2F8F46",
+            "#174E78",
+            "#F1B83B",
+            "#EC4899",
+            "#8B5CF6",
+            "#F97316"
+        ];
+
+
+        for (
+            let i = 0;
+            i < 70;
+            i++
+        ) {
+
+
+            const piece =
+                document.createElement(
+                    "div"
+                );
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            piece.style.backgroundColor =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            piece.style.animationDelay =
+                Math.random() *
+                0.8 +
+                "s";
+
+
+            piece.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() *
+                    1.5
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(
+                function() {
+
+                    piece.remove();
+
+                },
+                4000
+            );
+
+
+        }
+
+    }
+
+
+    /* =========================
+       SON
+    ========================== */
+
+    document.getElementById(
+        "sound-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            soundEnabled =
+                !soundEnabled;
+
+
+            this.textContent =
+                soundEnabled
+                ? "🔊 Son activé"
+                : "🔇 Son désactivé";
+
+
+        }
+    );
+
+
+    function playTone(
+        frequency,
+        duration,
+        volume
+    ) {
+
+        if (
+            !soundEnabled
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+
+            const AudioContext =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+
+            const audio =
+                new AudioContext();
+
+
+            const oscillator =
+                audio.createOscillator();
+
+
+            const gain =
+                audio.createGain();
+
+
+            oscillator.connect(
+                gain
+            );
+
+
+            gain.connect(
+                audio.destination
+            );
+
+
+            oscillator.frequency.value =
+                frequency;
+
+
+            oscillator.type =
+                "sine";
+
+
+            gain.gain.value =
+                volume;
+
+
+            oscillator.start();
+
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                audio.currentTime +
+                duration
+            );
+
+
+            oscillator.stop(
+                audio.currentTime +
+                duration
+            );
+
+
+        }
+
+        catch (error) {
+
+            /*
+                Si le navigateur bloque
+                le son, le jeu continue.
+            */
+
+        }
+
+    }
+
+
+    function playSound(type) {
+
+        if (
+            type === "good"
+        ) {
+
+            playTone(
+                620,
+                0.16,
+                0.08
+            );
+
+
+            setTimeout(
+                function() {
+
+                    playTone(
+                        820,
+                        0.18,
+                        0.08
+                    );
+
+                },
+                100
+            );
+
+        }
+
+
+        else if (
+            type === "wrong"
+        ) {
+
+            playTone(
+                190,
+                0.22,
+                0.06
+            );
+
+        }
+
+
+        else if (
+            type === "hint"
+        ) {
+
+            playTone(
+                480,
+                0.16,
+                0.05
+            );
+
+        }
+
+
+        else if (
+            type === "bonus"
+        ) {
+
+            playTone(
+                720,
+                0.12,
+                0.06
+            );
+
+
+            setTimeout(
+                function() {
+
+                    playTone(
+                        980,
+                        0.16,
+                        0.06
+                    );
+
+                },
+                90
+            );
+
+        }
+
+
+        else if (
+            type === "victory"
+        ) {
+
+
+            [
+                523,
+                659,
+                784,
+                1046
+            ].forEach(
+                function(note, index) {
+
+
+                    setTimeout(
+                        function() {
+
+                            playTone(
+                                note,
+                                0.28,
+                                0.07
+                            );
+
+                        },
+                        index *
+                        120
+                    );
+
+
+                }
+            );
+
+        }
+
+
+        else {
+
+            playTone(
+                420,
+                0.12,
+                0.04
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(text) {
+
+        message.textContent =
+            text;
+
+    }
+
+
+    /* =========================
+       INITIALISATION
+    ========================== */
+
+    updateGame();
+
+</script>
+
+
+</body>
+
+</html>
