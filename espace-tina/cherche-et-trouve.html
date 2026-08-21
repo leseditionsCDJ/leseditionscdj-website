@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -10,6 +11,7 @@
     <title>
         Cherche et trouve | Tina la tortue voyageuse
     </title>
+
 
     <style>
 
@@ -28,6 +30,7 @@
             text-decoration: none;
         }
 
+
         /* =========================
            EN-TÊTE
         ========================== */
@@ -35,11 +38,14 @@
         header {
             background: white;
             padding: 14px 5%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             gap: 20px;
             flex-wrap: wrap;
+
             border-bottom: 2px solid #E7EEF3;
         }
 
@@ -51,6 +57,7 @@
         nav {
             display: flex;
             align-items: center;
+
             gap: 20px;
             flex-wrap: wrap;
         }
@@ -67,9 +74,12 @@
         .back-button {
             background: #174E78;
             color: white;
+
             padding: 11px 18px;
+
             border-radius: 25px;
         }
+
 
         /* =========================
            PAGE
@@ -77,52 +87,71 @@
 
         main {
             max-width: 1500px;
+
             margin: auto;
+
             padding: 35px 18px 70px;
         }
 
         .game-header {
             text-align: center;
+
             margin-bottom: 25px;
         }
 
         .game-header h1 {
             margin: 0 0 10px;
+
             color: #174E78;
+
             font-size: 2.5rem;
         }
 
         .game-header p {
             margin: 0;
+
             font-size: 1.1rem;
+
             color: #536B7B;
         }
 
+
         /* =========================
-           BARRE DE JEU
+           BARRE DU JEU
         ========================== */
 
         .game-panel {
             max-width: 1100px;
+
             margin: 0 auto 22px;
+
             background: white;
+
             border: 2px solid #DDECF3;
             border-radius: 22px;
+
             padding: 18px 22px;
-            box-shadow: 0 8px 20px rgba(23,78,120,.08);
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, .08);
         }
 
         .top-info {
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 20px;
+
             flex-wrap: wrap;
         }
 
         .counter {
             color: #174E78;
+
             font-size: 1.25rem;
+
             font-weight: bold;
         }
 
@@ -133,159 +162,265 @@
         .progress {
             width: 100%;
             height: 14px;
+
             background: #E5EEF3;
+
             border-radius: 20px;
+
             overflow: hidden;
+
             margin-top: 15px;
         }
 
         .progress-bar {
             width: 0%;
             height: 100%;
+
             background: #2F8F46;
+
             transition: width .4s ease;
         }
 
+
         /* =========================
-           IMAGE DU JEU
+           IMAGE
         ========================== */
 
         .board-wrapper {
             max-width: 1408px;
+
             margin: auto;
+
             position: relative;
         }
 
         .game-board {
             position: relative;
+
             width: 100%;
+
             line-height: 0;
+
             user-select: none;
+
             touch-action: manipulation;
-            cursor: crosshair;
+
+            /*
+                Même curseur partout.
+                Impossible de détecter les
+                objets en promenant la souris.
+            */
+            cursor: default;
+
             overflow: hidden;
+
             border-radius: 15px;
-            box-shadow: 0 10px 28px rgba(0,0,0,.12);
+
+            box-shadow:
+                0 10px 28px
+                rgba(0, 0, 0, .12);
         }
 
         .game-board img {
             display: block;
+
             width: 100%;
             height: auto;
+
+            cursor: default;
         }
 
+
         /* =========================
-           ZONES CLIQUABLES
+           ZONES INVISIBLES
         ========================== */
 
         .hotspot {
             position: absolute;
+
             border-radius: 50%;
-            cursor: pointer;
+
+            /*
+                IMPORTANT :
+                aucun curseur en forme de main.
+            */
+            cursor: default;
+
             z-index: 5;
+
             transition: .25s;
         }
 
-        /*
-          Les zones sont volontairement
-          invisibles tant que l'objet
-          n'est pas trouvé.
-        */
+
+        /* =========================
+           OBJET TROUVÉ
+        ========================== */
 
         .hotspot.found {
             border: 4px solid #2F8F46;
-            background: rgba(47,143,70,.18);
+
+            background:
+                rgba(47, 143, 70, .18);
+
             box-shadow:
-                0 0 0 5px rgba(255,255,255,.75),
-                0 0 18px rgba(47,143,70,.9);
+                0 0 0 5px rgba(255, 255, 255, .75),
+                0 0 18px rgba(47, 143, 70, .9);
         }
 
         .hotspot.found::after {
             content: "✓";
+
             position: absolute;
+
             right: -10px;
             top: -15px;
+
             width: 30px;
             height: 30px;
+
             line-height: 30px;
+
             text-align: center;
+
             border-radius: 50%;
+
             background: #2F8F46;
+
             color: white;
+
             font-size: 18px;
+
             font-weight: bold;
         }
 
+
+        /* =========================
+           VOIR LES RÉPONSES
+        ========================== */
+
         .hotspot.solution {
             border: 4px dashed #F39C12;
-            background: rgba(243,156,18,.16);
+
+            background:
+                rgba(243, 156, 18, .16);
         }
 
+
+        /* =========================
+           INDICE
+        ========================== */
+
         .hotspot.hint {
-            animation: hintPulse .65s ease-in-out 3;
+            animation:
+                hintPulse .65s ease-in-out 3;
         }
 
         @keyframes hintPulse {
 
-            0%, 100% {
+            0%,
+            100% {
                 box-shadow: none;
             }
 
             50% {
+
                 box-shadow:
-                    0 0 0 14px rgba(255,193,7,.55),
-                    0 0 30px rgba(255,193,7,.8);
+                    0 0 0 14px rgba(255, 193, 7, .55),
+                    0 0 30px rgba(255, 193, 7, .8);
+
             }
 
         }
 
+
         /* =========================
-           EMPLACEMENTS
+           EMPLACEMENT DES 6 OBJETS
         ========================== */
 
+
+        /*
+           PASTÈQUE
+           Zone corrigée pour mieux
+           suivre la vraie pastèque.
+        */
+
         .watermelon {
-            left: 3.5%;
-            top: 71%;
-            width: 8%;
+            left: 4.1%;
+            top: 69.5%;
+
+            width: 7.4%;
             height: 12%;
         }
+
+
+        /*
+           BOÎTE À OUTILS
+        */
 
         .toolbox {
             left: 25.5%;
             top: 70%;
+
             width: 13%;
             height: 17%;
+
             border-radius: 25%;
         }
+
+
+        /*
+           ARROSOIR
+        */
 
         .watering-can {
             left: 69%;
             top: 27%;
+
             width: 8%;
             height: 12%;
         }
+
+
+        /*
+           DEUX LIVRES
+        */
 
         .books {
             left: 78%;
             top: 58%;
+
             width: 8%;
             height: 10%;
+
             border-radius: 25%;
         }
+
+
+        /*
+           TINA
+        */
 
         .tina {
             left: 40.5%;
             top: 58.5%;
+
             width: 9%;
             height: 12%;
         }
 
+
+        /*
+           GRENOUILLE
+        */
+
         .frog {
             left: 59.5%;
             top: 72%;
+
             width: 7%;
             height: 10%;
         }
+
 
         /* =========================
            MAUVAIS CLIC
@@ -293,33 +428,48 @@
 
         .wrong-mark {
             position: absolute;
+
             width: 45px;
             height: 45px;
-            transform: translate(-50%, -50%);
+
+            transform:
+                translate(-50%, -50%);
+
             pointer-events: none;
+
             z-index: 20;
         }
 
         .wrong-mark::before,
         .wrong-mark::after {
             content: "";
+
             position: absolute;
+
             left: 20px;
             top: 2px;
+
             width: 6px;
             height: 42px;
+
             background: #E53935;
+
             border-radius: 5px;
-            box-shadow: 0 0 5px white;
+
+            box-shadow:
+                0 0 5px white;
         }
 
         .wrong-mark::before {
-            transform: rotate(45deg);
+            transform:
+                rotate(45deg);
         }
 
         .wrong-mark::after {
-            transform: rotate(-45deg);
+            transform:
+                rotate(-45deg);
         }
+
 
         /* =========================
            MESSAGE
@@ -327,30 +477,43 @@
 
         #message {
             max-width: 900px;
+
             min-height: 60px;
-            margin: 22px auto 10px;
+
+            margin:
+                22px auto 10px;
+
             padding: 17px;
+
             border-radius: 18px;
+
             text-align: center;
+
             font-size: 1.2rem;
+
             font-weight: bold;
+
             line-height: 1.4;
         }
 
         .neutral {
             background: #EAF6FC;
+
             color: #174E78;
         }
 
         .success {
             background: #EAF7ED;
+
             color: #247338;
         }
 
         .error {
             background: #FDECEC;
+
             color: #C0392B;
         }
+
 
         /* =========================
            BOUTONS
@@ -358,75 +521,111 @@
 
         .controls {
             max-width: 1000px;
+
             margin: 25px auto;
+
             display: flex;
+
             justify-content: center;
+
             gap: 12px;
+
             flex-wrap: wrap;
         }
 
         button {
             border: none;
+
             border-radius: 25px;
+
             padding: 13px 19px;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             font-size: 1rem;
+
             font-weight: bold;
+
             cursor: pointer;
+
             transition: .2s;
         }
 
         button:hover {
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
 
         .hint-button {
             background: #F6C344;
+
             color: #593F00;
         }
 
         .answers-button {
             background: #174E78;
+
             color: white;
         }
 
         .restart-button {
             background: #2F8F46;
+
             color: white;
         }
 
         .sound-button {
             background: #EAF6FC;
+
             color: #174E78;
         }
 
+
         /* =========================
-           LISTE
+           LISTE DES OBJETS
         ========================== */
 
         .found-list {
             max-width: 900px;
+
             margin: 30px auto 0;
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 12px;
         }
 
         .item {
             background: white;
-            border: 2px solid #E1EEF3;
+
+            border:
+                2px solid #E1EEF3;
+
             border-radius: 16px;
+
             padding: 13px;
+
             text-align: center;
+
             font-weight: bold;
+
             color: #536B7B;
         }
 
         .item.found {
             background: #EAF7ED;
+
             border-color: #93D2A2;
+
             color: #247338;
         }
+
 
         /* =========================
            VICTOIRE
@@ -434,58 +633,94 @@
 
         .victory {
             display: none;
+
             max-width: 650px;
+
             margin: 25px auto;
+
             padding: 30px;
+
             border-radius: 25px;
+
             background: white;
-            border: 3px solid #2F8F46;
+
+            border:
+                3px solid #2F8F46;
+
             text-align: center;
-            box-shadow: 0 10px 30px rgba(47,143,70,.18);
+
+            box-shadow:
+                0 10px 30px
+                rgba(47, 143, 70, .18);
         }
 
         .victory.show {
             display: block;
-            animation: victoryPop .5s ease;
+
+            animation:
+                victoryPop .5s ease;
         }
 
         .victory h2 {
             margin: 0 0 10px;
+
             color: #2F8F46;
+
             font-size: 2rem;
         }
 
         @keyframes victoryPop {
 
             from {
-                transform: scale(.8);
+                transform:
+                    scale(.8);
+
                 opacity: 0;
             }
 
             to {
-                transform: scale(1);
+                transform:
+                    scale(1);
+
                 opacity: 1;
             }
 
         }
 
+
+        /* =========================
+           CONFETTIS
+        ========================== */
+
         .confetti {
             position: fixed;
+
             z-index: 9999;
+
             top: -30px;
+
             pointer-events: none;
-            animation: fall linear forwards;
+
+            animation:
+                fall linear forwards;
         }
 
         @keyframes fall {
 
             to {
+
                 transform:
                     translateY(110vh)
                     rotate(720deg);
+
             }
 
         }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
 
         @media (max-width: 700px) {
 
@@ -494,8 +729,10 @@
             }
 
             .found-list {
+
                 grid-template-columns:
                     repeat(2, 1fr);
+
             }
 
             .hotspot.found {
@@ -508,795 +745,643 @@
 
 </head>
 
+
 <body>
 
 
-<header>
+    <!-- =========================
+         EN-TÊTE
+    ========================== -->
 
-    <a href="../index.html">
+    <header>
 
-        <img
-            src="../logo.png"
-            alt="Les Éditions Cap Découvertes Jeunesse"
-            class="logo">
-
-    </a>
-
-    <nav>
-
-        <a href="index.html">
-            🐢 Espace Tina
-        </a>
 
         <a href="../index.html">
-            Accueil
+
+            <img
+                src="../logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse"
+                class="logo">
+
         </a>
 
-        <a href="index.html"
-           class="back-button">
-            ← Retour aux activités
-        </a>
 
-    </nav>
-
-</header>
+        <nav>
 
 
-<main>
+            <a href="index.html">
+                🐢 Espace Tina
+            </a>
 
 
-    <div class="game-header">
-
-        <h1>
-            🔎 Cherche et trouve
-        </h1>
-
-        <p>
-            Clique directement sur les objets
-            lorsque tu les trouves!
-        </p>
-
-    </div>
+            <a href="../index.html">
+                Accueil
+            </a>
 
 
-    <div class="game-panel">
+            <a
+                href="index.html"
+                class="back-button">
 
-        <div class="top-info">
+                ← Retour aux activités
 
-            <div
-                class="counter"
-                id="counter">
+            </a>
 
-                0 / 6 objets trouvés
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         JEU
+    ========================== -->
+
+    <main>
+
+
+        <div class="game-header">
+
+
+            <h1>
+                🔎 Cherche et trouve
+            </h1>
+
+
+            <p>
+
+                Clique directement sur les objets
+                lorsque tu les trouves!
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- COMPTEUR -->
+
+        <div class="game-panel">
+
+
+            <div class="top-info">
+
+
+                <div
+                    class="counter"
+                    id="counter">
+
+                    0 / 6 objets trouvés
+
+                </div>
+
+
+                <div
+                    class="stars"
+                    id="stars">
+
+                    ⭐⭐⭐
+
+                </div>
+
 
             </div>
 
+
+
+            <div class="progress">
+
+
+                <div
+                    class="progress-bar"
+                    id="progress-bar">
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- IMAGE -->
+
+        <div class="board-wrapper">
+
+
             <div
-                class="stars"
-                id="stars">
+                class="game-board"
+                id="game-board">
+
+
+                <img
+                    src="../images/cherche_trouve_tina.png"
+                    alt="Jeu Cherche et trouve de Mattéo et Tina"
+                    draggable="false">
+
+
+
+                <!-- PASTÈQUE -->
+
+                <div
+                    class="hotspot watermelon"
+                    data-object="watermelon"
+                    data-name="La pastèque">
+
+                </div>
+
+
+
+                <!-- BOÎTE À OUTILS -->
+
+                <div
+                    class="hotspot toolbox"
+                    data-object="toolbox"
+                    data-name="La boîte à outils">
+
+                </div>
+
+
+
+                <!-- ARROSOIR -->
+
+                <div
+                    class="hotspot watering-can"
+                    data-object="watering-can"
+                    data-name="L'arrosoir">
+
+                </div>
+
+
+
+                <!-- LIVRES -->
+
+                <div
+                    class="hotspot books"
+                    data-object="books"
+                    data-name="Les deux livres">
+
+                </div>
+
+
+
+                <!-- TINA -->
+
+                <div
+                    class="hotspot tina"
+                    data-object="tina"
+                    data-name="Tina la tortue">
+
+                </div>
+
+
+
+                <!-- GRENOUILLE -->
+
+                <div
+                    class="hotspot frog"
+                    data-object="frog"
+                    data-name="La grenouille">
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="neutral">
+
+            👀 Observe bien l'image et commence à chercher!
+
+        </div>
+
+
+
+        <!-- BOUTONS -->
+
+        <div class="controls">
+
+
+            <button
+                class="hint-button"
+                id="hint-button">
+
+                💡 Un indice
+
+            </button>
+
+
+            <button
+                class="answers-button"
+                id="answers-button">
+
+                👀 Voir les réponses
+
+            </button>
+
+
+            <button
+                class="restart-button"
+                id="restart-button">
+
+                🔄 Recommencer
+
+            </button>
+
+
+            <button
+                class="sound-button"
+                id="sound-button">
+
+                🔊 Son activé
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- LISTE -->
+
+        <div class="found-list">
+
+
+            <div
+                class="item"
+                data-list="watermelon">
+
+                ○ La pastèque
+
+            </div>
+
+
+            <div
+                class="item"
+                data-list="toolbox">
+
+                ○ La boîte à outils
+
+            </div>
+
+
+            <div
+                class="item"
+                data-list="watering-can">
+
+                ○ L'arrosoir
+
+            </div>
+
+
+            <div
+                class="item"
+                data-list="books">
+
+                ○ Les deux livres
+
+            </div>
+
+
+            <div
+                class="item"
+                data-list="tina">
+
+                ○ Tina la tortue
+
+            </div>
+
+
+            <div
+                class="item"
+                data-list="frog">
+
+                ○ La grenouille
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- VICTOIRE -->
+
+        <div
+            class="victory"
+            id="victory">
+
+
+            <h2>
+                🎉 Bravo!
+            </h2>
+
+
+            <p>
+                Tu as retrouvé les 6 objets cachés!
+            </p>
+
+
+            <div
+                id="victory-stars"
+                style="font-size:2rem;">
 
                 ⭐⭐⭐
 
             </div>
 
-        </div>
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="progress-bar">
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="board-wrapper">
-
-        <div
-            class="game-board"
-            id="game-board">
-
-            <img
-                src="../images/cherche_trouve_tina.png"
-                alt="Jeu Cherche et trouve de Mattéo et Tina"
-                draggable="false">
-
-
-            <div
-                class="hotspot watermelon"
-                data-object="watermelon"
-                data-name="La pastèque">
-            </div>
-
-
-            <div
-                class="hotspot toolbox"
-                data-object="toolbox"
-                data-name="La boîte à outils">
-            </div>
-
-
-            <div
-                class="hotspot watering-can"
-                data-object="watering-can"
-                data-name="L'arrosoir">
-            </div>
-
-
-            <div
-                class="hotspot books"
-                data-object="books"
-                data-name="Les deux livres">
-            </div>
-
-
-            <div
-                class="hotspot tina"
-                data-object="tina"
-                data-name="Tina la tortue">
-            </div>
-
-
-            <div
-                class="hotspot frog"
-                data-object="frog"
-                data-name="La grenouille">
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-    <div
-        id="message"
-        class="neutral">
-
-        👀 Observe bien l'image et commence à chercher!
-
-    </div>
-
-
-    <div class="controls">
-
-        <button
-            class="hint-button"
-            id="hint-button">
-
-            💡 Un indice
-
-        </button>
-
-
-        <button
-            class="answers-button"
-            id="answers-button">
-
-            👀 Voir les réponses
-
-        </button>
-
-
-        <button
-            class="restart-button"
-            id="restart-button">
-
-            🔄 Recommencer
-
-        </button>
-
-
-        <button
-            class="sound-button"
-            id="sound-button">
-
-            🔊 Son activé
-
-        </button>
-
-    </div>
-
-
-    <div class="found-list">
-
-
-        <div
-            class="item"
-            data-list="watermelon">
-
-            ○ La pastèque
 
         </div>
 
 
-        <div
-            class="item"
-            data-list="toolbox">
+    </main>
 
-            ○ La boîte à outils
 
-        </div>
 
+    <script>
 
-        <div
-            class="item"
-            data-list="watering-can">
 
-            ○ L'arrosoir
+        /* =========================
+           VARIABLES
+        ========================== */
 
-        </div>
 
-
-        <div
-            class="item"
-            data-list="books">
-
-            ○ Les deux livres
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="tina">
-
-            ○ Tina la tortue
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="frog">
-
-            ○ La grenouille
-
-        </div>
-
-
-    </div>
-
-
-    <div
-        class="victory"
-        id="victory">
-
-        <h2>
-            🎉 Bravo!
-        </h2>
-
-        <p>
-            Tu as retrouvé les 6 objets cachés!
-        </p>
-
-        <div
-            id="victory-stars"
-            style="font-size:2rem;">
-            ⭐⭐⭐
-        </div>
-
-    </div>
-
-
-</main>
-
-
-<script>
-
-
-    const board =
-        document.getElementById(
-            "game-board"
-        );
-
-
-    const hotspots =
-        document.querySelectorAll(
-            ".hotspot"
-        );
-
-
-    const counter =
-        document.getElementById(
-            "counter"
-        );
-
-
-    const progressBar =
-        document.getElementById(
-            "progress-bar"
-        );
-
-
-    const message =
-        document.getElementById(
-            "message"
-        );
-
-
-    const hintButton =
-        document.getElementById(
-            "hint-button"
-        );
-
-
-    const answersButton =
-        document.getElementById(
-            "answers-button"
-        );
-
-
-    const restartButton =
-        document.getElementById(
-            "restart-button"
-        );
-
-
-    const soundButton =
-        document.getElementById(
-            "sound-button"
-        );
-
-
-    const victory =
-        document.getElementById(
-            "victory"
-        );
-
-
-    let found =
-        new Set();
-
-
-    let stars =
-        3;
-
-
-    let soundEnabled =
-        true;
-
-
-    let answersVisible =
-        false;
-
-
-
-    function playTone(
-        frequency,
-        duration
-    ) {
-
-
-        if (!soundEnabled) {
-            return;
-        }
-
-
-        try {
-
-
-            const audioContext =
-                new (
-                    window.AudioContext ||
-                    window.webkitAudioContext
-                )();
-
-
-            const oscillator =
-                audioContext.createOscillator();
-
-
-            const gain =
-                audioContext.createGain();
-
-
-            oscillator.connect(
-                gain
+        const board =
+            document.getElementById(
+                "game-board"
             );
 
 
-            gain.connect(
-                audioContext.destination
+        const hotspots =
+            document.querySelectorAll(
+                ".hotspot"
             );
 
 
-            oscillator.frequency.value =
-                frequency;
-
-
-            gain.gain.value =
-                0.08;
-
-
-            oscillator.start();
-
-
-            setTimeout(
-                function() {
-
-                    oscillator.stop();
-
-                    audioContext.close();
-
-                },
-                duration
+        const counter =
+            document.getElementById(
+                "counter"
             );
 
 
-        }
-
-        catch (error) {
-
-        }
-
-
-    }
+        const progressBar =
+            document.getElementById(
+                "progress-bar"
+            );
 
 
-
-    function showMessage(
-        text,
-        type
-    ) {
-
-
-        message.textContent =
-            text;
+        const message =
+            document.getElementById(
+                "message"
+            );
 
 
-        message.className =
-            type;
+        const hintButton =
+            document.getElementById(
+                "hint-button"
+            );
 
 
-    }
+        const answersButton =
+            document.getElementById(
+                "answers-button"
+            );
+
+
+        const restartButton =
+            document.getElementById(
+                "restart-button"
+            );
+
+
+        const soundButton =
+            document.getElementById(
+                "sound-button"
+            );
+
+
+        const victory =
+            document.getElementById(
+                "victory"
+            );
+
+
+        let found =
+            new Set();
+
+
+        let stars =
+            3;
+
+
+        let soundEnabled =
+            true;
+
+
+        let answersVisible =
+            false;
 
 
 
-    function updateGame() {
+        /* =========================
+           SON
+        ========================== */
 
-
-        const count =
-            found.size;
-
-
-        counter.textContent =
-            count +
-            " / 6 objets trouvés";
-
-
-        progressBar.style.width =
-            (
-                count / 6 * 100
-            )
-            +
-            "%";
-
-
-        document.getElementById(
-            "stars"
-        ).textContent =
-            "⭐".repeat(stars)
-            +
-            "☆".repeat(3 - stars);
-
-
-        hotspots.forEach(
-            function(hotspot) {
-
-
-                const object =
-                    hotspot.dataset.object;
-
-
-                const item =
-                    document.querySelector(
-                        '[data-list="' +
-                        object +
-                        '"]'
-                    );
-
-
-                if (
-                    found.has(object)
-                ) {
-
-
-                    item.classList.add(
-                        "found"
-                    );
-
-
-                    item.textContent =
-                        "✅ "
-                        +
-                        hotspot.dataset.name;
-
-
-                }
-
-                else {
-
-
-                    item.classList.remove(
-                        "found"
-                    );
-
-
-                    item.textContent =
-                        "○ "
-                        +
-                        hotspot.dataset.name;
-
-
-                }
-
-
-            }
-        );
-
-
-        if (
-            count === 6
+        function playTone(
+            frequency,
+            duration
         ) {
 
 
-            showVictory();
+            if (!soundEnabled) {
+                return;
+            }
+
+
+            try {
+
+
+                const audioContext =
+                    new (
+                        window.AudioContext ||
+                        window.webkitAudioContext
+                    )();
+
+
+                const oscillator =
+                    audioContext.createOscillator();
+
+
+                const gain =
+                    audioContext.createGain();
+
+
+                oscillator.connect(
+                    gain
+                );
+
+
+                gain.connect(
+                    audioContext.destination
+                );
+
+
+                oscillator.frequency.value =
+                    frequency;
+
+
+                gain.gain.value =
+                    0.08;
+
+
+                oscillator.start();
+
+
+                setTimeout(
+                    function() {
+
+
+                        oscillator.stop();
+
+
+                        audioContext.close();
+
+
+                    },
+                    duration
+                );
+
+
+            }
+
+
+            catch (error) {
+
+            }
 
 
         }
 
 
-    }
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        function showMessage(
+            text,
+            type
+        ) {
+
+
+            message.textContent =
+                text;
+
+
+            message.className =
+                type;
+
+
+        }
 
 
 
-    hotspots.forEach(
-        function(hotspot) {
+        /* =========================
+           MISE À JOUR
+        ========================== */
+
+        function updateGame() {
 
 
-            hotspot.addEventListener(
-                "click",
-                function(event) {
+            const count =
+                found.size;
 
 
-                    event.stopPropagation();
+            counter.textContent =
+                count +
+                " / 6 objets trouvés";
+
+
+            progressBar.style.width =
+                (
+                    count / 6 * 100
+                )
+                +
+                "%";
+
+
+            document.getElementById(
+                "stars"
+            ).textContent =
+                "⭐".repeat(stars)
+                +
+                "☆".repeat(
+                    3 - stars
+                );
+
+
+
+            hotspots.forEach(
+                function(hotspot) {
 
 
                     const object =
                         hotspot.dataset.object;
 
 
+                    const item =
+                        document.querySelector(
+                            '[data-list="' +
+                            object +
+                            '"]'
+                        );
+
+
+
                     if (
                         found.has(object)
                     ) {
 
-                        return;
+
+                        item.classList.add(
+                            "found"
+                        );
+
+
+                        item.textContent =
+                            "✅ "
+                            +
+                            hotspot.dataset.name;
+
 
                     }
 
 
-                    found.add(object);
+                    else {
 
 
-                    hotspot.classList.remove(
-                        "solution"
-                    );
-
-
-                    hotspot.classList.add(
-                        "found"
-                    );
-
-
-                    showMessage(
-                        "✅ Bravo! Tu as trouvé : "
-                        +
-                        hotspot.dataset.name
-                        +
-                        "!",
-                        "success"
-                    );
-
-
-                    playTone(
-                        700,
-                        160
-                    );
-
-
-                    updateGame();
-
-
-                }
-            );
-
-
-        }
-    );
-
-
-
-    board.addEventListener(
-        "click",
-        function(event) {
-
-
-            const rect =
-                board.getBoundingClientRect();
-
-
-            const x =
-                event.clientX
-                -
-                rect.left;
-
-
-            const y =
-                event.clientY
-                -
-                rect.top;
-
-
-            const mark =
-                document.createElement(
-                    "div"
-                );
-
-
-            mark.className =
-                "wrong-mark";
-
-
-            mark.style.left =
-                x
-                +
-                "px";
-
-
-            mark.style.top =
-                y
-                +
-                "px";
-
-
-            board.appendChild(
-                mark
-            );
-
-
-            showMessage(
-                "❌ Essaie encore! Ce n'est pas un objet à trouver.",
-                "error"
-            );
-
-
-            playTone(
-                180,
-                180
-            );
-
-
-            setTimeout(
-                function() {
-
-                    mark.remove();
-
-                },
-                900
-            );
-
-
-        }
-    );
-
-
-
-    hintButton.addEventListener(
-        "click",
-        function() {
-
-
-            const remaining =
-                Array.from(
-                    hotspots
-                ).filter(
-                    function(hotspot) {
-
-                        return !found.has(
-                            hotspot.dataset.object
+                        item.classList.remove(
+                            "found"
                         );
 
-                    }
-                );
 
-
-            if (
-                remaining.length === 0
-            ) {
-
-                return;
-
-            }
-
-
-            const target =
-                remaining[
-                    Math.floor(
-                        Math.random()
-                        *
-                        remaining.length
-                    )
-                ];
-
-
-            if (
-                stars > 1
-            ) {
-
-                stars--;
-
-            }
-
-
-            target.classList.add(
-                "hint"
-            );
-
-
-            setTimeout(
-                function() {
-
-                    target.classList.remove(
-                        "hint"
-                    );
-
-                },
-                2100
-            );
-
-
-            showMessage(
-                "💡 Regarde bien dans la zone qui scintille!",
-                "neutral"
-            );
-
-
-            updateGame();
-
-
-        }
-    );
-
-
-
-    answersButton.addEventListener(
-        "click",
-        function() {
-
-
-            answersVisible =
-                !answersVisible;
-
-
-            hotspots.forEach(
-                function(hotspot) {
-
-
-                    if (
-                        !found.has(
-                            hotspot.dataset.object
-                        )
-                    ) {
-
-
-                        hotspot.classList.toggle(
-                            "solution",
-                            answersVisible
-                        );
+                        item.textContent =
+                            "○ "
+                            +
+                            hotspot.dataset.name;
 
 
                     }
@@ -1306,284 +1391,634 @@
             );
 
 
+
             if (
-                answersVisible
+                count === 6
             ) {
 
 
-                stars =
-                    1;
+                showVictory();
 
 
-                answersButton.textContent =
-                    "🙈 Masquer les réponses";
+            }
+
+
+        }
+
+
+
+        /* =========================
+           BON OBJET
+        ========================== */
+
+        hotspots.forEach(
+            function(hotspot) {
+
+
+                hotspot.addEventListener(
+                    "click",
+                    function(event) {
+
+
+                        event.stopPropagation();
+
+
+                        const object =
+                            hotspot.dataset.object;
+
+
+                        if (
+                            found.has(object)
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        found.add(object);
+
+
+                        hotspot.classList.remove(
+                            "solution"
+                        );
+
+
+                        hotspot.classList.add(
+                            "found"
+                        );
+
+
+                        showMessage(
+
+                            "✅ Bravo! Tu as trouvé : "
+                            +
+                            hotspot.dataset.name
+                            +
+                            "!",
+
+                            "success"
+
+                        );
+
+
+                        playTone(
+                            700,
+                            160
+                        );
+
+
+                        updateGame();
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =========================
+           MAUVAIS ENDROIT
+        ========================== */
+
+        board.addEventListener(
+            "click",
+            function(event) {
+
+
+                const rect =
+                    board.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX
+                    -
+                    rect.left;
+
+
+                const y =
+                    event.clientY
+                    -
+                    rect.top;
+
+
+                const mark =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                mark.className =
+                    "wrong-mark";
+
+
+                mark.style.left =
+                    x
+                    +
+                    "px";
+
+
+                mark.style.top =
+                    y
+                    +
+                    "px";
+
+
+                board.appendChild(
+                    mark
+                );
 
 
                 showMessage(
-                    "👀 Les objets restants sont entourés en orange.",
-                    "neutral"
+
+                    "❌ Essaie encore! Ce n'est pas un objet à trouver.",
+
+                    "error"
+
+                );
+
+
+                playTone(
+                    180,
+                    180
+                );
+
+
+                setTimeout(
+                    function() {
+
+
+                        mark.remove();
+
+
+                    },
+                    900
                 );
 
 
             }
+        );
 
-            else {
+
+
+        /* =========================
+           INDICE
+        ========================== */
+
+        hintButton.addEventListener(
+            "click",
+            function() {
+
+
+                const remaining =
+                    Array.from(
+                        hotspots
+                    ).filter(
+                        function(hotspot) {
+
+
+                            return !found.has(
+                                hotspot.dataset.object
+                            );
+
+
+                        }
+                    );
+
+
+
+                if (
+                    remaining.length === 0
+                ) {
+
+                    return;
+
+                }
+
+
+                const target =
+                    remaining[
+                        Math.floor(
+                            Math.random()
+                            *
+                            remaining.length
+                        )
+                    ];
+
+
+
+                if (
+                    stars > 1
+                ) {
+
+
+                    stars--;
+
+
+                }
+
+
+                target.classList.add(
+                    "hint"
+                );
+
+
+                setTimeout(
+                    function() {
+
+
+                        target.classList.remove(
+                            "hint"
+                        );
+
+
+                    },
+                    2100
+                );
+
+
+                showMessage(
+
+                    "💡 Regarde bien dans la zone qui scintille!",
+
+                    "neutral"
+
+                );
+
+
+                updateGame();
+
+
+            }
+        );
+
+
+
+        /* =========================
+           VOIR LES RÉPONSES
+        ========================== */
+
+        answersButton.addEventListener(
+            "click",
+            function() {
+
+
+                answersVisible =
+                    !answersVisible;
+
+
+                hotspots.forEach(
+                    function(hotspot) {
+
+
+                        if (
+                            !found.has(
+                                hotspot.dataset.object
+                            )
+                        ) {
+
+
+                            hotspot.classList.toggle(
+                                "solution",
+                                answersVisible
+                            );
+
+
+                        }
+
+
+                    }
+                );
+
+
+
+                if (
+                    answersVisible
+                ) {
+
+
+                    stars =
+                        1;
+
+
+                    answersButton.textContent =
+                        "🙈 Masquer les réponses";
+
+
+                    showMessage(
+
+                        "👀 Les objets restants sont entourés en orange.",
+
+                        "neutral"
+
+                    );
+
+
+                }
+
+
+                else {
+
+
+                    answersButton.textContent =
+                        "👀 Voir les réponses";
+
+
+                    showMessage(
+
+                        "Les réponses sont maintenant cachées.",
+
+                        "neutral"
+
+                    );
+
+
+                }
+
+
+                updateGame();
+
+
+            }
+        );
+
+
+
+        /* =========================
+           RECOMMENCER
+        ========================== */
+
+        restartButton.addEventListener(
+            "click",
+            function() {
+
+
+                found.clear();
+
+
+                stars =
+                    3;
+
+
+                answersVisible =
+                    false;
+
+
+                hotspots.forEach(
+                    function(hotspot) {
+
+
+                        hotspot.classList.remove(
+                            "found",
+                            "solution",
+                            "hint"
+                        );
+
+
+                    }
+                );
 
 
                 answersButton.textContent =
                     "👀 Voir les réponses";
 
 
-                showMessage(
-                    "Les réponses sont maintenant cachées.",
-                    "neutral"
+                victory.classList.remove(
+                    "show"
                 );
 
 
+                showMessage(
+
+                    "🔄 C'est reparti! Retrouve les 6 objets.",
+
+                    "neutral"
+
+                );
+
+
+                updateGame();
+
+
             }
-
-
-            updateGame();
-
-
-        }
-    );
+        );
 
 
 
-    restartButton.addEventListener(
-        "click",
-        function() {
+        /* =========================
+           SON ON / OFF
+        ========================== */
+
+        soundButton.addEventListener(
+            "click",
+            function() {
 
 
-            found.clear();
+                soundEnabled =
+                    !soundEnabled;
 
 
-            stars =
-                3;
+                if (
+                    soundEnabled
+                ) {
 
 
-            answersVisible =
-                false;
+                    soundButton.textContent =
+                        "🔊 Son activé";
 
 
-            hotspots.forEach(
-                function(hotspot) {
-
-                    hotspot.classList.remove(
-                        "found",
-                        "solution",
-                        "hint"
+                    playTone(
+                        600,
+                        120
                     );
 
+
                 }
-            );
 
 
-            answersButton.textContent =
-                "👀 Voir les réponses";
+                else {
 
 
-            victory.classList.remove(
+                    soundButton.textContent =
+                        "🔇 Son désactivé";
+
+
+                }
+
+
+            }
+        );
+
+
+
+        /* =========================
+           VICTOIRE
+        ========================== */
+
+        function showVictory() {
+
+
+            victory.classList.add(
                 "show"
             );
 
 
+            document.getElementById(
+                "victory-stars"
+            ).textContent =
+                "⭐".repeat(stars)
+                +
+                "☆".repeat(
+                    3 - stars
+                );
+
+
             showMessage(
-                "🔄 C'est reparti! Retrouve les 6 objets.",
-                "neutral"
+
+                "🎉 Incroyable! Tu as retrouvé les 6 objets!",
+
+                "success"
+
             );
 
 
-            updateGame();
+            playTone(
+                900,
+                250
+            );
+
+
+            createConfetti();
+
+
+            victory.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
 
 
         }
-    );
 
 
 
-    soundButton.addEventListener(
-        "click",
-        function() {
+        /* =========================
+           CONFETTIS
+        ========================== */
+
+        function createConfetti() {
 
 
-            soundEnabled =
-                !soundEnabled;
-
-
-            if (
-                soundEnabled
-            ) {
-
-
-                soundButton.textContent =
-                    "🔊 Son activé";
-
-
-                playTone(
-                    600,
-                    120
-                );
-
-
-            }
-
-            else {
-
-
-                soundButton.textContent =
-                    "🔇 Son désactivé";
-
-
-            }
-
-
-        }
-    );
-
-
-
-    function showVictory() {
-
-
-        victory.classList.add(
-            "show"
-        );
-
-
-        document.getElementById(
-            "victory-stars"
-        ).textContent =
-            "⭐".repeat(stars)
-            +
-            "☆".repeat(3 - stars);
-
-
-        showMessage(
-            "🎉 Incroyable! Tu as retrouvé les 6 objets!",
-            "success"
-        );
-
-
-        playTone(
-            900,
-            250
-        );
-
-
-        createConfetti();
-
-
-        victory.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-
-    }
-
-
-
-    function createConfetti() {
-
-
-        const symbols =
-            [
-                "⭐",
-                "🎉",
-                "🐾",
-                "🌿",
-                "💙",
-                "💚"
-            ];
-
-
-        for (
-            let i = 0;
-            i < 40;
-            i++
-        ) {
-
-
-            const piece =
-                document.createElement(
-                    "div"
-                );
-
-
-            piece.className =
-                "confetti";
-
-
-            piece.textContent =
-                symbols[
-                    Math.floor(
-                        Math.random()
-                        *
-                        symbols.length
-                    )
+            const symbols =
+                [
+                    "⭐",
+                    "🎉",
+                    "🐾",
+                    "🌿",
+                    "💙",
+                    "💚"
                 ];
 
 
-            piece.style.left =
-                Math.random()
-                *
-                100
-                +
-                "vw";
+
+            for (
+                let i = 0;
+                i < 40;
+                i++
+            ) {
 
 
-            piece.style.fontSize =
-                (
-                    16
-                    +
+                const piece =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                piece.className =
+                    "confetti";
+
+
+                piece.textContent =
+                    symbols[
+                        Math.floor(
+                            Math.random()
+                            *
+                            symbols.length
+                        )
+                    ];
+
+
+                piece.style.left =
                     Math.random()
                     *
-                    20
-                )
-                +
-                "px";
-
-
-            piece.style.animationDuration =
-                (
-                    2
+                    100
                     +
-                    Math.random()
-                    *
-                    2
-                )
-                +
-                "s";
+                    "vw";
 
 
-            document.body.appendChild(
-                piece
-            );
+                piece.style.fontSize =
+                    (
+                        16
+                        +
+                        Math.random()
+                        *
+                        20
+                    )
+                    +
+                    "px";
 
 
-            setTimeout(
-                function() {
+                piece.style.animationDuration =
+                    (
+                        2
+                        +
+                        Math.random()
+                        *
+                        2
+                    )
+                    +
+                    "s";
 
-                    piece.remove();
 
-                },
-                4500
-            );
+                document.body.appendChild(
+                    piece
+                );
+
+
+                setTimeout(
+                    function() {
+
+
+                        piece.remove();
+
+
+                    },
+                    4500
+                );
+
+
+            }
 
 
         }
 
 
-    }
+
+        /* =========================
+           DÉMARRAGE
+        ========================== */
+
+        updateGame();
 
 
-
-    updateGame();
-
-
-</script>
+    </script>
 
 
 </body>
