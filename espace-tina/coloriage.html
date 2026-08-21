@@ -1,216 +1,376 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coloriage de Tina | Les Éditions Cap Découvertes Jeunesse</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Coloriage de Tina | Les Éditions Cap Découvertes Jeunesse
+    </title>
 
     <style>
-        * { box-sizing: border-box; }
+
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             color: #203040;
-            background: linear-gradient(180deg, #EAF6FC 0%, #FFFDF7 100%);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+
             min-height: 100vh;
         }
 
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
         header {
             background-color: white;
+
             padding: 15px 5%;
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             gap: 25px;
-            border-bottom: 2px solid #E7EEF3;
+
+            border-bottom:
+                2px solid #E7EEF3;
         }
 
         .logo {
             width: 220px;
+
             max-width: 45vw;
+
             height: auto;
         }
 
         .back-button {
             background-color: #174E78;
+
             color: white;
+
             padding: 12px 20px;
+
             border-radius: 25px;
+
             text-decoration: none;
+
             font-weight: bold;
+
+            transition: 0.2s;
         }
 
         .back-button:hover {
             background-color: #2F8F46;
         }
 
+
+        /* =========================
+           CONTENU
+        ========================== */
+
         main {
             width: 95%;
+
             max-width: 1250px;
+
             margin: auto;
-            padding: 45px 15px 70px;
+
+            padding:
+                45px 15px 70px;
+
             text-align: center;
         }
 
         h1 {
             margin: 0 0 10px;
+
             color: #174E78;
+
             font-size: 2.7rem;
         }
 
         .intro {
             max-width: 760px;
-            margin: 0 auto 30px;
+
+            margin:
+                0 auto 30px;
+
             color: #536B7B;
+
             font-size: 1.15rem;
+
             line-height: 1.6;
         }
 
+
+        /* =========================
+           PALETTE
+        ========================== */
+
         .color-panel {
             background-color: white;
+
             max-width: 900px;
-            margin: 0 auto 25px;
+
+            margin:
+                0 auto 25px;
+
             padding: 22px;
+
             border-radius: 25px;
-            border: 2px solid #DDECF3;
-            box-shadow: 0 10px 25px rgba(23, 78, 120, 0.08);
+
+            border:
+                2px solid #DDECF3;
+
+            box-shadow:
+                0 10px 25px
+                rgba(23, 78, 120, 0.08);
         }
 
         .color-panel h2 {
             margin: 0 0 15px;
+
             color: #2F8F46;
+
             font-size: 1.35rem;
         }
 
         .colors {
             display: flex;
+
             flex-wrap: wrap;
+
             justify-content: center;
+
             gap: 12px;
         }
 
         .color {
             width: 46px;
+
             height: 46px;
+
             border-radius: 50%;
-            border: 3px solid white;
-            outline: 2px solid #CBD8DF;
+
+            border:
+                3px solid white;
+
+            outline:
+                2px solid #CBD8DF;
+
             cursor: pointer;
+
             transition: 0.15s;
+
             position: relative;
         }
 
         .color:hover {
-            transform: scale(1.12);
+            transform:
+                scale(1.12);
         }
 
         .color.selected {
-            outline: 4px solid #174E78;
-            transform: scale(1.12);
+            outline:
+                4px solid #174E78;
+
+            transform:
+                scale(1.12);
         }
 
         .color.selected::after {
             content: "✓";
+
             position: absolute;
+
             inset: 0;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             font-size: 1.3rem;
+
             font-weight: bold;
+
             color: white;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+
+            text-shadow:
+                0 1px 3px
+                rgba(0,0,0,0.7);
         }
+
+
+        /* =========================
+           DESSIN
+        ========================== */
 
         .drawing-card {
             background-color: white;
+
             padding: 15px;
+
             border-radius: 25px;
-            border: 2px solid #DDECF3;
-            box-shadow: 0 15px 35px rgba(23, 78, 120, 0.10);
+
+            border:
+                2px solid #DDECF3;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, 0.10);
+
             max-width: 1150px;
+
             margin: auto;
         }
 
         .canvas-wrapper {
             width: 100%;
+
             overflow: hidden;
+
             border-radius: 16px;
+
             background-color: white;
         }
 
         canvas {
             display: block;
+
             width: 100%;
+
             height: auto;
+
             cursor: pointer;
+
             touch-action: manipulation;
         }
 
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
         .tools {
             display: flex;
+
             flex-wrap: wrap;
+
             justify-content: center;
+
             gap: 12px;
+
             margin-top: 25px;
         }
 
         .tool-button {
             border: none;
+
             border-radius: 25px;
+
             padding: 13px 20px;
+
             font-size: 1rem;
+
             font-weight: bold;
+
             cursor: pointer;
+
             transition: 0.2s;
         }
 
         .tool-button:hover {
-            transform: translateY(-1px);
+            transform:
+                translateY(-1px);
         }
 
         .undo {
             background-color: #F1B83B;
+
             color: #263238;
         }
 
         .eraser {
             background-color: #E7EEF3;
+
             color: #174E78;
         }
 
         .restart {
             background-color: #D95C5C;
+
             color: white;
         }
 
         .print {
             background-color: #174E78;
+
             color: white;
         }
 
         .save {
             background-color: #2F8F46;
+
             color: white;
         }
 
         #message {
             min-height: 28px;
+
             margin-top: 18px;
+
             color: #2F8F46;
+
             font-weight: bold;
         }
 
         .tip {
-            margin: 20px auto 0;
+            margin:
+                20px auto 0;
+
             max-width: 800px;
+
             color: #667C89;
+
             line-height: 1.5;
+
             font-size: 0.95rem;
         }
 
+
+        /* =========================
+           MOBILE
+        ========================== */
+
         @media (max-width: 700px) {
+
             header {
                 flex-direction: column;
             }
@@ -221,6 +381,7 @@
 
             .color {
                 width: 40px;
+
                 height: 40px;
             }
 
@@ -230,41 +391,75 @@
 
             .tool-button {
                 flex-grow: 1;
+
                 min-width: 145px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <a href="../index.html">
+
         <img
             src="../logo.png"
             alt="Les Éditions Cap Découvertes Jeunesse"
             class="logo">
+
     </a>
 
-    <a href="./" class="back-button">
+
+    <a
+        href="./"
+        class="back-button">
+
         ← Retour à l'espace Tina
+
     </a>
+
 </header>
+
 
 <main>
 
-    <h1>🎨 Colorie Tina !</h1>
+
+    <h1>
+        🎨 Colorie Tina !
+    </h1>
+
 
     <p class="intro">
-        Choisis une couleur, puis clique sur une partie du dessin pour la colorier.
-        Les contours du vrai dessin servent directement à définir les zones.
+
+        Choisis une couleur, puis clique dans une partie
+        du dessin pour la colorier.
+
+        Tu peux changer les couleurs autant de fois
+        que tu veux !
+
     </p>
+
+
+    <!-- =========================
+         PALETTE
+    ========================== -->
 
     <section class="color-panel">
 
-        <h2>Choisis ta couleur</h2>
+        <h2>
+            Choisis ta couleur
+        </h2>
+
 
         <div class="colors">
+
 
             <button
                 class="color selected"
@@ -273,12 +468,14 @@
                 aria-label="Rouge">
             </button>
 
+
             <button
                 class="color"
                 style="background:#F97316"
                 data-color="#F97316"
                 aria-label="Orange">
             </button>
+
 
             <button
                 class="color"
@@ -287,12 +484,14 @@
                 aria-label="Jaune">
             </button>
 
+
             <button
                 class="color"
                 style="background:#84CC16"
                 data-color="#84CC16"
                 aria-label="Vert clair">
             </button>
+
 
             <button
                 class="color"
@@ -301,12 +500,14 @@
                 aria-label="Vert">
             </button>
 
+
             <button
                 class="color"
                 style="background:#14B8A6"
                 data-color="#14B8A6"
                 aria-label="Turquoise">
             </button>
+
 
             <button
                 class="color"
@@ -315,12 +516,14 @@
                 aria-label="Bleu">
             </button>
 
+
             <button
                 class="color"
                 style="background:#8B5CF6"
                 data-color="#8B5CF6"
                 aria-label="Mauve">
             </button>
+
 
             <button
                 class="color"
@@ -329,12 +532,14 @@
                 aria-label="Rose">
             </button>
 
+
             <button
                 class="color"
                 style="background:#A16207"
                 data-color="#A16207"
                 aria-label="Brun">
             </button>
+
 
             <button
                 class="color"
@@ -343,6 +548,7 @@
                 aria-label="Gris">
             </button>
 
+
             <button
                 class="color"
                 style="background:#111827"
@@ -350,75 +556,122 @@
                 aria-label="Noir">
             </button>
 
+
         </div>
 
     </section>
 
+
+    <!-- =========================
+         DESSIN
+    ========================== -->
+
     <section class="drawing-card">
 
+
         <div class="canvas-wrapper">
-            <canvas id="coloring-canvas"></canvas>
+
+            <canvas id="coloring-canvas">
+            </canvas>
+
         </div>
 
+
         <div class="tools">
+
 
             <button
                 class="tool-button undo"
                 id="undo-button">
+
                 ↩️ Annuler
+
             </button>
+
 
             <button
                 class="tool-button eraser"
                 id="eraser-button">
+
                 🧽 Effacer une zone
+
             </button>
+
 
             <button
                 class="tool-button restart"
                 id="restart-button">
+
                 🔄 Recommencer
+
             </button>
+
 
             <button
                 class="tool-button print"
                 id="print-original-button">
+
                 🖨️ Imprimer à colorier
+
             </button>
+
 
             <button
                 class="tool-button print"
                 id="print-colored-button">
+
                 🖨️ Imprimer mon dessin
+
             </button>
+
 
             <button
                 class="tool-button save"
                 id="save-button">
+
                 💾 Enregistrer mon dessin
+
             </button>
 
+
         </div>
 
-        <div id="message" aria-live="polite">
-            Préparation du coloriage…
+
+        <div
+            id="message"
+            aria-live="polite">
+
+            Chargement du coloriage…
+
         </div>
+
 
     </section>
 
+
     <p class="tip">
-        💡 Les zones sont calculées à partir des vrais contours de l'illustration,
-        pas avec des formes dessinées par-dessus.
+
+        💡 Clique bien à l'intérieur d'une zone blanche,
+        sans cliquer directement sur un trait noir.
+
     </p>
+
 
 </main>
 
+
 <script>
+
+
+    /* =========================
+       CANVAS
+    ========================== */
 
     const canvas =
         document.getElementById(
             "coloring-canvas"
         );
+
 
     const ctx =
         canvas.getContext(
@@ -428,47 +681,87 @@
             }
         );
 
-    const drawingImage =
+
+    const image =
         new Image();
 
-    const maskImage =
-        new Image();
 
-
-    drawingImage.src =
+    image.src =
         "../images/dessin_tina.png";
 
-    maskImage.src =
-        "../images/zones_tina.png";
 
-
-    let sourceData = null;
-
-    let maskRegionIds = null;
-
-    let outputData = null;
-
-    let ready = false;
+    let originalImageData =
+        null;
 
 
     let selectedColor =
         "#EF4444";
 
-    let eraseMode =
-        false;
 
     let history =
         [];
 
 
-    let regionColored = null;
+    let eraserMode =
+        false;
 
-    let regionR = null;
 
-    let regionG = null;
+    /* =========================
+       CHARGEMENT IMAGE
+    ========================== */
 
-    let regionB = null;
+    image.onload =
+        function() {
 
+
+            canvas.width =
+                image.naturalWidth;
+
+
+            canvas.height =
+                image.naturalHeight;
+
+
+            ctx.drawImage(
+                image,
+                0,
+                0
+            );
+
+
+            originalImageData =
+                ctx.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+
+            showMessage(
+                "Prêt ! Choisis une couleur. 🎨"
+            );
+
+
+        };
+
+
+    image.onerror =
+        function() {
+
+
+            document.getElementById(
+                "message"
+            ).textContent =
+                "Le dessin de Tina n'a pas pu être chargé.";
+
+
+        };
+
+
+    /* =========================
+       PALETTE
+    ========================== */
 
     const colorButtons =
         document.querySelectorAll(
@@ -476,443 +769,23 @@
         );
 
 
-    function showMessage(text) {
-
-        const message =
-            document.getElementById(
-                "message"
-            );
-
-        message.textContent =
-            text;
-
-        clearTimeout(
-            showMessage.timer
-        );
-
-        showMessage.timer =
-            setTimeout(
-                function() {
-
-                    if (
-                        ready
-                    ) {
-                        message.textContent =
-                            "";
-                    }
-
-                },
-                3000
-            );
-
-    }
-
-
-    function hexToRgb(hex) {
-
-        const value =
-            hex.replace(
-                "#",
-                ""
-            );
-
-        return {
-
-            r:
-                parseInt(
-                    value.substring(
-                        0,
-                        2
-                    ),
-                    16
-                ),
-
-            g:
-                parseInt(
-                    value.substring(
-                        2,
-                        4
-                    ),
-                    16
-                ),
-
-            b:
-                parseInt(
-                    value.substring(
-                        4,
-                        6
-                    ),
-                    16
-                )
-
-        };
-
-    }
-
-
-    function initializeWhenReady() {
-
-        if (
-            !drawingImage.complete ||
-            !maskImage.complete
-        ) {
-            return;
-        }
-
-        if (
-            !drawingImage.naturalWidth ||
-            !maskImage.naturalWidth
-        ) {
-            return;
-        }
-
-
-        if (
-            drawingImage.naturalWidth !==
-                maskImage.naturalWidth ||
-
-            drawingImage.naturalHeight !==
-                maskImage.naturalHeight
-        ) {
-
-            showMessage(
-                "Le dessin et la carte des zones n'ont pas la même dimension."
-            );
-
-            return;
-
-        }
-
-
-        const width =
-            drawingImage.naturalWidth;
-
-        const height =
-            drawingImage.naturalHeight;
-
-
-        canvas.width =
-            width;
-
-        canvas.height =
-            height;
-
-
-        const sourceCanvas =
-            document.createElement(
-                "canvas"
-            );
-
-        sourceCanvas.width =
-            width;
-
-        sourceCanvas.height =
-            height;
-
-
-        const sourceCtx =
-            sourceCanvas.getContext(
-                "2d",
-                {
-                    willReadFrequently: true
-                }
-            );
-
-
-        sourceCtx.drawImage(
-            drawingImage,
-            0,
-            0
-        );
-
-
-        sourceData =
-            sourceCtx.getImageData(
-                0,
-                0,
-                width,
-                height
-            );
-
-
-        const maskCanvas =
-            document.createElement(
-                "canvas"
-            );
-
-
-        maskCanvas.width =
-            width;
-
-        maskCanvas.height =
-            height;
-
-
-        const maskCtx =
-            maskCanvas.getContext(
-                "2d",
-                {
-                    willReadFrequently: true
-                }
-            );
-
-
-        maskCtx.drawImage(
-            maskImage,
-            0,
-            0
-        );
-
-
-        const maskData =
-            maskCtx.getImageData(
-                0,
-                0,
-                width,
-                height
-            ).data;
-
-
-        const totalPixels =
-            width * height;
-
-
-        maskRegionIds =
-            new Uint32Array(
-                totalPixels
-            );
-
-
-        let maxRegionId =
-            0;
-
-
-        for (
-            let i = 0;
-            i < totalPixels;
-            i++
-        ) {
-
-            const p =
-                i * 4;
-
-
-            const id =
-                maskData[p] +
-
-                (
-                    maskData[p + 1]
-                    << 8
-                ) +
-
-                (
-                    maskData[p + 2]
-                    << 16
-                );
-
-
-            maskRegionIds[i] =
-                id;
-
-
-            if (
-                id >
-                maxRegionId
-            ) {
-
-                maxRegionId =
-                    id;
-
-            }
-
-        }
-
-
-        regionColored =
-            new Uint8Array(
-                maxRegionId + 1
-            );
-
-
-        regionR =
-            new Uint8Array(
-                maxRegionId + 1
-            );
-
-
-        regionG =
-            new Uint8Array(
-                maxRegionId + 1
-            );
-
-
-        regionB =
-            new Uint8Array(
-                maxRegionId + 1
-            );
-
-
-        outputData =
-            ctx.createImageData(
-                width,
-                height
-            );
-
-
-        render();
-
-
-        ready =
-            true;
-
-
-        canvas.style.cursor =
-            "pointer";
-
-
-        showMessage(
-            "Prêt ! Choisis une couleur. 🎨"
-        );
-
-    }
-
-
-    drawingImage.onload =
-        initializeWhenReady;
-
-
-    maskImage.onload =
-        initializeWhenReady;
-
-
-    drawingImage.onerror =
-        function() {
-
-            showMessage(
-                "Le dessin de Tina n'a pas pu être chargé."
-            );
-
-        };
-
-
-    maskImage.onerror =
-        function() {
-
-            showMessage(
-                "La carte des zones zones_tina.png n'a pas pu être chargée."
-            );
-
-        };
-
-
-    function render() {
-
-        if (
-            !sourceData ||
-            !outputData ||
-            !maskRegionIds
-        ) {
-            return;
-        }
-
-
-        const src =
-            sourceData.data;
-
-
-        const out =
-            outputData.data;
-
-
-        const totalPixels =
-            maskRegionIds.length;
-
-
-        out.set(
-            src
-        );
-
-
-        for (
-            let i = 0;
-            i < totalPixels;
-            i++
-        ) {
-
-            const regionId =
-                maskRegionIds[i];
-
-
-            if (
-                regionId === 0 ||
-                !regionColored[regionId]
-            ) {
-                continue;
-            }
-
-
-            const p =
-                i * 4;
-
-
-            /*
-               Le blanc reçoit la couleur,
-               mais les vrais traits noirs
-               et gris restent visibles.
-            */
-
-            out[p] =
-                Math.round(
-                    regionR[regionId] *
-                    src[p] /
-                    255
-                );
-
-
-            out[p + 1] =
-                Math.round(
-                    regionG[regionId] *
-                    src[p + 1] /
-                    255
-                );
-
-
-            out[p + 2] =
-                Math.round(
-                    regionB[regionId] *
-                    src[p + 2] /
-                    255
-                );
-
-
-            out[p + 3] =
-                src[p + 3];
-
-        }
-
-
-        ctx.putImageData(
-            outputData,
-            0,
-            0
-        );
-
-    }
-
-
     colorButtons.forEach(
         function(button) {
+
 
             button.addEventListener(
                 "click",
                 function() {
 
+
                     colorButtons.forEach(
                         function(item) {
+
 
                             item.classList.remove(
                                 "selected"
                             );
+
 
                         }
                     );
@@ -927,24 +800,552 @@
                         button.dataset.color;
 
 
-                    eraseMode =
+                    eraserMode =
                         false;
+
 
                 }
             );
+
 
         }
     );
 
 
+    /* =========================
+       CONVERSION COULEUR
+    ========================== */
+
+    function hexToRgb(hex) {
+
+
+        const value =
+            hex.replace(
+                "#",
+                ""
+            );
+
+
+        return {
+
+
+            r:
+                parseInt(
+                    value.substring(
+                        0,
+                        2
+                    ),
+                    16
+                ),
+
+
+            g:
+                parseInt(
+                    value.substring(
+                        2,
+                        4
+                    ),
+                    16
+                ),
+
+
+            b:
+                parseInt(
+                    value.substring(
+                        4,
+                        6
+                    ),
+                    16
+                )
+
+
+        };
+
+
+    }
+
+
+    /* =========================
+       COMPARAISON PIXELS
+    ========================== */
+
+    function similarColor(
+        r1,
+        g1,
+        b1,
+        r2,
+        g2,
+        b2
+    ) {
+
+
+        const tolerance =
+            46;
+
+
+        return (
+
+            Math.abs(
+                r1 - r2
+            ) <= tolerance &&
+
+
+            Math.abs(
+                g1 - g2
+            ) <= tolerance &&
+
+
+            Math.abs(
+                b1 - b2
+            ) <= tolerance
+
+        );
+
+
+    }
+
+
+    /* =========================
+       HISTORIQUE
+    ========================== */
+
+    function saveHistory() {
+
+
+        if (
+            !canvas.width ||
+            !canvas.height
+        ) {
+
+            return;
+
+        }
+
+
+        history.push(
+            ctx.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            )
+        );
+
+
+        /*
+            On garde les 8 dernières actions.
+        */
+
+        if (
+            history.length > 8
+        ) {
+
+
+            history.shift();
+
+
+        }
+
+
+    }
+
+
+    /* =========================
+       POT DE PEINTURE
+    ========================== */
+
+    function floodFill(
+        startX,
+        startY,
+        fillHex
+    ) {
+
+
+        const width =
+            canvas.width;
+
+
+        const height =
+            canvas.height;
+
+
+        const imageData =
+            ctx.getImageData(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+        const data =
+            imageData.data;
+
+
+        const startIndex =
+            (
+                startY *
+                width +
+                startX
+            ) * 4;
+
+
+        const startR =
+            data[
+                startIndex
+            ];
+
+
+        const startG =
+            data[
+                startIndex + 1
+            ];
+
+
+        const startB =
+            data[
+                startIndex + 2
+            ];
+
+
+        /*
+            Empêche de cliquer
+            directement sur un trait noir.
+        */
+
+        if (
+
+            startR < 110 &&
+            startG < 110 &&
+            startB < 110
+
+        ) {
+
+
+            showMessage(
+                "Clique à l'intérieur d'une zone blanche. 🎨"
+            );
+
+
+            return false;
+
+
+        }
+
+
+        const fill =
+            hexToRgb(
+                fillHex
+            );
+
+
+        /*
+            Si la zone possède déjà
+            cette couleur, on ne fait rien.
+        */
+
+        if (
+
+            similarColor(
+                startR,
+                startG,
+                startB,
+                fill.r,
+                fill.g,
+                fill.b
+            )
+
+        ) {
+
+
+            return false;
+
+
+        }
+
+
+        const visited =
+            new Uint8Array(
+                width *
+                height
+            );
+
+
+        /*
+            Tableau contenant les pixels
+            à analyser.
+        */
+
+        const stack =
+            [];
+
+
+        stack.push(
+            startX,
+            startY
+        );
+
+
+        let changedPixels =
+            0;
+
+
+        /*
+            Sécurité :
+            si une zone représente une
+            énorme partie de la page,
+            c'est probablement le fond.
+        */
+
+        const maximumPixels =
+            width *
+            height *
+            0.28;
+
+
+        while (
+            stack.length > 0
+        ) {
+
+
+            const y =
+                stack.pop();
+
+
+            const x =
+                stack.pop();
+
+
+            if (
+
+                x < 0 ||
+                x >= width ||
+                y < 0 ||
+                y >= height
+
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            const pixelNumber =
+                y *
+                width +
+                x;
+
+
+            if (
+                visited[
+                    pixelNumber
+                ]
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            visited[
+                pixelNumber
+            ] =
+                1;
+
+
+            const index =
+                pixelNumber *
+                4;
+
+
+            const r =
+                data[
+                    index
+                ];
+
+
+            const g =
+                data[
+                    index + 1
+                ];
+
+
+            const b =
+                data[
+                    index + 2
+                ];
+
+
+            /*
+                Tous les pixels foncés
+                deviennent des barrières.
+
+                Cela inclut les contours
+                noirs et les bords
+                anti-crénelés du dessin.
+            */
+
+            const brightness =
+                (
+                    r +
+                    g +
+                    b
+                ) / 3;
+
+
+            if (
+                brightness < 165
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            /*
+                Ne remplit que les pixels
+                ressemblant à la couleur
+                du point de départ.
+            */
+
+            if (
+
+                !similarColor(
+                    r,
+                    g,
+                    b,
+                    startR,
+                    startG,
+                    startB
+                )
+
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            data[
+                index
+            ] =
+                fill.r;
+
+
+            data[
+                index + 1
+            ] =
+                fill.g;
+
+
+            data[
+                index + 2
+            ] =
+                fill.b;
+
+
+            changedPixels++;
+
+
+            /*
+                Protection contre le clic
+                dans le grand fond blanc.
+            */
+
+            if (
+                changedPixels >
+                maximumPixels
+            ) {
+
+
+                showMessage(
+                    "Choisis une partie de Tina ou un objet à colorier. 🎨"
+                );
+
+
+                return false;
+
+
+            }
+
+
+            stack.push(
+                x + 1,
+                y
+            );
+
+
+            stack.push(
+                x - 1,
+                y
+            );
+
+
+            stack.push(
+                x,
+                y + 1
+            );
+
+
+            stack.push(
+                x,
+                y - 1
+            );
+
+
+        }
+
+
+        if (
+            changedPixels <
+            3
+        ) {
+
+
+            return false;
+
+
+        }
+
+
+        ctx.putImageData(
+            imageData,
+            0,
+            0
+        );
+
+
+        return true;
+
+
+    }
+
+
+    /* =========================
+       CLIC SUR LE DESSIN
+    ========================== */
+
     canvas.addEventListener(
         "pointerdown",
         function(event) {
 
+
             if (
-                !ready
+                !originalImageData
             ) {
+
+
                 return;
+
+
             }
 
 
@@ -954,159 +1355,107 @@
 
             const x =
                 Math.floor(
+
                     (
                         event.clientX -
                         rect.left
                     ) *
+
                     canvas.width /
+
                     rect.width
+
                 );
 
 
             const y =
                 Math.floor(
+
                     (
                         event.clientY -
                         rect.top
                     ) *
+
                     canvas.height /
+
                     rect.height
+
                 );
 
 
-            if (
-                x < 0 ||
-                y < 0 ||
-                x >= canvas.width ||
-                y >= canvas.height
-            ) {
-                return;
-            }
+            saveHistory();
 
 
-            const pixelIndex =
-                y *
-                canvas.width +
-                x;
-
-
-            const regionId =
-                maskRegionIds[
-                    pixelIndex
-                ];
+            let fillColor =
+                selectedColor;
 
 
             if (
-                regionId === 0
+                eraserMode
             ) {
 
-                showMessage(
-                    "Clique à l'intérieur d'une partie à colorier. 🎨"
-                );
 
-                return;
+                fillColor =
+                    "#FFFFFF";
+
 
             }
 
 
-            history.push({
-
-                regionId:
-                    regionId,
-
-                colored:
-                    regionColored[
-                        regionId
-                    ],
-
-                r:
-                    regionR[
-                        regionId
-                    ],
-
-                g:
-                    regionG[
-                        regionId
-                    ],
-
-                b:
-                    regionB[
-                        regionId
-                    ]
-
-            });
-
-
-            if (
-                history.length >
-                30
-            ) {
-
-                history.shift();
-
-            }
-
-
-            if (
-                eraseMode
-            ) {
-
-                regionColored[
-                    regionId
-                ] =
-                    0;
-
-
-                showMessage(
-                    "Zone effacée. 🧽"
+            const changed =
+                floodFill(
+                    x,
+                    y,
+                    fillColor
                 );
+
+
+            if (
+                !changed
+            ) {
+
+
+                history.pop();
+
 
             }
 
             else {
 
-                const rgb =
-                    hexToRgb(
-                        selectedColor
+
+                if (
+                    eraserMode
+                ) {
+
+
+                    showMessage(
+                        "Zone effacée. 🧽"
                     );
 
 
-                regionColored[
-                    regionId
-                ] =
-                    1;
+                }
+
+                else {
 
 
-                regionR[
-                    regionId
-                ] =
-                    rgb.r;
+                    showMessage(
+                        "Jolie couleur ! ✨"
+                    );
 
 
-                regionG[
-                    regionId
-                ] =
-                    rgb.g;
+                }
 
-
-                regionB[
-                    regionId
-                ] =
-                    rgb.b;
-
-
-                showMessage(
-                    "Jolie couleur ! ✨"
-                );
 
             }
 
 
-            render();
-
         }
     );
 
+
+    /* =========================
+       ANNULER
+    ========================== */
 
     document.getElementById(
         "undo-button"
@@ -1114,15 +1463,19 @@
         "click",
         function() {
 
+
             if (
                 history.length === 0
             ) {
+
 
                 showMessage(
                     "Il n'y a rien à annuler."
                 );
 
+
                 return;
+
 
             }
 
@@ -1131,36 +1484,25 @@
                 history.pop();
 
 
-            const id =
-                previous.regionId;
-
-
-            regionColored[id] =
-                previous.colored;
-
-
-            regionR[id] =
-                previous.r;
-
-
-            regionG[id] =
-                previous.g;
-
-
-            regionB[id] =
-                previous.b;
-
-
-            render();
+            ctx.putImageData(
+                previous,
+                0,
+                0
+            );
 
 
             showMessage(
                 "Dernière action annulée. ↩️"
             );
 
+
         }
     );
 
+
+    /* =========================
+       EFFACER UNE ZONE
+    ========================== */
 
     document.getElementById(
         "eraser-button"
@@ -1168,16 +1510,19 @@
         "click",
         function() {
 
-            eraseMode =
+
+            eraserMode =
                 true;
 
 
             colorButtons.forEach(
                 function(item) {
 
+
                     item.classList.remove(
                         "selected"
                     );
+
 
                 }
             );
@@ -1187,9 +1532,14 @@
                 "🧽 Clique sur la zone que tu veux effacer."
             );
 
+
         }
     );
 
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
 
     document.getElementById(
         "restart-button"
@@ -1197,10 +1547,15 @@
         "click",
         function() {
 
+
             if (
-                !ready
+                !originalImageData
             ) {
+
+
                 return;
+
+
             }
 
 
@@ -1213,11 +1568,17 @@
             if (
                 !confirmation
             ) {
+
+
                 return;
+
+
             }
 
 
-            regionColored.fill(
+            ctx.putImageData(
+                originalImageData,
+                0,
                 0
             );
 
@@ -1226,7 +1587,7 @@
                 [];
 
 
-            eraseMode =
+            eraserMode =
                 false;
 
 
@@ -1237,9 +1598,11 @@
             colorButtons.forEach(
                 function(item) {
 
+
                     item.classList.remove(
                         "selected"
                     );
+
 
                 }
             );
@@ -1251,20 +1614,23 @@
                 );
 
 
-            render();
-
-
             showMessage(
                 "Le dessin est prêt pour un nouveau coloriage ! 🎨"
             );
+
 
         }
     );
 
 
+    /* =========================
+       IMPRESSION
+    ========================== */
+
     function openPrintWindow(
         imageSource
     ) {
+
 
         const printWindow =
             window.open(
@@ -1277,11 +1643,14 @@
             !printWindow
         ) {
 
+
             showMessage(
                 "Ton navigateur a bloqué la fenêtre d'impression."
             );
 
+
             return;
+
 
         }
 
@@ -1346,17 +1715,22 @@
                             "print-image"
                         );
 
+
                     img.onload =
                         function() {
+
 
                             setTimeout(
                                 function() {
 
+
                                     window.print();
+
 
                                 },
                                 250
                             );
+
 
                         };
 
@@ -1371,14 +1745,20 @@
 
         printWindow.document.close();
 
+
     }
 
+
+    /* =========================
+       IMPRIMER ORIGINAL
+    ========================== */
 
     document.getElementById(
         "print-original-button"
     ).addEventListener(
         "click",
         function() {
+
 
             const imageUrl =
                 new URL(
@@ -1391,9 +1771,14 @@
                 imageUrl
             );
 
+
         }
     );
 
+
+    /* =========================
+       IMPRIMER COLORIÉ
+    ========================== */
 
     document.getElementById(
         "print-colored-button"
@@ -1401,22 +1786,36 @@
         "click",
         function() {
 
+
             if (
-                !ready
+                !originalImageData
             ) {
+
+
                 return;
+
+
             }
 
 
-            openPrintWindow(
+            const coloredImage =
                 canvas.toDataURL(
                     "image/png"
-                )
+                );
+
+
+            openPrintWindow(
+                coloredImage
             );
+
 
         }
     );
 
+
+    /* =========================
+       ENREGISTRER
+    ========================== */
 
     document.getElementById(
         "save-button"
@@ -1424,10 +1823,15 @@
         "click",
         function() {
 
+
             if (
-                !ready
+                !originalImageData
             ) {
+
+
                 return;
+
+
             }
 
 
@@ -1454,10 +1858,55 @@
                 "Ton coloriage est enregistré ! 💚"
             );
 
+
         }
     );
 
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(
+        text
+    ) {
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.textContent =
+            text;
+
+
+        clearTimeout(
+            showMessage.timer
+        );
+
+
+        showMessage.timer =
+            setTimeout(
+                function() {
+
+
+                    message.textContent =
+                        "";
+
+
+                },
+                3000
+            );
+
+
+    }
+
+
 </script>
 
+
 </body>
+
 </html>
