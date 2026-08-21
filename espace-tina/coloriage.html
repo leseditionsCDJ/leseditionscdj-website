@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Coloriage de Tina | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+            padding: 15px 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            border-bottom: 2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+            max-width: 45vw;
+            height: auto;
+        }
+
+        .back-button {
+            background-color: #174E78;
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        /* =========================
+           CONTENU
+        ========================== */
+
+        main {
+            width: 95%;
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 45px 15px 70px;
+
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .intro {
+            max-width: 760px;
+
+            margin: 0 auto 30px;
+
+            color: #536B7B;
+
+            font-size: 1.15rem;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           PALETTE
+        ========================== */
+
+        .color-panel {
+            background-color: white;
+
+            max-width: 900px;
+
+            margin: 0 auto 25px;
+
+            padding: 22px;
+
+            border-radius: 25px;
+
+            border: 2px solid #DDECF3;
+
+            box-shadow:
+                0 10px 25px
+                rgba(23, 78, 120, 0.08);
+        }
+
+        .color-panel h2 {
+            margin: 0 0 15px;
+
+            color: #2F8F46;
+
+            font-size: 1.35rem;
+        }
+
+        .colors {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+        }
+
+        .color {
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+
+            border: 3px solid white;
+
+            outline: 2px solid #CBD8DF;
+
+            cursor: pointer;
+
+            transition: 0.15s;
+
+            position: relative;
+        }
+
+        .color:hover {
+            transform: scale(1.12);
+        }
+
+        .color.selected {
+            outline: 4px solid #174E78;
+
+            transform: scale(1.12);
+        }
+
+        .color.selected::after {
+            content: "✓";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 1.3rem;
+
+            font-weight: bold;
+
+            color: white;
+
+            text-shadow:
+                0 1px 3px rgba(0,0,0,0.7);
+        }
+
+        /* =========================
+           DESSIN
+        ========================== */
+
+        .drawing-card {
+            background-color: white;
+
+            padding: 15px;
+
+            border-radius: 25px;
+
+            border: 2px solid #DDECF3;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, 0.10);
+
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+        .canvas-wrapper {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            background-color: white;
+        }
+
+        canvas {
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            cursor: pointer;
+
+            touch-action: manipulation;
+        }
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
+        .tools {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+        .tool-button {
+            border: none;
+
+            border-radius: 25px;
+
+            padding: 13px 20px;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .tool-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .undo {
+            background-color: #F1B83B;
+            color: #263238;
+        }
+
+        .eraser {
+            background-color: #E7EEF3;
+            color: #174E78;
+        }
+
+        .restart {
+            background-color: #D95C5C;
+            color: white;
+        }
+
+        .print {
+            background-color: #174E78;
+            color: white;
+        }
+
+        .save {
+            background-color: #2F8F46;
+            color: white;
+        }
+
+        #message {
+            min-height: 28px;
+
+            margin-top: 18px;
+
+            color: #2F8F46;
+
+            font-weight: bold;
+        }
+
+        .tip {
+            margin: 20px auto 0;
+
+            max-width: 800px;
+
+            color: #667C89;
+
+            line-height: 1.5;
+
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .color {
+                width: 40px;
+                height: 40px;
+            }
+
+            .drawing-card {
+                padding: 8px;
+            }
+
+            .tool-button {
+                flex-grow: 1;
+                min-width: 145px;
+            }
+
+        }
+
+        /* =========================
+           IMPRESSION DE LA PAGE
+        ========================== */
+
+        @media print {
+
+            @page {
+                size: letter landscape;
+                margin: 0.5in;
+            }
+
+            body * {
+                visibility: hidden;
+            }
+
+            .canvas-wrapper,
+            .canvas-wrapper * {
+                visibility: visible;
+            }
+
+            .canvas-wrapper {
+                position: absolute;
+
+                left: 0;
+                top: 0;
+
+                width: 100%;
+            }
+
+            canvas {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <a href="../index.html">
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+    </a>
+
+    <a
+        href="./"
+        class="back-button">
+        ← Retour à l'espace Tina
+    </a>
+
+</header>
+
+
+<main>
+
+    <h1>
+        🎨 Colorie Tina !
+    </h1>
+
+    <p class="intro">
+        Choisis une couleur, puis clique sur une partie du dessin
+        pour la colorier. Tu peux changer de couleur autant de fois
+        que tu veux !
+    </p>
+
+
+    <!-- PALETTE -->
+
+    <section class="color-panel">
+
+        <h2>
+            Choisis ta couleur
+        </h2>
+
+        <div class="colors">
+
+            <button
+                class="color selected"
+                style="background:#EF4444"
+                data-color="#EF4444"
+                aria-label="Rouge">
+            </button>
+
+            <button
+                class="color"
+                style="background:#F97316"
+                data-color="#F97316"
+                aria-label="Orange">
+            </button>
+
+            <button
+                class="color"
+                style="background:#FACC15"
+                data-color="#FACC15"
+                aria-label="Jaune">
+            </button>
+
+            <button
+                class="color"
+                style="background:#84CC16"
+                data-color="#84CC16"
+                aria-label="Vert clair">
+            </button>
+
+            <button
+                class="color"
+                style="background:#22C55E"
+                data-color="#22C55E"
+                aria-label="Vert">
+            </button>
+
+            <button
+                class="color"
+                style="background:#14B8A6"
+                data-color="#14B8A6"
+                aria-label="Turquoise">
+            </button>
+
+            <button
+                class="color"
+                style="background:#3B82F6"
+                data-color="#3B82F6"
+                aria-label="Bleu">
+            </button>
+
+            <button
+                class="color"
+                style="background:#8B5CF6"
+                data-color="#8B5CF6"
+                aria-label="Mauve">
+            </button>
+
+            <button
+                class="color"
+                style="background:#EC4899"
+                data-color="#EC4899"
+                aria-label="Rose">
+            </button>
+
+            <button
+                class="color"
+                style="background:#A16207"
+                data-color="#A16207"
+                aria-label="Brun">
+            </button>
+
+            <button
+                class="color"
+                style="background:#64748B"
+                data-color="#64748B"
+                aria-label="Gris">
+            </button>
+
+            <button
+                class="color"
+                style="background:#111827"
+                data-color="#111827"
+                aria-label="Noir">
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- DESSIN -->
+
+    <section class="drawing-card">
+
+        <div class="canvas-wrapper">
+
+            <canvas id="coloring-canvas">
+            </canvas>
+
+        </div>
+
+
+        <div class="tools">
+
+            <button
+                class="tool-button undo"
+                id="undo-button">
+                ↩️ Annuler
+            </button>
+
+            <button
+                class="tool-button eraser"
+                id="eraser-button">
+                🧽 Effacer une zone
+            </button>
+
+            <button
+                class="tool-button restart"
+                id="restart-button">
+                🔄 Recommencer
+            </button>
+
+            <button
+                class="tool-button print"
+                id="print-original-button">
+                🖨️ Imprimer à colorier
+            </button>
+
+            <button
+                class="tool-button print"
+                id="print-colored-button">
+                🖨️ Imprimer mon dessin
+            </button>
+
+            <button
+                class="tool-button save"
+                id="save-button">
+                💾 Enregistrer mon dessin
+            </button>
+
+        </div>
+
+        <div
+            id="message"
+            aria-live="polite">
+        </div>
+
+    </section>
+
+
+    <p class="tip">
+        💡 Astuce : si tu veux changer une couleur,
+        choisis simplement une nouvelle couleur et clique de nouveau
+        dans la même zone.
+    </p>
+
+</main>
+
+
+<script>
+
+    /* =========================
+       IMAGE ET CANVAS
+    ========================== */
+
+    const canvas =
+        document.getElementById(
+            "coloring-canvas"
+        );
+
+    const ctx =
+        canvas.getContext(
+            "2d",
+            {
+                willReadFrequently: true
+            }
+        );
+
+    const image =
+        new Image();
+
+    image.src =
+        "../images/dessin_tina.png";
+
+
+    let originalImageData = null;
+
+    let selectedColor =
+        "#EF4444";
+
+    let history = [];
+
+
+    image.onload =
+        function() {
+
+            canvas.width =
+                image.naturalWidth;
+
+            canvas.height =
+                image.naturalHeight;
+
+            ctx.drawImage(
+                image,
+                0,
+                0
+            );
+
+            originalImageData =
+                ctx.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+        };
+
+
+    image.onerror =
+        function() {
+
+            document.getElementById(
+                "message"
+            ).textContent =
+                "Le dessin n'a pas pu être chargé.";
+
+        };
+
+
+    /* =========================
+       PALETTE
+    ========================== */
+
+    const colorButtons =
+        document.querySelectorAll(
+            ".color"
+        );
+
+
+    colorButtons.forEach(
+        function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    colorButtons.forEach(
+                        function(item) {
+                            item.classList.remove(
+                                "selected"
+                            );
+                        }
+                    );
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+                    selectedColor =
+                        button.dataset.color;
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================
+       CONVERSION COULEUR
+    ========================== */
+
+    function hexToRgb(hex) {
+
+        const value =
+            hex.replace(
+                "#",
+                ""
+            );
+
+        return {
+            r:
+                parseInt(
+                    value.substring(
+                        0,
+                        2
+                    ),
+                    16
+                ),
+
+            g:
+                parseInt(
+                    value.substring(
+                        2,
+                        4
+                    ),
+                    16
+                ),
+
+            b:
+                parseInt(
+                    value.substring(
+                        4,
+                        6
+                    ),
+                    16
+                )
+        };
+
+    }
+
+
+    /* =========================
+       SAUVEGARDE POUR ANNULER
+    ========================== */
+
+    function saveHistory() {
+
+        if (
+            canvas.width === 0 ||
+            canvas.height === 0
+        ) {
+            return;
+        }
+
+        history.push(
+            ctx.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            )
+        );
+
+        /*
+           On garde seulement les
+           6 dernières actions pour
+           éviter d'utiliser trop
+           de mémoire sur tablette.
+        */
+
+        if (
+            history.length > 6
+        ) {
+            history.shift();
+        }
+
+    }
+
+
+    /* =========================
+       DÉTECTION DES PIXELS
+    ========================== */
+
+    function similarColor(
+        r1,
+        g1,
+        b1,
+        r2,
+        g2,
+        b2
+    ) {
+
+        const tolerance = 38;
+
+        return (
+            Math.abs(r1 - r2)
+                <= tolerance &&
+
+            Math.abs(g1 - g2)
+                <= tolerance &&
+
+            Math.abs(b1 - b2)
+                <= tolerance
+        );
+
+    }
+
+
+    /* =========================
+       POT DE PEINTURE
+    ========================== */
+
+    function floodFill(
+        startX,
+        startY,
+        fillHex
+    ) {
+
+        const width =
+            canvas.width;
+
+        const height =
+            canvas.height;
+
+
+        const imageData =
+            ctx.getImageData(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+        const data =
+            imageData.data;
+
+
+        const startIndex =
+            (
+                startY * width +
+                startX
+            ) * 4;
+
+
+        const startR =
+            data[startIndex];
+
+        const startG =
+            data[startIndex + 1];
+
+        const startB =
+            data[startIndex + 2];
+
+
+        /*
+           On évite de colorier
+           directement un trait noir.
+        */
+
+        if (
+            startR < 70 &&
+            startG < 70 &&
+            startB < 70
+        ) {
+
+            showMessage(
+                "Clique à l'intérieur d'une zone blanche. 🎨"
+            );
+
+            return false;
+
+        }
+
+
+        const fill =
+            hexToRgb(
+                fillHex
+            );
+
+
+        if (
+            similarColor(
+                startR,
+                startG,
+                startB,
+                fill.r,
+                fill.g,
+                fill.b
+            )
+        ) {
+            return false;
+        }
+
+
+        const visited =
+            new Uint8Array(
+                width * height
+            );
+
+
+        const stack =
+            new Int32Array(
+                width *
+                height *
+                2
+            );
+
+
+        let stackSize = 0;
+
+
+        stack[stackSize++] =
+            startX;
+
+        stack[stackSize++] =
+            startY;
+
+
+        while (
+            stackSize > 0
+        ) {
+
+            const y =
+                stack[
+                    --stackSize
+                ];
+
+            const x =
+                stack[
+                    --stackSize
+                ];
+
+
+            if (
+                x < 0 ||
+                x >= width ||
+                y < 0 ||
+                y >= height
+            ) {
+                continue;
+            }
+
+
+            const pixelNumber =
+                y * width + x;
+
+
+            if (
+                visited[
+                    pixelNumber
+                ]
+            ) {
+                continue;
+            }
+
+
+            visited[
+                pixelNumber
+            ] = 1;
+
+
+            const index =
+                pixelNumber * 4;
+
+
+            const r =
+                data[index];
+
+            const g =
+                data[index + 1];
+
+            const b =
+                data[index + 2];
+
+
+            /*
+               Les traits foncés
+               servent de frontière.
+            */
+
+            if (
+                r < 105 &&
+                g < 105 &&
+                b < 105
+            ) {
+                continue;
+            }
+
+
+            if (
+                !similarColor(
+                    r,
+                    g,
+                    b,
+                    startR,
+                    startG,
+                    startB
+                )
+            ) {
+                continue;
+            }
+
+
+            data[index] =
+                fill.r;
+
+            data[index + 1] =
+                fill.g;
+
+            data[index + 2] =
+                fill.b;
+
+
+            stack[
+                stackSize++
+            ] = x + 1;
+
+            stack[
+                stackSize++
+            ] = y;
+
+
+            stack[
+                stackSize++
+            ] = x - 1;
+
+            stack[
+                stackSize++
+            ] = y;
+
+
+            stack[
+                stackSize++
+            ] = x;
+
+            stack[
+                stackSize++
+            ] = y + 1;
+
+
+            stack[
+                stackSize++
+            ] = x;
+
+            stack[
+                stackSize++
+            ] = y - 1;
+
+        }
+
+
+        ctx.putImageData(
+            imageData,
+            0,
+            0
+        );
+
+
+        return true;
+
+    }
+
+
+    /* =========================
+       CLIC SUR LE DESSIN
+    ========================== */
+
+    canvas.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            if (
+                !originalImageData
+            ) {
+                return;
+            }
+
+
+            const rect =
+                canvas.getBoundingClientRect();
+
+
+            const x =
+                Math.floor(
+                    (
+                        event.clientX -
+                        rect.left
+                    ) *
+                    canvas.width /
+                    rect.width
+                );
+
+
+            const y =
+                Math.floor(
+                    (
+                        event.clientY -
+                        rect.top
+                    ) *
+                    canvas.height /
+                    rect.height
+                );
+
+
+            saveHistory();
+
+
+            const changed =
+                floodFill(
+                    x,
+                    y,
+                    selectedColor
+                );
+
+
+            if (
+                !changed
+            ) {
+
+                /*
+                   L'action n'a rien changé,
+                   donc on retire l'état
+                   ajouté inutilement.
+                */
+
+                history.pop();
+
+            } else {
+
+                showMessage(
+                    "Jolie couleur ! ✨"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       ANNULER
+    ========================== */
+
+    document.getElementById(
+        "undo-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+            if (
+                history.length === 0
+            ) {
+
+                showMessage(
+                    "Il n'y a rien à annuler."
+                );
+
+                return;
+
+            }
+
+
+            const previous =
+                history.pop();
+
+
+            ctx.putImageData(
+                previous,
+                0,
+                0
+            );
+
+
+            showMessage(
+                "Dernière couleur annulée. ↩️"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       EFFACER UNE ZONE
+    ========================== */
+
+    document.getElementById(
+        "eraser-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+            selectedColor =
+                "#FFFFFF";
+
+
+            colorButtons.forEach(
+                function(item) {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+            showMessage(
+                "🧽 Clique sur la zone que tu veux effacer."
+            );
+
+        }
+    );
+
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
+
+    document.getElementById(
+        "restart-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+            if (
+                !originalImageData
+            ) {
+                return;
+            }
+
+
+            const confirmation =
+                confirm(
+                    "Veux-tu vraiment effacer tout ton coloriage ?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+                return;
+            }
+
+
+            ctx.putImageData(
+                originalImageData,
+                0,
+                0
+            );
+
+
+            history = [];
+
+
+            selectedColor =
+                "#EF4444";
+
+
+            colorButtons.forEach(
+                function(item) {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+            colorButtons[0]
+                .classList.add(
+                    "selected"
+                );
+
+
+            showMessage(
+                "Le dessin est prêt pour un nouveau coloriage ! 🎨"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       IMPRIMER ORIGINAL
+    ========================== */
+
+    document.getElementById(
+        "print-original-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+            const imageUrl =
+                new URL(
+                    "../images/dessin_tina.png",
+                    window.location.href
+                ).href;
+
+
+            openPrintWindow(
+                imageUrl
+            );
+
+        }
+    );
+
+
+    /* =========================
+       IMPRIMER COLORIAGE
+    ========================== */
+
+    document.getElementById(
+        "print-colored-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+            const coloredImage =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            openPrintWindow(
+                coloredImage
+            );
+
+        }
+    );
+
+
+    /* =========================
+       FENÊTRE D'IMPRESSION
+    ========================== */
+
+    function openPrintWindow(
+        imageSource
+    ) {
+
+        const printWindow =
+            window.open(
+                "",
+                "_blank"
+            );
+
+
+        if (
+            !printWindow
+        ) {
+
+            showMessage(
+                "Ton navigateur a bloqué la fenêtre d'impression."
+            );
+
+            return;
+
+        }
+
+
+        printWindow.document.write(
+            `
+            <!DOCTYPE html>
+
+            <html>
+
+            <head>
+
+                <title>
+                    Coloriage de Tina
+                </title>
+
+                <style>
+
+                    @page {
+                        size: letter landscape;
+                        margin: 0.5in;
+                    }
+
+                    html,
+                    body {
+                        margin: 0;
+                        padding: 0;
+
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    body {
+                        display: flex;
+
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    img {
+                        display: block;
+
+                        max-width: 100%;
+                        max-height: 7.5in;
+
+                        width: auto;
+                        height: auto;
+
+                        object-fit: contain;
+                    }
+
+                </style>
+
+            </head>
+
+            <body>
+
+                <img
+                    id="print-image"
+                    src="${imageSource}"
+                    alt="Coloriage de Tina">
+
+                <script>
+
+                    const image =
+                        document.getElementById(
+                            "print-image"
+                        );
+
+                    image.onload =
+                        function() {
+
+                            setTimeout(
+                                function() {
+
+                                    window.print();
+
+                                },
+                                250
+                            );
+
+                        };
+
+                <\/script>
+
+            </body>
+
+            </html>
+            `
+        );
+
+
+        printWindow.document.close();
+
+    }
+
+
+    /* =========================
+       ENREGISTRER LE DESSIN
+    ========================== */
+
+    document.getElementById(
+        "save-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.download =
+                "mon-coloriage-de-tina.png";
+
+
+            link.href =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            link.click();
+
+
+            showMessage(
+                "Ton coloriage est enregistré ! 💚"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(
+        text
+    ) {
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.textContent =
+            text;
+
+
+        clearTimeout(
+            showMessage.timer
+        );
+
+
+        showMessage.timer =
+            setTimeout(
+                function() {
+
+                    message.textContent =
+                        "";
+
+                },
+                3000
+            );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
