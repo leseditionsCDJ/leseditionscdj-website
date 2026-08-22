@@ -12,7 +12,6 @@
         Diplôme d'explorateur | Les Éditions Cap Découvertes Jeunesse
     </title>
 
-
     <style>
 
         * {
@@ -21,12 +20,7 @@
 
         body {
             margin: 0;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             color: #203040;
 
             background:
@@ -50,42 +44,30 @@
 
         header {
             background-color: white;
-
             padding: 15px 5%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             gap: 30px;
 
-            border-bottom:
-                2px solid #E7EEF3;
+            border-bottom: 2px solid #E7EEF3;
 
             position: sticky;
-
             top: 0;
-
             z-index: 1000;
         }
 
-
         .logo {
             width: 230px;
-
             max-width: 35vw;
-
             height: auto;
         }
 
-
         nav {
             display: flex;
-
             align-items: center;
-
             justify-content: flex-end;
 
             gap: 14px;
@@ -93,12 +75,10 @@
             flex-wrap: wrap;
         }
 
-
         .nav-button {
             display: inline-block;
 
-            padding:
-                11px 18px;
+            padding: 11px 18px;
 
             border-radius: 25px;
 
@@ -107,32 +87,24 @@
             transition: 0.2s;
         }
 
-
         .back-button {
             background-color: #174E78;
-
             color: white;
         }
 
-
         .home-button {
             background-color: white;
-
             color: #174E78;
 
-            border:
-                2px solid #174E78;
+            border: 2px solid #174E78;
         }
-
 
         .back-button:hover {
             background-color: #2F8F46;
         }
 
-
         .home-button:hover {
             border-color: #2F8F46;
-
             color: #2F8F46;
         }
 
@@ -143,15 +115,12 @@
 
         main {
             width: 96%;
-
             max-width: 1700px;
 
             margin: auto;
 
-            padding:
-                35px 18px 70px;
+            padding: 35px 18px 70px;
         }
-
 
         .page-header {
             text-align: center;
@@ -159,16 +128,13 @@
             margin-bottom: 28px;
         }
 
-
         .page-header h1 {
-            margin:
-                0 0 10px;
+            margin: 0 0 10px;
 
             color: #174E78;
 
             font-size: 2.7rem;
         }
-
 
         .page-header p {
             max-width: 760px;
@@ -184,7 +150,7 @@
 
 
         /* =========================
-           LAYOUT
+           MISE EN PAGE
         ========================== */
 
         .diploma-layout {
@@ -198,11 +164,9 @@
             align-items: start;
         }
 
-
         .diploma-column {
             min-width: 0;
         }
-
 
         .sidebar {
             position: sticky;
@@ -210,12 +174,10 @@
             top: 175px;
         }
 
-
         .sidebar-box {
             background-color: white;
 
-            border:
-                2px solid #DDECF3;
+            border: 2px solid #DDECF3;
 
             border-radius: 22px;
 
@@ -228,10 +190,8 @@
                 rgba(23, 78, 120, 0.08);
         }
 
-
         .sidebar-title {
-            margin:
-                0 0 15px;
+            margin: 0 0 15px;
 
             color: #174E78;
 
@@ -250,8 +210,7 @@
 
             padding: 12px;
 
-            border:
-                2px solid #DDECF3;
+            border: 2px solid #DDECF3;
 
             border-radius: 24px;
 
@@ -259,7 +218,6 @@
                 0 15px 35px
                 rgba(23, 78, 120, 0.10);
         }
-
 
         .canvas-wrapper {
             width: 100%;
@@ -270,7 +228,6 @@
 
             background-color: white;
         }
-
 
         canvas {
             display: block;
@@ -289,11 +246,9 @@
             margin-bottom: 17px;
         }
 
-
         .field:last-child {
             margin-bottom: 0;
         }
-
 
         .field label {
             display: block;
@@ -305,22 +260,16 @@
             font-weight: bold;
         }
 
-
         .field input {
             width: 100%;
 
-            padding:
-                12px 14px;
+            padding: 12px 14px;
 
-            border:
-                2px solid #D8E7EF;
+            border: 2px solid #D8E7EF;
 
             border-radius: 14px;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
 
             font-size: 1rem;
 
@@ -329,22 +278,10 @@
             background-color: #FAFDFE;
         }
 
-
         .field input:focus {
             border-color: #2F8F46;
 
             background-color: white;
-        }
-
-
-        .field-note {
-            display: block;
-
-            margin-top: 6px;
-
-            color: #708592;
-
-            font-size: 0.84rem;
         }
 
 
@@ -387,7 +324,6 @@
             gap: 10px;
         }
 
-
         .tool-button {
             width: 100%;
 
@@ -395,13 +331,9 @@
 
             border-radius: 24px;
 
-            padding:
-                13px 15px;
+            padding: 13px 15px;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
 
             font-size: 0.98rem;
 
@@ -412,12 +344,9 @@
             transition: 0.2s;
         }
 
-
         .tool-button:hover {
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
         }
-
 
         .print-button {
             background-color: #174E78;
@@ -425,13 +354,11 @@
             color: white;
         }
 
-
         .save-button {
             background-color: #2F8F46;
 
             color: white;
         }
-
 
         .reset-button {
             background-color: #E7EEF3;
@@ -467,11 +394,9 @@
                 grid-template-columns: 1fr;
             }
 
-
             .sidebar {
                 position: static;
             }
-
 
             .tools {
                 grid-template-columns:
@@ -493,83 +418,26 @@
                 padding: 15px;
             }
 
-
             .logo {
                 width: 220px;
 
                 max-width: 80%;
             }
 
-
             nav {
                 justify-content: center;
             }
-
 
             .page-header h1 {
                 font-size: 2rem;
             }
 
-
             .diploma-card {
                 padding: 6px;
             }
 
-
             .tools {
                 grid-template-columns: 1fr;
-            }
-
-        }
-
-
-        /* =========================
-           IMPRESSION
-        ========================== */
-
-        @media print {
-
-            body {
-                background: white;
-            }
-
-
-            header,
-            .page-header,
-            .sidebar {
-                display: none !important;
-            }
-
-
-            main {
-                width: 100%;
-
-                max-width: none;
-
-                margin: 0;
-
-                padding: 0;
-            }
-
-
-            .diploma-layout {
-                display: block;
-            }
-
-
-            .diploma-card {
-                border: none;
-
-                box-shadow: none;
-
-                padding: 0;
-            }
-
-
-            canvas {
-                width: 100%;
-
-                height: auto;
             }
 
         }
@@ -584,7 +452,6 @@
 
 <header>
 
-
     <a href="../index.html">
 
         <img
@@ -596,7 +463,6 @@
 
 
     <nav>
-
 
         <a
             href="./"
@@ -615,9 +481,7 @@
 
         </a>
 
-
     </nav>
-
 
 </header>
 
@@ -628,21 +492,18 @@
 
     <div class="page-header">
 
-
         <h1>
             🎓 Mon diplôme d'explorateur
         </h1>
 
-
         <p>
 
-            Félicitations pour ton aventure avec Tina !
+            Félicitations pour ton aventure avec Tina!
 
-            Inscris ton nom, ajoute la date et,
-            si tu le souhaites, ta signature.
+            Inscris ton nom et vérifie la date,
+            puis imprime ou enregistre ton diplôme.
 
         </p>
-
 
     </div>
 
@@ -651,47 +512,38 @@
     <div class="diploma-layout">
 
 
-
         <!-- =========================
              DIPLÔME
         ========================== -->
 
         <div class="diploma-column">
 
-
             <section class="diploma-card">
 
-
                 <div class="canvas-wrapper">
-
 
                     <canvas
                         id="diploma-canvas">
                     </canvas>
 
-
                 </div>
 
-
             </section>
-
 
         </div>
 
 
 
         <!-- =========================
-             MENU
+             MENU DE DROITE
         ========================== -->
 
         <aside class="sidebar">
 
 
-
-            <!-- INFORMATIONS -->
+            <!-- PERSONNALISATION -->
 
             <section class="sidebar-box">
-
 
                 <h2 class="sidebar-title">
                     ✏️ Personnalise ton diplôme
@@ -700,11 +552,9 @@
 
                 <div class="field">
 
-
                     <label for="name-input">
                         Décerné à :
                     </label>
-
 
                     <input
                         type="text"
@@ -712,51 +562,21 @@
                         maxlength="35"
                         placeholder="Écris ton prénom ou ton nom">
 
-
                 </div>
-
 
 
                 <div class="field">
 
-
                     <label for="date-input">
                         Date :
                     </label>
-
 
                     <input
                         type="text"
                         id="date-input"
                         maxlength="25">
 
-
                 </div>
-
-
-
-                <div class="field">
-
-
-                    <label for="signature-input">
-                        Signature :
-                    </label>
-
-
-                    <input
-                        type="text"
-                        id="signature-input"
-                        maxlength="30"
-                        placeholder="Facultatif">
-
-
-                    <span class="field-note">
-                        Tu peux aussi laisser cette ligne vide et signer après l'impression.
-                    </span>
-
-
-                </div>
-
 
             </section>
 
@@ -766,15 +586,13 @@
 
             <section class="sidebar-box">
 
-
                 <div
                     id="message"
                     aria-live="polite">
 
-                    Ton diplôme est prêt à être personnalisé ! 🎓
+                    Ton diplôme est prêt à être personnalisé! 🎓
 
                 </div>
-
 
             </section>
 
@@ -784,14 +602,12 @@
 
             <section class="sidebar-box">
 
-
                 <h2 class="sidebar-title">
                     🎓 Mon diplôme
                 </h2>
 
 
                 <div class="tools">
-
 
                     <button
                         class="tool-button print-button"
@@ -819,9 +635,7 @@
 
                     </button>
 
-
                 </div>
-
 
             </section>
 
@@ -831,7 +645,6 @@
 
             <section class="sidebar-box">
 
-
                 <p class="tip">
 
                     💡 À l'impression, choisis
@@ -840,7 +653,6 @@
                     <strong>Paysage</strong>.
 
                 </p>
-
 
             </section>
 
@@ -859,11 +671,11 @@
 
 
     /* =========================
-       IMAGE DU DIPLÔME
+       IMAGE
     ========================== */
 
     const IMAGE_PATH =
-        "../images/diplome_tina.png?v=1";
+        "../images/diplome_tina.png?v=2";
 
 
     const canvas =
@@ -891,12 +703,6 @@
     const dateInput =
         document.getElementById(
             "date-input"
-        );
-
-
-    const signatureInput =
-        document.getElementById(
-            "signature-input"
         );
 
 
@@ -946,7 +752,7 @@
 
 
             showMessage(
-                "Le diplôme n'a pas pu être chargé. Vérifie que l'image s'appelle bien diplome_tina.png."
+                "Le diplôme n'a pas pu être chargé."
             );
 
 
@@ -970,9 +776,7 @@
             !diplomaImage.naturalWidth
         ) {
 
-
             return;
-
 
         }
 
@@ -994,91 +798,68 @@
         );
 
 
-        const scaleX =
-            canvas.width /
-            1536;
+        /* =========================
+           NOM DE L'ENFANT
 
-
-        const scaleY =
-            canvas.height /
-            1024;
-
-
-        /*
-            NOM
-
-            Le nom apparaît dans le grand
-            rectangle "Décerné à".
-        */
+           Positionné dans la ligne
+           sous "Décerné à :"
+        ========================== */
 
         const name =
             nameInput.value.trim();
 
 
-        if (
-            name
-        ) {
+        if (name) {
 
 
             drawCenteredText(
                 name,
-                768 * scaleX,
-                704 * scaleY,
-                36 * scaleY,
+
+                canvas.width * 0.50,
+
+                canvas.height * 0.746,
+
+                canvas.height * 0.034,
+
                 "#174E78",
-                "bold"
+
+                "bold",
+
+                canvas.width * 0.29
             );
 
 
         }
 
 
-        /*
-            DATE
-        */
+        /* =========================
+           DATE
+
+           Positionnée sur la ligne
+           tout en bas à gauche.
+        ========================== */
 
         const date =
             dateInput.value.trim();
 
 
-        if (
-            date
-        ) {
+        if (date) {
 
 
-            drawCenteredText(
+            drawLeftText(
                 date,
-                530 * scaleX,
-                877 * scaleY,
-                21 * scaleY,
+
+                canvas.width * 0.323,
+
+                canvas.height * 0.930,
+
+                canvas.height * 0.0215,
+
                 "#174E78",
-                "bold"
-            );
 
+                "bold",
 
-        }
-
-
-        /*
-            SIGNATURE
-        */
-
-        const signature =
-            signatureInput.value.trim();
-
-
-        if (
-            signature
-        ) {
-
-
-            drawCenteredText(
-                signature,
-                1087 * scaleX,
-                877 * scaleY,
-                25 * scaleY,
-                "#174E78",
-                "italic"
+                canvas.width * 0.105
             );
 
 
@@ -1099,7 +880,8 @@
         y,
         fontSize,
         color,
-        style
+        style,
+        maximumWidth
     ) {
 
 
@@ -1118,39 +900,26 @@
             color;
 
 
-        ctx.font =
-            style +
-            " " +
-            fontSize +
-            "px Arial";
-
-
-        /*
-            Si le nom est très long,
-            on réduit automatiquement
-            sa taille.
-        */
-
         let currentSize =
             fontSize;
 
 
-        const maximumWidth =
-            canvas.width *
-            0.34;
+        ctx.font =
+            style +
+            " " +
+            currentSize +
+            "px Arial";
 
 
         while (
-            ctx.measureText(
-                text
-            ).width >
+            ctx.measureText(text).width >
                 maximumWidth &&
-            currentSize > 18
+            currentSize >
+                canvas.height * 0.018
         ) {
 
 
-            currentSize -=
-                1;
+            currentSize -= 1;
 
 
             ctx.font =
@@ -1178,30 +947,94 @@
 
 
     /* =========================
-       MODIFICATION EN DIRECT
+       TEXTE ALIGNÉ À GAUCHE
     ========================== */
 
-    [
-        nameInput,
-        dateInput,
-        signatureInput
-    ].forEach(
-        function(input) {
+    function drawLeftText(
+        text,
+        x,
+        y,
+        fontSize,
+        color,
+        style,
+        maximumWidth
+    ) {
 
 
-            input.addEventListener(
-                "input",
-                function() {
+        ctx.save();
 
 
-                    drawDiploma();
+        ctx.textAlign =
+            "left";
 
 
-                }
-            );
+        ctx.textBaseline =
+            "middle";
+
+
+        ctx.fillStyle =
+            color;
+
+
+        let currentSize =
+            fontSize;
+
+
+        ctx.font =
+            style +
+            " " +
+            currentSize +
+            "px Arial";
+
+
+        while (
+            ctx.measureText(text).width >
+                maximumWidth &&
+            currentSize >
+                canvas.height * 0.014
+        ) {
+
+
+            currentSize -= 1;
+
+
+            ctx.font =
+                style +
+                " " +
+                currentSize +
+                "px Arial";
 
 
         }
+
+
+        ctx.fillText(
+            text,
+            x,
+            y
+        );
+
+
+        ctx.restore();
+
+
+    }
+
+
+
+    /* =========================
+       MISE À JOUR EN DIRECT
+    ========================== */
+
+    nameInput.addEventListener(
+        "input",
+        drawDiploma
+    );
+
+
+    dateInput.addEventListener(
+        "input",
+        drawDiploma
     );
 
 
@@ -1233,9 +1066,7 @@
                 );
 
 
-            if (
-                !printWindow
-            ) {
+            if (!printWindow) {
 
 
                 showMessage(
@@ -1274,23 +1105,32 @@
                         body {
                             margin: 0;
                             padding: 0;
+
                             width: 100%;
                             height: 100%;
+
                             background: white;
                         }
 
                         body {
                             display: flex;
+
                             justify-content: center;
+
                             align-items: center;
                         }
 
                         img {
                             display: block;
+
                             max-width: 100%;
+
                             max-height: 7.8in;
+
                             width: auto;
+
                             height: auto;
+
                             object-fit: contain;
                         }
 
@@ -1344,7 +1184,7 @@
 
 
             showMessage(
-                "Ton diplôme est prêt à être imprimé ! 🖨️"
+                "Ton diplôme est prêt à être imprimé! 🖨️"
             );
 
 
@@ -1384,9 +1224,11 @@
 
             link.download =
                 safeName
+
                     ? "diplome-explorateur-" +
                       safeName +
                       ".png"
+
                     : "diplome-explorateur-tina.png";
 
 
@@ -1408,7 +1250,7 @@
 
 
             showMessage(
-                "Ton diplôme a été enregistré ! 🎓💚"
+                "Ton diplôme a été enregistré! 🎓💚"
             );
 
 
@@ -1430,26 +1272,18 @@
 
             const confirmation =
                 confirm(
-                    "Veux-tu effacer les informations inscrites sur ton diplôme ?"
+                    "Veux-tu effacer le nom inscrit sur le diplôme?"
                 );
 
 
-            if (
-                !confirmation
-            ) {
-
+            if (!confirmation) {
 
                 return;
-
 
             }
 
 
             nameInput.value =
-                "";
-
-
-            signatureInput.value =
                 "";
 
 
@@ -1468,7 +1302,7 @@
 
 
             showMessage(
-                "Le diplôme est prêt pour un nouvel explorateur ! 🎓"
+                "Le diplôme est prêt pour un nouvel explorateur! 🎓"
             );
 
 
@@ -1481,18 +1315,12 @@
        MESSAGE
     ========================== */
 
-    function showMessage(
-        text
-    ) {
+    function showMessage(text) {
 
 
-        const message =
-            document.getElementById(
-                "message"
-            );
-
-
-        message.textContent =
+        document.getElementById(
+            "message"
+        ).textContent =
             text;
 
 
