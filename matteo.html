@@ -50,24 +50,7 @@
         header {
             background-color: white;
 
-            border-bottom:
-                1px solid #D9E8F2;
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-        }
-
-
-        .topbar {
-            max-width: 1400px;
-
-            margin: 0 auto;
-
-            padding:
-                15px 5%;
+            padding: 15px 5%;
 
             display: flex;
 
@@ -77,11 +60,21 @@
 
             gap: 30px;
 
-            flex-wrap: wrap;
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
         }
 
 
-        /* Logo uniformisé avec les autres pages */
+        .logo {
+            display: block;
+        }
+
 
         .logo img {
             width: 230px;
@@ -547,20 +540,10 @@
 
         @media (max-width: 850px) {
 
-
-            .topbar {
-                justify-content: center;
+            header {
+                flex-direction: column;
 
                 padding: 15px;
-            }
-
-
-            .logo {
-                width: 100%;
-
-                display: flex;
-
-                justify-content: center;
             }
 
 
@@ -611,7 +594,6 @@
                 grid-template-columns: 1fr;
             }
 
-
         }
 
     </style>
@@ -623,65 +605,59 @@
 
 
     <!-- =========================
-         MENU
+         EN-TÊTE
     ========================== -->
 
     <header>
 
 
-        <div class="topbar">
+        <a
+            href="index.html"
+            class="logo">
+
+
+            <img
+                src="logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse">
+
+
+        </a>
+
+
+
+        <nav>
+
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+
+            <a href="livres.html">
+                Nos livres
+            </a>
+
+
+            <a href="index.html#apropos">
+                À propos
+            </a>
+
+
+            <a href="index.html#contact">
+                Contact
+            </a>
 
 
             <a
-                href="index.html"
-                class="logo">
+                href="code-secret.html"
+                class="secret-btn">
 
-
-                <img
-                    src="logo.png"
-                    alt="Les Éditions Cap Découvertes Jeunesse">
-
+                🔐 Code secret
 
             </a>
 
 
-
-            <nav>
-
-
-                <a href="index.html">
-                    Accueil
-                </a>
-
-
-                <a href="livres.html">
-                    Nos livres
-                </a>
-
-
-                <a href="index.html#apropos">
-                    À propos
-                </a>
-
-
-                <a href="index.html#contact">
-                    Contact
-                </a>
-
-
-                <a
-                    href="code-secret.html"
-                    class="secret-btn">
-
-                    🔐 Code secret
-
-                </a>
-
-
-            </nav>
-
-
-        </div>
+        </nav>
 
 
     </header>
@@ -995,16 +971,12 @@
 
 
         <p>
-
             Les Éditions Cap Découvertes Jeunesse
-
         </p>
 
 
         <p>
-
             Des histoires qui ouvrent sur le monde
-
         </p>
 
 
