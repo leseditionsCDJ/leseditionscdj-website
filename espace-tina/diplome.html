@@ -1,1 +1,1507 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Diplôme d'explorateur | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+
+        .home-button:hover {
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 96%;
+
+            max-width: 1700px;
+
+            margin: auto;
+
+            padding:
+                35px 18px 70px;
+        }
+
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+
+        .page-header h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+
+        .page-header p {
+            max-width: 760px;
+
+            margin: auto;
+
+            color: #536B7B;
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================== */
+
+        .diploma-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 350px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+
+        .diploma-column {
+            min-width: 0;
+        }
+
+
+        .sidebar {
+            position: sticky;
+
+            top: 175px;
+        }
+
+
+        .sidebar-box {
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 20px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, 0.08);
+        }
+
+
+        .sidebar-title {
+            margin:
+                0 0 15px;
+
+            color: #174E78;
+
+            font-size: 1.2rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           DIPLÔME
+        ========================== */
+
+        .diploma-card {
+            background-color: white;
+
+            padding: 12px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, 0.10);
+        }
+
+
+        .canvas-wrapper {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            background-color: white;
+        }
+
+
+        canvas {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+        }
+
+
+        /* =========================
+           FORMULAIRE
+        ========================== */
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .field label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #174E78;
+
+            font-weight: bold;
+        }
+
+
+        .field input {
+            width: 100%;
+
+            padding:
+                12px 14px;
+
+            border:
+                2px solid #D8E7EF;
+
+            border-radius: 14px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 1rem;
+
+            outline: none;
+
+            background-color: #FAFDFE;
+        }
+
+
+        .field input:focus {
+            border-color: #2F8F46;
+
+            background-color: white;
+        }
+
+
+        .field-note {
+            display: block;
+
+            margin-top: 6px;
+
+            color: #708592;
+
+            font-size: 0.84rem;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 58px;
+
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background-color: #EAF6FC;
+
+            color: #174E78;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+
+            text-align: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
+        .tools {
+            display: grid;
+
+            gap: 10px;
+        }
+
+
+        .tool-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 24px;
+
+            padding:
+                13px 15px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 0.98rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+
+        .print-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+
+        .save-button {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+
+        .reset-button {
+            background-color: #E7EEF3;
+
+            color: #174E78;
+        }
+
+
+        /* =========================
+           CONSEIL
+        ========================== */
+
+        .tip {
+            margin: 0;
+
+            color: #617789;
+
+            font-size: 0.92rem;
+
+            line-height: 1.55;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           TABLETTE
+        ========================== */
+
+        @media (max-width: 1100px) {
+
+            .diploma-layout {
+                grid-template-columns: 1fr;
+            }
+
+
+            .sidebar {
+                position: static;
+            }
+
+
+            .tools {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+
+            .logo {
+                width: 220px;
+
+                max-width: 80%;
+            }
+
+
+            nav {
+                justify-content: center;
+            }
+
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+
+            .diploma-card {
+                padding: 6px;
+            }
+
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           IMPRESSION
+        ========================== */
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+
+            header,
+            .page-header,
+            .sidebar {
+                display: none !important;
+            }
+
+
+            main {
+                width: 100%;
+
+                max-width: none;
+
+                margin: 0;
+
+                padding: 0;
+            }
+
+
+            .diploma-layout {
+                display: block;
+            }
+
+
+            .diploma-card {
+                border: none;
+
+                box-shadow: none;
+
+                padding: 0;
+            }
+
+
+            canvas {
+                width: 100%;
+
+                height: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Retour à la page de Tina
+
+        </a>
+
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Accueil
+
+        </a>
+
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+
+        <h1>
+            🎓 Mon diplôme d'explorateur
+        </h1>
+
+
+        <p>
+
+            Félicitations pour ton aventure avec Tina !
+
+            Inscris ton nom, ajoute la date et,
+            si tu le souhaites, ta signature.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="diploma-layout">
+
+
+
+        <!-- =========================
+             DIPLÔME
+        ========================== -->
+
+        <div class="diploma-column">
+
+
+            <section class="diploma-card">
+
+
+                <div class="canvas-wrapper">
+
+
+                    <canvas
+                        id="diploma-canvas">
+                    </canvas>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             MENU
+        ========================== -->
+
+        <aside class="sidebar">
+
+
+
+            <!-- INFORMATIONS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    ✏️ Personnalise ton diplôme
+                </h2>
+
+
+                <div class="field">
+
+
+                    <label for="name-input">
+                        Décerné à :
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name-input"
+                        maxlength="35"
+                        placeholder="Écris ton prénom ou ton nom">
+
+
+                </div>
+
+
+
+                <div class="field">
+
+
+                    <label for="date-input">
+                        Date :
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="date-input"
+                        maxlength="25">
+
+
+                </div>
+
+
+
+                <div class="field">
+
+
+                    <label for="signature-input">
+                        Signature :
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="signature-input"
+                        maxlength="30"
+                        placeholder="Facultatif">
+
+
+                    <span class="field-note">
+                        Tu peux aussi laisser cette ligne vide et signer après l'impression.
+                    </span>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- MESSAGE -->
+
+            <section class="sidebar-box">
+
+
+                <div
+                    id="message"
+                    aria-live="polite">
+
+                    Ton diplôme est prêt à être personnalisé ! 🎓
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ACTIONS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🎓 Mon diplôme
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        class="tool-button print-button"
+                        id="print-button">
+
+                        🖨️ Imprimer mon diplôme
+
+                    </button>
+
+
+                    <button
+                        class="tool-button save-button"
+                        id="save-button">
+
+                        💾 Enregistrer mon diplôme
+
+                    </button>
+
+
+                    <button
+                        class="tool-button reset-button"
+                        id="reset-button">
+
+                        🔄 Recommencer
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- CONSEIL -->
+
+            <section class="sidebar-box">
+
+
+                <p class="tip">
+
+                    💡 À l'impression, choisis
+                    <strong>Lettre / 8½ × 11</strong>
+                    et l'orientation
+                    <strong>Paysage</strong>.
+
+                </p>
+
+
+            </section>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =========================
+       IMAGE DU DIPLÔME
+    ========================== */
+
+    const IMAGE_PATH =
+        "../images/diplome_tina.png?v=1";
+
+
+    const canvas =
+        document.getElementById(
+            "diploma-canvas"
+        );
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    const diplomaImage =
+        new Image();
+
+
+    const nameInput =
+        document.getElementById(
+            "name-input"
+        );
+
+
+    const dateInput =
+        document.getElementById(
+            "date-input"
+        );
+
+
+    const signatureInput =
+        document.getElementById(
+            "signature-input"
+        );
+
+
+    /* =========================
+       DATE DU JOUR
+    ========================== */
+
+    const today =
+        new Date();
+
+
+    dateInput.value =
+        today.toLocaleDateString(
+            "fr-CA",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
+
+
+    /* =========================
+       CHARGEMENT
+    ========================== */
+
+    diplomaImage.onload =
+        function() {
+
+
+            canvas.width =
+                diplomaImage.naturalWidth;
+
+
+            canvas.height =
+                diplomaImage.naturalHeight;
+
+
+            drawDiploma();
+
+
+        };
+
+
+    diplomaImage.onerror =
+        function() {
+
+
+            showMessage(
+                "Le diplôme n'a pas pu être chargé. Vérifie que l'image s'appelle bien diplome_tina.png."
+            );
+
+
+        };
+
+
+    diplomaImage.src =
+        IMAGE_PATH;
+
+
+
+    /* =========================
+       REDESSINER LE DIPLÔME
+    ========================== */
+
+    function drawDiploma() {
+
+
+        if (
+            !diplomaImage.complete ||
+            !diplomaImage.naturalWidth
+        ) {
+
+
+            return;
+
+
+        }
+
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        ctx.drawImage(
+            diplomaImage,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        const scaleX =
+            canvas.width /
+            1536;
+
+
+        const scaleY =
+            canvas.height /
+            1024;
+
+
+        /*
+            NOM
+
+            Le nom apparaît dans le grand
+            rectangle "Décerné à".
+        */
+
+        const name =
+            nameInput.value.trim();
+
+
+        if (
+            name
+        ) {
+
+
+            drawCenteredText(
+                name,
+                768 * scaleX,
+                704 * scaleY,
+                36 * scaleY,
+                "#174E78",
+                "bold"
+            );
+
+
+        }
+
+
+        /*
+            DATE
+        */
+
+        const date =
+            dateInput.value.trim();
+
+
+        if (
+            date
+        ) {
+
+
+            drawCenteredText(
+                date,
+                530 * scaleX,
+                877 * scaleY,
+                21 * scaleY,
+                "#174E78",
+                "bold"
+            );
+
+
+        }
+
+
+        /*
+            SIGNATURE
+        */
+
+        const signature =
+            signatureInput.value.trim();
+
+
+        if (
+            signature
+        ) {
+
+
+            drawCenteredText(
+                signature,
+                1087 * scaleX,
+                877 * scaleY,
+                25 * scaleY,
+                "#174E78",
+                "italic"
+            );
+
+
+        }
+
+
+    }
+
+
+
+    /* =========================
+       TEXTE CENTRÉ
+    ========================== */
+
+    function drawCenteredText(
+        text,
+        x,
+        y,
+        fontSize,
+        color,
+        style
+    ) {
+
+
+        ctx.save();
+
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.textBaseline =
+            "middle";
+
+
+        ctx.fillStyle =
+            color;
+
+
+        ctx.font =
+            style +
+            " " +
+            fontSize +
+            "px Arial";
+
+
+        /*
+            Si le nom est très long,
+            on réduit automatiquement
+            sa taille.
+        */
+
+        let currentSize =
+            fontSize;
+
+
+        const maximumWidth =
+            canvas.width *
+            0.34;
+
+
+        while (
+            ctx.measureText(
+                text
+            ).width >
+                maximumWidth &&
+            currentSize > 18
+        ) {
+
+
+            currentSize -=
+                1;
+
+
+            ctx.font =
+                style +
+                " " +
+                currentSize +
+                "px Arial";
+
+
+        }
+
+
+        ctx.fillText(
+            text,
+            x,
+            y
+        );
+
+
+        ctx.restore();
+
+
+    }
+
+
+
+    /* =========================
+       MODIFICATION EN DIRECT
+    ========================== */
+
+    [
+        nameInput,
+        dateInput,
+        signatureInput
+    ].forEach(
+        function(input) {
+
+
+            input.addEventListener(
+                "input",
+                function() {
+
+
+                    drawDiploma();
+
+
+                }
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       IMPRIMER
+    ========================== */
+
+    document.getElementById(
+        "print-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            drawDiploma();
+
+
+            const dataUrl =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            const printWindow =
+                window.open(
+                    "",
+                    "_blank"
+                );
+
+
+            if (
+                !printWindow
+            ) {
+
+
+                showMessage(
+                    "Ton navigateur a bloqué la fenêtre d'impression."
+                );
+
+
+                return;
+
+
+            }
+
+
+            printWindow.document.write(
+                `
+                <!DOCTYPE html>
+
+                <html lang="fr">
+
+                <head>
+
+                    <meta charset="UTF-8">
+
+                    <title>
+                        Mon diplôme d'explorateur
+                    </title>
+
+                    <style>
+
+                        @page {
+                            size: letter landscape;
+                            margin: 0.35in;
+                        }
+
+                        html,
+                        body {
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: white;
+                        }
+
+                        body {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        img {
+                            display: block;
+                            max-width: 100%;
+                            max-height: 7.8in;
+                            width: auto;
+                            height: auto;
+                            object-fit: contain;
+                        }
+
+                    </style>
+
+                </head>
+
+                <body>
+
+                    <img
+                        id="print-image"
+                        src="${dataUrl}"
+                        alt="Diplôme d'explorateur">
+
+                    <script>
+
+                        const img =
+                            document.getElementById(
+                                "print-image"
+                            );
+
+
+                        img.onload =
+                            function() {
+
+
+                                setTimeout(
+                                    function() {
+
+
+                                        window.print();
+
+
+                                    },
+                                    250
+                                );
+
+
+                            };
+
+                    <\/script>
+
+                </body>
+
+                </html>
+                `
+            );
+
+
+            printWindow.document.close();
+
+
+            showMessage(
+                "Ton diplôme est prêt à être imprimé ! 🖨️"
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       ENREGISTRER
+    ========================== */
+
+    document.getElementById(
+        "save-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            drawDiploma();
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            const safeName =
+                nameInput.value
+                    .trim()
+                    .replace(
+                        /[^a-zA-ZÀ-ÿ0-9_-]+/g,
+                        "-"
+                    );
+
+
+            link.download =
+                safeName
+                    ? "diplome-explorateur-" +
+                      safeName +
+                      ".png"
+                    : "diplome-explorateur-tina.png";
+
+
+            link.href =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            showMessage(
+                "Ton diplôme a été enregistré ! 🎓💚"
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
+
+    document.getElementById(
+        "reset-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Veux-tu effacer les informations inscrites sur ton diplôme ?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            nameInput.value =
+                "";
+
+
+            signatureInput.value =
+                "";
+
+
+            dateInput.value =
+                today.toLocaleDateString(
+                    "fr-CA",
+                    {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                    }
+                );
+
+
+            drawDiploma();
+
+
+            showMessage(
+                "Le diplôme est prêt pour un nouvel explorateur ! 🎓"
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(
+        text
+    ) {
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.textContent =
+            text;
+
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
