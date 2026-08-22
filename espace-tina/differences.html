@@ -12,6 +12,7 @@
         Trouve les 7 différences | Les Éditions Cap Découvertes Jeunesse
     </title>
 
+
     <style>
 
         * {
@@ -20,7 +21,12 @@
 
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             color: #203040;
 
             background:
@@ -33,64 +39,120 @@
             min-height: 100vh;
         }
 
+        a {
+            text-decoration: none;
+        }
+
+
         /* =========================
            EN-TÊTE
         ========================== */
 
         header {
             background-color: white;
-            padding: 15px 5%;
+
+            padding: 14px 5%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
-            gap: 25px;
+            gap: 20px;
 
-            border-bottom: 2px solid #E7EEF3;
+            flex-wrap: wrap;
+
+            border-bottom:
+                2px solid #E7EEF3;
         }
 
         .logo {
             width: 220px;
-            max-width: 45vw;
+
+            max-width: 70vw;
+
             height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: .2s;
         }
 
         .back-button {
             background-color: #174E78;
+
             color: white;
+        }
 
-            padding: 12px 20px;
+        .home-button {
+            background-color: white;
 
-            border-radius: 25px;
+            color: #174E78;
 
-            text-decoration: none;
-            font-weight: bold;
+            border:
+                2px solid #174E78;
+        }
 
-            transition: 0.2s;
+        .nav-button:hover {
+            transform:
+                translateY(-1px);
         }
 
         .back-button:hover {
             background-color: #2F8F46;
         }
 
+        .home-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+
         /* =========================
-           CONTENU
+           PAGE
         ========================== */
 
         main {
             width: 96%;
-            max-width: 1450px;
+
+            max-width: 1600px;
 
             margin: auto;
 
-            padding: 40px 15px 70px;
+            padding:
+                35px 18px 70px;
+        }
 
+        .page-header {
             text-align: center;
+
+            margin-bottom: 28px;
         }
 
         h1 {
-            margin: 0 0 10px;
+            margin:
+                0 0 10px;
 
             color: #174E78;
 
@@ -100,7 +162,7 @@
         .intro {
             max-width: 760px;
 
-            margin: 0 auto 25px;
+            margin: 0 auto;
 
             color: #536B7B;
 
@@ -109,26 +171,85 @@
             line-height: 1.6;
         }
 
+
         /* =========================
-           JEU
+           MISE EN PAGE PRINCIPALE
+        ========================== */
+
+        .game-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 340px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        .left-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+
+            top: 20px;
+
+            max-height:
+                calc(100vh - 40px);
+
+            overflow-y: auto;
+
+            padding-right: 3px;
+        }
+
+        .sidebar-box {
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 18px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, .08);
+        }
+
+        .sidebar-title {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 1.15rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           IMAGE DU JEU
         ========================== */
 
         .game-card {
-            max-width: 1400px;
-
-            margin: auto;
-
-            padding: 15px;
-
             background-color: white;
 
-            border: 2px solid #DDECF3;
+            padding: 14px;
+
+            border:
+                2px solid #DDECF3;
 
             border-radius: 25px;
 
             box-shadow:
                 0 15px 35px
-                rgba(23, 78, 120, 0.10);
+                rgba(23, 78, 120, .10);
         }
 
         .game-board {
@@ -143,12 +264,15 @@
             cursor: default;
 
             user-select: none;
+
+            touch-action: manipulation;
         }
 
         .game-board img {
             display: block;
 
             width: 100%;
+
             height: auto;
 
             cursor: default;
@@ -160,6 +284,7 @@
             -webkit-user-drag: none;
         }
 
+
         /* =========================
            CERCLES TROUVÉS
         ========================== */
@@ -167,12 +292,13 @@
         .found-marker {
             position: absolute;
 
-            border: 4px solid #2F8F46;
+            border:
+                4px solid #2F8F46;
 
             border-radius: 50%;
 
             background:
-                rgba(47, 143, 70, 0.07);
+                rgba(47, 143, 70, .07);
 
             box-shadow:
                 0 0 0 2px white;
@@ -180,7 +306,7 @@
             pointer-events: none;
 
             animation:
-                markerPop 0.25s ease-out;
+                markerPop .25s ease-out;
         }
 
         .found-marker::after {
@@ -189,13 +315,17 @@
             position: absolute;
 
             right: -9px;
+
             top: -12px;
 
             width: 25px;
+
             height: 25px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             background-color: #2F8F46;
@@ -206,22 +336,27 @@
 
             font-weight: bold;
 
-            font-size: 0.95rem;
+            font-size: .95rem;
         }
 
         @keyframes markerPop {
 
             from {
-                transform: scale(0.65);
+                transform:
+                    scale(.65);
+
                 opacity: 0;
             }
 
             to {
-                transform: scale(1);
+                transform:
+                    scale(1);
+
                 opacity: 1;
             }
 
         }
+
 
         /* =========================
            INDICE
@@ -230,17 +365,19 @@
         .hint-marker {
             position: absolute;
 
-            border: 5px dashed #F1B83B;
+            border:
+                5px dashed #F1B83B;
 
             border-radius: 50%;
 
             background:
-                rgba(241, 184, 59, 0.13);
+                rgba(241, 184, 59, .13);
 
             pointer-events: none;
 
             animation:
-                hintPulse 0.7s
+                hintPulse
+                .7s
                 ease-in-out
                 infinite alternate;
         }
@@ -248,7 +385,7 @@
         @keyframes hintPulse {
 
             from {
-                opacity: 0.4;
+                opacity: .4;
             }
 
             to {
@@ -256,6 +393,7 @@
             }
 
         }
+
 
         /* =========================
            MAUVAIS CLIC
@@ -265,13 +403,16 @@
             position: absolute;
 
             width: 55px;
+
             height: 55px;
 
             transform:
                 translate(-50%, -50%);
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             color: #D93E3E;
@@ -286,7 +427,8 @@
                 0 2px 3px white;
 
             animation:
-                wrongPop 0.7s
+                wrongPop
+                .7s
                 ease-out
                 forwards;
         }
@@ -298,7 +440,7 @@
 
                 transform:
                     translate(-50%, -50%)
-                    scale(0.5);
+                    scale(.5);
             }
 
             30% {
@@ -314,26 +456,15 @@
 
                 transform:
                     translate(-50%, -50%)
-                    scale(0.9);
+                    scale(.9);
             }
 
         }
 
+
         /* =========================
-           INFOS DU JEU
+           COMPTEUR
         ========================== */
-
-        .game-info {
-            max-width: 1000px;
-
-            margin: 25px auto 0;
-
-            padding: 24px;
-
-            background-color: #F7FBFD;
-
-            border-radius: 22px;
-        }
 
         .top-info {
             display: flex;
@@ -342,7 +473,7 @@
 
             justify-content: space-between;
 
-            gap: 20px;
+            gap: 14px;
 
             flex-wrap: wrap;
         }
@@ -350,27 +481,23 @@
         .counter {
             color: #174E78;
 
-            font-size: 1.25rem;
+            font-size: 1.16rem;
 
             font-weight: bold;
         }
 
         .stars {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
 
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
-
-        /* =========================
-           PROGRESSION
-        ========================== */
 
         .progress-track {
             width: 100%;
 
-            height: 18px;
+            height: 16px;
 
-            margin-top: 16px;
+            margin-top: 15px;
 
             background-color: #DDECF3;
 
@@ -389,90 +516,70 @@
             border-radius: inherit;
 
             transition:
-                width 0.35s ease;
+                width .35s ease;
         }
 
-        /* =========================
-           LISTE DES DIFFÉRENCES
-        ========================== */
-
-        .difference-list {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 10px;
-
-            margin-top: 20px;
-        }
-
-        .difference-item {
-            padding: 10px 12px;
-
-            border-radius: 15px;
-
-            background-color: white;
-
-            color: #617789;
-
-            font-size: 0.95rem;
-
-            font-weight: bold;
-        }
-
-        .difference-item.found {
-            background-color: #EFF8E9;
-
-            color: #2F8F46;
-        }
 
         /* =========================
            MESSAGE
         ========================== */
 
         #message {
-            min-height: 32px;
+            min-height: 62px;
 
-            margin-top: 18px;
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background-color: #EAF6FC;
 
             color: #174E78;
 
-            font-size: 1.05rem;
+            font-size: 1rem;
 
             font-weight: bold;
+
+            line-height: 1.4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
         }
+
 
         /* =========================
            BOUTONS
         ========================== */
 
         .tools {
-            display: flex;
+            display: grid;
 
-            flex-wrap: wrap;
+            grid-template-columns: 1fr;
 
-            justify-content: center;
-
-            gap: 12px;
-
-            margin-top: 18px;
+            gap: 10px;
         }
 
         .tool-button {
+            width: 100%;
+
             border: none;
 
-            border-radius: 25px;
+            border-radius: 22px;
 
-            padding: 13px 20px;
+            padding:
+                12px 14px;
 
-            font-size: 1rem;
+            font-size: .96rem;
 
             font-weight: bold;
 
             cursor: pointer;
 
-            transition: 0.2s;
+            transition: .2s;
         }
 
         .tool-button:hover {
@@ -504,6 +611,48 @@
             color: white;
         }
 
+
+        /* =========================
+           LISTE DES DIFFÉRENCES
+        ========================== */
+
+        .difference-list {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 9px;
+        }
+
+        .difference-item {
+            padding:
+                11px 12px;
+
+            border:
+                2px solid #E1EEF3;
+
+            border-radius: 15px;
+
+            background-color: white;
+
+            color: #617789;
+
+            font-size: .92rem;
+
+            font-weight: bold;
+
+            text-align: left;
+        }
+
+        .difference-item.found {
+            background-color: #EFF8E9;
+
+            border-color: #A8D8B2;
+
+            color: #2F8F46;
+        }
+
+
         /* =========================
            VICTOIRE
         ========================== */
@@ -511,29 +660,35 @@
         .victory {
             display: none;
 
-            max-width: 700px;
-
-            margin: 25px auto 0;
-
-            padding: 25px;
+            padding: 22px;
 
             background-color: #EFF8E9;
 
             color: #2F8F46;
 
+            border:
+                3px solid #2F8F46;
+
             border-radius: 22px;
 
-            font-size: 1.25rem;
+            font-size: 1.1rem;
 
             font-weight: bold;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px
+                rgba(47,143,70,.15);
         }
 
         .victory.show {
             display: block;
 
             animation:
-                markerPop 0.35s ease-out;
+                markerPop .35s ease-out;
         }
+
 
         /* =========================
            CONFETTIS
@@ -545,6 +700,7 @@
             top: -20px;
 
             width: 10px;
+
             height: 16px;
 
             z-index: 9999;
@@ -565,28 +721,59 @@
                     translateY(110vh)
                     rotate(720deg);
 
-                opacity: 0.2;
+                opacity: .2;
             }
 
         }
 
+
         /* =========================
-           MOBILE
+           TABLETTE
         ========================== */
 
-        @media (max-width: 750px) {
+        @media (max-width: 1100px) {
 
-            header {
-                flex-direction: column;
+            .game-layout {
+                grid-template-columns: 1fr;
             }
 
-            h1 {
-                font-size: 2rem;
+            .sidebar {
+                position: static;
+
+                max-height: none;
+
+                overflow: visible;
+            }
+
+            .tools {
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
             .difference-list {
                 grid-template-columns:
                     repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
             }
 
             .game-card {
@@ -597,9 +784,9 @@
                 border-width: 3px;
             }
 
-        }
-
-        @media (max-width: 450px) {
+            .tools {
+                grid-template-columns: 1fr;
+            }
 
             .difference-list {
                 grid-template-columns: 1fr;
@@ -617,6 +804,7 @@
 
 <header>
 
+
     <a href="../index.html">
 
         <img
@@ -627,177 +815,277 @@
     </a>
 
 
-    <a
-        href="./"
-        class="back-button">
+    <nav>
 
-        ← Retour à l'espace Tina
 
-    </a>
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Retour à la page de Tina
+
+        </a>
+
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Accueil
+
+        </a>
+
+
+    </nav>
+
 
 </header>
 
 
+
 <main>
 
-    <h1>
-        🔎 Trouve les 7 différences !
-    </h1>
+
+    <div class="page-header">
 
 
-    <p class="intro">
-
-        Observe attentivement les deux images.
-
-        Quand tu trouves une différence,
-        clique dessus dans l'image du haut
-        ou dans celle du bas.
-
-    </p>
+        <h1>
+            🔎 Trouve les 7 différences !
+        </h1>
 
 
-    <section class="game-card">
+        <p class="intro">
+
+            Observe attentivement les deux images.
+
+            Quand tu trouves une différence,
+            clique dessus dans l'image du haut
+            ou dans celle du bas.
+
+        </p>
 
 
-        <div
-            class="game-board"
-            id="game-board">
+    </div>
 
 
-            <img
-                src="../images/differences_tina.png?v=3"
-                alt="Trouve les 7 différences avec Mattéo et Tina"
-                id="game-image">
+
+    <div class="game-layout">
+
+
+        <!-- =========================
+             IMAGE À GAUCHE
+        ========================== -->
+
+        <div class="left-column">
+
+
+            <section class="game-card">
+
+
+                <div
+                    class="game-board"
+                    id="game-board">
+
+
+                    <img
+                        src="../images/differences_tina.png?v=3"
+                        alt="Trouve les 7 différences avec Mattéo et Tina"
+                        id="game-image">
+
+
+                </div>
+
+
+            </section>
 
 
         </div>
 
 
-        <div class="game-info">
+
+        <!-- =========================
+             MENU À DROITE
+        ========================== -->
+
+        <aside class="sidebar">
 
 
-            <div class="top-info">
+
+            <!-- COMPTEUR -->
+
+            <section class="sidebar-box">
 
 
-                <div
-                    class="counter"
-                    id="counter">
+                <div class="top-info">
 
-                    0 / 7 différences trouvées
+
+                    <div
+                        class="counter"
+                        id="counter">
+
+                        0 / 7 différences trouvées
+
+                    </div>
+
+
+                    <div
+                        class="stars"
+                        id="stars">
+
+                        ⭐⭐⭐
+
+                    </div>
+
 
                 </div>
 
 
-                <div
-                    class="stars"
-                    id="stars">
+                <div class="progress-track">
 
-                    ⭐⭐⭐
+
+                    <div
+                        class="progress-bar"
+                        id="progress-bar">
+                    </div>
+
 
                 </div>
 
 
-            </div>
+            </section>
 
 
-            <div class="progress-track">
+
+            <!-- MESSAGE -->
+
+            <section class="sidebar-box">
+
 
                 <div
-                    class="progress-bar"
-                    id="progress-bar">
+                    id="message"
+                    aria-live="polite">
+
+                    À toi de jouer ! 👀
+
                 </div>
 
-            </div>
 
+            </section>
+
+
+
+            <!-- OUTILS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🎮 Mes outils
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        class="tool-button hint-button"
+                        id="hint-button">
+
+                        💡 Un indice
+
+                    </button>
+
+
+                    <button
+                        class="tool-button answers-button"
+                        id="answers-button">
+
+                        👀 Voir les réponses
+
+                    </button>
+
+
+                    <button
+                        class="tool-button restart-button"
+                        id="restart-button">
+
+                        🔄 Recommencer
+
+                    </button>
+
+
+                    <button
+                        class="tool-button sound-button"
+                        id="sound-button">
+
+                        🔊 Son activé
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- LISTE -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🔎 Différences trouvées
+                </h2>
+
+
+                <div
+                    class="difference-list"
+                    id="difference-list">
+                </div>
+
+
+            </section>
+
+
+
+            <!-- VICTOIRE -->
 
             <div
-                class="difference-list"
-                id="difference-list">
-            </div>
+                class="victory"
+                id="victory">
 
-
-            <div
-                id="message"
-                aria-live="polite">
-
-                À toi de jouer ! 👀
+                🎉 Bravo ! Tu as trouvé les 7 différences !
 
             </div>
 
 
-            <div class="tools">
+        </aside>
 
 
-                <button
-                    class="tool-button hint-button"
-                    id="hint-button">
-
-                    💡 Un indice
-
-                </button>
-
-
-                <button
-                    class="tool-button answers-button"
-                    id="answers-button">
-
-                    👀 Voir les réponses
-
-                </button>
-
-
-                <button
-                    class="tool-button restart-button"
-                    id="restart-button">
-
-                    🔄 Recommencer
-
-                </button>
-
-
-                <button
-                    class="tool-button sound-button"
-                    id="sound-button">
-
-                    🔊 Son activé
-
-                </button>
-
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            class="victory"
-            id="victory">
-
-            🎉 Bravo ! Tu as trouvé les 7 différences !
-
-        </div>
-
-
-    </section>
+    </div>
 
 
 </main>
 
 
+
 <script>
 
+
     /* =====================================================
-       7 DIFFÉRENCES
+       LES 7 DIFFÉRENCES
 
-       hit =
-       zone invisible assez grande pour que
-       l'enfant puisse facilement cliquer.
+       hit :
+       grande zone invisible permettant
+       à l'enfant de cliquer facilement.
 
-       marker =
-       cercle précis affiché autour de la
-       véritable différence.
+       marker :
+       cercle précis qui apparaît sur
+       la véritable différence.
     ===================================================== */
+
 
     const differences = [
 
@@ -830,6 +1118,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 5.20,
@@ -848,6 +1137,7 @@
 
             ]
         },
+
 
 
         /* =========================
@@ -878,6 +1168,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 63.70,
@@ -898,8 +1189,9 @@
         },
 
 
+
         /* =========================
-           3 — PANNEAU DE PORTE
+           3 — PANNEAU DE LA PORTE
         ========================== */
 
         {
@@ -926,6 +1218,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 72.40,
@@ -944,6 +1237,7 @@
 
             ]
         },
+
 
 
         /* =========================
@@ -974,6 +1268,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 70.50,
@@ -992,6 +1287,7 @@
 
             ]
         },
+
 
 
         /* =========================
@@ -1022,6 +1318,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 41.50,
@@ -1040,6 +1337,7 @@
 
             ]
         },
+
 
 
         /* =========================
@@ -1070,6 +1368,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 52.50,
@@ -1088,6 +1387,7 @@
 
             ]
         },
+
 
 
         /* =========================
@@ -1118,6 +1418,7 @@
                     }
                 },
 
+
                 {
                     hit: {
                         left: 65.50,
@@ -1138,6 +1439,7 @@
         }
 
     ];
+
 
 
     /* =========================
@@ -1186,6 +1488,30 @@
         );
 
 
+    const hintButton =
+        document.getElementById(
+            "hint-button"
+        );
+
+
+    const answersButton =
+        document.getElementById(
+            "answers-button"
+        );
+
+
+    const restartButton =
+        document.getElementById(
+            "restart-button"
+        );
+
+
+    const soundButton =
+        document.getElementById(
+            "sound-button"
+        );
+
+
     let found =
         new Set();
 
@@ -1206,11 +1532,13 @@
         [];
 
 
+
     /* =========================
        LISTE DES DIFFÉRENCES
     ========================== */
 
     function buildDifferenceList() {
+
 
         differenceList.innerHTML =
             "";
@@ -1236,7 +1564,7 @@
 
 
                 item.textContent =
-                    "Différence " +
+                    "○ Différence " +
                     (index + 1);
 
 
@@ -1248,10 +1576,12 @@
             }
         );
 
+
     }
 
 
     buildDifferenceList();
+
 
 
     /* =========================
@@ -1262,17 +1592,20 @@
         event
     ) {
 
+
         const rect =
             board.getBoundingClientRect();
 
 
         return {
 
+
             x:
                 (
                     event.clientX -
                     rect.left
                 ) /
+
                 rect.width *
                 100,
 
@@ -1282,12 +1615,16 @@
                     event.clientY -
                     rect.top
                 ) /
+
                 rect.height *
                 100
 
+
         };
 
+
     }
+
 
 
     function pointInsideArea(
@@ -1296,17 +1633,16 @@
         area
     ) {
 
+
         return (
 
-            x >=
-                area.left &&
+            x >= area.left &&
 
             x <=
                 area.left +
                 area.width &&
 
-            y >=
-                area.top &&
+            y >= area.top &&
 
             y <=
                 area.top +
@@ -1314,7 +1650,9 @@
 
         );
 
+
     }
+
 
 
     /* =========================
@@ -1336,49 +1674,44 @@
                 null;
 
 
-            differences.forEach(
-                function(diff) {
+            for (
+                const diff of differences
+            ) {
 
 
-                    if (
-                        matched
-                    ) {
-
-                        return;
-
-                    }
+                const hit =
+                    diff.areas.some(
+                        function(area) {
 
 
-                    const hit =
-                        diff.areas.some(
-                            function(area) {
+                            return pointInsideArea(
+                                point.x,
+                                point.y,
+                                area.hit
+                            );
 
 
-                                return pointInsideArea(
-                                    point.x,
-                                    point.y,
-                                    area.hit
-                                );
+                        }
+                    );
 
 
-                            }
-                        );
+                if (
+                    hit
+                ) {
 
 
-                    if (
-                        hit
-                    ) {
+                    matched =
+                        diff;
 
 
-                        matched =
-                            diff;
-
-
-                    }
+                    break;
 
 
                 }
-            );
+
+
+            }
+
 
 
             /* =========================
@@ -1451,6 +1784,7 @@
             }
 
 
+
             /* =========================
                MAUVAISE RÉPONSE
             ========================== */
@@ -1473,8 +1807,9 @@
     );
 
 
+
     /* =========================
-       CRÉER UN CERCLE
+       CRÉER UN MARQUEUR
     ========================== */
 
     function createMarker(
@@ -1520,7 +1855,9 @@
 
         return marker;
 
+
     }
+
 
 
     /* =========================
@@ -1552,6 +1889,7 @@
 
 
     }
+
 
 
     /* =========================
@@ -1608,8 +1946,9 @@
     }
 
 
+
     /* =========================
-       PROGRESSION
+       MISE À JOUR
     ========================== */
 
     function updateGame() {
@@ -1672,7 +2011,7 @@
 
 
                     item.textContent =
-                        "Différence " +
+                        "○ Différence " +
                         (index + 1);
 
 
@@ -1689,6 +2028,7 @@
     }
 
 
+
     /* =========================
        ÉTOILES
     ========================== */
@@ -1696,40 +2036,25 @@
     function updateStars() {
 
 
-        let text =
-            "";
-
-
-        for (
-            let i = 0;
-            i < 3;
-            i++
-        ) {
-
-
-            text +=
-                i < stars
-                    ? "⭐"
-                    : "☆";
-
-
-        }
-
-
         starsDisplay.textContent =
-            text;
+            "⭐".repeat(
+                stars
+            ) +
+
+            "☆".repeat(
+                3 - stars
+            );
 
 
     }
+
 
 
     /* =========================
        INDICE
     ========================== */
 
-    document.getElementById(
-        "hint-button"
-    ).addEventListener(
+    hintButton.addEventListener(
         "click",
         function() {
 
@@ -1826,6 +2151,7 @@
     );
 
 
+
     function clearHints() {
 
 
@@ -1847,13 +2173,12 @@
     }
 
 
+
     /* =========================
        VOIR LES RÉPONSES
     ========================== */
 
-    document.getElementById(
-        "answers-button"
-    ).addEventListener(
+    answersButton.addEventListener(
         "click",
         function() {
 
@@ -1926,13 +2251,12 @@
     );
 
 
+
     /* =========================
        RECOMMENCER
     ========================== */
 
-    document.getElementById(
-        "restart-button"
-    ).addEventListener(
+    restartButton.addEventListener(
         "click",
         function() {
 
@@ -2000,131 +2324,12 @@
     );
 
 
-    /* =========================
-       VICTOIRE
-    ========================== */
-
-    function showVictory() {
-
-
-        victory.classList.add(
-            "show"
-        );
-
-
-        victory.innerHTML =
-            "🎉 Bravo ! Tu as trouvé les 7 différences !<br>" +
-            "<span style='font-size:1rem'>" +
-            "Résultat : " +
-            starsDisplay.textContent +
-            "</span>";
-
-
-        launchConfetti();
-
-
-        playVictorySound();
-
-
-    }
-
 
     /* =========================
-       CONFETTIS
+       SON ACTIVÉ / DÉSACTIVÉ
     ========================== */
 
-    function launchConfetti() {
-
-
-        const colors = [
-
-            "#2F8F46",
-            "#174E78",
-            "#F1B83B",
-            "#EC4899",
-            "#8B5CF6",
-            "#F97316"
-
-        ];
-
-
-        for (
-            let i = 0;
-            i < 70;
-            i++
-        ) {
-
-
-            const piece =
-                document.createElement(
-                    "div"
-                );
-
-
-            piece.className =
-                "confetti";
-
-
-            piece.style.left =
-                Math.random() *
-                100 +
-                "vw";
-
-
-            piece.style.backgroundColor =
-                colors[
-                    Math.floor(
-                        Math.random() *
-                        colors.length
-                    )
-                ];
-
-
-            piece.style.animationDelay =
-                Math.random() *
-                0.8 +
-                "s";
-
-
-            piece.style.animationDuration =
-                (
-                    1.8 +
-                    Math.random() *
-                    1.5
-                ) +
-                "s";
-
-
-            document.body.appendChild(
-                piece
-            );
-
-
-            setTimeout(
-                function() {
-
-
-                    piece.remove();
-
-
-                },
-                4000
-            );
-
-
-        }
-
-
-    }
-
-
-    /* =========================
-       SON
-    ========================== */
-
-    document.getElementById(
-        "sound-button"
-    ).addEventListener(
+    soundButton.addEventListener(
         "click",
         function() {
 
@@ -2133,15 +2338,36 @@
                 !soundEnabled;
 
 
-            this.textContent =
+            soundButton.textContent =
                 soundEnabled
+
                     ? "🔊 Son activé"
+
                     : "🔇 Son désactivé";
+
+
+            if (
+                soundEnabled
+            ) {
+
+
+                playTone(
+                    600,
+                    .12
+                );
+
+
+            }
 
 
         }
     );
 
+
+
+    /* =========================
+       PETITS SONS
+    ========================== */
 
     function playTone(
         frequency,
@@ -2199,22 +2425,40 @@
 
 
             gain.gain.value =
-                0.06;
+                .06;
 
 
             oscillator.start();
 
 
-            gain.gain.exponentialRampToValueAtTime(
-                0.001,
-                audio.currentTime +
-                duration
-            );
+            gain.gain
+                .exponentialRampToValueAtTime(
+
+                    .001,
+
+                    audio.currentTime +
+                    duration
+
+                );
 
 
             oscillator.stop(
                 audio.currentTime +
                 duration
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    audio.close();
+
+
+                },
+                duration *
+                1000 +
+                100
             );
 
 
@@ -2228,12 +2472,13 @@
     }
 
 
+
     function playGoodSound() {
 
 
         playTone(
             620,
-            0.15
+            .15
         );
 
 
@@ -2243,7 +2488,7 @@
 
                 playTone(
                     820,
-                    0.17
+                    .17
                 );
 
 
@@ -2255,29 +2500,30 @@
     }
 
 
+
     function playWrongSound() {
 
 
         playTone(
             190,
-            0.22
+            .22
         );
 
 
     }
 
 
+
     function playVictorySound() {
 
 
-        const notes = [
-
-            523,
-            659,
-            784,
-            1046
-
-        ];
+        const notes =
+            [
+                523,
+                659,
+                784,
+                1046
+            ];
 
 
         notes.forEach(
@@ -2290,7 +2536,7 @@
 
                         playTone(
                             note,
-                            0.27
+                            .27
                         );
 
 
@@ -2305,6 +2551,132 @@
 
 
     }
+
+
+
+    /* =========================
+       VICTOIRE
+    ========================== */
+
+    function showVictory() {
+
+
+        victory.classList.add(
+            "show"
+        );
+
+
+        victory.innerHTML =
+            "🎉 Bravo ! Tu as trouvé les 7 différences !" +
+
+            "<br>" +
+
+            "<span style='font-size:1rem'>" +
+
+            "Résultat : " +
+
+            starsDisplay.textContent +
+
+            "</span>";
+
+
+        launchConfetti();
+
+
+        playVictorySound();
+
+
+    }
+
+
+
+    /* =========================
+       CONFETTIS
+    ========================== */
+
+    function launchConfetti() {
+
+
+        const colors =
+            [
+                "#2F8F46",
+                "#174E78",
+                "#F1B83B",
+                "#EC4899",
+                "#8B5CF6",
+                "#F97316"
+            ];
+
+
+        for (
+            let i = 0;
+            i < 70;
+            i++
+        ) {
+
+
+            const piece =
+                document.createElement(
+                    "div"
+                );
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            piece.style.backgroundColor =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            piece.style.animationDelay =
+                Math.random() *
+                .8 +
+                "s";
+
+
+            piece.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() *
+                    1.5
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    piece.remove();
+
+
+                },
+                4000
+            );
+
+
+        }
+
+
+    }
+
 
 
     /* =========================
@@ -2323,11 +2695,13 @@
     }
 
 
+
     /* =========================
        INITIALISATION
     ========================== */
 
     updateGame();
+
 
 </script>
 
