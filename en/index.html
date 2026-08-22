@@ -1,1 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Les Éditions Cap Découvertes Jeunesse</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background-color: #FFFDF7;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 24px;
+
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: #174E78;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #2F8F46;
+        }
+
+        .secret-button {
+            background-color: #174E78;
+
+            color: white;
+
+            padding:
+                12px 18px;
+
+            border-radius: 25px;
+        }
+
+        .secret-button:hover {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding:
+                9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+        }
+
+        .language-button:hover {
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+        }
+
+
+        /* =========================
+           HOME
+        ========================== */
+
+        .hero {
+            min-height: 620px;
+
+            padding:
+                80px 8%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(255, 253, 247, 0.94),
+                    rgba(234, 246, 252, 0.96)
+                );
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            margin:
+                0 0 20px;
+
+            font-size: 3.5rem;
+
+            line-height: 1.1;
+
+            color: #174E78;
+        }
+
+        .hero h1 span {
+            color: #2F8F46;
+        }
+
+        .hero p {
+            max-width: 750px;
+
+            margin:
+                0 auto 35px;
+
+            font-size: 1.35rem;
+
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding:
+                15px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-size: 1.05rem;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .button-books {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .button-books:hover {
+            background-color: #246F37;
+        }
+
+        .button-secret {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .button-secret:hover {
+            background-color: #103C5D;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            padding:
+                90px 20px;
+
+            background-color: #FFFDF7;
+
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .about h2 {
+            margin:
+                0 0 10px;
+
+            font-size: 2.8rem;
+
+            color: #174E78;
+        }
+
+        .about-tagline {
+            margin:
+                0 0 35px;
+
+            color: #2F8F46;
+
+            font-size: 1.4rem;
+
+            font-weight: bold;
+        }
+
+        .about-text {
+            max-width: 800px;
+
+            margin:
+                0 auto 25px;
+
+            font-size: 1.15rem;
+
+            line-height: 1.8;
+
+            color: #344554;
+        }
+
+        .mission-title {
+            margin-top: 50px;
+
+            margin-bottom: 15px;
+
+            font-size: 2rem;
+
+            color: #174E78;
+        }
+
+        .mission-intro {
+            max-width: 750px;
+
+            margin:
+                0 auto 35px;
+
+            font-size: 1.15rem;
+
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-top: 35px;
+        }
+
+        .value-card {
+            background-color: white;
+
+            border:
+                2px solid #E1EEF3;
+
+            border-radius: 22px;
+
+            padding:
+                28px 20px;
+
+            box-shadow:
+                0 6px 18px
+                rgba(0, 0, 0, 0.04);
+        }
+
+        .value-icon {
+            font-size: 2.2rem;
+
+            margin-bottom: 12px;
+        }
+
+        .value-card h3 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 1.25rem;
+        }
+
+        .value-card p {
+            margin: 0;
+
+            font-size: 1rem;
+
+            line-height: 1.6;
+        }
+
+        .about-conclusion {
+            max-width: 800px;
+
+            margin:
+                45px auto 0;
+
+            padding: 28px;
+
+            background-color: #EAF6FC;
+
+            border-radius: 22px;
+
+            font-size: 1.2rem;
+
+            line-height: 1.7;
+
+            font-weight: bold;
+
+            color: #174E78;
+        }
+
+        .about-signature {
+            margin-top: 35px;
+
+            color: #2F8F46;
+
+            font-size: 1.15rem;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            padding:
+                90px 20px;
+
+            background-color: white;
+
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 750px;
+
+            margin: auto;
+        }
+
+        .contact h2 {
+            margin-top: 0;
+
+            margin-bottom: 15px;
+
+            color: #174E78;
+
+            font-size: 2.6rem;
+        }
+
+        .contact-intro {
+            max-width: 650px;
+
+            margin:
+                0 auto 35px;
+
+            font-size: 1.15rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CONTACT FORM
+        ========================== */
+
+        .contact-form {
+            max-width: 650px;
+
+            margin:
+                0 auto;
+
+            padding: 35px;
+
+            background-color: #F7FBFD;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+            color: #174E78;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            padding:
+                14px 15px;
+
+            border:
+                1px solid #BFCFD8;
+
+            border-radius: 10px;
+
+            background-color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 1rem;
+
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #2F8F46;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(47, 143, 70, 0.12);
+        }
+
+        .form-group textarea {
+            min-height: 160px;
+
+            resize: vertical;
+        }
+
+        .send-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 30px;
+
+            padding:
+                15px 25px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-size: 1.05rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .send-button:hover {
+            background-color: #246F37;
+        }
+
+        .send-button:disabled {
+            opacity: 0.7;
+
+            cursor: wait;
+        }
+
+        #result {
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-weight: bold;
+
+            min-height: 24px;
+        }
+
+        .contact-name {
+            margin-top: 35px;
+
+            margin-bottom: 5px;
+
+            color: #174E78;
+
+            font-size: 1.05rem;
+
+            font-weight: bold;
+        }
+
+        .contact-slogan {
+            margin-top: 5px;
+
+            color: #2F8F46;
+
+            font-size: 0.95rem;
+
+            font-style: italic;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+            .logo {
+                width: 220px;
+
+                max-width: 80%;
+            }
+
+            nav {
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+            .hero {
+                min-height: 520px;
+
+                padding:
+                    60px 25px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.15rem;
+            }
+
+            .about {
+                padding:
+                    65px 20px;
+            }
+
+            .about h2 {
+                font-size: 2.3rem;
+            }
+
+            .values-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .contact {
+                padding:
+                    65px 20px;
+            }
+
+            .contact h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-form {
+                padding:
+                    25px 20px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+
+        <a href="#home">
+
+            <img
+                src="../logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse"
+                class="logo">
+
+        </a>
+
+
+        <nav>
+
+
+            <a href="#home">
+                Home
+            </a>
+
+
+            <a href="livres.html">
+                Our Books
+            </a>
+
+
+            <a href="#about">
+                About
+            </a>
+
+
+            <a href="#contact">
+                Contact
+            </a>
+
+
+            <a
+                href="code-secret.html"
+                class="secret-button">
+
+                🔐 Secret Code
+
+            </a>
+
+
+            <a
+                href="../index.html"
+                class="language-button"
+                lang="fr">
+
+                🇫🇷 FR
+
+            </a>
+
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section
+        class="hero"
+        id="home">
+
+
+        <div class="hero-content">
+
+
+            <h1>
+
+                Stories that open up
+
+                <span>
+                    the world
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                At Les Éditions Cap Découvertes Jeunesse,
+                stories become adventures where children can
+                learn, discover and be amazed by the world
+                around them.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="livres.html"
+                    class="button button-books">
+
+                    Discover Our Books
+
+                </a>
+
+
+                <a
+                    href="code-secret.html"
+                    class="button button-secret">
+
+                    🔐 I Have a Secret Code
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+        class="about"
+        id="about">
+
+
+        <div class="about-content">
+
+
+            <h2>
+
+                About
+                Les Éditions Cap Découvertes Jeunesse
+
+            </h2>
+
+
+            <p class="about-tagline">
+
+                Stories that open up the world
+
+            </p>
+
+
+            <p class="about-text">
+
+                Les Éditions Cap Découvertes Jeunesse
+                was born from a simple idea:
+                children should be able to learn
+                while enjoying a great story.
+
+            </p>
+
+
+            <p class="about-text">
+
+                We create children's stories where
+                adventure, humor and discovery come together.
+
+                Every book is designed to spark children's
+                curiosity, inspire a sense of wonder
+                and help them discover new things
+                about the world around them.
+
+            </p>
+
+
+            <p class="about-text">
+
+                We believe a great story can make children
+                laugh, surprise them and capture
+                their imagination...
+
+                while also teaching them
+                something real.
+
+                That's why our books place just as much
+                importance on characters and adventure
+                as they do on the knowledge
+                woven naturally into each story.
+
+            </p>
+
+
+
+            <h3 class="mission-title">
+
+                Our Mission
+
+            </h3>
+
+
+            <p class="mission-intro">
+
+                To create books that give children
+                the joy of reading
+                and the desire to keep discovering.
+
+            </p>
+
+
+
+            <div class="values-grid">
+
+
+                <!-- CURIOSITY -->
+
+                <div class="value-card">
+
+
+                    <div class="value-icon">
+                        🔎
+                    </div>
+
+
+                    <h3>
+                        Curiosity
+                    </h3>
+
+
+                    <p>
+
+                        Asking questions,
+                        observing and wanting
+                        to understand.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- WONDER -->
+
+                <div class="value-card">
+
+
+                    <div class="value-icon">
+                        ✨
+                    </div>
+
+
+                    <h3>
+                        Wonder
+                    </h3>
+
+
+                    <p>
+
+                        Discovering all the
+                        fascinating things
+                        our world has to offer.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- LEARNING -->
+
+                <div class="value-card">
+
+
+                    <div class="value-icon">
+                        📚
+                    </div>
+
+
+                    <h3>
+                        Learning
+                    </h3>
+
+
+                    <p>
+
+                        Gaining new knowledge
+                        while having fun.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- RESPECT -->
+
+                <div class="value-card">
+
+
+                    <div class="value-icon">
+                        🌱
+                    </div>
+
+
+                    <h3>
+                        Respect
+                    </h3>
+
+
+                    <p>
+
+                        Learning more about
+                        animals, nature and
+                        the world around us
+                        so we can better respect them.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="about-conclusion">
+
+                At Les Éditions Cap Découvertes Jeunesse,
+                we want every book to be both
+                a story children will love
+                and a discovery they will remember.
+
+            </div>
+
+
+
+            <p class="about-signature">
+
+                Wonder • Learn • Grow
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        class="contact"
+        id="contact">
+
+
+        <div class="contact-content">
+
+
+            <h2>
+                Contact Us
+            </h2>
+
+
+            <p class="contact-intro">
+
+                Have a question about our books,
+                activities or
+                Les Éditions Cap Découvertes Jeunesse?
+
+                Send us a message using the form below.
+
+            </p>
+
+
+
+            <form
+                class="contact-form"
+                id="contact-form">
+
+
+                <!-- WEB3FORMS KEY -->
+
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="8c0620dc-ab7a-4924-80f8-6408190e196f">
+
+
+                <!-- EMAIL SUBJECT -->
+
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="New message received on leseditionscdj.ca - English website">
+
+
+                <!-- SENDER -->
+
+                <input
+                    type="hidden"
+                    name="from_name"
+                    value="Les Éditions Cap Découvertes Jeunesse Website">
+
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your name"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+
+                    <label for="email">
+
+                        Your Email Address
+
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-group">
+
+
+                    <label for="message">
+
+                        Your Message
+
+                    </label>
+
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message here..."
+                        required></textarea>
+
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="send-button"
+                    id="send-button">
+
+                    ✉️ Send Message
+
+                </button>
+
+
+
+                <div id="result"></div>
+
+
+            </form>
+
+
+
+            <p class="contact-name">
+
+                Les Éditions Cap Découvertes Jeunesse
+
+            </p>
+
+
+            <p class="contact-slogan">
+
+                Stories that open up the world
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT FORM SCRIPT
+    ========================== -->
+
+    <script>
+
+
+        const form =
+            document.getElementById(
+                "contact-form"
+            );
+
+
+        const result =
+            document.getElementById(
+                "result"
+            );
+
+
+        const sendButton =
+            document.getElementById(
+                "send-button"
+            );
+
+
+
+        form.addEventListener(
+            "submit",
+            async function(event) {
+
+
+                event.preventDefault();
+
+
+                result.style.color =
+                    "#174E78";
+
+
+                result.textContent =
+                    "Sending your message...";
+
+
+                sendButton.disabled =
+                    true;
+
+
+                sendButton.textContent =
+                    "Sending...";
+
+
+
+                const formData =
+                    new FormData(form);
+
+
+                const object =
+                    Object.fromEntries(
+                        formData
+                    );
+
+
+                const json =
+                    JSON.stringify(
+                        object
+                    );
+
+
+
+                try {
+
+
+                    const response =
+                        await fetch(
+
+                            "https://api.web3forms.com/submit",
+
+                            {
+
+                                method:
+                                    "POST",
+
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json",
+
+                                    "Accept":
+                                        "application/json"
+
+                                },
+
+
+                                body:
+                                    json
+
+                            }
+
+                        );
+
+
+
+                    const data =
+                        await response.json();
+
+
+
+                    if (data.success) {
+
+
+                        result.style.color =
+                            "#2F8F46";
+
+
+                        result.textContent =
+                            "Thank you! Your message has been sent successfully.";
+
+
+                        form.reset();
+
+
+                    }
+
+
+                    else {
+
+
+                        result.style.color =
+                            "#C0392B";
+
+
+                        result.textContent =
+                            "Something went wrong. Please try again.";
+
+
+                    }
+
+
+                }
+
+
+                catch (error) {
+
+
+                    result.style.color =
+                        "#C0392B";
+
+
+                    result.textContent =
+                        "We couldn't send your message right now. Please try again.";
+
+
+                }
+
+
+
+                sendButton.disabled =
+                    false;
+
+
+                sendButton.textContent =
+                    "✉️ Send Message";
+
+
+            }
+
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
