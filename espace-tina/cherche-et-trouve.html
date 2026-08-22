@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Cherche et trouve | Tina la tortue voyageuse</title>
 
     <style>
@@ -23,7 +22,6 @@
         a {
             text-decoration: none;
         }
-
 
         /* =========================
            EN-TÊTE
@@ -48,7 +46,7 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
         }
 
@@ -68,13 +66,12 @@
             border-radius: 25px;
         }
 
-
         /* =========================
            PAGE
         ========================== */
 
         main {
-            max-width: 1500px;
+            max-width: 1600px;
             margin: auto;
             padding: 35px 18px 70px;
         }
@@ -96,32 +93,50 @@
             color: #536B7B;
         }
 
+        /* =========================
+           LAYOUT PRINCIPAL
+        ========================== */
+
+        .game-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .left-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar-box {
+            background: white;
+            border: 2px solid #DDECF3;
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 8px 20px rgba(23, 78, 120, .08);
+            margin-bottom: 18px;
+        }
 
         /* =========================
            BARRE DU JEU
         ========================== */
 
-        .game-panel {
-            max-width: 1100px;
-            margin: 0 auto 22px;
-            background: white;
-            border: 2px solid #DDECF3;
-            border-radius: 22px;
-            padding: 18px 22px;
-            box-shadow: 0 8px 20px rgba(23, 78, 120, .08);
-        }
-
         .top-info {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .counter {
             color: #174E78;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: bold;
         }
 
@@ -145,7 +160,6 @@
             transition: width .4s ease;
         }
 
-
         /* =========================
            IMAGE DU JEU
         ========================== */
@@ -162,20 +176,10 @@
             line-height: 0;
             user-select: none;
             touch-action: manipulation;
-
-            /*
-                Même curseur partout.
-                L'enfant ne peut pas découvrir
-                les objets en déplaçant la souris.
-            */
             cursor: default;
-
             overflow: hidden;
             border-radius: 15px;
-
-            box-shadow:
-                0 10px 28px
-                rgba(0, 0, 0, .12);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .12);
         }
 
         .game-board img {
@@ -185,7 +189,6 @@
             cursor: default;
         }
 
-
         /* =========================
            ZONES CLIQUABLES
         ========================== */
@@ -193,26 +196,14 @@
         .hotspot {
             position: absolute;
             border-radius: 50%;
-
-            /*
-                Pas de petite main sur les
-                objets cachés.
-            */
             cursor: default;
-
             z-index: 5;
             transition: .25s;
         }
 
-
-        /* OBJET TROUVÉ */
-
         .hotspot.found {
             border: 4px solid #2F8F46;
-
-            background:
-                rgba(47, 143, 70, .18);
-
+            background: rgba(47, 143, 70, .18);
             box-shadow:
                 0 0 0 5px rgba(255,255,255,.75),
                 0 0 18px rgba(47,143,70,.9);
@@ -220,143 +211,88 @@
 
         .hotspot.found::after {
             content: "✓";
-
             position: absolute;
-
             right: -10px;
             top: -15px;
-
             width: 30px;
             height: 30px;
-
             line-height: 30px;
             text-align: center;
-
             border-radius: 50%;
-
             background: #2F8F46;
             color: white;
-
             font-size: 18px;
             font-weight: bold;
         }
 
-
-        /* VOIR LES RÉPONSES */
-
         .hotspot.solution {
             border: 4px dashed #F39C12;
-
-            background:
-                rgba(243,156,18,.16);
+            background: rgba(243,156,18,.16);
         }
 
-
-        /* INDICE */
-
         .hotspot.hint {
-            animation:
-                hintPulse .65s ease-in-out 3;
+            animation: hintPulse .65s ease-in-out 3;
         }
 
         @keyframes hintPulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 box-shadow: none;
             }
 
             50% {
-
                 box-shadow:
                     0 0 0 14px rgba(255,193,7,.55),
                     0 0 30px rgba(255,193,7,.8);
-
             }
-
         }
-
 
         /* =========================
            EMPLACEMENT DES OBJETS
         ========================== */
 
-
-        /*
-           PASTÈQUE
-
-           CORRECTION :
-           déplacée nettement vers la droite
-           et légèrement vers le bas.
-        */
-
         .watermelon {
             left: 8.7%;
             top: 70.2%;
-
             width: 7.4%;
             height: 12%;
         }
 
-
-        /* BOÎTE À OUTILS */
-
         .toolbox {
             left: 25.5%;
             top: 70%;
-
             width: 13%;
             height: 17%;
-
             border-radius: 25%;
         }
-
-
-        /* ARROSOIR */
 
         .watering-can {
             left: 69%;
             top: 27%;
-
             width: 8%;
             height: 12%;
         }
-
-
-        /* DEUX LIVRES */
 
         .books {
             left: 78%;
             top: 58%;
-
             width: 8%;
             height: 10%;
-
             border-radius: 25%;
         }
-
-
-        /* TINA */
 
         .tina {
             left: 40.5%;
             top: 58.5%;
-
             width: 9%;
             height: 12%;
         }
 
-
-        /* GRENOUILLE */
-
         .frog {
             left: 59.5%;
             top: 72%;
-
             width: 7%;
             height: 10%;
         }
-
 
         /* =========================
            MAUVAIS CLIC
@@ -364,36 +300,24 @@
 
         .wrong-mark {
             position: absolute;
-
             width: 45px;
             height: 45px;
-
-            transform:
-                translate(-50%, -50%);
-
+            transform: translate(-50%, -50%);
             pointer-events: none;
-
             z-index: 20;
         }
 
         .wrong-mark::before,
         .wrong-mark::after {
             content: "";
-
             position: absolute;
-
             left: 20px;
             top: 2px;
-
             width: 6px;
             height: 42px;
-
             background: #E53935;
-
             border-radius: 5px;
-
-            box-shadow:
-                0 0 5px white;
+            box-shadow: 0 0 5px white;
         }
 
         .wrong-mark::before {
@@ -404,24 +328,16 @@
             transform: rotate(-45deg);
         }
 
-
         /* =========================
            MESSAGE
         ========================== */
 
         #message {
-            max-width: 900px;
-            min-height: 60px;
-
-            margin: 22px auto 10px;
-
-            padding: 17px;
-
+            min-height: 64px;
+            padding: 16px;
             border-radius: 18px;
-
             text-align: center;
-
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: bold;
             line-height: 1.4;
         }
@@ -441,41 +357,24 @@
             color: #C0392B;
         }
 
-
         /* =========================
            BOUTONS
         ========================== */
 
         .controls {
-            max-width: 1000px;
-
-            margin: 25px auto;
-
-            display: flex;
-            justify-content: center;
-
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
-
-            flex-wrap: wrap;
         }
 
         button {
             border: none;
-
             border-radius: 25px;
-
-            padding: 13px 19px;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            font-size: 1rem;
+            padding: 13px 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.98rem;
             font-weight: bold;
-
             cursor: pointer;
-
             transition: .2s;
         }
 
@@ -503,49 +402,38 @@
             color: #174E78;
         }
 
-
         /* =========================
            LISTE
         ========================== */
 
+        .list-title {
+            margin: 0 0 14px;
+            color: #174E78;
+            font-size: 1.15rem;
+            text-align: center;
+        }
+
         .found-list {
-            max-width: 900px;
-
-            margin: 30px auto 0;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 12px;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
 
         .item {
             background: white;
-
-            border:
-                2px solid #E1EEF3;
-
+            border: 2px solid #E1EEF3;
             border-radius: 16px;
-
-            padding: 13px;
-
-            text-align: center;
-
+            padding: 12px;
+            text-align: left;
             font-weight: bold;
-
             color: #536B7B;
         }
 
         .item.found {
             background: #EAF7ED;
-
             border-color: #93D2A2;
-
             color: #247338;
         }
-
 
         /* =========================
            VICTOIRE
@@ -553,60 +441,36 @@
 
         .victory {
             display: none;
-
-            max-width: 650px;
-
-            margin: 25px auto;
-
-            padding: 30px;
-
-            border-radius: 25px;
-
+            padding: 22px;
+            border-radius: 22px;
             background: white;
-
-            border:
-                3px solid #2F8F46;
-
+            border: 3px solid #2F8F46;
             text-align: center;
-
-            box-shadow:
-                0 10px 30px
-                rgba(47,143,70,.18);
+            box-shadow: 0 10px 30px rgba(47,143,70,.18);
         }
 
         .victory.show {
             display: block;
-
-            animation:
-                victoryPop .5s ease;
+            animation: victoryPop .5s ease;
         }
 
         .victory h2 {
             margin: 0 0 10px;
-
             color: #2F8F46;
-
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         @keyframes victoryPop {
-
             from {
-                transform:
-                    scale(.8);
-
+                transform: scale(.8);
                 opacity: 0;
             }
 
             to {
-                transform:
-                    scale(1);
-
+                transform: scale(1);
                 opacity: 1;
             }
-
         }
-
 
         /* =========================
            CONFETTIS
@@ -614,100 +478,87 @@
 
         .confetti {
             position: fixed;
-
             z-index: 9999;
-
             top: -30px;
-
             pointer-events: none;
-
-            animation:
-                fall linear forwards;
+            animation: fall linear forwards;
         }
 
         @keyframes fall {
-
             to {
-
-                transform:
-                    translateY(110vh)
-                    rotate(720deg);
-
+                transform: translateY(110vh) rotate(720deg);
             }
-
         }
-
 
         /* =========================
            MOBILE
         ========================== */
 
-        @media (max-width: 700px) {
+        @media (max-width: 1100px) {
+            .game-layout {
+                grid-template-columns: 1fr;
+            }
 
+            .sidebar {
+                position: static;
+            }
+
+            .controls {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .found-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
             .game-header h1 {
                 font-size: 2rem;
             }
 
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
             .found-list {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
+                grid-template-columns: 1fr;
             }
 
             .hotspot.found {
                 border-width: 3px;
             }
-
         }
 
     </style>
-
 </head>
 
-
 <body>
-
 
 <header>
 
     <a href="../index.html">
-
         <img
             src="../logo.png"
             alt="Les Éditions Cap Découvertes Jeunesse"
             class="logo">
-
     </a>
 
-
     <nav>
-
-        <a href="index.html">
-            🐢 Espace Tina
+        <a
+            href="index.html"
+            class="back-button">
+            ← Retour à la page de Tina
         </a>
 
         <a href="../index.html">
             Accueil
         </a>
-
-        <a
-            href="index.html"
-            class="back-button">
-
-            ← Retour aux activités
-
-        </a>
-
     </nav>
 
 </header>
 
-
 <main>
-
-
-    <!-- TITRE -->
 
     <div class="game-header">
 
@@ -716,257 +567,226 @@
         </h1>
 
         <p>
-            Clique directement sur les objets
-            lorsque tu les trouves!
+            Clique directement sur les objets lorsque tu les trouves !
         </p>
 
     </div>
 
+    <div class="game-layout">
 
-    <!-- COMPTEUR -->
+        <!-- COLONNE GAUCHE -->
 
-    <div class="game-panel">
+        <div class="left-column">
 
-        <div class="top-info">
+            <div class="board-wrapper">
 
-            <div
-                class="counter"
-                id="counter">
+                <div
+                    class="game-board"
+                    id="game-board">
 
-                0 / 6 objets trouvés
+                    <img
+                        src="../images/cherche_trouve_tina.png"
+                        alt="Jeu Cherche et trouve de Mattéo et Tina"
+                        draggable="false">
 
-            </div>
+                    <div
+                        class="hotspot watermelon"
+                        data-object="watermelon"
+                        data-name="La pastèque">
+                    </div>
 
-            <div
-                class="stars"
-                id="stars">
+                    <div
+                        class="hotspot toolbox"
+                        data-object="toolbox"
+                        data-name="La boîte à outils">
+                    </div>
 
-                ⭐⭐⭐
+                    <div
+                        class="hotspot watering-can"
+                        data-object="watering-can"
+                        data-name="L'arrosoir">
+                    </div>
+
+                    <div
+                        class="hotspot books"
+                        data-object="books"
+                        data-name="Les deux livres">
+                    </div>
+
+                    <div
+                        class="hotspot tina"
+                        data-object="tina"
+                        data-name="Tina la tortue">
+                    </div>
+
+                    <div
+                        class="hotspot frog"
+                        data-object="frog"
+                        data-name="La grenouille">
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
+        <!-- COLONNE DROITE -->
 
-        <div class="progress">
+        <aside class="sidebar">
 
-            <div
-                class="progress-bar"
-                id="progress-bar">
+            <div class="sidebar-box">
+
+                <div class="top-info">
+
+                    <div
+                        class="counter"
+                        id="counter">
+
+                        0 / 6 objets trouvés
+
+                    </div>
+
+                    <div
+                        class="stars"
+                        id="stars">
+
+                        ⭐⭐⭐
+
+                    </div>
+
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar"
+                        id="progress-bar">
+                    </div>
+                </div>
+
             </div>
 
-        </div>
+            <div class="sidebar-box">
+
+                <div
+                    id="message"
+                    class="neutral">
+
+                    👀 Observe bien l'image et commence à chercher !
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-box">
+
+                <div class="controls">
+
+                    <button
+                        class="hint-button"
+                        id="hint-button">
+                        💡 Un indice
+                    </button>
+
+                    <button
+                        class="answers-button"
+                        id="answers-button">
+                        👀 Voir les réponses
+                    </button>
+
+                    <button
+                        class="restart-button"
+                        id="restart-button">
+                        🔄 Recommencer
+                    </button>
+
+                    <button
+                        class="sound-button"
+                        id="sound-button">
+                        🔊 Son activé
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-box">
+
+                <h2 class="list-title">
+                    Objets à trouver
+                </h2>
+
+                <div class="found-list">
+
+                    <div
+                        class="item"
+                        data-list="watermelon">
+                        ○ La pastèque
+                    </div>
+
+                    <div
+                        class="item"
+                        data-list="toolbox">
+                        ○ La boîte à outils
+                    </div>
+
+                    <div
+                        class="item"
+                        data-list="watering-can">
+                        ○ L'arrosoir
+                    </div>
+
+                    <div
+                        class="item"
+                        data-list="books">
+                        ○ Les deux livres
+                    </div>
+
+                    <div
+                        class="item"
+                        data-list="tina">
+                        ○ Tina la tortue
+                    </div>
+
+                    <div
+                        class="item"
+                        data-list="frog">
+                        ○ La grenouille
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                class="victory"
+                id="victory">
+
+                <h2>
+                    🎉 Bravo !
+                </h2>
+
+                <p>
+                    Tu as retrouvé les 6 objets cachés !
+                </p>
+
+                <div
+                    id="victory-stars"
+                    style="font-size:2rem;">
+
+                    ⭐⭐⭐
+
+                </div>
+
+            </div>
+
+        </aside>
 
     </div>
-
-
-    <!-- IMAGE -->
-
-    <div class="board-wrapper">
-
-        <div
-            class="game-board"
-            id="game-board">
-
-
-            <img
-                src="../images/cherche_trouve_tina.png"
-                alt="Jeu Cherche et trouve de Mattéo et Tina"
-                draggable="false">
-
-
-            <div
-                class="hotspot watermelon"
-                data-object="watermelon"
-                data-name="La pastèque">
-            </div>
-
-
-            <div
-                class="hotspot toolbox"
-                data-object="toolbox"
-                data-name="La boîte à outils">
-            </div>
-
-
-            <div
-                class="hotspot watering-can"
-                data-object="watering-can"
-                data-name="L'arrosoir">
-            </div>
-
-
-            <div
-                class="hotspot books"
-                data-object="books"
-                data-name="Les deux livres">
-            </div>
-
-
-            <div
-                class="hotspot tina"
-                data-object="tina"
-                data-name="Tina la tortue">
-            </div>
-
-
-            <div
-                class="hotspot frog"
-                data-object="frog"
-                data-name="La grenouille">
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-    <!-- MESSAGE -->
-
-    <div
-        id="message"
-        class="neutral">
-
-        👀 Observe bien l'image et commence à chercher!
-
-    </div>
-
-
-    <!-- COMMANDES -->
-
-    <div class="controls">
-
-        <button
-            class="hint-button"
-            id="hint-button">
-
-            💡 Un indice
-
-        </button>
-
-
-        <button
-            class="answers-button"
-            id="answers-button">
-
-            👀 Voir les réponses
-
-        </button>
-
-
-        <button
-            class="restart-button"
-            id="restart-button">
-
-            🔄 Recommencer
-
-        </button>
-
-
-        <button
-            class="sound-button"
-            id="sound-button">
-
-            🔊 Son activé
-
-        </button>
-
-    </div>
-
-
-    <!-- LISTE -->
-
-    <div class="found-list">
-
-
-        <div
-            class="item"
-            data-list="watermelon">
-
-            ○ La pastèque
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="toolbox">
-
-            ○ La boîte à outils
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="watering-can">
-
-            ○ L'arrosoir
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="books">
-
-            ○ Les deux livres
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="tina">
-
-            ○ Tina la tortue
-
-        </div>
-
-
-        <div
-            class="item"
-            data-list="frog">
-
-            ○ La grenouille
-
-        </div>
-
-
-    </div>
-
-
-    <!-- VICTOIRE -->
-
-    <div
-        class="victory"
-        id="victory">
-
-        <h2>
-            🎉 Bravo!
-        </h2>
-
-        <p>
-            Tu as retrouvé les 6 objets cachés!
-        </p>
-
-        <div
-            id="victory-stars"
-            style="font-size:2rem;">
-
-            ⭐⭐⭐
-
-        </div>
-
-    </div>
-
 
 </main>
 
-
 <script>
-
 
     /* =========================
        VARIABLES
@@ -977,77 +797,62 @@
             "game-board"
         );
 
-
     const hotspots =
         document.querySelectorAll(
             ".hotspot"
         );
-
 
     const counter =
         document.getElementById(
             "counter"
         );
 
-
     const progressBar =
         document.getElementById(
             "progress-bar"
         );
-
 
     const message =
         document.getElementById(
             "message"
         );
 
-
     const hintButton =
         document.getElementById(
             "hint-button"
         );
-
 
     const answersButton =
         document.getElementById(
             "answers-button"
         );
 
-
     const restartButton =
         document.getElementById(
             "restart-button"
         );
-
 
     const soundButton =
         document.getElementById(
             "sound-button"
         );
 
-
     const victory =
         document.getElementById(
             "victory"
         );
 
-
     let found =
         new Set();
-
 
     let stars =
         3;
 
-
     let soundEnabled =
         true;
 
-
     let answersVisible =
         false;
-
-
 
     /* =========================
        SON
@@ -1058,14 +863,11 @@
         duration
     ) {
 
-
         if (!soundEnabled) {
             return;
         }
 
-
         try {
-
 
             const audioContext =
                 new (
@@ -1073,62 +875,46 @@
                     window.webkitAudioContext
                 )();
 
-
             const oscillator =
                 audioContext.createOscillator();
 
-
             const gain =
                 audioContext.createGain();
-
 
             oscillator.connect(
                 gain
             );
 
-
             gain.connect(
                 audioContext.destination
             );
 
-
             oscillator.frequency.value =
                 frequency;
-
 
             gain.gain.value =
                 0.08;
 
-
             oscillator.start();
-
 
             setTimeout(
                 function() {
 
-
                     oscillator.stop();
 
-
                     audioContext.close();
-
 
                 },
                 duration
             );
 
-
         }
-
 
         catch (error) {
 
         }
 
-
     }
-
-
 
     /* =========================
        MESSAGE
@@ -1139,18 +925,13 @@
         type
     ) {
 
-
         message.textContent =
             text;
-
 
         message.className =
             type;
 
-
     }
-
-
 
     /* =========================
        MISE À JOUR DU JEU
@@ -1158,42 +939,31 @@
 
     function updateGame() {
 
-
         const count =
             found.size;
-
 
         counter.textContent =
             count +
             " / 6 objets trouvés";
 
-
         progressBar.style.width =
             (
                 count / 6 * 100
-            )
-            +
-            "%";
-
+            ) + "%";
 
         document.getElementById(
             "stars"
         ).textContent =
-            "⭐".repeat(stars)
-            +
+            "⭐".repeat(stars) +
             "☆".repeat(
                 3 - stars
             );
 
-
-
         hotspots.forEach(
             function(hotspot) {
 
-
                 const object =
                     hotspot.dataset.object;
-
 
                 const item =
                     document.querySelector(
@@ -1202,61 +972,42 @@
                         '"]'
                     );
 
-
                 if (
                     found.has(object)
                 ) {
-
 
                     item.classList.add(
                         "found"
                     );
 
-
                     item.textContent =
-                        "✅ "
-                        +
+                        "✅ " +
                         hotspot.dataset.name;
-
 
                 }
 
-
                 else {
-
 
                     item.classList.remove(
                         "found"
                     );
 
-
                     item.textContent =
-                        "○ "
-                        +
+                        "○ " +
                         hotspot.dataset.name;
 
-
                 }
-
 
             }
         );
 
-
         if (
             count === 6
         ) {
-
-
             showVictory();
-
-
         }
 
-
     }
-
-
 
     /* =========================
        BON OBJET
@@ -1265,71 +1016,50 @@
     hotspots.forEach(
         function(hotspot) {
 
-
             hotspot.addEventListener(
                 "click",
                 function(event) {
 
-
                     event.stopPropagation();
-
 
                     const object =
                         hotspot.dataset.object;
 
-
                     if (
                         found.has(object)
                     ) {
-
                         return;
-
                     }
 
-
                     found.add(object);
-
 
                     hotspot.classList.remove(
                         "solution"
                     );
 
-
                     hotspot.classList.add(
                         "found"
                     );
 
-
                     showMessage(
-
-                        "✅ Bravo! Tu as trouvé : "
-                        +
-                        hotspot.dataset.name
-                        +
-                        "!",
-
+                        "✅ Bravo ! Tu as trouvé : " +
+                        hotspot.dataset.name +
+                        " !",
                         "success"
-
                     );
-
 
                     playTone(
                         700,
                         160
                     );
 
-
                     updateGame();
-
 
                 }
             );
 
-
         }
     );
-
-
 
     /* =========================
        MAUVAIS CLIC
@@ -1339,81 +1069,54 @@
         "click",
         function(event) {
 
-
             const rect =
                 board.getBoundingClientRect();
 
-
             const x =
-                event.clientX
-                -
+                event.clientX -
                 rect.left;
 
-
             const y =
-                event.clientY
-                -
+                event.clientY -
                 rect.top;
-
 
             const mark =
                 document.createElement(
                     "div"
                 );
 
-
             mark.className =
                 "wrong-mark";
 
-
             mark.style.left =
-                x
-                +
-                "px";
-
+                x + "px";
 
             mark.style.top =
-                y
-                +
-                "px";
-
+                y + "px";
 
             board.appendChild(
                 mark
             );
 
-
             showMessage(
-
-                "❌ Essaie encore! Ce n'est pas un objet à trouver.",
-
+                "❌ Essaie encore ! Ce n'est pas un objet à trouver.",
                 "error"
-
             );
-
 
             playTone(
                 180,
                 180
             );
 
-
             setTimeout(
                 function() {
-
-
                     mark.remove();
-
-
                 },
                 900
             );
 
-
         }
     );
-
-
 
     /* =========================
        INDICE
@@ -1423,88 +1126,63 @@
         "click",
         function() {
 
-
             const remaining =
                 Array.from(
                     hotspots
                 ).filter(
                     function(hotspot) {
 
-
                         return !found.has(
                             hotspot.dataset.object
                         );
 
-
                     }
                 );
-
 
             if (
                 remaining.length === 0
             ) {
-
                 return;
-
             }
-
 
             const target =
                 remaining[
                     Math.floor(
-                        Math.random()
-                        *
+                        Math.random() *
                         remaining.length
                     )
                 ];
 
-
             if (
                 stars > 1
             ) {
-
-
                 stars--;
-
-
             }
-
 
             target.classList.add(
                 "hint"
             );
 
-
             setTimeout(
                 function() {
-
 
                     target.classList.remove(
                         "hint"
                     );
 
-
                 },
                 2100
             );
 
-
             showMessage(
-
-                "💡 Regarde bien dans la zone qui scintille!",
-
+                "💡 Regarde bien dans la zone qui scintille !",
                 "neutral"
-
             );
-
 
             updateGame();
 
-
         }
     );
-
-
 
     /* =========================
        VOIR LES RÉPONSES
@@ -1514,14 +1192,11 @@
         "click",
         function() {
 
-
             answersVisible =
                 !answersVisible;
 
-
             hotspots.forEach(
                 function(hotspot) {
-
 
                     if (
                         !found.has(
@@ -1529,71 +1204,48 @@
                         )
                     ) {
 
-
                         hotspot.classList.toggle(
                             "solution",
                             answersVisible
                         );
 
-
                     }
-
 
                 }
             );
-
 
             if (
                 answersVisible
             ) {
 
-
-                stars =
-                    1;
-
+                stars = 1;
 
                 answersButton.textContent =
                     "🙈 Masquer les réponses";
 
-
                 showMessage(
-
                     "👀 Les objets restants sont entourés en orange.",
-
                     "neutral"
-
                 );
-
 
             }
 
-
             else {
-
 
                 answersButton.textContent =
                     "👀 Voir les réponses";
 
-
                 showMessage(
-
                     "Les réponses sont maintenant cachées.",
-
                     "neutral"
-
                 );
-
 
             }
 
-
             updateGame();
-
 
         }
     );
-
-
 
     /* =========================
        RECOMMENCER
@@ -1603,21 +1255,14 @@
         "click",
         function() {
 
-
             found.clear();
 
+            stars = 3;
 
-            stars =
-                3;
-
-
-            answersVisible =
-                false;
-
+            answersVisible = false;
 
             hotspots.forEach(
                 function(hotspot) {
-
 
                     hotspot.classList.remove(
                         "found",
@@ -1625,36 +1270,25 @@
                         "hint"
                     );
 
-
                 }
             );
 
-
             answersButton.textContent =
                 "👀 Voir les réponses";
-
 
             victory.classList.remove(
                 "show"
             );
 
-
             showMessage(
-
-                "🔄 C'est reparti! Retrouve les 6 objets.",
-
+                "🔄 C'est reparti ! Retrouve les 6 objets.",
                 "neutral"
-
             );
-
 
             updateGame();
 
-
         }
     );
-
-
 
     /* =========================
        SON
@@ -1664,43 +1298,32 @@
         "click",
         function() {
 
-
             soundEnabled =
                 !soundEnabled;
-
 
             if (
                 soundEnabled
             ) {
 
-
                 soundButton.textContent =
                     "🔊 Son activé";
-
 
                 playTone(
                     600,
                     120
                 );
 
-
             }
 
-
             else {
-
 
                 soundButton.textContent =
                     "🔇 Son désactivé";
 
-
             }
-
 
         }
     );
-
-
 
     /* =========================
        VICTOIRE
@@ -1708,61 +1331,37 @@
 
     function showVictory() {
 
-
         victory.classList.add(
             "show"
         );
 
-
         document.getElementById(
             "victory-stars"
         ).textContent =
-            "⭐".repeat(stars)
-            +
+            "⭐".repeat(stars) +
             "☆".repeat(
                 3 - stars
             );
 
-
         showMessage(
-
-            "🎉 Incroyable! Tu as retrouvé les 6 objets!",
-
+            "🎉 Incroyable ! Tu as retrouvé les 6 objets !",
             "success"
-
         );
-
 
         playTone(
             900,
             250
         );
 
-
         createConfetti();
 
-
-        victory.scrollIntoView({
-
-            behavior:
-                "smooth",
-
-            block:
-                "center"
-
-        });
-
-
     }
-
-
 
     /* =========================
        CONFETTIS
     ========================== */
 
     function createConfetti() {
-
 
         const symbols =
             [
@@ -1774,89 +1373,61 @@
                 "💚"
             ];
 
-
         for (
             let i = 0;
             i < 40;
             i++
         ) {
 
-
             const piece =
                 document.createElement(
                     "div"
                 );
 
-
             piece.className =
                 "confetti";
-
 
             piece.textContent =
                 symbols[
                     Math.floor(
-                        Math.random()
-                        *
+                        Math.random() *
                         symbols.length
                     )
                 ];
 
-
             piece.style.left =
-                Math.random()
-                *
-                100
-                +
+                Math.random() *
+                100 +
                 "vw";
-
 
             piece.style.fontSize =
                 (
-                    16
-                    +
-                    Math.random()
-                    *
+                    16 +
+                    Math.random() *
                     20
-                )
-                +
-                "px";
-
+                ) + "px";
 
             piece.style.animationDuration =
                 (
+                    2 +
+                    Math.random() *
                     2
-                    +
-                    Math.random()
-                    *
-                    2
-                )
-                +
-                "s";
-
+                ) + "s";
 
             document.body.appendChild(
                 piece
             );
 
-
             setTimeout(
                 function() {
-
-
                     piece.remove();
-
-
                 },
                 4500
             );
 
-
         }
 
-
     }
-
-
 
     /* =========================
        DÉMARRAGE
@@ -1864,10 +1435,7 @@
 
     updateGame();
 
-
 </script>
 
-
 </body>
-
 </html>
