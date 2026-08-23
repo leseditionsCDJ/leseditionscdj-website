@@ -1,1 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Tina's Space | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background-color: #FFFDF7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 22px;
+
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #174E78;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #2F8F46;
+        }
+
+        .other-code {
+            background-color: #174E78;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 25px;
+        }
+
+        .other-code:hover {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding: 9px 13px;
+
+            border: 2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+        }
+
+        .language-button:hover {
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+        }
+
+
+        /* =========================
+           WELCOME
+        ========================== */
+
+        .hero {
+            padding:
+                65px 20px 55px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+        }
+
+        .hero-content {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 45px;
+        }
+
+        .hero-image {
+            flex:
+                0 0 260px;
+
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+
+            max-width: 240px;
+
+            max-height: 280px;
+
+            object-fit: contain;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .unlocked {
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding:
+                8px 16px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            font-size: 0.95rem;
+        }
+
+        .hero h1 {
+            margin:
+                0 0 15px;
+
+            color: #174E78;
+
+            font-size: 3rem;
+
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: #2F8F46;
+        }
+
+        .hero p {
+            margin: 0;
+
+            color: #40566A;
+
+            font-size: 1.2rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        .content {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                70px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.3rem;
+        }
+
+        .section-title p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #617789;
+
+            font-size: 1.08rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           MAIN SECTIONS
+        ========================== */
+
+        .main-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 28px;
+
+            align-items: start;
+        }
+
+        .main-card {
+            background-color: white;
+
+            border-radius: 26px;
+
+            padding: 35px;
+
+            border:
+                2px solid #E1EEF3;
+
+            box-shadow:
+                0 10px 25px
+                rgba(23, 78, 120, 0.08);
+
+            display: flex;
+
+            flex-direction: column;
+
+            min-height: 390px;
+        }
+
+        .explorer-card {
+            min-height: auto;
+        }
+
+        .card-icon {
+            width: 75px;
+
+            height: 75px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 2.4rem;
+
+            margin-bottom: 20px;
+        }
+
+        .activities-card .card-icon {
+            background-color: #EAF6FC;
+        }
+
+        .explorer-card .card-icon {
+            background-color: #EFF8E9;
+        }
+
+        .main-card h2 {
+            margin:
+                0 0 12px;
+
+            color: #174E78;
+
+            font-size: 1.8rem;
+        }
+
+        .main-card > p {
+            margin:
+                0 0 25px;
+
+            color: #536B7B;
+
+            line-height: 1.7;
+
+            font-size: 1.05rem;
+        }
+
+
+        /* =========================
+           ACTIVITIES
+        ========================== */
+
+        .activity-list {
+            margin-top: auto;
+
+            display: grid;
+
+            gap: 16px;
+        }
+
+        .activity-preview {
+            padding: 22px;
+
+            background-color: #F7FBFD;
+
+            border-radius: 18px;
+
+            border:
+                1px solid #E4EFF4;
+        }
+
+        .activity-label {
+            display: inline-block;
+
+            margin-bottom: 10px;
+
+            padding:
+                6px 12px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            border-radius: 20px;
+
+            font-size: 0.85rem;
+
+            font-weight: bold;
+        }
+
+        .activity-preview h3 {
+            margin:
+                0 0 8px;
+
+            color: #174E78;
+
+            font-size: 1.35rem;
+        }
+
+        .activity-preview p {
+            margin:
+                0 0 18px;
+
+            color: #536B7B;
+
+            line-height: 1.5;
+        }
+
+        .game-button {
+            display: inline-block;
+
+            padding:
+                12px 20px;
+
+            border-radius: 25px;
+
+            background-color: #174E78;
+
+            color: white;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .game-button:hover {
+            background-color: #2F8F46;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           EXPLORERS
+        ========================== */
+
+        .explorer-list {
+            display: grid;
+
+            gap: 16px;
+        }
+
+        .explorer-preview {
+            padding: 22px;
+
+            background-color: #F5FAF1;
+
+            border-radius: 18px;
+
+            border:
+                1px solid #E3EFDC;
+        }
+
+        .explorer-preview h3 {
+            margin:
+                0 0 8px;
+
+            color: #2F8F46;
+
+            font-size: 1.35rem;
+        }
+
+        .explorer-preview p {
+            margin:
+                0 0 18px;
+
+            color: #536B7B;
+
+            line-height: 1.5;
+        }
+
+        .explorer-button {
+            display: inline-block;
+
+            padding:
+                12px 20px;
+
+            border-radius: 25px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .explorer-button:hover {
+            background-color: #246F37;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           SECRET NOTE
+        ========================== */
+
+        .secret-note {
+            margin-top: 55px;
+
+            padding: 30px;
+
+            background-color: #EAF6FC;
+
+            border-radius: 24px;
+
+            text-align: center;
+        }
+
+        .secret-note h3 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 1.5rem;
+        }
+
+        .secret-note p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #40566A;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background-color: #174E78;
+
+            color: white;
+
+            padding:
+                30px 20px;
+
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+            .logo {
+                width: 220px;
+
+                max-width: 80%;
+            }
+
+            nav {
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 20px;
+            }
+
+            .hero-image {
+                flex: auto;
+            }
+
+            .hero-image img {
+                max-width: 190px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .hero {
+                padding:
+                    45px 18px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-card {
+                padding:
+                    27px 22px;
+            }
+
+            .content {
+                padding:
+                    50px 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+
+        <a href="../index.html">
+
+            <img
+                src="../../logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse"
+                class="logo">
+
+        </a>
+
+
+        <nav>
+
+
+            <a href="../index.html">
+                Home
+            </a>
+
+
+            <a href="../livres.html">
+                Our Books
+            </a>
+
+
+            <a
+                href="../code-secret.html"
+                class="other-code">
+
+                🔐 Enter Another Code
+
+            </a>
+
+
+            <a
+                href="../../espace-tina/"
+                class="language-button"
+                lang="fr">
+
+                🇫🇷 FR
+
+            </a>
+
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         WELCOME
+    ========================== -->
+
+    <section class="hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-image">
+
+
+                <img
+                    src="../../images/Image_Officielle_Tina.png"
+                    alt="Tina the Traveling Turtle">
+
+
+            </div>
+
+
+
+            <div class="hero-text">
+
+
+                <div class="unlocked">
+                    🔓 Book 1 Unlocked
+                </div>
+
+
+                <h1>
+
+                    Welcome to
+
+                    <span>
+                        Tina's Space!
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Congratulations, explorer!
+
+                    Your secret code unlocked the special space for
+                    <strong>Tina the Traveling Turtle</strong>.
+
+                    Here you'll find games, activities and even more
+                    discoveries about the fascinating world of turtles.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ACTIVITIES AND EXPLORERS
+    ========================== -->
+
+    <main class="content">
+
+
+        <div class="section-title">
+
+
+            <h2>
+                What Would You Like to Do?
+            </h2>
+
+
+            <p>
+
+                Choose an activity or start exploring
+                to discover even more with Mattéo and Tina.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="main-grid">
+
+
+            <!-- =========================
+                 ACTIVITIES
+            ========================== -->
+
+            <section
+                class="main-card activities-card"
+                id="activities">
+
+
+                <div class="card-icon">
+                    🎮
+                </div>
+
+
+                <h2>
+                    Activities
+                </h2>
+
+
+                <p>
+
+                    Play with Mattéo and Tina through
+                    activities inspired by
+                    <em>Tina the Traveling Turtle</em>.
+
+                </p>
+
+
+                <div class="activity-list">
+
+
+                    <!-- SEARCH AND FIND -->
+
+                    <div class="activity-preview">
+
+
+                        <div class="activity-label">
+                            GAME
+                        </div>
+
+
+                        <h3>
+                            🔎 Search and Find
+                        </h3>
+
+
+                        <p>
+
+                            Look carefully at Mattéo's garden
+                            and find the 6 hidden objects
+                            in the picture.
+
+                        </p>
+
+
+                        <a
+                            href="cherche-et-trouve.html"
+                            class="game-button">
+
+                            🎮 Play
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- COLORING -->
+
+                    <div class="activity-preview">
+
+
+                        <div class="activity-label">
+                            COLORING
+                        </div>
+
+
+                        <h3>
+                            🎨 Color Tina
+                        </h3>
+
+
+                        <p>
+
+                            Choose your colours and bring
+                            Tina and everything she carries
+                            on her shell to life!
+
+                        </p>
+
+
+                        <a
+                            href="coloriage.html"
+                            class="game-button">
+
+                            🎨 Color
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- SPOT THE 7 DIFFERENCES -->
+
+                    <div class="activity-preview">
+
+
+                        <div class="activity-label">
+                            GAME
+                        </div>
+
+
+                        <h3>
+                            🔍 Spot the 7 Differences
+                        </h3>
+
+
+                        <p>
+
+                            Look carefully at the two pictures
+                            of the clinic and find the
+                            7 differences hidden between them!
+
+                        </p>
+
+
+                        <a
+                            href="differences.html"
+                            class="game-button">
+
+                            🔍 Play
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 EXPLORER'S CORNER
+            ========================== -->
+
+            <section
+                class="main-card explorer-card"
+                id="explorers">
+
+
+                <div class="card-icon">
+                    🔎
+                </div>
+
+
+                <h2>
+                    Explorer's Corner
+                </h2>
+
+
+                <p>
+
+                    Think you've discovered everything
+                    there is to know about turtles?
+
+                    The adventure continues!
+
+                </p>
+
+
+                <div class="explorer-list">
+
+
+                    <!-- =========================
+                         TINA'S SECRETS
+                    ========================== -->
+
+                    <div class="explorer-preview">
+
+
+                        <h3>
+                            🐢 Tina's Secrets
+                        </h3>
+
+
+                        <p>
+
+                            Discover 10 amazing and true facts
+                            about different turtles from around
+                            the world, then see real turtles
+                            in the photo gallery!
+
+                        </p>
+
+
+                        <a
+                            href="explorateurs.html"
+                            class="explorer-button">
+
+                            🌿 Explore the Secrets
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- =========================
+                         DIPLOMA
+                    ========================== -->
+
+                    <div class="explorer-preview">
+
+
+                        <h3>
+                            🎓 My Explorer Diploma
+                        </h3>
+
+
+                        <p>
+
+                            Congratulations on your adventure
+                            with Tina!
+
+                            Personalize your
+                            Mini Explorers Club diploma,
+                            then print it or save it.
+
+                        </p>
+
+
+                        <a
+                            href="diplome.html"
+                            class="explorer-button">
+
+                            🎓 My Diploma
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             MESSAGE
+        ========================== -->
+
+        <div class="secret-note">
+
+
+            <h3>
+                ✨ This Space Is Just for Readers
+            </h3>
+
+
+            <p>
+
+                Every book from Les Éditions
+                Cap Découvertes Jeunesse has
+                its own secret code.
+
+                That means every new book brings
+                new activities, new games
+                and new discoveries to unlock!
+
+            </p>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+
+        <p>
+            Les Éditions Cap Découvertes Jeunesse
+        </p>
+
+
+        <p>
+            Stories that open up the world
+        </p>
+
+
+    </footer>
+
+
+</body>
+
+</html>
