@@ -50,7 +50,11 @@ async function createToken(secret, expires) {
 
 export async function onRequestPost(context) {
     try {
-        if (!context.env.CODE_TINA || !context.env.SESSION_SECRET) {
+
+        if (
+            !context.env.CODE_TINA ||
+            !context.env.SESSION_SECRET
+        ) {
             return Response.json(
                 {
                     success: false,
@@ -65,12 +69,18 @@ export async function onRequestPost(context) {
             );
         }
 
+
         const body = await context.request.json();
 
-        const enteredCode = normalizeCode(body.code);
-        const tinaCode = normalizeCode(context.env.CODE_TINA);
+        const enteredCode =
+            normalizeCode(body.code);
+
+        const tinaCode =
+            normalizeCode(context.env.CODE_TINA);
+
 
         if (enteredCode !== tinaCode) {
+
             return Response.json(
                 {
                     success: false,
@@ -83,40 +93,96 @@ export async function onRequestPost(context) {
                     }
                 }
             );
+
         }
 
-        // Autorisation valide pendant 30 jours
-        const maxAge = 60 * 60 * 24 * 30;
+
+        /*
+        =========================
+        LANGUE
+        =========================
+
+        La page anglaise envoie :
+        lang: "en"
+
+        La page française n'envoie rien,
+        donc le français reste la langue
+        par défaut.
+        */
+
+        const language =
+            body.lang === "en"
+                ? "en"
+                : "fr";
+
+
+        const redirect =
+            language === "en"
+                ? "/en/espace-tina/"
+                : "/espace-tina/";
+
+
+        /*
+        =========================
+        AUTORISATION
+        =========================
+
+        Valide pendant 30 jours.
+        */
+
+        const maxAge =
+            60 * 60 * 24 * 30;
 
         const expires =
-            Math.floor(Date.now() / 1000) + maxAge;
+            Math.floor(Date.now() / 1000) +
+            maxAge;
 
-        const token = await createToken(
-            context.env.SESSION_SECRET,
-            expires
-        );
+
+        const token =
+            await createToken(
+                context.env.SESSION_SECRET,
+                expires
+            );
+
 
         return Response.json(
             {
                 success: true,
-                redirect: "/espace-tina/"
+                redirect: redirect
             },
             {
                 status: 200,
+
                 headers: {
+
+                    /*
+                    Path=/ permet au même accès
+                    de fonctionner pour :
+
+                    /espace-tina/
+
+                    ET
+
+                    /en/espace-tina/
+                    */
+
                     "Set-Cookie":
                         `cdj_tina=${token}; ` +
-                        `Path=/espace-tina/; ` +
+                        `Path=/; ` +
                         `Max-Age=${maxAge}; ` +
                         `HttpOnly; ` +
                         `Secure; ` +
                         `SameSite=Lax`,
-                    "Cache-Control": "no-store"
+
+                    "Cache-Control":
+                        "no-store"
                 }
             }
         );
 
+
     } catch (error) {
+
         return Response.json(
             {
                 success: false,
@@ -129,5 +195,6 @@ export async function onRequestPost(context) {
                 }
             }
         );
+
     }
 }
