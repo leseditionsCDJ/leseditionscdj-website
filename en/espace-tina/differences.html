@@ -848,14 +848,7 @@
 
     <nav>
 
-  <a
-            href="../index.html"
-            class="nav-button home-button">
 
-            Home
-
-        </a>
-      
         <a
             href="./"
             class="nav-button back-button">
@@ -873,6 +866,16 @@
             🇫🇷 FR
 
         </a>
+
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Home
+
+        </a>
+
 
     </nav>
 
@@ -922,7 +925,7 @@
 
 
                     <img
-                        src="../../images/differences_tina_en.png?v=3"
+                        src="../../images/differences_tina_en.png?v=1"
                         alt="Spot the 7 Differences with Matteo and Tina"
                         id="game-image">
 
@@ -1093,46 +1096,56 @@
 <script>
 
 
-    const differences = [
+    /* =====================================================
+       7 DIFFERENCES — ENGLISH IMAGE
 
+       hit:
+       larger invisible area that makes
+       clicking easier for children.
+
+       marker:
+       precise green circle that appears
+       over the actual difference.
+    ===================================================== */
+
+
+    const differences = [
 
         {
             id: "jar",
-
-            name:
-                "The jar lid",
+            name: "The jar lid",
 
             areas: [
 
                 {
                     hit: {
-                        left: 5.20,
-                        top: 37.40,
-                        width: 9.20,
-                        height: 6.80
+                        left: 5.3,
+                        top: 37.8,
+                        width: 9.5,
+                        height: 7.2
                     },
 
                     marker: {
-                        left: 5.80,
-                        top: 39.23,
-                        width: 7.60,
-                        height: 3.68
+                        left: 6.0,
+                        top: 39.0,
+                        width: 7.5,
+                        height: 4.4
                     }
                 },
 
                 {
                     hit: {
-                        left: 5.20,
-                        top: 77.20,
-                        width: 9.20,
-                        height: 6.80
+                        left: 5.3,
+                        top: 77.8,
+                        width: 9.5,
+                        height: 7.2
                     },
 
                     marker: {
-                        left: 5.73,
-                        top: 78.36,
-                        width: 7.67,
-                        height: 3.68
+                        left: 6.0,
+                        top: 79.3,
+                        width: 7.5,
+                        height: 4.4
                     }
                 }
 
@@ -1142,41 +1155,39 @@
 
         {
             id: "hair",
-
-            name:
-                "The hair tie",
+            name: "The hair tie",
 
             areas: [
 
                 {
                     hit: {
-                        left: 63.70,
-                        top: 16.80,
-                        width: 5.80,
-                        height: 6.10
+                        left: 64.5,
+                        top: 17.0,
+                        width: 6.0,
+                        height: 6.5
                     },
 
                     marker: {
-                        left: 64.30,
-                        top: 18.69,
-                        width: 3.80,
-                        height: 3.68
+                        left: 65.5,
+                        top: 18.5,
+                        width: 4.0,
+                        height: 4.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 63.70,
-                        top: 57.80,
-                        width: 5.80,
-                        height: 6.20
+                        left: 64.5,
+                        top: 57.8,
+                        width: 6.0,
+                        height: 6.5
                     },
 
                     marker: {
-                        left: 64.36,
-                        top: 58.66,
-                        width: 3.73,
-                        height: 3.78
+                        left: 65.5,
+                        top: 59.2,
+                        width: 4.0,
+                        height: 4.0
                     }
                 }
 
@@ -1186,41 +1197,39 @@
 
         {
             id: "door-sign",
-
-            name:
-                "The door sign",
+            name: "The door sign",
 
             areas: [
 
                 {
                     hit: {
-                        left: 72.40,
-                        top: 14.00,
-                        width: 10.20,
-                        height: 14.80
+                        left: 72.5,
+                        top: 14.5,
+                        width: 10.5,
+                        height: 14.5
                     },
 
                     marker: {
-                        left: 73.83,
-                        top: 15.93,
-                        width: 8.01,
-                        height: 10.77
+                        left: 73.6,
+                        top: 16.1,
+                        width: 7.7,
+                        height: 11.2
                     }
                 },
 
                 {
                     hit: {
-                        left: 72.40,
-                        top: 54.20,
-                        width: 10.20,
-                        height: 14.80
+                        left: 72.5,
+                        top: 55.0,
+                        width: 10.5,
+                        height: 14.5
                     },
 
                     marker: {
-                        left: 73.83,
-                        top: 56.17,
-                        width: 7.94,
-                        height: 10.77
+                        left: 73.6,
+                        top: 56.6,
+                        width: 7.7,
+                        height: 11.3
                     }
                 }
 
@@ -1230,41 +1239,39 @@
 
         {
             id: "door-handle",
-
-            name:
-                "The door handle",
+            name: "The door handle",
 
             areas: [
 
                 {
                     hit: {
-                        left: 70.50,
-                        top: 29.00,
-                        width: 7.00,
-                        height: 10.00
+                        left: 70.5,
+                        top: 29.5,
+                        width: 7.0,
+                        height: 11.0
                     },
 
                     marker: {
-                        left: 71.27,
-                        top: 31.86,
-                        width: 5.66,
-                        height: 6.26
+                        left: 71.9,
+                        top: 31.8,
+                        width: 4.5,
+                        height: 7.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 70.50,
-                        top: 69.60,
-                        width: 7.00,
-                        height: 9.50
+                        left: 70.5,
+                        top: 70.0,
+                        width: 7.0,
+                        height: 11.0
                     },
 
                     marker: {
-                        left: 71.41,
-                        top: 72.65,
-                        width: 5.52,
-                        height: 6.17
+                        left: 71.9,
+                        top: 72.4,
+                        width: 4.5,
+                        height: 7.0
                     }
                 }
 
@@ -1274,41 +1281,39 @@
 
         {
             id: "poster-paw",
-
-            name:
-                "The paw print on the poster",
+            name: "The paw print on the poster",
 
             areas: [
 
                 {
                     hit: {
-                        left: 41.50,
-                        top: 28.30,
-                        width: 5.50,
-                        height: 7.00
+                        left: 41.8,
+                        top: 27.0,
+                        width: 6.5,
+                        height: 8.0
                     },
 
                     marker: {
-                        left: 43.51,
-                        top: 30.02,
-                        width: 2.62,
-                        height: 3.50
+                        left: 43.2,
+                        top: 29.3,
+                        width: 3.4,
+                        height: 4.4
                     }
                 },
 
                 {
                     hit: {
-                        left: 41.50,
-                        top: 68.20,
-                        width: 5.50,
-                        height: 7.00
+                        left: 41.8,
+                        top: 67.5,
+                        width: 6.5,
+                        height: 8.0
                     },
 
                     marker: {
-                        left: 43.37,
-                        top: 69.98,
-                        width: 2.83,
-                        height: 3.59
+                        left: 43.2,
+                        top: 69.9,
+                        width: 3.4,
+                        height: 4.4
                     }
                 }
 
@@ -1318,41 +1323,39 @@
 
         {
             id: "plant",
-
-            name:
-                "The plant pot",
+            name: "The plant pot",
 
             areas: [
 
                 {
                     hit: {
-                        left: 52.50,
-                        top: 29.50,
-                        width: 6.20,
-                        height: 8.00
+                        left: 52.5,
+                        top: 29.5,
+                        width: 7.0,
+                        height: 9.0
                     },
 
                     marker: {
-                        left: 54.49,
-                        top: 33.52,
-                        width: 3.04,
-                        height: 3.59
+                        left: 54.0,
+                        top: 32.0,
+                        width: 4.5,
+                        height: 5.2
                     }
                 },
 
                 {
                     hit: {
-                        left: 52.50,
-                        top: 70.00,
-                        width: 6.20,
-                        height: 8.00
+                        left: 52.5,
+                        top: 70.0,
+                        width: 7.0,
+                        height: 9.0
                     },
 
                     marker: {
-                        left: 54.63,
-                        top: 74.13,
-                        width: 2.97,
-                        height: 3.68
+                        left: 54.0,
+                        top: 72.7,
+                        width: 4.5,
+                        height: 5.2
                     }
                 }
 
@@ -1362,41 +1365,39 @@
 
         {
             id: "cup-paw",
-
-            name:
-                "The paw print on the cup",
+            name: "The paw print on the cup",
 
             areas: [
 
                 {
                     hit: {
-                        left: 65.50,
-                        top: 42.50,
-                        width: 5.40,
-                        height: 8.00
+                        left: 65.0,
+                        top: 40.5,
+                        width: 7.0,
+                        height: 10.0
                     },
 
                     marker: {
-                        left: 67.20,
-                        top: 45.03,
-                        width: 2.69,
-                        height: 3.50
+                        left: 66.8,
+                        top: 43.2,
+                        width: 3.8,
+                        height: 5.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 65.50,
-                        top: 83.00,
-                        width: 5.40,
-                        height: 8.00
+                        left: 65.0,
+                        top: 81.0,
+                        width: 7.0,
+                        height: 10.0
                     },
 
                     marker: {
-                        left: 67.20,
-                        top: 85.54,
-                        width: 2.69,
-                        height: 3.50
+                        left: 66.8,
+                        top: 83.8,
+                        width: 3.8,
+                        height: 5.0
                     }
                 }
 
@@ -1406,6 +1407,10 @@
     ];
 
 
+
+    /* =========================
+       VARIABLES
+    ========================== */
 
     const board =
         document.getElementById(
@@ -1494,7 +1499,12 @@
 
 
 
+    /* =========================
+       DIFFERENCE LIST
+    ========================== */
+
     function buildDifferenceList() {
+
 
         differenceList.innerHTML =
             "";
@@ -1532,12 +1542,17 @@
             }
         );
 
+
     }
 
 
     buildDifferenceList();
 
 
+
+    /* =========================
+       CLICK POSITION
+    ========================== */
 
     function getClickPercent(
         event
@@ -1549,6 +1564,7 @@
 
 
         return {
+
 
             x:
                 (
@@ -1569,7 +1585,9 @@
                 rect.height *
                 100
 
+
         };
+
 
     }
 
@@ -1598,9 +1616,14 @@
 
         );
 
+
     }
 
 
+
+    /* =========================
+       CLICK ON GAME
+    ========================== */
 
     board.addEventListener(
         "pointerdown",
@@ -1649,7 +1672,9 @@
 
                     break;
 
+
                 }
+
 
             }
 
@@ -1672,6 +1697,7 @@
 
 
                     return;
+
 
                 }
 
@@ -1709,10 +1735,12 @@
 
                     showVictory();
 
+
                 }
 
 
                 return;
+
 
             }
 
@@ -1730,10 +1758,15 @@
 
             playWrongSound();
 
+
         }
     );
 
 
+
+    /* =========================
+       CREATE MARKER
+    ========================== */
 
     function createMarker(
         area,
@@ -1778,9 +1811,14 @@
 
         return marker;
 
+
     }
 
 
+
+    /* =========================
+       FOUND MARKERS
+    ========================== */
 
     function addFoundMarkers(
         diff
@@ -1805,9 +1843,14 @@
             }
         );
 
+
     }
 
 
+
+    /* =========================
+       WRONG MARK
+    ========================== */
 
     function showWrongMark(
         x,
@@ -1855,9 +1898,14 @@
             750
         );
 
+
     }
 
 
+
+    /* =========================
+       UPDATE GAME
+    ========================== */
 
     function updateGame() {
 
@@ -1907,6 +1955,7 @@
                         "✅ " +
                         diff.name;
 
+
                 }
 
                 else {
@@ -1921,7 +1970,9 @@
                         "○ Difference " +
                         (index + 1);
 
+
                 }
+
 
             }
         );
@@ -1929,9 +1980,14 @@
 
         updateStars();
 
+
     }
 
 
+
+    /* =========================
+       STARS
+    ========================== */
 
     function updateStars() {
 
@@ -1945,9 +2001,14 @@
                 3 - stars
             );
 
+
     }
 
 
+
+    /* =========================
+       HINT
+    ========================== */
 
     hintButton.addEventListener(
         "click",
@@ -1962,6 +2023,7 @@
                         return !found.has(
                             diff.id
                         );
+
 
                     }
                 );
@@ -1979,6 +2041,7 @@
 
                 return;
 
+
             }
 
 
@@ -1989,7 +2052,9 @@
                 stars > 1
             ) {
 
+
                 stars--;
+
 
             }
 
@@ -2037,6 +2102,7 @@
                 2500
             );
 
+
         }
     );
 
@@ -2051,6 +2117,7 @@
 
                 marker.remove();
 
+
             }
         );
 
@@ -2058,9 +2125,14 @@
         hintMarkers =
             [];
 
+
     }
 
 
+
+    /* =========================
+       SHOW ANSWERS
+    ========================== */
 
     answersButton.addEventListener(
         "click",
@@ -2077,7 +2149,9 @@
                 !confirmation
             ) {
 
+
                 return;
+
 
             }
 
@@ -2113,7 +2187,9 @@
                             diff
                         );
 
+
                     }
+
 
                 }
             );
@@ -2126,10 +2202,15 @@
                 "👀 Here are all 7 differences! You can start over and try again without help."
             );
 
+
         }
     );
 
 
+
+    /* =========================
+       RESTART
+    ========================== */
 
     restartButton.addEventListener(
         "click",
@@ -2146,7 +2227,9 @@
                 !confirmation
             ) {
 
+
                 return;
+
 
             }
 
@@ -2175,6 +2258,7 @@
 
                         marker.remove();
 
+
                     }
                 );
 
@@ -2191,10 +2275,15 @@
                 "Here we go again! Find all 7 differences. 🔎"
             );
 
+
         }
     );
 
 
+
+    /* =========================
+       SOUND
+    ========================== */
 
     soundButton.addEventListener(
         "click",
@@ -2223,12 +2312,18 @@
                     .12
                 );
 
+
             }
+
 
         }
     );
 
 
+
+    /* =========================
+       SOUNDS
+    ========================== */
 
     function playTone(
         frequency,
@@ -2240,7 +2335,9 @@
             !soundEnabled
         ) {
 
+
             return;
+
 
         }
 
@@ -2310,7 +2407,9 @@
             setTimeout(
                 function() {
 
+
                     audio.close();
+
 
                 },
                 duration *
@@ -2324,6 +2423,7 @@
         catch (error) {
 
         }
+
 
     }
 
@@ -2352,6 +2452,7 @@
             100
         );
 
+
     }
 
 
@@ -2363,6 +2464,7 @@
             190,
             .22
         );
+
 
     }
 
@@ -2399,12 +2501,18 @@
                     120
                 );
 
+
             }
         );
+
 
     }
 
 
+
+    /* =========================
+       VICTORY
+    ========================== */
 
     function showVictory() {
 
@@ -2433,9 +2541,14 @@
 
         playVictorySound();
 
+
     }
 
 
+
+    /* =========================
+       CONFETTI
+    ========================== */
 
     function launchConfetti() {
 
@@ -2506,17 +2619,25 @@
             setTimeout(
                 function() {
 
+
                     piece.remove();
+
 
                 },
                 4000
             );
 
+
         }
+
 
     }
 
 
+
+    /* =========================
+       MESSAGE
+    ========================== */
 
     function showMessage(
         text
@@ -2526,9 +2647,14 @@
         message.textContent =
             text;
 
+
     }
 
 
+
+    /* =========================
+       START
+    ========================== */
 
     updateGame();
 
