@@ -1,1 +1,2541 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Spot the 7 Differences | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 14px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            border-bottom:
+                2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+
+            max-width: 70vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .nav-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .home-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding:
+                9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .language-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 96%;
+
+            max-width: 1600px;
+
+            margin: auto;
+
+            padding:
+                35px 18px 70px;
+        }
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .intro {
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            color: #536B7B;
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           MAIN LAYOUT
+        ========================== */
+
+        .game-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 340px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        .left-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+
+            top: 20px;
+
+            max-height:
+                calc(100vh - 40px);
+
+            overflow-y: auto;
+
+            padding-right: 3px;
+        }
+
+        .sidebar-box {
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 18px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, .08);
+        }
+
+        .sidebar-title {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 1.15rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           GAME IMAGE
+        ========================== */
+
+        .game-card {
+            background-color: white;
+
+            padding: 14px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, .10);
+        }
+
+        .game-board {
+            position: relative;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            cursor: default;
+
+            user-select: none;
+
+            touch-action: manipulation;
+        }
+
+        .game-board img {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            cursor: default;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
+        }
+
+
+        /* =========================
+           FOUND MARKERS
+        ========================== */
+
+        .found-marker {
+            position: absolute;
+
+            border:
+                4px solid #2F8F46;
+
+            border-radius: 50%;
+
+            background:
+                rgba(47, 143, 70, .07);
+
+            box-shadow:
+                0 0 0 2px white;
+
+            pointer-events: none;
+
+            animation:
+                markerPop .25s ease-out;
+        }
+
+        .found-marker::after {
+            content: "✓";
+
+            position: absolute;
+
+            right: -9px;
+
+            top: -12px;
+
+            width: 25px;
+
+            height: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-weight: bold;
+
+            font-size: .95rem;
+        }
+
+        @keyframes markerPop {
+
+            from {
+                transform:
+                    scale(.65);
+
+                opacity: 0;
+            }
+
+            to {
+                transform:
+                    scale(1);
+
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           HINT
+        ========================== */
+
+        .hint-marker {
+            position: absolute;
+
+            border:
+                5px dashed #F1B83B;
+
+            border-radius: 50%;
+
+            background:
+                rgba(241, 184, 59, .13);
+
+            pointer-events: none;
+
+            animation:
+                hintPulse
+                .7s
+                ease-in-out
+                infinite alternate;
+        }
+
+        @keyframes hintPulse {
+
+            from {
+                opacity: .4;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           WRONG CLICK
+        ========================== */
+
+        .wrong-mark {
+            position: absolute;
+
+            width: 55px;
+
+            height: 55px;
+
+            transform:
+                translate(-50%, -50%);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #D93E3E;
+
+            font-size: 3.2rem;
+
+            font-weight: bold;
+
+            pointer-events: none;
+
+            text-shadow:
+                0 2px 3px white;
+
+            animation:
+                wrongPop
+                .7s
+                ease-out
+                forwards;
+        }
+
+        @keyframes wrongPop {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(.5);
+            }
+
+            30% {
+                opacity: 1;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.15);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(.9);
+            }
+
+        }
+
+
+        /* =========================
+           COUNTER
+        ========================== */
+
+        .top-info {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .counter {
+            color: #174E78;
+
+            font-size: 1.16rem;
+
+            font-weight: bold;
+        }
+
+        .stars {
+            font-size: 1.4rem;
+
+            letter-spacing: 3px;
+        }
+
+        .progress-track {
+            width: 100%;
+
+            height: 16px;
+
+            margin-top: 15px;
+
+            background-color: #DDECF3;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            background-color: #2F8F46;
+
+            border-radius: inherit;
+
+            transition:
+                width .35s ease;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 62px;
+
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background-color: #EAF6FC;
+
+            color: #174E78;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================== */
+
+        .tools {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 10px;
+        }
+
+        .tool-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 22px;
+
+            padding:
+                12px 14px;
+
+            font-size: .96rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .hint-button {
+            background-color: #F1B83B;
+
+            color: #263238;
+        }
+
+        .answers-button {
+            background-color: #8B5CF6;
+
+            color: white;
+        }
+
+        .restart-button {
+            background-color: #D95C5C;
+
+            color: white;
+        }
+
+        .sound-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+
+        /* =========================
+           DIFFERENCE LIST
+        ========================== */
+
+        .difference-list {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 9px;
+        }
+
+        .difference-item {
+            padding:
+                11px 12px;
+
+            border:
+                2px solid #E1EEF3;
+
+            border-radius: 15px;
+
+            background-color: white;
+
+            color: #617789;
+
+            font-size: .92rem;
+
+            font-weight: bold;
+
+            text-align: left;
+        }
+
+        .difference-item.found {
+            background-color: #EFF8E9;
+
+            border-color: #A8D8B2;
+
+            color: #2F8F46;
+        }
+
+
+        /* =========================
+           VICTORY
+        ========================== */
+
+        .victory {
+            display: none;
+
+            padding: 22px;
+
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+
+            border:
+                3px solid #2F8F46;
+
+            border-radius: 22px;
+
+            font-size: 1.1rem;
+
+            font-weight: bold;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px
+                rgba(47,143,70,.15);
+        }
+
+        .victory.show {
+            display: block;
+
+            animation:
+                markerPop .35s ease-out;
+        }
+
+
+        /* =========================
+           CONFETTI
+        ========================== */
+
+        .confetti {
+            position: fixed;
+
+            top: -20px;
+
+            width: 10px;
+
+            height: 16px;
+
+            z-index: 9999;
+
+            pointer-events: none;
+
+            animation:
+                confettiFall
+                2.5s
+                linear
+                forwards;
+        }
+
+        @keyframes confettiFall {
+
+            to {
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: .2;
+            }
+
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 1100px) {
+
+            .game-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+
+                max-height: none;
+
+                overflow: visible;
+            }
+
+            .tools {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .difference-list {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .game-card {
+                padding: 7px;
+            }
+
+            .found-marker {
+                border-width: 3px;
+            }
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+            .difference-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+  <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Home
+
+        </a>
+      
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Back to Tina's Space
+
+        </a>
+
+
+        <a
+            href="../../espace-tina/differences.html"
+            class="language-button"
+            lang="fr">
+
+            🇫🇷 FR
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+
+        <h1>
+            🔎 Spot the 7 Differences!
+        </h1>
+
+
+        <p class="intro">
+
+            Look carefully at the two pictures.
+
+            When you find a difference,
+            click it in either the top picture
+            or the bottom picture.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="game-layout">
+
+
+        <div class="left-column">
+
+
+            <section class="game-card">
+
+
+                <div
+                    class="game-board"
+                    id="game-board">
+
+
+                    <img
+                        src="../../images/differences_tina_en.png?v=3"
+                        alt="Spot the 7 Differences with Matteo and Tina"
+                        id="game-image">
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <aside class="sidebar">
+
+
+            <section class="sidebar-box">
+
+
+                <div class="top-info">
+
+
+                    <div
+                        class="counter"
+                        id="counter">
+
+                        0 / 7 differences found
+
+                    </div>
+
+
+                    <div
+                        class="stars"
+                        id="stars">
+
+                        ⭐⭐⭐
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="progress-track">
+
+
+                    <div
+                        class="progress-bar"
+                        id="progress-bar">
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <div
+                    id="message"
+                    aria-live="polite">
+
+                    Your turn! 👀
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🎮 My Tools
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        class="tool-button hint-button"
+                        id="hint-button">
+
+                        💡 Hint
+
+                    </button>
+
+
+                    <button
+                        class="tool-button answers-button"
+                        id="answers-button">
+
+                        👀 Show Answers
+
+                    </button>
+
+
+                    <button
+                        class="tool-button restart-button"
+                        id="restart-button">
+
+                        🔄 Start Over
+
+                    </button>
+
+
+                    <button
+                        class="tool-button sound-button"
+                        id="sound-button">
+
+                        🔊 Sound On
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🔎 Differences Found
+                </h2>
+
+
+                <div
+                    class="difference-list"
+                    id="difference-list">
+                </div>
+
+
+            </section>
+
+
+
+            <div
+                class="victory"
+                id="victory">
+
+                🎉 Great job! You found all 7 differences!
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    const differences = [
+
+
+        {
+            id: "jar",
+
+            name:
+                "The jar lid",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 5.20,
+                        top: 37.40,
+                        width: 9.20,
+                        height: 6.80
+                    },
+
+                    marker: {
+                        left: 5.80,
+                        top: 39.23,
+                        width: 7.60,
+                        height: 3.68
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 5.20,
+                        top: 77.20,
+                        width: 9.20,
+                        height: 6.80
+                    },
+
+                    marker: {
+                        left: 5.73,
+                        top: 78.36,
+                        width: 7.67,
+                        height: 3.68
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            id: "hair",
+
+            name:
+                "The hair tie",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 63.70,
+                        top: 16.80,
+                        width: 5.80,
+                        height: 6.10
+                    },
+
+                    marker: {
+                        left: 64.30,
+                        top: 18.69,
+                        width: 3.80,
+                        height: 3.68
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 63.70,
+                        top: 57.80,
+                        width: 5.80,
+                        height: 6.20
+                    },
+
+                    marker: {
+                        left: 64.36,
+                        top: 58.66,
+                        width: 3.73,
+                        height: 3.78
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            id: "door-sign",
+
+            name:
+                "The door sign",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 72.40,
+                        top: 14.00,
+                        width: 10.20,
+                        height: 14.80
+                    },
+
+                    marker: {
+                        left: 73.83,
+                        top: 15.93,
+                        width: 8.01,
+                        height: 10.77
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 72.40,
+                        top: 54.20,
+                        width: 10.20,
+                        height: 14.80
+                    },
+
+                    marker: {
+                        left: 73.83,
+                        top: 56.17,
+                        width: 7.94,
+                        height: 10.77
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            id: "door-handle",
+
+            name:
+                "The door handle",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 70.50,
+                        top: 29.00,
+                        width: 7.00,
+                        height: 10.00
+                    },
+
+                    marker: {
+                        left: 71.27,
+                        top: 31.86,
+                        width: 5.66,
+                        height: 6.26
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 70.50,
+                        top: 69.60,
+                        width: 7.00,
+                        height: 9.50
+                    },
+
+                    marker: {
+                        left: 71.41,
+                        top: 72.65,
+                        width: 5.52,
+                        height: 6.17
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            id: "poster-paw",
+
+            name:
+                "The paw print on the poster",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 41.50,
+                        top: 28.30,
+                        width: 5.50,
+                        height: 7.00
+                    },
+
+                    marker: {
+                        left: 43.51,
+                        top: 30.02,
+                        width: 2.62,
+                        height: 3.50
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 41.50,
+                        top: 68.20,
+                        width: 5.50,
+                        height: 7.00
+                    },
+
+                    marker: {
+                        left: 43.37,
+                        top: 69.98,
+                        width: 2.83,
+                        height: 3.59
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            id: "plant",
+
+            name:
+                "The plant pot",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 52.50,
+                        top: 29.50,
+                        width: 6.20,
+                        height: 8.00
+                    },
+
+                    marker: {
+                        left: 54.49,
+                        top: 33.52,
+                        width: 3.04,
+                        height: 3.59
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 52.50,
+                        top: 70.00,
+                        width: 6.20,
+                        height: 8.00
+                    },
+
+                    marker: {
+                        left: 54.63,
+                        top: 74.13,
+                        width: 2.97,
+                        height: 3.68
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            id: "cup-paw",
+
+            name:
+                "The paw print on the cup",
+
+            areas: [
+
+                {
+                    hit: {
+                        left: 65.50,
+                        top: 42.50,
+                        width: 5.40,
+                        height: 8.00
+                    },
+
+                    marker: {
+                        left: 67.20,
+                        top: 45.03,
+                        width: 2.69,
+                        height: 3.50
+                    }
+                },
+
+                {
+                    hit: {
+                        left: 65.50,
+                        top: 83.00,
+                        width: 5.40,
+                        height: 8.00
+                    },
+
+                    marker: {
+                        left: 67.20,
+                        top: 85.54,
+                        width: 2.69,
+                        height: 3.50
+                    }
+                }
+
+            ]
+        }
+
+    ];
+
+
+
+    const board =
+        document.getElementById(
+            "game-board"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "counter"
+        );
+
+
+    const progressBar =
+        document.getElementById(
+            "progress-bar"
+        );
+
+
+    const starsDisplay =
+        document.getElementById(
+            "stars"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    const victory =
+        document.getElementById(
+            "victory"
+        );
+
+
+    const differenceList =
+        document.getElementById(
+            "difference-list"
+        );
+
+
+    const hintButton =
+        document.getElementById(
+            "hint-button"
+        );
+
+
+    const answersButton =
+        document.getElementById(
+            "answers-button"
+        );
+
+
+    const restartButton =
+        document.getElementById(
+            "restart-button"
+        );
+
+
+    const soundButton =
+        document.getElementById(
+            "sound-button"
+        );
+
+
+    let found =
+        new Set();
+
+
+    let stars =
+        3;
+
+
+    let soundEnabled =
+        true;
+
+
+    let answersRevealed =
+        false;
+
+
+    let hintMarkers =
+        [];
+
+
+
+    function buildDifferenceList() {
+
+        differenceList.innerHTML =
+            "";
+
+
+        differences.forEach(
+            function(diff, index) {
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "difference-item";
+
+
+                item.id =
+                    "list-" +
+                    diff.id;
+
+
+                item.textContent =
+                    "○ Difference " +
+                    (index + 1);
+
+
+                differenceList.appendChild(
+                    item
+                );
+
+
+            }
+        );
+
+    }
+
+
+    buildDifferenceList();
+
+
+
+    function getClickPercent(
+        event
+    ) {
+
+
+        const rect =
+            board.getBoundingClientRect();
+
+
+        return {
+
+            x:
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+
+                rect.width *
+                100,
+
+
+            y:
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+
+                rect.height *
+                100
+
+        };
+
+    }
+
+
+
+    function pointInsideArea(
+        x,
+        y,
+        area
+    ) {
+
+
+        return (
+
+            x >= area.left &&
+
+            x <=
+                area.left +
+                area.width &&
+
+            y >= area.top &&
+
+            y <=
+                area.top +
+                area.height
+
+        );
+
+    }
+
+
+
+    board.addEventListener(
+        "pointerdown",
+        function(event) {
+
+
+            const point =
+                getClickPercent(
+                    event
+                );
+
+
+            let matched =
+                null;
+
+
+            for (
+                const diff of differences
+            ) {
+
+
+                const hit =
+                    diff.areas.some(
+                        function(area) {
+
+
+                            return pointInsideArea(
+                                point.x,
+                                point.y,
+                                area.hit
+                            );
+
+
+                        }
+                    );
+
+
+                if (
+                    hit
+                ) {
+
+
+                    matched =
+                        diff;
+
+
+                    break;
+
+                }
+
+            }
+
+
+            if (
+                matched
+            ) {
+
+
+                if (
+                    found.has(
+                        matched.id
+                    )
+                ) {
+
+
+                    showMessage(
+                        "You already found this difference! ✅"
+                    );
+
+
+                    return;
+
+                }
+
+
+                found.add(
+                    matched.id
+                );
+
+
+                clearHints();
+
+
+                addFoundMarkers(
+                    matched
+                );
+
+
+                updateGame();
+
+
+                showMessage(
+                    "Great job! You found a difference! ✅"
+                );
+
+
+                playGoodSound();
+
+
+                if (
+                    found.size ===
+                    differences.length &&
+                    !answersRevealed
+                ) {
+
+
+                    showVictory();
+
+                }
+
+
+                return;
+
+            }
+
+
+            showWrongMark(
+                point.x,
+                point.y
+            );
+
+
+            showMessage(
+                "Try again! Look closely at the little details. 👀"
+            );
+
+
+            playWrongSound();
+
+        }
+    );
+
+
+
+    function createMarker(
+        area,
+        className
+    ) {
+
+
+        const marker =
+            document.createElement(
+                "div"
+            );
+
+
+        marker.className =
+            className;
+
+
+        marker.style.left =
+            area.left +
+            "%";
+
+
+        marker.style.top =
+            area.top +
+            "%";
+
+
+        marker.style.width =
+            area.width +
+            "%";
+
+
+        marker.style.height =
+            area.height +
+            "%";
+
+
+        board.appendChild(
+            marker
+        );
+
+
+        return marker;
+
+    }
+
+
+
+    function addFoundMarkers(
+        diff
+    ) {
+
+
+        diff.areas.forEach(
+            function(area) {
+
+
+                const marker =
+                    createMarker(
+                        area.marker,
+                        "found-marker"
+                    );
+
+
+                marker.dataset.difference =
+                    diff.id;
+
+
+            }
+        );
+
+    }
+
+
+
+    function showWrongMark(
+        x,
+        y
+    ) {
+
+
+        const mark =
+            document.createElement(
+                "div"
+            );
+
+
+        mark.className =
+            "wrong-mark";
+
+
+        mark.textContent =
+            "✕";
+
+
+        mark.style.left =
+            x +
+            "%";
+
+
+        mark.style.top =
+            y +
+            "%";
+
+
+        board.appendChild(
+            mark
+        );
+
+
+        setTimeout(
+            function() {
+
+
+                mark.remove();
+
+
+            },
+            750
+        );
+
+    }
+
+
+
+    function updateGame() {
+
+
+        const count =
+            found.size;
+
+
+        counter.textContent =
+            count +
+            " / 7 differences found";
+
+
+        progressBar.style.width =
+            (
+                count /
+                differences.length *
+                100
+            ) +
+            "%";
+
+
+        differences.forEach(
+            function(diff, index) {
+
+
+                const item =
+                    document.getElementById(
+                        "list-" +
+                        diff.id
+                    );
+
+
+                if (
+                    found.has(
+                        diff.id
+                    )
+                ) {
+
+
+                    item.classList.add(
+                        "found"
+                    );
+
+
+                    item.textContent =
+                        "✅ " +
+                        diff.name;
+
+                }
+
+                else {
+
+
+                    item.classList.remove(
+                        "found"
+                    );
+
+
+                    item.textContent =
+                        "○ Difference " +
+                        (index + 1);
+
+                }
+
+            }
+        );
+
+
+        updateStars();
+
+    }
+
+
+
+    function updateStars() {
+
+
+        starsDisplay.textContent =
+            "⭐".repeat(
+                stars
+            ) +
+
+            "☆".repeat(
+                3 - stars
+            );
+
+    }
+
+
+
+    hintButton.addEventListener(
+        "click",
+        function() {
+
+
+            const remaining =
+                differences.filter(
+                    function(diff) {
+
+
+                        return !found.has(
+                            diff.id
+                        );
+
+                    }
+                );
+
+
+            if (
+                remaining.length === 0
+            ) {
+
+
+                showMessage(
+                    "You already found them all! 🎉"
+                );
+
+
+                return;
+
+            }
+
+
+            clearHints();
+
+
+            if (
+                stars > 1
+            ) {
+
+                stars--;
+
+            }
+
+
+            updateStars();
+
+
+            const target =
+                remaining[
+                    Math.floor(
+                        Math.random() *
+                        remaining.length
+                    )
+                ];
+
+
+            const side =
+                target.areas[
+                    Math.floor(
+                        Math.random() *
+                        target.areas.length
+                    )
+                ];
+
+
+            const marker =
+                createMarker(
+                    side.marker,
+                    "hint-marker"
+                );
+
+
+            hintMarkers.push(
+                marker
+            );
+
+
+            showMessage(
+                "💡 Look closely at the flashing area!"
+            );
+
+
+            setTimeout(
+                clearHints,
+                2500
+            );
+
+        }
+    );
+
+
+
+    function clearHints() {
+
+
+        hintMarkers.forEach(
+            function(marker) {
+
+
+                marker.remove();
+
+            }
+        );
+
+
+        hintMarkers =
+            [];
+
+    }
+
+
+
+    answersButton.addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Do you really want to see all 7 answers?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+                return;
+
+            }
+
+
+            clearHints();
+
+
+            answersRevealed =
+                true;
+
+
+            stars =
+                1;
+
+
+            differences.forEach(
+                function(diff) {
+
+
+                    if (
+                        !found.has(
+                            diff.id
+                        )
+                    ) {
+
+
+                        found.add(
+                            diff.id
+                        );
+
+
+                        addFoundMarkers(
+                            diff
+                        );
+
+                    }
+
+                }
+            );
+
+
+            updateGame();
+
+
+            showMessage(
+                "👀 Here are all 7 differences! You can start over and try again without help."
+            );
+
+        }
+    );
+
+
+
+    restartButton.addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Do you want to start over?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+                return;
+
+            }
+
+
+            found.clear();
+
+
+            stars =
+                3;
+
+
+            answersRevealed =
+                false;
+
+
+            clearHints();
+
+
+            board
+                .querySelectorAll(
+                    ".found-marker, .wrong-mark"
+                )
+                .forEach(
+                    function(marker) {
+
+
+                        marker.remove();
+
+                    }
+                );
+
+
+            victory.classList.remove(
+                "show"
+            );
+
+
+            updateGame();
+
+
+            showMessage(
+                "Here we go again! Find all 7 differences. 🔎"
+            );
+
+        }
+    );
+
+
+
+    soundButton.addEventListener(
+        "click",
+        function() {
+
+
+            soundEnabled =
+                !soundEnabled;
+
+
+            soundButton.textContent =
+                soundEnabled
+
+                    ? "🔊 Sound On"
+
+                    : "🔇 Sound Off";
+
+
+            if (
+                soundEnabled
+            ) {
+
+
+                playTone(
+                    600,
+                    .12
+                );
+
+            }
+
+        }
+    );
+
+
+
+    function playTone(
+        frequency,
+        duration
+    ) {
+
+
+        if (
+            !soundEnabled
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+
+            const AudioContext =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+
+            const audio =
+                new AudioContext();
+
+
+            const oscillator =
+                audio.createOscillator();
+
+
+            const gain =
+                audio.createGain();
+
+
+            oscillator.connect(
+                gain
+            );
+
+
+            gain.connect(
+                audio.destination
+            );
+
+
+            oscillator.frequency.value =
+                frequency;
+
+
+            oscillator.type =
+                "sine";
+
+
+            gain.gain.value =
+                .06;
+
+
+            oscillator.start();
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+
+                    .001,
+
+                    audio.currentTime +
+                    duration
+
+                );
+
+
+            oscillator.stop(
+                audio.currentTime +
+                duration
+            );
+
+
+            setTimeout(
+                function() {
+
+                    audio.close();
+
+                },
+                duration *
+                1000 +
+                100
+            );
+
+
+        }
+
+        catch (error) {
+
+        }
+
+    }
+
+
+
+    function playGoodSound() {
+
+
+        playTone(
+            620,
+            .15
+        );
+
+
+        setTimeout(
+            function() {
+
+
+                playTone(
+                    820,
+                    .17
+                );
+
+
+            },
+            100
+        );
+
+    }
+
+
+
+    function playWrongSound() {
+
+
+        playTone(
+            190,
+            .22
+        );
+
+    }
+
+
+
+    function playVictorySound() {
+
+
+        const notes =
+            [
+                523,
+                659,
+                784,
+                1046
+            ];
+
+
+        notes.forEach(
+            function(note, index) {
+
+
+                setTimeout(
+                    function() {
+
+
+                        playTone(
+                            note,
+                            .27
+                        );
+
+
+                    },
+                    index *
+                    120
+                );
+
+            }
+        );
+
+    }
+
+
+
+    function showVictory() {
+
+
+        victory.classList.add(
+            "show"
+        );
+
+
+        victory.innerHTML =
+            "🎉 Great job! You found all 7 differences!" +
+
+            "<br>" +
+
+            "<span style='font-size:1rem'>" +
+
+            "Score: " +
+
+            starsDisplay.textContent +
+
+            "</span>";
+
+
+        launchConfetti();
+
+
+        playVictorySound();
+
+    }
+
+
+
+    function launchConfetti() {
+
+
+        const colors =
+            [
+                "#2F8F46",
+                "#174E78",
+                "#F1B83B",
+                "#EC4899",
+                "#8B5CF6",
+                "#F97316"
+            ];
+
+
+        for (
+            let i = 0;
+            i < 70;
+            i++
+        ) {
+
+
+            const piece =
+                document.createElement(
+                    "div"
+                );
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            piece.style.backgroundColor =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            piece.style.animationDelay =
+                Math.random() *
+                .8 +
+                "s";
+
+
+            piece.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() *
+                    1.5
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(
+                function() {
+
+                    piece.remove();
+
+                },
+                4000
+            );
+
+        }
+
+    }
+
+
+
+    function showMessage(
+        text
+    ) {
+
+
+        message.textContent =
+            text;
+
+    }
+
+
+
+    updateGame();
+
+
+</script>
+
+
+</body>
+
+</html>
