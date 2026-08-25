@@ -21,12 +21,7 @@
 
         body {
             margin: 0;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             color: #203040;
 
             background:
@@ -50,72 +45,52 @@
 
         header {
             background-color: white;
-
             padding: 14px 5%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             gap: 20px;
-
             flex-wrap: wrap;
 
-            border-bottom:
-                2px solid #E7EEF3;
+            border-bottom: 2px solid #E7EEF3;
         }
 
         .logo {
             width: 220px;
-
             max-width: 70vw;
-
             height: auto;
         }
 
         nav {
             display: flex;
-
             align-items: center;
-
             gap: 14px;
-
             flex-wrap: wrap;
         }
 
         .nav-button {
             display: inline-block;
-
-            padding:
-                11px 18px;
-
+            padding: 11px 18px;
             border-radius: 25px;
-
             font-weight: bold;
-
             transition: .2s;
         }
 
         .back-button {
             background-color: #174E78;
-
             color: white;
         }
 
         .home-button {
             background-color: white;
-
             color: #174E78;
-
-            border:
-                2px solid #174E78;
+            border: 2px solid #174E78;
         }
 
         .nav-button:hover {
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
         }
 
         .back-button:hover {
@@ -124,27 +99,20 @@
 
         .home-button:hover {
             color: #2F8F46;
-
             border-color: #2F8F46;
         }
 
         .language-button {
             display: inline-block;
+            padding: 9px 13px;
 
-            padding:
-                9px 13px;
-
-            border:
-                2px solid #174E78;
-
+            border: 2px solid #174E78;
             border-radius: 22px;
 
             color: #174E78;
-
             background-color: white;
 
             font-size: 0.92rem;
-
             font-weight: bold;
 
             transition: .2s;
@@ -152,11 +120,8 @@
 
         .language-button:hover {
             color: #2F8F46;
-
             border-color: #2F8F46;
-
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
         }
 
 
@@ -166,39 +131,31 @@
 
         main {
             width: 96%;
-
             max-width: 1600px;
 
             margin: auto;
 
-            padding:
-                35px 18px 70px;
+            padding: 35px 18px 70px;
         }
 
         .page-header {
             text-align: center;
-
             margin-bottom: 28px;
         }
 
         h1 {
-            margin:
-                0 0 10px;
-
+            margin: 0 0 10px;
             color: #174E78;
-
             font-size: 2.7rem;
         }
 
         .intro {
             max-width: 760px;
-
             margin: 0 auto;
 
             color: #536B7B;
 
             font-size: 1.1rem;
-
             line-height: 1.6;
         }
 
@@ -214,7 +171,6 @@
                 minmax(0, 1fr) 340px;
 
             gap: 24px;
-
             align-items: start;
         }
 
@@ -224,11 +180,9 @@
 
         .sidebar {
             position: sticky;
-
             top: 20px;
 
-            max-height:
-                calc(100vh - 40px);
+            max-height: calc(100vh - 40px);
 
             overflow-y: auto;
 
@@ -238,13 +192,10 @@
         .sidebar-box {
             background-color: white;
 
-            border:
-                2px solid #DDECF3;
-
+            border: 2px solid #DDECF3;
             border-radius: 22px;
 
             padding: 18px;
-
             margin-bottom: 16px;
 
             box-shadow:
@@ -253,8 +204,7 @@
         }
 
         .sidebar-title {
-            margin:
-                0 0 14px;
+            margin: 0 0 14px;
 
             color: #174E78;
 
@@ -273,9 +223,7 @@
 
             padding: 14px;
 
-            border:
-                2px solid #DDECF3;
-
+            border: 2px solid #DDECF3;
             border-radius: 25px;
 
             box-shadow:
@@ -303,7 +251,6 @@
             display: block;
 
             width: 100%;
-
             height: auto;
 
             cursor: default;
@@ -323,8 +270,7 @@
         .found-marker {
             position: absolute;
 
-            border:
-                4px solid #2F8F46;
+            border: 4px solid #2F8F46;
 
             border-radius: 50%;
 
@@ -346,17 +292,14 @@
             position: absolute;
 
             right: -9px;
-
             top: -12px;
 
             width: 25px;
-
             height: 25px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             background-color: #2F8F46;
@@ -373,16 +316,12 @@
         @keyframes markerPop {
 
             from {
-                transform:
-                    scale(.65);
-
+                transform: scale(.65);
                 opacity: 0;
             }
 
             to {
-                transform:
-                    scale(1);
-
+                transform: scale(1);
                 opacity: 1;
             }
 
@@ -396,8 +335,7 @@
         .hint-marker {
             position: absolute;
 
-            border:
-                5px dashed #F1B83B;
+            border: 5px dashed #F1B83B;
 
             border-radius: 50%;
 
@@ -434,7 +372,6 @@
             position: absolute;
 
             width: 55px;
-
             height: 55px;
 
             transform:
@@ -443,7 +380,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             color: #D93E3E;
@@ -501,7 +437,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: space-between;
 
             gap: 14px;
@@ -525,7 +460,6 @@
 
         .progress-track {
             width: 100%;
-
             height: 16px;
 
             margin-top: 15px;
@@ -539,7 +473,6 @@
 
         .progress-bar {
             width: 0%;
-
             height: 100%;
 
             background-color: #2F8F46;
@@ -575,7 +508,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             text-align: center;
@@ -601,8 +533,7 @@
 
             border-radius: 22px;
 
-            padding:
-                12px 14px;
+            padding: 12px 14px;
 
             font-size: .96rem;
 
@@ -614,31 +545,26 @@
         }
 
         .tool-button:hover {
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
         }
 
         .hint-button {
             background-color: #F1B83B;
-
             color: #263238;
         }
 
         .answers-button {
             background-color: #8B5CF6;
-
             color: white;
         }
 
         .restart-button {
             background-color: #D95C5C;
-
             color: white;
         }
 
         .sound-button {
             background-color: #174E78;
-
             color: white;
         }
 
@@ -656,11 +582,9 @@
         }
 
         .difference-item {
-            padding:
-                11px 12px;
+            padding: 11px 12px;
 
-            border:
-                2px solid #E1EEF3;
+            border: 2px solid #E1EEF3;
 
             border-radius: 15px;
 
@@ -697,8 +621,7 @@
 
             color: #2F8F46;
 
-            border:
-                3px solid #2F8F46;
+            border: 3px solid #2F8F46;
 
             border-radius: 22px;
 
@@ -731,7 +654,6 @@
             top: -20px;
 
             width: 10px;
-
             height: 16px;
 
             z-index: 9999;
@@ -925,7 +847,7 @@
 
 
                     <img
-                        src="../../images/differences_tina_en.png?v=1"
+                        src="../../images/differences_tina_en.png?v=2"
                         alt="Spot the 7 Differences with Matteo and Tina"
                         id="game-image">
 
@@ -1097,265 +1019,306 @@
 
 
     /* =====================================================
-       7 DIFFERENCES — ENGLISH IMAGE
-
-       hit:
-       larger invisible area that makes
-       clicking easier for children.
-
-       marker:
-       precise green circle that appears
-       over the actual difference.
+       7 DIFFERENCES
+       CALIBRATED FOR THE ENGLISH IMAGE
     ===================================================== */
 
 
     const differences = [
 
+
+        /* =========================
+           1 — JAR LID
+        ========================== */
+
         {
             id: "jar",
-            name: "The jar lid",
+
+            name:
+                "The jar lid",
 
             areas: [
 
                 {
                     hit: {
-                        left: 5.3,
-                        top: 37.8,
-                        width: 9.5,
-                        height: 7.2
+                        left: 5.2,
+                        top: 38.8,
+                        width: 9.2,
+                        height: 5.2
                     },
 
                     marker: {
-                        left: 6.0,
-                        top: 39.0,
-                        width: 7.5,
-                        height: 4.4
+                        left: 6.08,
+                        top: 39.78,
+                        width: 7.60,
+                        height: 3.13
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 5.3,
-                        top: 77.8,
-                        width: 9.5,
-                        height: 7.2
+                        left: 5.2,
+                        top: 79.8,
+                        width: 9.2,
+                        height: 5.2
                     },
 
                     marker: {
-                        left: 6.0,
-                        top: 79.3,
-                        width: 7.5,
-                        height: 4.4
+                        left: 6.08,
+                        top: 80.85,
+                        width: 7.60,
+                        height: 3.13
                     }
                 }
 
             ]
         },
 
+
+
+        /* =========================
+           2 — HAIR TIE
+        ========================== */
 
         {
             id: "hair",
-            name: "The hair tie",
+
+            name:
+                "The hair tie",
 
             areas: [
 
                 {
                     hit: {
-                        left: 64.5,
-                        top: 17.0,
-                        width: 6.0,
-                        height: 6.5
+                        left: 65.4,
+                        top: 18.6,
+                        width: 5.0,
+                        height: 5.0
                     },
 
                     marker: {
-                        left: 65.5,
-                        top: 18.5,
-                        width: 4.0,
-                        height: 4.0
+                        left: 66.16,
+                        top: 19.34,
+                        width: 3.31,
+                        height: 3.41
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 64.5,
-                        top: 57.8,
-                        width: 6.0,
-                        height: 6.5
+                        left: 65.4,
+                        top: 59.8,
+                        width: 5.0,
+                        height: 5.0
                     },
 
                     marker: {
-                        left: 65.5,
-                        top: 59.2,
-                        width: 4.0,
-                        height: 4.0
+                        left: 66.16,
+                        top: 60.50,
+                        width: 3.31,
+                        height: 3.41
                     }
                 }
 
             ]
         },
 
+
+
+        /* =========================
+           3 — PAW PRINT ON DOOR SIGN
+        ========================== */
 
         {
             id: "door-sign",
-            name: "The door sign",
+
+            name:
+                "The paw print on the door sign",
 
             areas: [
 
                 {
                     hit: {
-                        left: 72.5,
-                        top: 14.5,
-                        width: 10.5,
-                        height: 14.5
+                        left: 77.0,
+                        top: 22.4,
+                        width: 5.0,
+                        height: 5.2
                     },
 
                     marker: {
-                        left: 73.6,
-                        top: 16.1,
-                        width: 7.7,
-                        height: 11.2
+                        left: 77.90,
+                        top: 23.20,
+                        width: 3.04,
+                        height: 3.68
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 72.5,
-                        top: 55.0,
-                        width: 10.5,
-                        height: 14.5
+                        left: 77.0,
+                        top: 63.8,
+                        width: 5.0,
+                        height: 5.2
                     },
 
                     marker: {
-                        left: 73.6,
-                        top: 56.6,
-                        width: 7.7,
-                        height: 11.3
+                        left: 77.90,
+                        top: 64.64,
+                        width: 3.04,
+                        height: 3.59
                     }
                 }
 
             ]
         },
 
+
+
+        /* =========================
+           4 — DOOR HANDLE
+        ========================== */
 
         {
             id: "door-handle",
-            name: "The door handle",
+
+            name:
+                "The door handle",
 
             areas: [
 
                 {
                     hit: {
-                        left: 70.5,
-                        top: 29.5,
-                        width: 7.0,
-                        height: 11.0
+                        left: 73.2,
+                        top: 30.8,
+                        width: 5.3,
+                        height: 9.0
                     },
 
                     marker: {
-                        left: 71.9,
-                        top: 31.8,
-                        width: 4.5,
-                        height: 7.0
+                        left: 74.03,
+                        top: 31.49,
+                        width: 3.66,
+                        height: 7.64
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 70.5,
-                        top: 70.0,
-                        width: 7.0,
-                        height: 11.0
+                        left: 73.2,
+                        top: 72.0,
+                        width: 5.3,
+                        height: 8.8
                     },
 
                     marker: {
-                        left: 71.9,
-                        top: 72.4,
-                        width: 4.5,
-                        height: 7.0
+                        left: 74.03,
+                        top: 72.74,
+                        width: 3.66,
+                        height: 7.46
                     }
                 }
 
             ]
         },
 
+
+
+        /* =========================
+           5 — PAW PRINT ON POSTER
+        ========================== */
 
         {
             id: "poster-paw",
-            name: "The paw print on the poster",
+
+            name:
+                "The paw print on the poster",
 
             areas: [
 
                 {
                     hit: {
-                        left: 41.8,
-                        top: 27.0,
-                        width: 6.5,
-                        height: 8.0
+                        left: 44.0,
+                        top: 29.7,
+                        width: 4.2,
+                        height: 4.8
                     },
 
                     marker: {
-                        left: 43.2,
-                        top: 29.3,
-                        width: 3.4,
-                        height: 4.4
+                        left: 44.68,
+                        top: 30.39,
+                        width: 2.76,
+                        height: 3.31
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 41.8,
-                        top: 67.5,
-                        width: 6.5,
-                        height: 8.0
+                        left: 44.0,
+                        top: 70.9,
+                        width: 4.2,
+                        height: 4.8
                     },
 
                     marker: {
-                        left: 43.2,
-                        top: 69.9,
-                        width: 3.4,
-                        height: 4.4
+                        left: 44.68,
+                        top: 71.64,
+                        width: 2.76,
+                        height: 3.41
                     }
                 }
 
             ]
         },
 
+
+
+        /* =========================
+           6 — PLANT POT
+        ========================== */
 
         {
             id: "plant",
-            name: "The plant pot",
+
+            name:
+                "The plant pot",
 
             areas: [
 
                 {
                     hit: {
-                        left: 52.5,
-                        top: 29.5,
-                        width: 7.0,
-                        height: 9.0
+                        left: 54.8,
+                        top: 33.2,
+                        width: 4.8,
+                        height: 4.8
                     },
 
                     marker: {
-                        left: 54.0,
-                        top: 32.0,
-                        width: 4.5,
-                        height: 5.2
+                        left: 55.59,
+                        top: 33.98,
+                        width: 3.25,
+                        height: 3.22
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 52.5,
-                        top: 70.0,
-                        width: 7.0,
-                        height: 9.0
+                        left: 54.9,
+                        top: 74.3,
+                        width: 4.8,
+                        height: 4.8
                     },
 
                     marker: {
-                        left: 54.0,
-                        top: 72.7,
-                        width: 4.5,
-                        height: 5.2
+                        left: 55.66,
+                        top: 75.05,
+                        width: 3.18,
+                        height: 3.31
                     }
                 }
 
@@ -1363,41 +1326,49 @@
         },
 
 
+
+        /* =========================
+           7 — PAW PRINT ON CUP
+        ========================== */
+
         {
             id: "cup-paw",
-            name: "The paw print on the cup",
+
+            name:
+                "The paw print on the cup",
 
             areas: [
 
                 {
                     hit: {
-                        left: 65.0,
-                        top: 40.5,
-                        width: 7.0,
-                        height: 10.0
+                        left: 67.6,
+                        top: 45.3,
+                        width: 5.2,
+                        height: 4.8
                     },
 
                     marker: {
-                        left: 66.8,
-                        top: 43.2,
-                        width: 3.8,
-                        height: 5.0
+                        left: 68.44,
+                        top: 46.04,
+                        width: 3.52,
+                        height: 3.22
                     }
                 },
 
+
                 {
                     hit: {
-                        left: 65.0,
-                        top: 81.0,
-                        width: 7.0,
-                        height: 10.0
+                        left: 67.6,
+                        top: 86.3,
+                        width: 5.2,
+                        height: 4.8
                     },
 
                     marker: {
-                        left: 66.8,
-                        top: 83.8,
-                        width: 3.8,
-                        height: 5.0
+                        left: 68.44,
+                        top: 87.02,
+                        width: 3.52,
+                        height: 3.22
                     }
                 }
 
@@ -1679,6 +1650,7 @@
             }
 
 
+
             if (
                 matched
             ) {
@@ -1743,6 +1715,7 @@
 
 
             }
+
 
 
             showWrongMark(
@@ -1849,7 +1822,7 @@
 
 
     /* =========================
-       WRONG MARK
+       WRONG CLICK MARK
     ========================== */
 
     function showWrongMark(
@@ -2209,7 +2182,7 @@
 
 
     /* =========================
-       RESTART
+       START OVER
     ========================== */
 
     restartButton.addEventListener(
@@ -2282,7 +2255,7 @@
 
 
     /* =========================
-       SOUND
+       SOUND ON / OFF
     ========================== */
 
     soundButton.addEventListener(
