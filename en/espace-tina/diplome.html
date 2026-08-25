@@ -1,1 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Explorer Diploma | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .home-button:hover {
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding:
+                9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .language-button:hover {
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 96%;
+
+            max-width: 1700px;
+
+            margin: auto;
+
+            padding:
+                35px 18px 70px;
+        }
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        .page-header h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .page-header p {
+            max-width: 760px;
+
+            margin: auto;
+
+            color: #536B7B;
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================== */
+
+        .diploma-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 350px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        .diploma-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+
+            top: 175px;
+        }
+
+        .sidebar-box {
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 20px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, 0.08);
+        }
+
+        .sidebar-title {
+            margin:
+                0 0 15px;
+
+            color: #174E78;
+
+            font-size: 1.2rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           DIPLOMA
+        ========================== */
+
+        .diploma-card {
+            background-color: white;
+
+            padding: 12px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, 0.10);
+        }
+
+        .canvas-wrapper {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            background-color: white;
+        }
+
+        canvas {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+        }
+
+
+        /* =========================
+           FORM
+        ========================== */
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #174E78;
+
+            font-weight: bold;
+        }
+
+        .field input {
+            width: 100%;
+
+            padding:
+                12px 14px;
+
+            border:
+                2px solid #D8E7EF;
+
+            border-radius: 14px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 1rem;
+
+            outline: none;
+
+            background-color: #FAFDFE;
+        }
+
+        .field input:focus {
+            border-color: #2F8F46;
+
+            background-color: white;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 58px;
+
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background-color: #EAF6FC;
+
+            color: #174E78;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+
+            text-align: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================== */
+
+        .tools {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .tool-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 24px;
+
+            padding:
+                13px 15px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 0.98rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .print-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .save-button {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .reset-button {
+            background-color: #E7EEF3;
+
+            color: #174E78;
+        }
+
+
+        /* =========================
+           TIP
+        ========================== */
+
+        .tip {
+            margin: 0;
+
+            color: #617789;
+
+            font-size: 0.92rem;
+
+            line-height: 1.55;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 1100px) {
+
+            .diploma-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .tools {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+            .logo {
+                width: 220px;
+
+                max-width: 80%;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .diploma-card {
+                padding: 6px;
+            }
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Home
+
+        </a>
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Back to Tina's Space
+
+        </a>
+
+
+        <a
+            href="../../espace-tina/diplome.html"
+            class="language-button"
+            lang="fr">
+
+            🇫🇷 FR
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+
+        <h1>
+            🎓 My Explorer Diploma
+        </h1>
+
+
+        <p>
+
+            Congratulations on your adventure with Tina!
+
+            Enter your name and check the date,
+            then print or save your diploma.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="diploma-layout">
+
+
+        <!-- =========================
+             DIPLOMA
+        ========================== -->
+
+        <div class="diploma-column">
+
+
+            <section class="diploma-card">
+
+
+                <div class="canvas-wrapper">
+
+
+                    <canvas
+                        id="diploma-canvas">
+                    </canvas>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+
+
+            <!-- PERSONALIZATION -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+
+                    ✏️ Personalize Your Diploma
+
+                </h2>
+
+
+                <div class="field">
+
+
+                    <label for="name-input">
+
+                        Awarded to:
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name-input"
+                        maxlength="35"
+                        placeholder="Enter your first name or name">
+
+
+                </div>
+
+
+
+                <div class="field">
+
+
+                    <label for="date-input">
+
+                        Date:
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="date-input"
+                        maxlength="25">
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- MESSAGE -->
+
+            <section class="sidebar-box">
+
+
+                <div
+                    id="message"
+                    aria-live="polite">
+
+                    Your diploma is ready to personalize! 🎓
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ACTIONS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+
+                    🎓 My Diploma
+
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        class="tool-button print-button"
+                        id="print-button">
+
+                        🖨️ Print My Diploma
+
+                    </button>
+
+
+                    <button
+                        class="tool-button save-button"
+                        id="save-button">
+
+                        💾 Save My Diploma
+
+                    </button>
+
+
+                    <button
+                        class="tool-button reset-button"
+                        id="reset-button">
+
+                        🔄 Start Over
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- TIP -->
+
+            <section class="sidebar-box">
+
+
+                <p class="tip">
+
+                    💡 When printing, choose
+                    <strong>Letter / 8½ × 11</strong>
+                    and
+                    <strong>Landscape</strong>
+                    orientation.
+
+                </p>
+
+
+            </section>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =========================
+       IMAGE
+    ========================== */
+
+    const IMAGE_PATH =
+        "../../images/diplome_tina_en.png?v=1";
+
+
+    const canvas =
+        document.getElementById(
+            "diploma-canvas"
+        );
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    const diplomaImage =
+        new Image();
+
+
+    const nameInput =
+        document.getElementById(
+            "name-input"
+        );
+
+
+    const dateInput =
+        document.getElementById(
+            "date-input"
+        );
+
+
+
+    /* =========================
+       TODAY'S DATE
+    ========================== */
+
+    const today =
+        new Date();
+
+
+    dateInput.value =
+        today.toLocaleDateString(
+            "en-CA",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
+
+
+
+    /* =========================
+       LOAD IMAGE
+    ========================== */
+
+    diplomaImage.onload =
+        function() {
+
+
+            canvas.width =
+                diplomaImage.naturalWidth;
+
+
+            canvas.height =
+                diplomaImage.naturalHeight;
+
+
+            drawDiploma();
+
+
+        };
+
+
+    diplomaImage.onerror =
+        function() {
+
+
+            showMessage(
+                "The diploma could not be loaded."
+            );
+
+
+        };
+
+
+    diplomaImage.src =
+        IMAGE_PATH;
+
+
+
+    /* =========================
+       DRAW DIPLOMA
+    ========================== */
+
+    function drawDiploma() {
+
+
+        if (
+            !diplomaImage.complete ||
+            !diplomaImage.naturalWidth
+        ) {
+
+
+            return;
+
+
+        }
+
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        ctx.drawImage(
+            diplomaImage,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+
+        /* =========================
+           CHILD'S NAME
+
+           Positioned on the line
+           below "Awarded to:"
+        ========================== */
+
+        const name =
+            nameInput.value.trim();
+
+
+        if (name) {
+
+
+            drawCenteredText(
+
+                name,
+
+                canvas.width * 0.50,
+
+                canvas.height * 0.718,
+
+                canvas.height * 0.030,
+
+                "#174E78",
+
+                "bold",
+
+                canvas.width * 0.28
+
+            );
+
+
+        }
+
+
+
+        /* =========================
+           DATE
+
+           Positioned on the line
+           at the bottom left.
+        ========================== */
+
+        const date =
+            dateInput.value.trim();
+
+
+        if (date) {
+
+
+            drawLeftText(
+
+                date,
+
+                canvas.width * 0.328,
+
+                canvas.height * 0.883,
+
+                canvas.height * 0.019,
+
+                "#174E78",
+
+                "bold",
+
+                canvas.width * 0.105
+
+            );
+
+
+        }
+
+
+    }
+
+
+
+    /* =========================
+       CENTERED TEXT
+    ========================== */
+
+    function drawCenteredText(
+        text,
+        x,
+        y,
+        fontSize,
+        color,
+        style,
+        maximumWidth
+    ) {
+
+
+        ctx.save();
+
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.textBaseline =
+            "middle";
+
+
+        ctx.fillStyle =
+            color;
+
+
+        let currentSize =
+            fontSize;
+
+
+        ctx.font =
+            style +
+            " " +
+            currentSize +
+            "px Arial";
+
+
+        while (
+            ctx.measureText(text).width >
+                maximumWidth &&
+            currentSize >
+                canvas.height * 0.018
+        ) {
+
+
+            currentSize -= 1;
+
+
+            ctx.font =
+                style +
+                " " +
+                currentSize +
+                "px Arial";
+
+
+        }
+
+
+        ctx.fillText(
+            text,
+            x,
+            y
+        );
+
+
+        ctx.restore();
+
+
+    }
+
+
+
+    /* =========================
+       LEFT-ALIGNED TEXT
+    ========================== */
+
+    function drawLeftText(
+        text,
+        x,
+        y,
+        fontSize,
+        color,
+        style,
+        maximumWidth
+    ) {
+
+
+        ctx.save();
+
+
+        ctx.textAlign =
+            "left";
+
+
+        ctx.textBaseline =
+            "middle";
+
+
+        ctx.fillStyle =
+            color;
+
+
+        let currentSize =
+            fontSize;
+
+
+        ctx.font =
+            style +
+            " " +
+            currentSize +
+            "px Arial";
+
+
+        while (
+            ctx.measureText(text).width >
+                maximumWidth &&
+            currentSize >
+                canvas.height * 0.012
+        ) {
+
+
+            currentSize -= 1;
+
+
+            ctx.font =
+                style +
+                " " +
+                currentSize +
+                "px Arial";
+
+
+        }
+
+
+        ctx.fillText(
+            text,
+            x,
+            y
+        );
+
+
+        ctx.restore();
+
+
+    }
+
+
+
+    /* =========================
+       LIVE UPDATE
+    ========================== */
+
+    nameInput.addEventListener(
+        "input",
+        drawDiploma
+    );
+
+
+    dateInput.addEventListener(
+        "input",
+        drawDiploma
+    );
+
+
+
+    /* =========================
+       PRINT
+    ========================== */
+
+    document.getElementById(
+        "print-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            drawDiploma();
+
+
+            const dataUrl =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            const printWindow =
+                window.open(
+                    "",
+                    "_blank"
+                );
+
+
+            if (!printWindow) {
+
+
+                showMessage(
+                    "Your browser blocked the print window."
+                );
+
+
+                return;
+
+
+            }
+
+
+            printWindow.document.write(
+                `
+
+                <!DOCTYPE html>
+
+                <html lang="en">
+
+                <head>
+
+                    <meta charset="UTF-8">
+
+                    <title>
+                        My Explorer Diploma
+                    </title>
+
+                    <style>
+
+                        @page {
+                            size: letter landscape;
+                            margin: 0.35in;
+                        }
+
+                        html,
+                        body {
+                            margin: 0;
+                            padding: 0;
+
+                            width: 100%;
+                            height: 100%;
+
+                            background: white;
+                        }
+
+                        body {
+                            display: flex;
+
+                            justify-content: center;
+
+                            align-items: center;
+                        }
+
+                        img {
+                            display: block;
+
+                            max-width: 100%;
+
+                            max-height: 7.8in;
+
+                            width: auto;
+
+                            height: auto;
+
+                            object-fit: contain;
+                        }
+
+                    </style>
+
+                </head>
+
+                <body>
+
+                    <img
+                        id="print-image"
+                        src="${dataUrl}"
+                        alt="Explorer Diploma">
+
+                    <script>
+
+                        const img =
+                            document.getElementById(
+                                "print-image"
+                            );
+
+
+                        img.onload =
+                            function() {
+
+
+                                setTimeout(
+                                    function() {
+
+
+                                        window.print();
+
+
+                                    },
+                                    250
+                                );
+
+
+                            };
+
+                    <\/script>
+
+                </body>
+
+                </html>
+
+                `
+            );
+
+
+            printWindow.document.close();
+
+
+            showMessage(
+                "Your diploma is ready to print! 🖨️"
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       SAVE
+    ========================== */
+
+    document.getElementById(
+        "save-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            drawDiploma();
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            const safeName =
+                nameInput.value
+                    .trim()
+                    .replace(
+                        /[^a-zA-Z0-9_-]+/g,
+                        "-"
+                    );
+
+
+            link.download =
+                safeName
+
+                    ? "explorer-diploma-" +
+                      safeName +
+                      ".png"
+
+                    : "tina-explorer-diploma.png";
+
+
+            link.href =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            showMessage(
+                "Your diploma has been saved! 🎓💚"
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       START OVER
+    ========================== */
+
+    document.getElementById(
+        "reset-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Do you want to clear the name on the diploma?"
+                );
+
+
+            if (!confirmation) {
+
+
+                return;
+
+
+            }
+
+
+            nameInput.value =
+                "";
+
+
+            dateInput.value =
+                today.toLocaleDateString(
+                    "en-CA",
+                    {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                    }
+                );
+
+
+            drawDiploma();
+
+
+            showMessage(
+                "The diploma is ready for a new explorer! 🎓"
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(text) {
+
+
+        document.getElementById(
+            "message"
+        ).textContent =
+            text;
+
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
