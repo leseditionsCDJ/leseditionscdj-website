@@ -47,8 +47,8 @@ async function createToken(
 ) {
 
     /*
-    Le token contient maintenant
-    le nom de l'espace.
+    Le token contient le nom
+    interne de l'espace.
 
     Exemples :
 
@@ -204,7 +204,7 @@ export async function onRequestPost(context) {
            LANGUE
         ==========================
 
-        La page anglaise envoie :
+        La page anglaise doit envoyer :
 
         lang: "en"
 
@@ -239,7 +239,7 @@ export async function onRequestPost(context) {
 
             redirect =
                 language === "en"
-                    ? "/en/espace-edouard/"
+                    ? "/en/espace-edward/"
                     : "/espace-edouard/";
 
         }
