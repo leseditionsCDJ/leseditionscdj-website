@@ -9,9 +9,8 @@
           content="width=device-width, initial-scale=1.0">
 
     <title>
-        Édouard's Space | Les Éditions Cap Découvertes Jeunesse
+        Edward's Space | Les Éditions Cap Découvertes Jeunesse
     </title>
-
 
     <style>
 
@@ -121,7 +120,8 @@
 
             padding: 9px 13px;
 
-            border: 2px solid #174E78;
+            border:
+                2px solid #174E78;
 
             border-radius: 22px;
 
@@ -152,7 +152,7 @@
             background:
                 linear-gradient(
                     180deg,
-                    #EFF8E9 0%,
+                    #EAF6FC 0%,
                     #FFFDF7 100%
                 );
         }
@@ -270,256 +270,167 @@
 
             margin: auto;
 
-            color: #617789;
+            color: #40566A;
+
+            line-height: 1.7;
 
             font-size: 1.08rem;
-
-            line-height: 1.6;
         }
-
-
-        /* =========================
-           MAIN SECTIONS
-        ========================== */
 
         .main-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                1fr 1fr;
 
-            gap: 28px;
+            gap: 30px;
 
-            align-items: start;
+            align-items: stretch;
         }
 
         .main-card {
             background-color: white;
 
-            border-radius: 26px;
+            border-radius: 28px;
 
-            padding: 35px;
-
-            border:
-                2px solid #E1EEF3;
+            padding:
+                32px 28px;
 
             box-shadow:
-                0 10px 25px
-                rgba(23, 78, 120, 0.08);
+                0 12px 28px
+                rgba(0, 0, 0, 0.08);
 
-            display: flex;
-
-            flex-direction: column;
-
-            min-height: 390px;
-        }
-
-        .explorer-card {
-            min-height: auto;
-        }
-
-        .card-icon {
-            width: 75px;
-
-            height: 75px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 50%;
-
-            font-size: 2.4rem;
-
-            margin-bottom: 20px;
-        }
-
-        .activities-card .card-icon {
-            background-color: #EAF6FC;
-        }
-
-        .explorer-card .card-icon {
-            background-color: #EFF8E9;
+            border:
+                2px solid #E7EEF3;
         }
 
         .main-card h2 {
-            margin:
-                0 0 12px;
-
             color: #174E78;
+
+            margin:
+                8px 0 12px;
 
             font-size: 1.8rem;
         }
 
         .main-card > p {
             margin:
-                0 0 25px;
+                0 0 22px;
 
-            color: #536B7B;
+            color: #40566A;
 
-            line-height: 1.7;
-
-            font-size: 1.05rem;
+            line-height: 1.65;
         }
 
-
-        /* =========================
-           ACTIVITIES
-        ========================== */
-
-        .activity-list {
-            margin-top: auto;
-
-            display: grid;
-
-            gap: 16px;
+        .card-icon {
+            font-size: 2.2rem;
         }
 
-        .activity-preview {
-            padding: 22px;
+        .activity-list,
+        .explorer-list {
+            display: flex;
 
-            background-color: #F7FBFD;
+            flex-direction: column;
 
-            border-radius: 18px;
+            gap: 18px;
+        }
+
+        .activity-preview,
+        .explorer-preview {
+            background-color: #F8FBFD;
+
+            border-radius: 20px;
+
+            padding:
+                22px 20px;
 
             border:
-                1px solid #E4EFF4;
+                2px solid #E4EDF3;
         }
 
         .activity-label {
             display: inline-block;
 
-            margin-bottom: 10px;
+            margin-bottom: 8px;
 
             padding:
-                6px 12px;
+                5px 10px;
 
-            background-color: #2F8F46;
+            border-radius: 15px;
 
-            color: white;
+            background-color: #F3E8C9;
 
-            border-radius: 20px;
-
-            font-size: 0.85rem;
+            color: #8A5D18;
 
             font-weight: bold;
+
+            font-size: 0.78rem;
         }
 
-        .activity-preview h3 {
+        .activity-preview h3,
+        .explorer-preview h3 {
             margin:
-                0 0 8px;
+                0 0 10px;
 
             color: #174E78;
 
-            font-size: 1.35rem;
+            font-size: 1.25rem;
         }
 
-        .activity-preview p {
-            margin:
-                0 0 18px;
-
-            color: #536B7B;
-
-            line-height: 1.5;
-        }
-
-        .game-button {
-            display: inline-block;
-
-            padding:
-                12px 20px;
-
-            border-radius: 25px;
-
-            background-color: #174E78;
-
-            color: white;
-
-            font-weight: bold;
-
-            transition: 0.2s;
-        }
-
-        .game-button:hover {
-            background-color: #2F8F46;
-
-            transform: translateY(-1px);
-        }
-
-
-        /* =========================
-           EXPLORERS
-        ========================== */
-
-        .explorer-list {
-            display: grid;
-
-            gap: 16px;
-        }
-
-        .explorer-preview {
-            padding: 22px;
-
-            background-color: #F5FAF1;
-
-            border-radius: 18px;
-
-            border:
-                1px solid #E3EFDC;
-        }
-
-        .explorer-preview h3 {
-            margin:
-                0 0 8px;
-
-            color: #2F8F46;
-
-            font-size: 1.35rem;
-        }
-
+        .activity-preview p,
         .explorer-preview p {
             margin:
-                0 0 18px;
+                0 0 16px;
 
-            color: #536B7B;
+            color: #40566A;
 
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
+        .game-button,
         .explorer-button {
             display: inline-block;
 
             padding:
-                12px 20px;
+                10px 17px;
 
-            border-radius: 25px;
-
-            background-color: #2F8F46;
-
-            color: white;
+            border-radius: 22px;
 
             font-weight: bold;
 
             transition: 0.2s;
         }
 
-        .explorer-button:hover {
-            background-color: #246F37;
+        .game-button {
+            background-color: #174E78;
 
-            transform: translateY(-1px);
+            color: white;
+        }
+
+        .game-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .explorer-button {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .explorer-button:hover {
+            background-color: #174E78;
         }
 
 
         /* =========================
-           SECRET NOTE
+           READER MESSAGE
         ========================== */
 
         .secret-note {
-            margin-top: 55px;
+            margin-top: 45px;
 
-            padding: 30px;
+            padding:
+                30px 25px;
 
             background-color: #EAF6FC;
 
@@ -615,7 +526,6 @@
             .main-grid {
                 grid-template-columns: 1fr;
             }
-
         }
 
 
@@ -639,13 +549,11 @@
                 padding:
                     50px 18px;
             }
-
         }
 
     </style>
 
 </head>
-
 
 <body>
 
@@ -669,16 +577,21 @@
 
         <nav>
 
-
             <a href="../index.html">
                 Home
             </a>
-
 
             <a href="../livres.html">
                 Our Books
             </a>
 
+            <a href="#activities">
+                Activities
+            </a>
+
+            <a href="#explorers">
+                Explorer's Corner
+            </a>
 
             <a
                 href="../code-secret.html"
@@ -687,7 +600,6 @@
                 🔐 Enter Another Code
 
             </a>
-
 
             <a
                 href="../../espace-edouard/"
@@ -698,7 +610,6 @@
 
             </a>
 
-
         </nav>
 
 
@@ -707,7 +618,7 @@
 
 
     <!-- =========================
-         WELCOME TO ÉDOUARD'S SPACE
+         WELCOME
     ========================== -->
 
     <section class="hero">
@@ -721,7 +632,7 @@
 
                 <img
                     src="../../images/Image_Officielle_Edouard.png"
-                    alt="Édouard the builder beaver">
+                    alt="Edward the handy beaver">
 
 
             </div>
@@ -732,7 +643,7 @@
 
 
                 <div class="unlocked">
-                    🔓 Book 2 unlocked
+                    🔓 Volume 2 unlocked
                 </div>
 
 
@@ -741,7 +652,7 @@
                     Welcome to
 
                     <span>
-                        Édouard's space!
+                        Edward's space!
                     </span>
 
                 </h1>
@@ -749,14 +660,14 @@
 
                 <p>
 
-                    Congratulations, explorer!
+                    Great job, explorer!
 
-                    Your secret code has unlocked the special space
-                    for <strong>Édouard the builder beaver</strong>.
+                    Your secret code unlocked the special space for
+                    <strong>Edward the handy beaver</strong>.
 
                     Here you'll find games, activities
-                    and even more discoveries
-                    about the fascinating world of beavers.
+                    and even more discoveries about
+                    the fascinating world of beavers.
 
                 </p>
 
@@ -790,7 +701,7 @@
 
                 Choose an activity or start exploring
                 to discover even more with
-                Matteo and Édouard.
+                Matteo and Edward.
 
             </p>
 
@@ -823,9 +734,9 @@
 
                 <p>
 
-                    Play with Matteo and Édouard
+                    Play with Matteo and Edward
                     through activities inspired by
-                    <em>Édouard the Builder Beaver</em>.
+                    <em>Edward the handy beaver</em>.
 
                 </p>
 
@@ -833,10 +744,43 @@
                 <div class="activity-list">
 
 
+                    <!-- LOOK AND FIND -->
 
-                    <!-- =========================
-                         COLORING
-                    ========================== -->
+                    <div class="activity-preview">
+
+
+                        <div class="activity-label">
+                            GAME
+                        </div>
+
+
+                        <h3>
+                            🔎 Look and Find
+                        </h3>
+
+
+                        <p>
+
+                            Look carefully around Edward's workshop
+                            and find the 6 hidden tools.
+
+                        </p>
+
+
+                        <a
+                            href="cherche-et-trouve.html"
+                            class="game-button">
+
+                            🎮 Play
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- COLORING -->
 
                     <div class="activity-preview">
 
@@ -847,16 +791,14 @@
 
 
                         <h3>
-                            🎨 Color Édouard
+                            🎨 Color Edward
                         </h3>
 
 
                         <p>
 
-                            Choose your colors and bring
-                            Édouard to life, including
-                            his blue scarf, tool belt
-                            and large beaver tail!
+                            Choose your colors and bring Edward,
+                            his scarf and his tool belt to life!
 
                         </p>
 
@@ -874,9 +816,7 @@
 
 
 
-                    <!-- =========================
-                         FIND THE 7 DIFFERENCES
-                    ========================== -->
+                    <!-- FIND THE 7 DIFFERENCES -->
 
                     <div class="activity-preview">
 
@@ -894,9 +834,8 @@
                         <p>
 
                             Look closely at the two pictures
-                            of Édouard near his dam
                             and find the 7 differences
-                            hidden between them!
+                            hidden in Edward's world!
 
                         </p>
 
@@ -906,45 +845,6 @@
                             class="game-button">
 
                             🔍 Play
-
-                        </a>
-
-
-                    </div>
-
-
-
-                    <!-- =========================
-                         MAZE
-                    ========================== -->
-
-                    <div class="activity-preview">
-
-
-                        <div class="activity-label">
-                            GAME
-                        </div>
-
-
-                        <h3>
-                            🌀 The Dam Maze
-                        </h3>
-
-
-                        <p>
-
-                            Help Édouard carry his branch
-                            all the way to his dam
-                            without getting lost!
-
-                        </p>
-
-
-                        <a
-                            href="labyrinthe.html"
-                            class="game-button">
-
-                            🦫 Play
 
                         </a>
 
@@ -980,8 +880,7 @@
 
                 <p>
 
-                    Think you've discovered everything
-                    there is to know about beavers?
+                    Think you know everything about beavers?
 
                     The adventure continues!
 
@@ -991,25 +890,24 @@
                 <div class="explorer-list">
 
 
-
                     <!-- =========================
-                         BEAVER SECRETS
+                         EDWARD'S SECRETS
                     ========================== -->
 
                     <div class="explorer-preview">
 
 
                         <h3>
-                            🦫 Beaver Secrets
+                            🦫 Edward's Secrets
                         </h3>
 
 
                         <p>
 
-                            Discover even more amazing facts
+                            Discover 10 amazing and true facts
                             about beavers, their teeth,
-                            their tails, the way they swim
-                            and their incredible dams.
+                            their bodies, their dams
+                            and their incredible abilities!
 
                         </p>
 
@@ -1018,7 +916,7 @@
                             href="explorateurs.html"
                             class="explorer-button">
 
-                            🌿 Discover the Secrets
+                            🌿 Explore the Secrets
 
                         </a>
 
@@ -1041,8 +939,8 @@
 
                         <p>
 
-                            Congratulations on completing
-                            your adventure with Édouard!
+                            Congratulations on your adventure
+                            with Edward!
 
                             Personalize your Mini Explorers Club
                             diploma, then print it
@@ -1074,7 +972,7 @@
 
 
         <!-- =========================
-             SECRET MESSAGE
+             MESSAGE
         ========================== -->
 
         <div class="secret-note">
@@ -1087,13 +985,13 @@
 
             <p>
 
-                Every book from
-                Les Éditions Cap Découvertes Jeunesse
-                has its own secret code.
+                Every book from Les Éditions
+                Cap Découvertes Jeunesse has
+                its own secret code.
 
-                A new book means new activities,
+                A new volume means new activities,
                 new games and new discoveries
-                waiting to be unlocked!
+                to unlock!
 
             </p>
 
