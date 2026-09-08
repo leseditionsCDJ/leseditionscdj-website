@@ -64,7 +64,11 @@ function base64UrlToBytes(value) {
 }
 
 
-async function verifyToken(token, secret) {
+async function verifyToken(
+    token,
+    secret,
+    espace
+) {
 
     try {
 
@@ -99,8 +103,17 @@ async function verifyToken(token, secret) {
         }
 
 
+        /*
+        Le nom de l'espace doit
+        correspondre à celui utilisé
+        dans verifier-code.js :
+
+        tina
+        edouard
+        */
+
         const data =
-            `tina:${expires}`;
+            `${espace}:${expires}`;
 
 
         const key =
@@ -188,14 +201,100 @@ export async function onRequest(context) {
 
 
     /*
-    Tout le reste du site
-    reste public.
+    =========================
+    ESPACE ÉDOUARD FRANÇAIS
+    =========================
     */
 
+    const isFrenchEdouardSpace =
+
+        url.pathname ===
+            "/espace-edouard"
+
+        ||
+
+        url.pathname.startsWith(
+            "/espace-edouard/"
+        );
+
+
+    /*
+    =========================
+    ESPACE EDWARD ANGLAIS
+    =========================
+    */
+
+    const isEnglishEdwardSpace =
+
+        url.pathname ===
+            "/en/espace-edward"
+
+        ||
+
+        url.pathname.startsWith(
+            "/en/espace-edward/"
+        );
+
+
+    /*
+    =========================
+    IDENTIFIER L'ESPACE
+    =========================
+    */
+
+    let espace = null;
+
+    let cookieName = null;
+
+    let isEnglishSpace = false;
+
+
     if (
-        !isFrenchTinaSpace &&
-        !isEnglishTinaSpace
+        isFrenchTinaSpace ||
+        isEnglishTinaSpace
     ) {
+
+        espace = "tina";
+
+        cookieName =
+            "cdj_tina";
+
+        isEnglishSpace =
+            isEnglishTinaSpace;
+
+    }
+
+
+    else if (
+        isFrenchEdouardSpace ||
+        isEnglishEdwardSpace
+    ) {
+
+        /*
+        Même si le personnage
+        s'appelle Edward en anglais,
+        le nom interne du token
+        reste "edouard".
+        */
+
+        espace = "edouard";
+
+        cookieName =
+            "cdj_edouard";
+
+        isEnglishSpace =
+            isEnglishEdwardSpace;
+
+    }
+
+
+    /*
+    =========================
+    PAGE PUBLIQUE
+    =========================
+    */
+
+    if (!espace) {
 
         return context.next();
 
@@ -206,19 +305,12 @@ export async function onRequest(context) {
     =========================
     VÉRIFICATION DU COOKIE
     =========================
-
-    On accepte n'importe quel
-    cookie cdj_tina valide.
-
-    Cela évite aussi un problème
-    avec les anciens cookies qui
-    utilisaient Path=/espace-tina/
     */
 
     const tokens =
         getCookies(
             context.request,
-            "cdj_tina"
+            cookieName
         );
 
 
@@ -230,7 +322,8 @@ export async function onRequest(context) {
         const valid =
             await verifyToken(
                 token,
-                context.env.SESSION_SECRET
+                context.env.SESSION_SECRET,
+                espace
             );
 
         if (valid) {
@@ -253,18 +346,8 @@ export async function onRequest(context) {
     if (!authorized) {
 
 
-        /*
-        Si la personne essaie
-        d'ouvrir l'espace anglais,
-        elle retourne vers la page
-        de code anglaise.
-
-        Sinon, elle retourne vers
-        la page française.
-        */
-
         const secretCodePage =
-            isEnglishTinaSpace
+            isEnglishSpace
                 ? "/en/code-secret.html"
                 : "/code-secret.html";
 
