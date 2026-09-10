@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Coloriage d'Édouard | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EFF8E9 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background: white;
+
+            padding: 14px 5%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            border-bottom:
+                2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+
+            max-width: 70vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .back-button {
+            background: #174E78;
+
+            color: white;
+        }
+
+        .home-button {
+            background: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .nav-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .back-button:hover {
+            background: #2F8F46;
+        }
+
+        .home-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding: 9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+        }
+
+        .language-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 96%;
+
+            max-width: 1600px;
+
+            margin: auto;
+
+            padding:
+                35px 18px 70px;
+        }
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .intro {
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            color: #536B7B;
+
+            font-size: 1.15rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           MISE EN PAGE PRINCIPALE
+        ========================== */
+
+        .coloring-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 340px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        .drawing-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+
+            top: 20px;
+        }
+
+        .sidebar-box {
+            background: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 18px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, .08);
+        }
+
+        .sidebar-title {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 1.2rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           DESSIN
+        ========================== */
+
+        .drawing-card {
+            background: white;
+
+            padding: 14px;
+
+            border-radius: 25px;
+
+            border:
+                2px solid #DDECF3;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, 0.10);
+
+            width: 100%;
+        }
+
+        .canvas-wrapper {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            background: white;
+        }
+
+        canvas {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            cursor: pointer;
+
+            touch-action: manipulation;
+        }
+
+
+        /* =========================
+           PALETTE
+        ========================== */
+
+        .colors {
+            display: grid;
+
+            grid-template-columns:
+                repeat(6, 1fr);
+
+            gap: 12px;
+
+            justify-items: center;
+        }
+
+        .color {
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            border:
+                3px solid white;
+
+            outline:
+                2px solid #CBD8DF;
+
+            cursor: pointer;
+
+            transition: .15s;
+
+            position: relative;
+        }
+
+        .color:hover {
+            transform:
+                scale(1.10);
+        }
+
+        .color.selected {
+            outline:
+                4px solid #174E78;
+
+            transform:
+                scale(1.10);
+        }
+
+        .color.selected::after {
+            content: "✓";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 1.2rem;
+
+            font-weight: bold;
+
+            color: white;
+
+            text-shadow:
+                0 1px 3px
+                rgba(0,0,0,.7);
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 54px;
+
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background: #EFF8E9;
+
+            color: #2F8F46;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+
+            text-align: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =========================
+           OUTILS
+        ========================== */
+
+        .tools {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 10px;
+        }
+
+        .tool-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 22px;
+
+            padding:
+                12px 14px;
+
+            font-size: .96rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .undo {
+            background: #F1B83B;
+
+            color: #263238;
+        }
+
+        .eraser {
+            background: #E7EEF3;
+
+            color: #174E78;
+        }
+
+        .eraser.active {
+            background: #174E78;
+
+            color: white;
+
+            outline:
+                4px solid
+                rgba(23, 78, 120, 0.20);
+        }
+
+        .restart {
+            background: #D95C5C;
+
+            color: white;
+        }
+
+        .print {
+            background: #174E78;
+
+            color: white;
+        }
+
+        .save {
+            background: #2F8F46;
+
+            color: white;
+        }
+
+        .tip {
+            margin: 0;
+
+            color: #667C89;
+
+            line-height: 1.5;
+
+            font-size: .94rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           MOBILE / TABLETTE
+        ========================== */
+
+        @media (max-width: 1100px) {
+
+            .coloring-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .tools {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .colors {
+                grid-template-columns:
+                    repeat(
+                        6,
+                        minmax(38px, 1fr)
+                    );
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .drawing-card {
+                padding: 8px;
+            }
+
+            .colors {
+                grid-template-columns:
+                    repeat(4, 1fr);
+            }
+
+            .color {
+                width: 40px;
+
+                height: 40px;
+            }
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Accueil
+
+        </a>
+
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Retour à la page d'Édouard
+
+        </a>
+
+
+        <a
+            href="../en/espace-edward/coloriage.html"
+            class="language-button"
+            lang="en">
+
+            🇨🇦 EN
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+
+        <h1>
+            🎨 Colorie Édouard !
+        </h1>
+
+
+        <p class="intro">
+
+            Choisis une couleur, puis clique dans une partie
+            du dessin pour la colorier.
+
+            Tu peux changer les couleurs autant de fois
+            que tu veux !
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="coloring-layout">
+
+
+        <!-- =========================
+             DESSIN À GAUCHE
+        ========================== -->
+
+        <div class="drawing-column">
+
+
+            <section class="drawing-card">
+
+
+                <div class="canvas-wrapper">
+
+
+                    <canvas
+                        id="coloring-canvas">
+                    </canvas>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             MENU À DROITE
+        ========================== -->
+
+        <aside class="sidebar">
+
+
+
+            <!-- PALETTE -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🎨 Choisis ta couleur
+                </h2>
+
+
+                <div class="colors">
+
+
+                    <button
+                        class="color selected"
+                        style="background:#EF4444"
+                        data-color="#EF4444"
+                        aria-label="Rouge">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#F97316"
+                        data-color="#F97316"
+                        aria-label="Orange">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#FACC15"
+                        data-color="#FACC15"
+                        aria-label="Jaune">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#84CC16"
+                        data-color="#84CC16"
+                        aria-label="Vert clair">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#22C55E"
+                        data-color="#22C55E"
+                        aria-label="Vert">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#14B8A6"
+                        data-color="#14B8A6"
+                        aria-label="Turquoise">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#3B82F6"
+                        data-color="#3B82F6"
+                        aria-label="Bleu">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#8B5CF6"
+                        data-color="#8B5CF6"
+                        aria-label="Mauve">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#EC4899"
+                        data-color="#EC4899"
+                        aria-label="Rose">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#A16207"
+                        data-color="#A16207"
+                        aria-label="Brun">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#64748B"
+                        data-color="#64748B"
+                        aria-label="Gris">
+                    </button>
+
+
+                    <button
+                        class="color"
+                        style="background:#111827"
+                        data-color="#111827"
+                        aria-label="Noir">
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- MESSAGE -->
+
+            <section class="sidebar-box">
+
+
+                <div
+                    id="message"
+                    aria-live="polite">
+
+                    Chargement du coloriage…
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- OUTILS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🧰 Mes outils
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        class="tool-button undo"
+                        id="undo-button">
+
+                        ↩️ Annuler
+
+                    </button>
+
+
+                    <button
+                        class="tool-button eraser"
+                        id="eraser-button">
+
+                        🧽 Effacer une zone
+
+                    </button>
+
+
+                    <button
+                        class="tool-button restart"
+                        id="restart-button">
+
+                        🔄 Recommencer
+
+                    </button>
+
+
+                    <button
+                        class="tool-button print"
+                        id="print-original-button">
+
+                        🖨️ Imprimer à colorier
+
+                    </button>
+
+
+                    <button
+                        class="tool-button print"
+                        id="print-colored-button">
+
+                        🖨️ Imprimer mon dessin
+
+                    </button>
+
+
+                    <button
+                        class="tool-button save"
+                        id="save-button">
+
+                        💾 Enregistrer mon dessin
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- CONSEIL -->
+
+            <section class="sidebar-box">
+
+
+                <p class="tip">
+
+                    💡 Pour effacer une couleur,
+                    clique sur « Effacer une zone »,
+                    puis directement dans la partie
+                    que tu veux remettre en blanc.
+
+                </p>
+
+
+            </section>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =========================
+       IMAGE
+    ========================== */
+
+    const IMAGE_PATH =
+        "../images/dessin_edouard.png";
+
+
+    /*
+       Le numéro de version permet
+       d'éviter qu'une ancienne image
+       reste dans le cache.
+    */
+
+    const IMAGE_URL =
+        IMAGE_PATH + "?v=1";
+
+
+    /* =========================
+       CANVAS
+    ========================== */
+
+    const canvas =
+        document.getElementById(
+            "coloring-canvas"
+        );
+
+
+    const ctx =
+        canvas.getContext(
+            "2d",
+            {
+                willReadFrequently: true
+            }
+        );
+
+
+    const image =
+        new Image();
+
+
+    image.src =
+        IMAGE_URL;
+
+
+    let originalImageData =
+        null;
+
+
+    let selectedColor =
+        "#EF4444";
+
+
+    let history =
+        [];
+
+
+    let eraserMode =
+        false;
+
+
+    const colorButtons =
+        document.querySelectorAll(
+            ".color"
+        );
+
+
+    const eraserButton =
+        document.getElementById(
+            "eraser-button"
+        );
+
+
+    /* =========================
+       CHARGEMENT
+    ========================== */
+
+    image.onload =
+        function() {
+
+
+            canvas.width =
+                image.naturalWidth;
+
+
+            canvas.height =
+                image.naturalHeight;
+
+
+            ctx.drawImage(
+                image,
+                0,
+                0
+            );
+
+
+            originalImageData =
+                ctx.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+
+            showMessage(
+                "Prêt ! Choisis une couleur. 🎨"
+            );
+
+
+        };
+
+
+    image.onerror =
+        function() {
+
+
+            document.getElementById(
+                "message"
+            ).textContent =
+                "Le dessin d'Édouard n'a pas pu être chargé.";
+
+
+        };
+
+
+    /* =========================
+       PALETTE
+    ========================== */
+
+    colorButtons.forEach(
+        function(button) {
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+
+                    colorButtons.forEach(
+                        function(item) {
+
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+
+                        }
+                    );
+
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+
+                    selectedColor =
+                        button.dataset.color;
+
+
+                    eraserMode =
+                        false;
+
+
+                    eraserButton.classList.remove(
+                        "active"
+                    );
+
+
+                }
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       CONVERSION COULEUR
+    ========================== */
+
+    function hexToRgb(hex) {
+
+
+        const value =
+            hex.replace(
+                "#",
+                ""
+            );
+
+
+        return {
+
+
+            r:
+                parseInt(
+                    value.substring(
+                        0,
+                        2
+                    ),
+                    16
+                ),
+
+
+            g:
+                parseInt(
+                    value.substring(
+                        2,
+                        4
+                    ),
+                    16
+                ),
+
+
+            b:
+                parseInt(
+                    value.substring(
+                        4,
+                        6
+                    ),
+                    16
+                )
+
+
+        };
+
+
+    }
+
+
+    /* =========================
+       COMPARAISON COULEUR
+    ========================== */
+
+    function similarColor(
+        r1,
+        g1,
+        b1,
+        r2,
+        g2,
+        b2
+    ) {
+
+
+        const tolerance =
+            46;
+
+
+        return (
+
+
+            Math.abs(
+                r1 - r2
+            ) <= tolerance &&
+
+
+            Math.abs(
+                g1 - g2
+            ) <= tolerance &&
+
+
+            Math.abs(
+                b1 - b2
+            ) <= tolerance
+
+
+        );
+
+
+    }
+
+
+    /* =========================
+       HISTORIQUE
+    ========================== */
+
+    function saveHistory() {
+
+
+        if (
+            !canvas.width ||
+            !canvas.height
+        ) {
+
+            return;
+
+        }
+
+
+        history.push(
+            ctx.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            )
+        );
+
+
+        if (
+            history.length > 8
+        ) {
+
+
+            history.shift();
+
+
+        }
+
+
+    }
+
+
+    /* =========================
+       POT DE PEINTURE
+    ========================== */
+
+    function floodFill(
+        startX,
+        startY
+    ) {
+
+
+        const width =
+            canvas.width;
+
+
+        const height =
+            canvas.height;
+
+
+        const imageData =
+            ctx.getImageData(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+        const data =
+            imageData.data;
+
+
+        /*
+            Le dessin original sert
+            toujours à déterminer où
+            sont les véritables traits.
+        */
+
+        const originalData =
+            originalImageData.data;
+
+
+        const startIndex =
+            (
+                startY *
+                width +
+                startX
+            ) * 4;
+
+
+        const startR =
+            data[startIndex];
+
+
+        const startG =
+            data[startIndex + 1];
+
+
+        const startB =
+            data[startIndex + 2];
+
+
+        const originalStartR =
+            originalData[startIndex];
+
+
+        const originalStartG =
+            originalData[startIndex + 1];
+
+
+        const originalStartB =
+            originalData[startIndex + 2];
+
+
+        const originalStartBrightness =
+            (
+                originalStartR +
+                originalStartG +
+                originalStartB
+            ) / 3;
+
+
+        /*
+            Impossible de commencer
+            directement sur un trait noir.
+        */
+
+        if (
+            originalStartBrightness < 165
+        ) {
+
+
+            showMessage(
+                "Clique à l'intérieur d'une zone. 🎨"
+            );
+
+
+            return false;
+
+
+        }
+
+
+        const fill =
+            hexToRgb(
+                selectedColor
+            );
+
+
+        /*
+            La zone possède déjà
+            la couleur choisie.
+        */
+
+        if (
+            !eraserMode &&
+            similarColor(
+                startR,
+                startG,
+                startB,
+                fill.r,
+                fill.g,
+                fill.b
+            )
+        ) {
+
+
+            return false;
+
+
+        }
+
+
+        /*
+            La zone est déjà identique
+            au dessin original.
+        */
+
+        if (
+            eraserMode &&
+            similarColor(
+                startR,
+                startG,
+                startB,
+                originalStartR,
+                originalStartG,
+                originalStartB
+            )
+        ) {
+
+
+            return false;
+
+
+        }
+
+
+        const visited =
+            new Uint8Array(
+                width *
+                height
+            );
+
+
+        const stack =
+            [];
+
+
+        stack.push(
+            startX,
+            startY
+        );
+
+
+        let changedPixels =
+            0;
+
+
+        /*
+            Protection contre le coloriage
+            accidentel de tout le fond.
+        */
+
+        const maximumPixels =
+            width *
+            height *
+            0.28;
+
+
+        while (
+            stack.length > 0
+        ) {
+
+
+            const y =
+                stack.pop();
+
+
+            const x =
+                stack.pop();
+
+
+            if (
+                x < 0 ||
+                x >= width ||
+                y < 0 ||
+                y >= height
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            const pixelNumber =
+                y *
+                width +
+                x;
+
+
+            if (
+                visited[
+                    pixelNumber
+                ]
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            visited[
+                pixelNumber
+            ] =
+                1;
+
+
+            const index =
+                pixelNumber *
+                4;
+
+
+            const r =
+                data[index];
+
+
+            const g =
+                data[index + 1];
+
+
+            const b =
+                data[index + 2];
+
+
+            const originalR =
+                originalData[index];
+
+
+            const originalG =
+                originalData[index + 1];
+
+
+            const originalB =
+                originalData[index + 2];
+
+
+            const originalBrightness =
+                (
+                    originalR +
+                    originalG +
+                    originalB
+                ) / 3;
+
+
+            /*
+                Les traits du dessin original
+                sont les barrières.
+            */
+
+            if (
+                originalBrightness < 165
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            /*
+                On reste dans la zone
+                ayant actuellement
+                la même couleur.
+            */
+
+            if (
+                !similarColor(
+                    r,
+                    g,
+                    b,
+                    startR,
+                    startG,
+                    startB
+                )
+            ) {
+
+
+                continue;
+
+
+            }
+
+
+            /*
+                MODE EFFACEUR
+            */
+
+            if (
+                eraserMode
+            ) {
+
+
+                data[index] =
+                    originalR;
+
+
+                data[index + 1] =
+                    originalG;
+
+
+                data[index + 2] =
+                    originalB;
+
+
+                data[index + 3] =
+                    originalData[
+                        index + 3
+                    ];
+
+
+            }
+
+
+            /*
+                MODE COLORIAGE
+            */
+
+            else {
+
+
+                data[index] =
+                    fill.r;
+
+
+                data[index + 1] =
+                    fill.g;
+
+
+                data[index + 2] =
+                    fill.b;
+
+
+            }
+
+
+            changedPixels++;
+
+
+            if (
+                changedPixels >
+                maximumPixels
+            ) {
+
+
+                showMessage(
+                    "Choisis une partie d'Édouard ou un objet à colorier. 🎨"
+                );
+
+
+                return false;
+
+
+            }
+
+
+            stack.push(
+                x + 1,
+                y
+            );
+
+
+            stack.push(
+                x - 1,
+                y
+            );
+
+
+            stack.push(
+                x,
+                y + 1
+            );
+
+
+            stack.push(
+                x,
+                y - 1
+            );
+
+
+        }
+
+
+        if (
+            changedPixels < 3
+        ) {
+
+
+            return false;
+
+
+        }
+
+
+        ctx.putImageData(
+            imageData,
+            0,
+            0
+        );
+
+
+        return true;
+
+
+    }
+
+
+    /* =========================
+       CLIC SUR LE DESSIN
+    ========================== */
+
+    canvas.addEventListener(
+        "pointerdown",
+        function(event) {
+
+
+            if (
+                !originalImageData
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            const rect =
+                canvas.getBoundingClientRect();
+
+
+            const x =
+                Math.floor(
+
+                    (
+                        event.clientX -
+                        rect.left
+                    ) *
+
+                    canvas.width /
+
+                    rect.width
+
+                );
+
+
+            const y =
+                Math.floor(
+
+                    (
+                        event.clientY -
+                        rect.top
+                    ) *
+
+                    canvas.height /
+
+                    rect.height
+
+                );
+
+
+            saveHistory();
+
+
+            const changed =
+                floodFill(
+                    x,
+                    y
+                );
+
+
+            if (
+                !changed
+            ) {
+
+
+                history.pop();
+
+
+                return;
+
+
+            }
+
+
+            if (
+                eraserMode
+            ) {
+
+
+                showMessage(
+                    "Zone effacée. 🧽"
+                );
+
+
+            }
+
+            else {
+
+
+                showMessage(
+                    "Jolie couleur ! ✨"
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+    /* =========================
+       ANNULER
+    ========================== */
+
+    document.getElementById(
+        "undo-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            if (
+                history.length === 0
+            ) {
+
+
+                showMessage(
+                    "Il n'y a rien à annuler."
+                );
+
+
+                return;
+
+
+            }
+
+
+            const previous =
+                history.pop();
+
+
+            ctx.putImageData(
+                previous,
+                0,
+                0
+            );
+
+
+            showMessage(
+                "Dernière action annulée. ↩️"
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       EFFACER UNE ZONE
+    ========================== */
+
+    eraserButton.addEventListener(
+        "click",
+        function() {
+
+
+            eraserMode =
+                true;
+
+
+            colorButtons.forEach(
+                function(item) {
+
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+
+                }
+            );
+
+
+            eraserButton.classList.add(
+                "active"
+            );
+
+
+            showMessage(
+                "🧽 Clique maintenant sur la zone que tu veux effacer."
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
+
+    document.getElementById(
+        "restart-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            if (
+                !originalImageData
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            const confirmation =
+                confirm(
+                    "Veux-tu vraiment effacer tout ton coloriage ?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            ctx.putImageData(
+                originalImageData,
+                0,
+                0
+            );
+
+
+            history =
+                [];
+
+
+            eraserMode =
+                false;
+
+
+            selectedColor =
+                "#EF4444";
+
+
+            eraserButton.classList.remove(
+                "active"
+            );
+
+
+            colorButtons.forEach(
+                function(item) {
+
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+
+                }
+            );
+
+
+            colorButtons[0]
+                .classList.add(
+                    "selected"
+                );
+
+
+            showMessage(
+                "Le dessin est prêt pour un nouveau coloriage ! 🎨"
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       IMPRESSION
+    ========================== */
+
+    function openPrintWindow(
+        imageSource
+    ) {
+
+
+        const printWindow =
+            window.open(
+                "",
+                "_blank"
+            );
+
+
+        if (
+            !printWindow
+        ) {
+
+
+            showMessage(
+                "Ton navigateur a bloqué la fenêtre d'impression."
+            );
+
+
+            return;
+
+
+        }
+
+
+        printWindow.document.write(
+            `
+            <!DOCTYPE html>
+
+            <html>
+
+            <head>
+
+                <title>
+                    Coloriage d'Édouard
+                </title>
+
+                <style>
+
+                    @page {
+                        size: letter landscape;
+                        margin: 0.5in;
+                    }
+
+                    html,
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    body {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    img {
+                        display: block;
+                        max-width: 100%;
+                        max-height: 7.5in;
+                        width: auto;
+                        height: auto;
+                        object-fit: contain;
+                    }
+
+                </style>
+
+            </head>
+
+            <body>
+
+                <img
+                    id="print-image"
+                    src="${imageSource}"
+                    alt="Coloriage d'Édouard">
+
+                <script>
+
+                    const img =
+                        document.getElementById(
+                            "print-image"
+                        );
+
+
+                    img.onload =
+                        function() {
+
+                            setTimeout(
+                                function() {
+
+                                    window.print();
+
+                                },
+                                250
+                            );
+
+                        };
+
+                <\/script>
+
+            </body>
+
+            </html>
+            `
+        );
+
+
+        printWindow.document.close();
+
+
+    }
+
+
+    /* =========================
+       IMPRIMER ORIGINAL
+    ========================== */
+
+    document.getElementById(
+        "print-original-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            const imageUrl =
+                new URL(
+                    IMAGE_URL,
+                    window.location.href
+                ).href;
+
+
+            openPrintWindow(
+                imageUrl
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       IMPRIMER COLORIÉ
+    ========================== */
+
+    document.getElementById(
+        "print-colored-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            if (
+                !originalImageData
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            openPrintWindow(
+                canvas.toDataURL(
+                    "image/png"
+                )
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       ENREGISTRER
+    ========================== */
+
+    document.getElementById(
+        "save-button"
+    ).addEventListener(
+        "click",
+        function() {
+
+
+            if (
+                !originalImageData
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.download =
+                "mon-coloriage-edouard.png";
+
+
+            link.href =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+
+            link.click();
+
+
+            showMessage(
+                "Ton coloriage est enregistré ! 💚"
+            );
+
+
+        }
+    );
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(
+        text
+    ) {
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.textContent =
+            text;
+
+
+        clearTimeout(
+            showMessage.timer
+        );
+
+
+        showMessage.timer =
+            setTimeout(
+                function() {
+
+
+                    message.textContent =
+                        "";
+
+
+                },
+                3000
+            );
+
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
