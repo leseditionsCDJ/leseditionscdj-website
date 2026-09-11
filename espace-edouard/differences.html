@@ -144,6 +144,7 @@
             border-color: #2F8F46;
         }
 
+
         /* =========================
            PAGE
         ========================== */
@@ -320,6 +321,9 @@
 
             pointer-events: none;
 
+            transform:
+                translate(-50%, -50%);
+
             animation:
                 markerPop .25s ease-out;
         }
@@ -358,6 +362,7 @@
 
             from {
                 transform:
+                    translate(-50%, -50%)
                     scale(.65);
 
                 opacity: 0;
@@ -365,6 +370,7 @@
 
             to {
                 transform:
+                    translate(-50%, -50%)
                     scale(1);
 
                 opacity: 1;
@@ -389,6 +395,9 @@
                 rgba(241, 184, 59, .13);
 
             pointer-events: none;
+
+            transform:
+                translate(-50%, -50%);
 
             animation:
                 hintPulse
@@ -886,10 +895,6 @@
     <div class="game-layout">
 
 
-        <!-- =========================
-             IMAGE À GAUCHE
-        ========================== -->
-
         <div class="left-column">
 
             <section class="game-card">
@@ -899,7 +904,7 @@
                     id="game-board">
 
                     <img
-                        src="../images/differences_edouard.png?v=1"
+                        src="../images/differences_edouard.png?v=2"
                         alt="Trouve les 7 différences avec Édouard"
                         id="game-image">
 
@@ -911,14 +916,8 @@
 
 
 
-        <!-- =========================
-             MENU À DROITE
-        ========================== -->
-
         <aside class="sidebar">
 
-
-            <!-- COMPTEUR -->
 
             <section class="sidebar-box">
 
@@ -955,8 +954,6 @@
 
 
 
-            <!-- MESSAGE -->
-
             <section class="sidebar-box">
 
                 <div
@@ -970,8 +967,6 @@
             </section>
 
 
-
-            <!-- OUTILS -->
 
             <section class="sidebar-box">
 
@@ -1019,8 +1014,6 @@
 
 
 
-            <!-- LISTE -->
-
             <section class="sidebar-box">
 
                 <h2 class="sidebar-title">
@@ -1035,8 +1028,6 @@
             </section>
 
 
-
-            <!-- VICTOIRE -->
 
             <div
                 class="victory"
@@ -1059,6 +1050,13 @@
 
     /* =====================================================
        LES 7 DIFFÉRENCES
+       hit :
+       grande zone invisible permettant
+       à l'enfant de cliquer facilement.
+
+       marker :
+       cercle précis centré sur
+       la véritable différence.
     ===================================================== */
 
     const differences = [
@@ -1078,33 +1076,33 @@
 
                 {
                     hit: {
-                        left: 16.5,
-                        top: 45.5,
-                        width: 13.0,
+                        left: 17.0,
+                        top: 50.5,
+                        width: 15.0,
                         height: 11.0
                     },
 
                     marker: {
-                        left: 18.4,
-                        top: 47.6,
-                        width: 9.0,
-                        height: 7.0
+                        centerX: 23.8,
+                        centerY: 56.0,
+                        width: 10.5,
+                        height: 6.4
                     }
                 },
 
                 {
                     hit: {
-                        left: 66.0,
-                        top: 45.5,
-                        width: 13.0,
+                        left: 66.5,
+                        top: 50.5,
+                        width: 15.0,
                         height: 11.0
                     },
 
                     marker: {
-                        left: 67.9,
-                        top: 47.6,
-                        width: 9.0,
-                        height: 7.0
+                        centerX: 73.3,
+                        centerY: 56.0,
+                        width: 10.5,
+                        height: 6.4
                     }
                 }
 
@@ -1127,33 +1125,33 @@
 
                 {
                     hit: {
-                        left: 16.0,
-                        top: 63.5,
-                        width: 10.0,
-                        height: 12.0
+                        left: 16.8,
+                        top: 69.5,
+                        width: 11.0,
+                        height: 10.0
                     },
 
                     marker: {
-                        left: 18.3,
-                        top: 66.4,
-                        width: 6.0,
-                        height: 7.0
+                        centerX: 21.9,
+                        centerY: 74.6,
+                        width: 6.8,
+                        height: 5.8
                     }
                 },
 
                 {
                     hit: {
-                        left: 65.5,
-                        top: 63.5,
-                        width: 10.0,
-                        height: 12.0
+                        left: 66.3,
+                        top: 69.5,
+                        width: 11.0,
+                        height: 10.0
                     },
 
                     marker: {
-                        left: 67.8,
-                        top: 66.4,
-                        width: 6.0,
-                        height: 7.0
+                        centerX: 71.4,
+                        centerY: 74.6,
+                        width: 6.8,
+                        height: 5.8
                     }
                 }
 
@@ -1176,33 +1174,33 @@
 
                 {
                     hit: {
-                        left: 34.0,
-                        top: 68.0,
-                        width: 11.0,
-                        height: 13.0
+                        left: 35.2,
+                        top: 73.0,
+                        width: 11.5,
+                        height: 12.5
                     },
 
                     marker: {
-                        left: 36.2,
-                        top: 70.4,
-                        width: 7.0,
-                        height: 8.0
+                        centerX: 40.7,
+                        centerY: 79.0,
+                        width: 7.6,
+                        height: 6.5
                     }
                 },
 
                 {
                     hit: {
-                        left: 83.0,
-                        top: 68.0,
-                        width: 11.0,
-                        height: 13.0
+                        left: 84.7,
+                        top: 73.0,
+                        width: 11.5,
+                        height: 12.5
                     },
 
                     marker: {
-                        left: 85.2,
-                        top: 70.4,
-                        width: 7.0,
-                        height: 8.0
+                        centerX: 90.2,
+                        centerY: 79.0,
+                        width: 7.6,
+                        height: 6.5
                     }
                 }
 
@@ -1225,33 +1223,33 @@
 
                 {
                     hit: {
-                        left: 4.5,
-                        top: 86.0,
-                        width: 6.0,
-                        height: 7.0
+                        left: 1.4,
+                        top: 88.2,
+                        width: 7.5,
+                        height: 8.2
                     },
 
                     marker: {
-                        left: 5.8,
-                        top: 87.4,
-                        width: 3.6,
-                        height: 4.4
+                        centerX: 4.9,
+                        centerY: 92.2,
+                        width: 4.6,
+                        height: 5.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 54.0,
-                        top: 86.0,
-                        width: 6.0,
-                        height: 7.0
+                        left: 50.9,
+                        top: 88.2,
+                        width: 7.5,
+                        height: 8.2
                     },
 
                     marker: {
-                        left: 55.3,
-                        top: 87.4,
-                        width: 3.6,
-                        height: 4.4
+                        centerX: 54.4,
+                        centerY: 92.2,
+                        width: 4.6,
+                        height: 5.0
                     }
                 }
 
@@ -1274,32 +1272,32 @@
 
                 {
                     hit: {
-                        left: 27.0,
-                        top: 18.5,
-                        width: 18.0,
-                        height: 10.0
+                        left: 28.0,
+                        top: 19.5,
+                        width: 14.5,
+                        height: 8.2
                     },
 
                     marker: {
-                        left: 30.0,
-                        top: 20.5,
-                        width: 11.0,
+                        centerX: 35.3,
+                        centerY: 23.7,
+                        width: 11.2,
                         height: 6.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 76.5,
-                        top: 18.5,
-                        width: 18.0,
-                        height: 10.0
+                        left: 77.5,
+                        top: 19.5,
+                        width: 14.5,
+                        height: 8.2
                     },
 
                     marker: {
-                        left: 79.5,
-                        top: 20.5,
-                        width: 11.0,
+                        centerX: 84.8,
+                        centerY: 23.7,
+                        width: 11.2,
                         height: 6.0
                     }
                 }
@@ -1310,46 +1308,46 @@
 
 
         /* =========================
-           6 — LES MOUSTACHES
+           6 — LES BRANCHES DU BARRAGE
         ========================== */
 
         {
-            id: "whiskers",
+            id: "dam-branches",
 
             name:
-                "Les moustaches d'Édouard",
+                "Les branches du barrage",
 
             areas: [
 
                 {
                     hit: {
-                        left: 22.5,
-                        top: 36.0,
-                        width: 12.0,
-                        height: 10.0
+                        left: 40.8,
+                        top: 49.8,
+                        width: 12.5,
+                        height: 11.0
                     },
 
                     marker: {
-                        left: 25.4,
-                        top: 38.5,
-                        width: 7.0,
-                        height: 5.0
+                        centerX: 46.0,
+                        centerY: 54.8,
+                        width: 7.2,
+                        height: 6.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 72.0,
-                        top: 36.0,
-                        width: 12.0,
-                        height: 10.0
+                        left: 90.3,
+                        top: 49.8,
+                        width: 8.5,
+                        height: 11.0
                     },
 
                     marker: {
-                        left: 74.9,
-                        top: 38.5,
-                        width: 7.0,
-                        height: 5.0
+                        centerX: 94.2,
+                        centerY: 54.8,
+                        width: 7.2,
+                        height: 6.0
                     }
                 }
 
@@ -1359,46 +1357,46 @@
 
 
         /* =========================
-           7 — LE BARRAGE
+           7 — LE PETIT RONDIN PRÈS DE L'EAU
         ========================== */
 
         {
-            id: "dam",
+            id: "water-log",
 
             name:
-                "Une partie du barrage",
+                "Le petit rondin près de l'eau",
 
             areas: [
 
                 {
                     hit: {
-                        left: 37.0,
-                        top: 43.0,
-                        width: 12.0,
-                        height: 13.0
+                        left: 42.6,
+                        top: 60.4,
+                        width: 8.2,
+                        height: 10.5
                     },
 
                     marker: {
-                        left: 40.2,
-                        top: 46.2,
-                        width: 6.5,
-                        height: 7.0
+                        centerX: 46.8,
+                        centerY: 65.2,
+                        width: 5.0,
+                        height: 6.0
                     }
                 },
 
                 {
                     hit: {
-                        left: 86.5,
-                        top: 43.0,
-                        width: 12.0,
-                        height: 13.0
+                        left: 92.1,
+                        top: 60.4,
+                        width: 6.5,
+                        height: 10.5
                     },
 
                     marker: {
-                        left: 89.7,
-                        top: 46.2,
-                        width: 6.5,
-                        height: 7.0
+                        centerX: 95.2,
+                        centerY: 65.2,
+                        width: 5.0,
+                        height: 6.0
                     }
                 }
 
@@ -1544,7 +1542,6 @@
                     event.clientX -
                     rect.left
                 ) /
-
                 rect.width *
                 100,
 
@@ -1553,7 +1550,6 @@
                     event.clientY -
                     rect.top
                 ) /
-
                 rect.height *
                 100
 
@@ -1636,10 +1632,6 @@
             }
 
 
-            /* =========================
-               BONNE RÉPONSE
-            ========================== */
-
             if (
                 matched
             ) {
@@ -1691,10 +1683,6 @@
             }
 
 
-            /* =========================
-               MAUVAISE RÉPONSE
-            ========================== */
-
             showWrongMark(
                 point.x,
                 point.y
@@ -1729,11 +1717,11 @@
             className;
 
         marker.style.left =
-            area.left +
+            area.centerX +
             "%";
 
         marker.style.top =
-            area.top +
+            area.centerY +
             "%";
 
         marker.style.width =
@@ -1903,7 +1891,6 @@
             "⭐".repeat(
                 stars
             ) +
-
             "☆".repeat(
                 3 - stars
             );
@@ -2145,9 +2132,7 @@
 
             soundButton.textContent =
                 soundEnabled
-
                     ? "🔊 Son activé"
-
                     : "🔇 Son désactivé";
 
             if (
@@ -2332,15 +2317,10 @@
 
         victory.innerHTML =
             "🎉 Bravo ! Tu as trouvé les 7 différences !" +
-
             "<br>" +
-
             "<span style='font-size:1rem'>" +
-
             "Résultat : " +
-
             starsDisplay.textContent +
-
             "</span>";
 
         launchConfetti();
