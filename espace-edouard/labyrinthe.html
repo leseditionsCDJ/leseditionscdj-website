@@ -1,0 +1,3260 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Le labyrinthe du barrage | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EFF8E9 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 14px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            border-bottom:
+                2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+
+            max-width: 70vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding: 9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: .92rem;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .nav-button:hover,
+        .language-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .home-button:hover,
+        .language-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 96%;
+
+            max-width: 1600px;
+
+            margin: auto;
+
+            padding:
+                35px 18px 70px;
+        }
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .intro {
+            max-width: 820px;
+
+            margin: auto;
+
+            color: #536B7B;
+
+            font-size: 1.1rem;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================
+           MISE EN PAGE
+        ========================== */
+
+        .game-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 340px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        .left-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+
+            top: 20px;
+
+            max-height:
+                calc(100vh - 40px);
+
+            overflow-y: auto;
+
+            padding-right: 3px;
+        }
+
+        .sidebar-box {
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 18px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, .08);
+        }
+
+        .sidebar-title {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 1.15rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           LABYRINTHE
+        ========================== */
+
+        .maze-card {
+            background-color: white;
+
+            padding: 14px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, .10);
+        }
+
+        .maze-board {
+            position: relative;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            user-select: none;
+
+            touch-action: none;
+
+            cursor: crosshair;
+        }
+
+        .maze-board img {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
+        }
+
+
+        /* =========================
+           CANVAS DU TRACÉ
+        ========================== */
+
+        #trail-canvas {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           DÉPART ET ARRIVÉE
+        ========================== */
+
+        .maze-target {
+            position: absolute;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 5;
+
+            transition:
+                transform .2s,
+                opacity .2s;
+        }
+
+        .start-target {
+            width: 34px;
+
+            height: 34px;
+
+            background:
+                rgba(47, 143, 70, .22);
+
+            border:
+                4px solid #2F8F46;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(255,255,255,.9);
+        }
+
+        .goal-target {
+            width: 38px;
+
+            height: 38px;
+
+            background:
+                rgba(241, 184, 59, .25);
+
+            border:
+                4px solid #F1B83B;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(255,255,255,.9);
+        }
+
+        .maze-target.hint {
+            animation:
+                targetPulse
+                .55s
+                ease-in-out
+                infinite alternate;
+        }
+
+        @keyframes targetPulse {
+
+            from {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.4);
+            }
+
+        }
+
+
+        /* =========================
+           PION
+        ========================== */
+
+        .player {
+            position: absolute;
+
+            width: 30px;
+
+            height: 30px;
+
+            border-radius: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            background-color: #174E78;
+
+            border:
+                3px solid white;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,.25);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 15px;
+
+            pointer-events: none;
+
+            z-index: 10;
+        }
+
+
+        /* =========================
+           ERREUR
+        ========================== */
+
+        .maze-board.hit-wall {
+            animation:
+                boardShake
+                .35s ease;
+        }
+
+        @keyframes boardShake {
+
+            0%,
+            100% {
+                transform:
+                    translateX(0);
+            }
+
+            25% {
+                transform:
+                    translateX(-5px);
+            }
+
+            50% {
+                transform:
+                    translateX(5px);
+            }
+
+            75% {
+                transform:
+                    translateX(-3px);
+            }
+
+        }
+
+
+        /* =========================
+           STATISTIQUES
+        ========================== */
+
+        .top-info {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .status {
+            color: #174E78;
+
+            font-weight: bold;
+
+            font-size: 1.05rem;
+        }
+
+        .stars {
+            font-size: 1.4rem;
+
+            letter-spacing: 3px;
+        }
+
+        .mistakes {
+            margin-top: 10px;
+
+            color: #617789;
+
+            text-align: center;
+
+            font-size: .94rem;
+        }
+
+        .progress-track {
+            width: 100%;
+
+            height: 16px;
+
+            margin-top: 15px;
+
+            background-color: #DDECF3;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            background-color: #2F8F46;
+
+            border-radius: inherit;
+
+            transition:
+                width .25s ease;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 70px;
+
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           OUTILS
+        ========================== */
+
+        .tools {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 10px;
+        }
+
+        .tool-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 22px;
+
+            padding:
+                12px 14px;
+
+            font-size: .96rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .hint-button {
+            background-color: #F1B83B;
+
+            color: #263238;
+        }
+
+        .restart-button {
+            background-color: #D95C5C;
+
+            color: white;
+        }
+
+        .sound-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+
+        /* =========================
+           INSTRUCTIONS
+        ========================== */
+
+        .instructions {
+            margin: 0;
+
+            padding-left: 22px;
+
+            color: #536B7B;
+
+            line-height: 1.6;
+
+            font-size: .94rem;
+        }
+
+        .instructions li {
+            margin-bottom: 7px;
+        }
+
+
+        /* =========================
+           VICTOIRE
+        ========================== */
+
+        .victory {
+            display: none;
+
+            padding: 22px;
+
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+
+            border:
+                3px solid #2F8F46;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            font-size: 1.1rem;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 10px 30px
+                rgba(47,143,70,.15);
+        }
+
+        .victory.show {
+            display: block;
+
+            animation:
+                victoryPop
+                .35s ease-out;
+        }
+
+        @keyframes victoryPop {
+
+            from {
+                transform:
+                    scale(.8);
+
+                opacity: 0;
+            }
+
+            to {
+                transform:
+                    scale(1);
+
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           CONFETTIS
+        ========================== */
+
+        .confetti {
+            position: fixed;
+
+            top: -20px;
+
+            width: 10px;
+
+            height: 16px;
+
+            z-index: 9999;
+
+            pointer-events: none;
+
+            animation:
+                confettiFall
+                2.5s
+                linear
+                forwards;
+        }
+
+        @keyframes confettiFall {
+
+            to {
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: .2;
+            }
+
+        }
+
+
+        /* =========================
+           TABLETTE
+        ========================== */
+
+        @media (max-width: 1100px) {
+
+            .game-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+
+                max-height: none;
+
+                overflow: visible;
+            }
+
+            .tools {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .maze-card {
+                padding: 7px;
+            }
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+            .start-target {
+                width: 28px;
+
+                height: 28px;
+            }
+
+            .goal-target {
+                width: 32px;
+
+                height: 32px;
+            }
+
+            .player {
+                width: 27px;
+
+                height: 27px;
+
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Accueil
+
+        </a>
+
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Retour à la page d'Édouard
+
+        </a>
+
+
+        <a
+            href="../en/espace-edward/labyrinthe.html"
+            class="language-button"
+            lang="en">
+
+            🇨🇦 EN
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+        <h1>
+            🌀 Le labyrinthe du barrage
+        </h1>
+
+
+        <p class="intro">
+
+            Aide Édouard à rejoindre son barrage !
+
+            Commence au cercle vert,
+            puis trace ton chemin avec ta souris
+            ou ton doigt sans toucher les murs bruns.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="game-layout">
+
+
+        <!-- =========================
+             LABYRINTHE
+        ========================== -->
+
+        <div class="left-column">
+
+
+            <section class="maze-card">
+
+
+                <div
+                    class="maze-board"
+                    id="maze-board">
+
+
+                    <img
+                        src="../images/labyrinthe_edouard.png?v=1"
+                        alt="Labyrinthe d'Édouard jusqu'au barrage"
+                        id="maze-image">
+
+
+                    <canvas
+                        id="trail-canvas">
+                    </canvas>
+
+
+                    <div
+                        class="maze-target start-target"
+                        id="start-target">
+                    </div>
+
+
+                    <div
+                        class="maze-target goal-target"
+                        id="goal-target">
+                    </div>
+
+
+                    <div
+                        class="player"
+                        id="player">
+
+                        🐾
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             MENU
+        ========================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- ÉTAT DU JEU -->
+
+            <section class="sidebar-box">
+
+
+                <div class="top-info">
+
+
+                    <div
+                        class="status"
+                        id="status">
+
+                        Prêt à partir !
+
+                    </div>
+
+
+                    <div
+                        class="stars"
+                        id="stars">
+
+                        ⭐⭐⭐
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="progress-track">
+
+
+                    <div
+                        class="progress-bar"
+                        id="progress-bar">
+                    </div>
+
+
+                </div>
+
+
+                <div
+                    class="mistakes"
+                    id="mistakes">
+
+                    Aucun mur touché 👍
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- MESSAGE -->
+
+            <section class="sidebar-box">
+
+
+                <div
+                    id="message"
+                    aria-live="polite">
+
+                    Place ton doigt ou ta souris
+                    sur le cercle vert pour commencer. 🦫
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- OUTILS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🧰 Mes outils
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        class="tool-button hint-button"
+                        id="hint-button">
+
+                        💡 Un indice
+
+                    </button>
+
+
+                    <button
+                        class="tool-button restart-button"
+                        id="restart-button">
+
+                        🔄 Recommencer
+
+                    </button>
+
+
+                    <button
+                        class="tool-button sound-button"
+                        id="sound-button">
+
+                        🔊 Son activé
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- INSTRUCTIONS -->
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🦫 Comment jouer ?
+                </h2>
+
+
+                <ol class="instructions">
+
+                    <li>
+                        Commence au cercle vert près du départ.
+                    </li>
+
+                    <li>
+                        Garde ton doigt ou ta souris dans les passages beige.
+                    </li>
+
+                    <li>
+                        Ne touche pas les murs bruns.
+                    </li>
+
+                    <li>
+                        Atteins le cercle jaune près du barrage.
+                    </li>
+
+                </ol>
+
+
+            </section>
+
+
+
+            <!-- VICTOIRE -->
+
+            <div
+                class="victory"
+                id="victory">
+
+                🎉 Bravo !
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =====================================================
+       CONFIGURATION
+
+       L'image originale créée pour Édouard
+       mesure 1448 × 1086.
+
+       Les coordonnées sont automatiquement
+       adaptées si le navigateur affiche
+       l'image plus petite.
+    ===================================================== */
+
+
+    const REFERENCE_WIDTH =
+        1448;
+
+
+    const REFERENCE_HEIGHT =
+        1086;
+
+
+
+    /*
+       Départ :
+       passage situé juste à droite
+       du panneau DÉPART.
+    */
+
+    const START_REFERENCE = {
+
+        x: 417,
+
+        y: 483
+
+    };
+
+
+    /*
+       Arrivée :
+       sortie du labyrinthe
+       près du barrage.
+    */
+
+    const GOAL_REFERENCE = {
+
+        x: 1096,
+
+        y: 744
+
+    };
+
+
+    /*
+       Zone dans laquelle l'enfant
+       doit rester.
+
+       Cela empêche de contourner
+       le labyrinthe par l'extérieur.
+    */
+
+    const MAZE_REFERENCE = {
+
+        left: 318,
+
+        top: 145,
+
+        right: 1128,
+
+        bottom: 948
+
+    };
+
+
+
+    /* =========================
+       ÉLÉMENTS
+    ========================== */
+
+    const board =
+        document.getElementById(
+            "maze-board"
+        );
+
+
+    const image =
+        document.getElementById(
+            "maze-image"
+        );
+
+
+    const trailCanvas =
+        document.getElementById(
+            "trail-canvas"
+        );
+
+
+    const trailCtx =
+        trailCanvas.getContext(
+            "2d"
+        );
+
+
+    const startTarget =
+        document.getElementById(
+            "start-target"
+        );
+
+
+    const goalTarget =
+        document.getElementById(
+            "goal-target"
+        );
+
+
+    const player =
+        document.getElementById(
+            "player"
+        );
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    const starsDisplay =
+        document.getElementById(
+            "stars"
+        );
+
+
+    const mistakesDisplay =
+        document.getElementById(
+            "mistakes"
+        );
+
+
+    const progressBar =
+        document.getElementById(
+            "progress-bar"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    const victory =
+        document.getElementById(
+            "victory"
+        );
+
+
+    const hintButton =
+        document.getElementById(
+            "hint-button"
+        );
+
+
+    const restartButton =
+        document.getElementById(
+            "restart-button"
+        );
+
+
+    const soundButton =
+        document.getElementById(
+            "sound-button"
+        );
+
+
+
+    /* =========================
+       CANVAS INVISIBLE POUR
+       DÉTECTER LES MURS
+    ========================== */
+
+    const collisionCanvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    const collisionCtx =
+        collisionCanvas.getContext(
+            "2d",
+            {
+                willReadFrequently: true
+            }
+        );
+
+
+    let collisionPixels =
+        null;
+
+
+
+    /* =========================
+       ÉTAT DU JEU
+    ========================== */
+
+    let naturalWidth =
+        REFERENCE_WIDTH;
+
+
+    let naturalHeight =
+        REFERENCE_HEIGHT;
+
+
+    let startPoint =
+        null;
+
+
+    let goalPoint =
+        null;
+
+
+    let mazeBounds =
+        null;
+
+
+    let lastPoint =
+        null;
+
+
+    let drawing =
+        false;
+
+
+    let started =
+        false;
+
+
+    let won =
+        false;
+
+
+    let collisionLock =
+        false;
+
+
+    let mistakes =
+        0;
+
+
+    let stars =
+        3;
+
+
+    let soundEnabled =
+        true;
+
+
+    let drawnDistance =
+        0;
+
+
+
+    /* =====================================================
+       ADAPTER LES COORDONNÉES
+       À LA TAILLE RÉELLE DE L'IMAGE
+    ===================================================== */
+
+    function scalePoint(
+        reference
+    ) {
+
+
+        return {
+
+            x:
+                reference.x *
+                naturalWidth /
+                REFERENCE_WIDTH,
+
+            y:
+                reference.y *
+                naturalHeight /
+                REFERENCE_HEIGHT
+
+        };
+
+
+    }
+
+
+
+    function scaleBounds(
+        reference
+    ) {
+
+
+        return {
+
+            left:
+                reference.left *
+                naturalWidth /
+                REFERENCE_WIDTH,
+
+            top:
+                reference.top *
+                naturalHeight /
+                REFERENCE_HEIGHT,
+
+            right:
+                reference.right *
+                naturalWidth /
+                REFERENCE_WIDTH,
+
+            bottom:
+                reference.bottom *
+                naturalHeight /
+                REFERENCE_HEIGHT
+
+        };
+
+
+    }
+
+
+
+    /* =========================
+       CHARGEMENT DU JEU
+    ========================== */
+
+    function initializeGame() {
+
+
+        naturalWidth =
+            image.naturalWidth;
+
+
+        naturalHeight =
+            image.naturalHeight;
+
+
+        trailCanvas.width =
+            naturalWidth;
+
+
+        trailCanvas.height =
+            naturalHeight;
+
+
+        collisionCanvas.width =
+            naturalWidth;
+
+
+        collisionCanvas.height =
+            naturalHeight;
+
+
+        collisionCtx.drawImage(
+            image,
+            0,
+            0,
+            naturalWidth,
+            naturalHeight
+        );
+
+
+        collisionPixels =
+            collisionCtx.getImageData(
+                0,
+                0,
+                naturalWidth,
+                naturalHeight
+            );
+
+
+        startPoint =
+            scalePoint(
+                START_REFERENCE
+            );
+
+
+        goalPoint =
+            scalePoint(
+                GOAL_REFERENCE
+            );
+
+
+        mazeBounds =
+            scaleBounds(
+                MAZE_REFERENCE
+            );
+
+
+        positionTargets();
+
+
+        resetGame(
+            false
+        );
+
+
+    }
+
+
+
+    image.addEventListener(
+        "load",
+        initializeGame
+    );
+
+
+    if (
+        image.complete &&
+        image.naturalWidth
+    ) {
+
+
+        initializeGame();
+
+
+    }
+
+
+
+    /* =========================
+       POSITION DES CERCLES
+    ========================== */
+
+    function naturalToPercent(
+        point
+    ) {
+
+
+        return {
+
+            x:
+                point.x /
+                naturalWidth *
+                100,
+
+            y:
+                point.y /
+                naturalHeight *
+                100
+
+        };
+
+
+    }
+
+
+
+    function positionTargets() {
+
+
+        const start =
+            naturalToPercent(
+                startPoint
+            );
+
+
+        const goal =
+            naturalToPercent(
+                goalPoint
+            );
+
+
+        startTarget.style.left =
+            start.x +
+            "%";
+
+
+        startTarget.style.top =
+            start.y +
+            "%";
+
+
+        goalTarget.style.left =
+            goal.x +
+            "%";
+
+
+        goalTarget.style.top =
+            goal.y +
+            "%";
+
+
+    }
+
+
+
+    function positionPlayer(
+        point
+    ) {
+
+
+        const percent =
+            naturalToPercent(
+                point
+            );
+
+
+        player.style.left =
+            percent.x +
+            "%";
+
+
+        player.style.top =
+            percent.y +
+            "%";
+
+
+    }
+
+
+
+    /* =========================
+       POSITION DU POINTEUR
+    ========================== */
+
+    function pointerToNatural(
+        event
+    ) {
+
+
+        const rect =
+            board.getBoundingClientRect();
+
+
+        return {
+
+            x:
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width *
+                naturalWidth,
+
+            y:
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height *
+                naturalHeight
+
+        };
+
+
+    }
+
+
+
+    /* =========================
+       DISTANCE
+    ========================== */
+
+    function distance(
+        pointA,
+        pointB
+    ) {
+
+
+        return Math.hypot(
+
+            pointA.x -
+            pointB.x,
+
+            pointA.y -
+            pointB.y
+
+        );
+
+
+    }
+
+
+
+    /* =========================
+       VÉRIFIER LES LIMITES
+    ========================== */
+
+    function insideMazeBounds(
+        point
+    ) {
+
+
+        return (
+
+            point.x >=
+                mazeBounds.left &&
+
+            point.x <=
+                mazeBounds.right &&
+
+            point.y >=
+                mazeBounds.top &&
+
+            point.y <=
+                mazeBounds.bottom
+
+        );
+
+
+    }
+
+
+
+    /* =====================================================
+       RECONNAISSANCE DES MURS BRUNS
+    ===================================================== */
+
+    function isWallPixel(
+        x,
+        y
+    ) {
+
+
+        x =
+            Math.round(
+                x
+            );
+
+
+        y =
+            Math.round(
+                y
+            );
+
+
+        if (
+            x < 0 ||
+            x >= naturalWidth ||
+            y < 0 ||
+            y >= naturalHeight
+        ) {
+
+
+            return true;
+
+
+        }
+
+
+        const index =
+            (
+                y *
+                naturalWidth +
+                x
+            ) * 4;
+
+
+        const r =
+            collisionPixels
+                .data[index];
+
+
+        const g =
+            collisionPixels
+                .data[index + 1];
+
+
+        const b =
+            collisionPixels
+                .data[index + 2];
+
+
+
+        /*
+           Couleurs brunes des murs.
+        */
+
+        const brownWall =
+
+            r > 65 &&
+
+            r < 220 &&
+
+            g > 25 &&
+
+            g < 165 &&
+
+            b < 125 &&
+
+            r >
+                g * 1.13 &&
+
+            g >
+                b * 1.12;
+
+
+
+        /*
+           Contours foncés des murs.
+        */
+
+        const darkOutline =
+
+            r < 75 &&
+
+            g < 70 &&
+
+            b < 65;
+
+
+
+        return (
+            brownWall ||
+            darkOutline
+        );
+
+
+    }
+
+
+
+    /* =====================================================
+       VÉRIFIER AUTOUR DU PION
+
+       On ne vérifie pas seulement
+       le pixel du centre.
+
+       Plusieurs pixels sont vérifiés
+       autour du pion pour empêcher
+       de traverser le bord d'un mur.
+    ===================================================== */
+
+    function touchesWall(
+        point
+    ) {
+
+
+        const radius =
+            6 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        const checks =
+            [
+
+                [0, 0],
+
+                [radius, 0],
+
+                [-radius, 0],
+
+                [0, radius],
+
+                [0, -radius],
+
+                [radius * .7, radius * .7],
+
+                [-radius * .7, radius * .7],
+
+                [radius * .7, -radius * .7],
+
+                [-radius * .7, -radius * .7]
+
+            ];
+
+
+        for (
+            const offset of checks
+        ) {
+
+
+            if (
+                isWallPixel(
+
+                    point.x +
+                    offset[0],
+
+                    point.y +
+                    offset[1]
+
+                )
+            ) {
+
+
+                return true;
+
+
+            }
+
+
+        }
+
+
+        return false;
+
+
+    }
+
+
+
+    /* =====================================================
+       VÉRIFIER TOUT LE SEGMENT
+
+       Si l'enfant bouge rapidement
+       la souris, on vérifie aussi
+       tous les points entre
+       l'ancienne et la nouvelle position.
+    ===================================================== */
+
+    function segmentIsSafe(
+        from,
+        to
+    ) {
+
+
+        const segmentLength =
+            distance(
+                from,
+                to
+            );
+
+
+        const steps =
+            Math.max(
+
+                1,
+
+                Math.ceil(
+                    segmentLength /
+                    3
+                )
+
+            );
+
+
+        for (
+            let i = 1;
+            i <= steps;
+            i++
+        ) {
+
+
+            const ratio =
+                i /
+                steps;
+
+
+            const point = {
+
+                x:
+                    from.x +
+                    (
+                        to.x -
+                        from.x
+                    ) *
+                    ratio,
+
+                y:
+                    from.y +
+                    (
+                        to.y -
+                        from.y
+                    ) *
+                    ratio
+
+            };
+
+
+            if (
+                !insideMazeBounds(
+                    point
+                ) ||
+                touchesWall(
+                    point
+                )
+            ) {
+
+
+                return false;
+
+
+            }
+
+
+        }
+
+
+        return true;
+
+
+    }
+
+
+
+    /* =========================
+       COMMENCER / REPRENDRE
+    ========================== */
+
+    board.addEventListener(
+        "pointerdown",
+        function(event) {
+
+
+            if (
+                won ||
+                collisionLock ||
+                !collisionPixels
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            const point =
+                pointerToNatural(
+                    event
+                );
+
+
+            /*
+               PREMIER DÉPART
+            */
+
+            if (
+                !started
+            ) {
+
+
+                const startRadius =
+                    42 *
+                    naturalWidth /
+                    REFERENCE_WIDTH;
+
+
+                if (
+                    distance(
+                        point,
+                        startPoint
+                    ) >
+                    startRadius
+                ) {
+
+
+                    showMessage(
+                        "Commence au cercle vert près du panneau DÉPART. 🟢"
+                    );
+
+
+                    playWrongSound();
+
+
+                    return;
+
+
+                }
+
+
+                started =
+                    true;
+
+
+                drawing =
+                    true;
+
+
+                lastPoint = {
+                    x: startPoint.x,
+                    y: startPoint.y
+                };
+
+
+                positionPlayer(
+                    lastPoint
+                );
+
+
+                status.textContent =
+                    "En route !";
+
+
+                showMessage(
+                    "Super ! Suis maintenant les passages beige sans toucher les murs. 🦫"
+                );
+
+
+            }
+
+
+            /*
+               REPRENDRE APRÈS AVOIR
+               LEVÉ LE DOIGT
+            */
+
+            else {
+
+
+                const resumeRadius =
+                    48 *
+                    naturalWidth /
+                    REFERENCE_WIDTH;
+
+
+                if (
+                    distance(
+                        point,
+                        lastPoint
+                    ) >
+                    resumeRadius
+                ) {
+
+
+                    showMessage(
+                        "Reprends ton chemin à partir de la petite patte bleue. 🐾"
+                    );
+
+
+                    return;
+
+
+                }
+
+
+                drawing =
+                    true;
+
+
+            }
+
+
+            try {
+
+
+                board.setPointerCapture(
+                    event.pointerId
+                );
+
+
+            }
+
+            catch (error) {
+
+
+            }
+
+
+        }
+    );
+
+
+
+    /* =========================
+       DÉPLACEMENT
+    ========================== */
+
+    board.addEventListener(
+        "pointermove",
+        function(event) {
+
+
+            if (
+                !drawing ||
+                won ||
+                collisionLock
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            const point =
+                pointerToNatural(
+                    event
+                );
+
+
+            if (
+                !segmentIsSafe(
+                    lastPoint,
+                    point
+                )
+            ) {
+
+
+                hitWall(
+                    event.pointerId
+                );
+
+
+                return;
+
+
+            }
+
+
+            drawTrail(
+                lastPoint,
+                point
+            );
+
+
+            drawnDistance +=
+                distance(
+                    lastPoint,
+                    point
+                );
+
+
+            lastPoint = {
+
+                x: point.x,
+
+                y: point.y
+
+            };
+
+
+            positionPlayer(
+                lastPoint
+            );
+
+
+            updateProgress();
+
+
+            /*
+               ARRIVÉE
+            */
+
+            const goalRadius =
+                42 *
+                naturalWidth /
+                REFERENCE_WIDTH;
+
+
+            if (
+                distance(
+                    point,
+                    goalPoint
+                ) <=
+                goalRadius
+            ) {
+
+
+                winGame();
+
+
+            }
+
+
+        }
+    );
+
+
+
+    /* =========================
+       LEVER LE DOIGT
+    ========================== */
+
+    board.addEventListener(
+        "pointerup",
+        function() {
+
+
+            if (
+                drawing &&
+                !won
+            ) {
+
+
+                drawing =
+                    false;
+
+
+                showMessage(
+                    "Tu peux reprendre à partir de la petite patte bleue. 🐾"
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+    board.addEventListener(
+        "pointercancel",
+        function() {
+
+
+            drawing =
+                false;
+
+
+        }
+    );
+
+
+
+    /* =========================
+       DESSINER LE TRAJET
+    ========================== */
+
+    function drawTrail(
+        from,
+        to
+    ) {
+
+
+        trailCtx.beginPath();
+
+
+        trailCtx.moveTo(
+            from.x,
+            from.y
+        );
+
+
+        trailCtx.lineTo(
+            to.x,
+            to.y
+        );
+
+
+        trailCtx.strokeStyle =
+            "rgba(23, 78, 120, 0.82)";
+
+
+        trailCtx.lineWidth =
+            11 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        trailCtx.lineCap =
+            "round";
+
+
+        trailCtx.lineJoin =
+            "round";
+
+
+        trailCtx.stroke();
+
+
+    }
+
+
+
+    /* =========================
+       MUR TOUCHÉ
+    ========================== */
+
+    function hitWall(
+        pointerId
+    ) {
+
+
+        if (
+            collisionLock
+        ) {
+
+
+            return;
+
+
+        }
+
+
+        collisionLock =
+            true;
+
+
+        drawing =
+            false;
+
+
+        mistakes++;
+
+
+        if (
+            stars > 1
+        ) {
+
+
+            stars--;
+
+
+        }
+
+
+        updateStars();
+
+
+        updateMistakes();
+
+
+        board.classList.remove(
+            "hit-wall"
+        );
+
+
+        void board.offsetWidth;
+
+
+        board.classList.add(
+            "hit-wall"
+        );
+
+
+        status.textContent =
+            "Oups !";
+
+
+        showMessage(
+            "Oh non ! Tu as touché un mur. On retourne au départ. 🧱"
+        );
+
+
+        playWrongSound();
+
+
+        try {
+
+
+            board.releasePointerCapture(
+                pointerId
+            );
+
+
+        }
+
+        catch (error) {
+
+
+        }
+
+
+        setTimeout(
+            function() {
+
+
+                clearTrail();
+
+
+                started =
+                    false;
+
+
+                lastPoint = {
+
+                    x: startPoint.x,
+
+                    y: startPoint.y
+
+                };
+
+
+                drawnDistance =
+                    0;
+
+
+                positionPlayer(
+                    startPoint
+                );
+
+
+                progressBar.style.width =
+                    "0%";
+
+
+                status.textContent =
+                    "Prêt à repartir";
+
+
+                collisionLock =
+                    false;
+
+
+                showMessage(
+                    "Réessaie ! Commence au cercle vert. 🟢"
+                );
+
+
+            },
+            700
+        );
+
+
+    }
+
+
+
+    /* =========================
+       PROGRESSION
+    ========================== */
+
+    function updateProgress() {
+
+
+        /*
+           Cette barre représente
+           la quantité de chemin
+           déjà tracée.
+
+           Elle reste à 95 %
+           maximum avant la victoire.
+        */
+
+        const targetDistance =
+            2000 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        const percent =
+            Math.min(
+
+                95,
+
+                drawnDistance /
+                targetDistance *
+                100
+
+            );
+
+
+        progressBar.style.width =
+            percent +
+            "%";
+
+
+    }
+
+
+
+    /* =========================
+       VICTOIRE
+    ========================== */
+
+    function winGame() {
+
+
+        if (
+            won
+        ) {
+
+
+            return;
+
+
+        }
+
+
+        won =
+            true;
+
+
+        drawing =
+            false;
+
+
+        progressBar.style.width =
+            "100%";
+
+
+        status.textContent =
+            "Barrage atteint ! 🎉";
+
+
+        showMessage(
+            "Bravo ! Tu as aidé Édouard à rejoindre son barrage ! 🦫🏆"
+        );
+
+
+        victory.classList.add(
+            "show"
+        );
+
+
+        victory.innerHTML =
+
+            "🎉 Bravo !" +
+
+            "<br>" +
+
+            "Édouard a rejoint son barrage !" +
+
+            "<br><br>" +
+
+            "<span style='font-size:1rem'>" +
+
+            "Résultat : " +
+
+            starsDisplay.textContent +
+
+            "</span>";
+
+
+        playVictorySound();
+
+
+        launchConfetti();
+
+
+    }
+
+
+
+    /* =========================
+       INDICE
+    ========================== */
+
+    hintButton.addEventListener(
+        "click",
+        function() {
+
+
+            if (
+                won
+            ) {
+
+
+                showMessage(
+                    "Tu as déjà réussi le labyrinthe ! 🎉"
+                );
+
+
+                return;
+
+
+            }
+
+
+            if (
+                stars > 1
+            ) {
+
+
+                stars--;
+
+
+                updateStars();
+
+
+            }
+
+
+            startTarget.classList.add(
+                "hint"
+            );
+
+
+            goalTarget.classList.add(
+                "hint"
+            );
+
+
+            showMessage(
+                "💡 Pars du cercle vert et cherche le passage beige qui mène jusqu'au cercle jaune près du barrage."
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    startTarget.classList.remove(
+                        "hint"
+                    );
+
+
+                    goalTarget.classList.remove(
+                        "hint"
+                    );
+
+
+                },
+                2600
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
+
+    restartButton.addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Veux-tu recommencer le labyrinthe ?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+
+                return;
+
+
+            }
+
+
+            resetGame(
+                true
+            );
+
+
+        }
+    );
+
+
+
+    function resetGame(
+        resetScore
+    ) {
+
+
+        clearTrail();
+
+
+        started =
+            false;
+
+
+        drawing =
+            false;
+
+
+        won =
+            false;
+
+
+        collisionLock =
+            false;
+
+
+        drawnDistance =
+            0;
+
+
+        if (
+            resetScore
+        ) {
+
+
+            mistakes =
+                0;
+
+
+            stars =
+                3;
+
+
+        }
+
+
+        lastPoint = {
+
+            x:
+                startPoint.x,
+
+            y:
+                startPoint.y
+
+        };
+
+
+        positionPlayer(
+            startPoint
+        );
+
+
+        progressBar.style.width =
+            "0%";
+
+
+        victory.classList.remove(
+            "show"
+        );
+
+
+        board.classList.remove(
+            "hit-wall"
+        );
+
+
+        status.textContent =
+            "Prêt à partir !";
+
+
+        updateStars();
+
+
+        updateMistakes();
+
+
+        showMessage(
+            "Place ton doigt ou ta souris sur le cercle vert pour commencer. 🦫"
+        );
+
+
+    }
+
+
+
+    /* =========================
+       EFFACER LE TRACÉ
+    ========================== */
+
+    function clearTrail() {
+
+
+        trailCtx.clearRect(
+            0,
+            0,
+            trailCanvas.width,
+            trailCanvas.height
+        );
+
+
+    }
+
+
+
+    /* =========================
+       ÉTOILES
+    ========================== */
+
+    function updateStars() {
+
+
+        starsDisplay.textContent =
+
+            "⭐".repeat(
+                stars
+            ) +
+
+            "☆".repeat(
+                3 - stars
+            );
+
+
+    }
+
+
+
+    /* =========================
+       ERREURS
+    ========================== */
+
+    function updateMistakes() {
+
+
+        if (
+            mistakes === 0
+        ) {
+
+
+            mistakesDisplay.textContent =
+                "Aucun mur touché 👍";
+
+
+        }
+
+        else if (
+            mistakes === 1
+        ) {
+
+
+            mistakesDisplay.textContent =
+                "1 mur touché";
+
+
+        }
+
+        else {
+
+
+            mistakesDisplay.textContent =
+                mistakes +
+                " murs touchés";
+
+
+        }
+
+
+    }
+
+
+
+    /* =========================
+       SON
+    ========================== */
+
+    soundButton.addEventListener(
+        "click",
+        function() {
+
+
+            soundEnabled =
+                !soundEnabled;
+
+
+            soundButton.textContent =
+
+                soundEnabled
+
+                    ? "🔊 Son activé"
+
+                    : "🔇 Son désactivé";
+
+
+            if (
+                soundEnabled
+            ) {
+
+
+                playTone(
+                    600,
+                    .12
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+
+    function playTone(
+        frequency,
+        duration
+    ) {
+
+
+        if (
+            !soundEnabled
+        ) {
+
+
+            return;
+
+
+        }
+
+
+        try {
+
+
+            const AudioContext =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+
+            const audio =
+                new AudioContext();
+
+
+            const oscillator =
+                audio.createOscillator();
+
+
+            const gain =
+                audio.createGain();
+
+
+            oscillator.connect(
+                gain
+            );
+
+
+            gain.connect(
+                audio.destination
+            );
+
+
+            oscillator.frequency.value =
+                frequency;
+
+
+            oscillator.type =
+                "sine";
+
+
+            gain.gain.value =
+                .06;
+
+
+            oscillator.start();
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+
+                    .001,
+
+                    audio.currentTime +
+                    duration
+
+                );
+
+
+            oscillator.stop(
+                audio.currentTime +
+                duration
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    audio.close();
+
+
+                },
+                duration *
+                1000 +
+                100
+            );
+
+
+        }
+
+        catch (error) {
+
+
+        }
+
+
+    }
+
+
+
+    function playWrongSound() {
+
+
+        playTone(
+            190,
+            .22
+        );
+
+
+    }
+
+
+
+    function playVictorySound() {
+
+
+        const notes =
+            [
+                523,
+                659,
+                784,
+                1046
+            ];
+
+
+        notes.forEach(
+            function(note, index) {
+
+
+                setTimeout(
+                    function() {
+
+
+                        playTone(
+                            note,
+                            .27
+                        );
+
+
+                    },
+                    index *
+                    120
+                );
+
+
+            }
+        );
+
+
+    }
+
+
+
+    /* =========================
+       CONFETTIS
+    ========================== */
+
+    function launchConfetti() {
+
+
+        const colors =
+            [
+                "#2F8F46",
+                "#174E78",
+                "#F1B83B",
+                "#EC4899",
+                "#8B5CF6",
+                "#F97316"
+            ];
+
+
+        for (
+            let i = 0;
+            i < 70;
+            i++
+        ) {
+
+
+            const piece =
+                document.createElement(
+                    "div"
+                );
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            piece.style.backgroundColor =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            piece.style.animationDelay =
+                Math.random() *
+                .8 +
+                "s";
+
+
+            piece.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() *
+                    1.5
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    piece.remove();
+
+
+                },
+                4000
+            );
+
+
+        }
+
+
+    }
+
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    function showMessage(
+        text
+    ) {
+
+
+        message.textContent =
+            text;
+
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
