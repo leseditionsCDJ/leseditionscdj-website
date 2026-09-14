@@ -431,10 +431,6 @@
             pointer-events: none;
 
             z-index: 10;
-
-            transition:
-                left .08s linear,
-                top .08s linear;
         }
 
 
@@ -923,10 +919,6 @@
     <div class="game-layout">
 
 
-        <!-- =========================
-             LABYRINTHE
-        ========================== -->
-
         <div class="left-column">
 
 
@@ -939,7 +931,7 @@
 
 
                     <img
-                        src="../images/labyrinthe_edouard.png?v=2"
+                        src="../images/labyrinthe_edouard.png?v=3"
                         alt="Labyrinthe d'Édouard jusqu'au barrage"
                         id="maze-image">
 
@@ -980,14 +972,8 @@
 
 
 
-        <!-- =========================
-             MENU
-        ========================== -->
-
         <aside class="sidebar">
 
-
-            <!-- ÉTAT -->
 
             <section class="sidebar-box">
 
@@ -1029,8 +1015,6 @@
 
 
 
-            <!-- MESSAGE -->
-
             <section class="sidebar-box">
 
 
@@ -1046,8 +1030,6 @@
             </section>
 
 
-
-            <!-- FLÈCHES -->
 
             <section class="sidebar-box">
 
@@ -1125,8 +1107,6 @@
 
 
 
-            <!-- OUTILS -->
-
             <section class="sidebar-box">
 
 
@@ -1175,8 +1155,6 @@
 
 
 
-            <!-- INSTRUCTIONS -->
-
             <section class="sidebar-box">
 
 
@@ -1221,8 +1199,6 @@
 
 
 
-            <!-- VICTOIRE -->
-
             <div
                 class="victory"
                 id="victory">
@@ -1246,12 +1222,8 @@
 
 
     /* =====================================================
-       CONFIGURATION DE L'IMAGE
-
-       Image originale :
-       1448 × 1086
+       CONFIGURATION
     ===================================================== */
-
 
     const REFERENCE_WIDTH =
         1448;
@@ -1261,11 +1233,6 @@
         1086;
 
 
-
-    /*
-       Point de départ dans le
-       premier corridor.
-    */
 
     const START_REFERENCE = {
 
@@ -1277,11 +1244,6 @@
 
 
 
-    /*
-       Point d'arrivée près
-       de la sortie du barrage.
-    */
-
     const GOAL_REFERENCE = {
 
         x: 1096,
@@ -1291,13 +1253,6 @@
     };
 
 
-
-    /*
-       Limites du labyrinthe.
-       Cela empêche Édouard
-       de contourner les murs
-       en passant à l'extérieur.
-    */
 
     const MAZE_REFERENCE = {
 
@@ -1442,7 +1397,7 @@
 
 
     /* =========================
-       IMAGE POUR COLLISIONS
+       CANVAS DE COLLISION
     ========================== */
 
     const collisionCanvas =
@@ -1466,7 +1421,7 @@
 
 
     /* =========================
-       ÉTAT DU JEU
+       ÉTAT
     ========================== */
 
     let naturalWidth =
@@ -1547,10 +1502,23 @@
     };
 
 
+    const OPPOSITE = {
 
-    /* =====================================================
+        up: "down",
+
+        down: "up",
+
+        left: "right",
+
+        right: "left"
+
+    };
+
+
+
+    /* =========================
        ÉCHELLE
-    ===================================================== */
+    ========================== */
 
     function scalePoint(
         reference
@@ -1731,7 +1699,7 @@
 
 
     /* =========================
-       POSITION VISUELLE
+       POSITIONS
     ========================== */
 
     function positionTarget(
@@ -1794,7 +1762,7 @@
 
 
     /* =========================
-       PIXEL
+       LIRE UN PIXEL
     ========================== */
 
     function getPixel(
@@ -1859,7 +1827,10 @@
 
 
     /* =====================================================
-       RECONNAÎTRE LES MURS BRUNS
+       DÉTECTION DES MURS
+
+       Cette version reconnaît aussi
+       la bordure brun clair des murs.
     ===================================================== */
 
     function isWallPixel(
@@ -1899,58 +1870,49 @@
 
 
 
-        /*
-           Brun principal
-           des murs.
-        */
+        const brownWall =
 
-        const brown =
+            r >= 80 &&
 
-            r >= 75 &&
+            r <= 242 &&
 
-            r <= 215 &&
+            g >= 35 &&
 
-            g >= 30 &&
-
-            g <= 165 &&
+            g <= 195 &&
 
             b >= 5 &&
 
-            b <= 120 &&
+            b <= 150 &&
 
-            r >=
-                g + 25 &&
+            (
+                r - g
+            ) >= 24 &&
 
-            g >=
-                b + 7;
+            (
+                g - b
+            ) >= 8;
 
 
 
-        /*
-           Contours bruns
-           plus foncés.
-        */
+        const darkWall =
 
-        const darkBrown =
+            r >= 35 &&
 
-            r >= 45 &&
-
-            r <= 140 &&
+            r <= 145 &&
 
             g >= 15 &&
 
-            g <= 95 &&
+            g <= 110 &&
 
-            b <= 65 &&
+            b <= 85 &&
 
-            r >=
-                g + 18;
+            r >= g;
 
 
 
         return (
-            brown ||
-            darkBrown
+            brownWall ||
+            darkWall
         );
 
 
@@ -1959,7 +1921,7 @@
 
 
     /* =========================
-       LIMITES
+       LIMITES DU LABYRINTHE
     ========================== */
 
     function insideMaze(
@@ -1989,7 +1951,8 @@
 
 
     /* =====================================================
-       TAILLE DU PION POUR COLLISION
+       BULLE DE SÉCURITÉ AUTOUR
+       D'ÉDOUARD
     ===================================================== */
 
     function touchesWall(
@@ -1998,7 +1961,7 @@
 
 
         const radius =
-            9 *
+            12 *
             naturalWidth /
             REFERENCE_WIDTH;
 
@@ -2017,23 +1980,63 @@
                 [0, -radius],
 
                 [
-                    radius * .7,
-                    radius * .7
+                    radius * .70,
+                    radius * .70
                 ],
 
                 [
-                    -radius * .7,
-                    radius * .7
+                    -radius * .70,
+                    radius * .70
                 ],
 
                 [
-                    radius * .7,
-                    -radius * .7
+                    radius * .70,
+                    -radius * .70
                 ],
 
                 [
-                    -radius * .7,
-                    -radius * .7
+                    -radius * .70,
+                    -radius * .70
+                ],
+
+                [
+                    radius,
+                    radius * .35
+                ],
+
+                [
+                    radius,
+                    -radius * .35
+                ],
+
+                [
+                    -radius,
+                    radius * .35
+                ],
+
+                [
+                    -radius,
+                    -radius * .35
+                ],
+
+                [
+                    radius * .35,
+                    radius
+                ],
+
+                [
+                    -radius * .35,
+                    radius
+                ],
+
+                [
+                    radius * .35,
+                    -radius
+                ],
+
+                [
+                    -radius * .35,
+                    -radius
                 ]
 
             ];
@@ -2113,13 +2116,29 @@
             ];
 
 
+        /*
+           Pas de seulement 1 pixel
+           pour une détection précise.
+        */
+
         const step =
-            2 *
+            1 *
             naturalWidth /
             REFERENCE_WIDTH;
 
 
         let current = {
+
+            x:
+                playerPosition.x,
+
+            y:
+                playerPosition.y
+
+        };
+
+
+        let lastSafe = {
 
             x:
                 playerPosition.x,
@@ -2167,7 +2186,7 @@
 
 
             /*
-               ARRIVÉE ATTEINTE
+               ARRIVÉE
             */
 
             if (
@@ -2194,7 +2213,7 @@
 
 
             /*
-               PROCHAIN MUR
+               MUR OU LIMITE
             */
 
             if (
@@ -2213,6 +2232,17 @@
             }
 
 
+            lastSafe = {
+
+                x:
+                    next.x,
+
+                y:
+                    next.y
+
+            };
+
+
             current =
                 next;
 
@@ -2224,10 +2254,67 @@
         }
 
 
+
+        /*
+           On recule légèrement
+           par rapport au mur.
+
+           Cela garantit qu'Édouard
+           ne reste jamais collé
+           dans sa bordure.
+        */
+
+        if (
+            travelled >
+            10
+        ) {
+
+
+            const safetyGap =
+                6 *
+                naturalWidth /
+                REFERENCE_WIDTH;
+
+
+            const saferPoint = {
+
+                x:
+                    lastSafe.x -
+                    vector.x *
+                    safetyGap,
+
+                y:
+                    lastSafe.y -
+                    vector.y *
+                    safetyGap
+
+            };
+
+
+            if (
+                insideMaze(
+                    saferPoint
+                ) &&
+                !touchesWall(
+                    saferPoint
+                )
+            ) {
+
+
+                lastSafe =
+                    saferPoint;
+
+
+            }
+
+
+        }
+
+
         return {
 
             point:
-                current,
+                lastSafe,
 
             reachedGoal:
                 false
@@ -2239,9 +2326,9 @@
 
 
 
-    /* =====================================================
-       EST-CE QU'UNE DIRECTION EST POSSIBLE ?
-    ===================================================== */
+    /* =========================
+       DIRECTION POSSIBLE ?
+    ========================== */
 
     function canMove(
         direction
@@ -2263,6 +2350,117 @@
             7
 
         );
+
+
+    }
+
+
+
+    /* =====================================================
+       SÉCURITÉ ANTI-BLOCAGE
+
+       Après chaque déplacement,
+       on s'assure que l'enfant
+       peut toujours revenir en arrière.
+    ===================================================== */
+
+    function ensureCanGoBack(
+        direction
+    ) {
+
+
+        const opposite =
+            OPPOSITE[
+                direction
+            ];
+
+
+        if (
+            canMove(
+                opposite
+            )
+        ) {
+
+
+            return;
+
+
+        }
+
+
+        const vector =
+            DIRECTIONS[
+                direction
+            ];
+
+
+        const correctionStep =
+            2 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        for (
+            let i = 0;
+            i < 20;
+            i++
+        ) {
+
+
+            const corrected = {
+
+                x:
+                    playerPosition.x -
+                    vector.x *
+                    correctionStep,
+
+                y:
+                    playerPosition.y -
+                    vector.y *
+                    correctionStep
+
+            };
+
+
+            if (
+                !insideMaze(
+                    corrected
+                ) ||
+                touchesWall(
+                    corrected
+                )
+            ) {
+
+
+                break;
+
+
+            }
+
+
+            playerPosition =
+                corrected;
+
+
+            if (
+                canMove(
+                    opposite
+                )
+            ) {
+
+
+                positionPlayer(
+                    playerPosition
+                );
+
+
+                break;
+
+
+            }
+
+
+        }
 
 
     }
@@ -2309,7 +2507,7 @@
 
 
         /*
-           MUR DIRECTEMENT
+           MUR DIRECTEMENT DEVANT
         */
 
         if (
@@ -2371,12 +2569,6 @@
         );
 
 
-        drawTrail(
-            oldPosition,
-            destination
-        );
-
-
         playerPosition = {
 
             x:
@@ -2386,6 +2578,23 @@
                 destination.y
 
         };
+
+
+        /*
+           Sécurité supplémentaire :
+           s'assurer qu'il est toujours
+           possible de revenir.
+        */
+
+        ensureCanGoBack(
+            direction
+        );
+
+
+        drawTrail(
+            oldPosition,
+            playerPosition
+        );
 
 
         positionPlayer(
@@ -2442,7 +2651,7 @@
 
 
     /* =========================
-       ANIMATION DU DÉPLACEMENT
+       ANIMATION
     ========================== */
 
     function animateMovement(
@@ -2498,10 +2707,6 @@
 
                         );
 
-
-                    /*
-                       Animation douce
-                    */
 
                     const eased =
                         1 -
@@ -2633,9 +2838,11 @@
         "click",
         function() {
 
+
             move(
                 "up"
             );
+
 
         }
     );
@@ -2645,9 +2852,11 @@
         "click",
         function() {
 
+
             move(
                 "down"
             );
+
 
         }
     );
@@ -2657,9 +2866,11 @@
         "click",
         function() {
 
+
             move(
                 "left"
             );
+
 
         }
     );
@@ -2669,9 +2880,11 @@
         "click",
         function() {
 
+
             move(
                 "right"
             );
+
 
         }
     );
@@ -2679,7 +2892,7 @@
 
 
     /* =========================
-       FLÈCHES DU CLAVIER
+       CLAVIER
     ========================== */
 
     document.addEventListener(
@@ -2760,9 +2973,9 @@
 
 
 
-    /* =====================================================
-       AFFICHER LES DIRECTIONS POSSIBLES
-    ===================================================== */
+    /* =========================
+       DIRECTIONS DISPONIBLES
+    ========================== */
 
     function updateAvailableDirections() {
 
@@ -2864,7 +3077,7 @@
 
 
     /* =========================
-       NOMBRE DE DÉPLACEMENTS
+       DÉPLACEMENTS
     ========================== */
 
     function updateMoves() {
@@ -3004,9 +3217,6 @@
         disableDirections(
             true
         );
-
-
-        updateAvailableDirections();
 
 
         status.textContent =
