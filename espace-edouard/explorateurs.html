@@ -96,13 +96,14 @@
             flex-wrap: wrap;
         }
 
-        .nav-button {
+        .nav-button,
+        .language-button {
             display: inline-block;
 
             padding:
-                11px 18px;
+                10px 17px;
 
-            border-radius: 25px;
+            border-radius: 24px;
 
             font-weight: bold;
 
@@ -125,25 +126,14 @@
         }
 
         .language-button {
-            display: inline-block;
-
-            padding:
-                9px 13px;
-
-            border:
-                2px solid #174E78;
-
-            border-radius: 22px;
-
             background-color: white;
 
             color: #174E78;
 
+            border:
+                2px solid #174E78;
+
             font-size: .92rem;
-
-            font-weight: bold;
-
-            transition: .2s;
         }
 
         .back-button:hover {
@@ -202,8 +192,6 @@
             color: white;
 
             font-weight: bold;
-
-            font-size: .95rem;
         }
 
         h1 {
@@ -264,8 +252,6 @@
 
             align-items: center;
 
-            gap: 15px;
-
             margin-bottom: 10px;
 
             color: #174E78;
@@ -303,12 +289,11 @@
 
 
         /* =========================
-           TITRES
+           SECTIONS
         ========================== */
 
         .section-title {
-            margin:
-                0 0 28px;
+            margin-bottom: 28px;
 
             text-align: center;
         }
@@ -328,8 +313,6 @@
             color: #617789;
 
             font-size: 1.05rem;
-
-            line-height: 1.6;
         }
 
 
@@ -345,7 +328,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(2, minmax(0, 1fr));
+                repeat(2, minmax(0,1fr));
 
             gap: 20px;
         }
@@ -353,7 +336,7 @@
         .fact-card {
             position: relative;
 
-            min-height: 300px;
+            min-height: 310px;
 
             perspective: 1200px;
 
@@ -367,7 +350,7 @@
 
             width: 100%;
 
-            min-height: 300px;
+            min-height: 310px;
 
             transition:
                 transform .6s;
@@ -408,7 +391,7 @@
             background:
                 linear-gradient(
                     145deg,
-                    #FFFFFF,
+                    white,
                     #F3FAFD
                 );
 
@@ -428,7 +411,7 @@
                 linear-gradient(
                     145deg,
                     #F3FAEF,
-                    #FFFFFF
+                    white
                 );
 
             transform:
@@ -472,17 +455,10 @@
         }
 
         .fact-front h3 {
-            margin:
-                0 0 10px;
-
             color: #174E78;
-
-            font-size: 1.35rem;
         }
 
         .click-note {
-            margin: 0;
-
             color: #2F8F46;
 
             font-weight: bold;
@@ -495,29 +471,22 @@
             color: #2F8F46;
 
             font-size: 1.35rem;
-
-            line-height: 1.35;
         }
 
         .fact-back p {
-            margin:
-                0 0 13px;
-
             color: #40566A;
 
             line-height: 1.6;
-
-            font-size: 1rem;
         }
 
         .fact-source {
-            margin-top: auto !important;
+            margin-top: auto;
 
             padding-top: 8px;
 
             color: #7A8A94 !important;
 
-            font-size: .82rem !important;
+            font-size: .82rem;
 
             font-weight: bold;
         }
@@ -551,8 +520,6 @@
         }
 
         .carousel {
-            position: relative;
-
             overflow: hidden;
 
             border-radius: 17px;
@@ -585,7 +552,7 @@
             background-color: #102D43;
 
             transition:
-                opacity .25s ease;
+                opacity .2s ease;
         }
 
         .photo-counter {
@@ -606,8 +573,6 @@
                 rgba(0,0,0,.65);
 
             color: white;
-
-            font-size: .9rem;
 
             font-weight: bold;
         }
@@ -640,10 +605,6 @@
             font-weight: bold;
 
             cursor: pointer;
-
-            box-shadow:
-                0 4px 12px
-                rgba(0,0,0,.20);
         }
 
         .carousel-prev {
@@ -676,8 +637,6 @@
             margin: 0;
 
             color: #E7F4FA;
-
-            line-height: 1.5;
         }
 
         .public-domain {
@@ -709,9 +668,9 @@
 
             justify-content: center;
 
-            flex-wrap: wrap;
-
             gap: 8px;
+
+            flex-wrap: wrap;
 
             padding:
                 15px 10px 4px;
@@ -737,7 +696,36 @@
             background-color: #2F8F46;
 
             transform:
-                scale(1.25);
+                scale(1.3);
+        }
+
+
+        /* =========================
+           ERREUR IMAGE
+        ========================== */
+
+        .image-error {
+            display: none;
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 4;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            background-color: #EAF6FC;
+
+            color: #174E78;
+
+            text-align: center;
+
+            font-weight: bold;
         }
 
 
@@ -758,43 +746,35 @@
                 2px solid #DDECF3;
 
             border-radius: 24px;
-
-            box-shadow:
-                0 8px 22px
-                rgba(23,78,120,.07);
         }
 
         .sources-section h2 {
-            margin:
-                0 0 15px;
-
             color: #174E78;
 
             text-align: center;
         }
 
-        .sources-section p {
+        .sources-section > p {
             color: #536B7B;
 
-            line-height: 1.65;
-
             text-align: center;
+
+            line-height: 1.6;
         }
 
         .source-links {
             display: grid;
 
             grid-template-columns:
-                repeat(2, minmax(0,1fr));
+                repeat(2,minmax(0,1fr));
 
             gap: 12px;
+
+            margin-top: 20px;
         }
 
         .source-link {
-            display: block;
-
-            padding:
-                13px 15px;
+            padding: 13px;
 
             border-radius: 14px;
 
@@ -811,8 +791,7 @@
         ========================== */
 
         footer {
-            padding:
-                30px 20px;
+            padding: 30px 20px;
 
             background-color: #174E78;
 
@@ -850,7 +829,7 @@
             }
 
             h1 {
-                font-size: 2.15rem;
+                font-size: 2.1rem;
             }
 
             .fact-card,
@@ -869,6 +848,7 @@
 
 
 <header>
+
 
     <a href="../index.html">
 
@@ -957,7 +937,6 @@
 
         </div>
 
-
         <div class="progress-track">
 
             <div
@@ -987,516 +966,15 @@
         </div>
 
 
-
-        <div class="facts-grid">
-
-
-            <article class="fact-card" tabindex="0" data-fact="1">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">1</div>
-
-                        <div class="fact-icon">🏆</div>
-
-                        <h3>SECRET Nº 1</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🏆 Le géant des rongeurs!
-                        </h3>
-
-                        <p>
-
-                            Le castor d'Amérique du Nord est
-                            <strong>
-                                le plus gros rongeur d'Amérique du Nord.
-                            </strong>
-
-                        </p>
-
-                        <p>
-
-                            Un adulte peut peser
-                            plusieurs dizaines de livres.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="2">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">2</div>
-
-                        <div class="fact-icon">🦷</div>
-
-                        <h3>SECRET Nº 2</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🦷 Ses dents poussent toute sa vie!
-                        </h3>
-
-                        <p>
-
-                            Les grandes incisives du castor
-                            poussent continuellement.
-
-                        </p>
-
-                        <p>
-
-                            Leur structure leur permet
-                            de conserver un bord tranchant
-                            très efficace pour ronger.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="3">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">3</div>
-
-                        <div class="fact-icon">🤿</div>
-
-                        <h3>SECRET Nº 3</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🤿 Un champion de plongée!
-                        </h3>
-
-                        <p>
-
-                            Le castor peut rester sous l'eau
-                            pendant
-                            <strong>
-                                jusqu'à environ 15 minutes.
-                            </strong>
-
-                        </p>
-
-                        <p>
-
-                            Cela lui permet de circuler,
-                            de transporter des matériaux
-                            et de rejoindre sa hutte.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="4">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">4</div>
-
-                        <div class="fact-icon">👀</div>
-
-                        <h3>SECRET Nº 4</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            👀 Des lunettes naturelles!
-                        </h3>
-
-                        <p>
-
-                            Une membrane transparente
-                            protège les yeux du castor sous l'eau.
-
-                        </p>
-
-                        <p>
-
-                            Il peut aussi fermer ses narines
-                            et ses oreilles lorsqu'il plonge.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="5">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">5</div>
-
-                        <div class="fact-icon">🏊</div>
-
-                        <h3>SECRET Nº 5</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🏊 Une queue pleine de talents!
-                        </h3>
-
-                        <p>
-
-                            Sa grande queue plate l'aide
-                            à se diriger lorsqu'il nage.
-
-                        </p>
-
-                        <p>
-
-                            Il peut aussi frapper la surface de l'eau
-                            pour prévenir les autres castors
-                            lorsqu'un danger approche.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="6">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">6</div>
-
-                        <div class="fact-icon">🌳</div>
-
-                        <h3>SECRET Nº 6</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🌳 Il ne mange pas vraiment le bois dur!
-                        </h3>
-
-                        <p>
-
-                            Le castor préfère notamment
-                            le cambium,
-                            une couche tendre située
-                            juste sous l'écorce.
-
-                        </p>
-
-                        <p>
-
-                            Il mange également
-                            différentes plantes et feuilles.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="7">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">7</div>
-
-                        <div class="fact-icon">🏠</div>
-
-                        <h3>SECRET Nº 7</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🏠 La porte de sa maison est sous l'eau!
-                        </h3>
-
-                        <p>
-
-                            Les huttes de castors
-                            peuvent avoir des entrées
-                            situées sous la surface de l'eau.
-
-                        </p>
-
-                        <p>
-
-                            Cela aide à protéger
-                            la famille contre plusieurs prédateurs.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="8">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">8</div>
-
-                        <div class="fact-icon">👨‍👩‍👧‍👦</div>
-
-                        <h3>SECRET Nº 8</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            👨‍👩‍👧‍👦 Les jeunes restent en famille!
-                        </h3>
-
-                        <p>
-
-                            Les jeunes castors peuvent rester
-                            avec leurs parents
-                            jusqu'à environ deux ans.
-
-                        </p>
-
-                        <p>
-
-                            Ils participent alors à la vie
-                            de la colonie familiale.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="9">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">9</div>
-
-                        <div class="fact-icon">🌿</div>
-
-                        <h3>SECRET Nº 9</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🌿 Un ingénieur de la nature!
-                        </h3>
-
-                        <p>
-
-                            Le castor est souvent appelé
-                            <strong>
-                                ingénieur de l'écosystème.
-                            </strong>
-
-                        </p>
-
-                        <p>
-
-                            Ses barrages peuvent créer
-                            de nouveaux milieux humides
-                            utiles à beaucoup d'autres espèces.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
-
-            <article class="fact-card" tabindex="0" data-fact="10">
-                <div class="fact-inner">
-
-                    <div class="fact-front">
-
-                        <div class="fact-number">10</div>
-
-                        <div class="fact-icon">🌲</div>
-
-                        <h3>SECRET Nº 10</h3>
-
-                        <p class="click-note">
-                            Clique pour découvrir!
-                        </p>
-
-                    </div>
-
-                    <div class="fact-back">
-
-                        <h3>
-                            🌲 Un étang peut devenir une prairie!
-                        </h3>
-
-                        <p>
-
-                            Lorsqu'un ancien barrage disparaît,
-                            l'étang peut se remplir progressivement
-                            de sédiments et de végétation.
-
-                        </p>
-
-                        <p>
-
-                            Il peut alors devenir une prairie,
-                            puis évoluer encore
-                            au fil des années.
-
-                        </p>
-
-                        <p class="fact-source">
-                            Source : National Park Service
-                        </p>
-
-                    </div>
-
-                </div>
-            </article>
-
-
+        <div
+            class="facts-grid"
+            id="facts-grid">
         </div>
 
 
     </section>
 
 
-
-    <!-- =========================
-         PHOTOS
-    ========================== -->
 
     <section class="gallery-section">
 
@@ -1508,8 +986,10 @@
             </h2>
 
             <p>
+
                 Découvre de vraies photographies
                 de castors d'Amérique du Nord.
+
             </p>
 
         </div>
@@ -1529,8 +1009,14 @@
 
                     <img
                         id="carousel-image"
-                        src="../images/Beaver_animal_in_water_castor_canadensis.jpg"
-                        alt="Castor d'Amérique dans l'eau">
+                        src="../images/Beaver.jpg?v=20260915"
+                        alt="Castor">
+
+
+                    <div
+                        class="image-error"
+                        id="image-error">
+                    </div>
 
 
                     <div
@@ -1568,11 +1054,11 @@
                 <div class="carousel-caption">
 
                     <h3 id="photo-title">
-                        Castor dans l'eau
+                        Castor
                     </h3>
 
                     <p id="photo-credit">
-                        U.S. Fish & Wildlife Service
+                        Photo réelle d'un castor d'Amérique du Nord
                     </p>
 
                     <span class="public-domain">
@@ -1608,10 +1094,9 @@
 
         <p>
 
-            Les informations de cette page
-            ont été vérifiées auprès de sources
-            institutionnelles du
-            U.S. National Park Service.
+            Les informations présentées dans les secrets
+            d'Édouard proviennent de sources institutionnelles
+            consacrées à l'histoire naturelle du castor.
 
         </p>
 
@@ -1622,9 +1107,11 @@
             <a
                 class="source-link"
                 href="https://home.nps.gov/prwi/learn/nature/beaver.htm"
-                target="_blank">
+                target="_blank"
+                rel="noopener noreferrer">
 
-                🦫 Prince William Forest Park
+                🦫 National Park Service —
+                Prince William Forest Park
 
             </a>
 
@@ -1632,9 +1119,11 @@
             <a
                 class="source-link"
                 href="https://www.nps.gov/kaww/learn/nature/beavers.htm"
-                target="_blank">
+                target="_blank"
+                rel="noopener noreferrer">
 
-                🌳 Katahdin Woods and Waters
+                🌳 National Park Service —
+                Katahdin Woods and Waters
 
             </a>
 
@@ -1642,9 +1131,11 @@
             <a
                 class="source-link"
                 href="https://www.nps.gov/romo/learn/nature/beavers.htm"
-                target="_blank">
+                target="_blank"
+                rel="noopener noreferrer">
 
-                🌿 Rocky Mountain National Park
+                🌿 National Park Service —
+                Rocky Mountain National Park
 
             </a>
 
@@ -1652,9 +1143,11 @@
             <a
                 class="source-link"
                 href="https://www.nps.gov/glac/learn/education/beaver-natural-history-narrative.htm"
-                target="_blank">
+                target="_blank"
+                rel="noopener noreferrer">
 
-                🌲 Glacier National Park
+                🌲 National Park Service —
+                Glacier National Park
 
             </a>
 
@@ -1686,9 +1179,189 @@
 <script>
 
 
-    /* =========================
-       CARTES
-    ========================== */
+    /* =====================================================
+       LES 10 SECRETS
+    ===================================================== */
+
+    const facts = [
+
+        {
+            icon: "🏆",
+            title: "Le géant des rongeurs!",
+            text:
+                "Le castor d'Amérique du Nord est le plus gros rongeur d'Amérique du Nord. Un adulte peut peser plusieurs dizaines de livres.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🦷",
+            title: "Ses dents poussent toute sa vie!",
+            text:
+                "Les grandes incisives du castor poussent continuellement. Leur structure leur permet de conserver un bord très efficace pour ronger les arbres.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🤿",
+            title: "Un champion de plongée!",
+            text:
+                "Un castor peut rester sous l'eau jusqu'à environ 15 minutes. Cela l'aide à se déplacer, transporter des matériaux et rejoindre sa hutte.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "👀",
+            title: "Des lunettes naturelles!",
+            text:
+                "Une membrane transparente protège les yeux du castor lorsqu'il nage sous l'eau. Il peut également fermer ses narines et ses oreilles lorsqu'il plonge.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🏊",
+            title: "Une queue pleine de talents!",
+            text:
+                "La grande queue plate du castor l'aide à se diriger dans l'eau. Il peut aussi frapper la surface de l'eau pour avertir les autres castors d'un danger.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🌳",
+            title: "Il ne mange pas vraiment le bois dur!",
+            text:
+                "Le castor mange notamment le cambium, une couche végétale tendre située sous l'écorce. Il consomme aussi différentes feuilles et plantes aquatiques.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🏠",
+            title: "La porte de sa maison est sous l'eau!",
+            text:
+                "Les huttes de castors peuvent posséder des entrées situées sous la surface de l'eau. Cela aide notamment la famille à se protéger de plusieurs prédateurs.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "👨‍👩‍👧‍👦",
+            title: "Les jeunes restent en famille!",
+            text:
+                "Les jeunes castors peuvent rester avec leurs parents jusqu'à environ deux ans avant de partir établir leur propre territoire.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🌿",
+            title: "Un ingénieur de la nature!",
+            text:
+                "Les barrages construits par les castors modifient leur environnement et peuvent créer des milieux humides utilisés par de nombreuses autres espèces.",
+            source:
+                "National Park Service"
+        },
+
+        {
+            icon: "🌲",
+            title: "Un étang peut devenir une prairie!",
+            text:
+                "Après l'abandon d'un barrage, un ancien étang peut progressivement se remplir de sédiments et de végétation et devenir une prairie.",
+            source:
+                "National Park Service"
+        }
+
+    ];
+
+
+
+    const factsGrid =
+        document.getElementById(
+            "facts-grid"
+        );
+
+
+    facts.forEach(
+        function(fact, index) {
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "fact-card";
+
+
+            card.tabIndex =
+                0;
+
+
+            card.dataset.fact =
+                index + 1;
+
+
+            card.innerHTML = `
+
+                <div class="fact-inner">
+
+                    <div class="fact-front">
+
+                        <div class="fact-number">
+                            ${index + 1}
+                        </div>
+
+                        <div class="fact-icon">
+                            ${fact.icon}
+                        </div>
+
+                        <h3>
+                            SECRET Nº ${index + 1}
+                        </h3>
+
+                        <p class="click-note">
+                            Clique pour découvrir!
+                        </p>
+
+                    </div>
+
+
+                    <div class="fact-back">
+
+                        <h3>
+                            ${fact.icon} ${fact.title}
+                        </h3>
+
+                        <p>
+                            ${fact.text}
+                        </p>
+
+                        <p class="fact-source">
+                            Source : ${fact.source}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            factsGrid.appendChild(
+                card
+            );
+
+
+        }
+    );
+
+
 
     const factCards =
         document.querySelectorAll(
@@ -1714,6 +1387,7 @@
 
     function revealFact(card) {
 
+
         const id =
             card.dataset.fact;
 
@@ -1727,101 +1401,112 @@
             !discovered.has(id)
         ) {
 
+
             discovered.add(id);
 
-            updateProgress();
+
+            const count =
+                discovered.size;
+
+
+            progressText.textContent =
+                "🔎 " +
+                count +
+                " / 10 secrets découverts";
+
+
+            progressBar.style.width =
+                (
+                    count *
+                    10
+                ) +
+                "%";
+
+
+            if (
+                count === 10
+            ) {
+
+
+                progressText.textContent =
+                    "🎉 Bravo! Tu as découvert les 10 secrets d'Édouard!";
+
+
+            }
+
 
         }
 
+
     }
+
 
 
     factCards.forEach(
         function(card) {
 
+
             card.addEventListener(
                 "click",
                 function() {
 
-                    revealFact(card);
+
+                    revealFact(
+                        card
+                    );
+
 
                 }
             );
 
+
             card.addEventListener(
                 "keydown",
                 function(event) {
+
 
                     if (
                         event.key === "Enter" ||
                         event.key === " "
                     ) {
 
+
                         event.preventDefault();
 
-                        revealFact(card);
+
+                        revealFact(
+                            card
+                        );
+
 
                     }
 
+
                 }
             );
+
 
         }
     );
 
 
-    function updateProgress() {
-
-        const count =
-            discovered.size;
-
-
-        progressText.textContent =
-            "🔎 " +
-            count +
-            " / 10 secrets découverts";
-
-
-        progressBar.style.width =
-            (
-                count /
-                10 *
-                100
-            ) +
-            "%";
-
-
-        if (
-            count === 10
-        ) {
-
-            progressText.textContent =
-                "🎉 Bravo! Tu as découvert les 10 secrets d'Édouard!";
-
-        }
-
-    }
-
-
 
     /* =====================================================
-       LES 10 VRAIES PHOTOS
-
-       NOMS EXACTS DE TES FICHIERS
+       LES 10 PHOTOS
+       
+       CE SONT LES NOMS EXACTS
+       DE TON DOSSIER GITHUB.
     ===================================================== */
 
     const photos = [
 
 
         {
-            src:
-                "../images/Beaver_animal_in_water_castor_canadensis.jpg",
+            file:
+                "Beaver.jpg",
 
             title:
-                "Castor dans l'eau",
-
-            alt:
-                "Un castor d'Amérique nageant dans l'eau",
+                "Castors photographiés dans leur milieu",
 
             credit:
                 "U.S. Fish & Wildlife Service"
@@ -1829,14 +1514,11 @@
 
 
         {
-            src:
-                "../images/Beaver_(41976425165).jpg",
+            file:
+                "Beaver_2.jpg",
 
             title:
-                "Castor près de l'eau",
-
-            alt:
-                "Un castor d'Amérique du Nord près de l'eau",
+                "Castor dans son habitat",
 
             credit:
                 "U.S. Fish & Wildlife Service"
@@ -1844,95 +1526,47 @@
 
 
         {
-            src:
-                "../images/North_American_beaver_(Castor_canadensis)_(3dfe84e0-29eb-4039-afec-95d92c513338).jpg",
-
-            title:
-                "Castor et sa queue plate",
-
-            alt:
-                "Un castor avec sa grande queue plate visible",
-
-            credit:
-                "National Park Service"
-        },
-
-
-        {
-            src:
-                "../images/North_American_beaver_(Castor_canadensis)_(22281b96-a147-479a-ab66-75c03f755260).jpg",
-
-            title:
-                "Castor dans l'eau froide",
-
-            alt:
-                "Un castor nageant dans une eau partiellement glacée",
-
-            credit:
-                "National Park Service"
-        },
-
-
-        {
-            src:
-                "../images/Beaver_(51101387209).jpg",
-
-            title:
-                "Castors près de leur habitat",
-
-            alt:
-                "Deux castors près de leur habitat",
-
-            credit:
-                "U.S. Fish & Wildlife Service"
-        },
-
-
-        {
-            src:
-                "../images/North_American_beaver_(Castor_canadensis)_(47593489151).jpg",
-
-            title:
-                "Castor dans la végétation",
-
-            alt:
-                "Un castor entouré de végétation",
-
-            credit:
-                "National Park Service"
-        },
-
-
-        {
-            /*
-               IMPORTANT :
-               ton vrai fichier contient (1)
-               à la fin du nom.
-            */
-
-            src:
-                "../images/North_American_beaver_(Castor_canadensis)_(46677957975)(1).jpg",
-
-            title:
-                "Castor nageant",
-
-            alt:
-                "Un castor nageant dans l'eau",
-
-            credit:
-                "National Park Service"
-        },
-
-
-        {
-            src:
-                "../images/North_American_Beaver_at_Seedskadee_National_Wildlife_Refuge_(50956985971).jpg",
+            file:
+                "North_American_Beaver_at_Seedskadee_National_Wildlife_Refuge_(50956985971).jpg",
 
             title:
                 "Castor au refuge de Seedskadee",
 
-            alt:
-                "Un castor au Seedskadee National Wildlife Refuge",
+            credit:
+                "U.S. Fish & Wildlife Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(46677957975).jpg",
+
+            title:
+                "Castor nageant",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(47593489151).jpg",
+
+            title:
+                "Castor d'Amérique du Nord",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "Beaver_(51101387209).jpg",
+
+            title:
+                "Castor au bord de l'eau",
 
             credit:
                 "U.S. Fish & Wildlife Service"
@@ -1940,14 +1574,35 @@
 
 
         {
-            src:
-                "../images/Beaver_2.jpg",
+            file:
+                "North_American_beaver_(Castor_canadensis)_(22281b96-a147-479a-ab66-75c03f755260).jpg",
 
             title:
-                "Castor photographié dans son milieu",
+                "Castor dans son milieu naturel",
 
-            alt:
-                "Un castor dans son milieu naturel",
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(3dfe84e0-29eb-4039-afec-95d92c513338).jpg",
+
+            title:
+                "Castor d'Amérique du Nord",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "Beaver_(41976425165).jpg",
+
+            title:
+                "Portrait d'un castor",
 
             credit:
                 "U.S. Fish & Wildlife Service"
@@ -1955,14 +1610,11 @@
 
 
         {
-            src:
-                "../images/Beaver.jpg",
+            file:
+                "Beaver_animal_in_water_castor_canadensis.jpg",
 
             title:
-                "Des castors de nuit",
-
-            alt:
-                "Deux castors photographiés de nuit",
+                "Castor nageant dans l'eau",
 
             credit:
                 "U.S. Fish & Wildlife Service"
@@ -1972,10 +1624,6 @@
     ];
 
 
-
-    /* =========================
-       CARROUSEL
-    ========================== */
 
     const carouselImage =
         document.getElementById(
@@ -1998,6 +1646,12 @@
     const photoCounter =
         document.getElementById(
             "photo-counter"
+        );
+
+
+    const imageError =
+        document.getElementById(
+            "image-error"
         );
 
 
@@ -2041,34 +1695,33 @@
     photos.forEach(
         function(photo, index) {
 
+
             const dot =
                 document.createElement(
                     "button"
                 );
 
 
-            dot.type =
-                "button";
-
-
             dot.className =
                 "carousel-dot";
 
 
-            dot.setAttribute(
-                "aria-label",
-                "Afficher la photo " +
-                (index + 1)
-            );
+            dot.type =
+                "button";
 
 
             dot.addEventListener(
                 "click",
                 function() {
 
-                    showPhoto(index);
+
+                    showPhoto(
+                        index
+                    );
+
 
                     restartAutoplay();
+
 
                 }
             );
@@ -2077,6 +1730,7 @@
             dotsContainer.appendChild(
                 dot
             );
+
 
         }
     );
@@ -2094,8 +1748,10 @@
             index < 0
         ) {
 
+
             index =
                 photos.length - 1;
+
 
         }
 
@@ -2105,8 +1761,10 @@
             photos.length
         ) {
 
+
             index =
                 0;
+
 
         }
 
@@ -2116,47 +1774,55 @@
 
 
         const photo =
-            photos[currentPhoto];
+            photos[
+                currentPhoto
+            ];
+
+
+        imageError.style.display =
+            "none";
+
+
+        carouselImage.style.display =
+            "block";
 
 
         carouselImage.style.opacity =
             "0";
 
 
-        setTimeout(
-            function() {
+        /*
+           ?v=20260915 force Cloudflare
+           et le navigateur à redemander
+           le fichier au lieu de garder
+           une ancienne erreur 404.
+        */
 
-                carouselImage.src =
-                    photo.src;
-
-
-                carouselImage.alt =
-                    photo.alt;
-
-
-                photoTitle.textContent =
-                    photo.title;
+        carouselImage.src =
+            "../images/" +
+            photo.file +
+            "?v=20260915";
 
 
-                photoCredit.textContent =
-                    "Crédit : " +
-                    photo.credit;
+        carouselImage.alt =
+            photo.title;
 
 
-                photoCounter.textContent =
-                    (
-                        currentPhoto + 1
-                    ) +
-                    " / " +
-                    photos.length;
+        photoTitle.textContent =
+            photo.title;
 
 
-                carouselImage.style.opacity =
-                    "1";
+        photoCredit.textContent =
+            "Crédit : " +
+            photo.credit;
 
-            },
-            120
-        );
+
+        photoCounter.textContent =
+            (
+                currentPhoto + 1
+            ) +
+            " / " +
+            photos.length;
 
 
         const dots =
@@ -2168,10 +1834,13 @@
         dots.forEach(
             function(dot, dotIndex) {
 
+
                 dot.classList.toggle(
                     "active",
-                    dotIndex === currentPhoto
+                    dotIndex ===
+                    currentPhoto
                 );
+
 
             }
         );
@@ -2182,19 +1851,64 @@
 
 
     /* =========================
-       IMAGE INTROUVABLE
+       PHOTO CHARGÉE
+    ========================== */
+
+    carouselImage.addEventListener(
+        "load",
+        function() {
+
+
+            imageError.style.display =
+                "none";
+
+
+            carouselImage.style.display =
+                "block";
+
+
+            carouselImage.style.opacity =
+                "1";
+
+
+        }
+    );
+
+
+
+    /* =========================
+       PHOTO INTROUVABLE
     ========================== */
 
     carouselImage.addEventListener(
         "error",
         function() {
 
-            photoTitle.textContent =
-                "Photo introuvable";
+
+            const photo =
+                photos[
+                    currentPhoto
+                ];
 
 
-            photoCredit.textContent =
-                "Le nom du fichier ne correspond pas au fichier présent dans le dossier images.";
+            carouselImage.style.display =
+                "none";
+
+
+            imageError.style.display =
+                "flex";
+
+
+            imageError.innerHTML =
+
+                "⚠️ Cette image n'a pas été trouvée.<br><br>" +
+
+                "<small>" +
+
+                photo.file +
+
+                "</small>";
+
 
         }
     );
@@ -2209,11 +1923,14 @@
         "click",
         function() {
 
+
             showPhoto(
                 currentPhoto - 1
             );
 
+
             restartAutoplay();
+
 
         }
     );
@@ -2223,11 +1940,14 @@
         "click",
         function() {
 
+
             showPhoto(
                 currentPhoto + 1
             );
 
+
             restartAutoplay();
+
 
         }
     );
@@ -2238,31 +1958,13 @@
        AUTOPLAY
     ========================== */
 
-    function startAutoplay() {
-
-        stopAutoplay();
-
-
-        autoplayTimer =
-            setInterval(
-                function() {
-
-                    showPhoto(
-                        currentPhoto + 1
-                    );
-
-                },
-                6000
-            );
-
-    }
-
-
     function stopAutoplay() {
+
 
         if (
             autoplayTimer
         ) {
+
 
             clearInterval(
                 autoplayTimer
@@ -2272,14 +1974,42 @@
             autoplayTimer =
                 null;
 
+
         }
+
+
+    }
+
+
+    function startAutoplay() {
+
+
+        stopAutoplay();
+
+
+        autoplayTimer =
+            setInterval(
+                function() {
+
+
+                    showPhoto(
+                        currentPhoto + 1
+                    );
+
+
+                },
+                6000
+            );
+
 
     }
 
 
     function restartAutoplay() {
 
+
         startAutoplay();
+
 
     }
 
@@ -2298,7 +2028,7 @@
 
 
     /* =========================
-       MOBILE - GLISSER
+       MOBILE
     ========================== */
 
     let touchStartX =
@@ -2309,9 +2039,11 @@
         "touchstart",
         function(event) {
 
+
             touchStartX =
                 event.changedTouches[0]
                     .screenX;
+
 
         },
         {
@@ -2323,6 +2055,7 @@
     carouselCard.addEventListener(
         "touchend",
         function(event) {
+
 
             const touchEndX =
                 event.changedTouches[0]
@@ -2337,32 +2070,38 @@
             if (
                 Math.abs(
                     difference
-                ) >
-                50
+                ) > 50
             ) {
+
 
                 if (
                     difference > 0
                 ) {
 
+
                     showPhoto(
                         currentPhoto - 1
                     );
+
 
                 }
 
                 else {
 
+
                     showPhoto(
                         currentPhoto + 1
                     );
+
 
                 }
 
 
                 restartAutoplay();
 
+
             }
+
 
         },
         {
@@ -2373,10 +2112,13 @@
 
 
     /* =========================
-       INITIALISATION
+       DÉPART
     ========================== */
 
-    showPhoto(0);
+    showPhoto(
+        0
+    );
+
 
     startAutoplay();
 
