@@ -131,8 +131,7 @@
         .language-button {
             display: inline-block;
 
-            padding:
-                9px 13px;
+            padding: 9px 13px;
 
             border:
                 2px solid #174E78;
@@ -676,7 +675,7 @@
                     <input
                         type="text"
                         id="date-input"
-                        maxlength="25">
+                        maxlength="30">
 
 
                 </div>
@@ -720,6 +719,7 @@
 
 
                     <button
+                        type="button"
                         class="tool-button print-button"
                         id="print-button">
 
@@ -729,6 +729,7 @@
 
 
                     <button
+                        type="button"
                         class="tool-button save-button"
                         id="save-button">
 
@@ -738,6 +739,7 @@
 
 
                     <button
+                        type="button"
                         class="tool-button reset-button"
                         id="reset-button">
 
@@ -784,12 +786,12 @@
 <script>
 
 
-    /* =========================
+    /* =====================================================
        IMAGE DU DIPLÔME
-    ========================== */
+    ===================================================== */
 
     const IMAGE_PATH =
-        "../images/diplome_edouard.png?v=1";
+        "../images/diplome_edouard.png?v=2";
 
 
     const canvas =
@@ -820,16 +822,25 @@
         );
 
 
-    /* =========================
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+
+    /* =====================================================
        DATE DU JOUR
-    ========================== */
+    ===================================================== */
 
     const today =
         new Date();
 
 
-    dateInput.value =
-        today.toLocaleDateString(
+    function getTodayText() {
+
+
+        return today.toLocaleDateString(
             "fr-CA",
             {
                 year: "numeric",
@@ -839,9 +850,17 @@
         );
 
 
-    /* =========================
-       CHARGEMENT DE L'IMAGE
-    ========================== */
+    }
+
+
+    dateInput.value =
+        getTodayText();
+
+
+
+    /* =====================================================
+       CHARGEMENT DU DIPLÔME
+    ===================================================== */
 
     diplomaImage.onload =
         function() {
@@ -878,9 +897,9 @@
 
 
 
-    /* =========================
-       REDESSINER LE DIPLÔME
-    ========================== */
+    /* =====================================================
+       DESSIN DU DIPLÔME
+    ===================================================== */
 
     function drawDiploma() {
 
@@ -890,7 +909,9 @@
             !diplomaImage.naturalWidth
         ) {
 
+
             return;
+
 
         }
 
@@ -912,9 +933,16 @@
         );
 
 
-        /* =========================
-           NOM DE L'ENFANT
-        ========================== */
+
+        /* =================================================
+           NOM
+
+           Position corrigée pour le diplôme Édouard.
+
+           Le texte est maintenant centré
+           à l'intérieur du grand cadre
+           "Décerné à".
+        ================================================= */
 
         const name =
             nameInput.value.trim();
@@ -926,26 +954,32 @@
             drawCenteredText(
                 name,
 
-                canvas.width * 0.50,
+                canvas.width * 0.500,
 
-                canvas.height * 0.754,
+                canvas.height * 0.702,
 
-                canvas.height * 0.034,
+                canvas.height * 0.030,
 
                 "#174E78",
 
                 "bold",
 
-                canvas.width * 0.29
+                canvas.width * 0.34
             );
 
 
         }
 
 
-        /* =========================
+
+        /* =================================================
            DATE
-        ========================== */
+
+           Position corrigée :
+           la date se trouve maintenant
+           directement sur la ligne
+           réservée à la date.
+        ================================================= */
 
         const date =
             dateInput.value.trim();
@@ -954,20 +988,20 @@
         if (date) {
 
 
-            drawLeftText(
+            drawCenteredText(
                 date,
 
-                canvas.width * 0.323,
+                canvas.width * 0.342,
 
-                canvas.height * 0.938,
+                canvas.height * 0.886,
 
-                canvas.height * 0.0215,
+                canvas.height * 0.018,
 
                 "#174E78",
 
                 "bold",
 
-                canvas.width * 0.105
+                canvas.width * 0.15
             );
 
 
@@ -978,9 +1012,9 @@
 
 
 
-    /* =========================
+    /* =====================================================
        TEXTE CENTRÉ
-    ========================== */
+    ===================================================== */
 
     function drawCenteredText(
         text,
@@ -1019,15 +1053,21 @@
             "px Arial";
 
 
+        /*
+           Si le texte est trop long,
+           la taille diminue automatiquement.
+        */
+
         while (
             ctx.measureText(text).width >
                 maximumWidth &&
             currentSize >
-                canvas.height * 0.018
+                canvas.height * 0.013
         ) {
 
 
-            currentSize -= 1;
+            currentSize -=
+                1;
 
 
             ctx.font =
@@ -1054,102 +1094,38 @@
 
 
 
-    /* =========================
-       TEXTE ALIGNÉ À GAUCHE
-    ========================== */
-
-    function drawLeftText(
-        text,
-        x,
-        y,
-        fontSize,
-        color,
-        style,
-        maximumWidth
-    ) {
-
-
-        ctx.save();
-
-
-        ctx.textAlign =
-            "left";
-
-
-        ctx.textBaseline =
-            "middle";
-
-
-        ctx.fillStyle =
-            color;
-
-
-        let currentSize =
-            fontSize;
-
-
-        ctx.font =
-            style +
-            " " +
-            currentSize +
-            "px Arial";
-
-
-        while (
-            ctx.measureText(text).width >
-                maximumWidth &&
-            currentSize >
-                canvas.height * 0.014
-        ) {
-
-
-            currentSize -= 1;
-
-
-            ctx.font =
-                style +
-                " " +
-                currentSize +
-                "px Arial";
-
-
-        }
-
-
-        ctx.fillText(
-            text,
-            x,
-            y
-        );
-
-
-        ctx.restore();
-
-
-    }
-
-
-
-    /* =========================
+    /* =====================================================
        MISE À JOUR EN DIRECT
-    ========================== */
+    ===================================================== */
 
     nameInput.addEventListener(
         "input",
-        drawDiploma
+        function() {
+
+
+            drawDiploma();
+
+
+        }
     );
 
 
     dateInput.addEventListener(
         "input",
-        drawDiploma
+        function() {
+
+
+            drawDiploma();
+
+
+        }
     );
 
 
 
-    /* =========================
+    /* =====================================================
        IMPRIMER
-    ========================== */
+    ===================================================== */
 
     document.getElementById(
         "print-button"
@@ -1174,7 +1150,9 @@
                 );
 
 
-            if (!printWindow) {
+            if (
+                !printWindow
+            ) {
 
 
                 showMessage(
@@ -1206,41 +1184,54 @@
                     <style>
 
                         @page {
-                            size: letter landscape;
-                            margin: 0.35in;
+
+                            size:
+                                letter landscape;
+
+                            margin:
+                                0.25in;
+
                         }
 
                         html,
                         body {
+
                             margin: 0;
+
                             padding: 0;
 
                             width: 100%;
+
                             height: 100%;
 
                             background: white;
+
                         }
 
                         body {
+
                             display: flex;
 
                             justify-content: center;
 
                             align-items: center;
+
                         }
 
                         img {
+
                             display: block;
 
                             max-width: 100%;
 
-                            max-height: 7.8in;
+                            max-height: 8in;
 
                             width: auto;
 
                             height: auto;
 
                             object-fit: contain;
+
                         }
 
                     </style>
@@ -1261,17 +1252,22 @@
                                 "print-image"
                             );
 
+
                         img.onload =
                             function() {
+
 
                                 setTimeout(
                                     function() {
 
+
                                         window.print();
+
 
                                     },
                                     250
                                 );
+
 
                             };
 
@@ -1298,9 +1294,9 @@
 
 
 
-    /* =========================
+    /* =====================================================
        ENREGISTRER
-    ========================== */
+    ===================================================== */
 
     document.getElementById(
         "save-button"
@@ -1327,14 +1323,27 @@
                     );
 
 
-            link.download =
+            if (
                 safeName
+            ) {
 
-                    ? "diplome-explorateur-edouard-" +
-                      safeName +
-                      ".png"
 
-                    : "diplome-explorateur-edouard.png";
+                link.download =
+                    "diplome-explorateur-edouard-" +
+                    safeName +
+                    ".png";
+
+
+            }
+
+            else {
+
+
+                link.download =
+                    "diplome-explorateur-edouard.png";
+
+
+            }
 
 
             link.href =
@@ -1364,9 +1373,9 @@
 
 
 
-    /* =========================
+    /* =====================================================
        RECOMMENCER
-    ========================== */
+    ===================================================== */
 
     document.getElementById(
         "reset-button"
@@ -1381,9 +1390,13 @@
                 );
 
 
-            if (!confirmation) {
+            if (
+                !confirmation
+            ) {
+
 
                 return;
+
 
             }
 
@@ -1393,14 +1406,7 @@
 
 
             dateInput.value =
-                today.toLocaleDateString(
-                    "fr-CA",
-                    {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                    }
-                );
+                getTodayText();
 
 
             drawDiploma();
@@ -1416,16 +1422,16 @@
 
 
 
-    /* =========================
+    /* =====================================================
        MESSAGE
-    ========================== */
+    ===================================================== */
 
-    function showMessage(text) {
+    function showMessage(
+        text
+    ) {
 
 
-        document.getElementById(
-            "message"
-        ).textContent =
+        message.textContent =
             text;
 
 
