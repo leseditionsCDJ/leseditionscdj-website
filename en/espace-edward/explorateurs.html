@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Edward's Secrets | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 45%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding:
+                9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            background-color: white;
+
+            color: #174E78;
+
+            font-size: .92rem;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .home-button:hover,
+        .language-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 94%;
+
+            max-width: 1450px;
+
+            margin: auto;
+
+            padding:
+                45px 20px 80px;
+        }
+
+
+        /* =========================
+           INTRODUCTION
+        ========================== */
+
+        .page-header {
+            max-width: 900px;
+
+            margin:
+                0 auto 35px;
+
+            text-align: center;
+        }
+
+        .secret-badge {
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding:
+                8px 17px;
+
+            border-radius: 25px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-weight: bold;
+
+            font-size: .95rem;
+        }
+
+        h1 {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 3rem;
+        }
+
+        h1 span {
+            color: #2F8F46;
+        }
+
+        .intro {
+            max-width: 780px;
+
+            margin: auto;
+
+            color: #536B7B;
+
+            font-size: 1.12rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PROGRESS
+        ========================== */
+
+        .progress-box {
+            max-width: 760px;
+
+            margin:
+                0 auto 42px;
+
+            padding:
+                18px 21px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 7px 18px
+                rgba(23,78,120,.07);
+        }
+
+        .progress-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 10px;
+
+            color: #174E78;
+
+            font-weight: bold;
+        }
+
+        .progress-track {
+            height: 15px;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background-color: #E5EEF3;
+        }
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2F8F46,
+                    #71BA49
+                );
+
+            transition:
+                width .35s ease;
+        }
+
+
+        /* =========================
+           SECTION TITLES
+        ========================== */
+
+        .section-title {
+            margin:
+                0 0 28px;
+
+            text-align: center;
+        }
+
+        .section-title h2 {
+            margin:
+                0 0 8px;
+
+            color: #174E78;
+
+            font-size: 2.15rem;
+        }
+
+        .section-title p {
+            margin: 0;
+
+            color: #617789;
+
+            font-size: 1.05rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           FACT CARDS
+        ========================== */
+
+        .facts-section {
+            margin-bottom: 75px;
+        }
+
+        .facts-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+        .fact-card {
+            position: relative;
+
+            min-height: 310px;
+
+            perspective: 1200px;
+
+            cursor: pointer;
+
+            outline: none;
+        }
+
+        .fact-card:focus-visible {
+            border-radius: 22px;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(23,78,120,.25);
+        }
+
+        .fact-inner {
+            position: relative;
+
+            width: 100%;
+
+            min-height: 310px;
+
+            transition:
+                transform .6s;
+
+            transform-style:
+                preserve-3d;
+        }
+
+        .fact-card.revealed
+        .fact-inner {
+            transform:
+                rotateY(180deg);
+        }
+
+        .fact-front,
+        .fact-back {
+            position: absolute;
+
+            inset: 0;
+
+            padding: 28px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 23px;
+
+            backface-visibility: hidden;
+
+            -webkit-backface-visibility: hidden;
+
+            box-shadow:
+                0 10px 24px
+                rgba(23,78,120,.08);
+        }
+
+        .fact-front {
+            background:
+                linear-gradient(
+                    145deg,
+                    #FFFFFF,
+                    #F3FAFD
+                );
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .fact-back {
+            background:
+                linear-gradient(
+                    145deg,
+                    #F3FAEF,
+                    #FFFFFF
+                );
+
+            transform:
+                rotateY(180deg);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .fact-number {
+            width: 54px;
+
+            height: 54px;
+
+            margin-bottom: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #174E78;
+
+            color: white;
+
+            font-size: 1.45rem;
+
+            font-weight: bold;
+        }
+
+        .fact-icon {
+            margin-bottom: 10px;
+
+            font-size: 2.2rem;
+        }
+
+        .fact-front h3 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 1.35rem;
+        }
+
+        .click-note {
+            margin: 0;
+
+            color: #2F8F46;
+
+            font-weight: bold;
+        }
+
+        .fact-back h3 {
+            margin:
+                0 0 12px;
+
+            color: #2F8F46;
+
+            font-size: 1.35rem;
+
+            line-height: 1.35;
+        }
+
+        .fact-back p {
+            margin:
+                0 0 13px;
+
+            color: #40566A;
+
+            line-height: 1.6;
+
+            font-size: 1rem;
+        }
+
+        .fact-source {
+            margin-top: auto !important;
+
+            padding-top: 8px;
+
+            color: #7A8A94 !important;
+
+            font-size: .82rem !important;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           CAROUSEL
+        ========================== */
+
+        .gallery-section {
+            margin-bottom: 70px;
+        }
+
+        .carousel-card {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 14px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 26px;
+
+            box-shadow:
+                0 14px 35px
+                rgba(23,78,120,.10);
+        }
+
+        .carousel {
+            overflow: hidden;
+
+            border-radius: 17px;
+
+            background-color: #102D43;
+        }
+
+        .carousel-image-wrap {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            overflow: hidden;
+
+            background-color: #102D43;
+        }
+
+        #carousel-image {
+            display: block;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            background-color: #102D43;
+
+            transition:
+                opacity .2s ease;
+        }
+
+        .photo-counter {
+            position: absolute;
+
+            top: 16px;
+
+            right: 16px;
+
+            z-index: 5;
+
+            padding:
+                7px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0,0,0,.65);
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            z-index: 10;
+
+            width: 48px;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            transform:
+                translateY(-50%);
+
+            background:
+                rgba(255,255,255,.92);
+
+            color: #174E78;
+
+            font-size: 1.7rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .carousel-prev {
+            left: 16px;
+        }
+
+        .carousel-next {
+            right: 16px;
+        }
+
+        .carousel-caption {
+            padding:
+                18px 22px;
+
+            background-color: #174E78;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .carousel-caption h3 {
+            margin:
+                0 0 7px;
+
+            font-size: 1.35rem;
+        }
+
+        .carousel-caption p {
+            margin: 0;
+
+            color: #E7F4FA;
+        }
+
+        .public-domain {
+            display: inline-block;
+
+            margin-top: 9px;
+
+            padding:
+                5px 11px;
+
+            border-radius: 16px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-size: .78rem;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           DOTS
+        ========================== */
+
+        .carousel-dots {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            padding:
+                15px 10px 4px;
+        }
+
+        .carousel-dot {
+            width: 11px;
+
+            height: 11px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: #BCD0DA;
+
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background-color: #2F8F46;
+
+            transform:
+                scale(1.3);
+        }
+
+
+        /* =========================
+           IMAGE ERROR
+        ========================== */
+
+        .image-error {
+            display: none;
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 4;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            background-color: #EAF6FC;
+
+            color: #174E78;
+
+            text-align: center;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           SOURCES
+        ========================== */
+
+        .sources-section {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 30px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 8px 22px
+                rgba(23,78,120,.07);
+        }
+
+        .sources-section h2 {
+            margin:
+                0 0 15px;
+
+            color: #174E78;
+
+            text-align: center;
+        }
+
+        .sources-section > p {
+            color: #536B7B;
+
+            text-align: center;
+
+            line-height: 1.65;
+        }
+
+        .source-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,minmax(0,1fr));
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .source-link {
+            display: block;
+
+            padding:
+                13px 15px;
+
+            border-radius: 14px;
+
+            background-color: #F4F9FC;
+
+            color: #174E78;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+        }
+
+        .source-link:hover {
+            background-color: #EAF6FC;
+
+            color: #2F8F46;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding:
+                30px 20px;
+
+            background-color: #174E78;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .source-links {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2.15rem;
+            }
+
+            main {
+                width: 100%;
+
+                padding:
+                    35px 15px 60px;
+            }
+
+            .fact-card,
+            .fact-inner {
+                min-height: 360px;
+            }
+
+            .fact-front,
+            .fact-back {
+                padding: 23px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+
+                height: 40px;
+
+                font-size: 1.35rem;
+            }
+
+            .carousel-prev {
+                left: 8px;
+            }
+
+            .carousel-next {
+                right: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Home
+
+        </a>
+
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Back to Edward's page
+
+        </a>
+
+
+        <a
+            href="../../espace-edouard/explorateurs.html"
+            class="language-button"
+            lang="fr">
+
+            🇨🇦 FR
+
+        </a>
+
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
+
+    <div class="page-header">
+
+
+        <div class="secret-badge">
+
+            🔐 Secret content unlocked
+
+        </div>
+
+
+        <h1>
+
+            🦫
+            <span>
+                Edward's Secrets
+            </span>
+
+        </h1>
+
+
+        <p class="intro">
+
+            Think you know everything about beavers?
+
+            Edward still has a few secrets to share!
+
+            Click each card to discover
+            10 amazing and true facts about
+            the North American beaver.
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         PROGRESS
+    ========================== -->
+
+    <div class="progress-box">
+
+
+        <div class="progress-info">
+
+
+            <span id="progress-text">
+
+                🔎 0 / 10 secrets discovered
+
+            </span>
+
+
+            <span>
+                🦫
+            </span>
+
+
+        </div>
+
+
+        <div class="progress-track">
+
+
+            <div
+                class="progress-bar"
+                id="progress-bar">
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         10 SECRETS
+    ========================== -->
+
+    <section class="facts-section">
+
+
+        <div class="section-title">
+
+
+            <h2>
+                💡 Did you know?
+            </h2>
+
+
+            <p>
+
+                Click a card to reveal the secret.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="facts-grid">
+
+
+            <article class="fact-card" tabindex="0" data-fact="1">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">1</div>
+                        <div class="fact-icon">🏆</div>
+                        <h3>SECRET #1</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🏆 A giant among rodents!</h3>
+                        <p>The North American beaver is the <strong>largest rodent in North America.</strong></p>
+                        <p>An adult can weigh several dozen pounds.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="2">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">2</div>
+                        <div class="fact-icon">🦷</div>
+                        <h3>SECRET #2</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🦷 Its teeth never stop growing!</h3>
+                        <p>A beaver's large front teeth, called incisors, grow continuously throughout its life.</p>
+                        <p>The front of the teeth has strong orange-colored enamel. Their special structure helps keep the teeth sharp while the beaver gnaws.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="3">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">3</div>
+                        <div class="fact-icon">🤿</div>
+                        <h3>SECRET #3</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🤿 A diving champion!</h3>
+                        <p>A beaver can stay underwater for <strong>up to about 15 minutes.</strong></p>
+                        <p>This helps it travel, carry materials and reach the underwater entrance to its lodge.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="4">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">4</div>
+                        <div class="fact-icon">👀</div>
+                        <h3>SECRET #4</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>👀 Built-in swimming goggles!</h3>
+                        <p>Beavers have a transparent membrane that protects their eyes underwater.</p>
+                        <p>They can also close their nostrils and ears when they dive.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="5">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">5</div>
+                        <div class="fact-icon">🏊</div>
+                        <h3>SECRET #5</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🏊 A tail with many talents!</h3>
+                        <p>A beaver's large flat tail helps it steer while swimming.</p>
+                        <p>It can also slap the surface of the water to warn other beavers when danger is nearby.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="6">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">6</div>
+                        <div class="fact-icon">🌳</div>
+                        <h3>SECRET #6</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🌳 It doesn't really eat the hard wood!</h3>
+                        <p>Beavers often chew trees, but they prefer the softer plant tissue underneath the bark.</p>
+                        <p>This layer is called the <strong>cambium.</strong> Beavers also eat leaves, twigs and aquatic plants.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="7">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">7</div>
+                        <div class="fact-icon">🏠</div>
+                        <h3>SECRET #7</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🏠 The front door is underwater!</h3>
+                        <p>Beaver lodges can have entrances located <strong>below the surface of the water.</strong></p>
+                        <p>The living area inside remains dry, while the underwater entrance helps protect the family from predators.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="8">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">8</div>
+                        <div class="fact-icon">👨‍👩‍👧‍👦</div>
+                        <h3>SECRET #8</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>👨‍👩‍👧‍👦 Young beavers stay with the family!</h3>
+                        <p>Young beavers can remain with their parents for <strong>about two years.</strong></p>
+                        <p>During that time, they live as part of the family colony.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="9">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">9</div>
+                        <div class="fact-icon">🌿</div>
+                        <h3>SECRET #9</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🌿 An engineer of nature!</h3>
+                        <p>Beavers are often called <strong>ecosystem engineers.</strong></p>
+                        <p>Their dams can create wetlands that provide habitat for many other plants and animals.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="fact-card" tabindex="0" data-fact="10">
+                <div class="fact-inner">
+                    <div class="fact-front">
+                        <div class="fact-number">10</div>
+                        <div class="fact-icon">🌲</div>
+                        <h3>SECRET #10</h3>
+                        <p class="click-note">Click to discover!</p>
+                    </div>
+                    <div class="fact-back">
+                        <h3>🌲 A pond can become a meadow!</h3>
+                        <p>When an old beaver dam is abandoned, the pond may slowly fill with sediment and vegetation.</p>
+                        <p>Over time, the old pond can become a meadow and continue changing as the ecosystem develops.</p>
+                        <p class="fact-source">Source: National Park Service</p>
+                    </div>
+                </div>
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         REAL BEAVER PHOTOS
+    ========================== -->
+
+    <section class="gallery-section">
+
+
+        <div class="section-title">
+
+            <h2>
+                📸 Real Beavers
+            </h2>
+
+            <p>
+                Discover real photographs of North American beavers.
+            </p>
+
+        </div>
+
+
+        <div
+            class="carousel-card"
+            id="carousel-card">
+
+
+            <div class="carousel">
+
+
+                <div class="carousel-image-wrap">
+
+
+                    <img
+                        id="carousel-image"
+                        src="../../images/Beaver.jpg?v=20260917"
+                        alt="North American beaver">
+
+
+                    <div
+                        class="image-error"
+                        id="image-error">
+                    </div>
+
+
+                    <div
+                        class="photo-counter"
+                        id="photo-counter">
+                        1 / 10
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="carousel-arrow carousel-prev"
+                        id="carousel-prev"
+                        aria-label="Previous photo">
+
+                        ‹
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="carousel-arrow carousel-next"
+                        id="carousel-next"
+                        aria-label="Next photo">
+
+                        ›
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="carousel-caption">
+
+                    <h3 id="photo-title">
+                        Beavers in their habitat
+                    </h3>
+
+                    <p id="photo-credit">
+                        U.S. Fish & Wildlife Service
+                    </p>
+
+                    <span class="public-domain">
+                        Public domain photo
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="carousel-dots"
+                id="carousel-dots">
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         SOURCES
+    ========================== -->
+
+    <section class="sources-section">
+
+
+        <h2>
+            🔬 Scientific Sources
+        </h2>
+
+
+        <p>
+
+            The facts presented in Edward's space
+            were checked using institutional sources
+            from the U.S. National Park Service.
+
+        </p>
+
+
+        <div class="source-links">
+
+
+            <a
+                class="source-link"
+                href="https://home.nps.gov/prwi/learn/nature/beaver.htm"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                🦫 National Park Service —
+                Prince William Forest Park
+
+            </a>
+
+
+            <a
+                class="source-link"
+                href="https://www.nps.gov/kaww/learn/nature/beavers.htm"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                🌳 National Park Service —
+                Katahdin Woods and Waters
+
+            </a>
+
+
+            <a
+                class="source-link"
+                href="https://www.nps.gov/romo/learn/nature/beavers.htm"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                🌿 National Park Service —
+                Rocky Mountain National Park
+
+            </a>
+
+
+            <a
+                class="source-link"
+                href="https://www.nps.gov/glac/learn/education/beaver-natural-history-narrative.htm"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                🌲 National Park Service —
+                Glacier National Park
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        Les Éditions Cap Découvertes Jeunesse
+    </p>
+
+    <p>
+        Stories that open up the world
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+    /* =====================================================
+       SECRET CARDS
+    ===================================================== */
+
+    const factCards =
+        document.querySelectorAll(
+            ".fact-card"
+        );
+
+    const discovered =
+        new Set();
+
+    const progressText =
+        document.getElementById(
+            "progress-text"
+        );
+
+    const progressBar =
+        document.getElementById(
+            "progress-bar"
+        );
+
+
+    function revealFact(card) {
+
+        const id =
+            card.dataset.fact;
+
+        card.classList.toggle(
+            "revealed"
+        );
+
+        if (
+            !discovered.has(id)
+        ) {
+
+            discovered.add(id);
+
+            updateProgress();
+
+        }
+
+    }
+
+
+    factCards.forEach(
+        function(card) {
+
+            card.addEventListener(
+                "click",
+                function() {
+
+                    revealFact(
+                        card
+                    );
+
+                }
+            );
+
+            card.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        revealFact(
+                            card
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    function updateProgress() {
+
+        const count =
+            discovered.size;
+
+        progressText.textContent =
+            "🔎 " +
+            count +
+            " / 10 secrets discovered";
+
+        progressBar.style.width =
+            (
+                count /
+                10 *
+                100
+            ) +
+            "%";
+
+        if (
+            count === 10
+        ) {
+
+            progressText.textContent =
+                "🎉 Great job! You discovered all 10 of Edward's secrets!";
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       REAL PHOTOS
+       SAME FILE NAMES AS FRENCH PAGE
+    ===================================================== */
+
+    const photos = [
+
+
+        {
+            file:
+                "Beaver.jpg",
+
+            title:
+                "Beavers in their habitat",
+
+            credit:
+                "U.S. Fish & Wildlife Service"
+        },
+
+
+        {
+            file:
+                "Beaver_2.jpg",
+
+            title:
+                "A beaver in its natural habitat",
+
+            credit:
+                "U.S. Fish & Wildlife Service"
+        },
+
+
+        {
+            file:
+                "North_American_Beaver_at_Seedskadee_National_Wildlife_Refuge_(50956985971).jpg",
+
+            title:
+                "Beaver at Seedskadee National Wildlife Refuge",
+
+            credit:
+                "U.S. Fish & Wildlife Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(46677957975).jpg",
+
+            title:
+                "Swimming beaver",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(47593489151).jpg",
+
+            title:
+                "North American beaver",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "Beaver_(51101387209).jpg",
+
+            title:
+                "Beaver near the water",
+
+            credit:
+                "U.S. Fish & Wildlife Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(22281b96-a147-479a-ab66-75c03f755260).jpg",
+
+            title:
+                "Beaver in its natural environment",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "North_American_beaver_(Castor_canadensis)_(3dfe84e0-29eb-4039-afec-95d92c513338).jpg",
+
+            title:
+                "North American beaver",
+
+            credit:
+                "National Park Service"
+        },
+
+
+        {
+            file:
+                "Beaver_(41976425165).jpg",
+
+            title:
+                "Beaver portrait",
+
+            credit:
+                "U.S. Fish & Wildlife Service"
+        },
+
+
+        {
+            file:
+                "Beaver_animal_in_water_castor_canadensis.jpg",
+
+            title:
+                "Beaver swimming in the water",
+
+            credit:
+                "U.S. Fish & Wildlife Service"
+        }
+
+
+    ];
+
+
+
+    /* =====================================================
+       CAROUSEL ELEMENTS
+    ===================================================== */
+
+    const carouselImage =
+        document.getElementById(
+            "carousel-image"
+        );
+
+    const photoTitle =
+        document.getElementById(
+            "photo-title"
+        );
+
+    const photoCredit =
+        document.getElementById(
+            "photo-credit"
+        );
+
+    const photoCounter =
+        document.getElementById(
+            "photo-counter"
+        );
+
+    const imageError =
+        document.getElementById(
+            "image-error"
+        );
+
+    const prevButton =
+        document.getElementById(
+            "carousel-prev"
+        );
+
+    const nextButton =
+        document.getElementById(
+            "carousel-next"
+        );
+
+    const dotsContainer =
+        document.getElementById(
+            "carousel-dots"
+        );
+
+    const carouselCard =
+        document.getElementById(
+            "carousel-card"
+        );
+
+    let currentPhoto =
+        0;
+
+    let autoplayTimer =
+        null;
+
+
+
+    /* =====================================================
+       CREATE DOTS
+    ===================================================== */
+
+    photos.forEach(
+        function(photo, index) {
+
+            const dot =
+                document.createElement(
+                    "button"
+                );
+
+            dot.className =
+                "carousel-dot";
+
+            dot.type =
+                "button";
+
+            dot.setAttribute(
+                "aria-label",
+                "Show photo " +
+                (index + 1)
+            );
+
+            dot.addEventListener(
+                "click",
+                function() {
+
+                    showPhoto(
+                        index
+                    );
+
+                    restartAutoplay();
+
+                }
+            );
+
+            dotsContainer.appendChild(
+                dot
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       SHOW PHOTO
+    ===================================================== */
+
+    function showPhoto(index) {
+
+        if (
+            index < 0
+        ) {
+
+            index =
+                photos.length - 1;
+
+        }
+
+        if (
+            index >=
+            photos.length
+        ) {
+
+            index =
+                0;
+
+        }
+
+        currentPhoto =
+            index;
+
+        const photo =
+            photos[
+                currentPhoto
+            ];
+
+        imageError.style.display =
+            "none";
+
+        carouselImage.style.display =
+            "block";
+
+        carouselImage.style.opacity =
+            "0";
+
+        carouselImage.src =
+            "../../images/" +
+            photo.file +
+            "?v=20260917";
+
+        carouselImage.alt =
+            photo.title;
+
+        photoTitle.textContent =
+            photo.title;
+
+        photoCredit.textContent =
+            "Credit: " +
+            photo.credit;
+
+        photoCounter.textContent =
+            (
+                currentPhoto + 1
+            ) +
+            " / " +
+            photos.length;
+
+        const dots =
+            dotsContainer.querySelectorAll(
+                ".carousel-dot"
+            );
+
+        dots.forEach(
+            function(dot, dotIndex) {
+
+                dot.classList.toggle(
+                    "active",
+                    dotIndex ===
+                    currentPhoto
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       PHOTO LOADED
+    ===================================================== */
+
+    carouselImage.addEventListener(
+        "load",
+        function() {
+
+            imageError.style.display =
+                "none";
+
+            carouselImage.style.display =
+                "block";
+
+            carouselImage.style.opacity =
+                "1";
+
+        }
+    );
+
+
+
+    /* =====================================================
+       PHOTO NOT FOUND
+    ===================================================== */
+
+    carouselImage.addEventListener(
+        "error",
+        function() {
+
+            const photo =
+                photos[
+                    currentPhoto
+                ];
+
+            carouselImage.style.display =
+                "none";
+
+            imageError.style.display =
+                "flex";
+
+            imageError.innerHTML =
+
+                "⚠️ This image could not be found.<br><br>" +
+
+                "<small>" +
+
+                photo.file +
+
+                "</small>";
+
+        }
+    );
+
+
+
+    /* =====================================================
+       ARROWS
+    ===================================================== */
+
+    prevButton.addEventListener(
+        "click",
+        function() {
+
+            showPhoto(
+                currentPhoto - 1
+            );
+
+            restartAutoplay();
+
+        }
+    );
+
+
+    nextButton.addEventListener(
+        "click",
+        function() {
+
+            showPhoto(
+                currentPhoto + 1
+            );
+
+            restartAutoplay();
+
+        }
+    );
+
+
+
+    /* =====================================================
+       AUTOPLAY
+    ===================================================== */
+
+    function stopAutoplay() {
+
+        if (
+            autoplayTimer
+        ) {
+
+            clearInterval(
+                autoplayTimer
+            );
+
+            autoplayTimer =
+                null;
+
+        }
+
+    }
+
+
+    function startAutoplay() {
+
+        stopAutoplay();
+
+        autoplayTimer =
+            setInterval(
+                function() {
+
+                    showPhoto(
+                        currentPhoto + 1
+                    );
+
+                },
+                6000
+            );
+
+    }
+
+
+    function restartAutoplay() {
+
+        startAutoplay();
+
+    }
+
+
+    carouselCard.addEventListener(
+        "mouseenter",
+        stopAutoplay
+    );
+
+    carouselCard.addEventListener(
+        "mouseleave",
+        startAutoplay
+    );
+
+    carouselCard.addEventListener(
+        "focusin",
+        stopAutoplay
+    );
+
+    carouselCard.addEventListener(
+        "focusout",
+        startAutoplay
+    );
+
+
+
+    /* =====================================================
+       MOBILE SWIPE
+    ===================================================== */
+
+    let touchStartX =
+        0;
+
+
+    carouselCard.addEventListener(
+        "touchstart",
+        function(event) {
+
+            touchStartX =
+                event.changedTouches[0]
+                    .screenX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    carouselCard.addEventListener(
+        "touchend",
+        function(event) {
+
+            const touchEndX =
+                event.changedTouches[0]
+                    .screenX;
+
+            const difference =
+                touchEndX -
+                touchStartX;
+
+            if (
+                Math.abs(
+                    difference
+                ) >
+                50
+            ) {
+
+                if (
+                    difference >
+                    0
+                ) {
+
+                    showPhoto(
+                        currentPhoto - 1
+                    );
+
+                }
+
+                else {
+
+                    showPhoto(
+                        currentPhoto + 1
+                    );
+
+                }
+
+                restartAutoplay();
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =====================================================
+       INITIALIZATION
+    ===================================================== */
+
+    showPhoto(
+        0
+    );
+
+    startAutoplay();
+
+
+</script>
+
+
+</body>
+
+</html>
