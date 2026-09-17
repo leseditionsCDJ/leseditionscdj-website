@@ -356,99 +356,6 @@
         }
 
 
-        /* =========================
-           STATUT / ESPACE LECTEUR
-        ========================== */
-
-        .book-status {
-            display: inline-block;
-
-            margin-top: 10px;
-
-            padding:
-                8px 16px;
-
-            border-radius: 25px;
-
-            background-color: #FFF3C7;
-
-            color: #996900;
-
-            font-weight: bold;
-        }
-
-
-        .reader-space {
-            margin-top: 28px;
-
-            padding:
-                20px 22px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #EAF6FC,
-                    #F4FBF1
-                );
-
-            border:
-                2px solid #CFE4EF;
-
-            border-radius: 20px;
-        }
-
-
-        .reader-space h3 {
-            margin:
-                0 0 8px;
-
-            color: #14558C;
-
-            font-size: 1.3rem;
-        }
-
-
-        .reader-space p {
-            margin:
-                0 0 15px;
-
-            color: #40566A;
-
-            line-height: 1.6;
-        }
-
-
-        .reader-space-button {
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding:
-                12px 18px;
-
-            border-radius: 28px;
-
-            background-color: #2F9E44;
-
-            color: white;
-
-            font-weight: bold;
-
-            transition: 0.2s;
-        }
-
-
-        .reader-space-button:hover {
-            background-color: #247A35;
-
-            transform:
-                translateY(-1px);
-        }
-
-
-
 
         /* =========================
            BOUTONS D'ACHAT
@@ -458,45 +365,90 @@
             margin-top: 28px;
         }
 
+
         .purchase-title {
             margin: 0 0 12px;
+
             color: #14558C;
+
             font-size: 1.05rem;
+
             font-weight: bold;
         }
+
 
         .purchase-buttons {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 14px;
         }
 
+
         .buy-button {
             display: inline-flex;
+
             align-items: center;
+
             justify-content: center;
+
             gap: 8px;
+
             padding: 13px 20px;
+
             border-radius: 30px;
+
             color: white;
+
             font-weight: bold;
+
             text-decoration: none;
+
             transition: 0.2s;
-            box-shadow: 0 6px 16px rgba(20, 85, 140, 0.12);
+
+            box-shadow:
+                0 6px 16px
+                rgba(20, 85, 140, 0.12);
         }
+
 
         .buy-paper {
             background-color: #14558C;
         }
 
+
         .buy-ebook {
             background-color: #2F9E44;
         }
 
+
         .buy-button:hover {
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
+
             opacity: 0.92;
         }
+
+
+        .buy-button.coming-soon-button {
+            cursor: default;
+
+            opacity: 0.78;
+
+            pointer-events: none;
+
+            box-shadow: none;
+        }
+
+
+        .buy-button.coming-soon-button:hover {
+            transform: none;
+
+            opacity: 0.78;
+        }
+
+
 
         /* =========================
            PROCHAINS TOMES
@@ -875,6 +827,10 @@
 
 
 
+        <!-- =========================
+             TOME 1
+        ========================== -->
+
         <article class="book-card">
 
 
@@ -908,7 +864,6 @@
                     Collection Mattéo • 4 à 7 ans
 
                 </div>
-
 
 
                 <div class="book-summary">
@@ -953,28 +908,46 @@
                 </div>
 
 
-            
-
                 <div class="purchase-area">
-                    <p class="purchase-title">Disponible sur Amazon :</p>
+
+
+                    <p class="purchase-title">
+                        Disponible sur Amazon :
+                    </p>
+
 
                     <div class="purchase-buttons">
-                        <a href="https://a.co/d/0jg7rGws"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="buy-button buy-paper">
+
+
+                        <a
+                            href="https://a.co/d/0jg7rGws"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button buy-paper">
+
                             📖 Acheter le livre broché
+
                         </a>
 
-                        <a href="https://a.co/d/02enUMVm"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="buy-button buy-ebook">
+
+                        <a
+                            href="https://a.co/d/02enUMVm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button buy-ebook">
+
                             📱 Acheter la version numérique
+
                         </a>
+
+
                     </div>
+
+
                 </div>
-</div>
+
+
+            </div>
 
 
         </article>
@@ -1062,36 +1035,36 @@
                 </div>
 
 
-                <div class="book-status">
-                    🦫 Tome 2
-                </div>
+                <div class="purchase-area">
 
 
-                <div class="reader-space">
-
-
-                    <h3>
-                        🔐 Espace d'Édouard
-                    </h3>
-
-
-                    <p>
-
-                        Tu possèdes le tome 2 et son code secret ?
-                        Déverrouille l'espace spécial d'Édouard
-                        pour accéder aux jeux, aux activités,
-                        aux secrets des castors et au diplôme d'explorateur.
-
+                    <p class="purchase-title">
+                        Disponible sur Amazon :
                     </p>
 
 
-                    <a
-                        href="code-secret.html"
-                        class="reader-space-button">
+                    <div class="purchase-buttons">
 
-                        🔐 Entrer le code secret
 
-                    </a>
+                        <span
+                            class="buy-button buy-paper coming-soon-button"
+                            aria-disabled="true">
+
+                            📖 Acheter le livre broché — À venir
+
+                        </span>
+
+
+                        <span
+                            class="buy-button buy-ebook coming-soon-button"
+                            aria-disabled="true">
+
+                            📱 Acheter la version numérique — À venir
+
+                        </span>
+
+
+                    </div>
 
 
                 </div>
@@ -1132,7 +1105,6 @@
 
 
             <div class="upcoming-grid">
-
 
 
                 <div class="upcoming-card">
