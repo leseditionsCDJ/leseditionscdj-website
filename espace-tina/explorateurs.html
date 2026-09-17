@@ -749,15 +749,15 @@
 
 
         /* =========================
-           NOTE FINALE
+           SOURCES
         ========================== */
 
         .science-note {
-            max-width: 950px;
+            max-width: 1050px;
 
             margin: auto;
 
-            padding: 28px;
+            padding: 30px;
 
             background-color: #F5FAF1;
 
@@ -767,23 +767,74 @@
             border-radius: 24px;
 
             text-align: center;
+
+            box-shadow:
+                0 8px 22px
+                rgba(23, 78, 120, 0.07);
         }
 
         .science-note h2 {
             margin:
-                0 0 10px;
+                0 0 12px;
 
             color: #2F8F46;
 
             font-size: 1.5rem;
         }
 
-        .science-note p {
-            margin: 0;
+        .science-note > p {
+            margin:
+                0 auto 20px;
+
+            max-width: 850px;
 
             color: #536B7B;
 
             line-height: 1.65;
+        }
+
+        .source-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .source-link {
+            display: block;
+
+            padding:
+                13px 15px;
+
+            border-radius: 14px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            color: #174E78;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+
+            transition: 0.2s;
+        }
+
+        .source-link:hover {
+            background-color: #EAF6FC;
+
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+
+            transform:
+                translateY(-1px);
         }
 
 
@@ -814,6 +865,10 @@
         @media (max-width: 900px) {
 
             .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .source-links {
                 grid-template-columns: 1fr;
             }
 
@@ -1800,15 +1855,97 @@
 
                 Les informations de cette page ont été vérifiées
                 à partir de sources scientifiques et institutionnelles
-                reconnues, notamment NOAA Fisheries,
-                Smithsonian Ocean, l'Australian Museum et
-                le Smithsonian's National Zoo.
+                reconnues.
 
                 Les photographies du carrousel proviennent
                 de la bibliothèque média du U.S. Fish & Wildlife Service
                 et sont identifiées comme étant dans le domaine public.
 
+                Clique sur une source ci-dessous pour consulter
+                directement la page officielle.
+
             </p>
+
+            <div class="source-links">
+
+                <a
+                    class="source-link"
+                    href="https://www.fisheries.noaa.gov/feature-story/10-tremendous-turtle-facts"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    🐢 NOAA Fisheries —
+                    10 Tremendous Turtle Facts
+
+                </a>
+
+                <a
+                    class="source-link"
+                    href="https://www.fisheries.noaa.gov/species/leatherback-turtle"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    🌊 NOAA Fisheries —
+                    Leatherback Turtle
+
+                </a>
+
+                <a
+                    class="source-link"
+                    href="https://www.fisheries.noaa.gov/species/loggerhead-turtle"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    🐢 NOAA Fisheries —
+                    Loggerhead Turtle
+
+                </a>
+
+                <a
+                    class="source-link"
+                    href="https://ocean.si.edu/ocean-life/reptiles/sea-turtles"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    🔬 Smithsonian Ocean —
+                    Sea Turtles
+
+                </a>
+
+                <a
+                    class="source-link"
+                    href="https://australian.museum/learn/animals/reptiles/mary-river-turtle/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    🇦🇺 Australian Museum —
+                    Mary River Turtle
+
+                </a>
+
+                <a
+                    class="source-link"
+                    href="https://nationalzoo.si.edu/conservation/news/box-turtles-are-vanishing-can-science-help-bring-them-back"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    🎨 Smithsonian's National Zoo —
+                    Eastern Box Turtle Research
+
+                </a>
+
+                <a
+                    class="source-link"
+                    href="https://www.fws.gov/media/sea-turtle"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    📸 U.S. Fish & Wildlife Service —
+                    Sea Turtle Media
+
+                </a>
+
+            </div>
 
         </section>
 
