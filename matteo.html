@@ -133,43 +133,6 @@
         }
 
 
-        .language-btn {
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            min-width: 44px;
-
-            height: 38px;
-
-            padding: 0 12px;
-
-            background-color: white;
-
-            color: #14558C;
-
-            border:
-                2px solid #14558C;
-
-            border-radius: 30px;
-
-            font-size: 0.82rem;
-
-            font-weight: bold;
-
-            transition: 0.2s;
-        }
-
-
-        .language-btn:hover {
-            background-color: #14558C;
-
-            color: white;
-        }
-
-
 
         /* =========================
            PRÉSENTATION COLLECTION
@@ -289,7 +252,7 @@
 
 
         /* =========================
-           TOME 1
+           TOMES DE LA COLLECTION
         ========================== */
 
         .book-card {
@@ -393,6 +356,99 @@
         }
 
 
+        /* =========================
+           STATUT / ESPACE LECTEUR
+        ========================== */
+
+        .book-status {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding:
+                8px 16px;
+
+            border-radius: 25px;
+
+            background-color: #FFF3C7;
+
+            color: #996900;
+
+            font-weight: bold;
+        }
+
+
+        .reader-space {
+            margin-top: 28px;
+
+            padding:
+                20px 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #EAF6FC,
+                    #F4FBF1
+                );
+
+            border:
+                2px solid #CFE4EF;
+
+            border-radius: 20px;
+        }
+
+
+        .reader-space h3 {
+            margin:
+                0 0 8px;
+
+            color: #14558C;
+
+            font-size: 1.3rem;
+        }
+
+
+        .reader-space p {
+            margin:
+                0 0 15px;
+
+            color: #40566A;
+
+            line-height: 1.6;
+        }
+
+
+        .reader-space-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                12px 18px;
+
+            border-radius: 28px;
+
+            background-color: #2F9E44;
+
+            color: white;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .reader-space-button:hover {
+            background-color: #247A35;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+
 
         /* =========================
            BOUTONS D'ACHAT
@@ -404,47 +460,29 @@
 
         .purchase-title {
             margin: 0 0 12px;
-
             color: #14558C;
-
             font-size: 1.05rem;
-
             font-weight: bold;
         }
 
         .purchase-buttons {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 14px;
         }
 
         .buy-button {
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 8px;
-
-            padding:
-                13px 20px;
-
+            padding: 13px 20px;
             border-radius: 30px;
-
             color: white;
-
             font-weight: bold;
-
             text-decoration: none;
-
             transition: 0.2s;
-
-            box-shadow:
-                0 6px 16px
-                rgba(20, 85, 140, 0.12);
+            box-shadow: 0 6px 16px rgba(20, 85, 140, 0.12);
         }
 
         .buy-paper {
@@ -456,13 +494,9 @@
         }
 
         .buy-button:hover {
-            transform:
-                translateY(-2px);
-
+            transform: translateY(-2px);
             opacity: 0.92;
         }
-
-
 
         /* =========================
            PROCHAINS TOMES
@@ -508,7 +542,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(2, 1fr);
 
             gap: 22px;
         }
@@ -697,11 +731,6 @@
             }
 
 
-            .purchase-buttons {
-                justify-content: center;
-            }
-
-
             .upcoming-grid {
                 grid-template-columns: 1fr;
             }
@@ -769,16 +798,6 @@
             </a>
 
 
-            <a
-                href="https://leseditionscdj.ca/en/matteo"
-                class="language-btn"
-                aria-label="English version">
-
-                CA EN
-
-            </a>
-
-
         </nav>
 
 
@@ -833,7 +852,7 @@
 
 
     <!-- =========================
-         TOME 1
+         TOMES DE LA COLLECTION
     ========================== -->
 
     <main class="content">
@@ -934,44 +953,145 @@
                 </div>
 
 
-
-                <!-- =========================
-                     LIENS D'ACHAT AMAZON
-                ========================== -->
+            
 
                 <div class="purchase-area">
+                    <p class="purchase-title">Disponible sur Amazon :</p>
 
-                    <p class="purchase-title">
-                        Disponible sur Amazon :
+                    <div class="purchase-buttons">
+                        <a href="https://a.co/d/0jg7rGws"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="buy-button buy-paper">
+                            📖 Acheter le livre broché
+                        </a>
+
+                        <a href="https://a.co/d/02enUMVm"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="buy-button buy-ebook">
+                            📱 Acheter la version numérique
+                        </a>
+                    </div>
+                </div>
+</div>
+
+
+        </article>
+
+
+
+        <!-- =========================
+             TOME 2
+        ========================== -->
+
+        <article class="book-card">
+
+
+            <div class="book-image">
+
+
+                <img
+                    src="images/Image_Officielle_Edouard.png"
+                    alt="Édouard le castor bricoleur">
+
+
+            </div>
+
+
+
+            <div class="book-info">
+
+
+                <div class="tome-label">
+                    Tome 2
+                </div>
+
+
+                <h2>
+                    Édouard le castor bricoleur
+                </h2>
+
+
+                <div class="book-age">
+
+                    Collection Mattéo • 4 à 7 ans
+
+                </div>
+
+
+                <div class="book-summary">
+
+
+                    <p>
+
+                        Édouard est un castor passionné de bricolage,
+                        toujours prêt à construire, réparer
+                        et améliorer son barrage.
+
                     </p>
 
 
-                    <div class="purchase-buttons">
+                    <p>
+
+                        Mais lorsqu'une de ses dents commence
+                        à lui causer un sérieux problème,
+                        ses outils ne suffisent plus.
+
+                    </p>
 
 
-                        <a
-                            href="https://a.co/d/0jg7rGws"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="buy-button buy-paper">
+                    <p>
 
-                            📖 Acheter le livre broché
+                        Mattéo devra comprendre ce qui se passe
+                        et découvrira avec lui pourquoi
+                        les dents des castors sont si particulières.
 
-                        </a>
+                    </p>
 
 
-                        <a
-                            href="https://a.co/d/02enUMVm"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="buy-button buy-ebook">
+                    <p>
 
-                            📱 Acheter la version numérique
+                        Une nouvelle aventure amusante et éducative
+                        pour découvrir le monde fascinant des castors,
+                        leurs dents et leurs incroyables talents de bâtisseurs.
 
-                        </a>
+                    </p>
 
 
-                    </div>
+                </div>
+
+
+                <div class="book-status">
+                    🦫 Tome 2
+                </div>
+
+
+                <div class="reader-space">
+
+
+                    <h3>
+                        🔐 Espace d'Édouard
+                    </h3>
+
+
+                    <p>
+
+                        Tu possèdes le tome 2 et son code secret ?
+                        Déverrouille l'espace spécial d'Édouard
+                        pour accéder aux jeux, aux activités,
+                        aux secrets des castors et au diplôme d'explorateur.
+
+                    </p>
+
+
+                    <a
+                        href="code-secret.html"
+                        class="reader-space-button">
+
+                        🔐 Entrer le code secret
+
+                    </a>
 
 
                 </div>
@@ -1012,36 +1132,6 @@
 
 
             <div class="upcoming-grid">
-
-
-
-                <div class="upcoming-card">
-
-
-                    <div class="paw">
-                        🦫
-                    </div>
-
-
-                    <h3>
-                        Tome 2
-                    </h3>
-
-
-                    <p>
-
-                        Une nouvelle aventure
-                        de Mattéo est en préparation.
-
-                    </p>
-
-
-                    <div class="coming-badge">
-                        À venir
-                    </div>
-
-
-                </div>
 
 
 
