@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -9,7 +9,7 @@
           content="width=device-width, initial-scale=1.0">
 
     <title>
-        Matteo Collection | Les Éditions Cap Découvertes Jeunesse
+        Collection Mattéo | Les Éditions Cap Découvertes Jeunesse
     </title>
 
 
@@ -44,7 +44,7 @@
 
 
         /* =========================
-           HEADER
+           EN-TÊTE
         ========================== */
 
         header {
@@ -133,35 +133,9 @@
         }
 
 
-        .language-button {
-            display: inline-block;
-
-            padding: 9px 13px;
-
-            border: 2px solid #14558C;
-
-            border-radius: 22px;
-
-            color: #14558C;
-
-            background-color: white;
-
-            font-size: 0.92rem;
-
-            font-weight: bold;
-        }
-
-
-        .language-button:hover {
-            border-color: #2F9E44;
-
-            color: #2F9E44;
-        }
-
-
 
         /* =========================
-           COLLECTION INTRODUCTION
+           PRÉSENTATION COLLECTION
         ========================== */
 
         .hero {
@@ -237,7 +211,7 @@
 
 
         /* =========================
-           CONTENT
+           CONTENU
         ========================== */
 
         .content {
@@ -278,7 +252,7 @@
 
 
         /* =========================
-           BOOK 1
+           TOMES DE LA COLLECTION
         ========================== */
 
         .book-card {
@@ -382,9 +356,150 @@
         }
 
 
+        /* =========================
+           STATUT / ESPACE LECTEUR
+        ========================== */
+
+        .book-status {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding:
+                8px 16px;
+
+            border-radius: 25px;
+
+            background-color: #FFF3C7;
+
+            color: #996900;
+
+            font-weight: bold;
+        }
+
+
+        .reader-space {
+            margin-top: 28px;
+
+            padding:
+                20px 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #EAF6FC,
+                    #F4FBF1
+                );
+
+            border:
+                2px solid #CFE4EF;
+
+            border-radius: 20px;
+        }
+
+
+        .reader-space h3 {
+            margin:
+                0 0 8px;
+
+            color: #14558C;
+
+            font-size: 1.3rem;
+        }
+
+
+        .reader-space p {
+            margin:
+                0 0 15px;
+
+            color: #40566A;
+
+            line-height: 1.6;
+        }
+
+
+        .reader-space-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                12px 18px;
+
+            border-radius: 28px;
+
+            background-color: #2F9E44;
+
+            color: white;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .reader-space-button:hover {
+            background-color: #247A35;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+
 
         /* =========================
-           UPCOMING BOOKS
+           BOUTONS D'ACHAT
+        ========================== */
+
+        .purchase-area {
+            margin-top: 28px;
+        }
+
+        .purchase-title {
+            margin: 0 0 12px;
+            color: #14558C;
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+
+        .purchase-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .buy-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 6px 16px rgba(20, 85, 140, 0.12);
+        }
+
+        .buy-paper {
+            background-color: #14558C;
+        }
+
+        .buy-ebook {
+            background-color: #2F9E44;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.92;
+        }
+
+        /* =========================
+           PROCHAINS TOMES
         ========================== */
 
         .upcoming {
@@ -427,7 +542,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(2, 1fr);
 
             gap: 22px;
         }
@@ -503,7 +618,7 @@
 
 
         /* =========================
-           BACK BUTTON
+           RETOUR
         ========================== */
 
         .back {
@@ -539,7 +654,7 @@
 
 
         /* =========================
-           FOOTER
+           PIED DE PAGE
         ========================== */
 
         footer {
@@ -631,7 +746,7 @@
 
 
     <!-- =========================
-         HEADER
+         EN-TÊTE
     ========================== -->
 
     <header>
@@ -643,7 +758,7 @@
 
 
             <img
-                src="../logo.png"
+                src="logo.png"
                 alt="Les Éditions Cap Découvertes Jeunesse">
 
 
@@ -655,17 +770,17 @@
 
 
             <a href="index.html">
-                Home
+                Accueil
             </a>
 
 
             <a href="livres.html">
-                Our Books
+                Nos livres
             </a>
 
 
-            <a href="index.html#about">
-                About
+            <a href="index.html#apropos">
+                À propos
             </a>
 
 
@@ -678,17 +793,7 @@
                 href="code-secret.html"
                 class="secret-btn">
 
-                🔐 Secret Code
-
-            </a>
-
-
-            <a
-                href="../matteo.html"
-                class="language-button"
-                lang="fr">
-
-                🇫🇷 FR
+                🔐 Code secret
 
             </a>
 
@@ -701,7 +806,7 @@
 
 
     <!-- =========================
-         MATTEO COLLECTION
+         COLLECTION MATTÉO
     ========================== -->
 
     <section class="hero">
@@ -712,10 +817,10 @@
 
             <h1>
 
-                The
+                Collection
 
                 <span>
-                    Matteo Collection
+                    Mattéo
                 </span>
 
             </h1>
@@ -723,18 +828,18 @@
 
             <div class="age">
 
-                Recommended Age: 4–7
+                Âge recommandé : 4 à 7 ans
 
             </div>
 
 
             <p>
 
-                In every adventure, Matteo meets a new animal
-                and discovers fascinating secrets about the animal world.
+                À chaque aventure, Mattéo rencontre un nouvel animal
+                et découvre avec lui les secrets fascinants du monde animal.
 
-                Fun stories where young readers learn
-                real scientific facts while enjoying the adventure.
+                Des histoires amusantes où les jeunes lecteurs apprennent
+                de véritables faits scientifiques tout en passant un bon moment.
 
             </p>
 
@@ -747,7 +852,7 @@
 
 
     <!-- =========================
-         BOOK 1
+         TOMES DE LA COLLECTION
     ========================== -->
 
     <main class="content">
@@ -757,12 +862,12 @@
 
 
             <h2>
-                Books in the Collection
+                Les tomes de la collection
             </h2>
 
 
             <p>
-                Discover Matteo's adventures and meet his patients.
+                Découvre les aventures de Mattéo et de ses patients.
             </p>
 
 
@@ -777,8 +882,8 @@
 
 
                 <img
-                    src="../images/Image_Officielle_Tina.png"
-                    alt="Tina the Traveling Turtle">
+                    src="images/Image_Officielle_Tina.png"
+                    alt="Tina la tortue voyageuse">
 
 
             </div>
@@ -789,18 +894,18 @@
 
 
                 <div class="tome-label">
-                    Book 1
+                    Tome 1
                 </div>
 
 
                 <h2>
-                    Tina the Traveling Turtle
+                    Tina la tortue voyageuse
                 </h2>
 
 
                 <div class="book-age">
 
-                    Matteo Collection • Ages 4–7
+                    Collection Mattéo • 4 à 7 ans
 
                 </div>
 
@@ -811,39 +916,182 @@
 
                     <p>
 
-                        A very unusual patient knocks
-                        on the door of Matteo's veterinary clinic...
+                        Une drôle de patiente frappe à la porte
+                        de la clinique de Mattéo...
 
                     </p>
 
 
                     <p>
 
-                        Tina the turtle looks very tired.
+                        Tina la tortue semble très fatiguée.
 
-                        Why is she moving so slowly?
+                        Pourquoi avance-t-elle si lentement ?
 
-                        What is she carrying on her shell?
-
-                    </p>
-
-
-                    <p>
-
-                        As Matteo tries to help her,
-                        he discovers that turtles are full
-                        of fascinating secrets!
+                        Que transporte-t-elle sur sa carapace ?
 
                     </p>
 
 
                     <p>
 
-                        Throughout this gentle and humorous adventure,
-                        young readers will discover real scientific facts
-                        while having fun.
+                        En voulant l'aider, Mattéo découvrira
+                        que les tortues cachent des secrets fascinants !
 
                     </p>
+
+
+                    <p>
+
+                        Au fil de cette aventure pleine de douceur
+                        et d'humour, les jeunes lecteurs apprendront
+                        de véritables faits scientifiques tout en s'amusant.
+
+                    </p>
+
+
+                </div>
+
+
+            
+
+                <div class="purchase-area">
+                    <p class="purchase-title">Disponible sur Amazon :</p>
+
+                    <div class="purchase-buttons">
+                        <a href="https://a.co/d/0jg7rGws"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="buy-button buy-paper">
+                            📖 Acheter le livre broché
+                        </a>
+
+                        <a href="https://a.co/d/02enUMVm"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="buy-button buy-ebook">
+                            📱 Acheter la version numérique
+                        </a>
+                    </div>
+                </div>
+</div>
+
+
+        </article>
+
+
+
+        <!-- =========================
+             TOME 2
+        ========================== -->
+
+        <article class="book-card">
+
+
+            <div class="book-image">
+
+
+                <img
+                    src="images/Image_Officielle_Edouard.png"
+                    alt="Édouard le castor bricoleur">
+
+
+            </div>
+
+
+
+            <div class="book-info">
+
+
+                <div class="tome-label">
+                    Tome 2
+                </div>
+
+
+                <h2>
+                    Édouard le castor bricoleur
+                </h2>
+
+
+                <div class="book-age">
+
+                    Collection Mattéo • 4 à 7 ans
+
+                </div>
+
+
+                <div class="book-summary">
+
+
+                    <p>
+
+                        Édouard est un castor passionné de bricolage,
+                        toujours prêt à construire, réparer
+                        et améliorer son barrage.
+
+                    </p>
+
+
+                    <p>
+
+                        Mais lorsqu'une de ses dents commence
+                        à lui causer un sérieux problème,
+                        ses outils ne suffisent plus.
+
+                    </p>
+
+
+                    <p>
+
+                        Mattéo devra comprendre ce qui se passe
+                        et découvrira avec lui pourquoi
+                        les dents des castors sont si particulières.
+
+                    </p>
+
+
+                    <p>
+
+                        Une nouvelle aventure amusante et éducative
+                        pour découvrir le monde fascinant des castors,
+                        leurs dents et leurs incroyables talents de bâtisseurs.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="book-status">
+                    🦫 Tome 2
+                </div>
+
+
+                <div class="reader-space">
+
+
+                    <h3>
+                        🔐 Espace d'Édouard
+                    </h3>
+
+
+                    <p>
+
+                        Tu possèdes le tome 2 et son code secret ?
+                        Déverrouille l'espace spécial d'Édouard
+                        pour accéder aux jeux, aux activités,
+                        aux secrets des castors et au diplôme d'explorateur.
+
+                    </p>
+
+
+                    <a
+                        href="code-secret.html"
+                        class="reader-space-button">
+
+                        🔐 Entrer le code secret
+
+                    </a>
 
 
                 </div>
@@ -857,7 +1105,7 @@
 
 
         <!-- =========================
-             COMING SOON
+             À VENIR
         ========================== -->
 
         <section class="upcoming">
@@ -867,14 +1115,14 @@
 
 
                 <h2>
-                    More Adventures Are Coming
+                    Les prochaines aventures
                 </h2>
 
 
                 <p>
 
-                    New animal patients will soon
-                    be visiting Matteo!
+                    De nouveaux patients viendront bientôt
+                    rendre visite à Mattéo !
 
                 </p>
 
@@ -891,25 +1139,25 @@
 
 
                     <div class="paw">
-                        🦫
+                        🐾
                     </div>
 
 
                     <h3>
-                        Book 2
+                        Tome 3
                     </h3>
 
 
                     <p>
 
-                        A new Matteo adventure
-                        is currently in development.
+                        Un nouveau patient
+                        rejoindra bientôt la collection.
 
                     </p>
 
 
                     <div class="coming-badge">
-                        Coming Soon
+                        À venir
                     </div>
 
 
@@ -926,50 +1174,20 @@
 
 
                     <h3>
-                        Book 3
+                        Et ce n'est que le début !
                     </h3>
 
 
                     <p>
 
-                        A new patient will soon
-                        join the collection.
+                        Plusieurs autres aventures
+                        de Mattéo sont prévues.
 
                     </p>
 
 
                     <div class="coming-badge">
-                        Coming Soon
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="upcoming-card">
-
-
-                    <div class="paw">
-                        🐾
-                    </div>
-
-
-                    <h3>
-                        And This Is Just the Beginning!
-                    </h3>
-
-
-                    <p>
-
-                        Many more Matteo adventures
-                        are planned.
-
-                    </p>
-
-
-                    <div class="coming-badge">
-                        Stay Tuned...
+                        À suivre...
                     </div>
 
 
@@ -988,7 +1206,7 @@
 
             <a href="livres.html">
 
-                ← Back to Collections
+                ← Retour aux collections
 
             </a>
 
@@ -1001,7 +1219,7 @@
 
 
     <!-- =========================
-         FOOTER
+         PIED DE PAGE
     ========================== -->
 
     <footer>
@@ -1013,7 +1231,7 @@
 
 
         <p>
-            Stories that open up the world
+            Des histoires qui ouvrent sur le monde
         </p>
 
 
@@ -1021,5 +1239,7 @@
 
 
 </body>
+
+</html>
 
 </html>
