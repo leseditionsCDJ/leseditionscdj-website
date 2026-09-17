@@ -1,0 +1,3505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        The Dam Maze | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EFF8E9 0%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 14px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            border-bottom:
+                2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+
+            max-width: 70vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-block;
+
+            padding:
+                11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding: 9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: .92rem;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .nav-button:hover,
+        .language-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .home-button:hover,
+        .language-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 96%;
+
+            max-width: 1600px;
+
+            margin: auto;
+
+            padding:
+                35px 18px 70px;
+        }
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.7rem;
+        }
+
+        .intro {
+            max-width: 820px;
+
+            margin: auto;
+
+            color: #536B7B;
+
+            font-size: 1.1rem;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================
+           MISE EN PAGE
+        ========================== */
+
+        .game-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr) 340px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        .left-column {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+
+            top: 20px;
+
+            max-height:
+                calc(100vh - 40px);
+
+            overflow-y: auto;
+
+            padding-right: 3px;
+        }
+
+        .sidebar-box {
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 22px;
+
+            padding: 18px;
+
+            margin-bottom: 16px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 78, 120, .08);
+        }
+
+        .sidebar-title {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 1.15rem;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           LABYRINTHE
+        ========================== */
+
+        .maze-card {
+            background-color: white;
+
+            padding: 14px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(23, 78, 120, .10);
+        }
+
+        .maze-board {
+            position: relative;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            user-select: none;
+        }
+
+        .maze-board img {
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
+        }
+
+
+        /* =========================
+           TRAJET
+        ========================== */
+
+        #trail-canvas {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 3;
+        }
+
+
+        /* =========================
+           DÉPART / ARRIVÉE
+        ========================== */
+
+        .maze-target {
+            position: absolute;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 5;
+        }
+
+        .start-target {
+            width: 34px;
+
+            height: 34px;
+
+            border:
+                4px solid #2F8F46;
+
+            background:
+                rgba(47,143,70,.18);
+
+            box-shadow:
+                0 0 0 4px white;
+        }
+
+        .goal-target {
+            width: 40px;
+
+            height: 40px;
+
+            border:
+                4px solid #F1B83B;
+
+            background:
+                rgba(241,184,59,.20);
+
+            box-shadow:
+                0 0 0 4px white;
+        }
+
+        .goal-target.hint {
+            animation:
+                goalPulse
+                .55s
+                ease-in-out
+                infinite alternate;
+        }
+
+        @keyframes goalPulse {
+
+            from {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.45);
+            }
+
+        }
+
+
+        /* =========================
+           ÉDOUARD
+        ========================== */
+
+        .player {
+            position: absolute;
+
+            width: 34px;
+
+            height: 34px;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background-color: #174E78;
+
+            color: white;
+
+            border:
+                3px solid white;
+
+            box-shadow:
+                0 3px 8px
+                rgba(0,0,0,.25);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 19px;
+
+            pointer-events: none;
+
+            z-index: 10;
+        }
+
+
+        /* =========================
+           INFOS
+        ========================== */
+
+        .top-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .status {
+            color: #174E78;
+
+            font-size: 1.05rem;
+
+            font-weight: bold;
+        }
+
+        .stars {
+            font-size: 1.4rem;
+
+            letter-spacing: 3px;
+        }
+
+        .moves {
+            margin-top: 12px;
+
+            text-align: center;
+
+            color: #617789;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        #message {
+            min-height: 68px;
+
+            padding: 14px;
+
+            border-radius: 16px;
+
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           FLÈCHES
+        ========================== */
+
+        .direction-pad {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 68px);
+
+            grid-template-rows:
+                repeat(2, 68px);
+
+            gap: 9px;
+
+            justify-content: center;
+
+            margin:
+                8px auto 4px;
+        }
+
+        .direction-button {
+            border: none;
+
+            border-radius: 18px;
+
+            background-color: #174E78;
+
+            color: white;
+
+            font-size: 2rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 0 #103A5A;
+
+            transition:
+                transform .1s,
+                background-color .2s,
+                opacity .2s;
+        }
+
+        .direction-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .direction-button:active {
+            transform:
+                translateY(3px);
+
+            box-shadow:
+                0 1px 0 #103A5A;
+        }
+
+        .direction-button:disabled {
+            opacity: .35;
+
+            cursor: not-allowed;
+
+            box-shadow: none;
+        }
+
+        .direction-button.available {
+            outline:
+                4px solid
+                rgba(47,143,70,.22);
+        }
+
+        #up-button {
+            grid-column: 2;
+
+            grid-row: 1;
+        }
+
+        #left-button {
+            grid-column: 1;
+
+            grid-row: 2;
+        }
+
+        #down-button {
+            grid-column: 2;
+
+            grid-row: 2;
+        }
+
+        #right-button {
+            grid-column: 3;
+
+            grid-row: 2;
+        }
+
+
+        /* =========================
+           OUTILS
+        ========================== */
+
+        .tools {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .tool-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 22px;
+
+            padding:
+                12px 14px;
+
+            font-size: .96rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .tool-button:hover {
+            transform:
+                translateY(-1px);
+        }
+
+        .hint-button {
+            background-color: #F1B83B;
+
+            color: #263238;
+        }
+
+        .restart-button {
+            background-color: #D95C5C;
+
+            color: white;
+        }
+
+        .sound-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+
+        /* =========================
+           INSTRUCTIONS
+        ========================== */
+
+        .instructions {
+            margin: 0;
+
+            padding-left: 22px;
+
+            color: #536B7B;
+
+            line-height: 1.6;
+
+            font-size: .94rem;
+        }
+
+        .instructions li {
+            margin-bottom: 7px;
+        }
+
+
+        /* =========================
+           VICTOIRE
+        ========================== */
+
+        .victory {
+            display: none;
+
+            padding: 22px;
+
+            background-color: #EFF8E9;
+
+            color: #2F8F46;
+
+            border:
+                3px solid #2F8F46;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            font-size: 1.1rem;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 10px 30px
+                rgba(47,143,70,.15);
+        }
+
+        .victory.show {
+            display: block;
+
+            animation:
+                victoryPop
+                .35s ease-out;
+        }
+
+        @keyframes victoryPop {
+
+            from {
+                transform:
+                    scale(.8);
+
+                opacity: 0;
+            }
+
+            to {
+                transform:
+                    scale(1);
+
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           CONFETTIS
+        ========================== */
+
+        .confetti {
+            position: fixed;
+
+            top: -20px;
+
+            width: 10px;
+
+            height: 16px;
+
+            z-index: 9999;
+
+            pointer-events: none;
+
+            animation:
+                confettiFall
+                2.5s
+                linear
+                forwards;
+        }
+
+        @keyframes confettiFall {
+
+            to {
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: .2;
+            }
+
+        }
+
+
+        /* =========================
+           TABLETTE
+        ========================== */
+
+        @media (max-width: 1100px) {
+
+            .game-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+
+                max-height: none;
+
+                overflow: visible;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .maze-card {
+                padding: 7px;
+            }
+
+            .direction-pad {
+                grid-template-columns:
+                    repeat(3, 62px);
+
+                grid-template-rows:
+                    repeat(2, 62px);
+            }
+
+            .direction-button {
+                font-size: 1.7rem;
+            }
+
+            .player {
+                width: 30px;
+
+                height: 30px;
+
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Home
+
+        </a>
+
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Back to Edward's page
+
+        </a>
+
+
+        <a
+            href="../../espace-edouard/labyrinthe.html"
+            class="language-button"
+            lang="fr">
+
+            🇨🇦 FR
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+
+        <h1>
+            🌀 The Dam Maze
+        </h1>
+
+
+        <p class="intro">
+
+            Help Edward reach the dam!
+
+            Use the arrows to move him.
+            With each move, Edward automatically travels
+            until he reaches the next wall.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="game-layout">
+
+
+        <div class="left-column">
+
+
+            <section class="maze-card">
+
+
+                <div
+                    class="maze-board"
+                    id="maze-board">
+
+
+                    <img
+                        src="../../images/labyrinthe_edouard_en.png?v=1"
+                        alt="Edward's maze to the dam"
+                        id="maze-image">
+
+
+                    <canvas
+                        id="trail-canvas">
+                    </canvas>
+
+
+                    <div
+                        class="maze-target start-target"
+                        id="start-target">
+                    </div>
+
+
+                    <div
+                        class="maze-target goal-target"
+                        id="goal-target">
+                    </div>
+
+
+                    <div
+                        class="player"
+                        id="player">
+
+                        🦫
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <aside class="sidebar">
+
+
+            <section class="sidebar-box">
+
+
+                <div class="top-info">
+
+
+                    <div
+                        class="status"
+                        id="status">
+
+                        Ready to go!
+
+                    </div>
+
+
+                    <div
+                        class="stars"
+                        id="stars">
+
+                        ⭐⭐⭐
+
+                    </div>
+
+
+                </div>
+
+
+                <div
+                    class="moves"
+                    id="moves">
+
+                    0 moves
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <div
+                    id="message"
+                    aria-live="polite">
+
+                    Choose an arrow to begin. 🦫
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🎮 Move Edward
+                </h2>
+
+
+                <div class="direction-pad">
+
+
+                    <button
+                        type="button"
+                        class="direction-button"
+                        id="up-button"
+                        aria-label="Move up">
+
+                        ↑
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="direction-button"
+                        id="left-button"
+                        aria-label="Move left">
+
+                        ←
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="direction-button"
+                        id="down-button"
+                        aria-label="Move down">
+
+                        ↓
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="direction-button"
+                        id="right-button"
+                        aria-label="Move right">
+
+                        →
+
+                    </button>
+
+
+                </div>
+
+
+                <p
+                    style="
+                        text-align:center;
+                        color:#617789;
+                        font-size:.9rem;
+                        margin:14px 0 0;
+                    ">
+
+                    💻 You can also use
+                    the arrow keys on your keyboard.
+
+                </p>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🧰 My tools
+                </h2>
+
+
+                <div class="tools">
+
+
+                    <button
+                        type="button"
+                        class="tool-button hint-button"
+                        id="hint-button">
+
+                        💡 Hint
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="tool-button restart-button"
+                        id="restart-button">
+
+                        🔄 Start over
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="tool-button sound-button"
+                        id="sound-button">
+
+                        🔊 Sound on
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="sidebar-box">
+
+
+                <h2 class="sidebar-title">
+                    🦫 How to play
+                </h2>
+
+
+                <ol class="instructions">
+
+                    <li>
+                        Press an arrow.
+                    </li>
+
+                    <li>
+                        Edward moves until he reaches the next wall.
+                    </li>
+
+                    <li>
+                        Then choose a new direction.
+                    </li>
+
+                    <li>
+                        If you reach a dead end,
+                        use the opposite arrow to go back.
+                    </li>
+
+                    <li>
+                        Reach the dam to win!
+                    </li>
+
+                </ol>
+
+
+            </section>
+
+
+
+            <div
+                class="victory"
+                id="victory">
+
+                🎉 Great job!
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =====================================================
+       CONFIGURATION
+    ===================================================== */
+
+
+    const REFERENCE_WIDTH =
+        1448;
+
+
+    const REFERENCE_HEIGHT =
+        1086;
+
+
+
+    const START_REFERENCE = {
+
+        x: 417,
+
+        y: 483
+
+    };
+
+
+
+    const GOAL_REFERENCE = {
+
+        x: 1096,
+
+        y: 744
+
+    };
+
+
+
+    const MAZE_REFERENCE = {
+
+        left: 318,
+
+        top: 145,
+
+        right: 1128,
+
+        bottom: 948
+
+    };
+
+
+
+    /* =========================
+       ÉLÉMENTS
+    ========================== */
+
+
+    const board =
+        document.getElementById(
+            "maze-board"
+        );
+
+
+    const image =
+        document.getElementById(
+            "maze-image"
+        );
+
+
+    const player =
+        document.getElementById(
+            "player"
+        );
+
+
+    const startTarget =
+        document.getElementById(
+            "start-target"
+        );
+
+
+    const goalTarget =
+        document.getElementById(
+            "goal-target"
+        );
+
+
+    const trailCanvas =
+        document.getElementById(
+            "trail-canvas"
+        );
+
+
+    const trailCtx =
+        trailCanvas.getContext(
+            "2d"
+        );
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    const starsDisplay =
+        document.getElementById(
+            "stars"
+        );
+
+
+    const movesDisplay =
+        document.getElementById(
+            "moves"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    const victory =
+        document.getElementById(
+            "victory"
+        );
+
+
+    const hintButton =
+        document.getElementById(
+            "hint-button"
+        );
+
+
+    const restartButton =
+        document.getElementById(
+            "restart-button"
+        );
+
+
+    const soundButton =
+        document.getElementById(
+            "sound-button"
+        );
+
+
+    const upButton =
+        document.getElementById(
+            "up-button"
+        );
+
+
+    const downButton =
+        document.getElementById(
+            "down-button"
+        );
+
+
+    const leftButton =
+        document.getElementById(
+            "left-button"
+        );
+
+
+    const rightButton =
+        document.getElementById(
+            "right-button"
+        );
+
+
+    const directionButtons =
+        [
+            upButton,
+            downButton,
+            leftButton,
+            rightButton
+        ];
+
+
+
+    /* =========================
+       CANVAS DE COLLISION
+    ========================== */
+
+
+    const collisionCanvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    const collisionCtx =
+        collisionCanvas.getContext(
+            "2d",
+            {
+                willReadFrequently: true
+            }
+        );
+
+
+    let collisionPixels =
+        null;
+
+
+
+    /* =========================
+       ÉTAT
+    ========================== */
+
+
+    let naturalWidth =
+        REFERENCE_WIDTH;
+
+
+    let naturalHeight =
+        REFERENCE_HEIGHT;
+
+
+    let startPoint =
+        null;
+
+
+    let goalPoint =
+        null;
+
+
+    let mazeBounds =
+        null;
+
+
+    let playerPosition =
+        null;
+
+
+    let moves =
+        0;
+
+
+    let stars =
+        3;
+
+
+    let won =
+        false;
+
+
+    let moving =
+        false;
+
+
+    let soundEnabled =
+        true;
+
+
+    let initialized =
+        false;
+
+
+
+    /* =========================
+       DIRECTIONS
+    ========================== */
+
+
+    const DIRECTIONS = {
+
+        up: {
+            x: 0,
+            y: -1
+        },
+
+        down: {
+            x: 0,
+            y: 1
+        },
+
+        left: {
+            x: -1,
+            y: 0
+        },
+
+        right: {
+            x: 1,
+            y: 0
+        }
+
+    };
+
+
+
+    /* =========================
+       ÉCHELLE
+    ========================== */
+
+
+    function scalePoint(
+        reference
+    ) {
+
+
+        return {
+
+            x:
+                reference.x *
+                naturalWidth /
+                REFERENCE_WIDTH,
+
+            y:
+                reference.y *
+                naturalHeight /
+                REFERENCE_HEIGHT
+
+        };
+
+
+    }
+
+
+
+    function scaleBounds(
+        reference
+    ) {
+
+
+        return {
+
+            left:
+                reference.left *
+                naturalWidth /
+                REFERENCE_WIDTH,
+
+            top:
+                reference.top *
+                naturalHeight /
+                REFERENCE_HEIGHT,
+
+            right:
+                reference.right *
+                naturalWidth /
+                REFERENCE_WIDTH,
+
+            bottom:
+                reference.bottom *
+                naturalHeight /
+                REFERENCE_HEIGHT
+
+        };
+
+
+    }
+
+
+
+    /* =========================
+       INITIALISATION
+    ========================== */
+
+
+    function initializeGame() {
+
+
+        if (
+            initialized
+        ) {
+
+            return;
+
+        }
+
+
+        initialized =
+            true;
+
+
+        naturalWidth =
+            image.naturalWidth;
+
+
+        naturalHeight =
+            image.naturalHeight;
+
+
+        trailCanvas.width =
+            naturalWidth;
+
+
+        trailCanvas.height =
+            naturalHeight;
+
+
+        collisionCanvas.width =
+            naturalWidth;
+
+
+        collisionCanvas.height =
+            naturalHeight;
+
+
+        collisionCtx.drawImage(
+            image,
+            0,
+            0,
+            naturalWidth,
+            naturalHeight
+        );
+
+
+        collisionPixels =
+            collisionCtx.getImageData(
+                0,
+                0,
+                naturalWidth,
+                naturalHeight
+            );
+
+
+        startPoint =
+            scalePoint(
+                START_REFERENCE
+            );
+
+
+        goalPoint =
+            scalePoint(
+                GOAL_REFERENCE
+            );
+
+
+        mazeBounds =
+            scaleBounds(
+                MAZE_REFERENCE
+            );
+
+
+        positionTarget(
+            startTarget,
+            startPoint
+        );
+
+
+        positionTarget(
+            goalTarget,
+            goalPoint
+        );
+
+
+        resetGame();
+
+
+    }
+
+
+
+    image.addEventListener(
+        "load",
+        initializeGame
+    );
+
+
+    if (
+        image.complete &&
+        image.naturalWidth
+    ) {
+
+        initializeGame();
+
+    }
+
+
+
+    /* =========================
+       POSITION VISUELLE
+    ========================== */
+
+
+    function positionTarget(
+        element,
+        point
+    ) {
+
+
+        element.style.left =
+
+            (
+                point.x /
+                naturalWidth *
+                100
+            ) +
+            "%";
+
+
+        element.style.top =
+
+            (
+                point.y /
+                naturalHeight *
+                100
+            ) +
+            "%";
+
+
+    }
+
+
+
+    function positionPlayer(
+        point
+    ) {
+
+
+        player.style.left =
+
+            (
+                point.x /
+                naturalWidth *
+                100
+            ) +
+            "%";
+
+
+        player.style.top =
+
+            (
+                point.y /
+                naturalHeight *
+                100
+            ) +
+            "%";
+
+
+    }
+
+
+
+    /* =========================
+       PIXEL
+    ========================== */
+
+
+    function getPixel(
+        x,
+        y
+    ) {
+
+
+        x =
+            Math.round(
+                x
+            );
+
+
+        y =
+            Math.round(
+                y
+            );
+
+
+        if (
+            x < 0 ||
+            y < 0 ||
+            x >= naturalWidth ||
+            y >= naturalHeight
+        ) {
+
+            return null;
+
+        }
+
+
+        const index =
+            (
+                y *
+                naturalWidth +
+                x
+            ) * 4;
+
+
+        return {
+
+            r:
+                collisionPixels
+                    .data[index],
+
+            g:
+                collisionPixels
+                    .data[index + 1],
+
+            b:
+                collisionPixels
+                    .data[index + 2]
+
+        };
+
+
+    }
+
+
+
+    /* =====================================================
+       RECONNAISSANCE DES MURS
+    ===================================================== */
+
+
+    function isWallPixel(
+        x,
+        y
+    ) {
+
+
+        const pixel =
+            getPixel(
+                x,
+                y
+            );
+
+
+        if (
+            !pixel
+        ) {
+
+            return true;
+
+        }
+
+
+        const r =
+            pixel.r;
+
+
+        const g =
+            pixel.g;
+
+
+        const b =
+            pixel.b;
+
+
+
+        /*
+           Mur brun principal.
+        */
+
+        const brownWall =
+
+            r >= 85 &&
+
+            r <= 225 &&
+
+            g >= 35 &&
+
+            g <= 175 &&
+
+            b <= 135 &&
+
+            (
+                r - g
+            ) >= 25 &&
+
+            (
+                g - b
+            ) >= 8;
+
+
+
+        /*
+           Partie plus foncée
+           du contour brun.
+        */
+
+        const darkBrown =
+
+            r >= 45 &&
+
+            r <= 145 &&
+
+            g >= 20 &&
+
+            g <= 100 &&
+
+            b <= 75 &&
+
+            (
+                r - g
+            ) >= 15;
+
+
+
+        return (
+            brownWall ||
+            darkBrown
+        );
+
+
+    }
+
+
+
+    /* =========================
+       LIMITES
+    ========================== */
+
+
+    function insideMaze(
+        point
+    ) {
+
+
+        return (
+
+            point.x >=
+                mazeBounds.left &&
+
+            point.x <=
+                mazeBounds.right &&
+
+            point.y >=
+                mazeBounds.top &&
+
+            point.y <=
+                mazeBounds.bottom
+
+        );
+
+
+    }
+
+
+
+    /* =========================
+       DISTANCE
+    ========================== */
+
+
+    function distance(
+        a,
+        b
+    ) {
+
+
+        return Math.hypot(
+
+            a.x -
+            b.x,
+
+            a.y -
+            b.y
+
+        );
+
+
+    }
+
+
+
+    /* =====================================================
+       CHERCHER LE PROCHAIN MUR
+    ===================================================== */
+
+
+    function findDestination(
+        direction
+    ) {
+
+
+        const vector =
+            DIRECTIONS[
+                direction
+            ];
+
+
+        /*
+           Avance pixel par pixel.
+        */
+
+        const step =
+            1 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        let current = {
+
+            x:
+                playerPosition.x,
+
+            y:
+                playerPosition.y
+
+        };
+
+
+        let lastSafe = {
+
+            x:
+                playerPosition.x,
+
+            y:
+                playerPosition.y
+
+        };
+
+
+        let travelled =
+            0;
+
+
+        const maximum =
+            naturalWidth *
+            1.3;
+
+
+        const goalRadius =
+            44 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        while (
+            travelled <
+            maximum
+        ) {
+
+
+            const next = {
+
+                x:
+                    current.x +
+                    vector.x *
+                    step,
+
+                y:
+                    current.y +
+                    vector.y *
+                    step
+
+            };
+
+
+            /*
+               ARRIVÉE
+            */
+
+            if (
+                distance(
+                    next,
+                    goalPoint
+                ) <=
+                goalRadius
+            ) {
+
+
+                return {
+
+                    point: {
+
+                        x:
+                            goalPoint.x,
+
+                        y:
+                            goalPoint.y
+
+                    },
+
+                    reachedGoal:
+                        true
+
+                };
+
+
+            }
+
+
+            /*
+               SORTIE DU LABYRINTHE
+            */
+
+            if (
+                !insideMaze(
+                    next
+                )
+            ) {
+
+                break;
+
+            }
+
+
+            /*
+               MUR
+            */
+
+            if (
+                isWallPixel(
+                    next.x,
+                    next.y
+                )
+            ) {
+
+                break;
+
+            }
+
+
+            lastSafe = {
+
+                x:
+                    next.x,
+
+                y:
+                    next.y
+
+            };
+
+
+            current =
+                next;
+
+
+            travelled +=
+                step;
+
+
+        }
+
+
+
+        /*
+           On recule légèrement
+           AVANT le mur.
+
+           Cela laisse assez de place
+           pour prendre une direction
+           perpendiculaire ensuite.
+        */
+
+        if (
+            travelled >
+            25
+        ) {
+
+
+            const safetyGap =
+                18 *
+                naturalWidth /
+                REFERENCE_WIDTH;
+
+
+            const saferPoint = {
+
+                x:
+                    lastSafe.x -
+                    vector.x *
+                    safetyGap,
+
+                y:
+                    lastSafe.y -
+                    vector.y *
+                    safetyGap
+
+            };
+
+
+            if (
+                insideMaze(
+                    saferPoint
+                ) &&
+                !isWallPixel(
+                    saferPoint.x,
+                    saferPoint.y
+                )
+            ) {
+
+
+                lastSafe =
+                    saferPoint;
+
+
+            }
+
+
+        }
+
+
+        return {
+
+            point:
+                lastSafe,
+
+            reachedGoal:
+                false
+
+        };
+
+
+    }
+
+
+
+    /* =========================
+       PEUT BOUGER ?
+    ========================== */
+
+
+    function canMove(
+        direction
+    ) {
+
+
+        const result =
+            findDestination(
+                direction
+            );
+
+
+        return (
+
+            result.reachedGoal ||
+
+            distance(
+                result.point,
+                playerPosition
+            ) >
+            10
+
+        );
+
+
+    }
+
+
+
+    /* =====================================================
+       DÉPLACEMENT
+    ===================================================== */
+
+
+    async function move(
+        direction
+    ) {
+
+
+        if (
+            moving ||
+            won ||
+            !collisionPixels
+        ) {
+
+            return;
+
+        }
+
+
+        const result =
+            findDestination(
+                direction
+            );
+
+
+        const destination =
+            result.point;
+
+
+        const moveDistance =
+            distance(
+                playerPosition,
+                destination
+            );
+
+
+        /*
+           PAS DE CHEMIN
+        */
+
+        if (
+            moveDistance <=
+            10 &&
+            !result.reachedGoal
+        ) {
+
+
+            showMessage(
+                "There is a wall in that direction. 🧱 Try another arrow!"
+            );
+
+
+            playWrongSound();
+
+
+            return;
+
+        }
+
+
+
+        moving =
+            true;
+
+
+        disableDirections(
+            true
+        );
+
+
+        const oldPosition = {
+
+            x:
+                playerPosition.x,
+
+            y:
+                playerPosition.y
+
+        };
+
+
+        moves++;
+
+
+        updateMoves();
+
+
+        status.textContent =
+            "Edward is moving...";
+
+
+        playMoveSound();
+
+
+
+        await animateMovement(
+            oldPosition,
+            destination
+        );
+
+
+
+        playerPosition = {
+
+            x:
+                destination.x,
+
+            y:
+                destination.y
+
+        };
+
+
+        positionPlayer(
+            playerPosition
+        );
+
+
+        drawTrail(
+            oldPosition,
+            playerPosition
+        );
+
+
+        moving =
+            false;
+
+
+        disableDirections(
+            false
+        );
+
+
+
+        /* =========================
+           VICTOIRE
+        ========================== */
+
+        if (
+            result.reachedGoal ||
+            distance(
+                playerPosition,
+                goalPoint
+            ) <=
+            45
+        ) {
+
+
+            winGame();
+
+
+            return;
+
+        }
+
+
+
+        status.textContent =
+            "Your turn to choose!";
+
+
+        showMessage(
+            "Choose the next direction. 🦫"
+        );
+
+
+        updateAvailableDirections();
+
+
+    }
+
+
+
+    /* =========================
+       ANIMATION
+    ========================== */
+
+
+    function animateMovement(
+        from,
+        to
+    ) {
+
+
+        return new Promise(
+            function(resolve) {
+
+
+                const totalDistance =
+                    distance(
+                        from,
+                        to
+                    );
+
+
+                const duration =
+                    Math.min(
+
+                        620,
+
+                        Math.max(
+                            170,
+                            totalDistance *
+                            .85
+                        )
+
+                    );
+
+
+                const startTime =
+                    performance.now();
+
+
+                function frame(
+                    now
+                ) {
+
+
+                    const progress =
+                        Math.min(
+
+                            1,
+
+                            (
+                                now -
+                                startTime
+                            ) /
+                            duration
+
+                        );
+
+
+                    const eased =
+                        1 -
+                        Math.pow(
+                            1 - progress,
+                            3
+                        );
+
+
+                    const current = {
+
+                        x:
+                            from.x +
+                            (
+                                to.x -
+                                from.x
+                            ) *
+                            eased,
+
+                        y:
+                            from.y +
+                            (
+                                to.y -
+                                from.y
+                            ) *
+                            eased
+
+                    };
+
+
+                    positionPlayer(
+                        current
+                    );
+
+
+                    if (
+                        progress <
+                        1
+                    ) {
+
+
+                        requestAnimationFrame(
+                            frame
+                        );
+
+
+                    }
+
+                    else {
+
+
+                        resolve();
+
+
+                    }
+
+
+                }
+
+
+                requestAnimationFrame(
+                    frame
+                );
+
+
+            }
+        );
+
+
+    }
+
+
+
+    /* =========================
+       TRAJET
+    ========================== */
+
+
+    function drawTrail(
+        from,
+        to
+    ) {
+
+
+        trailCtx.beginPath();
+
+
+        trailCtx.moveTo(
+            from.x,
+            from.y
+        );
+
+
+        trailCtx.lineTo(
+            to.x,
+            to.y
+        );
+
+
+        trailCtx.strokeStyle =
+            "rgba(23, 78, 120, .70)";
+
+
+        trailCtx.lineWidth =
+            8 *
+            naturalWidth /
+            REFERENCE_WIDTH;
+
+
+        trailCtx.lineCap =
+            "round";
+
+
+        trailCtx.lineJoin =
+            "round";
+
+
+        trailCtx.stroke();
+
+
+    }
+
+
+
+    /* =========================
+       BOUTONS
+    ========================== */
+
+
+    upButton.addEventListener(
+        "click",
+        function() {
+
+            move(
+                "up"
+            );
+
+        }
+    );
+
+
+    downButton.addEventListener(
+        "click",
+        function() {
+
+            move(
+                "down"
+            );
+
+        }
+    );
+
+
+    leftButton.addEventListener(
+        "click",
+        function() {
+
+            move(
+                "left"
+            );
+
+        }
+    );
+
+
+    rightButton.addEventListener(
+        "click",
+        function() {
+
+            move(
+                "right"
+            );
+
+        }
+    );
+
+
+
+    /* =========================
+       CLAVIER
+    ========================== */
+
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+
+            if (
+                event.key ===
+                "ArrowUp"
+            ) {
+
+
+                event.preventDefault();
+
+
+                move(
+                    "up"
+                );
+
+
+            }
+
+
+            else if (
+                event.key ===
+                "ArrowDown"
+            ) {
+
+
+                event.preventDefault();
+
+
+                move(
+                    "down"
+                );
+
+
+            }
+
+
+            else if (
+                event.key ===
+                "ArrowLeft"
+            ) {
+
+
+                event.preventDefault();
+
+
+                move(
+                    "left"
+                );
+
+
+            }
+
+
+            else if (
+                event.key ===
+                "ArrowRight"
+            ) {
+
+
+                event.preventDefault();
+
+
+                move(
+                    "right"
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+
+    /* =========================
+       DIRECTIONS DISPONIBLES
+    ========================== */
+
+
+    function updateAvailableDirections() {
+
+
+        const map =
+            [
+
+                {
+                    button:
+                        upButton,
+
+                    direction:
+                        "up"
+                },
+
+                {
+                    button:
+                        downButton,
+
+                    direction:
+                        "down"
+                },
+
+                {
+                    button:
+                        leftButton,
+
+                    direction:
+                        "left"
+                },
+
+                {
+                    button:
+                        rightButton,
+
+                    direction:
+                        "right"
+                }
+
+            ];
+
+
+        map.forEach(
+            function(item) {
+
+
+                item.button
+                    .classList
+                    .remove(
+                        "available"
+                    );
+
+
+                if (
+                    !won &&
+                    canMove(
+                        item.direction
+                    )
+                ) {
+
+
+                    item.button
+                        .classList
+                        .add(
+                            "available"
+                        );
+
+
+                }
+
+
+            }
+        );
+
+
+    }
+
+
+
+    function disableDirections(
+        value
+    ) {
+
+
+        directionButtons.forEach(
+            function(button) {
+
+
+                button.disabled =
+                    value;
+
+
+            }
+        );
+
+
+    }
+
+
+
+    /* =========================
+       DÉPLACEMENTS
+    ========================== */
+
+
+    function updateMoves() {
+
+
+        if (
+            moves === 0
+        ) {
+
+
+            movesDisplay.textContent =
+                "0 moves";
+
+
+        }
+
+        else if (
+            moves === 1
+        ) {
+
+
+            movesDisplay.textContent =
+                "1 move";
+
+
+        }
+
+        else {
+
+
+            movesDisplay.textContent =
+                moves +
+                " moves";
+
+
+        }
+
+
+    }
+
+
+
+    /* =========================
+       INDICE
+    ========================== */
+
+
+    hintButton.addEventListener(
+        "click",
+        function() {
+
+
+            if (
+                won
+            ) {
+
+
+                showMessage(
+                    "Edward has already reached the dam! 🎉"
+                );
+
+
+                return;
+
+            }
+
+
+            if (
+                stars > 1
+            ) {
+
+
+                stars--;
+
+
+                updateStars();
+
+
+            }
+
+
+            goalTarget
+                .classList
+                .add(
+                    "hint"
+                );
+
+
+            showMessage(
+                "💡 The dam is on the right. Explore the paths and turn back if you reach a dead end."
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    goalTarget
+                        .classList
+                        .remove(
+                            "hint"
+                        );
+
+
+                },
+                2500
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       VICTOIRE
+    ========================== */
+
+
+    function winGame() {
+
+
+        if (
+            won
+        ) {
+
+            return;
+
+        }
+
+
+        won =
+            true;
+
+
+        disableDirections(
+            true
+        );
+
+
+        status.textContent =
+            "Dam reached! 🎉";
+
+
+        showMessage(
+            "Great job! You helped Edward reach the dam! 🦫🏆"
+        );
+
+
+        victory.classList.add(
+            "show"
+        );
+
+
+        victory.innerHTML =
+
+            "🎉 Great job!" +
+
+            "<br>" +
+
+            "Edward reached the dam!" +
+
+            "<br><br>" +
+
+            "<span style='font-size:1rem'>" +
+
+            "Result: " +
+
+            starsDisplay.textContent +
+
+            "<br>" +
+
+            moves +
+
+            (
+                moves === 1
+                    ? " move"
+                    : " moves"
+            ) +
+
+            "</span>";
+
+
+        playVictorySound();
+
+
+        launchConfetti();
+
+
+    }
+
+
+
+    /* =========================
+       RECOMMENCER
+    ========================== */
+
+
+    restartButton.addEventListener(
+        "click",
+        function() {
+
+
+            const confirmation =
+                confirm(
+                    "Do you want to restart the maze?"
+                );
+
+
+            if (
+                !confirmation
+            ) {
+
+                return;
+
+            }
+
+
+            resetGame();
+
+
+        }
+    );
+
+
+
+    function resetGame() {
+
+
+        trailCtx.clearRect(
+            0,
+            0,
+            trailCanvas.width,
+            trailCanvas.height
+        );
+
+
+        playerPosition = {
+
+            x:
+                startPoint.x,
+
+            y:
+                startPoint.y
+
+        };
+
+
+        moves =
+            0;
+
+
+        stars =
+            3;
+
+
+        won =
+            false;
+
+
+        moving =
+            false;
+
+
+        positionPlayer(
+            playerPosition
+        );
+
+
+        updateMoves();
+
+
+        updateStars();
+
+
+        disableDirections(
+            false
+        );
+
+
+        victory.classList.remove(
+            "show"
+        );
+
+
+        goalTarget
+            .classList
+            .remove(
+                "hint"
+            );
+
+
+        status.textContent =
+            "Ready to go!";
+
+
+        showMessage(
+            "Choose an arrow to begin. 🦫"
+        );
+
+
+        setTimeout(
+            updateAvailableDirections,
+            100
+        );
+
+
+    }
+
+
+
+    /* =========================
+       ÉTOILES
+    ========================== */
+
+
+    function updateStars() {
+
+
+        starsDisplay.textContent =
+
+            "⭐".repeat(
+                stars
+            ) +
+
+            "☆".repeat(
+                3 - stars
+            );
+
+
+    }
+
+
+
+    /* =========================
+       SON
+    ========================== */
+
+
+    soundButton.addEventListener(
+        "click",
+        function() {
+
+
+            soundEnabled =
+                !soundEnabled;
+
+
+            soundButton.textContent =
+
+                soundEnabled
+
+                    ? "🔊 Sound on"
+
+                    : "🔇 Sound off";
+
+
+            if (
+                soundEnabled
+            ) {
+
+
+                playTone(
+                    600,
+                    .12
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+
+    function playTone(
+        frequency,
+        duration
+    ) {
+
+
+        if (
+            !soundEnabled
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+
+            const AudioContext =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+
+            const audio =
+                new AudioContext();
+
+
+            const oscillator =
+                audio.createOscillator();
+
+
+            const gain =
+                audio.createGain();
+
+
+            oscillator.connect(
+                gain
+            );
+
+
+            gain.connect(
+                audio.destination
+            );
+
+
+            oscillator.frequency.value =
+                frequency;
+
+
+            oscillator.type =
+                "sine";
+
+
+            gain.gain.value =
+                .05;
+
+
+            oscillator.start();
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+
+                    .001,
+
+                    audio.currentTime +
+                    duration
+
+                );
+
+
+            oscillator.stop(
+                audio.currentTime +
+                duration
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    audio.close();
+
+
+                },
+                duration *
+                1000 +
+                80
+            );
+
+
+        }
+
+        catch (error) {
+
+
+        }
+
+
+    }
+
+
+
+    function playMoveSound() {
+
+
+        playTone(
+            470,
+            .07
+        );
+
+
+    }
+
+
+
+    function playWrongSound() {
+
+
+        playTone(
+            190,
+            .18
+        );
+
+
+    }
+
+
+
+    function playVictorySound() {
+
+
+        const notes =
+            [
+                523,
+                659,
+                784,
+                1046
+            ];
+
+
+        notes.forEach(
+            function(note, index) {
+
+
+                setTimeout(
+                    function() {
+
+
+                        playTone(
+                            note,
+                            .27
+                        );
+
+
+                    },
+                    index *
+                    120
+                );
+
+
+            }
+        );
+
+
+    }
+
+
+
+    /* =========================
+       CONFETTIS
+    ========================== */
+
+
+    function launchConfetti() {
+
+
+        const colors =
+            [
+                "#2F8F46",
+                "#174E78",
+                "#F1B83B",
+                "#EC4899",
+                "#8B5CF6",
+                "#F97316"
+            ];
+
+
+        for (
+            let i = 0;
+            i < 70;
+            i++
+        ) {
+
+
+            const piece =
+                document.createElement(
+                    "div"
+                );
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            piece.style.backgroundColor =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            piece.style.animationDelay =
+                Math.random() *
+                .8 +
+                "s";
+
+
+            piece.style.animationDuration =
+                (
+                    1.8 +
+                    Math.random() *
+                    1.5
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(
+                function() {
+
+
+                    piece.remove();
+
+
+                },
+                4000
+            );
+
+
+        }
+
+
+    }
+
+
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+
+    function showMessage(
+        text
+    ) {
+
+
+        message.textContent =
+            text;
+
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
