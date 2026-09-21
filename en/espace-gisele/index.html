@@ -1,1 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Gisèle's Space | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background-color: #FFFDF7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 22px;
+
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #174E78;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #2F8F46;
+        }
+
+        .other-code {
+            background-color: #174E78;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 25px;
+        }
+
+        .other-code:hover {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .language-button {
+            display: inline-block;
+
+            padding: 9px 13px;
+
+            border:
+                2px solid #174E78;
+
+            border-radius: 22px;
+
+            color: #174E78;
+
+            background-color: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+        }
+
+        .language-button:hover {
+            border-color: #2F8F46;
+
+            color: #2F8F46;
+        }
+
+
+        /* =========================
+           WELCOME
+        ========================== */
+
+        .hero {
+            padding:
+                65px 20px 55px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 100%
+                );
+        }
+
+        .hero-content {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 45px;
+        }
+
+        .hero-image {
+            flex:
+                0 0 260px;
+
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+
+            max-width: 240px;
+
+            max-height: 280px;
+
+            object-fit: contain;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .unlocked {
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding:
+                8px 16px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            font-size: 0.95rem;
+        }
+
+        .hero h1 {
+            margin:
+                0 0 15px;
+
+            color: #174E78;
+
+            font-size: 3rem;
+
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: #2F8F46;
+        }
+
+        .hero p {
+            margin: 0;
+
+            color: #40566A;
+
+            font-size: 1.2rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        .content {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding:
+                70px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 2.3rem;
+        }
+
+        .section-title p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #40566A;
+
+            line-height: 1.7;
+
+            font-size: 1.08rem;
+        }
+
+        .main-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 30px;
+
+            align-items: stretch;
+        }
+
+        .main-card {
+            background-color: white;
+
+            border-radius: 28px;
+
+            padding:
+                32px 28px;
+
+            box-shadow:
+                0 12px 28px
+                rgba(0, 0, 0, 0.08);
+
+            border:
+                2px solid #E7EEF3;
+        }
+
+        .main-card h2 {
+            color: #174E78;
+
+            margin:
+                8px 0 12px;
+
+            font-size: 1.8rem;
+        }
+
+        .main-card > p {
+            margin:
+                0 0 22px;
+
+            color: #40566A;
+
+            line-height: 1.65;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+        }
+
+        .activity-list,
+        .explorer-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+        }
+
+        .activity-preview,
+        .explorer-preview {
+            background-color: #F8FBFD;
+
+            border-radius: 20px;
+
+            padding:
+                22px 20px;
+
+            border:
+                2px solid #E4EDF3;
+        }
+
+        .activity-label {
+            display: inline-block;
+
+            margin-bottom: 8px;
+
+            padding:
+                5px 10px;
+
+            border-radius: 15px;
+
+            background-color: #F3E8C9;
+
+            color: #8A5D18;
+
+            font-weight: bold;
+
+            font-size: 0.78rem;
+        }
+
+        .activity-preview h3,
+        .explorer-preview h3 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 1.25rem;
+        }
+
+        .activity-preview p,
+        .explorer-preview p {
+            margin:
+                0 0 16px;
+
+            color: #40566A;
+
+            line-height: 1.6;
+        }
+
+        .game-button,
+        .explorer-button {
+            display: inline-block;
+
+            padding:
+                10px 17px;
+
+            border-radius: 22px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .game-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .game-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .explorer-button {
+            background-color: #2F8F46;
+
+            color: white;
+        }
+
+        .explorer-button:hover {
+            background-color: #174E78;
+        }
+
+
+        /* =========================
+           READER MESSAGE
+        ========================== */
+
+        .secret-note {
+            margin-top: 45px;
+
+            padding:
+                30px 25px;
+
+            background-color: #EAF6FC;
+
+            border-radius: 24px;
+
+            text-align: center;
+        }
+
+        .secret-note h3 {
+            margin:
+                0 0 10px;
+
+            color: #174E78;
+
+            font-size: 1.5rem;
+        }
+
+        .secret-note p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #40566A;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background-color: #174E78;
+
+            color: white;
+
+            padding:
+                30px 20px;
+
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+            .logo {
+                width: 220px;
+
+                max-width: 80%;
+            }
+
+            nav {
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 20px;
+            }
+
+            .hero-image {
+                flex: auto;
+            }
+
+            .hero-image img {
+                max-width: 190px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .hero {
+                padding:
+                    45px 18px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-card {
+                padding:
+                    27px 22px;
+            }
+
+            .content {
+                padding:
+                    50px 18px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+
+        <a href="../index.html">
+
+            <img
+                src="../../logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse"
+                class="logo">
+
+        </a>
+
+
+        <nav>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../livres.html">
+                Our Books
+            </a>
+
+            <a
+                href="../code-secret.html"
+                class="other-code">
+
+                🔐 Enter Another Code
+
+            </a>
+
+            <a
+                href="../../espace-gisele/"
+                class="language-button"
+                lang="fr">
+
+                🇫🇷 FR
+
+            </a>
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         WELCOME
+    ========================== -->
+
+    <section class="hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-image">
+
+
+                <img
+                    src="../../images/Image_Officielle_Gisele.png"
+                    alt="Gisèle the Stargazing Giraffe">
+
+
+            </div>
+
+
+
+            <div class="hero-text">
+
+
+                <div class="unlocked">
+                    🔓 Volume 3 unlocked
+                </div>
+
+
+                <h1>
+
+                    Welcome to
+
+                    <span>
+                        Gisèle's space!
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Great job, explorer!
+
+                    Your secret code unlocked the special space for
+                    <strong>Gisèle the Stargazing Giraffe</strong>.
+
+                    Here you'll find games, activities
+                    and even more discoveries about
+                    the fascinating world of giraffes.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         ACTIVITIES AND EXPLORERS
+    ========================== -->
+
+    <main class="content">
+
+
+        <div class="section-title">
+
+
+            <h2>
+                What would you like to do?
+            </h2>
+
+
+            <p>
+
+                Choose an activity or start exploring
+                to discover even more with
+                Matteo and Gisèle.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="main-grid">
+
+
+            <!-- =========================
+                 ACTIVITIES
+            ========================== -->
+
+            <section
+                class="main-card activities-card"
+                id="activities">
+
+                <div class="card-icon">🎮</div>
+
+                <h2>Activities</h2>
+
+                <p>
+                    Play with Matteo and Gisèle
+                    through activities inspired by
+                    <em>Gisèle the Stargazing Giraffe</em>.
+                </p>
+
+                <div class="activity-list">
+
+                    <div class="activity-preview">
+                        <div class="activity-label">COLORING</div>
+                        <h3>🎨 Color Gisèle</h3>
+                        <p>
+                            Choose your colors and bring Gisèle,
+                            her starry scarf, neck support
+                            and telescope to life!
+                        </p>
+                        <a href="coloriage.html" class="game-button">
+                            🎨 Color
+                        </a>
+                    </div>
+
+                    <div class="activity-preview">
+                        <div class="activity-label">GAME</div>
+                        <h3>🔎 Search and Find with Gisèle</h3>
+                        <p>
+                            Look carefully at the picture
+                            and find all the hidden objects
+                            in Gisèle's world!
+                        </p>
+                        <a href="chercher-trouve.html" class="game-button">
+                            🔎 Play
+                        </a>
+                    </div>
+
+                    <div class="activity-preview">
+                        <div class="activity-label">GAME</div>
+                        <h3>🧩 The Starry Puzzle</h3>
+                        <p>
+                            Put the 15 pieces back together
+                            to rebuild the picture of Gisèle
+                            stargazing with her telescope!
+                        </p>
+                        <a href="casse-tete.html" class="game-button">
+                            🧩 Play
+                        </a>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 EXPLORER'S CORNER
+            ========================== -->
+
+            <section
+                class="main-card explorer-card"
+                id="explorers">
+
+                <div class="card-icon">🔎</div>
+
+                <h2>Explorer's Corner</h2>
+
+                <p>
+                    Think you know everything about giraffes?
+                    The adventure continues!
+                </p>
+
+                <div class="explorer-list">
+
+                    <div class="explorer-preview">
+                        <h3>🦒 Giraffe Secrets</h3>
+                        <p>
+                            Discover even more amazing facts
+                            about giraffes, their long necks,
+                            their patterns and their
+                            incredible adaptations!
+                        </p>
+                        <a href="explorateurs.html" class="explorer-button">
+                            🌿 Explore the Secrets
+                        </a>
+                    </div>
+
+                    <div class="explorer-preview">
+                        <h3>🎓 My Explorer Diploma</h3>
+                        <p>
+                            Congratulations on your adventure
+                            with Gisèle!
+                            Personalize your Mini Explorers Club
+                            diploma, then print it
+                            or save it.
+                        </p>
+                        <a href="diplome.html" class="explorer-button">
+                            🎓 My Diploma
+                        </a>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =========================
+             MESSAGE
+        ========================== -->
+
+        <div class="secret-note">
+
+
+            <h3>
+                ✨ This space is just for readers
+            </h3>
+
+
+            <p>
+
+                Every book from Les Éditions
+                Cap Découvertes Jeunesse has
+                its own secret code.
+
+                A new volume means new activities,
+                new games and new discoveries
+                to unlock!
+
+            </p>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+
+        <p>
+            Les Éditions Cap Découvertes Jeunesse
+        </p>
+
+
+        <p>
+            Stories that open up the world
+        </p>
+
+
+    </footer>
+
+
+</body>
+
+</html>
