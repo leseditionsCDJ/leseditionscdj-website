@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casse-tête de Gisèle | Les Éditions Cap Découvertes Jeunesse</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #203040;
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF3FF 0%,
+                    #FFFDF7 100%
+                );
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            background: white;
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #E7EEF3;
+        }
+
+        .logo {
+            width: 220px;
+            max-width: 70vw;
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button,
+        .language-button {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .home-button {
+            color: #174E78;
+            border: 2px solid #174E78;
+            background: white;
+        }
+
+        .back-button {
+            color: white;
+            background: #174E78;
+            border: 2px solid #174E78;
+        }
+
+        .language-button {
+            color: #174E78;
+            border: 2px solid #174E78;
+            background: white;
+        }
+
+        .nav-button:hover,
+        .language-button:hover {
+            transform: translateY(-1px);
+            border-color: #2F8F46;
+        }
+
+        .back-button:hover {
+            background: #2F8F46;
+        }
+
+        main {
+            width: min(1120px, 96%);
+            margin: auto;
+            padding: 34px 12px 70px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 10px;
+            color: #174E78;
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        .intro {
+            max-width: 820px;
+            margin: 0 auto;
+            color: #536B7B;
+            font-size: 1.08rem;
+            line-height: 1.65;
+        }
+
+        .game-panel {
+            background: white;
+            border: 2px solid #DDECF3;
+            border-radius: 28px;
+            padding: 18px;
+            box-shadow: 0 14px 36px rgba(23, 78, 120, .11);
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .tool-button {
+            border: none;
+            border-radius: 24px;
+            padding: 11px 17px;
+            font-size: .98rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .18s;
+        }
+
+        .tool-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .shuffle-button {
+            background: #174E78;
+            color: white;
+        }
+
+        .model-button {
+            background: #F1B83B;
+            color: #263238;
+        }
+
+        .restart-button {
+            background: #D95C5C;
+            color: white;
+        }
+
+        .status {
+            min-height: 52px;
+            max-width: 760px;
+            margin: 0 auto 16px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: #EFF8E9;
+            color: #2F8F46;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .stage-shell {
+            width: min(900px, 100%);
+            margin: auto;
+        }
+
+        #stage {
+            position: relative;
+            width: 100%;
+            height: auto;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .board {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border: 4px solid #174E78;
+            border-radius: 22px;
+            background:
+                linear-gradient(#EDF5FB, #FDFEFE);
+            overflow: hidden;
+        }
+
+        .board::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: var(--puzzle-image);
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+
+        .board.show-model::after {
+            opacity: .22;
+        }
+
+        .board-grid {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            pointer-events: none;
+        }
+
+        .board-cell {
+            border: 1px dashed rgba(23, 78, 120, .20);
+        }
+
+        .board-label,
+        .tray-label {
+            position: absolute;
+            z-index: 2;
+            left: 14px;
+            top: 12px;
+            padding: 6px 11px;
+            border-radius: 16px;
+            background: rgba(255,255,255,.90);
+            color: #174E78;
+            font-size: .86rem;
+            font-weight: bold;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        }
+
+        .tray {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border: 3px dashed #B9CEDD;
+            border-radius: 22px;
+            background:
+                repeating-linear-gradient(
+                    45deg,
+                    #FAFCFD,
+                    #FAFCFD 18px,
+                    #F2F7FA 18px,
+                    #F2F7FA 36px
+                );
+        }
+
+        .piece {
+            position: absolute;
+            width: 20%;
+            height: 33.333333%;
+            background-image: var(--puzzle-image);
+            background-size: 500% 300%;
+            background-repeat: no-repeat;
+            border-radius: 8px;
+            box-shadow: 0 7px 16px rgba(0,0,0,.22);
+            cursor: grab;
+            touch-action: none;
+            z-index: 10;
+            transition:
+                box-shadow .12s,
+                filter .12s;
+        }
+
+        .piece:hover {
+            filter: brightness(1.04);
+        }
+
+        .piece.dragging {
+            cursor: grabbing;
+            box-shadow: 0 13px 28px rgba(0,0,0,.30);
+            z-index: 100;
+        }
+
+        .piece.connected {
+            box-shadow: 0 3px 9px rgba(23,78,120,.18);
+        }
+
+        .piece.locked {
+            cursor: default;
+            box-shadow: none;
+        }
+
+        .solved-cover {
+            position: absolute;
+            z-index: 500;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .solved-cover.show {
+            display: flex;
+        }
+
+        .solved-card {
+            padding: 22px 28px;
+            border-radius: 25px;
+            background: rgba(255,255,255,.96);
+            border: 3px solid #F1B83B;
+            box-shadow: 0 12px 28px rgba(0,0,0,.20);
+            text-align: center;
+            color: #174E78;
+            font-weight: bold;
+            font-size: clamp(1.25rem, 3vw, 2rem);
+        }
+
+        .stars {
+            font-size: 1.4em;
+            letter-spacing: 6px;
+            margin-bottom: 6px;
+        }
+
+        .help {
+            max-width: 850px;
+            margin: 18px auto 0;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: #FFF7D9;
+            color: #6C5920;
+            line-height: 1.55;
+            text-align: center;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(9, 29, 45, .78);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-card {
+            width: min(760px, 96vw);
+            background: white;
+            border-radius: 24px;
+            padding: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.32);
+            text-align: center;
+        }
+
+        .modal-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .close-model {
+            margin-top: 12px;
+            background: #174E78;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .game-panel {
+                padding: 10px;
+            }
+
+            .board,
+            .tray {
+                border-radius: 14px;
+            }
+
+            .piece {
+                border-radius: 5px;
+            }
+        }
+
+    </style>
+</head>
+
+<body style="--puzzle-image: url('../images/casse-tete_gisele.png')">
+
+<header>
+    <a href="../index.html">
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+    </a>
+
+    <nav>
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+            Accueil
+        </a>
+
+        <a
+            href="./"
+            class="nav-button back-button">
+            ← Retour à la page de Gisèle
+        </a>
+
+        <a
+            href="../en/espace-gisele/casse-tete.html"
+            class="language-button"
+            lang="en">
+            🇨🇦 EN
+        </a>
+    </nav>
+</header>
+
+<main>
+    <div class="page-header">
+        <h1>🧩 Le casse-tête étoilé de Gisèle</h1>
+
+        <p class="intro">
+            Déplace les 15 morceaux pour reconstruire l'image. Quand deux morceaux sont bien placés l'un près de l'autre, ils s'attachent et se déplacent ensuite ensemble.
+        </p>
+    </div>
+
+    <section class="game-panel">
+
+        <div class="toolbar">
+            <button
+                class="tool-button shuffle-button"
+                id="shuffle-button">
+                🔀 Mélanger
+            </button>
+
+            <button
+                class="tool-button model-button"
+                id="model-button">
+                👀 Voir le modèle
+            </button>
+
+            <button
+                class="tool-button restart-button"
+                id="restart-button">
+                🔄 Recommencer
+            </button>
+        </div>
+
+        <div
+            class="status"
+            id="status"
+            aria-live="polite">
+        </div>
+
+        <div class="stage-shell">
+            <div id="stage">
+
+                <div
+                    class="board"
+                    id="board">
+
+                    <div class="board-label">
+                        PLATEAU
+                    </div>
+
+                    <div class="board-grid">
+                        <div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div><div class="board-cell"></div>
+                    </div>
+
+                </div>
+
+                <div
+                    class="tray"
+                    id="tray">
+
+                    <div class="tray-label">
+                        MORCEAUX
+                    </div>
+
+                </div>
+
+                <div
+                    class="solved-cover"
+                    id="solved-cover">
+
+                    <div class="solved-card">
+                        <div class="stars">⭐ 🌟 ⭐</div>
+                        Bravo ! Casse-tête terminé !
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="help">
+            💡 Astuce : tu peux commencer par les morceaux qui se touchent. Lorsqu'ils sont assez près et qu'ils vont ensemble, ils fusionnent automatiquement.
+        </div>
+
+    </section>
+</main>
+
+<div
+    class="modal"
+    id="model-modal">
+
+    <div class="modal-card">
+
+        <img
+            src="../images/casse-tete_gisele.png"
+            alt="Modèle du casse-tête de Gisèle">
+
+        <button
+            class="tool-button close-model"
+            id="close-model">
+            Fermer le modèle
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+    const PIECE_LABEL = "Morceau";
+    const MSG_START = "Prêt ! Choisis un morceau et déplace-le. 🧩";
+    const MSG_LOCKED = "Ce morceau est déjà bien placé sur le plateau. ⭐";
+    const MSG_CONNECTED = "Bravo ! Deux morceaux se sont attachés. ✨";
+    const MSG_MOVE = "Continue ! Cherche où ce morceau peut aller. 🔎";
+    const MSG_PLACED = "Parfait ! Ce groupe est bien placé sur le plateau. ⭐";
+    const MSG_SOLVED = "Bravo ! Tu as terminé le casse-tête de Gisèle ! 🌟";
+    const RESTART_CONFIRM = "Veux-tu vraiment recommencer le casse-tête ?";
+
+
+    const COLS = 5;
+    const ROWS = 3;
+    const TOTAL = COLS * ROWS;
+
+    const STAGE_GAP = 0.09;
+    const TRAY_TOP = 1 + STAGE_GAP;
+    const STAGE_HEIGHT = 2 + STAGE_GAP;
+
+    const CONNECT_TOLERANCE = 0.050;
+    const BOARD_TOLERANCE = 0.055;
+
+    const stage = document.getElementById("stage");
+    const board = document.getElementById("board");
+    const tray = document.getElementById("tray");
+    const statusBox = document.getElementById("status");
+    const solvedCover = document.getElementById("solved-cover");
+
+    const pieces = [];
+    const clusters = new Map();
+
+    let activeClusterId = null;
+    let pointerId = null;
+    let startPointer = null;
+    let startPositions = null;
+    let zCounter = 20;
+    let solved = false;
+
+    function stageWidth() {
+        return stage.getBoundingClientRect().width;
+    }
+
+    function pieceW() {
+        return 1 / COLS;
+    }
+
+    function pieceH() {
+        return 1 / ROWS;
+    }
+
+    function px(value) {
+        return value * stageWidth();
+    }
+
+    function setMessage(text) {
+        statusBox.textContent = text;
+    }
+
+    function shuffleArray(array) {
+        const copy = array.slice();
+
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+
+        return copy;
+    }
+
+    function correctX(piece) {
+        return piece.col / COLS;
+    }
+
+    function correctY(piece) {
+        return piece.row / ROWS;
+    }
+
+    function updateStageGeometry() {
+        stage.style.height = px(STAGE_HEIGHT) + "px";
+        tray.style.top = px(TRAY_TOP) + "px";
+        renderAll();
+    }
+
+    function renderPiece(piece) {
+        piece.el.style.left = px(piece.x) + "px";
+        piece.el.style.top = px(piece.y) + "px";
+
+        const xPos =
+            COLS === 1
+                ? 0
+                : (piece.col / (COLS - 1)) * 100;
+
+        const yPos =
+            ROWS === 1
+                ? 0
+                : (piece.row / (ROWS - 1)) * 100;
+
+        piece.el.style.backgroundPosition =
+            xPos + "% " + yPos + "%";
+    }
+
+    function renderAll() {
+        pieces.forEach(renderPiece);
+    }
+
+    function createPieces() {
+        for (let row = 0; row < ROWS; row++) {
+            for (let col = 0; col < COLS; col++) {
+                const id = row * COLS + col;
+
+                const el = document.createElement("div");
+                el.className = "piece";
+                el.dataset.id = id;
+                el.setAttribute("role", "button");
+                el.setAttribute(
+                    "aria-label",
+                    PIECE_LABEL + " " + (id + 1)
+                );
+
+                stage.appendChild(el);
+
+                const piece = {
+                    id,
+                    row,
+                    col,
+                    x: 0,
+                    y: 0,
+                    clusterId: id,
+                    locked: false,
+                    el
+                };
+
+                pieces.push(piece);
+                clusters.set(id, new Set([id]));
+
+                el.addEventListener(
+                    "pointerdown",
+                    event => beginDrag(event, piece)
+                );
+            }
+        }
+    }
+
+    function resetPuzzle() {
+        solved = false;
+        solvedCover.classList.remove("show");
+
+        clusters.clear();
+
+        pieces.forEach(piece => {
+            piece.clusterId = piece.id;
+            piece.locked = false;
+            piece.el.classList.remove(
+                "locked",
+                "connected",
+                "dragging"
+            );
+            clusters.set(piece.id, new Set([piece.id]));
+        });
+
+        const traySlots = [];
+
+        for (let row = 0; row < ROWS; row++) {
+            for (let col = 0; col < COLS; col++) {
+                traySlots.push({
+                    x: col / COLS,
+                    y: TRAY_TOP + row / ROWS
+                });
+            }
+        }
+
+        const shuffled = shuffleArray(traySlots);
+
+        pieces.forEach((piece, index) => {
+            piece.x = shuffled[index].x;
+            piece.y = shuffled[index].y;
+        });
+
+        renderAll();
+        setMessage(MSG_START);
+    }
+
+    function clusterPieces(clusterId) {
+        const ids = clusters.get(clusterId);
+
+        if (!ids) {
+            return [];
+        }
+
+        return [...ids].map(id => pieces[id]);
+    }
+
+    function beginDrag(event, piece) {
+        if (solved) {
+            return;
+        }
+
+        const clusterId = piece.clusterId;
+        const group = clusterPieces(clusterId);
+
+        if (group.every(item => item.locked)) {
+            setMessage(MSG_LOCKED);
+            return;
+        }
+
+        activeClusterId = clusterId;
+        pointerId = event.pointerId;
+        startPointer = {
+            x: event.clientX,
+            y: event.clientY
+        };
+
+        startPositions = new Map();
+
+        group.forEach(item => {
+            startPositions.set(
+                item.id,
+                { x: item.x, y: item.y }
+            );
+
+            item.el.classList.add("dragging");
+            item.el.style.zIndex = ++zCounter;
+        });
+
+        piece.el.setPointerCapture(pointerId);
+
+        window.addEventListener(
+            "pointermove",
+            dragMove,
+            { passive: false }
+        );
+
+        window.addEventListener(
+            "pointerup",
+            endDrag,
+            { once: true }
+        );
+
+        window.addEventListener(
+            "pointercancel",
+            endDrag,
+            { once: true }
+        );
+
+        event.preventDefault();
+    }
+
+    function dragMove(event) {
+        if (
+            activeClusterId === null ||
+            event.pointerId !== pointerId
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const width = stageWidth();
+
+        let dx =
+            (event.clientX - startPointer.x) / width;
+
+        let dy =
+            (event.clientY - startPointer.y) / width;
+
+        const group = clusterPieces(activeClusterId);
+
+        let minX = Infinity;
+        let maxRight = -Infinity;
+        let minY = Infinity;
+        let maxBottom = -Infinity;
+
+        group.forEach(item => {
+            const start = startPositions.get(item.id);
+
+            minX = Math.min(minX, start.x + dx);
+            maxRight = Math.max(
+                maxRight,
+                start.x + dx + pieceW()
+            );
+
+            minY = Math.min(minY, start.y + dy);
+            maxBottom = Math.max(
+                maxBottom,
+                start.y + dy + pieceH()
+            );
+        });
+
+        if (minX < 0) {
+            dx -= minX;
+        }
+
+        if (maxRight > 1) {
+            dx -= (maxRight - 1);
+        }
+
+        if (minY < 0) {
+            dy -= minY;
+        }
+
+        if (maxBottom > STAGE_HEIGHT) {
+            dy -= (maxBottom - STAGE_HEIGHT);
+        }
+
+        group.forEach(item => {
+            const start = startPositions.get(item.id);
+            item.x = start.x + dx;
+            item.y = start.y + dy;
+            renderPiece(item);
+        });
+    }
+
+    function endDrag(event) {
+        if (activeClusterId === null) {
+            return;
+        }
+
+        const currentId = activeClusterId;
+
+        clusterPieces(currentId).forEach(item => {
+            item.el.classList.remove("dragging");
+        });
+
+        window.removeEventListener(
+            "pointermove",
+            dragMove
+        );
+
+        let merged = true;
+        let finalId = currentId;
+
+        while (merged) {
+            const result = tryMerge(finalId);
+            merged = result.merged;
+            finalId = result.clusterId;
+        }
+
+        const snapped = tryBoardSnap(finalId);
+
+        if (!snapped) {
+            if (clusters.get(finalId)?.size > 1) {
+                setMessage(MSG_CONNECTED);
+            } else {
+                setMessage(MSG_MOVE);
+            }
+        }
+
+        activeClusterId = null;
+        pointerId = null;
+        startPointer = null;
+        startPositions = null;
+
+        updateConnectedStyles();
+        checkSolved();
+    }
+
+    function areNeighbors(a, b) {
+        const dr = Math.abs(a.row - b.row);
+        const dc = Math.abs(a.col - b.col);
+        return dr + dc === 1;
+    }
+
+    function tryMerge(movingClusterId) {
+        const moving = clusterPieces(movingClusterId);
+
+        for (const [otherId] of clusters) {
+            if (otherId === movingClusterId) {
+                continue;
+            }
+
+            const other = clusterPieces(otherId);
+
+            for (const a of moving) {
+                for (const b of other) {
+                    if (!areNeighbors(a, b)) {
+                        continue;
+                    }
+
+                    const expectedDx =
+                        (b.col - a.col) / COLS;
+
+                    const expectedDy =
+                        (b.row - a.row) / ROWS;
+
+                    const actualDx =
+                        b.x - a.x;
+
+                    const actualDy =
+                        b.y - a.y;
+
+                    if (
+                        Math.abs(actualDx - expectedDx)
+                            <= CONNECT_TOLERANCE &&
+                        Math.abs(actualDy - expectedDy)
+                            <= CONNECT_TOLERANCE
+                    ) {
+                        const shiftX =
+                            b.x -
+                            expectedDx -
+                            a.x;
+
+                        const shiftY =
+                            b.y -
+                            expectedDy -
+                            a.y;
+
+                        moving.forEach(item => {
+                            item.x += shiftX;
+                            item.y += shiftY;
+                            renderPiece(item);
+                        });
+
+                        const movingIds =
+                            clusters.get(movingClusterId);
+
+                        const otherIds =
+                            clusters.get(otherId);
+
+                        otherIds.forEach(id => {
+                            movingIds.add(id);
+                            pieces[id].clusterId =
+                                movingClusterId;
+                        });
+
+                        clusters.delete(otherId);
+
+                        setMessage(MSG_CONNECTED);
+
+                        return {
+                            merged: true,
+                            clusterId: movingClusterId
+                        };
+                    }
+                }
+            }
+        }
+
+        return {
+            merged: false,
+            clusterId: movingClusterId
+        };
+    }
+
+    function tryBoardSnap(clusterId) {
+        const group = clusterPieces(clusterId);
+
+        let best = null;
+
+        group.forEach(item => {
+            const dx =
+                correctX(item) - item.x;
+
+            const dy =
+                correctY(item) - item.y;
+
+            const distance =
+                Math.hypot(dx, dy);
+
+            if (!best || distance < best.distance) {
+                best = {
+                    piece: item,
+                    dx,
+                    dy,
+                    distance
+                };
+            }
+        });
+
+        if (
+            !best ||
+            best.distance > BOARD_TOLERANCE
+        ) {
+            return false;
+        }
+
+        group.forEach(item => {
+            item.x += best.dx;
+            item.y += best.dy;
+            renderPiece(item);
+        });
+
+        const allCorrect =
+            group.every(item =>
+                Math.abs(
+                    item.x - correctX(item)
+                ) < 0.005 &&
+                Math.abs(
+                    item.y - correctY(item)
+                ) < 0.005
+            );
+
+        if (allCorrect) {
+            group.forEach(item => {
+                item.locked = true;
+                item.el.classList.add("locked");
+            });
+
+            setMessage(MSG_PLACED);
+            return true;
+        }
+
+        return false;
+    }
+
+    function updateConnectedStyles() {
+        pieces.forEach(piece => {
+            const group =
+                clusters.get(piece.clusterId);
+
+            piece.el.classList.toggle(
+                "connected",
+                !!group && group.size > 1
+            );
+        });
+    }
+
+    function checkSolved() {
+        const allCorrect =
+            pieces.every(piece =>
+                Math.abs(
+                    piece.x - correctX(piece)
+                ) < 0.005 &&
+                Math.abs(
+                    piece.y - correctY(piece)
+                ) < 0.005
+            );
+
+        if (!allCorrect) {
+            return;
+        }
+
+        solved = true;
+
+        pieces.forEach(piece => {
+            piece.locked = true;
+            piece.el.classList.add("locked");
+        });
+
+        solvedCover.classList.add("show");
+        setMessage(MSG_SOLVED);
+    }
+
+    document.getElementById(
+        "shuffle-button"
+    ).addEventListener(
+        "click",
+        function() {
+            resetPuzzle();
+        }
+    );
+
+    document.getElementById(
+        "restart-button"
+    ).addEventListener(
+        "click",
+        function() {
+            if (confirm(RESTART_CONFIRM)) {
+                resetPuzzle();
+            }
+        }
+    );
+
+    document.getElementById(
+        "model-button"
+    ).addEventListener(
+        "click",
+        function() {
+            document.getElementById(
+                "model-modal"
+            ).classList.add("show");
+        }
+    );
+
+    document.getElementById(
+        "close-model"
+    ).addEventListener(
+        "click",
+        function() {
+            document.getElementById(
+                "model-modal"
+            ).classList.remove("show");
+        }
+    );
+
+    document.getElementById(
+        "model-modal"
+    ).addEventListener(
+        "click",
+        function(event) {
+            if (event.target === this) {
+                this.classList.remove("show");
+            }
+        }
+    );
+
+    window.addEventListener(
+        "resize",
+        updateStageGeometry
+    );
+
+    createPieces();
+    updateStageGeometry();
+    resetPuzzle();
+
+</script>
+
+</body>
+</html>
