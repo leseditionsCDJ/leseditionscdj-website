@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Les secrets de Gisèle | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #203040;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #FFFDF7 45%,
+                    #FFFDF7 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+        }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .nav-button,
+        .language-button {
+            display: inline-block;
+
+            padding:
+                10px 17px;
+
+            border-radius: 24px;
+
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .home-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+        }
+
+        .back-button {
+            background-color: #174E78;
+
+            color: white;
+        }
+
+        .language-button {
+            background-color: white;
+
+            color: #174E78;
+
+            border:
+                2px solid #174E78;
+
+            font-size: .92rem;
+        }
+
+        .back-button:hover {
+            background-color: #2F8F46;
+        }
+
+        .home-button:hover,
+        .language-button:hover {
+            color: #2F8F46;
+
+            border-color: #2F8F46;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        main {
+            width: 94%;
+
+            max-width: 1450px;
+
+            margin: auto;
+
+            padding:
+                45px 20px 80px;
+        }
+
+
+        /* =========================
+           INTRODUCTION
+        ========================== */
+
+        .page-header {
+            max-width: 900px;
+
+            margin:
+                0 auto 35px;
+
+            text-align: center;
+        }
+
+        .secret-badge {
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding:
+                8px 17px;
+
+            border-radius: 25px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+        h1 {
+            margin:
+                0 0 14px;
+
+            color: #174E78;
+
+            font-size: 3rem;
+        }
+
+        h1 span {
+            color: #2F8F46;
+        }
+
+        .intro {
+            max-width: 780px;
+
+            margin: auto;
+
+            color: #536B7B;
+
+            font-size: 1.12rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PROGRESSION
+        ========================== */
+
+        .progress-box {
+            max-width: 760px;
+
+            margin:
+                0 auto 42px;
+
+            padding:
+                18px 21px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 7px 18px
+                rgba(23,78,120,.07);
+        }
+
+        .progress-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 10px;
+
+            color: #174E78;
+
+            font-weight: bold;
+        }
+
+        .progress-track {
+            height: 15px;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background-color: #E5EEF3;
+        }
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2F8F46,
+                    #71BA49
+                );
+
+            transition:
+                width .35s ease;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        .section-title {
+            margin-bottom: 28px;
+
+            text-align: center;
+        }
+
+        .section-title h2 {
+            margin:
+                0 0 8px;
+
+            color: #174E78;
+
+            font-size: 2.15rem;
+        }
+
+        .section-title p {
+            margin: 0;
+
+            color: #617789;
+
+            font-size: 1.05rem;
+        }
+
+
+        /* =========================
+           CARTES
+        ========================== */
+
+        .facts-section {
+            margin-bottom: 75px;
+        }
+
+        .facts-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0,1fr));
+
+            gap: 20px;
+        }
+
+        .fact-card {
+            position: relative;
+
+            min-height: 310px;
+
+            perspective: 1200px;
+
+            cursor: pointer;
+
+            outline: none;
+        }
+
+        .fact-inner {
+            position: relative;
+
+            width: 100%;
+
+            min-height: 310px;
+
+            transition:
+                transform .6s;
+
+            transform-style:
+                preserve-3d;
+        }
+
+        .fact-card.revealed
+        .fact-inner {
+            transform:
+                rotateY(180deg);
+        }
+
+        .fact-front,
+        .fact-back {
+            position: absolute;
+
+            inset: 0;
+
+            padding: 28px;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 23px;
+
+            backface-visibility: hidden;
+
+            -webkit-backface-visibility: hidden;
+
+            box-shadow:
+                0 10px 24px
+                rgba(23,78,120,.08);
+        }
+
+        .fact-front {
+            background:
+                linear-gradient(
+                    145deg,
+                    white,
+                    #F3FAFD
+                );
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .fact-back {
+            background:
+                linear-gradient(
+                    145deg,
+                    #F3FAEF,
+                    white
+                );
+
+            transform:
+                rotateY(180deg);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .fact-number {
+            width: 54px;
+
+            height: 54px;
+
+            margin-bottom: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #174E78;
+
+            color: white;
+
+            font-size: 1.45rem;
+
+            font-weight: bold;
+        }
+
+        .fact-icon {
+            margin-bottom: 10px;
+
+            font-size: 2.2rem;
+        }
+
+        .fact-front h3 {
+            color: #174E78;
+        }
+
+        .click-note {
+            color: #2F8F46;
+
+            font-weight: bold;
+        }
+
+        .fact-back h3 {
+            margin:
+                0 0 12px;
+
+            color: #2F8F46;
+
+            font-size: 1.35rem;
+        }
+
+        .fact-back p {
+            color: #40566A;
+
+            line-height: 1.6;
+        }
+
+        .fact-source {
+            margin-top: auto;
+
+            padding-top: 8px;
+
+            color: #7A8A94 !important;
+
+            font-size: .82rem;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           CARROUSEL
+        ========================== */
+
+        .gallery-section {
+            margin-bottom: 70px;
+        }
+
+        .carousel-card {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 14px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 26px;
+
+            box-shadow:
+                0 14px 35px
+                rgba(23,78,120,.10);
+        }
+
+        .carousel {
+            overflow: hidden;
+
+            border-radius: 17px;
+
+            background-color: #102D43;
+        }
+
+        .carousel-image-wrap {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            overflow: hidden;
+
+            background-color: #102D43;
+        }
+
+        #carousel-image {
+            display: block;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            background-color: #102D43;
+
+            transition:
+                opacity .2s ease;
+        }
+
+        .photo-counter {
+            position: absolute;
+
+            top: 16px;
+
+            right: 16px;
+
+            z-index: 5;
+
+            padding:
+                7px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0,0,0,.65);
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            z-index: 10;
+
+            width: 48px;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            transform:
+                translateY(-50%);
+
+            background:
+                rgba(255,255,255,.92);
+
+            color: #174E78;
+
+            font-size: 1.7rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .carousel-prev {
+            left: 16px;
+        }
+
+        .carousel-next {
+            right: 16px;
+        }
+
+        .carousel-caption {
+            padding:
+                18px 22px;
+
+            background-color: #174E78;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .carousel-caption h3 {
+            margin:
+                0 0 7px;
+
+            font-size: 1.35rem;
+        }
+
+        .carousel-caption p {
+            margin: 0;
+
+            color: #E7F4FA;
+        }
+
+        .public-domain {
+            display: inline-block;
+
+            margin-top: 9px;
+
+            padding:
+                5px 11px;
+
+            border-radius: 16px;
+
+            background-color: #2F8F46;
+
+            color: white;
+
+            font-size: .78rem;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           POINTS
+        ========================== */
+
+        .carousel-dots {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            padding:
+                15px 10px 4px;
+        }
+
+        .carousel-dot {
+            width: 11px;
+
+            height: 11px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: #BCD0DA;
+
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background-color: #2F8F46;
+
+            transform:
+                scale(1.3);
+        }
+
+
+        /* =========================
+           ERREUR IMAGE
+        ========================== */
+
+        .image-error {
+            display: none;
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 4;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            background-color: #EAF6FC;
+
+            color: #174E78;
+
+            text-align: center;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           SOURCES
+        ========================== */
+
+        .sources-section {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 30px;
+
+            background-color: white;
+
+            border:
+                2px solid #DDECF3;
+
+            border-radius: 24px;
+        }
+
+        .sources-section h2 {
+            color: #174E78;
+
+            text-align: center;
+        }
+
+        .sources-section > p {
+            color: #536B7B;
+
+            text-align: center;
+
+            line-height: 1.6;
+        }
+
+        .source-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,minmax(0,1fr));
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .source-link {
+            padding: 13px;
+
+            border-radius: 14px;
+
+            background-color: #F4F9FC;
+
+            color: #174E78;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 30px 20px;
+
+            background-color: #174E78;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        @media (max-width: 900px) {
+
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .source-links {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            .fact-card,
+            .fact-inner {
+                min-height: 350px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <a href="../index.html">
+
+        <img
+            src="../logo.png"
+            alt="Les Éditions Cap Découvertes Jeunesse"
+            class="logo">
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="../index.html"
+            class="nav-button home-button">
+
+            Accueil
+
+        </a>
+
+
+        <a
+            href="./"
+            class="nav-button back-button">
+
+            ← Retour à la page de Gisèle
+
+        </a>
+
+
+        <a
+            href="../en/espace-gisele/explorateurs.html"
+            class="language-button">
+
+            🇨🇦 EN
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+        <div class="secret-badge">
+            🔐 Contenu secret déverrouillé
+        </div>
+
+        <h1>
+            🦒 Les <span>secrets de Gisèle</span>
+        </h1>
+
+        <p class="intro">
+
+            Tu croyais tout savoir sur les girafes?
+
+            Gisèle a encore quelques secrets à te révéler!
+
+            Clique sur chacune des cartes pour découvrir
+            10 faits étonnants et véridiques
+            sur les girafes.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="progress-box">
+
+        <div class="progress-info">
+
+            <span id="progress-text">
+                🔎 0 / 10 secrets découverts
+            </span>
+
+            <span>
+                🦒
+            </span>
+
+        </div>
+
+        <div class="progress-track">
+
+            <div
+                class="progress-bar"
+                id="progress-bar">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <section class="facts-section">
+
+
+        <div class="section-title">
+
+            <h2>
+                💡 Le savais-tu?
+            </h2>
+
+            <p>
+                Clique sur une carte pour révéler le secret.
+            </p>
+
+        </div>
+
+
+        <div
+            class="facts-grid"
+            id="facts-grid">
+        </div>
+
+
+    </section>
+
+
+
+    <section class="gallery-section">
+
+
+        <div class="section-title">
+
+            <h2>
+                📸 Les vraies girafes
+            </h2>
+
+            <p>
+
+                Découvre de vraies photographies
+                de girafes.
+
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="carousel-card"
+            id="carousel-card">
+
+
+            <div class="carousel">
+
+
+                <div class="carousel-image-wrap">
+
+
+                    <img
+                        id="carousel-image"
+                        src="../images/Giraffe_Eating_From_Acacia.jpg?v=20260923"
+                        alt="Girafe">
+
+
+                    <div
+                        class="image-error"
+                        id="image-error">
+                    </div>
+
+
+                    <div
+                        class="photo-counter"
+                        id="photo-counter">
+
+                        1 / 10
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="carousel-arrow carousel-prev"
+                        id="carousel-prev">
+
+                        ‹
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="carousel-arrow carousel-next"
+                        id="carousel-next">
+
+                        ›
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="carousel-caption">
+
+                    <h3 id="photo-title">
+                        Girafe
+                    </h3>
+
+                    <p id="photo-credit">
+                        Photo réelle d’une girafe
+                    </p>
+
+                    <a class="public-domain" id="photo-source-link" href="#" target="_blank" rel="noopener noreferrer">Voir la source</a>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="carousel-dots"
+                id="carousel-dots">
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="sources-section">
+
+
+        <h2>
+            🔬 Sources scientifiques
+        </h2>
+
+
+        <p>
+
+            Les informations présentées dans les secrets
+            de Gisèle ont été vérifiées à partir de sources
+            scientifiques et institutionnelles consacrées aux girafes.
+
+        </p>
+
+
+        <div class="source-links">
+
+            <a
+                class="source-link"
+                href="https://giraffeconservation.org/facts-about-giraffe/"
+                target="_blank"
+                rel="noopener noreferrer">
+                🦒 Giraffe Conservation Foundation — Faits sur les girafes
+            </a>
+
+            <a
+                class="source-link"
+                href="https://giraffeconservation.org/facts-about-giraffe/how-long-is-a-giraffes-tongue-what-color-is-it/"
+                target="_blank"
+                rel="noopener noreferrer">
+                👅 Giraffe Conservation Foundation — La langue de la girafe
+            </a>
+
+            <a
+                class="source-link"
+                href="https://giraffeconservation.org/facts-about-giraffe/what-do-giraffe-eat/"
+                target="_blank"
+                rel="noopener noreferrer">
+                🌿 Giraffe Conservation Foundation — Alimentation
+            </a>
+
+            <a
+                class="source-link"
+                href="https://giraffeconservation.org/facts-about-giraffe/do-all-giraffe-have-horns/"
+                target="_blank"
+                rel="noopener noreferrer">
+                👑 Giraffe Conservation Foundation — Les ossicônes
+            </a>
+
+            <a
+                class="source-link"
+                href="https://giraffeconservation.org/facts-about-giraffe/faqs-about-baby-giraffe/"
+                target="_blank"
+                rel="noopener noreferrer">
+                👶 Giraffe Conservation Foundation — Les girafons
+            </a>
+
+            <a
+                class="source-link"
+                href="https://giraffeconservation.org/wp-content/uploads/2016/03/Africas-Giraffe-A-conservation-guide.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                📘 Giraffe Conservation Foundation — Guide de conservation
+            </a>
+
+            <a
+                class="source-link"
+                href="https://animaldiversity.org/accounts/Giraffa_camelopardalis/"
+                target="_blank"
+                rel="noopener noreferrer">
+                🍃 Animal Diversity Web — Giraffa camelopardalis
+            </a>
+
+            <a
+                class="source-link"
+                href="https://pubmed.ncbi.nlm.nih.gov/8795798/"
+                target="_blank"
+                rel="noopener noreferrer">
+                😴 PubMed — Étude du sommeil chez la girafe
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        Les Éditions Cap Découvertes Jeunesse
+    </p>
+
+    <p>
+        Des histoires qui ouvrent sur le monde
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+    /* =====================================================
+       LES 10 SECRETS
+    ===================================================== */
+
+    const facts = [
+
+        {
+            icon: "🦒",
+            title: "La plus grande sur terre!",
+            text: "La girafe est l’animal terrestre vivant le plus grand du monde. Un mâle adulte mesure souvent plus de 5 mètres de haut.",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "👅",
+            title: "Une langue incroyablement longue!",
+            text: "Sa langue mesure environ 45 à 50 cm — presque la longueur du bras d’un enfant!",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "🌿",
+            title: "Une langue qui attrape les feuilles!",
+            text: "Sa langue très mobile et ses lèvres souples l’aident à saisir les feuilles dans les arbres, même entre les épines.",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "🍃",
+            title: "Elle remâche son repas!",
+            text: "La girafe est un ruminant. Après avoir avalé, elle fait remonter une partie de sa nourriture dans sa bouche pour la mâcher encore.",
+            source: "Animal Diversity Web — University of Michigan"
+        },
+
+        {
+            icon: "👑",
+            title: "De drôles de petites « cornes »!",
+            text: "Elles s’appellent des ossicônes. Elles sont faites d’os recouvert de peau et de poils. Chez les mâles adultes, elles peuvent servir lors des combats de cou.",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "🏃",
+            title: "Une géante très rapide!",
+            text: "Malgré sa grande taille, une girafe peut courir autour de 50 km/h.",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "😴",
+            title: "De petits dodos!",
+            text: "Dans une étude menée en zoo, des girafes adultes ont dormi environ 4 h 30 par jour, souvent en plusieurs courtes périodes.",
+            source: "Tobler & Schwierin — étude scientifique sur le sommeil des girafes"
+        },
+
+        {
+            icon: "👶",
+            title: "Un bébé attendu longtemps!",
+            text: "Une maman girafe porte son petit pendant environ 15 mois. Elle donne habituellement naissance à un seul girafon.",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "🐾",
+            title: "Debout très vite!",
+            text: "Un girafon peut se mettre debout dans sa première heure de vie et commencer à se déplacer très rapidement.",
+            source: "Giraffe Conservation Foundation"
+        },
+
+        {
+            icon: "👥",
+            title: "Des groupes qui changent!",
+            text: "Les girafes ne restent pas toujours dans le même groupe. Certaines se rejoignent, d’autres repartent, puis de nouveaux groupes se forment.",
+            source: "Giraffe Conservation Foundation"
+        }
+
+    ];
+
+
+
+    const factsGrid =
+        document.getElementById(
+            "facts-grid"
+        );
+
+
+    facts.forEach(
+        function(fact, index) {
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "fact-card";
+
+
+            card.tabIndex =
+                0;
+
+
+            card.dataset.fact =
+                index + 1;
+
+
+            card.innerHTML = `
+
+                <div class="fact-inner">
+
+                    <div class="fact-front">
+
+                        <div class="fact-number">
+                            ${index + 1}
+                        </div>
+
+                        <div class="fact-icon">
+                            ${fact.icon}
+                        </div>
+
+                        <h3>
+                            SECRET Nº ${index + 1}
+                        </h3>
+
+                        <p class="click-note">
+                            Clique pour découvrir!
+                        </p>
+
+                    </div>
+
+
+                    <div class="fact-back">
+
+                        <h3>
+                            ${fact.icon} ${fact.title}
+                        </h3>
+
+                        <p>
+                            ${fact.text}
+                        </p>
+
+                        <p class="fact-source">
+                            Source : ${fact.source}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            factsGrid.appendChild(
+                card
+            );
+
+
+        }
+    );
+
+
+
+    const factCards =
+        document.querySelectorAll(
+            ".fact-card"
+        );
+
+
+    const discovered =
+        new Set();
+
+
+    const progressText =
+        document.getElementById(
+            "progress-text"
+        );
+
+
+    const progressBar =
+        document.getElementById(
+            "progress-bar"
+        );
+
+
+    function revealFact(card) {
+
+
+        const id =
+            card.dataset.fact;
+
+
+        card.classList.toggle(
+            "revealed"
+        );
+
+
+        if (
+            !discovered.has(id)
+        ) {
+
+
+            discovered.add(id);
+
+
+            const count =
+                discovered.size;
+
+
+            progressText.textContent =
+                "🔎 " +
+                count +
+                " / 10 secrets découverts";
+
+
+            progressBar.style.width =
+                (
+                    count *
+                    10
+                ) +
+                "%";
+
+
+            if (
+                count === 10
+            ) {
+
+
+                progressText.textContent =
+                    "🎉 Bravo! Tu as découvert les 10 secrets de Gisèle!";
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+    factCards.forEach(
+        function(card) {
+
+
+            card.addEventListener(
+                "click",
+                function() {
+
+
+                    revealFact(
+                        card
+                    );
+
+
+                }
+            );
+
+
+            card.addEventListener(
+                "keydown",
+                function(event) {
+
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+
+                        event.preventDefault();
+
+
+                        revealFact(
+                            card
+                        );
+
+
+                    }
+
+
+                }
+            );
+
+
+        }
+    );
+
+
+
+    /* =====================================================
+       LES 10 PHOTOS
+       
+       CE SONT LES NOMS EXACTS
+       DE TON DOSSIER GITHUB.
+    ===================================================== */
+
+    const photos = [
+
+        {
+            file: "Giraffe_Eating_From_Acacia.jpg",
+            title: "Girafe se nourrissant dans un acacia",
+            author: "Eric Kilby",
+            license: "CC BY-SA 2.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe_Eating_From_Acacia.jpg"
+        },
+
+        {
+            file: "Giraffe_mother_and_calf.jpg",
+            title: "Maman girafe et son girafon",
+            author: "Adam Jenkins",
+            license: "CC BY 3.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe_mother_and_calf.jpg"
+        },
+
+        {
+            file: "Giraffe_running.jpg",
+            title: "Girafes dans leur habitat",
+            author: "Arnold Tibaijuka",
+            license: "CC BY-SA 4.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe_running.jpg"
+        },
+
+        {
+            file: "Giraffe_Tongue.jpg",
+            title: "La longue langue d’une girafe",
+            author: "Qwentl",
+            license: "CC BY-SA 3.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe_Tongue.jpg"
+        },
+
+        {
+            file: "Giraffe-ossicones-Nairobi.JPG",
+            title: "Gros plan des ossicônes",
+            author: "Bjørn Christian Tørrissen",
+            license: "CC BY-SA 3.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe-ossicones-Nairobi.JPG"
+        },
+
+        {
+            file: "Savannah_giraffes.jpg",
+            title: "Girafes dans la savane",
+            author: "Alex Shema",
+            license: "CC BY-SA 4.0",
+            source: "https://commons.wikimedia.org/wiki/File:Savannah_giraffes.jpg"
+        },
+
+        {
+            file: "Two_male_giraffes_are_necking_in_San_Francisco_Zoo_4.jpg",
+            title: "Deux mâles lors d’un combat de cou",
+            author: "Brocken Inaglory",
+            license: "CC BY-SA 3.0",
+            source: "https://commons.wikimedia.org/wiki/File:Two_male_giraffes_are_necking_in_San_Francisco_Zoo_4.jpg"
+        },
+
+        {
+            file: "Four_giraffes_on_the_savannah_(43451136954).jpg",
+            title: "Quatre girafes dans la savane",
+            author: "Kandukuru Nagarjun",
+            license: "CC BY 2.0",
+            source: "https://commons.wikimedia.org/wiki/File:Four_giraffes_on_the_savannah_(43451136954).jpg"
+        },
+
+        {
+            file: "Giraffe_close_up.jpg",
+            title: "Portrait rapproché d’une girafe",
+            author: "Markrosenrosen",
+            license: "CC BY-SA 4.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe_close_up.jpg"
+        },
+
+        {
+            file: "Giraffe_Drinking_Water.jpg",
+            title: "Girafe en train de boire",
+            author: "Charu Juneja",
+            license: "CC BY-SA 2.0",
+            source: "https://commons.wikimedia.org/wiki/File:Giraffe_Drinking_Water.jpg"
+        }
+
+    ];
+
+
+
+    const carouselImage =
+        document.getElementById(
+            "carousel-image"
+        );
+
+
+    const photoTitle =
+        document.getElementById(
+            "photo-title"
+        );
+
+
+    const photoCredit =
+        document.getElementById(
+            "photo-credit"
+        );
+
+
+    const photoCounter =
+        document.getElementById(
+            "photo-counter"
+        );
+
+    const photoSourceLink =
+        document.getElementById(
+            "photo-source-link"
+        );
+
+
+    const imageError =
+        document.getElementById(
+            "image-error"
+        );
+
+
+    const prevButton =
+        document.getElementById(
+            "carousel-prev"
+        );
+
+
+    const nextButton =
+        document.getElementById(
+            "carousel-next"
+        );
+
+
+    const dotsContainer =
+        document.getElementById(
+            "carousel-dots"
+        );
+
+
+    const carouselCard =
+        document.getElementById(
+            "carousel-card"
+        );
+
+
+    let currentPhoto =
+        0;
+
+
+    let autoplayTimer =
+        null;
+
+
+
+    /* =========================
+       POINTS
+    ========================== */
+
+    photos.forEach(
+        function(photo, index) {
+
+
+            const dot =
+                document.createElement(
+                    "button"
+                );
+
+
+            dot.className =
+                "carousel-dot";
+
+
+            dot.type =
+                "button";
+
+
+            dot.addEventListener(
+                "click",
+                function() {
+
+
+                    showPhoto(
+                        index
+                    );
+
+
+                    restartAutoplay();
+
+
+                }
+            );
+
+
+            dotsContainer.appendChild(
+                dot
+            );
+
+
+        }
+    );
+
+
+
+    /* =========================
+       AFFICHER PHOTO
+    ========================== */
+
+    function showPhoto(index) {
+
+
+        if (
+            index < 0
+        ) {
+
+
+            index =
+                photos.length - 1;
+
+
+        }
+
+
+        if (
+            index >=
+            photos.length
+        ) {
+
+
+            index =
+                0;
+
+
+        }
+
+
+        currentPhoto =
+            index;
+
+
+        const photo =
+            photos[
+                currentPhoto
+            ];
+
+
+        imageError.style.display =
+            "none";
+
+
+        carouselImage.style.display =
+            "block";
+
+
+        carouselImage.style.opacity =
+            "0";
+
+
+        /*
+           ?v=20260923 force Cloudflare
+           et le navigateur à redemander
+           le fichier au lieu de garder
+           une ancienne erreur 404.
+        */
+
+        carouselImage.src =
+            "../images/" +
+            photo.file +
+            "?v=20260923";
+
+
+        carouselImage.alt =
+            photo.title;
+
+
+        photoTitle.textContent =
+            photo.title;
+
+
+        photoCredit.textContent =
+            "Crédit : " +
+            photo.author +
+            " — " +
+            photo.license +
+            " — Wikimedia Commons";
+
+        photoSourceLink.href =
+            photo.source;
+
+        photoSourceLink.textContent =
+            "Voir la source — " +
+            photo.license;
+
+
+        photoCounter.textContent =
+            (
+                currentPhoto + 1
+            ) +
+            " / " +
+            photos.length;
+
+
+        const dots =
+            dotsContainer.querySelectorAll(
+                ".carousel-dot"
+            );
+
+
+        dots.forEach(
+            function(dot, dotIndex) {
+
+
+                dot.classList.toggle(
+                    "active",
+                    dotIndex ===
+                    currentPhoto
+                );
+
+
+            }
+        );
+
+
+    }
+
+
+
+    /* =========================
+       PHOTO CHARGÉE
+    ========================== */
+
+    carouselImage.addEventListener(
+        "load",
+        function() {
+
+
+            imageError.style.display =
+                "none";
+
+
+            carouselImage.style.display =
+                "block";
+
+
+            carouselImage.style.opacity =
+                "1";
+
+
+        }
+    );
+
+
+
+    /* =========================
+       PHOTO INTROUVABLE
+    ========================== */
+
+    carouselImage.addEventListener(
+        "error",
+        function() {
+
+
+            const photo =
+                photos[
+                    currentPhoto
+                ];
+
+
+            carouselImage.style.display =
+                "none";
+
+
+            imageError.style.display =
+                "flex";
+
+
+            imageError.innerHTML =
+
+                "⚠️ Cette image n'a pas été trouvée.<br><br>" +
+
+                "<small>" +
+
+                photo.file +
+
+                "</small>";
+
+
+        }
+    );
+
+
+
+    /* =========================
+       FLÈCHES
+    ========================== */
+
+    prevButton.addEventListener(
+        "click",
+        function() {
+
+
+            showPhoto(
+                currentPhoto - 1
+            );
+
+
+            restartAutoplay();
+
+
+        }
+    );
+
+
+    nextButton.addEventListener(
+        "click",
+        function() {
+
+
+            showPhoto(
+                currentPhoto + 1
+            );
+
+
+            restartAutoplay();
+
+
+        }
+    );
+
+
+
+    /* =========================
+       AUTOPLAY
+    ========================== */
+
+    function stopAutoplay() {
+
+
+        if (
+            autoplayTimer
+        ) {
+
+
+            clearInterval(
+                autoplayTimer
+            );
+
+
+            autoplayTimer =
+                null;
+
+
+        }
+
+
+    }
+
+
+    function startAutoplay() {
+
+
+        stopAutoplay();
+
+
+        autoplayTimer =
+            setInterval(
+                function() {
+
+
+                    showPhoto(
+                        currentPhoto + 1
+                    );
+
+
+                },
+                6000
+            );
+
+
+    }
+
+
+    function restartAutoplay() {
+
+
+        startAutoplay();
+
+
+    }
+
+
+    carouselCard.addEventListener(
+        "mouseenter",
+        stopAutoplay
+    );
+
+
+    carouselCard.addEventListener(
+        "mouseleave",
+        startAutoplay
+    );
+
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    let touchStartX =
+        0;
+
+
+    carouselCard.addEventListener(
+        "touchstart",
+        function(event) {
+
+
+            touchStartX =
+                event.changedTouches[0]
+                    .screenX;
+
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    carouselCard.addEventListener(
+        "touchend",
+        function(event) {
+
+
+            const touchEndX =
+                event.changedTouches[0]
+                    .screenX;
+
+
+            const difference =
+                touchEndX -
+                touchStartX;
+
+
+            if (
+                Math.abs(
+                    difference
+                ) > 50
+            ) {
+
+
+                if (
+                    difference > 0
+                ) {
+
+
+                    showPhoto(
+                        currentPhoto - 1
+                    );
+
+
+                }
+
+                else {
+
+
+                    showPhoto(
+                        currentPhoto + 1
+                    );
+
+
+                }
+
+
+                restartAutoplay();
+
+
+            }
+
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =========================
+       DÉPART
+    ========================== */
+
+    showPhoto(
+        0
+    );
+
+
+    startAutoplay();
+
+
+</script>
+
+
+</body>
+
+</html>
