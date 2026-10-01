@@ -1,3 +1,1127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Collection Mattéo | Les Éditions Cap Découvertes Jeunesse
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background-color: #F4FBFF;
+
+            color: #243447;
+        }
+
+        a {
+            text-decoration: none;
+
+            color: inherit;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        header {
+            background-color: white;
+
+            padding: 15px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            border-bottom:
+                2px solid #E7EEF3;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            display: block;
+        }
+
+
+        .logo img {
+            width: 230px;
+
+            max-width: 35vw;
+
+            height: auto;
+
+            display: block;
+        }
+
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 24px;
+
+            flex-wrap: wrap;
+        }
+
+
+        nav a {
+            color: #14558C;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        nav a:hover {
+            color: #2F9E44;
+        }
+
+
+        .secret-btn {
+            background-color: #14558C;
+
+            color: white;
+
+            padding:
+                12px 20px;
+
+            border-radius: 30px;
+        }
+
+
+        .secret-btn:hover {
+            background-color: #2F9E44;
+
+            color: white;
+        }
+
+
+        .language-btn {
+            display: inline-block;
+
+            padding:
+                9px 13px;
+
+            border:
+                2px solid #14558C;
+
+            border-radius: 22px;
+
+            color: #14558C;
+
+            background-color: white;
+
+            font-size: 0.92rem;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .language-btn:hover {
+            border-color: #2F9E44;
+
+            color: #2F9E44;
+        }
+
+
+
+        /* =========================
+           PRÉSENTATION COLLECTION
+        ========================== */
+
+        .hero {
+            padding:
+                70px 20px 55px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #EAF6FC 0%,
+                    #F8FCFF 100%
+                );
+
+            text-align: center;
+        }
+
+
+        .hero-content {
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+
+        .hero h1 {
+            margin:
+                0 0 15px;
+
+            color: #14558C;
+
+            font-size: 3rem;
+        }
+
+
+        .hero h1 span {
+            color: #2F9E44;
+        }
+
+
+        .age {
+            display: inline-block;
+
+            margin-bottom: 25px;
+
+            padding:
+                9px 18px;
+
+            background-color: white;
+
+            color: #14558C;
+
+            border:
+                2px solid #D8EAF4;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+        }
+
+
+        .hero p {
+            margin: auto;
+
+            max-width: 760px;
+
+            font-size: 1.15rem;
+
+            line-height: 1.75;
+
+            color: #40566A;
+        }
+
+
+
+        /* =========================
+           CONTENU
+        ========================== */
+
+        .content {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding:
+                65px 20px 80px;
+        }
+
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .section-title h2 {
+            margin:
+                0 0 10px;
+
+            color: #14558C;
+
+            font-size: 2.3rem;
+        }
+
+
+        .section-title p {
+            margin: 0;
+
+            color: #617789;
+
+            font-size: 1.08rem;
+        }
+
+
+
+        /* =========================
+           TOMES DE LA COLLECTION
+        ========================== */
+
+        .book-card {
+            background-color: white;
+
+            border-radius: 26px;
+
+            padding: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 45px;
+
+            box-shadow:
+                0 12px 32px
+                rgba(20, 85, 140, 0.09);
+
+            margin-bottom: 70px;
+        }
+
+
+        .book-image {
+            flex:
+                0 0 280px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        .book-image img {
+            width: 100%;
+
+            max-width: 270px;
+
+            max-height: 300px;
+
+            object-fit: contain;
+        }
+
+
+        .book-info {
+            flex: 1;
+        }
+
+
+        .tome-label {
+            display: inline-block;
+
+            background-color: #2F9E44;
+
+            color: white;
+
+            padding:
+                8px 16px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        .book-info h2 {
+            margin:
+                0 0 8px;
+
+            color: #14558C;
+
+            font-size: 2.2rem;
+        }
+
+
+        .book-age {
+            color: #D48806;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+
+        .book-summary {
+            font-size: 1.08rem;
+
+            line-height: 1.8;
+
+            color: #354A5F;
+        }
+
+
+        .book-summary p {
+            margin:
+                0 0 12px;
+        }
+
+
+
+        /* =========================
+           BOUTONS D'ACHAT
+        ========================== */
+
+        .purchase-area {
+            margin-top: 28px;
+        }
+
+
+        .purchase-title {
+            margin: 0 0 12px;
+
+            color: #14558C;
+
+            font-size: 1.05rem;
+
+            font-weight: bold;
+        }
+
+
+        .purchase-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+        }
+
+
+        .buy-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 13px 20px;
+
+            border-radius: 30px;
+
+            color: white;
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 6px 16px
+                rgba(20, 85, 140, 0.12);
+        }
+
+
+        .buy-paper {
+            background-color: #14558C;
+        }
+
+
+        .buy-ebook {
+            background-color: #2F9E44;
+        }
+
+
+        .buy-button:hover {
+            transform:
+                translateY(-2px);
+
+            opacity: 0.92;
+        }
+
+
+        .buy-button.coming-soon-button {
+            cursor: default;
+
+            opacity: 0.78;
+
+            pointer-events: none;
+
+            box-shadow: none;
+        }
+
+
+        .buy-button.coming-soon-button:hover {
+            transform: none;
+
+            opacity: 0.78;
+        }
+
+
+
+        /* =========================
+           PROCHAINS TOMES
+        ========================== */
+
+        .upcoming {
+            background-color: #FFFDF7;
+
+            border-radius: 28px;
+
+            padding:
+                45px 30px;
+        }
+
+
+        .upcoming-title {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .upcoming-title h2 {
+            margin:
+                0 0 10px;
+
+            color: #14558C;
+
+            font-size: 2.2rem;
+        }
+
+
+        .upcoming-title p {
+            margin: 0;
+
+            color: #617789;
+
+            font-size: 1.08rem;
+        }
+
+
+        .upcoming-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .upcoming-card {
+            min-height: 220px;
+
+            padding:
+                30px 22px;
+
+            background-color: white;
+
+            border:
+                2px dashed #B9D4E5;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        .paw {
+            font-size: 2.4rem;
+
+            margin-bottom: 10px;
+        }
+
+
+        .upcoming-card h3 {
+            margin:
+                0 0 8px;
+
+            color: #14558C;
+
+            font-size: 1.45rem;
+        }
+
+
+        .upcoming-card p {
+            margin:
+                0 0 16px;
+
+            color: #617789;
+
+            line-height: 1.6;
+        }
+
+
+        .coming-badge {
+            display: inline-block;
+
+            padding:
+                8px 16px;
+
+            background-color: #FFF3C7;
+
+            color: #996900;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+        }
+
+
+
+        /* =========================
+           RETOUR
+        ========================== */
+
+        .back {
+            text-align: center;
+
+            margin-top: 45px;
+        }
+
+
+        .back a {
+            display: inline-block;
+
+            padding:
+                13px 22px;
+
+            border:
+                2px solid #14558C;
+
+            color: #14558C;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+        }
+
+
+        .back a:hover {
+            background-color: #14558C;
+
+            color: white;
+        }
+
+
+
+        /* =========================
+           PIED DE PAGE
+        ========================== */
+
+        footer {
+            background-color: #14558C;
+
+            color: white;
+
+            text-align: center;
+
+            padding:
+                30px 20px;
+        }
+
+
+        footer p {
+            margin: 5px;
+        }
+
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                padding: 15px;
+            }
+
+
+            .logo img {
+                width: 220px;
+
+                max-width: 80%;
+
+                height: auto;
+            }
+
+
+            nav {
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+
+            .book-card {
+                flex-direction: column;
+
+                padding:
+                    30px 22px;
+
+                text-align: center;
+            }
+
+
+            .book-image {
+                flex: auto;
+
+                width: 100%;
+            }
+
+
+            .book-image img {
+                max-width: 230px;
+            }
+
+
+            .upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         EN-TÊTE
+    ========================== -->
+
+    <header>
+
+
+        <a
+            href="index.html"
+            class="logo">
+
+
+            <img
+                src="logo.png"
+                alt="Les Éditions Cap Découvertes Jeunesse">
+
+
+        </a>
+
+
+
+        <nav>
+
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+
+            <a href="livres.html">
+                Nos livres
+            </a>
+
+
+            <a href="index.html#apropos">
+                À propos
+            </a>
+
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+
+            <a
+                href="code-secret.html"
+                class="secret-btn">
+
+                🔐 Code secret
+
+            </a>
+
+
+            <a
+                href="en/matteo.html"
+                class="language-btn"
+                lang="en"
+                aria-label="English version">
+
+                🇨🇦 EN
+
+            </a>
+
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         COLLECTION MATTÉO
+    ========================== -->
+
+    <section class="hero">
+
+
+        <div class="hero-content">
+
+
+            <h1>
+
+                Collection
+
+                <span>
+                    Mattéo
+                </span>
+
+            </h1>
+
+
+            <div class="age">
+
+                Âge recommandé : 4 à 7 ans
+
+            </div>
+
+
+            <p>
+
+                À chaque aventure, Mattéo rencontre un nouvel animal
+                et découvre avec lui les secrets fascinants du monde animal.
+
+                Des histoires amusantes où les jeunes lecteurs apprennent
+                de véritables faits scientifiques tout en passant un bon moment.
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         TOMES DE LA COLLECTION
+    ========================== -->
+
+    <main class="content">
+
+
+        <div class="section-title">
+
+
+            <h2>
+                Les tomes de la collection
+            </h2>
+
+
+            <p>
+                Découvre les aventures de Mattéo et de ses patients.
+            </p>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             TOME 1
+        ========================== -->
+
+        <article class="book-card">
+
+
+            <div class="book-image">
+
+
+                <img
+                    src="images/Image_Officielle_Tina.png"
+                    alt="Tina la tortue voyageuse">
+
+
+            </div>
+
+
+
+            <div class="book-info">
+
+
+                <div class="tome-label">
+                    Tome 1
+                </div>
+
+
+                <h2>
+                    Tina la tortue voyageuse
+                </h2>
+
+
+                <div class="book-age">
+
+                    Collection Mattéo • 4 à 7 ans
+
+                </div>
+
+
+                <div class="book-summary">
+
+
+                    <p>
+
+                        Une drôle de patiente frappe à la porte
+                        de la clinique de Mattéo...
+
+                    </p>
+
+
+                    <p>
+
+                        Tina la tortue semble très fatiguée.
+
+                        Pourquoi avance-t-elle si lentement ?
+
+                        Que transporte-t-elle sur sa carapace ?
+
+                    </p>
+
+
+                    <p>
+
+                        En voulant l'aider, Mattéo découvrira
+                        que les tortues cachent des secrets fascinants !
+
+                    </p>
+
+
+                    <p>
+
+                        Au fil de cette aventure pleine de douceur
+                        et d'humour, les jeunes lecteurs apprendront
+                        de véritables faits scientifiques tout en s'amusant.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="purchase-area">
+
+
+                    <p class="purchase-title">
+                        Disponible sur Amazon :
+                    </p>
+
+
+                    <div class="purchase-buttons">
+
+
+                        <a
+                            href="https://a.co/d/0jg7rGws"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button buy-paper">
+
+                            📖 Acheter le livre broché
+
+                        </a>
+
+
+                        <a
+                            href="https://a.co/d/02enUMVm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button buy-ebook">
+
+                            📱 Acheter la version numérique
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =========================
+             TOME 2
+        ========================== -->
+
+        <article class="book-card">
+
+
+            <div class="book-image">
+
+
+                <img
+                    src="images/Image_Officielle_Edouard.png"
+                    alt="Édouard le castor bricoleur">
+
+
+            </div>
+
+
+
+            <div class="book-info">
+
+
+                <div class="tome-label">
+                    Tome 2
+                </div>
+
+
+                <h2>
+                    Édouard le castor bricoleur
+                </h2>
+
+
+                <div class="book-age">
+
+                    Collection Mattéo • 4 à 7 ans
+
+                </div>
+
+
+                <div class="book-summary">
+
+
+                    <p>
+
+                        Édouard est un castor passionné de bricolage,
+                        toujours prêt à construire, réparer
+                        et améliorer son barrage.
+
+                    </p>
+
+
+                    <p>
+
+                        Mais lorsqu'une de ses dents commence
+                        à lui causer un sérieux problème,
+                        ses outils ne suffisent plus.
+
+                    </p>
+
+
+                    <p>
+
+                        Mattéo devra comprendre ce qui se passe
+                        et découvrira avec lui pourquoi
+                        les dents des castors sont si particulières.
+
+                    </p>
+
+
+                    <p>
+
+                        Une nouvelle aventure amusante et éducative
+                        pour découvrir le monde fascinant des castors,
+                        leurs dents et leurs incroyables talents de bâtisseurs.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="purchase-area">
+
+
+                    <p class="purchase-title">
+                        Disponible sur Amazon :
+                    </p>
+
+
+                    <div class="purchase-buttons">
+
+
+                        <a
+                            href="https://www.amazon.ca/dp/2982548321"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button buy-paper">
+
+                            📖 Acheter le livre broché
+
+                        </a>
+
+
+                        <a
+                            href="https://www.amazon.ca/dp/B0HKC633ST"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="buy-button buy-ebook">
+
+                            📱 Acheter la version numérique
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
         <!-- =========================
              TOME 3
         ========================== -->
@@ -122,3 +1246,142 @@
 
 
         </article>
+
+
+
+        <!-- =========================
+             À VENIR
+        ========================== -->
+
+        <section class="upcoming">
+
+
+            <div class="upcoming-title">
+
+
+                <h2>
+                    Les prochaines aventures
+                </h2>
+
+
+                <p>
+
+                    De nouveaux patients viendront bientôt
+                    rendre visite à Mattéo !
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="upcoming-grid">
+
+
+                <div class="upcoming-card">
+
+
+                    <div class="paw">
+                        🐾
+                    </div>
+
+
+                    <h3>
+                        Tome 4
+                    </h3>
+
+
+                    <p>
+
+                        Un nouveau patient
+                        rejoindra bientôt la collection.
+
+                    </p>
+
+
+                    <div class="coming-badge">
+                        À venir
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="upcoming-card">
+
+
+                    <div class="paw">
+                        🐾
+                    </div>
+
+
+                    <h3>
+                        Et ce n'est que le début !
+                    </h3>
+
+
+                    <p>
+
+                        Plusieurs autres aventures
+                        de Mattéo sont prévues.
+
+                    </p>
+
+
+                    <div class="coming-badge">
+                        À suivre...
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <div class="back">
+
+
+            <a href="livres.html">
+
+                ← Retour aux collections
+
+            </a>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         PIED DE PAGE
+    ========================== -->
+
+    <footer>
+
+
+        <p>
+            Les Éditions Cap Découvertes Jeunesse
+        </p>
+
+
+        <p>
+            Des histoires qui ouvrent sur le monde
+        </p>
+
+
+    </footer>
+
+
+</body>
+
+</html>
