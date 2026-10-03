@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Une plateforme éducative pour les petits aventuriers : découvre des jeux et apprends avec Mattéo et les animaux.">
+        content="Des jeux éducatifs avec Mattéo et les animaux, adaptés au niveau scolaire des petits aventuriers.">
 
     <title>Les petits aventuriers · Éditions CDJ</title>
 
@@ -228,11 +228,11 @@
         }
 
         .text-button {
+            min-height: 44px;
+            padding: 0.6rem 0;
             border: 0;
             background: none;
             color: #315A90;
-            padding: 0.6rem 0;
-            min-height: 44px;
             font-size: 0.85rem;
             font-weight: 800;
             text-decoration: underline;
@@ -339,7 +339,7 @@
         }
 
         /* =========================
-           PRÉSENTATION
+           MATIÈRES
         ========================== */
 
         .section-title {
@@ -351,12 +351,90 @@
         }
 
         .section-intro {
-            max-width: 590px;
+            max-width: 650px;
             margin: 0 auto 1.4rem;
             color: #52697A;
             font-size: 0.94rem;
             text-align: center;
         }
+
+        .subjects-section {
+            margin-bottom: 2.8rem;
+        }
+
+        .subjects-section > .eyebrow {
+            text-align: center;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .subject-card {
+            display: block;
+            padding: 1.5rem;
+            border: 2px solid #A9C9E7;
+            border-radius: 24px;
+            background: #FFFDF5;
+            text-decoration: none;
+            box-shadow: 0 5px 0 #D1E1EE;
+            transition: transform 0.15s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-3px);
+            background: #F3F8FF;
+        }
+
+        .subject-card:nth-child(2) {
+            border-color: #E0C473;
+            box-shadow: 0 5px 0 #EADBAE;
+        }
+
+        .subject-card:nth-child(3) {
+            border-color: #B6CD8F;
+            box-shadow: 0 5px 0 #D4DFBC;
+        }
+
+        .subject-icon {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 2.5rem;
+        }
+
+        .subject-card h3 {
+            margin: 0.5rem 0;
+            color: #164C93;
+            font-size: 1.3rem;
+        }
+
+        .subject-card p {
+            margin: 0.6rem 0 1rem;
+            color: #526A7C;
+            font-size: 0.9rem;
+        }
+
+        .availability {
+            display: inline-block;
+            padding: 0.35rem 0.65rem;
+            border-radius: 999px;
+            background: #EFF1E9;
+            color: #56634C;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .availability.available {
+            background: #E6F4DC;
+            color: #345E28;
+        }
+
+        /* =========================
+           PRÉSENTATION
+        ========================== */
 
         .features {
             display: grid;
@@ -513,6 +591,90 @@
         .books-panel a {
             flex-shrink: 0;
             font-size: 0.9rem;
+        }
+
+        /* =========================
+           CATALOGUE DES JEUX
+        ========================== */
+
+        .catalog-heading {
+            max-width: 720px;
+            margin-bottom: 1.6rem;
+        }
+
+        .catalog-heading h1 {
+            margin: 0;
+            color: #124AA0;
+            font-size: 2.2rem;
+        }
+
+        .catalog-heading p:not(.eyebrow) {
+            color: #52697A;
+            font-size: 0.96rem;
+        }
+
+        .catalog-game {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            max-width: 740px;
+            padding: 1.7rem;
+            border: 2px solid #A7C9B3;
+            border-radius: 25px;
+            background: #FFFDF5;
+            box-shadow: 0 5px 0 #C3D8BF;
+        }
+
+        .catalog-game-icon {
+            display: grid;
+            place-items: center;
+            width: 95px;
+            height: 95px;
+            flex-shrink: 0;
+            border-radius: 24px;
+            background: #FFF0B6;
+            font-size: 3.8rem;
+        }
+
+        .catalog-game h2 {
+            margin: 0.7rem 0;
+            color: #215D3C;
+            font-size: 1.55rem;
+        }
+
+        .catalog-game p {
+            max-width: 490px;
+            color: #52697A;
+            font-size: 0.93rem;
+        }
+
+        .catalog-game .primary {
+            font-size: 0.9rem;
+        }
+
+        .catalog-note {
+            color: #5B7060 !important;
+            font-size: 0.78rem !important;
+        }
+
+        .catalog-coming {
+            max-width: 650px;
+            padding: 1.7rem;
+            border: 2px solid #D5BF82;
+            border-radius: 24px;
+            background: #FFFDF5;
+            box-shadow: 0 5px 0 #E2D4B1;
+        }
+
+        .catalog-coming h2 {
+            margin-top: 0;
+            color: #164C93;
+            font-size: 1.4rem;
+        }
+
+        .catalog-coming p {
+            color: #52697A;
+            font-size: 0.94rem;
         }
 
         /* =========================
@@ -690,7 +852,7 @@
         }
 
         /* =========================
-           PAGE DU JEU
+           CONFIGURATION DU JEU
         ========================== */
 
         .game-page-title {
@@ -703,6 +865,7 @@
             margin: 0 0 1.2rem;
             color: #566C7C;
             font-size: 0.82rem;
+            line-height: 1.7;
         }
 
         .layout {
@@ -729,7 +892,7 @@
 
         .settings-heading h2 {
             margin: 0;
-            font-size: 1.15rem;
+            font-size: 1.04rem;
         }
 
         .step {
@@ -737,6 +900,7 @@
             place-items: center;
             width: 32px;
             height: 32px;
+            flex-shrink: 0;
             border: 2px solid #E6B239;
             border-radius: 50%;
             background: var(--yellow);
@@ -880,11 +1044,17 @@
         .intro {
             padding: 2rem 2.4rem;
             text-align: center;
+
             background: radial-gradient(
                 ellipse at 50% 0,
                 #FFF6DC,
                 transparent 75%
             );
+        }
+
+        .intro-choice-icon {
+            margin-bottom: 1rem;
+            font-size: 3.3rem;
         }
 
         .animal-line {
@@ -1145,12 +1315,13 @@
         }
 
         /* =========================
-           RÉSULTAT
+           RÉSULTAT ET PIED DE PAGE
         ========================== */
 
         .result {
             padding: 2rem;
             text-align: center;
+
             background: radial-gradient(
                 ellipse at 50% 0,
                 #FFF1C1,
@@ -1353,10 +1524,36 @@
                 font-size: 0.75rem;
             }
 
+            .subject-grid,
             .features,
             .access-grid,
             .signup-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .subject-card {
+                position: relative;
+                padding: 1.2rem 1.2rem 1.2rem 5rem;
+            }
+
+            .subject-icon {
+                position: absolute;
+                left: 1.15rem;
+                top: 1.3rem;
+            }
+
+            .subject-card h3 {
+                margin: 0.1rem 0 0.5rem;
+                font-size: 1.15rem;
+            }
+
+            .subject-card p {
+                margin: 0.4rem 0 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .subjects-section {
+                margin-bottom: 2.3rem;
             }
 
             .features {
@@ -1409,6 +1606,36 @@
 
             .books-panel h2 {
                 font-size: 1.18rem;
+            }
+
+            .catalog-heading h1 {
+                font-size: 1.8rem;
+            }
+
+            .catalog-game {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.3rem;
+                gap: 0.7rem;
+            }
+
+            .catalog-game-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2.8rem;
+            }
+
+            .catalog-game h2 {
+                font-size: 1.4rem;
+            }
+
+            .catalog-game .primary {
+                width: 100%;
+                font-size: 0.87rem;
+            }
+
+            .catalog-coming {
+                padding: 1.3rem;
             }
 
             .signup-heading h1 {
@@ -1609,8 +1836,8 @@
                     </p>
 
                     <div class="home-actions">
-                        <a class="primary" href="#/jeux">
-                            Essayer le jeu gratuit
+                        <a class="primary" href="#/matieres">
+                            Choisir une matière
                         </a>
 
                         <a class="secondary" href="#/inscription">
@@ -1623,6 +1850,92 @@
                     </span>
                 </div>
             </section>
+
+            <!-- MATIÈRES -->
+
+            <section
+                class="subjects-section"
+                aria-labelledby="subjects-title">
+
+                <p class="eyebrow">
+                    UNE MÊME AVENTURE, ADAPTÉE À TON ANNÉE
+                </p>
+
+                <h2
+                    class="section-title"
+                    id="subjects-title"
+                    tabindex="-1">
+                    Choisis une matière
+                </h2>
+
+                <p class="section-intro">
+                    Choisis un jeu, puis ton niveau scolaire
+                    et ta difficulté. Les questions s’adapteront à toi.
+                </p>
+
+                <div class="subject-grid">
+
+                    <a
+                        class="subject-card"
+                        href="#/matieres/mathematiques">
+
+                        <span class="subject-icon" aria-hidden="true">
+                            🔢
+                        </span>
+
+                        <h3>Mathématiques</h3>
+
+                        <p>
+                            Des nombres, des formes et des petits défis.
+                        </p>
+
+                        <span class="availability available">
+                            1 jeu à essayer
+                        </span>
+                    </a>
+
+                    <a
+                        class="subject-card"
+                        href="#/matieres/francais">
+
+                        <span class="subject-icon" aria-hidden="true">
+                            📚
+                        </span>
+
+                        <h3>Français</h3>
+
+                        <p>
+                            Des mots, des histoires et le plaisir de lire.
+                        </p>
+
+                        <span class="availability">
+                            Jeux à venir
+                        </span>
+                    </a>
+
+                    <a
+                        class="subject-card"
+                        href="#/matieres/sciences">
+
+                        <span class="subject-icon" aria-hidden="true">
+                            🌿
+                        </span>
+
+                        <h3>Sciences</h3>
+
+                        <p>
+                            Découvre les animaux, la nature et leurs secrets.
+                        </p>
+
+                        <span class="availability">
+                            Jeux à venir
+                        </span>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- PRÉSENTATION -->
 
             <h2 class="section-title">
                 À chacun sa petite aventure
@@ -1668,6 +1981,8 @@
                 </article>
             </div>
 
+            <!-- GRATUIT ET ABONNEMENT -->
+
             <section aria-labelledby="access-title">
                 <h2 class="section-title" id="access-title">
                     Une aventure à découvrir
@@ -1698,8 +2013,8 @@
                             <li>Des défis à faire à ton rythme</li>
                         </ul>
 
-                        <a class="primary" href="#/jeux">
-                            Jouer à la clinique des nombres
+                        <a class="primary" href="#/matieres">
+                            Choisir une matière
                         </a>
                     </article>
 
@@ -1734,6 +2049,8 @@
                 </div>
             </section>
 
+            <!-- SITE DE LIVRES -->
+
             <section class="books-panel" aria-labelledby="books-title">
                 <div>
                     <h2 id="books-title">
@@ -1755,6 +2072,33 @@
                 </a>
             </section>
 
+        </div>
+
+        <!-- =========================
+             JEUX DE LA MATIÈRE
+        ========================== -->
+
+        <div id="catalog-view" class="view" hidden>
+            <a class="back-link" href="#/matieres">
+                ← Toutes les matières
+            </a>
+
+            <div class="catalog-heading">
+                <p class="eyebrow">
+                    CHOISIS TON AVENTURE
+                </p>
+
+                <h1 id="catalog-title" tabindex="-1">
+                    Mathématiques
+                </h1>
+
+                <p id="catalog-description">
+                    Choisis un jeu. Tu sélectionneras ensuite
+                    ton niveau scolaire et ta difficulté.
+                </p>
+            </div>
+
+            <div id="catalog-games"></div>
         </div>
 
         <!-- =========================
@@ -1973,8 +2317,8 @@
                         Aucun compte n’est créé dans cet aperçu.
                     </p>
 
-                    <a class="back-link" href="#/jeux">
-                        En attendant, essayer le jeu gratuit →
+                    <a class="back-link" href="#/matieres">
+                        En attendant, choisir un jeu gratuit →
                     </a>
                 </div>
 
@@ -1982,12 +2326,14 @@
         </div>
 
         <!-- =========================
-             JEU GRATUIT
+             LA CLINIQUE DES NOMBRES
         ========================== -->
 
         <div id="game-view" class="view" hidden>
-            <a class="back-link" href="#/accueil">
-                ← Retour à l’accueil
+            <a
+                class="back-link"
+                href="#/matieres/mathematiques">
+                ← Les jeux de mathématiques
             </a>
 
             <h1
@@ -1998,8 +2344,9 @@
             </h1>
 
             <p class="game-intro-note">
-                Jeu de découverte offert pendant les tests.
-                Choisis ton niveau et aide les animaux de Mattéo.
+                Mathématiques · Même clinique, mêmes animaux :
+                choisis ton année scolaire, puis
+                Facile, Modéré ou Difficile.
             </p>
 
             <div class="layout">
@@ -2008,7 +2355,7 @@
 
                     <div class="settings-heading">
                         <span class="step">1</span>
-                        <h2>Ton niveau</h2>
+                        <h2>Ton niveau scolaire</h2>
                     </div>
 
                     <fieldset id="grades">
@@ -2019,18 +2366,20 @@
                         <div class="grade-grid"></div>
                     </fieldset>
 
-                    <div class="settings-heading second">
-                        <span class="step">2</span>
-                        <h2>Ton défi</h2>
+                    <div id="difficulty-settings" hidden>
+                        <div class="settings-heading second">
+                            <span class="step">2</span>
+                            <h2>Ta difficulté</h2>
+                        </div>
+
+                        <fieldset id="difficulties">
+                            <legend class="sr-only">
+                                Choisis la difficulté
+                            </legend>
+
+                            <div class="difficulty-list"></div>
+                        </fieldset>
                     </div>
-
-                    <fieldset id="difficulties">
-                        <legend class="sr-only">
-                            Choisis la difficulté
-                        </legend>
-
-                        <div class="difficulty-list"></div>
-                    </fieldset>
 
                     <p class="settings-note">
                         Tu peux changer de niveau entre deux parties.
@@ -2109,9 +2458,9 @@
         ];
 
         const DIFFICULTIES = [
-            "Douce",
-            "Habituelle",
-            "Défi"
+            "Facile",
+            "Modéré",
+            "Difficile"
         ];
 
         const ANIMALS = [
@@ -2148,7 +2497,7 @@
         }
 
         /* =========================
-           CRÉATION DES QUESTIONS
+           QUESTIONS DU PROTOTYPE
         ========================== */
 
         function makeQuestion(grade, difficulty) {
@@ -2395,6 +2744,7 @@
         const content = document.getElementById("game-content");
 
         let grade = 0;
+        let gradeSelected = false;
         let difficulty = 1;
         let state = "start";
         let questions = [];
@@ -2411,8 +2761,7 @@
                     <input
                         type="radio"
                         name="grade"
-                        value="${i}"
-                        ${i === 0 ? "checked" : ""}>
+                        value="${i}">
                     <span>${label}</span>
                 </label>
             `).join("");
@@ -2424,7 +2773,7 @@
                         type="radio"
                         name="difficulty"
                         value="${i}"
-                        ${i === 1 ? "checked" : ""}>
+                        ${i === difficulty ? "checked" : ""}>
                     <span>${label}</span>
                 </label>
             `).join("");
@@ -2433,6 +2782,7 @@
             "change",
             function(event) {
                 grade = Number(event.target.value);
+                gradeSelected = true;
                 renderIntro();
             }
         );
@@ -2460,7 +2810,7 @@
         }
 
         /* =========================
-           INTRODUCTION DU JEU
+           CHOIX DU NIVEAU ET DU DÉFI
         ========================== */
 
         function renderIntro() {
@@ -2468,6 +2818,38 @@
 
             configureSettings(true);
             stopVoice();
+
+            document.getElementById("difficulty-settings").hidden =
+                !gradeSelected;
+
+            if (!gradeSelected) {
+                content.innerHTML = `
+                    <div class="intro">
+                        <div class="intro-choice-icon" aria-hidden="true">
+                            🐾
+                        </div>
+
+                        <h3>Bienvenue à la clinique de Mattéo !</h3>
+
+                        <p>
+                            La même aventure t’attend à chaque année scolaire.
+                            Choisis d’abord ton niveau scolaire dans les boutons,
+                            puis ta difficulté.
+                        </p>
+
+                        <div class="preview-skill">
+                            Préscolaire à 6e année · 8 petits patients
+                        </div>
+
+                        <p class="gentle">
+                            Les questions et les explications
+                            s’adapteront au niveau choisi.
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
 
             content.innerHTML = `
                 <div class="intro">
@@ -2477,7 +2859,7 @@
                         <span>🐰</span>
                     </div>
 
-                    <h3>Les animaux t’attendent !</h3>
+                    <h3>Choisis ta difficulté et joue !</h3>
 
                     <p>
                         Aide Mattéo à préparer les soins de ses
@@ -2503,6 +2885,10 @@
         }
 
         function startGame() {
+            if (!gradeSelected) {
+                return;
+            }
+
             state = "play";
             index = 0;
             stars = 0;
@@ -2842,9 +3228,7 @@
             `;
 
             document.getElementById("replay").onclick = startGame;
-
             document.getElementById("choose-level").onclick = renderIntro;
-
             document.getElementById("replay").focus();
         }
 
@@ -2853,20 +3237,158 @@
         renderIntro();
 
         /* =========================
-           NAVIGATION ENTRE LES PAGES
+           MATIÈRES ET CATALOGUE
+        ========================== */
+
+        const SUBJECTS = {
+            mathematiques: {
+                title: "Mathématiques",
+                icon: "🔢",
+                hasGame: true
+            },
+
+            francais: {
+                title: "Français",
+                icon: "📚",
+                hasGame: false
+            },
+
+            sciences: {
+                title: "Sciences",
+                icon: "🌿",
+                hasGame: false
+            }
+        };
+
+        function renderCatalog(key) {
+            const subject = SUBJECTS[key];
+
+            document.getElementById("catalog-title").textContent =
+                subject.title;
+
+            document.getElementById("catalog-description").textContent =
+                subject.hasGame
+                    ? "Choisis un jeu. Tu sélectionneras ensuite ton niveau scolaire et ta difficulté."
+                    : "Les aventures de cette matière sont en préparation.";
+
+            const gamesContainer =
+                document.getElementById("catalog-games");
+
+            if (subject.hasGame) {
+                gamesContainer.innerHTML = `
+                    <article class="catalog-game">
+
+                        <div class="catalog-game-icon" aria-hidden="true">
+                            🐾
+                        </div>
+
+                        <div>
+                            <span class="availability available">
+                                Jeu gratuit · version en test
+                            </span>
+
+                            <h2>La clinique des nombres</h2>
+
+                            <p>
+                                Aide Mattéo à soigner ses huit petits
+                                patients en résolvant des énigmes
+                                de nombres. Le même jeu s’adapte
+                                à ton année scolaire et à ta difficulté.
+                            </p>
+
+                            <a
+                                class="primary"
+                                href="#/jeux/clinique-nombres">
+                                Choisir mon niveau et jouer
+                            </a>
+
+                            <p class="catalog-note">
+                                Préscolaire à 6e année ·
+                                Facile, Modéré, Difficile
+                            </p>
+                        </div>
+
+                    </article>
+                `;
+
+            } else {
+                gamesContainer.innerHTML = `
+                    <section class="catalog-coming">
+                        <h2>
+                            ${subject.icon} Les jeux arrivent bientôt !
+                        </h2>
+
+                        <p>
+                            Les prochains jeux proposeront eux aussi
+                            un niveau scolaire et une difficulté adaptés.
+                            En attendant, découvre la clinique des nombres.
+                        </p>
+
+                        <a
+                            class="secondary"
+                            href="#/matieres/mathematiques">
+                            Voir les jeux de mathématiques
+                        </a>
+                    </section>
+                `;
+            }
+        }
+
+        /* =========================
+           NAVIGATION
         ========================== */
 
         const views = {
             accueil: document.getElementById("home-view"),
             inscription: document.getElementById("signup-view"),
+            catalogue: document.getElementById("catalog-view"),
             jeux: document.getElementById("game-view")
         };
 
         function routePage() {
-            const requested =
-                location.hash.replace("#/", "") || "accueil";
+            const parts = location.hash
+                .replace(/^#\/?/, "")
+                .split("/");
 
-            const active = views[requested] ? requested : "accueil";
+            const requested = parts[0] || "accueil";
+
+            let active = "accueil";
+            let title = "Les petits aventuriers";
+            let focusTarget = null;
+
+            if (requested === "inscription") {
+                active = "inscription";
+                title = "Inscription";
+                focusTarget = "signup-title";
+
+            } else if (
+                requested === "matieres" &&
+                parts[1] &&
+                SUBJECTS[parts[1]]
+            ) {
+                active = "catalogue";
+
+                renderCatalog(parts[1]);
+
+                title = SUBJECTS[parts[1]].title;
+                focusTarget = "catalog-title";
+
+            } else if (
+                requested === "jeux" &&
+                parts[1] === "clinique-nombres"
+            ) {
+                active = "jeux";
+                title = "La clinique des nombres";
+                focusTarget = "play-title";
+
+            } else if (requested === "jeux") {
+                active = "catalogue";
+
+                renderCatalog("mathematiques");
+
+                title = "Mathématiques";
+                focusTarget = "catalog-title";
+            }
 
             Object.entries(views).forEach(([name, element]) => {
                 element.hidden = name !== active;
@@ -2874,22 +3396,24 @@
 
             stopVoice();
 
-            const titles = {
-                accueil: "Les petits aventuriers",
-                inscription: "Inscription",
-                jeux: "La clinique des nombres"
-            };
-
-            document.title = `${titles[active]} · Éditions CDJ`;
+            document.title = `${title} · Éditions CDJ`;
 
             window.scrollTo(0, 0);
 
-            if (active === "inscription") {
-                document.getElementById("signup-title").focus({
+            if (requested === "matieres" && !parts[1]) {
+                const heading =
+                    document.getElementById("subjects-title");
+
+                heading.scrollIntoView({
+                    block: "start"
+                });
+
+                heading.focus({
                     preventScroll: true
                 });
-            } else if (active === "jeux") {
-                document.getElementById("play-title").focus({
+
+            } else if (focusTarget) {
+                document.getElementById(focusTarget).focus({
                     preventScroll: true
                 });
             }
@@ -2900,7 +3424,7 @@
         routePage();
 
         /* =========================
-           CHOIX DE L’ANIMAL
+           APERÇU DU PROFIL ANIMAL
         ========================== */
 
         document.querySelectorAll(".avatar-button").forEach(button => {
