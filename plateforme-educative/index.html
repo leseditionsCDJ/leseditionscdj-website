@@ -1,0 +1,2932 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+
+    <meta
+        name="description"
+        content="Une plateforme éducative pour les petits aventuriers : découvre des jeux et apprends avec Mattéo et les animaux.">
+
+    <title>Les petits aventuriers · Éditions CDJ</title>
+
+    <style>
+        /* =========================
+           STYLE GÉNÉRAL
+        ========================== */
+
+        :root {
+            --blue: #1454B4;
+            --navy: #193B62;
+            --green: #227B47;
+            --yellow: #FFD34D;
+            --cream: #FFF9E8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+            color: var(--navy);
+
+            background:
+                radial-gradient(
+                    ellipse at 0 30%,
+                    #E4F5FE 0,
+                    transparent 48%
+                ),
+                radial-gradient(
+                    ellipse at 100% 65%,
+                    #E7F0CC 0,
+                    transparent 45%
+                ),
+                #F8F4E8;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button:disabled {
+            cursor: default;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        p {
+            line-height: 1.65;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid #172F69;
+            outline-offset: 4px;
+        }
+
+        .choice input:focus-visible + span {
+            outline: 3px solid #172F69;
+            outline-offset: 4px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1.5rem 2rem 0;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.7rem;
+            font-size: 0.76rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: #386846;
+        }
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem max(5%, calc((100vw - 1160px) / 2));
+            background: #FFFDF5;
+            border-bottom: 3px solid #EAD9AE;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            font-size: 1.55rem;
+            font-weight: 900;
+            line-height: 1.15;
+            color: #124AA0;
+        }
+
+        .brand small {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: #3C6349;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: var(--yellow);
+            border-radius: 17px;
+            font-size: 1.7rem;
+            box-shadow: 0 3px 0 #D49B23;
+        }
+
+        .test-badge {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.25rem 0.45rem;
+            border-radius: 6px;
+            background: #EDF3E1;
+            color: #42602E;
+            font-size: 0.64rem;
+            font-weight: 800;
+        }
+
+        .books-link {
+            padding: 0.7rem 0.9rem;
+            border: 1px solid #C1D5EF;
+            border-radius: 13px;
+            background: #E9F1FF;
+            color: #124AA0;
+            text-decoration: none;
+            font-size: 0.87rem;
+            font-weight: 800;
+        }
+
+        .books-link:hover {
+            background: #D7E7FC;
+        }
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
+        .primary,
+        .secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.85rem 1.3rem;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            font-weight: 900;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .primary {
+            border: 2px solid #125B34;
+            background: var(--green);
+            color: white;
+            box-shadow: 0 5px 0 #124C2C;
+        }
+
+        .primary:hover {
+            background: #156637;
+        }
+
+        .primary:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #124C2C;
+        }
+
+        .secondary {
+            border: 2px solid #B3C9E8;
+            background: #FFFDF5;
+            color: #164C93;
+            box-shadow: 0 4px 0 #CBD8E8;
+        }
+
+        .secondary:hover {
+            background: #EAF3FF;
+        }
+
+        .text-button {
+            border: 0;
+            background: none;
+            color: #315A90;
+            padding: 0.6rem 0;
+            min-height: 44px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 0.3rem 0 1.3rem;
+            color: #265995;
+            font-size: 0.88rem;
+            font-weight: 800;
+            text-underline-offset: 4px;
+        }
+
+        /* =========================
+           ACCUEIL ILLUSTRÉ
+        ========================== */
+
+        .welcome {
+            position: relative;
+            isolation: isolate;
+            min-height: 425px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 4px solid #FFFDF5;
+            border-radius: 30px;
+            background: var(--cream);
+            box-shadow:
+                0 7px 0 #DBC899,
+                0 18px 36px #56774918;
+        }
+
+        .welcome-art {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -2;
+            width: 72%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 72% 48%;
+        }
+
+        .welcome::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                90deg,
+                #FFF9E8 0%,
+                #FFF9E8 31%,
+                #FFF9E8ED 39%,
+                #FFF9E800 61%
+            );
+        }
+
+        .welcome-copy {
+            width: 46%;
+            padding: 2.2rem 2rem;
+        }
+
+        .welcome h1 {
+            margin: 0;
+            color: #124AA0;
+            font-size: clamp(2.1rem, 3.1vw, 2.8rem);
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+        }
+
+        .welcome-copy > p:not(.eyebrow) {
+            max-width: 330px;
+            margin: 1.1rem 0;
+            color: #36576A;
+            font-size: 0.97rem;
+        }
+
+        .home-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.2rem 0 1rem;
+        }
+
+        .home-actions a {
+            min-height: 46px;
+            padding: 0.75rem 1rem;
+            font-size: 0.87rem;
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid #E6BD46;
+            border-radius: 999px;
+            background: #FFF0B6;
+            color: #674809;
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        /* =========================
+           PRÉSENTATION
+        ========================== */
+
+        .section-title {
+            margin: 0 0 0.65rem;
+            color: #164C93;
+            font-size: 1.75rem;
+            text-align: center;
+            letter-spacing: -0.025em;
+        }
+
+        .section-intro {
+            max-width: 590px;
+            margin: 0 auto 1.4rem;
+            color: #52697A;
+            font-size: 0.94rem;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0 2.6rem;
+        }
+
+        .feature {
+            padding: 1.4rem;
+            border: 2px solid #D5BF82;
+            border-radius: 23px;
+            background: #FFFDF5;
+            box-shadow: 0 5px 0 #E2D4B1;
+        }
+
+        .feature:nth-child(2) {
+            border-color: #A6C5E9;
+            box-shadow: 0 5px 0 #CADCF0;
+        }
+
+        .feature:nth-child(3) {
+            border-color: #C4D58D;
+            box-shadow: 0 5px 0 #D1DDB9;
+        }
+
+        .feature-icon {
+            display: grid;
+            place-items: center;
+            width: 57px;
+            height: 57px;
+            margin-bottom: 0.9rem;
+            border-radius: 17px;
+            background: #FFF0B9;
+            font-size: 2rem;
+        }
+
+        .feature:nth-child(2) .feature-icon {
+            background: #E8F2FF;
+        }
+
+        .feature:nth-child(3) .feature-icon {
+            background: #EAF3D8;
+        }
+
+        .feature h3 {
+            margin: 0.1rem 0 0.55rem;
+            color: #194F95;
+            font-size: 1.15rem;
+        }
+
+        .feature p {
+            margin: 0;
+            color: #4C6377;
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           GRATUIT ET ABONNEMENT
+        ========================== */
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 1.4rem;
+        }
+
+        .access-card {
+            padding: 1.7rem;
+            border: 2px solid #A7C9B3;
+            border-radius: 25px;
+            background: #FFFEF8;
+            box-shadow: 0 5px 0 #C3D8BF;
+        }
+
+        .access-card.premium {
+            border-color: #E0BC57;
+            background: #FFFAE7;
+            box-shadow: 0 5px 0 #EAD59B;
+        }
+
+        .access-label {
+            display: inline-block;
+            margin-bottom: 0.9rem;
+            padding: 0.35rem 0.65rem;
+            border: 1px solid #BBD29A;
+            border-radius: 999px;
+            background: #E4F2DE;
+            color: #345923;
+            font-size: 0.75rem;
+            font-weight: 900;
+        }
+
+        .premium .access-label {
+            border-color: #E0BB4A;
+            background: #FFE590;
+            color: #67490D;
+        }
+
+        .access-card h3 {
+            margin: 0 0 0.7rem;
+            color: #175290;
+            font-size: 1.45rem;
+        }
+
+        .access-card p {
+            max-width: 400px;
+            color: #4F6576;
+            font-size: 0.93rem;
+        }
+
+        .access-card ul {
+            padding-left: 1.2rem;
+            margin: 1rem 0 1.3rem;
+            color: #45604B;
+            font-size: 0.9rem;
+            line-height: 1.9;
+        }
+
+        .price-note {
+            color: #725D34 !important;
+            font-size: 0.78rem !important;
+        }
+
+        /* =========================
+           LIEN VERS LES LIVRES
+        ========================== */
+
+        .books-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin: 2.8rem 0 0.5rem;
+            padding: 1.5rem 1.7rem;
+            border: 2px solid #B5CDEB;
+            border-radius: 23px;
+            background: #E7F0FF;
+        }
+
+        .books-panel h2 {
+            margin: 0;
+            color: #164C93;
+            font-size: 1.3rem;
+        }
+
+        .books-panel p {
+            margin: 0.5rem 0 0;
+            color: #4E6681;
+            font-size: 0.9rem;
+        }
+
+        .books-panel a {
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           APERÇU DE L’INSCRIPTION
+        ========================== */
+
+        .signup-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .signup-heading {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .signup-heading h1 {
+            margin: 0;
+            color: #124AA0;
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+
+        .signup-heading p {
+            max-width: 560px;
+            margin: 0.7rem auto;
+            color: #52697A;
+            font-size: 0.94rem;
+        }
+
+        .registration-notice {
+            margin: 1.2rem 0;
+            padding: 0.85rem 1rem;
+            border: 1px solid #E0C164;
+            border-radius: 14px;
+            background: #FFF0BB;
+            color: #6A4D12;
+            font-size: 0.88rem;
+        }
+
+        .signup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 1.1rem;
+        }
+
+        .signup-card {
+            padding: 1.5rem;
+            border: 2px solid #BDD1E9;
+            border-radius: 23px;
+            background: #FFFEF8;
+            box-shadow: 0 5px 0 #D6E1EF;
+        }
+
+        .signup-card.child {
+            border-color: #C0D593;
+            box-shadow: 0 5px 0 #D6E1BC;
+        }
+
+        .signup-card h2 {
+            margin: 0;
+            color: #164C93;
+            font-size: 1.25rem;
+        }
+
+        .signup-card > p {
+            margin: 0.55rem 0 1.1rem;
+            color: #526A7D;
+            font-size: 0.85rem;
+        }
+
+        .field {
+            display: block;
+            margin: 1rem 0;
+            color: #355779;
+            font-size: 0.86rem;
+            font-weight: 800;
+        }
+
+        .field input {
+            display: block;
+            width: 100%;
+            margin-top: 0.45rem;
+            padding: 0.8rem;
+            border: 2px solid #C4D5E8;
+            border-radius: 12px;
+            background: #F9FBFF;
+            color: var(--navy);
+        }
+
+        .field input:disabled {
+            opacity: 1;
+            background: #F2F2ED;
+            color: #556675;
+            cursor: not-allowed;
+        }
+
+        .small-note {
+            color: #536773 !important;
+            font-size: 0.78rem !important;
+        }
+
+        .avatar-picker-label {
+            margin: 1rem 0 0.7rem;
+            color: #355779;
+            font-size: 0.86rem;
+            font-weight: 800;
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.65rem;
+        }
+
+        .avatar-button {
+            display: grid;
+            gap: 0.2rem;
+            padding: 0.55rem 0.3rem;
+            border: 2px solid #CDDBA8;
+            border-bottom-width: 4px;
+            border-radius: 16px;
+            background: #F2F7E6;
+            color: #385924;
+            font-size: 0.74rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .avatar-button span {
+            font-size: 2rem;
+        }
+
+        .avatar-button[aria-pressed="true"] {
+            border-color: #B78620;
+            background: #FFE49A;
+            color: #67470E;
+        }
+
+        .avatar-preview {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-top: 1rem;
+            padding: 0.7rem;
+            border: 1px solid #D1E0F3;
+            border-radius: 13px;
+            background: #EDF4FF;
+            color: #214F8D;
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        .avatar-preview > span {
+            font-size: 2.3rem;
+        }
+
+        .signup-bottom {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .signup-bottom .primary:disabled {
+            border-color: #ABBDA7;
+            background: #CAD9C8;
+            color: #456041;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .signup-bottom p {
+            margin: 0.8rem 0;
+            color: #536773;
+            font-size: 0.82rem;
+        }
+
+        /* =========================
+           PAGE DU JEU
+        ========================== */
+
+        .game-page-title {
+            margin: 0 0 1.2rem;
+            color: #124AA0;
+            font-size: 1.9rem;
+        }
+
+        .game-intro-note {
+            margin: 0 0 1.2rem;
+            color: #566C7C;
+            font-size: 0.82rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 275px 1fr;
+            gap: 1.4rem;
+            align-items: start;
+        }
+
+        .settings {
+            padding: 1.4rem;
+            border: 2px solid #D5BF82;
+            border-radius: 24px;
+            background: #FFFDF5;
+            box-shadow: 0 5px 0 #E2D4B1;
+        }
+
+        .settings-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .settings-heading h2 {
+            margin: 0;
+            font-size: 1.15rem;
+        }
+
+        .step {
+            display: grid;
+            place-items: center;
+            width: 32px;
+            height: 32px;
+            border: 2px solid #E6B239;
+            border-radius: 50%;
+            background: var(--yellow);
+            color: #624216;
+            font-weight: 900;
+        }
+
+        .second {
+            margin-top: 1.5rem;
+        }
+
+        fieldset {
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .grade-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+        }
+
+        .choice {
+            position: relative;
+            display: block;
+        }
+
+        .choice input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+
+        .choice span {
+            display: block;
+            padding: 0.75rem 0.35rem;
+            border: 2px solid #C3D6EF;
+            border-bottom-width: 4px;
+            border-radius: 13px;
+            background: #EEF5FF;
+            color: #23569C;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .choice:first-child {
+            grid-column: 1 / -1;
+        }
+
+        .choice:hover span {
+            background: #DEEDFF;
+        }
+
+        .choice input:checked + span {
+            border-color: #0D3980;
+            background: var(--blue);
+            color: white;
+        }
+
+        .choice input:disabled + span {
+            opacity: 0.65;
+        }
+
+        .difficulty-list {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .difficulty-list .choice span {
+            padding: 0.7rem 0.9rem;
+            border-color: #C5D590;
+            background: #F1F6DE;
+            color: #3C5E24;
+            text-align: left;
+        }
+
+        .difficulty-list .choice input:checked + span {
+            border-color: #C29224;
+            background: #FFDF6D;
+            color: #5B3F0B;
+        }
+
+        .settings-note {
+            margin: 1.25rem 0 0;
+            color: #526956;
+            font-size: 0.81rem;
+        }
+
+        .settings .text-button {
+            margin-top: 0.8rem;
+        }
+
+        .game-panel {
+            min-height: 555px;
+            overflow: hidden;
+            border: 2px solid #93BAA5;
+            border-radius: 24px;
+            background: #FFFEF9;
+            box-shadow: 0 6px 0 #BFD0B6;
+        }
+
+        .game-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.3rem 1.8rem;
+            border-bottom: 2px solid #C2D591;
+            background: #EAF3D8;
+        }
+
+        .game-heading h2 {
+            margin: 0;
+            color: #215D3C;
+            font-size: 1.65rem;
+            line-height: 1.2;
+        }
+
+        .game-heading .eyebrow {
+            margin-bottom: 0.4rem;
+            color: #45642B;
+            font-size: 0.7rem;
+        }
+
+        .game-symbol {
+            display: grid;
+            place-items: center;
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+            border: 2px solid #E8BB3D;
+            border-radius: 50%;
+            background: var(--yellow);
+            font-size: 2rem;
+        }
+
+        .intro {
+            padding: 2rem 2.4rem;
+            text-align: center;
+            background: radial-gradient(
+                ellipse at 50% 0,
+                #FFF6DC,
+                transparent 75%
+            );
+        }
+
+        .animal-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 0.25rem 0 1.2rem;
+        }
+
+        .animal-line span {
+            display: grid;
+            place-items: center;
+            width: 66px;
+            height: 66px;
+            border: 2px solid #F1D06C;
+            border-radius: 50%;
+            background: #FFF0B4;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 0 #EAD79D;
+        }
+
+        .animal-line span:nth-child(2) {
+            transform: translateY(-5px);
+            border-color: #BBD6F4;
+            background: #E6F2FF;
+            box-shadow: 0 4px 0 #C8DCED;
+        }
+
+        .animal-line span:nth-child(3) {
+            border-color: #C4D68D;
+            background: #E8F1CE;
+            box-shadow: 0 4px 0 #CBDAB1;
+        }
+
+        .intro h3 {
+            margin: 0.6rem 0;
+            color: #164C93;
+            font-size: 1.65rem;
+            line-height: 1.3;
+        }
+
+        .intro p {
+            max-width: 430px;
+            margin: 0.7rem auto;
+            color: #4B6175;
+        }
+
+        .preview-skill {
+            display: inline-block;
+            margin: 0.8rem 0 1.4rem;
+            padding: 0.6rem 0.85rem;
+            border: 1px solid #D0E0F5;
+            border-radius: 12px;
+            background: #EAF2FE;
+            color: #235195;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .intro .primary {
+            display: flex;
+            min-width: 240px;
+            margin: 0 auto;
+        }
+
+        .intro .gentle {
+            margin-top: 1.3rem;
+            font-size: 0.82rem;
+        }
+
+        /* =========================
+           QUESTIONS ET RÉPONSES
+        ========================== */
+
+        .round {
+            padding: 1.4rem 1.8rem;
+        }
+
+        .round-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.88rem;
+            font-weight: 800;
+        }
+
+        .round-label {
+            color: #536B7B;
+        }
+
+        .stars {
+            padding: 0.4rem 0.65rem;
+            border: 1px solid #EAC858;
+            border-radius: 12px;
+            background: #FFF0B8;
+            color: #745005;
+            white-space: nowrap;
+        }
+
+        .progress {
+            height: 11px;
+            margin: 0.85rem 0 1.25rem;
+            overflow: hidden;
+            border-radius: 99px;
+            background: #E8EDDD;
+        }
+
+        .progress span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, #70B946, #227B47);
+            transition: width 0.3s;
+        }
+
+        .patient {
+            color: #426446;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .patient .animal {
+            display: grid;
+            place-items: center;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 0.45rem;
+            border: 2px solid #EFD072;
+            border-radius: 50%;
+            background: #FFF1BE;
+            font-size: 2.7rem;
+        }
+
+        .question {
+            margin: 1rem 0;
+            color: #174C96;
+            font-size: 1.95rem;
+            font-weight: 900;
+            line-height: 1.4;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .counts {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            max-width: 420px;
+            margin: 1rem auto 1.3rem;
+        }
+
+        .count-item {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #EAD59A;
+            border-radius: 12px;
+            background: #FFF4CF;
+            font-size: 2rem;
+        }
+
+        .read-button {
+            display: block;
+            min-height: 40px;
+            margin: 0 auto 1.15rem;
+            padding: 0.5rem 0.85rem;
+            border: 1px solid #C4D6ED;
+            border-radius: 999px;
+            background: #F1F6FF;
+            color: #2F5791;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .answer {
+            min-height: 68px;
+            padding: 0.65rem 0.5rem;
+            border: 2px solid #A8C5E9;
+            border-bottom-width: 5px;
+            border-radius: 16px;
+            background: #EAF3FF;
+            color: var(--navy);
+            font-size: 1.6rem;
+            font-weight: 900;
+            overflow-wrap: anywhere;
+        }
+
+        .answer:nth-child(2):not(.correct):not(.wrong) {
+            border-color: #E6C767;
+            background: #FFF2C8;
+        }
+
+        .answer:nth-child(3):not(.correct):not(.wrong) {
+            border-color: #BDCF85;
+            background: #ECF3D9;
+        }
+
+        .answer:nth-child(4):not(.correct):not(.wrong) {
+            border-color: #E9BA98;
+            background: #FFECDF;
+        }
+
+        .answer:hover:not(:disabled) {
+            outline: 3px solid #306BBC;
+            outline-offset: 1px;
+        }
+
+        .answer.wrong {
+            border-color: #D4975F;
+            background: #FFF1E8;
+            color: #75401C;
+        }
+
+        .answer.correct {
+            border-color: #398642;
+            background: #DDF5DD;
+            color: #215B2A;
+        }
+
+        .answer:disabled:not(.correct):not(.wrong) {
+            opacity: 0.55;
+        }
+
+        .feedback {
+            min-height: 48px;
+            margin: 1rem 0 0;
+            padding: 0.7rem 1rem;
+            border: 1px solid #DCE5F0;
+            border-radius: 13px;
+            background: #F0F4FA;
+            color: #435D76;
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+
+        .feedback.success {
+            border-color: #B2D4AB;
+            background: #E6F6E2;
+            color: #265D2A;
+        }
+
+        .round-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* =========================
+           RÉSULTAT
+        ========================== */
+
+        .result {
+            padding: 2rem;
+            text-align: center;
+            background: radial-gradient(
+                ellipse at 50% 0,
+                #FFF1C1,
+                transparent 70%
+            );
+        }
+
+        .medal {
+            font-size: 3rem;
+        }
+
+        .result h3 {
+            margin: 0.7rem 0;
+            color: #164C93;
+            font-size: 1.8rem;
+            line-height: 1.25;
+        }
+
+        .result p {
+            max-width: 420px;
+            margin: 0.6rem auto;
+            color: #4C6978;
+        }
+
+        .result-score {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 0.85rem 1.3rem;
+            border: 2px solid #E7C159;
+            border-radius: 16px;
+            background: #FFECAC;
+            color: #725000;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .result-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.8rem 0.3rem;
+            color: #50644C;
+            font-size: 0.79rem;
+        }
+
+        /* =========================
+           TABLETTES
+        ========================== */
+
+        @media (max-width: 900px) {
+            main {
+                padding: 1.3rem 1rem 0;
+            }
+
+            .welcome-copy {
+                padding: 1.7rem 1.3rem;
+            }
+
+            .welcome h1 {
+                font-size: 2.25rem;
+            }
+
+            .home-actions {
+                gap: 0.6rem;
+            }
+
+            .home-actions a {
+                padding: 0.7rem 0.8rem;
+                font-size: 0.81rem;
+            }
+
+            .features {
+                gap: 0.7rem;
+            }
+
+            .feature {
+                padding: 1.15rem;
+            }
+
+            .layout {
+                grid-template-columns: 235px 1fr;
+                gap: 1rem;
+            }
+
+            .settings {
+                padding: 1rem;
+            }
+
+            .round {
+                padding: 1.3rem;
+            }
+
+            .intro {
+                padding: 1.8rem 1.3rem;
+            }
+
+            .game-heading {
+                padding: 1.2rem;
+            }
+
+            .game-heading h2 {
+                font-size: 1.4rem;
+            }
+
+            .question {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* =========================
+           TÉLÉPHONES
+        ========================== */
+
+        @media (max-width: 660px) {
+            .topbar {
+                padding: 0.9rem;
+                align-items: flex-start;
+            }
+
+            .brand {
+                font-size: 1.22rem;
+            }
+
+            .brand small {
+                max-width: 175px;
+                font-size: 0.65rem;
+            }
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .books-link {
+                max-width: 95px;
+                padding: 0.6rem;
+                font-size: 0.75rem;
+                text-align: center;
+            }
+
+            .welcome {
+                display: flex;
+                flex-direction: column;
+                min-height: 0;
+                margin-bottom: 1.6rem;
+                border-radius: 23px;
+            }
+
+            .welcome-art {
+                position: static;
+                z-index: auto;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3 / 2;
+                object-fit: contain;
+            }
+
+            .welcome::after {
+                display: none;
+            }
+
+            .welcome-copy {
+                width: 100%;
+                padding: 1.2rem;
+                text-align: center;
+            }
+
+            .welcome h1 {
+                font-size: 2.05rem;
+            }
+
+            .welcome-copy > p:not(.eyebrow) {
+                max-width: 340px;
+                margin: 0.7rem auto;
+                font-size: 0.92rem;
+            }
+
+            .home-actions {
+                justify-content: center;
+                margin: 1rem 0;
+            }
+
+            .home-actions a {
+                font-size: 0.85rem;
+            }
+
+            .welcome-badge {
+                padding: 0.45rem 0.7rem;
+                font-size: 0.75rem;
+            }
+
+            .features,
+            .access-grid,
+            .signup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                gap: 1rem;
+                margin: 1.2rem 0 2.3rem;
+            }
+
+            .feature {
+                display: grid;
+                grid-template-columns: 55px 1fr;
+                gap: 0.4rem 1rem;
+                padding: 1.1rem;
+            }
+
+            .feature-icon {
+                grid-row: 1 / 3;
+                width: 51px;
+                height: 51px;
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+            .feature h3 {
+                margin: 0.1rem 0;
+                font-size: 1.07rem;
+            }
+
+            .feature p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-intro {
+                font-size: 0.88rem;
+            }
+
+            .access-card {
+                padding: 1.4rem;
+            }
+
+            .books-panel {
+                flex-direction: column;
+                margin-top: 2.4rem;
+                padding: 1.4rem;
+                text-align: center;
+            }
+
+            .books-panel h2 {
+                font-size: 1.18rem;
+            }
+
+            .signup-heading h1 {
+                font-size: 1.9rem;
+            }
+
+            .signup-heading p {
+                font-size: 0.88rem;
+            }
+
+            .signup-card {
+                padding: 1.3rem;
+            }
+
+            .signup-grid {
+                gap: 1.3rem;
+            }
+
+            .registration-notice {
+                font-size: 0.83rem;
+            }
+
+            .layout {
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .settings,
+            .game-panel {
+                width: 100%;
+                border-radius: 21px;
+            }
+
+            .settings {
+                padding: 1.1rem;
+            }
+
+            .grade-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .difficulty-list {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.4rem;
+            }
+
+            .difficulty-list .choice:first-child {
+                grid-column: auto;
+            }
+
+            .difficulty-list .choice span {
+                padding: 0.65rem 0.2rem;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+
+            .settings-note {
+                margin-top: 0.8rem;
+            }
+
+            .second {
+                margin-top: 1.1rem;
+            }
+
+            .game-panel {
+                min-height: 0;
+            }
+
+            .game-page-title {
+                font-size: 1.65rem;
+            }
+
+            .game-heading h2 {
+                font-size: 1.3rem;
+            }
+
+            .game-heading .eyebrow {
+                font-size: 0.68rem;
+            }
+
+            .game-symbol {
+                width: 45px;
+                height: 45px;
+                font-size: 1.6rem;
+            }
+
+            .intro {
+                padding: 1.7rem 1rem;
+            }
+
+            .intro h3 {
+                font-size: 1.45rem;
+            }
+
+            .intro .primary {
+                min-width: 220px;
+            }
+
+            .animal-line span {
+                width: 58px;
+                height: 58px;
+                font-size: 2.1rem;
+            }
+
+            .round-top {
+                font-size: 0.8rem;
+            }
+
+            .question {
+                font-size: 1.6rem;
+            }
+
+            .round-actions {
+                gap: 0.6rem;
+            }
+
+            .round-actions .primary {
+                padding: 0.8rem 1rem;
+            }
+
+            .result {
+                padding: 1.8rem 1.1rem;
+            }
+
+            footer {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         EN-TÊTE
+    ========================== -->
+
+    <header class="topbar">
+        <a
+            class="brand"
+            href="#/accueil"
+            aria-label="Accueil de la plateforme">
+
+            <span class="brand-icon" aria-hidden="true">🐾</span>
+
+            <span>
+                Le coin des jeux
+                <small>Les Éditions Cap Découvertes Jeunesse</small>
+                <span class="test-badge">Version en test</span>
+            </span>
+        </a>
+
+        <a
+            class="books-link"
+            href="https://leseditionscdj.ca/"
+            target="_blank"
+            rel="noopener">
+            Découvrir les livres ↗
+        </a>
+    </header>
+
+    <main>
+
+        <!-- =========================
+             PAGE D’ACCUEIL
+        ========================== -->
+
+        <div id="home-view" class="view">
+
+            <section class="welcome" aria-labelledby="home-title">
+                <img
+                    class="welcome-art"
+                    src="decor-matteo.jpg"
+                    alt="Mattéo, Tina la tortue, un chien et un chat dans le jardin fleuri de la clinique.">
+
+                <div class="welcome-copy">
+                    <p class="eyebrow">
+                        AVEC MATTÉO ET LES ANIMAUX
+                    </p>
+
+                    <h1 id="home-title">
+                        Deviens un petit aventurier !
+                    </h1>
+
+                    <p>
+                        Des jeux, des découvertes et des petits défis
+                        pour apprendre en t’amusant.
+                    </p>
+
+                    <div class="home-actions">
+                        <a class="primary" href="#/jeux">
+                            Essayer le jeu gratuit
+                        </a>
+
+                        <a class="secondary" href="#/inscription">
+                            Créer mon profil
+                        </a>
+                    </div>
+
+                    <span class="welcome-badge">
+                        🐾 Du préscolaire à la 6e année
+                    </span>
+                </div>
+            </section>
+
+            <h2 class="section-title">
+                À chacun sa petite aventure
+            </h2>
+
+            <p class="section-intro">
+                Choisis ton compagnon, avance à ton rythme
+                et découvre le plaisir d’apprendre.
+            </p>
+
+            <div class="features">
+                <article class="feature">
+                    <div class="feature-icon" aria-hidden="true">🐱</div>
+
+                    <h3>Ton animal, ton profil</h3>
+
+                    <p>
+                        Un pseudonyme et un compagnon animal
+                        pour te représenter dans l’aventure.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon" aria-hidden="true">🧩</div>
+
+                    <h3>Apprendre en jouant</h3>
+
+                    <p>
+                        Des défis éducatifs adaptés à ton niveau,
+                        avec un coup de main quand tu en as besoin.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon" aria-hidden="true">🌟</div>
+
+                    <h3>Grandir à ton rythme</h3>
+
+                    <p>
+                        De petites réussites à célébrer,
+                        sans course contre la montre.
+                    </p>
+                </article>
+            </div>
+
+            <section aria-labelledby="access-title">
+                <h2 class="section-title" id="access-title">
+                    Une aventure à découvrir
+                </h2>
+
+                <p class="section-intro">
+                    Commence gratuitement. Un abonnement permettra
+                    ensuite d’aller plus loin.
+                </p>
+
+                <div class="access-grid">
+
+                    <article class="access-card">
+                        <span class="access-label">
+                            POUR COMMENCER · GRATUIT
+                        </span>
+
+                        <h3>Les premiers pas</h3>
+
+                        <p>
+                            Découvre la plateforme avec quelques
+                            niveaux de jeux éducatifs gratuits.
+                        </p>
+
+                        <ul>
+                            <li>Un premier jeu à essayer dès maintenant</li>
+                            <li>Des consignes et des indices pour t’aider</li>
+                            <li>Des défis à faire à ton rythme</li>
+                        </ul>
+
+                        <a class="primary" href="#/jeux">
+                            Jouer à la clinique des nombres
+                        </a>
+                    </article>
+
+                    <article class="access-card premium">
+                        <span class="access-label">
+                            POUR ALLER PLUS LOIN · À VENIR
+                        </span>
+
+                        <h3>L’aventure continue</h3>
+
+                        <p>
+                            Un abonnement pour accéder à davantage
+                            de niveaux et poursuivre tes découvertes.
+                        </p>
+
+                        <ul>
+                            <li>Plus de niveaux de jeux</li>
+                            <li>Un profil personnel pour ton aventurier</li>
+                            <li>Un abonnement géré par le parent</li>
+                        </ul>
+
+                        <a class="secondary" href="#/inscription">
+                            Découvrir l’inscription
+                        </a>
+
+                        <p class="price-note">
+                            Le tarif et le contenu de l’abonnement
+                            seront annoncés prochainement.
+                        </p>
+                    </article>
+
+                </div>
+            </section>
+
+            <section class="books-panel" aria-labelledby="books-title">
+                <div>
+                    <h2 id="books-title">
+                        L’aventure se poursuit aussi dans les livres !
+                    </h2>
+
+                    <p>
+                        Retrouve les histoires de Mattéo et ses amis
+                        sur le site des Éditions CDJ.
+                    </p>
+                </div>
+
+                <a
+                    class="secondary"
+                    href="https://leseditionscdj.ca/"
+                    target="_blank"
+                    rel="noopener">
+                    Découvrir les livres ↗
+                </a>
+            </section>
+
+        </div>
+
+        <!-- =========================
+             APERÇU DE L’INSCRIPTION
+        ========================== -->
+
+        <div id="signup-view" class="view" hidden>
+            <a class="back-link" href="#/accueil">
+                ← Retour à l’accueil
+            </a>
+
+            <div class="signup-wrap">
+
+                <div class="signup-heading">
+                    <p class="eyebrow">
+                        BIENVENUE DANS L’AVENTURE
+                    </p>
+
+                    <h1 id="signup-title" tabindex="-1">
+                        Un parent, un petit aventurier
+                    </h1>
+
+                    <p>
+                        Le parent gérera le compte et l’abonnement.
+                        L’enfant choisira son pseudonyme et son animal.
+                    </p>
+                </div>
+
+                <p class="registration-notice">
+                    Les inscriptions ne sont pas encore ouvertes.
+                    Tu peux déjà essayer les animaux et voir
+                    à quoi ressemblera ton profil.
+                </p>
+
+                <div class="signup-grid">
+
+                    <section
+                        class="signup-card"
+                        aria-labelledby="parent-title">
+
+                        <h2 id="parent-title">
+                            1. Le compte du parent
+                        </h2>
+
+                        <p>
+                            Les informations de connexion resteront
+                            sous la responsabilité du parent.
+                        </p>
+
+                        <label class="field">
+                            Adresse courriel du parent
+
+                            <input
+                                type="email"
+                                autocomplete="off"
+                                aria-label="Adresse courriel du parent, inscriptions bientôt disponibles"
+                                disabled>
+                        </label>
+
+                        <label class="field">
+                            Mot de passe du parent
+
+                            <input
+                                type="password"
+                                autocomplete="off"
+                                aria-label="Mot de passe du parent, inscriptions bientôt disponibles"
+                                disabled>
+                        </label>
+
+                        <label class="field">
+                            Confirmer le mot de passe
+
+                            <input
+                                type="password"
+                                autocomplete="off"
+                                aria-label="Confirmer le mot de passe, inscriptions bientôt disponibles"
+                                disabled>
+                        </label>
+
+                        <p class="small-note">
+                            Le compte permettra de commencer avec
+                            les jeux gratuits et de choisir
+                            un abonnement plus tard.
+                        </p>
+                    </section>
+
+                    <section
+                        class="signup-card child"
+                        aria-labelledby="child-title">
+
+                        <h2 id="child-title">
+                            2. Le profil de l’aventurier
+                        </h2>
+
+                        <p>
+                            Un nom amusant et un compagnon
+                            pour partir à l’aventure.
+                        </p>
+
+                        <label class="field">
+                            Pseudonyme de l’aventurier
+
+                            <input
+                                id="nickname"
+                                type="text"
+                                maxlength="24"
+                                placeholder="Ex. : Petit Renard"
+                                autocomplete="off"
+                                aria-describedby="nickname-note">
+                        </label>
+
+                        <p class="small-note" id="nickname-note">
+                            Choisis un pseudonyme plutôt que ton nom complet.
+                            Cet aperçu n’est pas enregistré.
+                        </p>
+
+                        <p class="avatar-picker-label" id="avatar-label">
+                            Choisis ton animal
+                        </p>
+
+                        <div
+                            class="avatar-grid"
+                            role="group"
+                            aria-labelledby="avatar-label">
+
+                            <button
+                                class="avatar-button"
+                                type="button"
+                                data-animal="🐶"
+                                aria-label="Choisir Chien"
+                                aria-pressed="true">
+                                <span aria-hidden="true">🐶</span>
+                                Chien
+                            </button>
+
+                            <button
+                                class="avatar-button"
+                                type="button"
+                                data-animal="🐱"
+                                aria-label="Choisir Chat"
+                                aria-pressed="false">
+                                <span aria-hidden="true">🐱</span>
+                                Chat
+                            </button>
+
+                            <button
+                                class="avatar-button"
+                                type="button"
+                                data-animal="🐰"
+                                aria-label="Choisir Lapin"
+                                aria-pressed="false">
+                                <span aria-hidden="true">🐰</span>
+                                Lapin
+                            </button>
+
+                            <button
+                                class="avatar-button"
+                                type="button"
+                                data-animal="🐢"
+                                aria-label="Choisir Tortue"
+                                aria-pressed="false">
+                                <span aria-hidden="true">🐢</span>
+                                Tortue
+                            </button>
+
+                            <button
+                                class="avatar-button"
+                                type="button"
+                                data-animal="🦊"
+                                aria-label="Choisir Renard"
+                                aria-pressed="false">
+                                <span aria-hidden="true">🦊</span>
+                                Renard
+                            </button>
+
+                            <button
+                                class="avatar-button"
+                                type="button"
+                                data-animal="🐼"
+                                aria-label="Choisir Panda"
+                                aria-pressed="false">
+                                <span aria-hidden="true">🐼</span>
+                                Panda
+                            </button>
+
+                        </div>
+
+                        <div
+                            class="avatar-preview"
+                            role="status"
+                            aria-live="polite">
+
+                            <span id="avatar-emoji" aria-hidden="true">
+                                🐶
+                            </span>
+
+                            <div>
+                                <small>Ton futur profil</small>
+                                <br>
+                                <span id="avatar-nickname">
+                                    Petit aventurier
+                                </span>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+
+                <div class="signup-bottom">
+                    <button class="primary" type="button" disabled>
+                        Inscriptions bientôt disponibles
+                    </button>
+
+                    <p>
+                        Aucun compte n’est créé dans cet aperçu.
+                    </p>
+
+                    <a class="back-link" href="#/jeux">
+                        En attendant, essayer le jeu gratuit →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             JEU GRATUIT
+        ========================== -->
+
+        <div id="game-view" class="view" hidden>
+            <a class="back-link" href="#/accueil">
+                ← Retour à l’accueil
+            </a>
+
+            <h1
+                class="game-page-title"
+                id="play-title"
+                tabindex="-1">
+                La clinique des nombres
+            </h1>
+
+            <p class="game-intro-note">
+                Jeu de découverte offert pendant les tests.
+                Choisis ton niveau et aide les animaux de Mattéo.
+            </p>
+
+            <div class="layout">
+
+                <aside class="settings">
+
+                    <div class="settings-heading">
+                        <span class="step">1</span>
+                        <h2>Ton niveau</h2>
+                    </div>
+
+                    <fieldset id="grades">
+                        <legend class="sr-only">
+                            Choisis ton niveau scolaire
+                        </legend>
+
+                        <div class="grade-grid"></div>
+                    </fieldset>
+
+                    <div class="settings-heading second">
+                        <span class="step">2</span>
+                        <h2>Ton défi</h2>
+                    </div>
+
+                    <fieldset id="difficulties">
+                        <legend class="sr-only">
+                            Choisis la difficulté
+                        </legend>
+
+                        <div class="difficulty-list"></div>
+                    </fieldset>
+
+                    <p class="settings-note">
+                        Tu peux changer de niveau entre deux parties.
+                        Prends ton temps, il n’y a pas de chrono.
+                    </p>
+
+                    <button
+                        id="change-settings"
+                        class="text-button"
+                        type="button"
+                        hidden>
+                        Changer de niveau
+                    </button>
+
+                </aside>
+
+                <section
+                    class="game-panel"
+                    aria-labelledby="game-title">
+
+                    <div class="game-heading">
+                        <div>
+                            <p class="eyebrow">
+                                LES MISSIONS DE MATTÉO
+                            </p>
+
+                            <h2 id="game-title">
+                                La clinique des nombres
+                            </h2>
+                        </div>
+
+                        <span class="game-symbol" aria-hidden="true">
+                            🐾
+                        </span>
+                    </div>
+
+                    <div id="game-content"></div>
+
+                </section>
+
+            </div>
+        </div>
+
+        <footer>
+            <span>Les Éditions Cap Découvertes Jeunesse</span>
+            <span>Apprendre, une petite aventure à la fois. 🐾</span>
+        </footer>
+
+    </main>
+
+    <script>
+        "use strict";
+
+        /* =========================
+           NIVEAUX ET DIFFICULTÉS
+        ========================== */
+
+        const LEVELS = [
+            "Préscolaire",
+            "1re année",
+            "2e année",
+            "3e année",
+            "4e année",
+            "5e année",
+            "6e année"
+        ];
+
+        const SKILLS = [
+            "Compter les objets",
+            "Additionner et soustraire",
+            "Calculer avec les dizaines",
+            "Multiplier et diviser",
+            "Explorer les fractions",
+            "Calculer avec les décimales",
+            "Fractions et pourcentages"
+        ];
+
+        const DIFFICULTIES = [
+            "Douce",
+            "Habituelle",
+            "Défi"
+        ];
+
+        const ANIMALS = [
+            ["🐶", "un petit chien"],
+            ["🐱", "un chat curieux"],
+            ["🐰", "un lapin gourmand"],
+            ["🐢", "une tortue patiente"],
+            ["🐹", "un petit hamster"],
+            ["🐦", "un oiseau joyeux"],
+            ["🐶", "un chien joueur"],
+            ["🐱", "un chat câlin"]
+        ];
+
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function shuffle(array) {
+            const copy = [...array];
+
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = rand(0, i);
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+
+            return copy;
+        }
+
+        function fmt(number) {
+            return Number(number.toFixed(4)).toLocaleString(
+                "fr-CA",
+                { maximumFractionDigits: 4 }
+            );
+        }
+
+        /* =========================
+           CRÉATION DES QUESTIONS
+        ========================== */
+
+        function makeQuestion(grade, difficulty) {
+            let text;
+            let answer;
+            let options;
+            let explanation;
+            let count = 0;
+
+            function numeric(value, step = 1) {
+                answer = fmt(value);
+
+                const choices = new Set([answer]);
+
+                for (
+                    let tries = 0;
+                    choices.size < 4 && tries < 100;
+                    tries++
+                ) {
+                    const other = value + rand(-5, 5) * step;
+
+                    if (other >= 0) {
+                        choices.add(fmt(other));
+                    }
+                }
+
+                let offset = 1;
+
+                while (choices.size < 4) {
+                    choices.add(fmt(value + offset * step));
+                    offset++;
+                }
+
+                options = shuffle([...choices]);
+            }
+
+            if (grade === 0) {
+                count = rand(1, [5, 8, 12][difficulty]);
+
+                text = "Combien de chiens vois-tu ?";
+                numeric(count);
+
+                explanation =
+                    `Compte chaque chien une seule fois. Il y en a ${count}.`;
+
+            } else if (grade === 1) {
+                const cap = [5, 10, 20][difficulty];
+                const a = rand(1, cap);
+                const b = rand(1, cap);
+
+                if (difficulty > 0 && rand(0, 1)) {
+                    const x = Math.max(a, b);
+                    const y = Math.min(a, b);
+
+                    text = `${x} − ${y} = ?`;
+                    numeric(x - y);
+
+                    explanation =
+                        `Pars de ${x} et recule de ${y}. Tu arrives à ${x - y}.`;
+
+                } else {
+                    text = `${a} + ${b} = ?`;
+                    numeric(a + b);
+
+                    explanation =
+                        `${a} et encore ${b}, cela fait ${a + b}.`;
+                }
+
+            } else if (grade === 2) {
+                const cap = [20, 50, 99][difficulty];
+                const a = rand(10, cap);
+                const b = rand(1, cap);
+
+                if (rand(0, 1)) {
+                    const x = Math.max(a, b);
+                    const y = Math.min(a, b);
+
+                    text = `${x} − ${y} = ?`;
+                    numeric(x - y);
+
+                    explanation =
+                        `${x} moins ${y} donne ${x - y}. ` +
+                        "Sépare les dizaines et les unités si cela t’aide.";
+
+                } else {
+                    text = `${a} + ${b} = ?`;
+                    numeric(a + b);
+
+                    explanation =
+                        "En additionnant les dizaines puis les unités, " +
+                        `${a} + ${b} = ${a + b}.`;
+                }
+
+            } else if (grade === 3) {
+                const a = difficulty === 0
+                    ? [2, 5, 10][rand(0, 2)]
+                    : rand(2, difficulty === 1 ? 10 : 12);
+
+                const b = rand(2, difficulty === 0 ? 5 : 10);
+
+                if (difficulty > 0 && rand(0, 1)) {
+                    text = `${a * b} ÷ ${a} = ?`;
+                    numeric(b);
+
+                    explanation =
+                        `${a} × ${b} = ${a * b}, ` +
+                        `donc ${a * b} ÷ ${a} = ${b}.`;
+
+                } else {
+                    text = `${a} × ${b} = ?`;
+                    numeric(a * b);
+
+                    explanation =
+                        `${a} groupes de ${b} donnent ${a * b}.`;
+                }
+
+            } else if (grade === 4) {
+                const denominator = [2, 3, 4, 5, 6, 8][
+                    rand(0, difficulty === 0 ? 2 : 5)
+                ];
+
+                const numerator = rand(1, denominator - 1);
+                const multiplier = rand(2, difficulty === 2 ? 5 : 3);
+
+                if (difficulty === 2 && rand(0, 1)) {
+                    const otherNumerator = rand(1, denominator - 1);
+                    const total = numerator + otherNumerator;
+
+                    text =
+                        `${numerator}/${denominator} + ` +
+                        `${otherNumerator}/${denominator} = ?`;
+
+                    answer = `${total}/${denominator}`;
+
+                    options = shuffle([
+                        answer,
+                        `${total}/${denominator * 2}`,
+                        `${total + 1}/${denominator}`,
+                        `${Math.max(0, total - 1)}/${denominator}`
+                    ]);
+
+                    explanation =
+                        "Les dénominateurs sont identiques : " +
+                        `on additionne ${numerator} et ${otherNumerator}, ` +
+                        `et on garde ${denominator}. ` +
+                        `La réponse est ${answer}.`;
+
+                } else {
+                    text = `${numerator}/${denominator} = ?`;
+
+                    answer =
+                        `${numerator * multiplier}/` +
+                        `${denominator * multiplier}`;
+
+                    options = shuffle([
+                        answer,
+                        `${numerator * multiplier + 1}/${denominator * multiplier}`,
+                        `${numerator}/${denominator * multiplier}`,
+                        `${numerator * multiplier}/${denominator * multiplier + 1}`
+                    ]);
+
+                    explanation =
+                        `Multiplie le haut et le bas par ${multiplier} : ` +
+                        `${numerator}/${denominator} = ${answer}.`;
+                }
+
+            } else if (grade === 5) {
+                const unit = difficulty === 0 ? 10 : 100;
+                const a = rand(1, difficulty === 2 ? 999 : 99);
+                const b = rand(1, difficulty === 2 ? 999 : 99);
+
+                if (difficulty === 2 && rand(0, 1)) {
+                    text = `${fmt(a / unit)} × 10 = ?`;
+                    numeric(a / unit * 10, 0.1);
+
+                    explanation =
+                        `Multiplier par 10 donne ${fmt(a / unit * 10)} : ` +
+                        "chaque chiffre prend une valeur dix fois plus grande.";
+
+                } else {
+                    text = `${fmt(a / unit)} + ${fmt(b / unit)} = ?`;
+                    numeric((a + b) / unit, 1 / unit);
+
+                    explanation =
+                        "Aligne les virgules pour additionner : " +
+                        `${fmt(a / unit)} + ${fmt(b / unit)} = ` +
+                        `${fmt((a + b) / unit)}.`;
+                }
+
+            } else {
+                if (difficulty === 0) {
+                    const denominator = [2, 4, 5, 10][rand(0, 3)];
+                    const numerator = rand(1, denominator - 1);
+                    const value = 100 * numerator / denominator;
+
+                    text = `${numerator}/${denominator} de 100 = ?`;
+                    numeric(value, 5);
+
+                    explanation =
+                        `Divise 100 par ${denominator}, ` +
+                        `puis multiplie par ${numerator} : ` +
+                        `tu obtiens ${fmt(value)}.`;
+
+                } else if (difficulty === 1 || rand(0, 1)) {
+                    const percentage = [10, 20, 25, 50, 75][rand(0, 4)];
+                    const number = rand(2, 12) * 20;
+                    const value = percentage * number / 100;
+
+                    text = `${percentage} % de ${number} = ?`;
+                    numeric(value, 5);
+
+                    explanation =
+                        `${percentage} % veut dire ${percentage} sur 100 : ` +
+                        `${number} × ${percentage} ÷ 100 = ${fmt(value)}.`;
+
+                } else {
+                    const a = rand(2, 12);
+                    const b = rand(2, 12);
+                    const c = rand(2, 20);
+
+                    text = `${c} + ${a} × ${b} = ?`;
+                    numeric(c + a * b);
+
+                    explanation =
+                        "La multiplication passe en premier : " +
+                        `${a} × ${b} = ${a * b}, ` +
+                        `puis ${c} + ${a * b} = ${c + a * b}.`;
+                }
+            }
+
+            return {
+                text,
+                answer,
+                options,
+                explanation,
+                count
+            };
+        }
+
+        /* =========================
+           ÉTAT DU JEU
+        ========================== */
+
+        const content = document.getElementById("game-content");
+
+        let grade = 0;
+        let difficulty = 1;
+        let state = "start";
+        let questions = [];
+        let index = 0;
+        let stars = 0;
+        let attempts = 0;
+        let solved = false;
+
+        const wrongAnswers = new Set();
+
+        document.querySelector(".grade-grid").innerHTML =
+            LEVELS.map((label, i) => `
+                <label class="choice">
+                    <input
+                        type="radio"
+                        name="grade"
+                        value="${i}"
+                        ${i === 0 ? "checked" : ""}>
+                    <span>${label}</span>
+                </label>
+            `).join("");
+
+        document.querySelector(".difficulty-list").innerHTML =
+            DIFFICULTIES.map((label, i) => `
+                <label class="choice">
+                    <input
+                        type="radio"
+                        name="difficulty"
+                        value="${i}"
+                        ${i === 1 ? "checked" : ""}>
+                    <span>${label}</span>
+                </label>
+            `).join("");
+
+        document.getElementById("grades").addEventListener(
+            "change",
+            function(event) {
+                grade = Number(event.target.value);
+                renderIntro();
+            }
+        );
+
+        document.getElementById("difficulties").addEventListener(
+            "change",
+            function(event) {
+                difficulty = Number(event.target.value);
+                renderIntro();
+            }
+        );
+
+        function stopVoice() {
+            if ("speechSynthesis" in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        function configureSettings(enabled) {
+            document.querySelectorAll(".settings input").forEach(input => {
+                input.disabled = !enabled;
+            });
+
+            document.getElementById("change-settings").hidden = enabled;
+        }
+
+        /* =========================
+           INTRODUCTION DU JEU
+        ========================== */
+
+        function renderIntro() {
+            state = "start";
+
+            configureSettings(true);
+            stopVoice();
+
+            content.innerHTML = `
+                <div class="intro">
+                    <div class="animal-line" aria-hidden="true">
+                        <span>🐶</span>
+                        <span>🐱</span>
+                        <span>🐰</span>
+                    </div>
+
+                    <h3>Les animaux t’attendent !</h3>
+
+                    <p>
+                        Aide Mattéo à préparer les soins de ses
+                        8 petits patients. Pour chacun, résous
+                        une énigme de nombres.
+                    </p>
+
+                    <div class="preview-skill">
+                        ${LEVELS[grade]} · ${SKILLS[grade]}
+                    </div>
+
+                    <button class="primary" id="start" type="button">
+                        Ouvrir la clinique
+                    </button>
+
+                    <p class="gentle">
+                        8 énigmes · ${DIFFICULTIES[difficulty]} · à ton rythme
+                    </p>
+                </div>
+            `;
+
+            document.getElementById("start").onclick = startGame;
+        }
+
+        function startGame() {
+            state = "play";
+            index = 0;
+            stars = 0;
+            questions = [];
+
+            const seen = new Set();
+            let tries = 0;
+
+            while (questions.length < 8) {
+                const question = makeQuestion(grade, difficulty);
+                const key = question.text + question.count;
+
+                if (!seen.has(key) || tries++ > 100) {
+                    seen.add(key);
+                    questions.push(question);
+                }
+            }
+
+            configureSettings(false);
+            renderQuestion();
+        }
+
+        /* =========================
+           AFFICHAGE D’UNE QUESTION
+        ========================== */
+
+        function renderQuestion() {
+            stopVoice();
+
+            attempts = 0;
+            solved = false;
+            wrongAnswers.clear();
+
+            const question = questions[index];
+            const animal = ANIMALS[index];
+
+            const counting = question.count
+                ? `
+                    <div
+                        class="counts"
+                        role="img"
+                        aria-label="${question.count} chiens à compter">
+                        ${Array.from(
+                            { length: question.count },
+                            () => `
+                                <span class="count-item" aria-hidden="true">
+                                    🐶
+                                </span>
+                            `
+                        ).join("")}
+                    </div>
+                `
+                : "";
+
+            content.innerHTML = `
+                <div class="round">
+
+                    <div class="round-top">
+                        <span class="round-label">
+                            ${LEVELS[grade]} · Patient ${index + 1} sur 8
+                        </span>
+
+                        <span class="stars">
+                            ⭐ ${stars} étoile${stars > 1 ? "s" : ""}
+                        </span>
+                    </div>
+
+                    <div
+                        class="progress"
+                        role="progressbar"
+                        aria-label="Patients aidés"
+                        aria-valuemin="0"
+                        aria-valuemax="8"
+                        aria-valuenow="${index}">
+                        <span style="width: ${index / 8 * 100}%"></span>
+                    </div>
+
+                    <div class="patient">
+                        <span class="animal" aria-hidden="true">
+                            ${animal[0]}
+                        </span>
+                        Tu aides ${animal[1]}
+                    </div>
+
+                    <h3 class="question" id="question-title">
+                        ${question.text}
+                    </h3>
+
+                    ${counting}
+
+                    <button class="read-button" id="read" type="button">
+                        🔊 Écouter la consigne
+                    </button>
+
+                    <div
+                        class="answers"
+                        role="group"
+                        aria-labelledby="question-title">
+                        ${question.options.map((option, i) => `
+                            <button
+                                class="answer"
+                                type="button"
+                                data-answer="${i}"
+                                aria-label="Réponse ${option}">
+                                ${option}
+                            </button>
+                        `).join("")}
+                    </div>
+
+                    <p class="feedback" id="feedback" role="status">
+                        Choisis la bonne réponse.
+                        Tu peux essayer plusieurs fois.
+                    </p>
+
+                    <div class="round-actions">
+                        <button
+                            class="text-button"
+                            id="hint"
+                            type="button">
+                            Un petit indice
+                        </button>
+
+                        <button
+                            class="primary"
+                            id="next"
+                            type="button"
+                            hidden>
+                            ${index === 7
+                                ? "Voir mon résultat"
+                                : "Patient suivant"}
+                        </button>
+                    </div>
+
+                </div>
+            `;
+
+            content.querySelectorAll("[data-answer]").forEach(button => {
+                button.onclick = () => {
+                    answerQuestion(Number(button.dataset.answer));
+                };
+            });
+
+            document.getElementById("hint").onclick = () => {
+                document.getElementById("feedback").textContent =
+                    question.explanation;
+            };
+
+            document.getElementById("next").onclick = () => {
+                index++;
+
+                if (index === 8) {
+                    renderResult();
+                } else {
+                    renderQuestion();
+                }
+            };
+
+            document.getElementById("read").onclick = () => {
+                readQuestion(question);
+            };
+        }
+
+        /* =========================
+           VÉRIFICATION D’UNE RÉPONSE
+        ========================== */
+
+        function answerQuestion(optionIndex) {
+            if (
+                state !== "play" ||
+                solved ||
+                wrongAnswers.has(optionIndex)
+            ) {
+                return;
+            }
+
+            const question = questions[index];
+
+            const button = content.querySelector(
+                `[data-answer="${optionIndex}"]`
+            );
+
+            const feedback = document.getElementById("feedback");
+
+            attempts++;
+
+            if (question.options[optionIndex] === question.answer) {
+                solved = true;
+
+                if (attempts === 1) {
+                    stars++;
+                }
+
+                button.classList.add("correct");
+
+                content.querySelectorAll("[data-answer]").forEach(answer => {
+                    answer.disabled = true;
+                });
+
+                feedback.classList.add("success");
+
+                feedback.textContent =
+                    `Bien joué ! ${question.explanation}`;
+
+                content.querySelector(".stars").textContent =
+                    `⭐ ${stars} étoile${stars > 1 ? "s" : ""}`;
+
+                document.getElementById("next").hidden = false;
+                document.getElementById("hint").hidden = true;
+
+                content.querySelector(".progress").setAttribute(
+                    "aria-valuenow",
+                    index + 1
+                );
+
+                content.querySelector(".progress span").style.width =
+                    `${(index + 1) / 8 * 100}%`;
+
+            } else {
+                wrongAnswers.add(optionIndex);
+
+                button.disabled = true;
+                button.classList.add("wrong");
+
+                feedback.textContent = attempts === 1
+                    ? "Presque ! Prends ton temps et essaie une autre réponse."
+                    : `Voici un coup de main : ${question.explanation}`;
+            }
+        }
+
+        /* =========================
+           LECTURE VOCALE
+        ========================== */
+
+        function readQuestion(question) {
+            const feedback = document.getElementById("feedback");
+
+            if (!("speechSynthesis" in window)) {
+                feedback.textContent =
+                    "La lecture vocale n’est pas disponible dans ce navigateur. " +
+                    "Tu peux lire la consigne à l’écran.";
+
+                return;
+            }
+
+            stopVoice();
+
+            const spoken = question.count
+                ? "Compte les chiens à l’écran. Combien y en a-t-il ?"
+                : question.text
+                    .replace(/−/g, " moins ")
+                    .replace(/\+/g, " plus ")
+                    .replace(/×/g, " multiplié par ")
+                    .replace(/÷/g, " divisé par ")
+                    .replace(/=/g, " égale ")
+                    .replace(/%/g, " pour cent ")
+                    .replace(/\//g, " sur ")
+                    .replace(/\?/g, "");
+
+            const utterance = new SpeechSynthesisUtterance(spoken);
+
+            utterance.lang = "fr-CA";
+            utterance.rate = 0.85;
+
+            const voices = window.speechSynthesis.getVoices();
+
+            const voice =
+                voices.find(item => item.lang === "fr-CA") ||
+                voices.find(item => item.lang.startsWith("fr"));
+
+            if (voice) {
+                utterance.voice = voice;
+            }
+
+            utterance.onerror = () => {
+                if (state === "play") {
+                    const currentFeedback =
+                        document.getElementById("feedback");
+
+                    if (currentFeedback) {
+                        currentFeedback.textContent =
+                            "La lecture vocale n’a pas pu démarrer. " +
+                            "Tu peux lire la consigne à l’écran.";
+                    }
+                }
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        /* =========================
+           FIN DE PARTIE
+        ========================== */
+
+        function renderResult() {
+            state = "result";
+            stopVoice();
+
+            content.innerHTML = `
+                <div class="result">
+
+                    <div class="medal" aria-hidden="true">🏅</div>
+
+                    <h3>Une belle journée à la clinique !</h3>
+
+                    <p>
+                        Tu as aidé les 8 animaux de Mattéo.
+                        Bravo d’avoir pris le temps
+                        de trouver chaque réponse !
+                    </p>
+
+                    <div class="result-score">
+                        ⭐ ${stars} étoile${stars > 1 ? "s" : ""} sur 8
+                    </div>
+
+                    <p>
+                        Une étoile pour chaque réponse trouvée
+                        du premier coup. Chaque essai t’aide à apprendre.
+                    </p>
+
+                    <div class="result-actions">
+                        <button
+                            class="primary"
+                            id="replay"
+                            type="button">
+                            Une nouvelle partie
+                        </button>
+
+                        <button
+                            class="text-button"
+                            id="choose-level"
+                            type="button">
+                            Choisir un autre niveau
+                        </button>
+                    </div>
+
+                </div>
+            `;
+
+            document.getElementById("replay").onclick = startGame;
+
+            document.getElementById("choose-level").onclick = renderIntro;
+
+            document.getElementById("replay").focus();
+        }
+
+        document.getElementById("change-settings").onclick = renderIntro;
+
+        renderIntro();
+
+        /* =========================
+           NAVIGATION ENTRE LES PAGES
+        ========================== */
+
+        const views = {
+            accueil: document.getElementById("home-view"),
+            inscription: document.getElementById("signup-view"),
+            jeux: document.getElementById("game-view")
+        };
+
+        function routePage() {
+            const requested =
+                location.hash.replace("#/", "") || "accueil";
+
+            const active = views[requested] ? requested : "accueil";
+
+            Object.entries(views).forEach(([name, element]) => {
+                element.hidden = name !== active;
+            });
+
+            stopVoice();
+
+            const titles = {
+                accueil: "Les petits aventuriers",
+                inscription: "Inscription",
+                jeux: "La clinique des nombres"
+            };
+
+            document.title = `${titles[active]} · Éditions CDJ`;
+
+            window.scrollTo(0, 0);
+
+            if (active === "inscription") {
+                document.getElementById("signup-title").focus({
+                    preventScroll: true
+                });
+            } else if (active === "jeux") {
+                document.getElementById("play-title").focus({
+                    preventScroll: true
+                });
+            }
+        }
+
+        window.addEventListener("hashchange", routePage);
+
+        routePage();
+
+        /* =========================
+           CHOIX DE L’ANIMAL
+        ========================== */
+
+        document.querySelectorAll(".avatar-button").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".avatar-button").forEach(other => {
+                    other.setAttribute(
+                        "aria-pressed",
+                        String(other === button)
+                    );
+                });
+
+                document.getElementById("avatar-emoji").textContent =
+                    button.dataset.animal;
+            });
+        });
+
+        document.getElementById("nickname").addEventListener(
+            "input",
+            function(event) {
+                document.getElementById("avatar-nickname").textContent =
+                    event.target.value.trim() || "Petit aventurier";
+            }
+        );
+
+        window.addEventListener("pagehide", stopVoice);
+    </script>
+
+</body>
+</html>
