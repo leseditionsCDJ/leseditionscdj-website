@@ -29,9 +29,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            font-size: 18px;
+        }
+
         body {
             margin: 0;
             font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.65;
             color: var(--navy);
 
             background:
@@ -66,7 +72,7 @@
         }
 
         p {
-            line-height: 1.65;
+            line-height: 1.7;
         }
 
         button:focus-visible,
@@ -105,9 +111,9 @@
 
         .eyebrow {
             margin: 0 0 0.7rem;
-            font-size: 0.76rem;
+            font-size: 1rem;
             font-weight: 900;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.06em;
             color: #386846;
         }
 
@@ -129,26 +135,32 @@
             display: flex;
             align-items: center;
             gap: 0.85rem;
+            min-width: 0;
             text-decoration: none;
             font-size: 1.55rem;
             font-weight: 900;
-            line-height: 1.15;
+            line-height: 1.2;
             color: #124AA0;
+        }
+
+        .brand > span:last-child {
+            min-width: 0;
         }
 
         .brand small {
             display: block;
-            margin-top: 0.3rem;
-            font-size: 0.76rem;
+            margin-top: 0.4rem;
+            font-size: 1rem;
             font-weight: 700;
+            line-height: 1.4;
             color: #3C6349;
         }
 
         .brand-icon {
             display: grid;
             place-items: center;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             flex-shrink: 0;
             background: var(--yellow);
             border-radius: 17px;
@@ -158,24 +170,26 @@
 
         .test-badge {
             display: inline-block;
-            margin-top: 0.4rem;
-            padding: 0.25rem 0.45rem;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 6px;
             background: #EDF3E1;
             color: #42602E;
-            font-size: 0.64rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
         .books-link {
+            flex-shrink: 0;
             padding: 0.7rem 0.9rem;
             border: 1px solid #C1D5EF;
             border-radius: 13px;
             background: #E9F1FF;
             color: #124AA0;
             text-decoration: none;
-            font-size: 0.87rem;
+            font-size: 1rem;
             font-weight: 800;
+            text-align: center;
         }
 
         .books-link:hover {
@@ -191,11 +205,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 48px;
+            min-height: 52px;
             padding: 0.85rem 1.3rem;
             border-radius: 15px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 900;
+            line-height: 1.4;
             text-align: center;
             text-decoration: none;
         }
@@ -233,7 +248,7 @@
             border: 0;
             background: none;
             color: #315A90;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 800;
             text-decoration: underline;
             text-underline-offset: 4px;
@@ -243,7 +258,7 @@
             display: inline-block;
             margin: 0.3rem 0 1.3rem;
             color: #265995;
-            font-size: 0.88rem;
+            font-size: 1rem;
             font-weight: 800;
             text-underline-offset: 4px;
         }
@@ -301,15 +316,15 @@
             margin: 0;
             color: #124AA0;
             font-size: clamp(2.1rem, 3.1vw, 2.8rem);
-            line-height: 1.1;
+            line-height: 1.15;
             letter-spacing: -0.035em;
         }
 
         .welcome-copy > p:not(.eyebrow) {
-            max-width: 330px;
+            max-width: 350px;
             margin: 1.1rem 0;
             color: #36576A;
-            font-size: 0.97rem;
+            font-size: 1rem;
         }
 
         .home-actions {
@@ -320,9 +335,8 @@
         }
 
         .home-actions a {
-            min-height: 46px;
             padding: 0.75rem 1rem;
-            font-size: 0.87rem;
+            font-size: 1rem;
         }
 
         .welcome-badge {
@@ -334,7 +348,7 @@
             border-radius: 999px;
             background: #FFF0B6;
             color: #674809;
-            font-size: 0.82rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
@@ -346,6 +360,7 @@
             margin: 0 0 0.65rem;
             color: #164C93;
             font-size: 1.75rem;
+            line-height: 1.3;
             text-align: center;
             letter-spacing: -0.025em;
         }
@@ -354,7 +369,7 @@
             max-width: 650px;
             margin: 0 auto 1.4rem;
             color: #52697A;
-            font-size: 0.94rem;
+            font-size: 1rem;
             text-align: center;
         }
 
@@ -368,7 +383,7 @@
 
         .subject-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
@@ -409,12 +424,13 @@
             margin: 0.5rem 0;
             color: #164C93;
             font-size: 1.3rem;
+            line-height: 1.35;
         }
 
         .subject-card p {
             margin: 0.6rem 0 1rem;
             color: #526A7C;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .availability {
@@ -423,7 +439,7 @@
             border-radius: 999px;
             background: #EFF1E9;
             color: #56634C;
-            font-size: 0.75rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
@@ -438,7 +454,7 @@
 
         .features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
             margin: 1.5rem 0 2.6rem;
         }
@@ -484,12 +500,13 @@
             margin: 0.1rem 0 0.55rem;
             color: #194F95;
             font-size: 1.15rem;
+            line-height: 1.4;
         }
 
         .feature p {
             margin: 0;
             color: #4C6377;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         /* =========================
@@ -525,7 +542,7 @@
             border-radius: 999px;
             background: #E4F2DE;
             color: #345923;
-            font-size: 0.75rem;
+            font-size: 1rem;
             font-weight: 900;
         }
 
@@ -539,25 +556,26 @@
             margin: 0 0 0.7rem;
             color: #175290;
             font-size: 1.45rem;
+            line-height: 1.3;
         }
 
         .access-card p {
-            max-width: 400px;
+            max-width: 430px;
             color: #4F6576;
-            font-size: 0.93rem;
+            font-size: 1rem;
         }
 
         .access-card ul {
             padding-left: 1.2rem;
             margin: 1rem 0 1.3rem;
             color: #45604B;
-            font-size: 0.9rem;
+            font-size: 1rem;
             line-height: 1.9;
         }
 
         .price-note {
             color: #725D34 !important;
-            font-size: 0.78rem !important;
+            font-size: 1rem !important;
         }
 
         /* =========================
@@ -580,17 +598,18 @@
             margin: 0;
             color: #164C93;
             font-size: 1.3rem;
+            line-height: 1.4;
         }
 
         .books-panel p {
             margin: 0.5rem 0 0;
             color: #4E6681;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .books-panel a {
             flex-shrink: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         /* =========================
@@ -598,7 +617,7 @@
         ========================== */
 
         .catalog-heading {
-            max-width: 720px;
+            max-width: 760px;
             margin-bottom: 1.6rem;
         }
 
@@ -606,18 +625,19 @@
             margin: 0;
             color: #124AA0;
             font-size: 2.2rem;
+            line-height: 1.3;
         }
 
         .catalog-heading p:not(.eyebrow) {
             color: #52697A;
-            font-size: 0.96rem;
+            font-size: 1rem;
         }
 
         .catalog-game {
             display: flex;
             align-items: center;
             gap: 1.4rem;
-            max-width: 740px;
+            max-width: 800px;
             padding: 1.7rem;
             border: 2px solid #A7C9B3;
             border-radius: 25px;
@@ -640,25 +660,22 @@
             margin: 0.7rem 0;
             color: #215D3C;
             font-size: 1.55rem;
+            line-height: 1.3;
         }
 
         .catalog-game p {
-            max-width: 490px;
+            max-width: 530px;
             color: #52697A;
-            font-size: 0.93rem;
-        }
-
-        .catalog-game .primary {
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .catalog-note {
             color: #5B7060 !important;
-            font-size: 0.78rem !important;
+            font-size: 1rem !important;
         }
 
         .catalog-coming {
-            max-width: 650px;
+            max-width: 700px;
             padding: 1.7rem;
             border: 2px solid #D5BF82;
             border-radius: 24px;
@@ -670,11 +687,12 @@
             margin-top: 0;
             color: #164C93;
             font-size: 1.4rem;
+            line-height: 1.4;
         }
 
         .catalog-coming p {
             color: #52697A;
-            font-size: 0.94rem;
+            font-size: 1rem;
         }
 
         /* =========================
@@ -682,7 +700,7 @@
         ========================== */
 
         .signup-wrap {
-            max-width: 850px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
@@ -699,10 +717,10 @@
         }
 
         .signup-heading p {
-            max-width: 560px;
+            max-width: 650px;
             margin: 0.7rem auto;
             color: #52697A;
-            font-size: 0.94rem;
+            font-size: 1rem;
         }
 
         .registration-notice {
@@ -712,7 +730,7 @@
             border-radius: 14px;
             background: #FFF0BB;
             color: #6A4D12;
-            font-size: 0.88rem;
+            font-size: 1rem;
         }
 
         .signup-grid {
@@ -738,19 +756,20 @@
             margin: 0;
             color: #164C93;
             font-size: 1.25rem;
+            line-height: 1.4;
         }
 
         .signup-card > p {
             margin: 0.55rem 0 1.1rem;
             color: #526A7D;
-            font-size: 0.85rem;
+            font-size: 1rem;
         }
 
         .field {
             display: block;
             margin: 1rem 0;
             color: #355779;
-            font-size: 0.86rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
@@ -763,6 +782,7 @@
             border-radius: 12px;
             background: #F9FBFF;
             color: var(--navy);
+            font-size: 1rem;
         }
 
         .field input:disabled {
@@ -774,32 +794,33 @@
 
         .small-note {
             color: #536773 !important;
-            font-size: 0.78rem !important;
+            font-size: 1rem !important;
         }
 
         .avatar-picker-label {
             margin: 1rem 0 0.7rem;
             color: #355779;
-            font-size: 0.86rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
         .avatar-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 0.65rem;
         }
 
         .avatar-button {
             display: grid;
             gap: 0.2rem;
+            min-height: 84px;
             padding: 0.55rem 0.3rem;
             border: 2px solid #CDDBA8;
             border-bottom-width: 4px;
             border-radius: 16px;
             background: #F2F7E6;
             color: #385924;
-            font-size: 0.74rem;
+            font-size: 1rem;
             font-weight: 800;
             text-align: center;
         }
@@ -824,12 +845,21 @@
             border-radius: 13px;
             background: #EDF4FF;
             color: #214F8D;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
         .avatar-preview > span {
+            flex-shrink: 0;
             font-size: 2.3rem;
+        }
+
+        .avatar-preview small {
+            font-size: 1rem;
+        }
+
+        #avatar-nickname {
+            overflow-wrap: anywhere;
         }
 
         .signup-bottom {
@@ -848,7 +878,7 @@
         .signup-bottom p {
             margin: 0.8rem 0;
             color: #536773;
-            font-size: 0.82rem;
+            font-size: 1rem;
         }
 
         /* =========================
@@ -859,18 +889,19 @@
             margin: 0 0 1.2rem;
             color: #124AA0;
             font-size: 1.9rem;
+            line-height: 1.3;
         }
 
         .game-intro-note {
             margin: 0 0 1.2rem;
             color: #566C7C;
-            font-size: 0.82rem;
+            font-size: 1rem;
             line-height: 1.7;
         }
 
         .layout {
             display: grid;
-            grid-template-columns: 275px 1fr;
+            grid-template-columns: 310px minmax(0, 1fr);
             gap: 1.4rem;
             align-items: start;
         }
@@ -892,14 +923,15 @@
 
         .settings-heading h2 {
             margin: 0;
-            font-size: 1.04rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
         }
 
         .step {
             display: grid;
             place-items: center;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             flex-shrink: 0;
             border: 2px solid #E6B239;
             border-radius: 50%;
@@ -945,8 +977,9 @@
             border-radius: 13px;
             background: #EEF5FF;
             color: #23569C;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 800;
+            line-height: 1.4;
             text-align: center;
         }
 
@@ -990,7 +1023,7 @@
         .settings-note {
             margin: 1.25rem 0 0;
             color: #526956;
-            font-size: 0.81rem;
+            font-size: 1rem;
         }
 
         .settings .text-button {
@@ -998,6 +1031,7 @@
         }
 
         .game-panel {
+            min-width: 0;
             min-height: 555px;
             overflow: hidden;
             border: 2px solid #93BAA5;
@@ -1026,7 +1060,7 @@
         .game-heading .eyebrow {
             margin-bottom: 0.4rem;
             color: #45642B;
-            font-size: 0.7rem;
+            font-size: 1rem;
         }
 
         .game-symbol {
@@ -1098,9 +1132,10 @@
         }
 
         .intro p {
-            max-width: 430px;
+            max-width: 470px;
             margin: 0.7rem auto;
             color: #4B6175;
+            font-size: 1rem;
         }
 
         .preview-skill {
@@ -1111,19 +1146,19 @@
             border-radius: 12px;
             background: #EAF2FE;
             color: #235195;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
         .intro .primary {
             display: flex;
-            min-width: 240px;
+            width: min(100%, 280px);
             margin: 0 auto;
         }
 
         .intro .gentle {
             margin-top: 1.3rem;
-            font-size: 0.82rem;
+            font-size: 1rem;
         }
 
         /* =========================
@@ -1139,7 +1174,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 0.8rem;
-            font-size: 0.88rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
@@ -1173,7 +1208,7 @@
 
         .patient {
             color: #426446;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 800;
             text-align: center;
         }
@@ -1222,14 +1257,15 @@
 
         .read-button {
             display: block;
-            min-height: 40px;
+            max-width: 100%;
+            min-height: 44px;
             margin: 0 auto 1.15rem;
             padding: 0.5rem 0.85rem;
             border: 1px solid #C4D6ED;
             border-radius: 999px;
             background: #F1F6FF;
             color: #2F5791;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
@@ -1240,7 +1276,7 @@
         }
 
         .answer {
-            min-height: 68px;
+            min-height: 72px;
             padding: 0.65rem 0.5rem;
             border: 2px solid #A8C5E9;
             border-bottom-width: 5px;
@@ -1296,8 +1332,8 @@
             border-radius: 13px;
             background: #F0F4FA;
             color: #435D76;
-            font-size: 0.94rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .feedback.success {
@@ -1310,6 +1346,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             gap: 1rem;
             margin-top: 1rem;
         }
@@ -1341,9 +1378,10 @@
         }
 
         .result p {
-            max-width: 420px;
+            max-width: 470px;
             margin: 0.6rem auto;
             color: #4C6978;
+            font-size: 1rem;
         }
 
         .result-score {
@@ -1374,7 +1412,7 @@
             gap: 1rem;
             padding: 1.8rem 0.3rem;
             color: #50644C;
-            font-size: 0.79rem;
+            font-size: 1rem;
         }
 
         /* =========================
@@ -1400,7 +1438,6 @@
 
             .home-actions a {
                 padding: 0.7rem 0.8rem;
-                font-size: 0.81rem;
             }
 
             .features {
@@ -1412,7 +1449,7 @@
             }
 
             .layout {
-                grid-template-columns: 235px 1fr;
+                grid-template-columns: 260px minmax(0, 1fr);
                 gap: 1rem;
             }
 
@@ -1457,7 +1494,7 @@
 
             .brand small {
                 max-width: 175px;
-                font-size: 0.65rem;
+                font-size: 1rem;
             }
 
             .brand-icon {
@@ -1467,10 +1504,9 @@
             }
 
             .books-link {
-                max-width: 95px;
+                max-width: 108px;
                 padding: 0.6rem;
-                font-size: 0.75rem;
-                text-align: center;
+                font-size: 1rem;
             }
 
             .welcome {
@@ -1496,7 +1532,7 @@
 
             .welcome-copy {
                 width: 100%;
-                padding: 1.2rem;
+                padding: 1.4rem 1.2rem;
                 text-align: center;
             }
 
@@ -1505,9 +1541,8 @@
             }
 
             .welcome-copy > p:not(.eyebrow) {
-                max-width: 340px;
+                max-width: 360px;
                 margin: 0.7rem auto;
-                font-size: 0.92rem;
             }
 
             .home-actions {
@@ -1515,13 +1550,8 @@
                 margin: 1rem 0;
             }
 
-            .home-actions a {
-                font-size: 0.85rem;
-            }
-
             .welcome-badge {
                 padding: 0.45rem 0.7rem;
-                font-size: 0.75rem;
             }
 
             .subject-grid,
@@ -1544,12 +1574,11 @@
 
             .subject-card h3 {
                 margin: 0.1rem 0 0.5rem;
-                font-size: 1.15rem;
+                font-size: 1.2rem;
             }
 
             .subject-card p {
                 margin: 0.4rem 0 0.75rem;
-                font-size: 0.85rem;
             }
 
             .subjects-section {
@@ -1578,19 +1607,11 @@
 
             .feature h3 {
                 margin: 0.1rem 0;
-                font-size: 1.07rem;
-            }
-
-            .feature p {
-                font-size: 0.85rem;
+                font-size: 1.15rem;
             }
 
             .section-title {
-                font-size: 1.5rem;
-            }
-
-            .section-intro {
-                font-size: 0.88rem;
+                font-size: 1.6rem;
             }
 
             .access-card {
@@ -1605,7 +1626,7 @@
             }
 
             .books-panel h2 {
-                font-size: 1.18rem;
+                font-size: 1.25rem;
             }
 
             .catalog-heading h1 {
@@ -1631,7 +1652,6 @@
 
             .catalog-game .primary {
                 width: 100%;
-                font-size: 0.87rem;
             }
 
             .catalog-coming {
@@ -1642,20 +1662,12 @@
                 font-size: 1.9rem;
             }
 
-            .signup-heading p {
-                font-size: 0.88rem;
-            }
-
             .signup-card {
                 padding: 1.3rem;
             }
 
             .signup-grid {
                 gap: 1.3rem;
-            }
-
-            .registration-notice {
-                font-size: 0.83rem;
             }
 
             .layout {
@@ -1675,11 +1687,11 @@
             }
 
             .grade-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
             .difficulty-list {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 0.4rem;
             }
 
@@ -1689,7 +1701,6 @@
 
             .difficulty-list .choice span {
                 padding: 0.65rem 0.2rem;
-                font-size: 0.85rem;
                 text-align: center;
             }
 
@@ -1713,10 +1724,6 @@
                 font-size: 1.3rem;
             }
 
-            .game-heading .eyebrow {
-                font-size: 0.68rem;
-            }
-
             .game-symbol {
                 width: 45px;
                 height: 45px;
@@ -1731,18 +1738,14 @@
                 font-size: 1.45rem;
             }
 
-            .intro .primary {
-                min-width: 220px;
-            }
-
             .animal-line span {
                 width: 58px;
                 height: 58px;
                 font-size: 2.1rem;
             }
 
-            .round-top {
-                font-size: 0.8rem;
+            .round {
+                padding: 1.2rem 1rem;
             }
 
             .question {
@@ -1759,10 +1762,6 @@
 
             .result {
                 padding: 1.8rem 1.1rem;
-            }
-
-            footer {
-                font-size: 0.75rem;
             }
         }
 
@@ -1878,58 +1877,64 @@
                     <a
                         class="subject-card"
                         href="#/matieres/mathematiques">
-
-                        <span class="subject-icon" aria-hidden="true">
-                            🔢
-                        </span>
-
+                        <span class="subject-icon" aria-hidden="true">🔢</span>
                         <h3>Mathématiques</h3>
-
-                        <p>
-                            Des nombres, des formes et des petits défis.
-                        </p>
-
-                        <span class="availability available">
-                            1 jeu à essayer
-                        </span>
+                        <p>Des nombres, des formes et des petits défis.</p>
+                        <span class="availability available">1 jeu à essayer</span>
                     </a>
 
                     <a
                         class="subject-card"
                         href="#/matieres/francais">
-
-                        <span class="subject-icon" aria-hidden="true">
-                            📚
-                        </span>
-
+                        <span class="subject-icon" aria-hidden="true">📚</span>
                         <h3>Français</h3>
-
-                        <p>
-                            Des mots, des histoires et le plaisir de lire.
-                        </p>
-
-                        <span class="availability">
-                            Jeux à venir
-                        </span>
+                        <p>Des mots, des histoires et le plaisir de lire.</p>
+                        <span class="availability">Jeux à venir</span>
                     </a>
 
                     <a
                         class="subject-card"
                         href="#/matieres/sciences">
+                        <span class="subject-icon" aria-hidden="true">🌿</span>
+                        <h3>Sciences et technologies</h3>
+                        <p>Découvre les animaux, la nature et les inventions.</p>
+                        <span class="availability">Jeux à venir</span>
+                    </a>
 
-                        <span class="subject-icon" aria-hidden="true">
-                            🌿
-                        </span>
+                    <a
+                        class="subject-card"
+                        href="#/matieres/histoire">
+                        <span class="subject-icon" aria-hidden="true">🏛️</span>
+                        <h3>Histoire</h3>
+                        <p>Pars à la découverte du passé et de ses histoires.</p>
+                        <span class="availability">Jeux à venir</span>
+                    </a>
 
-                        <h3>Sciences</h3>
+                    <a
+                        class="subject-card"
+                        href="#/matieres/physique">
+                        <span class="subject-icon" aria-hidden="true">💡</span>
+                        <h3>Physique</h3>
+                        <p>Explore les mouvements, la lumière et l’énergie.</p>
+                        <span class="availability">Jeux à venir</span>
+                    </a>
 
-                        <p>
-                            Découvre les animaux, la nature et leurs secrets.
-                        </p>
+                    <a
+                        class="subject-card"
+                        href="#/matieres/geographie">
+                        <span class="subject-icon" aria-hidden="true">🌍</span>
+                        <h3>Géographie</h3>
+                        <p>Découvre les cartes, les paysages et les territoires.</p>
+                        <span class="availability">Jeux à venir</span>
+                    </a>
 
-                        <span class="availability">
-                            Jeux à venir
-                        </span>
+                    <a
+                        class="subject-card"
+                        href="#/matieres/anglais">
+                        <span class="subject-icon" aria-hidden="true">💬</span>
+                        <h3>Anglais</h3>
+                        <p>Découvre des mots et des expressions en anglais.</p>
+                        <span class="availability">Jeux à venir</span>
                     </a>
 
                 </div>
@@ -1949,9 +1954,7 @@
             <div class="features">
                 <article class="feature">
                     <div class="feature-icon" aria-hidden="true">🐱</div>
-
                     <h3>Ton animal, ton profil</h3>
-
                     <p>
                         Un pseudonyme et un compagnon animal
                         pour te représenter dans l’aventure.
@@ -1960,9 +1963,7 @@
 
                 <article class="feature">
                     <div class="feature-icon" aria-hidden="true">🧩</div>
-
                     <h3>Apprendre en jouant</h3>
-
                     <p>
                         Des défis éducatifs adaptés à ton niveau,
                         avec un coup de main quand tu en as besoin.
@@ -1971,9 +1972,7 @@
 
                 <article class="feature">
                     <div class="feature-icon" aria-hidden="true">🌟</div>
-
                     <h3>Grandir à ton rythme</h3>
-
                     <p>
                         De petites réussites à célébrer,
                         sans course contre la montre.
@@ -2075,7 +2074,7 @@
         </div>
 
         <!-- =========================
-             JEUX DE LA MATIÈRE
+             CATALOGUE DES JEUX
         ========================== -->
 
         <div id="catalog-view" class="view" hidden>
@@ -2084,9 +2083,7 @@
             </a>
 
             <div class="catalog-heading">
-                <p class="eyebrow">
-                    CHOISIS TON AVENTURE
-                </p>
+                <p class="eyebrow">CHOISIS TON AVENTURE</p>
 
                 <h1 id="catalog-title" tabindex="-1">
                     Mathématiques
@@ -2150,7 +2147,6 @@
 
                         <label class="field">
                             Adresse courriel du parent
-
                             <input
                                 type="email"
                                 autocomplete="off"
@@ -2160,7 +2156,6 @@
 
                         <label class="field">
                             Mot de passe du parent
-
                             <input
                                 type="password"
                                 autocomplete="off"
@@ -2170,7 +2165,6 @@
 
                         <label class="field">
                             Confirmer le mot de passe
-
                             <input
                                 type="password"
                                 autocomplete="off"
@@ -2200,7 +2194,6 @@
 
                         <label class="field">
                             Pseudonyme de l’aventurier
-
                             <input
                                 id="nickname"
                                 type="text"
@@ -2291,9 +2284,7 @@
                             role="status"
                             aria-live="polite">
 
-                            <span id="avatar-emoji" aria-hidden="true">
-                                🐶
-                            </span>
+                            <span id="avatar-emoji" aria-hidden="true">🐶</span>
 
                             <div>
                                 <small>Ton futur profil</small>
@@ -2313,9 +2304,7 @@
                         Inscriptions bientôt disponibles
                     </button>
 
-                    <p>
-                        Aucun compte n’est créé dans cet aperçu.
-                    </p>
+                    <p>Aucun compte n’est créé dans cet aperçu.</p>
 
                     <a class="back-link" href="#/matieres">
                         En attendant, choisir un jeu gratuit →
@@ -2362,7 +2351,6 @@
                         <legend class="sr-only">
                             Choisis ton niveau scolaire
                         </legend>
-
                         <div class="grade-grid"></div>
                     </fieldset>
 
@@ -2376,7 +2364,6 @@
                             <legend class="sr-only">
                                 Choisis la difficulté
                             </legend>
-
                             <div class="difficulty-list"></div>
                         </fieldset>
                     </div>
@@ -2411,9 +2398,7 @@
                             </h2>
                         </div>
 
-                        <span class="game-symbol" aria-hidden="true">
-                            🐾
-                        </span>
+                        <span class="game-symbol" aria-hidden="true">🐾</span>
                     </div>
 
                     <div id="game-content"></div>
@@ -3254,8 +3239,32 @@
             },
 
             sciences: {
-                title: "Sciences",
+                title: "Sciences et technologies",
                 icon: "🌿",
+                hasGame: false
+            },
+
+            histoire: {
+                title: "Histoire",
+                icon: "🏛️",
+                hasGame: false
+            },
+
+            physique: {
+                title: "Physique",
+                icon: "💡",
+                hasGame: false
+            },
+
+            geographie: {
+                title: "Géographie",
+                icon: "🌍",
+                hasGame: false
+            },
+
+            anglais: {
+                title: "Anglais",
+                icon: "💬",
                 hasGame: false
             }
         };
@@ -3367,9 +3376,7 @@
                 SUBJECTS[parts[1]]
             ) {
                 active = "catalogue";
-
                 renderCatalog(parts[1]);
-
                 title = SUBJECTS[parts[1]].title;
                 focusTarget = "catalog-title";
 
@@ -3383,9 +3390,7 @@
 
             } else if (requested === "jeux") {
                 active = "catalogue";
-
                 renderCatalog("mathematiques");
-
                 title = "Mathématiques";
                 focusTarget = "catalog-title";
             }
