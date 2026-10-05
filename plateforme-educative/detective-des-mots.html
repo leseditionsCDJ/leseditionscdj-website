@@ -1,0 +1,4648 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Détective des mots · Éditions CDJ</title>
+  <style>
+    :root {font:18px/1.6 "Trebuchet MS",Arial,sans-serif;color:#203d59;background:#fff9ed;--blue:#174d87;--green:#226b43}
+    * {box-sizing:border-box}
+    body {margin:0;background:radial-gradient(circle at top right,#e0f5ff,transparent 55%),#fff9ed}
+    button,select {font:inherit}
+    button,a,select {touch-action:manipulation}
+    button {cursor:pointer}
+    button:disabled {cursor:default}
+    a {color:var(--blue)}
+    :focus-visible {outline:3px solid #174d87;outline-offset:4px}
+    [hidden] {display:none!important}
+    header {background:#fff;border-bottom:3px solid #f0dfb2;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .brand {font-weight:bold;text-decoration:none;font-size:1.25rem}
+    .book-link {background:#e8f1ff;padding:.6rem 1rem;border-radius:15px;text-decoration:none;font-weight:bold}
+    main {max-width:1160px;padding:1.4rem;margin:auto}
+    .back {display:inline-block;margin-bottom:1rem;font-weight:bold}
+    .hero {background:#fff0bc;border:3px solid #e6c877;border-radius:28px;padding:1.7rem;margin-bottom:1.3rem;position:relative;overflow:hidden}
+    .badge {display:inline-block;background:#fff;padding:.3rem .8rem;border-radius:999px;font-weight:bold;color:#286044}
+    h1 {font-size:clamp(2rem,5vw,3rem);line-height:1.15;color:var(--blue);margin:.7rem 0}
+    h2 {font-size:1.5rem;line-height:1.3;color:var(--blue);margin:0 0 .8rem}
+    h3 {font-size:1.2rem;color:var(--blue);margin:0 0 .6rem}
+    p {margin:.65rem 0}
+    .layout {display:grid;grid-template-columns:300px minmax(0,1fr);gap:1.2rem;align-items:start}
+    .card {background:#fff;border:2px solid #dedecb;border-radius:24px;padding:1.3rem;box-shadow:0 5px 0 #e8dfc5}
+    label {display:block;font-weight:bold;margin:1rem 0 .4rem}
+    select {width:100%;padding:.65rem;border:2px solid #aec7df;border-radius:12px;background:#fff;color:#203d59;min-height:48px}
+    .primary,.secondary {display:inline-block;font-weight:bold;border:2px solid #175435;border-radius:15px;padding:.8rem 1.1rem;min-height:50px;background:#27794d;color:#fff;text-decoration:none}
+    .primary:hover:not(:disabled) {background:#175e38}
+    .primary:disabled {opacity:.55}
+    .secondary {background:#eef5ff;color:#174d87;border-color:#b8cee5}
+    .secondary:hover {background:#dcecff}
+    .wide {width:100%;margin-top:1rem}
+    .note {color:#506477;font-size:1rem}
+    .help-note {background:#eef5ff;border-radius:13px;padding:.7rem;margin:1rem 0}
+    .status {display:flex;gap:.7rem;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:.7rem;font-weight:bold}
+    .counter {background:#fff0b8;padding:.35rem .7rem;border-radius:12px;color:#67470b}
+    progress {width:100%;height:15px;accent-color:#27794d;margin-bottom:.7rem}
+    .scene {position:relative;min-height:380px;overflow:hidden;border:3px solid #8ecaa5;border-radius:23px;background:linear-gradient(#b9e9ff 0%,#e2f7ff 50%,#abd477 50%,#78b566 100%);isolation:isolate}
+    .scene:before {content:"";position:absolute;width:300px;height:160px;border-radius:50%;background:#92c271;left:-70px;top:135px;z-index:-1}
+    .scene:after {content:"";position:absolute;width:500px;height:160px;border-radius:50%;background:#b8dd8c;right:-130px;top:135px;z-index:-1}
+    .sun {position:absolute;right:8%;top:20px;font-size:3rem}
+    .cloud {position:absolute;left:15%;top:15px;font-size:3rem}
+    .house {position:absolute;left:37%;top:80px;width:130px;height:140px;background:#fff6d7;border:4px solid #e0c391;border-radius:15px;box-shadow:0 7px 0 #709c60}
+    .house:before {content:"";position:absolute;left:-20px;top:-35px;width:160px;height:55px;background:#348888;clip-path:polygon(50% 0,100% 70%,100% 100%,0 100%,0 70%)}
+    .house:after {content:"🐾";position:absolute;left:30px;bottom:0;width:60px;height:80px;border-radius:35px 35px 0 0;background:#e8aa62;text-align:center;padding-top:16px;font-size:1.7rem}
+    .scene-label {position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:#fff9e8;padding:.3rem .8rem;border-radius:12px;font-weight:bold;white-space:nowrap;color:#386644}
+    .clue {position:absolute;min-width:82px;min-height:78px;background:#fffdf0;border:3px solid #c78e37;border-bottom-width:6px;border-radius:18px;padding:.4rem;color:#604519;font-weight:bold;box-shadow:0 3px 9px #25451d20;line-height:1.25}
+    .clue .icon {display:block;font-size:1.8rem;margin-bottom:.15rem}
+    .clue:nth-of-type(1) {left:4%;top:65px}
+    .clue:nth-of-type(2) {left:7%;top:210px}
+    .clue:nth-of-type(3) {right:6%;top:80px}
+    .clue:nth-of-type(4) {right:6%;top:220px}
+    .clue:nth-of-type(5) {left:41%;top:235px}
+    .clue:hover:not(:disabled) {background:#ffeaa4;transform:translateY(-2px)}
+    .clue[aria-pressed="true"] {outline:3px solid #174d87;outline-offset:3px}
+    .clue.solved {background:#e3f6d8;border-color:#377643;color:#255c32}
+    .clue:disabled:not(.solved) {opacity:.6}
+    .investigation {margin-top:1.1rem;border:2px solid #bdd4e8;background:#f6faff;border-radius:19px;padding:1.2rem}
+    .question {font-size:1.45rem;line-height:1.55;color:#174d87;font-weight:bold;white-space:pre-line;overflow-wrap:anywhere;margin:1rem 0}
+    .answers {display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .answer {font-size:1.15rem;font-weight:bold;padding:.8rem;border:2px solid #abc7e2;border-bottom-width:5px;border-radius:15px;color:#203d59;background:#fff;min-height:58px;overflow-wrap:anywhere}
+    .answer:nth-child(even) {background:#fff2cd;border-color:#dcc57e}
+    .answer:hover:not(:disabled) {outline:2px solid #174d87}
+    .answer.wrong {background:#ffebe3;border-color:#cc987f}
+    .answer.correct {background:#dff5d8;border-color:#3f8049;color:#245b2e}
+    .actions {display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+    .feedback {padding:.8rem 1rem;border-radius:13px;background:#eef3f8;min-height:54px;margin-top:1rem;white-space:pre-line}
+    .feedback.success {background:#e1f3dc;color:#255b30}
+    .hint {background:#fff3c5;padding:.8rem;border-radius:13px;margin:.8rem 0;color:#654918}
+    .notebook {margin-top:1.1rem;padding:1rem;background:#fff9e8;border:2px dashed #d5b765;border-radius:18px}
+    .notebook ol {margin:.5rem 0 0;padding-left:1.5rem}
+    .notebook li {padding:.25rem 0}
+    .result {margin-top:1.2rem;text-align:center;background:#eef8e7;border:3px solid #a6c58f;border-radius:23px;padding:1.5rem}
+    .turtle {font-size:4rem;display:block}
+    .result .actions {justify-content:center}
+    details {margin-top:1.5rem;background:#fff;border:1px solid #ddd8c7;border-radius:16px;padding:1rem}
+    summary {font-weight:bold;cursor:pointer}
+    footer {padding:1.6rem 0;color:#516752;text-align:center}
+
+    .answers.activity{display:block}
+    .response-form label{margin:0 0 .5rem}
+    .response-form input{width:100%;font:inherit;padding:.8rem;border:2px solid #abc7e2;border-radius:12px;color:#203d59;background:#fff;min-height:52px}
+    .word-pool{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+    .word-pool .answer{min-height:48px;font-size:1rem}
+    .word-pool .answer:disabled{opacity:.45}
+    .order-output{padding:.8rem;border:2px dashed #b9cde1;background:white;border-radius:12px;min-height:60px}
+    .review{text-align:left;background:#fffdf2;border:1px solid #d9cda7;border-radius:15px;padding:1rem;margin:1rem 0}
+    .review ul{padding-left:1.3rem;margin:.5rem 0}
+    .review li{margin:.6rem 0}
+    @media(max-width:900px) {.layout{grid-template-columns:260px minmax(0,1fr)}main{padding:1rem}.clue{min-width:74px;font-size:1rem}.house{left:34%;width:110px}.house:before{width:140px}.house:after{left:22px}}
+    @media(max-width:700px) {.layout{grid-template-columns:1fr}.hero{padding:1.2rem}.card{padding:1rem}.scene{min-height:400px}.house{left:37%}.clue:nth-of-type(5){left:41%;top:250px}.question{font-size:1.3rem}header{padding:1rem}.book-link{font-size:1rem}.answers{grid-template-columns:1fr}.actions>*{flex:1}.scene-label{font-size:1rem;bottom:8px}}
+    @media(prefers-reduced-motion:reduce) {*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#/accueil">🐾 Le coin des jeux</a>
+    <a class="book-link" href="https://leseditionscdj.ca/" target="_blank" rel="noopener">Découvrir les livres ↗</a>
+  </header>
+  <main>
+    <a class="back" href="index.html#/matieres/francais">← Les jeux de français</a>
+    <section class="hero">
+      <span class="badge">🎁 Jeu gratuit · Première enquête</span>
+      <h1>Détective des mots</h1>
+      <p>Un message s’est éparpillé dans le jardin de Mattéo… Résous cinq défis de français pour retrouver Tina la tortue !</p>
+    </section>
+    <div class="layout">
+      <aside class="card">
+        <h2>Prépare ton enquête</h2>
+        <label for="grade">1. Ton niveau scolaire</label>
+        <select id="grade">
+          <option value="">Choisis ton niveau</option>
+          <optgroup label="Primaire">
+            <option value="p1">1re année</option><option value="p2">2e année</option>
+            <option value="p3">3e année</option><option value="p4">4e année</option>
+            <option value="p5">5e année</option><option value="p6">6e année</option>
+          </optgroup>
+          <optgroup label="Secondaire">
+            <option value="s1">Secondaire 1</option><option value="s2">Secondaire 2</option>
+            <option value="s3">Secondaire 3</option><option value="s4">Secondaire 4</option>
+            <option value="s5">Secondaire 5</option>
+          </optgroup>
+        </select>
+        <div id="difficulty-wrap" hidden>
+          <label for="difficulty">2. Ta difficulté</label>
+          <select id="difficulty">
+            <option value="facile">Facile</option>
+            <option value="modere" selected>Modéré</option>
+            <option value="difficile">Difficile</option>
+          </select>
+          <p id="difficulty-note" class="help-note"></p>
+        </div>
+        <button id="start" class="primary wide" disabled>Commencer l’enquête</button>
+        <button id="settings" class="secondary wide" hidden>Changer de niveau</button>
+        <p class="note">Aucun chrono. Tu peux demander de l’aide et réessayer autant que tu veux.</p>
+        <p class="note">Ce jeu est entièrement gratuit. Chaque enquête tire cinq défis variés dans la banque de ton niveau. Les questions déjà tirées reviennent après un tour de la banque.</p>
+      </aside>
+      <section class="card" aria-labelledby="mission-title">
+        <h2 id="mission-title">Le mystère du jardin</h2>
+        <div class="status"><span id="mission-status">Choisis d’abord ton niveau scolaire.</span><span class="counter" id="counter">0 / 5 indices</span></div>
+        <progress id="progress" value="0" max="5" aria-label="Indices retrouvés"></progress>
+        <div class="scene" role="group" aria-label="Jardin de Mattéo, cinq objets à examiner">
+          <span class="sun" aria-hidden="true">☀️</span><span class="cloud" aria-hidden="true">☁️</span>
+          <div class="house" aria-hidden="true"></div>
+          <button class="clue" data-clue="0" disabled aria-pressed="false"><span class="icon" aria-hidden="true">🪧</span>Panneau</button>
+          <button class="clue" data-clue="1" disabled aria-pressed="false"><span class="icon" aria-hidden="true">🎒</span>Sac</button>
+          <button class="clue" data-clue="2" disabled aria-pressed="false"><span class="icon" aria-hidden="true">🐱</span>Chat</button>
+          <button class="clue" data-clue="3" disabled aria-pressed="false"><span class="icon" aria-hidden="true">🌷</span>Fleurs</button>
+          <button class="clue" data-clue="4" disabled aria-pressed="false"><span class="icon" aria-hidden="true">✉️</span>Lettre</button>
+          <span class="scene-label">Le jardin de Mattéo</span>
+        </div>
+        <section id="investigation" class="investigation" hidden aria-labelledby="clue-title">
+          <h3 id="clue-title" tabindex="-1"></h3>
+          <p id="skill" class="note"></p>
+          <p id="question" class="question"></p>
+          <div id="answers" class="answers"></div>
+          <div class="actions">
+            <button id="listen" class="secondary">🔊 Écouter</button>
+            <button id="hint-button" class="secondary">💡 Un coup de pouce</button>
+          </div>
+          <p id="hint" class="hint" hidden></p>
+          <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+          <button id="continue" class="primary wide" hidden>Retourner au jardin</button>
+        </section>
+        <section class="notebook" aria-labelledby="notebook-title">
+          <h3 id="notebook-title">📒 Ton carnet d’indices</h3>
+          <ol id="notebook"><li>Les indices apparaîtront ici.</li></ol>
+        </section>
+        <section id="result" class="result" hidden aria-labelledby="result-title">
+          <span class="turtle" aria-hidden="true">🐢</span>
+          <h2 id="result-title" tabindex="-1">Tina est retrouvée !</h2>
+          <p>Elle se reposait derrière les fleurs du jardin. Tu as reconstitué le message et résolu le mystère !</p>
+          <p id="score"></p><section class="review" aria-labelledby="review-title"><h3 id="review-title">Les notions travaillées</h3><ul id="review-list"></ul></section>
+          <p>Chaque indice résolu est une réussite, même si tu as eu besoin d’aide.</p>
+          <div class="actions"><button id="replay" class="primary">Rejouer l’enquête</button><button id="new-level" class="secondary">Choisir un autre niveau</button></div>
+        </section>
+      </section>
+    </div>
+    <details>
+      <summary>Pour les parents : notions et références</summary>
+      <p>Les questions et les phrases ont été créées pour ce jeu. Les règles sont appuyées par les fiches d’Alloprof. Ce jeu est indépendant d’Alloprof.</p>
+      <p>Chaque enquête tire cinq défis dans une banque de 28 exercices par année scolaire. Les défis abordent des notions et des tâches différentes : choisir, corriger, comprendre, écrire une réponse courte ou remettre des éléments en ordre. Le jeu ne couvre pas tout le programme. Le classement par année est un premier réglage à affiner. Le bilan décrit seulement les cinq défis joués, en précisant les essais et les coups de pouce utilisés. La rotation des questions est conservée dans ce navigateur, sans compte ni donnée personnelle; effacer les données du navigateur remet cette rotation à zéro.</p>
+      <ul>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/les-accords-dans-le-groupe-du-nom-gn-1er-cycle-f1724p12" target="_blank" rel="noopener">Les accords dans le groupe du nom au primaire</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/a-a-as-ha-ah-f1316" target="_blank" rel="noopener">Les homophones a et à</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/le-participe-passe-employe-avec-etre-f1282" target="_blank" rel="noopener">Le participe passé avec être</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/l-accord-du-participe-passe-employe-avec-l-auxiliaire-avoir-f1283" target="_blank" rel="noopener">Le participe passé avec avoir</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/la-subordonnee-relative-secondaire-1-et-2-f1152s12" target="_blank" rel="noopener">La subordonnée relative</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/l-accord-des-adjectifs-composes-et-de-couleur-f1288" target="_blank" rel="noopener">Les adjectifs de couleur</a></li>
+
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/comprendre-et-utiliser-des-synonymes-et-des-antonymes-f1378p56" target="_blank" rel="noopener">Synonymes et antonymes</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/la-phrase-3e-cycle-f1782p56" target="_blank" rel="noopener">Construction et types de phrases</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/les-figures-de-style-secondaire-1-2-f1349s12" target="_blank" rel="noopener">Figures de style</a></li>
+        <li><a href="https://www.alloprof.qc.ca/fr/eleves/bv/francais/la-these-les-arguments-et-les-fondements-f1111" target="_blank" rel="noopener">Thèse et arguments</a></li>
+      </ul>
+    </details>
+    <footer>Les Éditions Cap Découvertes Jeunesse · Apprendre, une petite aventure à la fois. 🐾</footer>
+  </main>
+  <script>
+    'use strict';
+    // Format : notion, question, bonne réponse, trois distracteurs, aide, explication.
+    // Les phrases sont originales. Ajouter des questions ici permet d’enrichir le jeu.
+    const BANK = {
+  "p1": [
+    [
+      "Lettres",
+      "Quelle est la première lettre du mot « tortue » ?",
+      "t",
+      [
+        "p",
+        "m",
+        "s"
+      ],
+      "Prononce doucement : t… ortue.",
+      "Le mot « tortue » commence par la lettre t.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Mot et image",
+      "Quel mot correspond à cet animal ? 🐱",
+      "chat",
+      [
+        "chien",
+        "lapin",
+        "tortue"
+      ],
+      "Cet animal miaule.",
+      "Le chat est l’animal qui miaule.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Déterminant",
+      "Complète : ___ tortue se repose.",
+      "La",
+      [
+        "Le",
+        "Les",
+        "Un"
+      ],
+      "On dit « une tortue ». Il n’y en a qu’une.",
+      "« Tortue » est féminin singulier : on choisit « La ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Ordre des mots",
+      "Quelle phrase raconte que le chat dort ?",
+      "Le chat dort.",
+      [
+        "Le chien dort.",
+        "Le chat joue.",
+        "Le chat court."
+      ],
+      "Commence par « Le chat ».",
+      "Dans cette phrase déclarative, on écrit « Le chat dort. ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Compréhension",
+      "Tina se cache sous une feuille. Où se cache Tina ?",
+      "Sous une feuille",
+      [
+        "Dans le sac",
+        "Sur le toit",
+        "Dans l’eau"
+      ],
+      "Relis les mots après « se cache ».",
+      "Le texte indique que Tina se cache sous une feuille.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lettres – majuscules",
+      "Quelle lettre est la majuscule de « b » ?",
+      "B",
+      [
+        "D",
+        "P",
+        "R"
+      ],
+      "Compare la forme des lettres b et B.",
+      "La lettre b a pour majuscule B.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Lettres – alphabet",
+      "Quelle lettre vient juste après M dans l’alphabet ?",
+      "N",
+      [
+        "L",
+        "P",
+        "S"
+      ],
+      "Récite : L, M, ...",
+      "L’ordre est L, M, N, O.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Sons – début du mot",
+      "Quel mot commence par le même son que « maman » ?",
+      "moto",
+      [
+        "papa",
+        "tapis",
+        "sac"
+      ],
+      "Écoute le son /m/ au début de « maman ».",
+      "« Maman » et « moto » commencent par le son /m/.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Sons – voyelle",
+      "Quel mot contient le son « ou » comme dans « roue » ?",
+      "soupe",
+      [
+        "sac",
+        "vélo",
+        "balle"
+      ],
+      "Le son de « roue » s’entend aussi dans un aliment.",
+      "Dans « soupe », les lettres ou représentent le son « ou ».",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – lettres manquantes",
+      "Complète le mot : la l___pe sert à grossir ce qu’on regarde.",
+      "ou",
+      [
+        "on",
+        "an",
+        "oi"
+      ],
+      "Prononce le mot « loupe ».",
+      "Le mot « loupe » s’écrit avec ou.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – contraire",
+      "Quel mot veut dire le contraire de « grand » ?",
+      "petit",
+      [
+        "long",
+        "haut",
+        "large"
+      ],
+      "Pense à deux objets de tailles opposées.",
+      "Petit et grand ont des sens opposés.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – action",
+      "Quel mot nomme une action ?",
+      "courir",
+      [
+        "table",
+        "chat",
+        "rouge"
+      ],
+      "Une action est quelque chose qu’on peut faire.",
+      "Courir est une action; table et chat sont des noms, rouge est une couleur.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – catégorie",
+      "Quel mot nomme un objet qu’on utilise pour écrire ?",
+      "crayon",
+      [
+        "lapin",
+        "nuage",
+        "rivière"
+      ],
+      "Cherche un outil d’écriture.",
+      "Un crayon permet d’écrire ou de dessiner.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Ponctuation – point",
+      "Quel signe termine « Le chien dort » pour raconter un fait ?",
+      ".",
+      [
+        "?",
+        ",",
+        ":"
+      ],
+      "Cette phrase ne pose pas de question.",
+      "Une phrase déclarative peut se terminer par un point.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – majuscule",
+      "Quelle phrase commence correctement ?",
+      "La souris court.",
+      [
+        "la souris court.",
+        "lA souris court.",
+        "la Souris court."
+      ],
+      "Le premier mot commence par une majuscule.",
+      "On met une majuscule au début : La souris court.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – nombre de mots",
+      "Combien de mots contient « Le petit chat dort » ?",
+      "4",
+      [
+        "3",
+        "5",
+        "6"
+      ],
+      "Chaque espace sépare ici deux mots.",
+      "Les quatre mots sont Le, petit, chat et dort.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Compréhension – consigne",
+      "La consigne dit : « Entoure le chat ». Que faut-il faire ?",
+      "Dessiner un cercle autour du chat",
+      [
+        "Colorier tout le jardin",
+        "Écrire le mot chien",
+        "Effacer le chat"
+      ],
+      "Le verbe « entourer » indique l’action demandée.",
+      "Entourer consiste à dessiner un cercle autour de l’élément demandé.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – avant et après",
+      "Lina met ses bottes. Puis elle sort. Que fait-elle en premier ?",
+      "Elle met ses bottes.",
+      [
+        "Elle sort.",
+        "Elle rentre.",
+        "Elle enlève ses bottes."
+      ],
+      "Le mot « puis » introduit ce qui arrive après.",
+      "Lina met ses bottes avant de sortir.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – quantité",
+      "Il y a deux pommes et une poire dans le sac. Combien y a-t-il de pommes ?",
+      "Deux",
+      [
+        "Une",
+        "Trois",
+        "Aucune"
+      ],
+      "Cherche la quantité qui accompagne « pommes ».",
+      "Le texte indique deux pommes. La poire est un autre fruit.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – action niée",
+      "Noé regarde la balle, mais il ne la prend pas. Que sait-on ?",
+      "La balle n’est pas prise par Noé.",
+      [
+        "Noé prend la balle.",
+        "La balle est perdue.",
+        "Noé cache la balle."
+      ],
+      "Observe les mots « ne ... pas ».",
+      "Le texte dit que Noé ne prend pas la balle.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Grammaire – un ou une",
+      "Quelle expression convient pour nommer un seul panier ?",
+      "un panier",
+      [
+        "une panier",
+        "des panier",
+        "les panier"
+      ],
+      "On dit « un panier ».",
+      "Panier est un nom masculin; pour un seul panier, on peut écrire un panier.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – un ou plusieurs",
+      "Quel groupe parle de plusieurs animaux ?",
+      "les lapins",
+      [
+        "un lapin",
+        "le lapin",
+        "ce lapin"
+      ],
+      "« Les » indique ici plusieurs éléments.",
+      "Le groupe « les lapins » est au pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Lettres – minuscule",
+      "Écris la lettre minuscule qui correspond à M.",
+      "m",
+      [],
+      "Compare M et m.",
+      "La minuscule de M est m.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – mot incomplet",
+      "Écris la lettre manquante : la_in. Cet animal a de longues oreilles.",
+      "p",
+      [],
+      "Prononce le mot lapin.",
+      "Lapin s’écrit l-a-p-i-n.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Lettres – lettre finale",
+      "Écris la dernière lettre du mot vélo.",
+      "o",
+      [],
+      "Regarde tout à droite du mot.",
+      "La dernière lettre de vélo est o.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Phrase – ordre des mots",
+      "Place d’abord Le chat, puis son action.",
+      "Le chat dort.",
+      [
+        "Le",
+        "chat",
+        "dort."
+      ],
+      "Commence par Le, puis chat.",
+      "Le sujet Le chat précède le verbe dort.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – construire",
+      "Construis la phrase en plaçant La lettre au début.",
+      "La lettre est ici.",
+      [
+        "La",
+        "lettre",
+        "est",
+        "ici."
+      ],
+      "Après La lettre, place le verbe est.",
+      "La lettre est ici forme une phrase complète.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – sujet et action",
+      "Place Mattéo au début, puis ouvre, puis ce qu’il ouvre.",
+      "Mattéo ouvre le sac.",
+      [
+        "Mattéo",
+        "ouvre",
+        "le",
+        "sac."
+      ],
+      "Le groupe le sac termine la phrase.",
+      "Le sujet, l’action et l’objet se suivent dans cet ordre.",
+      "ordre",
+      "Construction des phrases"
+    ]
+  ],
+  "p2": [
+    [
+      "Pluriel",
+      "Complète avec le pluriel de « chat » : deux ___ jouent.",
+      "chats",
+      [
+        "chat",
+        "chate",
+        "chattes"
+      ],
+      "Pour ce nom, le pluriel se forme avec un s.",
+      "Avec « deux », le nom « chats » est au pluriel.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Féminin",
+      "Complète : une ___ tortue.",
+      "petite",
+      [
+        "petit",
+        "petits",
+        "petites"
+      ],
+      "L’adjectif accompagne « tortue », au féminin singulier.",
+      "On écrit « petite » pour accompagner « une tortue ».",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Déterminant",
+      "Complète : ___ fleurs poussent ici.",
+      "Les",
+      [
+        "La",
+        "Le",
+        "Un"
+      ],
+      "Le nom « fleurs » est au pluriel.",
+      "« Les » est un déterminant pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Verbe au présent",
+      "Complète : Les chats ___.",
+      "jouent",
+      [
+        "joue",
+        "joues",
+        "jouer"
+      ],
+      "Remplace « Les chats » par « Ils ».",
+      "Au présent, avec « ils », le verbe jouer s’écrit « jouent ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Compréhension",
+      "Mattéo ouvre son sac pour prendre une loupe. Que veut-il prendre ?",
+      "Une loupe",
+      [
+        "Une fleur",
+        "Une balle",
+        "Une feuille"
+      ],
+      "Cherche les mots qui suivent « pour prendre ».",
+      "Mattéo veut prendre une loupe dans son sac.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Orthographe – son ch",
+      "Quel groupe de lettres complète « un ___apeau » ?",
+      "ch",
+      [
+        "ou",
+        "on",
+        "an"
+      ],
+      "Au début de « chapeau », on entend le son « ch ».",
+      "Le mot chapeau commence par les lettres ch.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – son on",
+      "Quel mot contient le son « on » ?",
+      "pont",
+      [
+        "poule",
+        "patte",
+        "pile"
+      ],
+      "Prononce lentement chaque mot.",
+      "Dans pont, les lettres on représentent le son « on ».",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Lettres – ordre alphabétique",
+      "Quel classement respecte l’ordre alphabétique ?",
+      "arbre, balle, chat",
+      [
+        "chat, balle, arbre",
+        "balle, arbre, chat",
+        "arbre, chat, balle"
+      ],
+      "Compare les premières lettres a, b et c.",
+      "L’ordre des premières lettres est a, b, c.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – synonyme",
+      "Dans « une jolie fleur », quel mot peut remplacer « jolie » ?",
+      "belle",
+      [
+        "petite",
+        "fanée",
+        "verte"
+      ],
+      "Cherche un mot de sens proche.",
+      "Dans ce contexte, jolie et belle ont un sens proche.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – famille",
+      "Quel mot appartient à la famille de « jardin » ?",
+      "jardinier",
+      [
+        "javel",
+        "gardien",
+        "jour"
+      ],
+      "Cherche un mot construit à partir de jardin.",
+      "Jardinier et jardin partagent la même base et une relation de sens.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – contraire",
+      "Quel est le contraire de « ouvrir » ?",
+      "fermer",
+      [
+        "porter",
+        "cacher",
+        "entrer"
+      ],
+      "Pense à ce qu’on fait après avoir ouvert une boîte.",
+      "Ouvrir et fermer sont des actions opposées.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – nom propre",
+      "Quel mot est un nom propre dans « Lina nourrit le chat » ?",
+      "Lina",
+      [
+        "nourrit",
+        "le",
+        "chat"
+      ],
+      "Le nom propre identifie ici une personne précise.",
+      "Lina est un nom propre; chat est un nom commun.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – verbe",
+      "Quel mot est le verbe dans « La souris mange » ?",
+      "mange",
+      [
+        "La",
+        "souris",
+        "La souris"
+      ],
+      "Cherche ce que fait la souris.",
+      "Mange est le verbe; il exprime l’action.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – présent",
+      "Complète au présent : Tu ___ un dessin.",
+      "prépares",
+      [
+        "prépare",
+        "préparent",
+        "préparons"
+      ],
+      "Avec tu, ce verbe prend un s.",
+      "On écrit tu prépares au présent.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – être",
+      "Complète : Nous ___ dans le jardin.",
+      "sommes",
+      [
+        "sont",
+        "êtes",
+        "suis"
+      ],
+      "Le sujet est nous.",
+      "Au présent, le verbe être avec nous donne sommes.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Ponctuation – question",
+      "Quel signe termine « Où est le sac » ?",
+      "?",
+      [
+        ".",
+        "!",
+        ","
+      ],
+      "La phrase pose une question.",
+      "Le point d’interrogation termine une question.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – négation",
+      "Quelle phrase dit que le chien ne dort pas ?",
+      "Le chien ne dort pas.",
+      [
+        "Le chien dort.",
+        "Le chien dort bien.",
+        "Le chien veut dormir."
+      ],
+      "Cherche les deux mots ne et pas.",
+      "Ne ... pas permet de nier l’action de dormir.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Compréhension – lieu",
+      "« La clé est dans la boîte rouge. La boîte bleue contient des crayons. » Où est la clé ?",
+      "Dans la boîte rouge",
+      [
+        "Dans la boîte bleue",
+        "Sous la table",
+        "Dans le sac"
+      ],
+      "Chaque boîte a un contenu différent.",
+      "La clé se trouve dans la boîte rouge, selon la première phrase.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – reprise",
+      "« Zoé prend une pomme. Elle la mange. » Que reprend « la » ?",
+      "une pomme",
+      [
+        "Zoé",
+        "Elle",
+        "une assiette"
+      ],
+      "Cherche ce qui est mangé.",
+      "Le pronom la remplace une pomme.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – cause",
+      "« Tom ferme la fenêtre parce qu’il a froid. » Pourquoi ferme-t-il la fenêtre ?",
+      "Parce qu’il a froid.",
+      [
+        "Parce qu’il a faim.",
+        "Pour appeler Lina.",
+        "Pour regarder dehors."
+      ],
+      "La réponse suit les mots parce que.",
+      "Le froid est la raison donnée dans le texte.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – ordre",
+      "« Le chat se réveille, s’étire et sort. » Que fait-il juste avant de sortir ?",
+      "Il s’étire.",
+      [
+        "Il se réveille.",
+        "Il mange.",
+        "Il revient."
+      ],
+      "Repère l’action placée entre le réveil et la sortie.",
+      "Le chat s’étire juste avant de sortir.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – titre",
+      "Quel titre convient à un texte qui explique comment planter une graine ?",
+      "Planter une graine",
+      [
+        "Une course de voitures",
+        "Le chat perdu",
+        "Une recette de soupe"
+      ],
+      "Le titre annonce le sujet du texte.",
+      "Planter une graine annonce le sujet expliqué.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Pluriel – écrire",
+      "Écris le pluriel du mot fleur.",
+      "fleurs",
+      [],
+      "Pour ce nom, ajoute un s.",
+      "Fleur devient fleurs au pluriel.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Féminin – écrire",
+      "Complète avec le féminin de vert : une feuille ___.",
+      "verte",
+      [],
+      "La feuille est au féminin singulier.",
+      "Le féminin de vert est verte.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète au présent : Je ___ dans le jardin. (être)",
+      "suis",
+      [],
+      "Le sujet est je.",
+      "Le verbe être avec je au présent s’écrit suis.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – négation",
+      "Construis la phrase négative en commençant par Le chien.",
+      "Le chien ne dort pas.",
+      [
+        "Le",
+        "chien",
+        "ne",
+        "dort",
+        "pas."
+      ],
+      "Ne et pas encadrent dort.",
+      "Le chien ne dort pas est une phrase négative.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – consigne",
+      "Construis une consigne en commençant par Ouvre.",
+      "Ouvre le petit panier.",
+      [
+        "Ouvre",
+        "le",
+        "petit",
+        "panier."
+      ],
+      "Le mot petit se place avant panier.",
+      "Ouvre le petit panier donne une consigne.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – question",
+      "Construis la question en commençant par Est-ce que.",
+      "Est-ce que la porte est ouverte ?",
+      [
+        "Est-ce que",
+        "la",
+        "porte",
+        "est",
+        "ouverte ?"
+      ],
+      "Après Est-ce que, place le sujet la porte.",
+      "Est-ce que la porte est ouverte ? est une question.",
+      "ordre",
+      "Construction des phrases"
+    ]
+  ],
+  "p3": [
+    [
+      "Accord de l’adjectif",
+      "Complète : des tortues ___.",
+      "vertes",
+      [
+        "verte",
+        "vert",
+        "verts"
+      ],
+      "« Tortues » est féminin pluriel.",
+      "L’adjectif « vertes » reçoit le féminin et le pluriel du nom « tortues ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Homophones a / à",
+      "Complète : Mattéo ___ une loupe.",
+      "a",
+      [
+        "à",
+        "as",
+        "ah"
+      ],
+      "Essaie de remplacer le mot par « avait ».",
+      "« Mattéo avait une loupe » fonctionne : on écrit le verbe « a ».",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Classe de mots",
+      "Dans « Le petit chat dort », quel mot est le nom de l’animal ?",
+      "chat",
+      [
+        "petit",
+        "dort",
+        "Le"
+      ],
+      "Le nom sert ici à désigner un animal.",
+      "« Chat » est le nom commun qui désigne l’animal.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison",
+      "Complète au présent : Nous ___ Tina.",
+      "cherchons",
+      [
+        "cherche",
+        "cherchent",
+        "cherchez"
+      ],
+      "Avec « nous », ce verbe se termine par -ons.",
+      "Au présent, on écrit « nous cherchons ».",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Compréhension",
+      "Le chat est près du sac. La tortue est derrière les fleurs. Qui est derrière les fleurs ?",
+      "La tortue",
+      [
+        "Le chat",
+        "Mattéo",
+        "Le chien"
+      ],
+      "Relis la deuxième phrase.",
+      "La deuxième phrase situe la tortue derrière les fleurs.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Orthographe – m devant b",
+      "Quel mot est correctement écrit ?",
+      "chambre",
+      [
+        "chanbre",
+        "chammbre",
+        "chanmbre"
+      ],
+      "Devant b, le son écrit an prend généralement la lettre m.",
+      "Dans chambre, on écrit m devant b.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – c et ç",
+      "Pourquoi écrit-on « garçon » avec ç ?",
+      "Pour garder le son /s/ devant o",
+      [
+        "Pour faire entendre /k/",
+        "Pour marquer le pluriel",
+        "Pour supprimer le o"
+      ],
+      "Sans cédille, c devant o représente généralement /k/.",
+      "La cédille permet à c de représenter /s/ devant o.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Pluriel – eau",
+      "Quel est le pluriel de « bateau » ?",
+      "bateaux",
+      [
+        "bateaus",
+        "bateau",
+        "bateauent"
+      ],
+      "Les noms en eau prennent généralement un x au pluriel.",
+      "Le pluriel de bateau est bateaux.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – préfixe",
+      "Que signifie « relire » ?",
+      "Lire de nouveau",
+      [
+        "Lire plus vite",
+        "Ne pas lire",
+        "Lire à voix basse"
+      ],
+      "Le préfixe re- peut indiquer une répétition.",
+      "Relire signifie lire de nouveau.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – contexte",
+      "« Le sentier est étroit : les enfants passent un à un. » Que signifie « étroit » ?",
+      "Peu large",
+      [
+        "Très long",
+        "Très haut",
+        "Bien éclairé"
+      ],
+      "Le passage oblige les enfants à avancer un par un.",
+      "Étroit signifie ici peu large.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – antonyme",
+      "Quel est un antonyme de « courageux » ?",
+      "peureux",
+      [
+        "brave",
+        "audacieux",
+        "vaillant"
+      ],
+      "Un antonyme a un sens opposé.",
+      "Peureux s’oppose à courageux; les autres mots ont un sens proche.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – déterminant",
+      "Quel est le déterminant dans « Ces fleurs poussent » ?",
+      "Ces",
+      [
+        "fleurs",
+        "poussent",
+        "Ces fleurs"
+      ],
+      "Le déterminant introduit le nom.",
+      "Ces est placé devant le nom fleurs et l’introduit.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – adjectif",
+      "Quel mot décrit le panier dans « Le panier lourd tombe » ?",
+      "lourd",
+      [
+        "Le",
+        "panier",
+        "tombe"
+      ],
+      "Cherche le mot qui donne une caractéristique du panier.",
+      "Lourd est l’adjectif qui caractérise panier.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – pronom",
+      "Quel pronom remplace « Lina et Zoé » ?",
+      "elles",
+      [
+        "elle",
+        "il",
+        "nous"
+      ],
+      "Il s’agit de deux personnes féminines.",
+      "Elles reprend un groupe féminin pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – avoir",
+      "Complète au présent : Vous ___ une carte.",
+      "avez",
+      [
+        "avons",
+        "ont",
+        "as"
+      ],
+      "Le sujet vous détermine la forme du verbe.",
+      "On écrit vous avez.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – moment",
+      "Quelle phrase exprime clairement une action future ?",
+      "Demain, je visiterai le parc.",
+      [
+        "Hier, j’ai visité le parc.",
+        "Maintenant, je visite le parc.",
+        "Autrefois, je visitais le parc."
+      ],
+      "Cherche un indice de temps et une forme verbale future.",
+      "Demain et visiterai indiquent une action future.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – corriger",
+      "Quelle phrase est correctement délimitée ?",
+      "Le lapin sort. Il cherche une carotte.",
+      [
+        "le lapin sort il cherche une carotte",
+        "Le lapin sort il cherche une carotte",
+        "le lapin sort. il cherche une carotte."
+      ],
+      "Chaque phrase commence par une majuscule et se termine par un signe de ponctuation.",
+      "Les deux phrases ont chacune une majuscule et un point.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – liste",
+      "Quelle phrase ponctue correctement une liste ?",
+      "Le sac contient une carte, une loupe et un carnet.",
+      [
+        "Le sac contient, une carte une loupe et un carnet.",
+        "Le sac contient une carte une, loupe et un carnet.",
+        "Le sac contient une carte une loupe, et, un carnet."
+      ],
+      "Une virgule sépare les premiers éléments de cette énumération.",
+      "La virgule sépare une carte et une loupe; et introduit le dernier élément.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Compréhension – déduction",
+      "« Les bottes de Milo sont mouillées. Il vient de traverser une flaque. » Pourquoi ses bottes sont-elles mouillées ?",
+      "Il a marché dans l’eau.",
+      [
+        "Il a arrosé une plante.",
+        "Il a pris une douche.",
+        "Il a renversé une soupe."
+      ],
+      "Relie la flaque à l’état des bottes.",
+      "Traverser la flaque explique les bottes mouillées.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – consigne en deux étapes",
+      "« Souligne le titre, puis entoure le premier mot. » Que faut-il faire après avoir souligné le titre ?",
+      "Entourer le premier mot",
+      [
+        "Souligner tout le texte",
+        "Effacer le titre",
+        "Entourer le dernier mot"
+      ],
+      "Puis introduit la deuxième étape.",
+      "La deuxième action demandée est d’entourer le premier mot.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – résumé",
+      "« Un ballon tombe dans une haie. Lina le retrouve et le rend à Tom. » Quel résumé garde l’essentiel ?",
+      "Lina retrouve le ballon de Tom.",
+      [
+        "Lina plante une haie.",
+        "Tom offre un ballon à Lina.",
+        "Un ballon est fabriqué dans le jardin."
+      ],
+      "Garde le problème et ce qui le résout.",
+      "Lina retrouve le ballon et le rend à Tom : c’est l’événement central.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – type de texte",
+      "Quel texte sert surtout à expliquer comment faire un gâteau ?",
+      "Une recette",
+      [
+        "Un conte",
+        "Une invitation",
+        "Une devinette"
+      ],
+      "Cherche un texte qui donne des étapes de préparation.",
+      "Une recette indique des ingrédients et des étapes à suivre.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – écrire",
+      "Écris a ou à : Nous allons ___ la clinique.",
+      "à",
+      [],
+      "Le mot n’est pas remplaçable par avait.",
+      "À introduit ici le lieu où nous allons.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Pluriel particulier – écrire",
+      "Écris le pluriel du nom animal.",
+      "animaux",
+      [],
+      "Ce nom se termine en al et change sa terminaison.",
+      "Le pluriel d’animal est animaux.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète au présent : Nous ___ une carte. (avoir)",
+      "avons",
+      [],
+      "La forme doit correspondre à nous.",
+      "Au présent, on écrit nous avons.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – sujet verbe complément",
+      "Place d’abord Les enfants, puis le verbe, puis ce qu’ils observent.",
+      "Les enfants observent les petites traces.",
+      [
+        "Les enfants",
+        "observent",
+        "les petites traces."
+      ],
+      "Le verbe observent est au milieu.",
+      "Les enfants observent les petites traces suit l’ordre sujet, verbe, complément.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – négation composée",
+      "Commence par Lina et place la négation autour de a.",
+      "Lina n’ a pas trouvé la clé.",
+      [
+        "Lina",
+        "n’",
+        "a",
+        "pas",
+        "trouvé la clé."
+      ],
+      "Au passé composé, la négation encadre l’auxiliaire.",
+      "La négation s’écrit Lina n’a pas trouvé la clé.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – étapes",
+      "Ordonne les étapes d’une lecture attentive.",
+      "J’ouvre le carnet. Je lis le texte. Je réponds aux questions.",
+      [
+        "J’ouvre le carnet.",
+        "Je lis le texte.",
+        "Je réponds aux questions."
+      ],
+      "La lecture précède les réponses.",
+      "On ouvre le carnet, lit le texte, puis répond aux questions.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "p4": [
+    [
+      "Homophones et / est",
+      "Complète : Tina ___ dans le jardin.",
+      "est",
+      [
+        "et",
+        "es",
+        "ai"
+      ],
+      "Essaie de remplacer le mot par « était ».",
+      "« Tina était dans le jardin » fonctionne : on écrit « est ».",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Accord du verbe",
+      "Complète : Les animaux du jardin ___ calmement.",
+      "marchent",
+      [
+        "marche",
+        "marches",
+        "marcher"
+      ],
+      "Le sujet est « Les animaux du jardin », que l’on remplace par « ils ».",
+      "Le noyau du sujet est « animaux », au pluriel : on écrit « marchent ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Imparfait",
+      "Complète à l’imparfait : Hier, je ___ Tina.",
+      "cherchais",
+      [
+        "cherche",
+        "chercherai",
+        "cherchons"
+      ],
+      "À l’imparfait, avec « je », ce verbe se termine par -ais.",
+      "À l’imparfait, on écrit « je cherchais ».",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Groupe du nom",
+      "Complète : les ___ fleurs.",
+      "jolies",
+      [
+        "jolie",
+        "joli",
+        "jolis"
+      ],
+      "« Fleurs » est féminin pluriel.",
+      "L’adjectif « jolies » s’accorde avec « fleurs », féminin pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Inférence",
+      "Des traces partent du sac et s’arrêtent près des fleurs. Où faut-il poursuivre la recherche ?",
+      "Près des fleurs",
+      [
+        "Sur le toit",
+        "Dans la maison",
+        "Au portail"
+      ],
+      "Les traces indiquent une direction.",
+      "Les traces se terminent près des fleurs : c’est l’endroit à examiner.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – on et ont",
+      "Complète : Les enfants ___ trouvé la clé.",
+      "ont",
+      [
+        "on",
+        "ons",
+        "om"
+      ],
+      "Essaie de remplacer le mot par avaient.",
+      "Les enfants avaient trouvé la clé fonctionne : on écrit ont.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – g et gu",
+      "Quel groupe garde le son /g/ dans « une ___itare » ?",
+      "gu",
+      [
+        "g",
+        "j",
+        "ge"
+      ],
+      "Devant i, on ajoute un u pour que g représente /g/.",
+      "Guitare s’écrit avec gu devant i.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – polysémie",
+      "Dans « une feuille de papier », que signifie « feuille » ?",
+      "Un morceau mince de papier",
+      [
+        "Une partie d’un arbre",
+        "Un petit animal",
+        "Une boîte"
+      ],
+      "Le contexte de papier précise le sens.",
+      "Le mot feuille peut avoir plusieurs sens; ici, il désigne du papier.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – famille",
+      "Quel mot n’appartient pas à la famille de « terre » ?",
+      "terrible",
+      [
+        "terrain",
+        "terrestre",
+        "enterrer"
+      ],
+      "Une ressemblance de lettres ne suffit pas; les mots doivent aussi être liés par le sens.",
+      "Terrible n’est pas construit sur terre, contrairement aux trois autres mots.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – suffixe",
+      "Dans « rapidement », quel élément a été ajouté à l’adjectif « rapide » pour former l’adverbe ?",
+      "-ment",
+      [
+        "-re",
+        "-in",
+        "-eur"
+      ],
+      "Le suffixe est placé à la fin.",
+      "On forme rapidement à partir de rapide avec le suffixe -ment.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – adverbe",
+      "Quel mot précise comment le chat marche dans « Le chat marche doucement » ?",
+      "doucement",
+      [
+        "Le",
+        "chat",
+        "marche"
+      ],
+      "Cherche le mot qui précise la manière de marcher.",
+      "Doucement est un adverbe qui modifie le verbe marche.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – sujet composé",
+      "Complète au présent : Lina et Mattéo ___ le jardin.",
+      "explorent",
+      [
+        "explore",
+        "explores",
+        "explorer"
+      ],
+      "Lina et Mattéo peuvent être remplacés par ils.",
+      "Le sujet désigne deux personnes : le verbe est au pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – complément de phrase",
+      "Dans « Ce matin, Lina ouvre le sac », quel groupe précise quand l’action se passe ?",
+      "Ce matin",
+      [
+        "Lina",
+        "ouvre le sac",
+        "le sac"
+      ],
+      "Ce groupe peut être supprimé ou déplacé.",
+      "Ce matin est un complément de phrase qui indique le temps.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Conjugaison – futur",
+      "Complète au futur simple : Tu ___ la lettre.",
+      "liras",
+      [
+        "lis",
+        "lisais",
+        "lire"
+      ],
+      "Le verbe lire au futur prend -as avec tu.",
+      "On écrit tu liras au futur simple.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – imparfait et présent",
+      "Quelle phrase est à l’imparfait ?",
+      "Les oiseaux chantaient.",
+      [
+        "Les oiseaux chantent.",
+        "Les oiseaux chanteront.",
+        "Les oiseaux ont chanté."
+      ],
+      "Avec ils, l’imparfait se termine ici par -aient.",
+      "Chantaient est la forme à l’imparfait.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – négation",
+      "Quelle phrase est la forme négative correcte de « Il voit quelqu’un » ?",
+      "Il ne voit personne.",
+      [
+        "Il ne voit quelqu’un.",
+        "Il personne voit.",
+        "Il ne personne voit."
+      ],
+      "La négation porte ici sur la présence d’une personne.",
+      "On peut nier cette phrase avec ne ... personne.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – interrogation",
+      "Quelle phrase pose une question ?",
+      "Pourquoi la porte est-elle ouverte ?",
+      [
+        "La porte est ouverte.",
+        "Ferme la porte.",
+        "La porte était ouverte."
+      ],
+      "Repère le mot interrogatif et le point d’interrogation.",
+      "Pourquoi introduit une question qui se termine par ?.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Compréhension – référent",
+      "« La souris entre dans la boîte. Celle-ci est vide. » Que reprend « Celle-ci » ?",
+      "la boîte",
+      [
+        "la souris",
+        "la porte",
+        "la maison"
+      ],
+      "L’adjectif vide décrit le contenant mentionné.",
+      "Celle-ci reprend ici la boîte, dont on dit qu’elle est vide.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Compréhension – but",
+      "« Pour ne pas réveiller le bébé, Tom ferme doucement la porte. » Quel est son but ?",
+      "Laisser le bébé dormir",
+      [
+        "Faire du bruit",
+        "Chercher le bébé",
+        "Fermer toutes les fenêtres"
+      ],
+      "Le groupe commençant par pour indique le but.",
+      "Tom agit doucement pour ne pas réveiller le bébé.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – information absente",
+      "« Le sac de Zoé est bleu. Il contient trois crayons. » Quelle information manque ?",
+      "L’âge de Zoé",
+      [
+        "La couleur du sac",
+        "Le nombre de crayons",
+        "Le nom de la propriétaire"
+      ],
+      "Ne déduis pas une information qui n’est pas donnée.",
+      "Le texte ne donne pas l’âge de Zoé.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – relation temporelle",
+      "« Avant de sortir, Noé ferme la fenêtre. » Quel événement arrive d’abord ?",
+      "Noé ferme la fenêtre.",
+      [
+        "Noé sort.",
+        "Noé ouvre la porte du jardin.",
+        "Noé revient."
+      ],
+      "Le groupe avant de sortir situe la fermeture en premier.",
+      "Noé ferme la fenêtre avant de sortir.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – idée principale",
+      "« La loupe agrandit les petites lettres. Elle permet aussi d’observer les détails d’une feuille. » De quoi parle surtout ce passage ?",
+      "Des utilisations de la loupe",
+      [
+        "De la couleur des feuilles",
+        "De la fabrication du papier",
+        "De l’âge des arbres"
+      ],
+      "Les deux phrases expliquent à quoi sert le même objet.",
+      "Le passage présente deux utilisations de la loupe.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Orthographe – infinitif",
+      "Écris l’infinitif du verbe dans « Les enfants courent ».",
+      "courir",
+      [],
+      "Cherche la forme qui peut suivre vont.",
+      "L’infinitif de courent est courir.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Accord – écrire",
+      "Complète : Les feuilles sont ___. (sec)",
+      "sèches",
+      [],
+      "L’adjectif prend le féminin pluriel.",
+      "L’adjectif sec devient sèches au féminin pluriel.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète au présent : Nous ___ le dessin. (finir)",
+      "finissons",
+      [],
+      "Le verbe finir prend -issons avec nous au présent.",
+      "La forme correcte est finissons.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – complément initial",
+      "Place le moment d’abord, puis le sujet et son action.",
+      "Ce matin, les visiteurs arrivent à la clinique.",
+      [
+        "Ce matin,",
+        "les visiteurs",
+        "arrivent à la clinique."
+      ],
+      "Ce matin est le complément placé au début.",
+      "Le complément initial est suivi d’une virgule.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – cause",
+      "Commence par Lina prend une loupe et ajoute la cause.",
+      "Lina prend une loupe parce que les lettres sont petites.",
+      [
+        "Lina prend une loupe",
+        "parce que",
+        "les lettres sont petites."
+      ],
+      "Parce que introduit la raison.",
+      "Parce que relie l’action à sa cause.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – chronologie",
+      "Ordonne ces événements : partir chercher une clé, la trouver, puis ouvrir.",
+      "Noé cherche la clé. Il la retrouve dans le sac. Il ouvre le portail.",
+      [
+        "Noé cherche la clé.",
+        "Il la retrouve dans le sac.",
+        "Il ouvre le portail."
+      ],
+      "On doit avoir la clé avant d’ouvrir le portail.",
+      "La recherche précède la découverte, puis l’ouverture.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "p5": [
+    [
+      "Homophones son / sont",
+      "Complète : Les indices ___ dans le jardin.",
+      "sont",
+      [
+        "son",
+        "sons",
+        "sommes"
+      ],
+      "Essaie de remplacer le mot par « étaient ».",
+      "« Les indices étaient dans le jardin » fonctionne : on écrit « sont ».",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Futur simple",
+      "Complète au futur simple : Demain, nous ___ Tina.",
+      "retrouverons",
+      [
+        "retrouvons",
+        "retrouvions",
+        "retrouveront"
+      ],
+      "Au futur, avec « nous », la terminaison est -ons.",
+      "Au futur simple, on écrit « nous retrouverons ».",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Sujet",
+      "Dans « Sous les fleurs, la tortue se repose », quel est le sujet ?",
+      "la tortue",
+      [
+        "Sous les fleurs",
+        "se repose",
+        "les fleurs"
+      ],
+      "Qui est-ce qui se repose ?",
+      "« La tortue » est le sujet du verbe « se repose ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord du verbe",
+      "Complète : Le sac des aventuriers ___ ouvert.",
+      "reste",
+      [
+        "restent",
+        "restes",
+        "rester"
+      ],
+      "Le noyau du sujet est « sac ».",
+      "Le sujet « Le sac des aventuriers » est singulier : on écrit « reste ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Compréhension",
+      "Tina évite le soleil et cherche un coin ombragé. Pourquoi va-t-elle sous les feuilles ?",
+      "Pour trouver de l’ombre",
+      [
+        "Pour voir le soleil",
+        "Pour ouvrir le sac",
+        "Pour cueillir des fleurs"
+      ],
+      "Relie « évite le soleil » à « coin ombragé ».",
+      "Sous les feuilles, Tina peut trouver l’ombre qu’elle recherche.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – ces et ses",
+      "Complète avec le déterminant qui indique que les crayons appartiennent à Lina : Lina range ___ crayons.",
+      "ses",
+      [
+        "ces",
+        "c’est",
+        "s’est"
+      ],
+      "Le mot exprime une possession.",
+      "Ses est le déterminant possessif qui renvoie aux crayons de Lina.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – pluriel particulier",
+      "Quel est le pluriel de « cheval » ?",
+      "chevaux",
+      [
+        "chevals",
+        "cheval",
+        "chevau"
+      ],
+      "Ce nom change sa terminaison au pluriel.",
+      "Cheval devient chevaux.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – préfixe",
+      "Que signifie « impossible » ?",
+      "Qui n’est pas possible",
+      [
+        "Qui est très possible",
+        "Qui arrive encore",
+        "Qui arrive avant"
+      ],
+      "Le préfixe im- exprime ici le contraire.",
+      "Impossible signifie qui n’est pas possible.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – sens figuré",
+      "« Zoé donne sa langue au chat. » Que fait-elle dans cette expression ?",
+      "Elle renonce à deviner et demande la réponse.",
+      [
+        "Elle nourrit un chat.",
+        "Elle parle très fort.",
+        "Elle imite un animal."
+      ],
+      "L’expression ne décrit pas un geste réel avec un chat.",
+      "Donner sa langue au chat signifie renoncer à trouver la réponse et la demander.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – synonymes en contexte",
+      "Quel mot remplace le mieux « observer » dans « observer attentivement une trace » ?",
+      "examiner",
+      [
+        "oublier",
+        "fabriquer",
+        "effacer"
+      ],
+      "Cherche un verbe qui conserve l’idée de regarder avec attention.",
+      "Examiner conserve le sens d’observer attentivement.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – préposition",
+      "Quel mot est une préposition dans « Le sac est sous le banc » ?",
+      "sous",
+      [
+        "sac",
+        "est",
+        "banc"
+      ],
+      "Ce mot introduit le groupe qui indique une position.",
+      "Sous est la préposition qui introduit sous le banc.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – noyau du GN",
+      "Quel est le nom noyau de « la boîte des jeunes aventuriers » ?",
+      "boîte",
+      [
+        "aventuriers",
+        "jeunes",
+        "la"
+      ],
+      "Le groupe désigne d’abord une boîte, pas les aventuriers.",
+      "Boîte est le noyau du groupe nominal.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – complément direct",
+      "Dans « Mattéo ouvre la boîte », quel groupe est le complément direct du verbe ?",
+      "la boîte",
+      [
+        "Mattéo",
+        "ouvre",
+        "Mattéo ouvre"
+      ],
+      "Pose la question Mattéo ouvre quoi ?.",
+      "La boîte complète directement le verbe ouvre, sans préposition.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – passé composé",
+      "Quelle forme complète « Hier, nous ___ la carte » au passé composé ?",
+      "avons trouvé",
+      [
+        "trouvons",
+        "trouverons",
+        "trouvions"
+      ],
+      "Un temps composé utilise ici avoir au présent et un participe passé.",
+      "Avons trouvé est au passé composé.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – futur et conditionnel",
+      "Quelle forme est au conditionnel présent ?",
+      "je chercherais",
+      [
+        "je chercherai",
+        "je cherchais",
+        "je cherche"
+      ],
+      "Le conditionnel conserve ici le r du futur et prend la terminaison -ais.",
+      "Je chercherais est au conditionnel présent.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – impérative",
+      "Quelle phrase donne directement une consigne ?",
+      "Observe les traces.",
+      [
+        "Tu observes les traces.",
+        "As-tu observé les traces ?",
+        "Les traces sont visibles."
+      ],
+      "Une consigne peut commencer par un verbe à l’impératif.",
+      "Observe les traces est une phrase impérative.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – supprimer un complément",
+      "Dans « Dans le jardin, les enfants jouent », quelle suppression conserve une phrase complète ?",
+      "Les enfants jouent.",
+      [
+        "Dans le jardin, jouent.",
+        "Dans le jardin, les enfants.",
+        "Les enfants dans le jardin."
+      ],
+      "Le complément de phrase peut être supprimé.",
+      "Dans le jardin est facultatif; Les enfants jouent reste une phrase complète.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – énumération",
+      "Quelle phrase est correctement ponctuée ?",
+      "J’ai pris une carte, un crayon et une loupe.",
+      [
+        "J’ai pris, une carte un crayon et une loupe.",
+        "J’ai pris une carte un crayon, et, une loupe.",
+        "J’ai pris une carte un crayon et, une loupe."
+      ],
+      "La virgule sépare les premiers éléments de la liste.",
+      "La virgule sépare une carte et un crayon; et relie le dernier élément.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Compréhension – inférence",
+      "« Au réveil, Lina voit des branches cassées et des chaises renversées. Pendant la nuit, elle a entendu le vent souffler très fort. » Quelle explication est la mieux appuyée ?",
+      "Le vent a déplacé ou cassé des objets.",
+      [
+        "Lina a tout renversé.",
+        "Le jardin n’a jamais été entretenu.",
+        "Les chaises ont disparu."
+      ],
+      "Relie les indices du matin à ce qui s’est passé la nuit.",
+      "Le vent fort est l’explication appuyée par les informations du texte.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – fait et opinion",
+      "Quelle phrase exprime une opinion ?",
+      "Ce jardin est le plus beau du quartier.",
+      [
+        "Le jardin contient trois bancs.",
+        "Le portail est en bois.",
+        "La visite commence à neuf heures."
+      ],
+      "Une opinion comporte un jugement qui peut varier selon la personne.",
+      "Le plus beau est un jugement personnel.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – cause et conséquence",
+      "« La pluie a effacé les traces; les détectives ne peuvent plus les suivre. » Quelle est la conséquence ?",
+      "Les détectives ne peuvent plus suivre les traces.",
+      [
+        "La pluie est tombée.",
+        "Les traces étaient présentes.",
+        "Les détectives ont une loupe."
+      ],
+      "La conséquence est ce qui résulte de l’effacement.",
+      "L’effacement des traces empêche les détectives de les suivre.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – résumé",
+      "« Une lettre est déchirée. Zoé rassemble les morceaux et retrouve l’adresse écrite dessus. » Quel résumé convient ?",
+      "Zoé reconstitue une lettre pour retrouver une adresse.",
+      [
+        "Zoé écrit une nouvelle adresse.",
+        "Une lettre arrive par la poste.",
+        "Zoé cherche une paire de ciseaux."
+      ],
+      "Garde le problème et l’action qui le résout.",
+      "Le résumé retient la reconstitution de la lettre et son résultat.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – écrire",
+      "Écris leur ou leurs : Les visiteurs arrivent; je ___ donne une carte.",
+      "leur",
+      [],
+      "Il s’agit du pronom devant le verbe donne.",
+      "Le pronom leur reste invariable.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète au futur simple : Nous ___ la clinique. (voir)",
+      "verrons",
+      [],
+      "Le futur de voir utilise le radical verr-.",
+      "On écrit nous verrons au futur simple.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Pluriel particulier – écrire",
+      "Écris le pluriel du nom bijou.",
+      "bijoux",
+      [],
+      "Bijou appartient aux noms en ou qui prennent un x.",
+      "Le pluriel de bijou est bijoux.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Phrase – impératif",
+      "Commence par Observez, puis place le complément et enfin la manière.",
+      "Observez les traces attentivement.",
+      [
+        "Observez",
+        "les traces",
+        "attentivement."
+      ],
+      "Le verbe à l’impératif ouvre la consigne.",
+      "Le verbe est suivi du complément puis de l’adverbe.",
+      "ordre",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – complément déplacé",
+      "Commence par Après la visite, puis ajoute le sujet et le prédicat.",
+      "Après la visite, les enfants rangent leurs carnets.",
+      [
+        "Après la visite,",
+        "les enfants",
+        "rangent leurs carnets."
+      ],
+      "Le groupe indiquant le temps se place d’abord.",
+      "La virgule sépare le complément initial du reste de la phrase.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – procédure",
+      "Ordonne les étapes pour photographier les pages d’un carnet fermé.",
+      "J’ouvre le carnet. Je choisis la page. Je photographie cette page.",
+      [
+        "J’ouvre le carnet.",
+        "Je choisis la page.",
+        "Je photographie cette page."
+      ],
+      "Le carnet doit être ouvert avant le choix de la page.",
+      "La procédure va de l’ouverture au choix, puis à la photographie.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "p6": [
+    [
+      "Participe passé avec être",
+      "Complète : Les tortues sont ___ tôt.",
+      "arrivées",
+      [
+        "arrivé",
+        "arrivés",
+        "arrivée"
+      ],
+      "Avec être, le participe passé s’accorde avec le sujet.",
+      "« Tortues » est féminin pluriel : avec « sont », on écrit « arrivées ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Homophones ou / où",
+      "Complète : Voici le jardin ___ Tina se cache.",
+      "où",
+      [
+        "ou",
+        "on",
+        "au"
+      ],
+      "Le mot désigne ici un lieu.",
+      "« Où » avec un accent renvoie au lieu où Tina se cache.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Prédicat",
+      "Dans « Mattéo cherche la tortue », quel est le prédicat ?",
+      "cherche la tortue",
+      [
+        "Mattéo",
+        "la tortue",
+        "Mattéo cherche"
+      ],
+      "Le prédicat indique ce qu’on dit du sujet et contient le verbe.",
+      "« Cherche la tortue » est le groupe verbal qui forme le prédicat.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord de l’adjectif",
+      "Complète : Les feuilles sont ___.",
+      "vertes",
+      [
+        "verts",
+        "verte",
+        "vert"
+      ],
+      "L’adjectif décrit « feuilles », féminin pluriel.",
+      "L’adjectif attribut « vertes » s’accorde avec le sujet « Les feuilles ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Reprise de l’information",
+      "Mattéo aperçoit Tina. Il lui apporte de l’eau. Qui est désigné par « Il » ?",
+      "Mattéo",
+      [
+        "Tina",
+        "L’eau",
+        "Le jardin"
+      ],
+      "Cherche qui peut apporter de l’eau dans le texte.",
+      "Le pronom « Il » reprend Mattéo.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – ce et se",
+      "Complète : Le chat ___ cache sous la table.",
+      "se",
+      [
+        "ce",
+        "ces",
+        "ses"
+      ],
+      "Le mot accompagne ici le verbe se cacher.",
+      "Se est le pronom utilisé dans se cache.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – infinitif ou participe",
+      "Complète : Mattéo va ___ le sac.",
+      "fermer",
+      [
+        "fermé",
+        "fermée",
+        "fermés"
+      ],
+      "Après va, on utilise ici l’infinitif. Essaie va prendre.",
+      "On écrit va fermer; fermer est l’infinitif.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – suffixe",
+      "Dans « jardinier », que contribue à former le suffixe -ier ?",
+      "Un nom de personne liée au jardin",
+      [
+        "Un contraire de jardin",
+        "Un pluriel de jardin",
+        "Un lieu situé sous le jardin"
+      ],
+      "Le suffixe transforme le mot de base en un autre mot.",
+      "Jardinier nomme une personne qui s’occupe d’un jardin.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – polysémie",
+      "Quel sens a « clé » dans « La dernière phrase est la clé du mystère » ?",
+      "Un élément qui permet de comprendre",
+      [
+        "Un outil pour ouvrir une serrure",
+        "Une note de musique uniquement",
+        "Une pièce de métal perdue"
+      ],
+      "Le contexte est la résolution d’un mystère.",
+      "Clé désigne ici ce qui permet de comprendre ou de résoudre le mystère.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – mot précis",
+      "Quel verbe remplace le mieux « faire un dessin » ?",
+      "dessiner",
+      [
+        "observer",
+        "raconter",
+        "effacer"
+      ],
+      "Cherche un verbe qui exprime toute l’action.",
+      "Dessiner permet d’exprimer l’action avec un verbe précis.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – complément de phrase",
+      "Dans « Après le repas, Tina dort », quel est le complément de phrase ?",
+      "Après le repas",
+      [
+        "Tina",
+        "dort",
+        "le repas"
+      ],
+      "Le groupe indique le moment et peut être déplacé ou supprimé.",
+      "Après le repas est le complément de phrase.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Grammaire – accord éloigné",
+      "Complète : Les enfants de la voisine ___ la lettre.",
+      "lisent",
+      [
+        "lit",
+        "lis",
+        "lire"
+      ],
+      "Le noyau du sujet est enfants, pas voisine.",
+      "Le sujet est pluriel; on écrit lisent.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – expansion du nom",
+      "Dans « un panier en osier », quel groupe complète le nom panier ?",
+      "en osier",
+      [
+        "un",
+        "panier",
+        "un panier"
+      ],
+      "L’expansion apporte ici une précision sur la matière.",
+      "En osier est une expansion du nom panier.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – plus-que-parfait",
+      "Quelle phrase est au plus-que-parfait ?",
+      "Lina avait rangé la carte.",
+      [
+        "Lina a rangé la carte.",
+        "Lina range la carte.",
+        "Lina rangera la carte."
+      ],
+      "L’auxiliaire avoir est à l’imparfait.",
+      "Avait rangé est au plus-que-parfait.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – concordance simple",
+      "« Quand Mattéo est arrivé, Tina dormait déjà. » Que présente l’imparfait dormait ?",
+      "Une action en cours à son arrivée",
+      [
+        "Une action qui commencera demain",
+        "Un ordre à Tina",
+        "Une action répétée après son départ"
+      ],
+      "Relie dormait à est arrivé.",
+      "L’imparfait présente le sommeil comme déjà en cours lors de l’arrivée.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – forme négative",
+      "Quelle phrase utilise correctement ne ... jamais ?",
+      "Il ne quitte jamais le jardin.",
+      [
+        "Il jamais ne quitte le jardin.",
+        "Il ne jamais quitte le jardin.",
+        "Il quitte ne jamais le jardin."
+      ],
+      "La négation encadre ici le verbe conjugué.",
+      "Ne est avant quitte et jamais est après.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – interrogation",
+      "Quelle phrase est une interrogation correctement construite ?",
+      "Pourquoi Mattéo revient-il ?",
+      [
+        "Pourquoi Mattéo revient il.",
+        "Pourquoi Mattéo il revient-il ?",
+        "Pourquoi revient Mattéo-il ?"
+      ],
+      "La reprise du sujet par il se relie au verbe avec un trait d’union.",
+      "Pourquoi Mattéo revient-il ? est correctement construit et ponctué.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – complément déplacé",
+      "Quelle phrase ponctue correctement le complément de phrase placé au début ?",
+      "Après la pluie, les traces ont disparu.",
+      [
+        "Après, la pluie les traces ont disparu.",
+        "Après la pluie les, traces ont disparu.",
+        "Après la pluie, les traces, ont disparu."
+      ],
+      "Une virgule sépare ici le complément initial du reste de la phrase.",
+      "Après la pluie est suivi d’une virgule; le sujet et le prédicat ne sont pas séparés.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – idée implicite",
+      "« Zoé serre la lettre contre elle et sourit en lisant le nom de sa grand-mère. » Quelle émotion est la mieux appuyée ?",
+      "La joie",
+      [
+        "La colère",
+        "Le dégoût",
+        "L’indifférence"
+      ],
+      "Les gestes et le sourire donnent des indices.",
+      "Le sourire et le geste affectueux appuient la joie.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – intention",
+      "Un texte donne des étapes numérotées pour utiliser une loupe. Quel est son but principal ?",
+      "Guider une action",
+      [
+        "Raconter une aventure",
+        "Convaincre d’acheter une voiture",
+        "Décrire une émotion"
+      ],
+      "Les étapes expliquent quoi faire et dans quel ordre.",
+      "Le texte sert à guider l’utilisation de la loupe.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – information vérifiable",
+      "Quelle phrase est un fait vérifiable ?",
+      "Le carnet contient vingt pages.",
+      [
+        "Le carnet est magnifique.",
+        "Ce carnet est le meilleur.",
+        "Tout le monde devrait aimer ce carnet."
+      ],
+      "Cherche une information qu’on peut vérifier en comptant.",
+      "Le nombre de pages peut être vérifié.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – connecteur",
+      "« La boîte est vide; cependant, le sac contient encore un indice. » Que marque cependant ?",
+      "Une opposition",
+      [
+        "Une addition sans contraste",
+        "Une chronologie",
+        "Une cause"
+      ],
+      "Le deuxième constat contraste avec le premier.",
+      "Cependant marque une opposition entre les deux constats.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète à l’imparfait : Nous ___ une vieille carte. (avoir)",
+      "avions",
+      [],
+      "Avec nous, l’imparfait se termine par -ions.",
+      "On écrit nous avions à l’imparfait.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Homophones – écrire",
+      "Écris c’est ou s’est : Le chat ___ levé très tôt.",
+      "s’est",
+      [],
+      "Le verbe est se lever au passé composé.",
+      "On écrit s’est levé : le pronom accompagne l’auxiliaire.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Accord – écrire",
+      "Complète : des lettres ___. (nouveau)",
+      "nouvelles",
+      [],
+      "Le nom est féminin pluriel.",
+      "Nouveau devient nouvelles au féminin pluriel.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Phrase – interrogation",
+      "Construis la question en commençant par Pourquoi.",
+      "Pourquoi les visiteurs attendent-ils devant le portail ?",
+      [
+        "Pourquoi",
+        "les visiteurs",
+        "attendent-ils",
+        "devant le portail ?"
+      ],
+      "Le sujet est repris par ils après le verbe.",
+      "Pourquoi les visiteurs attendent-ils devant le portail ? emploie une reprise du sujet.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – hypothèse",
+      "Place la condition avant le résultat.",
+      "Si nous avions une carte, nous trouverions le chemin.",
+      [
+        "Si nous avions une carte,",
+        "nous trouverions",
+        "le chemin."
+      ],
+      "La condition commence par Si.",
+      "Si à l’imparfait s’associe ici au conditionnel dans le résultat.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – cause et résultat",
+      "Ordonne ces événements selon leur lien de cause à conséquence.",
+      "La pluie commence. Les notes laissées dehors sont mouillées. Lina les met à sécher.",
+      [
+        "La pluie commence.",
+        "Les notes laissées dehors sont mouillées.",
+        "Lina les met à sécher."
+      ],
+      "Le séchage intervient après que les notes ont été mouillées.",
+      "La pluie entraîne l’humidité, puis Lina agit pour sécher les notes.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "s1": [
+    [
+      "Groupe nominal",
+      "Dans « les petites traces fraîches », quel est le nom noyau ?",
+      "traces",
+      [
+        "les",
+        "petites",
+        "fraîches"
+      ],
+      "Les deux adjectifs décrivent ce nom.",
+      "« Traces » est le nom noyau du groupe nominal.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord du verbe",
+      "Complète : La boîte de crayons ___ sur le banc.",
+      "repose",
+      [
+        "reposent",
+        "reposes",
+        "reposer"
+      ],
+      "Repère le noyau du sujet plutôt que le nom le plus proche.",
+      "Le noyau du sujet est « boîte », singulier : « repose ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Participe passé avec être",
+      "Complète : Les lettres sont ___ dans le sac.",
+      "cachées",
+      [
+        "caché",
+        "cachés",
+        "cachée"
+      ],
+      "Le sujet « Les lettres » est féminin pluriel.",
+      "Avec être, « cachées » s’accorde avec le sujet « Les lettres ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Relative",
+      "Dans « Le chat qui dort garde le sac », quelle est la subordonnée relative ?",
+      "qui dort",
+      [
+        "Le chat",
+        "garde le sac",
+        "le sac"
+      ],
+      "Repère le pronom relatif « qui » et le verbe qu’il introduit.",
+      "« Qui dort » est une subordonnée relative qui complète le nom « chat ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Compréhension",
+      "Mattéo pense d’abord au sac. Pourtant, les traces le mènent aux fleurs. Quel mot marque une opposition ?",
+      "Pourtant",
+      [
+        "d’abord",
+        "traces",
+        "fleurs"
+      ],
+      "Ce mot signale que la suite ne correspond pas à la première idée.",
+      "« Pourtant » marque une opposition entre son idée et ce qu’indiquent les traces.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – c’est et s’est",
+      "Complète : Le chat ___ caché sous le banc.",
+      "s’est",
+      [
+        "c’est",
+        "ses",
+        "ces"
+      ],
+      "On conjugue le verbe se cacher au passé composé.",
+      "On écrit s’est caché : s’ est le pronom du verbe se cacher.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – infinitif",
+      "Quelle phrase utilise correctement l’infinitif ?",
+      "Il faut observer les traces.",
+      [
+        "Il faut observé les traces.",
+        "Il faut observées les traces.",
+        "Il faut observez les traces."
+      ],
+      "Après il faut, on utilise ici un verbe à l’infinitif.",
+      "Observer est l’infinitif requis après il faut.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – sens figuré",
+      "« Mattéo a le cœur sur la main. » Que signifie cette expression ?",
+      "Il est généreux.",
+      [
+        "Il est malade.",
+        "Il tient un objet en forme de cœur.",
+        "Il a très peur."
+      ],
+      "L’expression décrit un trait de caractère.",
+      "Avoir le cœur sur la main signifie être généreux.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – préfixe",
+      "Que signifie le préfixe dans « désobéir » ?",
+      "Ne pas obéir",
+      [
+        "Obéir de nouveau",
+        "Obéir avant les autres",
+        "Obéir plus vite"
+      ],
+      "Le préfixe change ici le sens du verbe obéir.",
+      "Le préfixe dés- exprime ici la négation ou le contraire.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – registre",
+      "Quelle phrase convient le mieux à un message soigné adressé à la direction de l’école ?",
+      "Pourriez-vous m’indiquer l’heure de la visite ?",
+      [
+        "C’est à quelle heure, ton truc ?",
+        "Dis-moi l’heure, vite !",
+        "Hé, ça commence quand ?"
+      ],
+      "Le destinataire appelle une formulation polie et soignée.",
+      "La première formulation est adaptée à une demande polie dans un contexte formel.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – adverbe",
+      "Dans « Le chat marche très lentement », quel mot modifie l’adverbe lentement ?",
+      "très",
+      [
+        "chat",
+        "marche",
+        "Le"
+      ],
+      "Un adverbe peut modifier un autre adverbe.",
+      "Très précise l’intensité de lentement.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – complément direct",
+      "Dans « Lina lit la lettre », quelle substitution remplace le complément direct ?",
+      "Lina la lit.",
+      [
+        "Lina lui lit.",
+        "Lina y lit.",
+        "Lina en lit la."
+      ],
+      "La lettre peut être reprise par la devant le verbe.",
+      "La est le pronom qui remplace le complément direct la lettre.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – complément indirect",
+      "Dans « Mattéo parle à Lina », quel groupe est complément indirect du verbe ?",
+      "à Lina",
+      [
+        "Mattéo",
+        "parle",
+        "Lina parle"
+      ],
+      "Le verbe se construit ici avec à.",
+      "À Lina complète le verbe parle par l’intermédiaire d’une préposition.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – temps simple",
+      "Quelle forme verbale est à un temps simple ?",
+      "cherchait",
+      [
+        "a cherché",
+        "avait cherché",
+        "aura cherché"
+      ],
+      "Un temps simple est exprimé par un seul mot verbal.",
+      "Cherchait est un temps simple; les autres formes utilisent un auxiliaire.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – impératif",
+      "Quelle forme donne une consigne à plusieurs personnes ?",
+      "Prenez votre carnet.",
+      [
+        "Vous prenez votre carnet.",
+        "Ils prennent leur carnet.",
+        "Prendre votre carnet."
+      ],
+      "L’impératif présent exprime ici une consigne avec vous sous-entendu.",
+      "Prenez votre carnet est une consigne à l’impératif.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – complément facultatif",
+      "Dans « À midi, les visiteurs arrivent », quel groupe peut être déplacé ou supprimé ?",
+      "À midi",
+      [
+        "les visiteurs",
+        "arrivent",
+        "visiteurs arrivent"
+      ],
+      "Le groupe qui indique le moment n’est pas obligatoire.",
+      "À midi est un complément de phrase mobile et facultatif.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – négation",
+      "Quelle transformation exprime le contraire de « Elle trouve toujours un indice » avec ne ... jamais ?",
+      "Elle ne trouve jamais d’indice.",
+      [
+        "Elle ne trouve toujours un indice.",
+        "Elle jamais ne trouve d’indice.",
+        "Elle trouve ne jamais d’indice."
+      ],
+      "Ne et jamais encadrent le verbe; un devient ici de.",
+      "La négation correcte est Elle ne trouve jamais d’indice.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – sujet et verbe",
+      "Quelle phrase évite de séparer le sujet du prédicat par une virgule ?",
+      "Les enfants du quartier visitent la clinique.",
+      [
+        "Les enfants du quartier, visitent la clinique.",
+        "Les enfants, du quartier visitent la clinique.",
+        "Les enfants du quartier visitent, la clinique."
+      ],
+      "Le sujet complet est Les enfants du quartier.",
+      "On ne place pas ici de virgule entre le sujet et visitent la clinique.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – narrateur",
+      "« J’ouvre le carnet. Je reconnais aussitôt l’écriture de ma sœur. » Comment le narrateur se présente-t-il ?",
+      "Comme un personnage du récit",
+      [
+        "Comme une voix absente de l’histoire",
+        "Comme tous les personnages à la fois",
+        "Comme l’auteur identifié par son nom"
+      ],
+      "Le narrateur emploie je pour raconter ses actions.",
+      "Il raconte à la première personne et participe au récit; le texte ne donne pas l’identité de l’auteur.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – inférence",
+      "« À l’approche du chien, le chat hérisse son poil et recule. » Quelle interprétation est la mieux appuyée ?",
+      "Le chat réagit avec crainte ou méfiance.",
+      [
+        "Le chat demande à manger.",
+        "Le chat dort profondément.",
+        "Le chat connaît le nom du chien."
+      ],
+      "Les gestes fournissent des indices, mais pas une pensée certaine.",
+      "Le recul et le poil hérissé appuient la crainte ou la méfiance.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – objectif",
+      "Une affiche annonce la date, l’heure et le lieu d’une visite de la clinique. Quel est son but principal ?",
+      "Informer sur la visite",
+      [
+        "Raconter toute l’histoire de la clinique",
+        "Expliquer une règle de grammaire",
+        "Décrire une émotion"
+      ],
+      "Les informations pratiques servent à préparer la visite.",
+      "L’affiche informe le lecteur des modalités de la visite.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – résumé",
+      "« Le portail est fermé. Zoé demande la clé à la gardienne, puis ouvre le passage aux visiteurs. » Quel résumé respecte les événements ?",
+      "Zoé obtient une clé pour ouvrir le portail.",
+      [
+        "Zoé casse le portail pour entrer.",
+        "La gardienne perd la clé.",
+        "Les visiteurs ferment le portail."
+      ],
+      "Ne transforme pas une action donnée en une action inventée.",
+      "Le résumé retient le problème du portail fermé et la solution par la clé.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – écrire",
+      "Écris ou ou où : Veux-tu une carte ___ une loupe ?",
+      "ou",
+      [],
+      "Le mot présente une alternative.",
+      "Ou sans accent relie deux possibilités.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète au présent : Les visiteurs ___ un parcours. (choisir)",
+      "choisissent",
+      [],
+      "Choisir se conjugue ici avec ils.",
+      "On écrit ils choisissent au présent.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Accord – écrire",
+      "Complète : les portes ___. (bleu)",
+      "bleues",
+      [],
+      "Une couleur simple s’accorde ici avec portes.",
+      "Bleues est féminin pluriel, comme portes.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Phrase – négation",
+      "Place d’abord Les témoins et construis une négation au passé composé.",
+      "Les témoins n’ ont pas entendu le bruit.",
+      [
+        "Les témoins",
+        "n’",
+        "ont",
+        "pas",
+        "entendu le bruit."
+      ],
+      "La négation encadre l’auxiliaire ont.",
+      "On écrit Les témoins n’ont pas entendu le bruit.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – relative",
+      "Construis le sujet avec sa relative, puis ajoute le prédicat.",
+      "Le carnet qui se trouve sur le banc appartient à Lina.",
+      [
+        "Le carnet",
+        "qui se trouve sur le banc",
+        "appartient à Lina."
+      ],
+      "La relative qui se trouve sur le banc complète carnet.",
+      "La relative fait partie du sujet Le carnet qui se trouve sur le banc.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – consigne logique",
+      "Ordonne la vérification d’une réponse avant de la remettre.",
+      "Je lis la question. Je rédige ma réponse. Je vérifie qu’elle répond à la question. Je la remets.",
+      [
+        "Je lis la question.",
+        "Je rédige ma réponse.",
+        "Je vérifie qu’elle répond à la question.",
+        "Je la remets."
+      ],
+      "On vérifie une réponse déjà rédigée avant de la remettre.",
+      "La lecture, la rédaction, la vérification et la remise forment cet ordre.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "s2": [
+    [
+      "Participe passé avec avoir",
+      "Complète : Les lettres que Mattéo a ___ sont lisibles.",
+      "trouvées",
+      [
+        "trouvé",
+        "trouvés",
+        "trouvée"
+      ],
+      "Le complément direct « que » reprend « lettres » et précède le verbe.",
+      "Le CD « que », qui reprend « lettres », est avant « a trouvées » : accord au féminin pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Homophones leur / leurs",
+      "Complète : Mattéo ___ montre le jardin.",
+      "leur",
+      [
+        "leurs",
+        "leurre",
+        "leurres"
+      ],
+      "On peut remplacer ce pronom par « lui ».",
+      "« Leur » est ici un pronom devant le verbe et reste invariable.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Pronom relatif",
+      "Complète : La tortue ___ je parle s’appelle Tina.",
+      "dont",
+      [
+        "que",
+        "qui",
+        "où"
+      ],
+      "On dit « parler de la tortue ».",
+      "« Dont » reprend un complément introduit par « de » : parler de la tortue.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord dans le GN",
+      "Complète : de ___ feuilles vertes.",
+      "grandes",
+      [
+        "grand",
+        "grands",
+        "grande"
+      ],
+      "« Feuilles » donne son genre et son nombre à l’adjectif.",
+      "« Grandes » s’accorde au féminin pluriel avec « feuilles ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Temps composé",
+      "Dans « Mattéo avait retrouvé Tina », quel temps est utilisé ?",
+      "Plus-que-parfait",
+      [
+        "Passé composé",
+        "Futur antérieur",
+        "Présent"
+      ],
+      "L’auxiliaire est à l’imparfait, suivi d’un participe passé.",
+      "« Avait retrouvé » est au plus-que-parfait : auxiliaire à l’imparfait et participe passé.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Homophones – davantage",
+      "Complète avec le mot qui signifie plus : Lina veut ___ d’explications.",
+      "davantage",
+      [
+        "d’avantage",
+        "des avantages",
+        "avantage"
+      ],
+      "Le mot recherché est un adverbe de quantité.",
+      "Davantage signifie plus; d’avantage contient le nom avantage.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – accord de leur",
+      "Complète avec le déterminant possessif : Les enfants rangent ___ carnets.",
+      "leurs",
+      [
+        "leur",
+        "leurre",
+        "leurres"
+      ],
+      "Le déterminant s’accorde avec le nom carnets.",
+      "Carnets est pluriel; le déterminant possessif s’écrit leurs.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – polysémie",
+      "Dans « Les détectives suivent une piste », que peut désigner piste dans ce contexte ?",
+      "Un ensemble d’indices à examiner",
+      [
+        "Une salle de classe",
+        "Une boîte vide",
+        "Un objet pour écrire"
+      ],
+      "Le contexte est une recherche, pas une compétition.",
+      "Une piste peut désigner une voie de recherche suggérée par des indices.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – suffixe",
+      "Quel mot est un nom formé à partir du verbe observer ?",
+      "observation",
+      [
+        "observait",
+        "observera",
+        "observons"
+      ],
+      "Cherche un mot qui nomme une action ou son résultat.",
+      "Observation est un nom dérivé du verbe observer.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – précision",
+      "Quel verbe signifie communiquer une information nouvelle au public ?",
+      "annoncer",
+      [
+        "murmurer",
+        "marcher",
+        "dessiner"
+      ],
+      "On communique ici une information aux visiteurs.",
+      "Annoncer désigne le fait de communiquer cette information.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – subordonnée sujet",
+      "Dans « Le chat qui dort garde le sac », quel est le sujet du verbe dort ?",
+      "qui",
+      [
+        "Le chat garde",
+        "le sac",
+        "garde"
+      ],
+      "Analyse la relative qui dort séparément.",
+      "Dans la relative, qui est le sujet de dort et reprend le chat.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – attribut du sujet",
+      "Dans « La lettre semble importante », quelle est la fonction de importante ?",
+      "Attribut du sujet",
+      [
+        "Complément direct",
+        "Sujet",
+        "Complément de phrase"
+      ],
+      "Semble relie une caractéristique au sujet.",
+      "Importante est attribut du sujet La lettre.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – préposition",
+      "Quelle phrase emploie correctement la construction du verbe se souvenir ?",
+      "Je me souviens de cette visite.",
+      [
+        "Je me souviens cette visite.",
+        "Je me souviens à cette visite.",
+        "Je me souviens pour cette visite."
+      ],
+      "On se souvient de quelque chose.",
+      "Le verbe se souvenir se construit ici avec de.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – conditionnel",
+      "Complète au conditionnel présent : Nous ___ le jardin si nous avions le temps.",
+      "visiterions",
+      [
+        "visitions",
+        "visiterons",
+        "visitons"
+      ],
+      "Le conditionnel conserve ici l’infinitif visiter avant -ions.",
+      "La forme du conditionnel présent est visiterions.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – antériorité",
+      "« Quand Lina est arrivée, Noé avait déjà ouvert le sac. » Quelle action est antérieure à l’arrivée ?",
+      "L’ouverture du sac",
+      [
+        "L’arrivée de Lina",
+        "La fermeture du jardin",
+        "La lecture de la lettre"
+      ],
+      "Le plus-que-parfait marque ici une action déjà accomplie.",
+      "Avait ouvert situe l’ouverture avant l’arrivée de Lina.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – subordination",
+      "Quelle phrase contient une subordonnée introduite par parce que ?",
+      "Lina s’arrête parce qu’elle entend un bruit.",
+      [
+        "Lina s’arrête et écoute.",
+        "Lina s’arrête; elle écoute.",
+        "Lina s’arrête devant la porte."
+      ],
+      "Parce que relie une proposition qui explique une cause.",
+      "Parce qu’elle entend un bruit est une subordonnée.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – négation complète",
+      "Quelle phrase convient à l’écrit soigné pour nier « Ils ont trouvé la lettre » ?",
+      "Ils n’ont pas trouvé la lettre.",
+      [
+        "Ils ont pas trouvé la lettre.",
+        "Ils n’ont trouvé la lettre.",
+        "Ils ont trouvé pas la lettre."
+      ],
+      "La négation se place autour de l’auxiliaire conjugué.",
+      "À l’écrit soigné, on écrit Ils n’ont pas trouvé la lettre.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – paroles",
+      "Quelle présentation marque clairement les paroles rapportées directement ?",
+      "Lina dit : « Le sac est ici. »",
+      [
+        "Lina dit, le sac est ici.",
+        "Lina dit le sac : est ici.",
+        "Lina dit « Le sac » est ici."
+      ],
+      "Le deux-points introduit les paroles, encadrées de guillemets.",
+      "Les paroles directement rapportées sont encadrées de guillemets après le deux-points.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – fait et jugement",
+      "Quelle phrase contient un jugement plutôt qu’un simple fait mesurable ?",
+      "La visite était passionnante.",
+      [
+        "La visite a duré une heure.",
+        "La porte était ouverte à neuf heures.",
+        "Le groupe comptait douze personnes."
+      ],
+      "L’intérêt d’une visite peut varier d’un lecteur à l’autre.",
+      "Passionnante exprime une appréciation personnelle.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – point de vue",
+      "« Quelle déception ! Le carnet ne contenait que des pages blanches. » Quel sentiment apparaît ?",
+      "La déception",
+      [
+        "La fierté",
+        "L’enthousiasme",
+        "Le soulagement"
+      ],
+      "Le texte nomme directement le sentiment.",
+      "L’expression Quelle déception ! révèle le sentiment de déception.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – cause ou but",
+      "Dans « Lina prend une loupe pour lire les petites lettres », que marque pour lire les petites lettres ?",
+      "Le but",
+      [
+        "La cause déjà survenue",
+        "La concession",
+        "L’opposition"
+      ],
+      "Le groupe indique ce que Lina veut accomplir.",
+      "Le groupe introduit par pour exprime le but de l’utilisation de la loupe.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – reformulation",
+      "Quelle phrase reformule « La porte demeure fermée malgré l’arrivée des visiteurs » ?",
+      "Les visiteurs arrivent, mais la porte reste fermée.",
+      [
+        "L’arrivée des visiteurs ouvre la porte.",
+        "Les visiteurs ferment une porte ouverte.",
+        "La porte s’ouvre avant leur arrivée."
+      ],
+      "Conserve les deux faits et leur contraste.",
+      "La reformulation garde l’arrivée des visiteurs et la porte toujours fermée.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Participe passé – écrire",
+      "Complète : Les gardiennes sont ___. (venir)",
+      "venues",
+      [],
+      "Avec être, le participe passé s’accorde avec le sujet.",
+      "Venues s’accorde avec Les gardiennes, féminin pluriel.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Pronom relatif – écrire",
+      "Écris qui, que, dont ou où : Voici la carte ___ j’ai besoin.",
+      "dont",
+      [],
+      "On dit avoir besoin de la carte.",
+      "Dont reprend un complément construit avec de.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – écrire",
+      "Complète à l’imparfait : Lina ___ le vent. (entendre)",
+      "entendait",
+      [],
+      "La terminaison est -ait avec elle.",
+      "On écrit Lina entendait.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – discours indirect",
+      "Commence par Lina affirme et rapporte ensuite ce qu’elle sait.",
+      "Lina affirme qu’ elle connaît le jardin.",
+      [
+        "Lina affirme",
+        "qu’",
+        "elle connaît",
+        "le jardin."
+      ],
+      "Le verbe introducteur est suivi de la complétive.",
+      "On écrit Lina affirme qu’elle connaît le jardin.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – groupe nominal",
+      "Construis d’abord le sujet avec son complément du nom, puis le prédicat.",
+      "La boîte de la gardienne contient trois clés.",
+      [
+        "La boîte",
+        "de la gardienne",
+        "contient trois clés."
+      ],
+      "De la gardienne complète boîte.",
+      "Le sujet complet La boîte de la gardienne précède le prédicat.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – ordre des actions",
+      "Ordonne la comparaison de deux témoignages.",
+      "Je lis le premier témoignage. Je lis le second témoignage. Je relève leurs ressemblances et leurs différences.",
+      [
+        "Je lis le premier témoignage.",
+        "Je lis le second témoignage.",
+        "Je relève leurs ressemblances et leurs différences."
+      ],
+      "Pour comparer les deux témoignages, il faut d’abord les avoir lus.",
+      "Les deux lectures précèdent la comparaison.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "s3": [
+    [
+      "Adjectif de couleur",
+      "Complète : des fleurs ___.",
+      "orange",
+      [
+        "oranges",
+        "orangent",
+        "orangée"
+      ],
+      "Ce nom de fruit, employé comme couleur, reste invariable.",
+      "« Orange », nom employé comme adjectif de couleur, est invariable.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Participe passé avec avoir",
+      "Complète : Mattéo a ___ les lettres.",
+      "ramassé",
+      [
+        "ramassées",
+        "ramassés",
+        "ramassée"
+      ],
+      "Le complément direct vient après le verbe.",
+      "Avec avoir, le CD « les lettres » est après le verbe : « ramassé » ne s’accorde pas.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord du verbe",
+      "Complète : Les traces que suit Mattéo ___ aux fleurs.",
+      "mènent",
+      [
+        "mène",
+        "mènes",
+        "mener"
+      ],
+      "Le sujet du verbe à compléter est « Les traces que suit Mattéo ».",
+      "Le noyau du sujet est « traces », au pluriel : « mènent ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Subordonnée",
+      "Dans « Mattéo sourit parce qu’il a trouvé Tina », que signifie la subordonnée ?",
+      "La cause",
+      [
+        "Le temps",
+        "Le lieu",
+        "L’opposition"
+      ],
+      "« Parce que » permet de répondre à « Pourquoi ? ».",
+      "« Parce qu’il a trouvé Tina » explique la cause de son sourire.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Reprise pronominale",
+      "Mattéo dépose les lettres et les relit. Que reprend le second « les » ?",
+      "les lettres",
+      [
+        "Mattéo",
+        "le jardin",
+        "les fleurs"
+      ],
+      "Ce « les » est placé devant le verbe « relit ».",
+      "Le pronom « les » reprend le groupe nominal « les lettres ».",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – quoique",
+      "Complète avec le mot signifiant bien que : ___ la lettre soit courte, elle est claire.",
+      "Quoique",
+      [
+        "Quoi que",
+        "Quoi",
+        "Quelque"
+      ],
+      "Le mot introduit ici une concession.",
+      "Quoique en un mot peut être remplacé par bien que.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – accord avec être",
+      "Corrige uniquement le participe passé : Les cartes sont resté sur la table.",
+      "restées",
+      [
+        "resté",
+        "restés",
+        "restée"
+      ],
+      "Le sujet cartes est féminin pluriel.",
+      "Avec être, restées s’accorde avec Les cartes.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – champ lexical",
+      "Quel groupe forme un champ lexical lié à l’enquête ?",
+      "indice, témoin, suspect",
+      [
+        "fleur, gâteau, chaussette",
+        "rouge, dormir, bouteille",
+        "rapide, verre, guitare"
+      ],
+      "Un champ lexical rassemble des mots liés à un même thème.",
+      "Indice, témoin et suspect se rattachent au thème de l’enquête.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Figure de style – comparaison",
+      "Dans « La lettre est légère comme une plume », quel mot marque la comparaison ?",
+      "comme",
+      [
+        "lettre",
+        "légère",
+        "plume"
+      ],
+      "Une comparaison explicite utilise un terme comparatif.",
+      "Comme relie la lettre à la plume.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – registre",
+      "Quelle reformulation conserve l’idée en langue standard : « Ce truc est pas clair » ?",
+      "Cette explication n’est pas claire.",
+      [
+        "Ce truc, c’est pas clair du tout.",
+        "C’est flou, ton machin.",
+        "Ce machin est pas net."
+      ],
+      "Remplace le mot vague et rétablis la négation.",
+      "Cette explication n’est pas claire emploie un vocabulaire précis et une négation complète.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – accord pronominal",
+      "Complète : Toi et moi ___ la lettre.",
+      "lisons",
+      [
+        "lisez",
+        "lisent",
+        "lit"
+      ],
+      "Toi et moi correspond à nous.",
+      "La première personne a priorité : toi et moi lisons.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – complément du nom",
+      "Dans « le carnet de la vétérinaire », quelle est la fonction de de la vétérinaire ?",
+      "Complément du nom carnet",
+      [
+        "Sujet du verbe",
+        "Attribut du sujet",
+        "Complément direct"
+      ],
+      "Le groupe précise le nom carnet.",
+      "De la vétérinaire complète le nom carnet.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – pronom relatif",
+      "Complète : Le jardin dans ___ nous entrons est calme.",
+      "lequel",
+      [
+        "laquelle",
+        "lesquelles",
+        "dont"
+      ],
+      "Le pronom reprend jardin, masculin singulier, après dans.",
+      "On écrit dans lequel pour reprendre le jardin.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – subjonctif",
+      "Complète : Il faut que tu ___ attentif.",
+      "sois",
+      [
+        "es",
+        "seras",
+        "étais"
+      ],
+      "Il faut que appelle ici le subjonctif.",
+      "Sois est la forme du présent du subjonctif avec tu.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – récit au passé",
+      "« La pluie tombait quand la porte s’est ouverte. » Quelle action forme l’arrière-plan ?",
+      "La pluie tombait.",
+      [
+        "La porte s’est ouverte.",
+        "La porte se fermera.",
+        "La pluie s’arrêtera."
+      ],
+      "L’imparfait présente une situation en cours.",
+      "Tombait installe l’arrière-plan; s’est ouverte rapporte l’événement qui survient.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Phrase – concordance",
+      "Quelle phrase respecte la construction d’une hypothèse avec si à l’imparfait ?",
+      "Si j’avais la clé, j’ouvrirais le portail.",
+      [
+        "Si j’aurais la clé, j’ouvrirais le portail.",
+        "Si j’aurais la clé, j’ouvrais le portail.",
+        "Si j’ai la clé, j’ouvrirais hier le portail."
+      ],
+      "Dans cette hypothèse, si est suivi de l’imparfait.",
+      "Si j’avais ... j’ouvrirais associe l’imparfait au conditionnel présent.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – ambiguïté",
+      "« Lina parle à Zoé de sa sœur. » Quelle difficulté de compréhension subsiste ?",
+      "On ne sait pas de qui sa sœur est la sœur.",
+      [
+        "On ignore que Lina parle.",
+        "On ne sait pas à qui Lina parle.",
+        "On ignore le prénom Lina."
+      ],
+      "Le déterminant sa peut renvoyer à plusieurs personnes.",
+      "Sa sœur peut désigner la sœur de Lina ou celle de Zoé : le référent est ambigu.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – relative explicative",
+      "Que signalent les virgules dans « Tina, qui est déjà rentrée, dort » ?",
+      "Une précision ajoutée sur Tina",
+      [
+        "Une question directe",
+        "Une liste de noms",
+        "Un ordre au lecteur"
+      ],
+      "Tina est déjà identifiée par son nom.",
+      "La relative entre virgules ajoute une précision sur une personne déjà identifiée.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – thèse",
+      "« Il faudrait installer un abri dans le jardin. Les visiteurs pourraient ainsi attendre au sec. » Quelle idée l’auteur défend-il ?",
+      "Installer un abri dans le jardin",
+      [
+        "Supprimer les visites",
+        "Fermer le jardin définitivement",
+        "Interdire les parapluies"
+      ],
+      "Repère la proposition que l’auteur veut faire accepter.",
+      "La thèse est qu’un abri devrait être installé.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – argument",
+      "« Il faudrait installer un abri dans le jardin. Les visiteurs pourraient ainsi attendre au sec. » Quelle raison soutient l’installation d’un abri ?",
+      "Les visiteurs pourraient attendre au sec.",
+      [
+        "Le jardin devrait rester vide.",
+        "Les visiteurs n’aiment pas les jardins.",
+        "Tous les abris sont gratuits."
+      ],
+      "Un argument soutient la proposition défendue.",
+      "Attendre au sec est l’avantage donné pour justifier l’abri.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – information implicite",
+      "« Le témoin regarde sans cesse la porte et sursaute au moindre bruit. » Quelle interprétation est la mieux appuyée ?",
+      "Il semble inquiet.",
+      [
+        "Il connaît forcément le coupable.",
+        "Il veut sûrement manger.",
+        "Il a déjà quitté la pièce."
+      ],
+      "Distingue un état suggéré d’une conclusion qui n’a aucun indice.",
+      "Ses réactions suggèrent l’inquiétude, sans prouver ce qu’il sait.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – connecteur",
+      "« D’abord, nous observons les traces; ensuite, nous les photographions. » Quel lien exprime ensuite ?",
+      "Une succession dans le temps",
+      [
+        "Une cause",
+        "Une opposition",
+        "Une condition"
+      ],
+      "Le mot situe une étape après une autre.",
+      "Ensuite marque une succession temporelle.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Participe passé – écrire",
+      "Complète : Les sorties que la direction a ___ sont encadrées. (permettre)",
+      "permises",
+      [],
+      "Le CD que reprend sorties et est placé avant le verbe.",
+      "Permises s’accorde avec sorties, féminin pluriel.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Homophones – écrire",
+      "Écris leur ou leurs : Les enfants ont retrouvé ___ bottes.",
+      "leurs",
+      [],
+      "Il s’agit du déterminant placé devant bottes.",
+      "Le déterminant possessif s’accorde avec bottes : leurs.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Subjonctif – écrire",
+      "Complète : Il faut que les réponses ___ claires. (être)",
+      "soient",
+      [],
+      "Il faut que appelle le subjonctif.",
+      "Au présent du subjonctif avec elles, être donne soient.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – condition",
+      "Place la condition d’abord, puis le résultat.",
+      "Si la porte était ouverte, nous pourrions entrer.",
+      [
+        "Si la porte était ouverte,",
+        "nous pourrions",
+        "entrer."
+      ],
+      "Si introduit l’imparfait; pourrions exprime le résultat hypothétique.",
+      "La construction associe si à l’imparfait et le conditionnel présent.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – concession",
+      "Place la concession au début, puis le sujet et son action.",
+      "Même si la pluie tombe, les visiteurs continuent leur parcours.",
+      [
+        "Même si la pluie tombe,",
+        "les visiteurs",
+        "continuent leur parcours."
+      ],
+      "Même si présente l’obstacle reconnu.",
+      "La concession précède ici l’action qui continue malgré cet obstacle.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – démarche argumentative",
+      "Ordonne ces étapes pour préparer un court texte d’opinion.",
+      "Je précise mon opinion. Je choisis une raison qui la soutient. Je cherche un exemple pertinent.",
+      [
+        "Je précise mon opinion.",
+        "Je choisis une raison qui la soutient.",
+        "Je cherche un exemple pertinent."
+      ],
+      "La raison et l’exemple doivent servir l’opinion choisie.",
+      "L’opinion guide le choix de la raison et de l’exemple.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "s4": [
+    [
+      "Accord avec avoir",
+      "Complète : Les fleurs que Tina a ___ sont intactes.",
+      "observées",
+      [
+        "observé",
+        "observés",
+        "observée"
+      ],
+      "Repère le CD placé avant le verbe dans la relative.",
+      "Le CD « que » reprend « fleurs » et précède « a observées » : féminin pluriel.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Couleur composée",
+      "Complète : des rubans ___.",
+      "bleu clair",
+      [
+        "bleus clairs",
+        "bleues claires",
+        "bleu clairs"
+      ],
+      "Un adjectif de couleur composé est invariable.",
+      "« Bleu clair » est une couleur composée : les deux mots restent invariables.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Syntaxe",
+      "Quelle phrase interrogative est correctement construite ?",
+      "Où Tina se cache-t-elle ?",
+      [
+        "Où Tina se cache-elle ?",
+        "Où Tina cache-t-elle se ?",
+        "Où se Tina cache-t-elle ?"
+      ],
+      "Dans l’inversion, on ajoute un t entre « cache » et « elle ».",
+      "Dans cette interrogation avec reprise du sujet, on écrit « se cache-t-elle ».",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Fonction de la relative",
+      "Dans « Le jardin que Mattéo explore est calme », quelle est la fonction de « que » dans la relative ?",
+      "Complément direct",
+      [
+        "Sujet",
+        "Complément indirect",
+        "Attribut du sujet"
+      ],
+      "Reconstruis : « Mattéo explore le jardin ».",
+      "« Que » reprend « le jardin », complément direct du verbe « explore ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Relation logique",
+      "Tina est bien cachée; néanmoins, Mattéo la retrouve. Quel lien exprime « néanmoins » ?",
+      "L’opposition",
+      [
+        "La cause",
+        "L’addition",
+        "La chronologie"
+      ],
+      "Le second fait va à l’encontre de ce que le premier laisse attendre.",
+      "« Néanmoins » marque une opposition : Tina est cachée, mais Mattéo la retrouve.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – quelque",
+      "Complète avec le mot qui signifie environ : ___ vingt visiteurs attendent.",
+      "Quelque",
+      [
+        "Quelques",
+        "Quel que",
+        "Quels que"
+      ],
+      "Devant un nombre, ce mot est ici un adverbe invariable.",
+      "Quelque vingt signifie environ vingt; quelque reste invariable.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – tout adverbe",
+      "Complète avec tout au sens de très : La lettre est ___ abîmée.",
+      "tout",
+      [
+        "toute",
+        "tous",
+        "toutes"
+      ],
+      "Devant un adjectif féminin commençant par une voyelle, cet adverbe reste invariable.",
+      "On écrit tout abîmée : l’adverbe ne varie pas devant une voyelle.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Figure de style – métaphore",
+      "« Cette nouvelle est un rayon de soleil dans sa journée. » Quelle figure domine ?",
+      "Une métaphore",
+      [
+        "Une comparaison avec comme",
+        "Une énumération",
+        "Une question rhétorique"
+      ],
+      "La nouvelle est assimilée à une source de lumière, sans terme comparatif.",
+      "L’image assimile la nouvelle à un rayon de soleil : c’est une métaphore.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Figure de style – personnification",
+      "« Le vent murmure à la fenêtre. » Quel procédé est employé ?",
+      "La personnification",
+      [
+        "La gradation",
+        "L’antithèse",
+        "L’énumération"
+      ],
+      "Un phénomène naturel reçoit une action humaine.",
+      "Murmurer est attribué au vent comme s’il était humain.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Vocabulaire – connotation",
+      "Quel adjectif présente l’insistance d’une personne comme de l’entêtement ?",
+      "obstinée",
+      [
+        "persévérante",
+        "déterminée",
+        "tenace"
+      ],
+      "La connotation est l’appréciation associée au mot.",
+      "Obstinée présente ici l’insistance de façon défavorable par rapport aux autres mots.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – subordonnée condition",
+      "Dans « Si le portail est ouvert, nous entrerons », quelle subordonnée exprime une condition ?",
+      "Si le portail est ouvert",
+      [
+        "nous entrerons",
+        "le portail",
+        "est ouvert"
+      ],
+      "La condition est introduite par si.",
+      "Si le portail est ouvert indique la condition de l’entrée.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – antécédent",
+      "Dans « Les cartes que Lina a dessinées sont précises », quel est l’antécédent de que ?",
+      "Les cartes",
+      [
+        "Lina",
+        "dessinées",
+        "précises"
+      ],
+      "L’antécédent est le groupe repris par le pronom relatif.",
+      "Que reprend Les cartes.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – accord éloigné",
+      "Complète : Chacune des boîtes ___ une étiquette.",
+      "porte",
+      [
+        "portent",
+        "portes",
+        "porter"
+      ],
+      "Le noyau du sujet est le pronom chacune, singulier.",
+      "Le verbe s’accorde avec chacune : porte.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – concession",
+      "Complète : Bien que le texte ___ court, il contient trois indices.",
+      "soit",
+      [
+        "est",
+        "sera",
+        "était"
+      ],
+      "Bien que appelle ici le subjonctif.",
+      "Soit est au présent du subjonctif.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – conditionnel passé",
+      "Quelle forme est au conditionnel passé ?",
+      "aurait trouvé",
+      [
+        "trouverait",
+        "avait trouvé",
+        "aura trouvé"
+      ],
+      "Le conditionnel passé associe un auxiliaire au conditionnel et un participe passé.",
+      "Aurait trouvé est au conditionnel passé.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – discours indirect",
+      "Quelle transformation rapporte « Lina dit : Je connais ce jardin » au discours indirect au présent ?",
+      "Lina dit qu’elle connaît ce jardin.",
+      [
+        "Lina dit je connais ce jardin.",
+        "Lina dit qu’il connaît ce jardin.",
+        "Lina dit connaît ce jardin."
+      ],
+      "Je renvoie à Lina; dans le récit indirect, il devient elle.",
+      "Lina dit qu’elle connaît ce jardin conserve la personne désignée.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – cohérence",
+      "Quel enchaînement est cohérent ?",
+      "La clé est introuvable; nous devons chercher un autre moyen d’entrer.",
+      [
+        "La clé est introuvable; nous l’utilisons aussitôt pour ouvrir.",
+        "La clé est introuvable; elle est dans ma main sans avoir été retrouvée.",
+        "La clé est introuvable; elle n’a jamais été perdue."
+      ],
+      "Le second énoncé doit tenir compte du premier.",
+      "Chercher un autre moyen est cohérent avec l’absence de la clé.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – deux-points",
+      "Quelle phrase utilise le deux-points pour annoncer une explication ?",
+      "Le jardin est fermé : le portail est en réparation.",
+      [
+        "Le jardin : est fermé le portail est en réparation.",
+        "Le jardin est : fermé le portail est en réparation.",
+        "Le jardin est fermé le : portail est en réparation."
+      ],
+      "Le second énoncé explique pourquoi le jardin est fermé.",
+      "Le deux-points introduit ici une explication du premier énoncé.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – concession",
+      "« Même si le carnet est abîmé, nous pouvons encore lire les notes. » Que reconnaît l’auteur ?",
+      "Un obstacle qui n’empêche pas la lecture",
+      [
+        "Une cause qui rend la lecture impossible",
+        "Une condition nécessaire pour abîmer le carnet",
+        "Un ordre de fermer le carnet"
+      ],
+      "La difficulté reconnue ne bloque pas le résultat.",
+      "La concession reconnaît l’état du carnet tout en affirmant que la lecture reste possible.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – preuve",
+      "Quelle information soutient le plus directement « Les visites ont augmenté ce mois-ci » ?",
+      "Le registre indique 120 visites contre 80 le mois précédent.",
+      [
+        "Un visiteur dit aimer le jardin.",
+        "Le portail est vert.",
+        "Un banc a été repeint."
+      ],
+      "Une comparaison de nombres concerne directement l’évolution des visites.",
+      "120 contre 80 appuie l’affirmation d’une augmentation.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – reformuler sans ajouter",
+      "Quelle reformulation respecte « Deux témoins disent avoir entendu un bruit » ?",
+      "Deux personnes rapportent avoir entendu un bruit.",
+      [
+        "Deux personnes ont vu le coupable.",
+        "Le coupable a forcément fait du bruit.",
+        "Tous les visiteurs ont entendu le même bruit."
+      ],
+      "Conserve la portée exacte du témoignage.",
+      "Les témoins rapportent un bruit; le texte ne dit pas qu’ils ont vu un coupable.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – connecteur de conséquence",
+      "Quel connecteur complète logiquement « Le portail est verrouillé; ___, nous ne pouvons pas entrer » ?",
+      "par conséquent",
+      [
+        "pourtant",
+        "auparavant",
+        "par exemple"
+      ],
+      "Le deuxième fait résulte du premier.",
+      "Par conséquent introduit le résultat du verrouillage.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Homophones – écrire",
+      "Écris quoique ou quoi que : ___ tu décides, explique ton choix.",
+      "quoi que",
+      [],
+      "Le sens est peu importe ce que tu décides.",
+      "Quoi que en deux mots signifie ici peu importe ce que.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Accord de tout – écrire",
+      "Complète avec tout au sens de très : Les visiteurs sont ___ contents.",
+      "tout",
+      [],
+      "Devant un adjectif masculin, l’adverbe reste invariable.",
+      "L’adverbe tout est invariable devant contents.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Subjonctif – écrire",
+      "Complète : Bien qu’il ___ la clé, il attend la gardienne. (avoir)",
+      "ait",
+      [],
+      "Bien que appelle ici le subjonctif.",
+      "On écrit bien qu’il ait la clé.",
+      "saisie",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – futur antérieur",
+      "Place d’abord l’action qui devra être terminée, puis le résultat futur.",
+      "Quand tu auras lu la lettre, tu comprendras la situation.",
+      [
+        "Quand tu auras lu la lettre,",
+        "tu comprendras",
+        "la situation."
+      ],
+      "Auras lu exprime ici une action achevée avant comprendras.",
+      "La lecture au futur antérieur précède la compréhension future.",
+      "ordre",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – subjonctif",
+      "Commence par Il faut que, puis ajoute le sujet et le verbe.",
+      "Il faut que les réponses soient précises.",
+      [
+        "Il faut que",
+        "les réponses",
+        "soient précises."
+      ],
+      "Il faut que appelle ici le subjonctif.",
+      "Soient est le présent du subjonctif avec les réponses.",
+      "ordre",
+      "Conjugaison"
+    ],
+    [
+      "Lecture – vérifier une affirmation",
+      "Ordonne ces étapes avant d’accepter une affirmation fondée sur un registre.",
+      "Je relève l’affirmation. Je consulte le registre. Je compare ses données à l’affirmation. Je conclus si les données l’appuient.",
+      [
+        "Je relève l’affirmation.",
+        "Je consulte le registre.",
+        "Je compare ses données à l’affirmation.",
+        "Je conclus si les données l’appuient."
+      ],
+      "La conclusion suit la comparaison avec les données.",
+      "On identifie ce qui est affirmé, examine les données, les compare, puis conclut.",
+      "ordre",
+      "Lecture"
+    ]
+  ],
+  "s5": [
+    [
+      "Accord avec avoir",
+      "Complète : Les lettres qu’elle avait ___ expliquaient le mystère.",
+      "écrites",
+      [
+        "écrit",
+        "écrits",
+        "écrite"
+      ],
+      "Le pronom CD reprend « lettres » et précède le verbe.",
+      "Le CD « qu’ » reprend « lettres », féminin pluriel : « écrites ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord de tout",
+      "Complète : Les petites tortues sont ___ contentes.",
+      "toutes",
+      [
+        "tout",
+        "tous",
+        "toute"
+      ],
+      "Ici, « tout » signifie « très » devant un adjectif féminin commençant par une consonne.",
+      "L’adverbe « tout » varie devant un adjectif féminin commençant par une consonne : « toutes contentes ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Pronom relatif",
+      "Complète : Le banc près ___ Tina se repose est en bois.",
+      "duquel",
+      [
+        "dont",
+        "que",
+        "lequel"
+      ],
+      "La construction est « près de ce banc ».",
+      "« Près de » suivi du relatif « lequel » donne « près duquel ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Accord du verbe",
+      "Complète : Les messages que la petite tortue avait laissés ___ un trajet.",
+      "indiquaient",
+      [
+        "indiquait",
+        "indiquais",
+        "indiquer"
+      ],
+      "Le sujet de ce verbe a pour noyau « messages ».",
+      "Le verbe s’accorde avec « Les messages », pluriel : « indiquaient ».",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Relative explicative",
+      "Dans « Tina, qui adore ce jardin, y revient souvent », que fait la relative entre virgules ?",
+      "Elle ajoute une précision sur Tina.",
+      [
+        "Elle choisit une Tina parmi plusieurs.",
+        "Elle indique une condition.",
+        "Elle pose une question."
+      ],
+      "Le nom propre identifie déjà Tina; la relative apporte une information en plus.",
+      "« Qui adore ce jardin » est une relative explicative : elle ajoute une précision sur Tina.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Homophones – quel que",
+      "Complète : ___ soit le résultat, nous expliquerons notre démarche.",
+      "Quel que",
+      [
+        "Quelque",
+        "Quelques",
+        "Quels que"
+      ],
+      "La locution s’accorde avec résultat, masculin singulier.",
+      "On écrit Quel que soit le résultat.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Orthographe – couleur coordonnée",
+      "Des rubans sont entièrement rouges; d’autres sont entièrement verts. Quelle formulation convient ?",
+      "des rubans rouges et verts",
+      [
+        "des rubans rouge et vert",
+        "des rubans rouges et vert",
+        "des rubans rouge et verts"
+      ],
+      "Les couleurs désignent ici deux groupes de rubans différents.",
+      "Chaque adjectif s’accorde dans ce cas : des rubans rouges et verts.",
+      "choix",
+      "Orthographe"
+    ],
+    [
+      "Vocabulaire – modalisation",
+      "Quel mot marque l’incertitude dans « Le témoin a probablement oublié un détail » ?",
+      "probablement",
+      [
+        "témoin",
+        "oublié",
+        "détail"
+      ],
+      "Le mot indique que l’affirmation n’est pas tenue pour certaine.",
+      "Probablement marque un degré de certitude limité.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Figure de style – antithèse",
+      "« Le jour les rassure; la nuit les inquiète. » Quel contraste structure cette phrase ?",
+      "Une antithèse",
+      [
+        "Une comparaison avec comme",
+        "Une répétition identique",
+        "Une définition"
+      ],
+      "Deux idées opposées sont mises en parallèle.",
+      "Le jour et la nuit, ainsi que rassure et inquiète, forment une opposition structurée.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Figure de style – hyperbole",
+      "« J’ai attendu mille ans devant ce portail ! » Que traduit cette formulation dans une conversation ?",
+      "Une exagération de la durée",
+      [
+        "Une mesure exacte",
+        "Une comparaison scientifique",
+        "Une preuve historique"
+      ],
+      "Le nombre exprime ici une impression excessive.",
+      "L’hyperbole amplifie la durée de l’attente.",
+      "choix",
+      "Vocabulaire"
+    ],
+    [
+      "Grammaire – infinitif complément",
+      "Dans « Lina veut comprendre l’énigme », quel groupe complète directement veut ?",
+      "comprendre l’énigme",
+      [
+        "Lina",
+        "veut",
+        "l’énigme seule"
+      ],
+      "On peut remplacer ce groupe par cela : Lina veut cela.",
+      "Le groupe infinitif comprendre l’énigme est complément direct de veut.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – antécédent et accord",
+      "Complète : La réponse que les enfants ont ___ était exacte.",
+      "donnée",
+      [
+        "donné",
+        "donnés",
+        "données"
+      ],
+      "Le CD que reprend réponse, féminin singulier, et est placé avant.",
+      "Donnée s’accorde avec le CD que, dont l’antécédent est La réponse.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Grammaire – pronom relatif",
+      "Complète : Les chemins au bout ___ se trouve la clinique sont étroits.",
+      "desquels",
+      [
+        "duquel",
+        "desquelles",
+        "dont"
+      ],
+      "Chemins est masculin pluriel; on conserve la construction au bout de.",
+      "De et lesquels se combinent en desquels.",
+      "choix",
+      "Grammaire"
+    ],
+    [
+      "Conjugaison – hypothèse passée",
+      "Quelle phrase exprime un résultat passé qui n’a pas eu lieu ?",
+      "Si nous avions eu la clé, nous serions entrés.",
+      [
+        "Si nous avons la clé, nous entrons.",
+        "Si nous avons la clé, nous entrerons.",
+        "Quand nous avons eu la clé, nous sommes entrés."
+      ],
+      "Le plus-que-parfait après si s’associe ici au conditionnel passé.",
+      "Serions entrés présente le résultat hypothétique d’une condition passée non réalisée.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Conjugaison – futur antérieur",
+      "Dans « Quand tu auras lu la lettre, tu comprendras », quelle action doit être accomplie d’abord ?",
+      "La lecture de la lettre",
+      [
+        "La compréhension",
+        "L’écriture d’une réponse",
+        "La recherche de la clé"
+      ],
+      "Le futur antérieur présente une action achevée avant une autre action future.",
+      "Auras lu situe la lecture avant comprendras.",
+      "choix",
+      "Conjugaison"
+    ],
+    [
+      "Phrase – reformulation précise",
+      "Quelle phrase conserve exactement « Certains visiteurs demandent un abri » ?",
+      "Une partie des visiteurs souhaite un abri.",
+      [
+        "Tous les visiteurs exigent un abri.",
+        "Aucun visiteur ne demande un abri.",
+        "La majorité des visiteurs refuse un abri."
+      ],
+      "Certains ne signifie ni tous ni nécessairement la majorité.",
+      "Une partie conserve la portée limitée de certains.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – éliminer une ambiguïté",
+      "« Lina a retrouvé la sœur de Zoé dans son jardin. » Quelle réécriture précise que le jardin appartient à Zoé ?",
+      "Lina a retrouvé la sœur de Zoé dans le jardin de Zoé.",
+      [
+        "Lina a retrouvé sa sœur dans son jardin.",
+        "Elle a retrouvé la sœur dans son jardin.",
+        "Lina a retrouvé la sœur de Zoé dans le jardin."
+      ],
+      "Remplace le déterminant possessif ambigu par le nom de la propriétaire.",
+      "Dans le jardin de Zoé lève l’ambiguïté sur la propriétaire.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Ponctuation – incise",
+      "Quelle phrase ponctue correctement l’incise dit Lina ?",
+      "« Le carnet est ici », dit Lina.",
+      [
+        "« Le carnet est ici » dit, Lina.",
+        "« Le carnet est ici », dit, Lina.",
+        "« Le carnet est ici » dit Lina,"
+      ],
+      "L’incise est séparée des paroles par une virgule.",
+      "La virgule précède l’incise; dit et Lina restent liés.",
+      "choix",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – réfutation",
+      "« On affirme que le jardin est inaccessible. Pourtant, le registre montre des visites chaque jour. » Quel rôle joue le deuxième énoncé ?",
+      "Il apporte un élément qui contredit l’affirmation.",
+      [
+        "Il répète l’affirmation sans preuve.",
+        "Il annonce seulement un lieu.",
+        "Il ordonne de fermer le jardin."
+      ],
+      "Compare inaccessible avec visites chaque jour.",
+      "Le registre est présenté comme un élément de réfutation.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – solidité d’un argument",
+      "Quelle raison soutient le plus directement l’ajout d’un abri contre la pluie ?",
+      "Un abri permettrait aux visiteurs d’attendre au sec.",
+      [
+        "La couleur du portail est jolie.",
+        "Le carnet contient dix pages.",
+        "L’auteur préfère les fleurs rouges."
+      ],
+      "L’argument doit être pertinent pour le besoin évoqué.",
+      "La protection contre la pluie est directement liée à l’ajout de l’abri.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – fait et généralisation",
+      "Un visiteur dit : « J’ai aimé la visite, donc tout le monde l’a aimée. » Quelle limite présente son raisonnement ?",
+      "Son expérience personnelle ne prouve pas l’avis de tous.",
+      [
+        "Il a donné le nombre exact de visiteurs.",
+        "Il a cité chaque visiteur.",
+        "Il a prouvé que personne n’était présent."
+      ],
+      "Un cas individuel ne suffit pas à établir une conclusion universelle.",
+      "Le raisonnement généralise à tous à partir d’un seul témoignage.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Lecture – portée d’une conclusion",
+      "« Trois lettres ont été trouvées. Deux étaient lisibles. » Quelle conclusion est certaine ?",
+      "Au moins une lettre n’était pas lisible.",
+      [
+        "Toutes les lettres étaient illisibles.",
+        "Aucune lettre n’a été lue.",
+        "La troisième lettre était écrite en anglais."
+      ],
+      "Utilise seulement le total et le nombre de lettres lisibles.",
+      "Sur trois lettres, deux étaient lisibles : il en reste une qui ne l’était pas.",
+      "choix",
+      "Lecture"
+    ],
+    [
+      "Participe passé – écrire",
+      "Complète : Les réponses qu’elle a ___ sont précises. (envoyer)",
+      "envoyées",
+      [],
+      "Le CD qu’ reprend réponses et précède le verbe.",
+      "Envoyées s’accorde avec réponses, féminin pluriel.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Homophones – écrire",
+      "Complète avec quelque ou quelques : Il reste ___ indices à vérifier.",
+      "quelques",
+      [],
+      "Le mot est un déterminant devant un nom pluriel.",
+      "Quelques s’accorde avec indices au pluriel.",
+      "saisie",
+      "Orthographe"
+    ],
+    [
+      "Pronom relatif – écrire",
+      "Complète : Les portes derrière ___ nous attendons sont fermées.",
+      "lesquelles",
+      [],
+      "Le pronom reprend portes, féminin pluriel, après derrière.",
+      "Derrière lesquelles reprend les portes.",
+      "saisie",
+      "Grammaire"
+    ],
+    [
+      "Phrase – relative complexe",
+      "Construis d’abord le sujet avec la relative, puis ajoute le prédicat.",
+      "Les réponses que les élèves avaient préparées étaient précises.",
+      [
+        "Les réponses",
+        "que les élèves avaient préparées",
+        "étaient précises."
+      ],
+      "La relative complète réponses et précède étaient précises.",
+      "Le sujet complet contient la relative; le prédicat commence à étaient.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Phrase – hypothèse passée",
+      "Place d’abord la condition passée non réalisée, puis son résultat.",
+      "Si nous avions conservé la carte, nous aurions retrouvé le chemin.",
+      [
+        "Si nous avions conservé la carte,",
+        "nous aurions retrouvé",
+        "le chemin."
+      ],
+      "Si est suivi du plus-que-parfait; le résultat est au conditionnel passé.",
+      "La construction associe une condition passée au résultat qui aurait pu se produire.",
+      "ordre",
+      "Construction des phrases"
+    ],
+    [
+      "Lecture – révision argumentée",
+      "Ordonne la révision d’un argument qui manque de preuves.",
+      "Je repère l’affirmation à justifier. Je cherche une preuve pertinente. Je vérifie sa fiabilité. Je révise mon argument en conséquence.",
+      [
+        "Je repère l’affirmation à justifier.",
+        "Je cherche une preuve pertinente.",
+        "Je vérifie sa fiabilité.",
+        "Je révise mon argument en conséquence."
+      ],
+      "La preuve doit être trouvée puis vérifiée avant la révision finale.",
+      "La révision s’appuie sur une preuve pertinente dont la fiabilité a été vérifiée.",
+      "ordre",
+      "Lecture"
+    ]
+  ]
+};
+    const OBJECTS = ['Le panneau','Le sac','Le chat','Les fleurs','La lettre'];
+    const MESSAGES = ['Tina est dans le jardin.','Elle est près des plantes.','Elle cherche un endroit tranquille.','Regarde derrière les fleurs.','Tina t’attend pour te saluer !'];
+    const DIFFICULTIES = {
+      facile:{count:2,label:'Facile',note:'Deux réponses pour les questions à choix. Un coup de pouce est affiché dès le début de chaque défi.'},
+      modere:{count:3,label:'Modéré',note:'Trois réponses pour les questions à choix. Les autres défis demandent d’écrire ou de reconstruire. Tu peux demander un coup de pouce.'},
+      difficile:{count:4,label:'Difficile',note:'Quatre réponses pour les questions à choix. Les autres défis demandent d’écrire ou de reconstruire. Un coup de pouce est disponible après un premier essai.'}
+    };
+    const $ = id => document.getElementById(id);
+    const clueButtons = Array.from(document.querySelectorAll('[data-clue]'));
+    let running=false, active=-1, questions=[], solved=new Set(), attempts=[], usedHints=[], firstTry=0;
+    let mode=DIFFICULTIES.modere;
+    function shuffle(items) {
+      const copy=[...items];
+      for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
+      return copy;
+    }
+    // Cet historique ne contient que les identifiants des questions tirées.
+    // Si le stockage est bloqué, la rotation fonctionne jusqu’à la fermeture de la page.
+    const HISTORY_KEY='cdj.detective.questions.v2';
+    let drawHistory={};
+    try{
+      const saved=JSON.parse(window.localStorage.getItem(HISTORY_KEY)||'{}');
+      if(saved&&typeof saved==='object'&&!Array.isArray(saved))drawHistory=saved;
+    }catch(error){}
+    function drawQuestions(grade){
+      const bank=BANK[grade];
+      if(!bank)return [];
+      const valid=new Set(bank.map(q=>q[1]));
+      const previous=drawHistory[grade]||{};
+      let seen=new Set((Array.isArray(previous.seen)?previous.seen:[]).filter(id=>valid.has(id)));
+      const last=new Set((Array.isArray(previous.last)?previous.last:[]).filter(id=>valid.has(id)).slice(-5));
+      const selected=[],topics=new Set(),domains=new Set();
+      while(selected.length<Math.min(5,bank.length)){
+        let pool=bank.filter(q=>!seen.has(q[1]));
+        if(!pool.length){
+          seen=new Set(selected.map(q=>q[1]));
+          pool=bank.filter(q=>!seen.has(q[1]));
+        }
+        const fresh=pool.filter(q=>!last.has(q[1]));
+        if(fresh.length)pool=fresh;
+        // Réserver une activité à écrire ou reconstruire au début du tirage,
+        // si une activité encore inutilisée est disponible.
+        if(!selected.length){
+          const practical=pool.filter(q=>q[6]!=='choix');
+          if(practical.length)pool=practical;
+        }else{
+          const choices=pool.filter(q=>q[6]==='choix');
+          if(choices.length&&selected.some(q=>q[6]!=='choix'))pool=choices;
+        }
+        const differentDomain=pool.filter(q=>!domains.has(q[7]));
+        if(differentDomain.length)pool=differentDomain;
+        const varied=pool.filter(q=>!topics.has(q[0]));
+        if(varied.length)pool=varied;
+        const question=pool[Math.floor(Math.random()*pool.length)];
+        selected.push(question);seen.add(question[1]);topics.add(question[0]);domains.add(question[7]);
+      }
+      drawHistory[grade]={seen:[...seen],last:selected.map(q=>q[1])};
+      try{window.localStorage.setItem(HISTORY_KEY,JSON.stringify(drawHistory));}catch(error){}
+      return shuffle(selected);
+    }
+    function stopVoice(){if('speechSynthesis' in window)window.speechSynthesis.cancel();}
+    function updateSettings(){
+      $('difficulty-wrap').hidden=!BANK[$('grade').value];
+      $('start').disabled=!BANK[$('grade').value];
+      $('difficulty-note').textContent=DIFFICULTIES[$('difficulty').value].note;
+    }
+    function updateGarden(){
+      clueButtons.forEach((button,i)=>{
+        button.disabled=!running||solved.has(i);
+        button.classList.toggle('solved',solved.has(i));
+        button.setAttribute('aria-pressed',String(active===i));
+        button.setAttribute('aria-label',OBJECTS[i]+(solved.has(i)?' : indice retrouvé':' : examiner'));
+      });
+      $('counter').textContent=solved.size+' / 5 indices';
+      $('progress').value=solved.size;
+      $('notebook').replaceChildren();
+      if(!solved.size){const li=document.createElement('li');li.textContent='Les indices apparaîtront ici.';$('notebook').append(li);}
+      else [...solved].sort((a,b)=>a-b).forEach(i=>{const li=document.createElement('li');li.textContent=MESSAGES[i];$('notebook').append(li);});
+    }
+    function startGame(){
+      const bank=BANK[$('grade').value];
+      if(!bank)return;
+      stopVoice();mode=DIFFICULTIES[$('difficulty').value];
+      questions=drawQuestions($('grade').value);solved=new Set();attempts=Array(5).fill(0);usedHints=Array(5).fill(false);firstTry=0;active=-1;running=true;
+      $('grade').disabled=true;$('difficulty').disabled=true;$('start').hidden=true;$('settings').hidden=false;
+      $('result').hidden=true;$('investigation').hidden=true;
+      const label=$('grade').selectedOptions[0].textContent;
+      $('mission-status').textContent=label+' · '+mode.label+' · '+bank.length+' questions possibles — Choisis un objet dans le jardin.';
+      updateGarden();clueButtons[0].focus();
+    }
+    function showHint(){
+      if(active<0||!running)return;
+      usedHints[active]=true;$('hint').textContent='💡 '+questions[active][4];$('hint').hidden=false;
+    }
+    function openClue(i){
+      if(!running||solved.has(i))return;
+      stopVoice();active=i;updateGarden();
+      const q=questions[i];
+      $('investigation').hidden=false;$('clue-title').textContent=OBJECTS[i];
+      $('skill').textContent=q[7]+' · '+q[0]+' · '+({choix:'Choisir',saisie:'Écrire',ordre:'Remettre en ordre'}[q[6]]);$('question').textContent=q[1];
+      $('feedback').textContent='Choisis ta réponse. Tu peux réessayer si nécessaire.';$('feedback').classList.remove('success');
+      $('hint').hidden=true;$('continue').hidden=true;
+      $('hint-button').disabled=mode===DIFFICULTIES.difficile&&attempts[i]===0;
+      $('answers').replaceChildren();
+      renderExercise(i,q);
+      if(mode===DIFFICULTIES.facile)showHint();
+      $('clue-title').focus();
+    }
+    function normalizeAnswer(text){
+      return String(text).normalize('NFC').trim().toLocaleLowerCase('fr-CA')
+        .replace(/[’‘]/g,"'").replace(/\s+/g,' ').replace(/'\s+/g,"'");
+    }
+    function joinPieces(pieces){return pieces.join(' ').replace(/([’'])\s+/g,'$1');}
+    function isCorrect(q,text){
+      if(q[6]==='choix')return text===q[2];
+      if(q[6]==='saisie'&&q[0].startsWith('Lettres'))return String(text).normalize('NFC').trim()===q[2];
+      return normalizeAnswer(text)===normalizeAnswer(q[2]);
+    }
+    function renderExercise(i,q){
+      const box=$('answers');box.classList.toggle('activity',q[6]!=='choix');
+      if(q[6]==='choix'){
+        const options=shuffle([q[2],...shuffle(q[3]).slice(0,mode.count-1)]);
+        options.forEach(text=>{
+          const button=document.createElement('button');button.type='button';button.className='answer';button.textContent=text;
+          button.addEventListener('click',()=>answer(i,text,button));box.append(button);
+        });
+      }else if(q[6]==='saisie'){
+        const form=document.createElement('form');form.className='response-form';
+        const label=document.createElement('label');label.textContent='Ta réponse';label.setAttribute('for','written-answer');
+        const input=document.createElement('input');input.id='written-answer';input.type='text';input.maxLength=60;
+        input.autocomplete='off';input.spellcheck=false;input.setAttribute('autocorrect','off');input.setAttribute('autocapitalize','off');
+        input.setAttribute('aria-describedby','question');
+        const submit=document.createElement('button');submit.type='submit';submit.className='primary wide';submit.textContent='Vérifier ma réponse';
+        form.append(label,input,submit);
+        form.addEventListener('submit',event=>{
+          event.preventDefault();
+          if(!input.value.trim()){$('feedback').textContent='Écris une réponse avant de la vérifier.';input.focus();return;}
+          answer(i,input.value,submit);
+        });box.append(form);
+      }else{
+        const instruction=document.createElement('p');instruction.textContent='Clique sur les éléments dans le bon ordre, puis vérifie ta construction.';
+        const output=document.createElement('p');output.className='order-output';output.setAttribute('aria-label','Ta construction');
+        const pool=document.createElement('div');pool.className='word-pool';
+        const controls=document.createElement('div');controls.className='actions';
+        const undo=document.createElement('button');undo.type='button';undo.className='secondary';undo.textContent='Effacer le dernier';
+        const submit=document.createElement('button');submit.type='button';submit.className='primary';submit.textContent='Vérifier';
+        const picked=[],buttons=[];
+        function refresh(){
+          output.textContent=picked.length?joinPieces(picked.map(index=>q[3][index])):'Ta construction apparaîtra ici.';
+          undo.disabled=!picked.length;submit.disabled=picked.length!==q[3].length;
+        }
+        shuffle(q[3].map((text,index)=>({text,index}))).forEach(({text,index})=>{
+          const button=document.createElement('button');button.type='button';button.className='answer';button.textContent=text;buttons[index]=button;
+          button.addEventListener('click',()=>{if(button.disabled)return;picked.push(index);button.disabled=true;refresh();});pool.append(button);
+        });
+        undo.addEventListener('click',()=>{if(!picked.length||solved.has(i))return;buttons[picked.pop()].disabled=false;refresh();});
+        submit.addEventListener('click',()=>{if(picked.length!==q[3].length)return;answer(i,joinPieces(picked.map(index=>q[3][index])),submit);});
+        controls.append(undo,submit);box.append(instruction,output,pool,controls);refresh();
+      }
+    }
+    function answer(i,text,button){
+      if(!running||active!==i||solved.has(i)||button.disabled)return;
+      attempts[i]++;$('hint-button').disabled=false;
+      if(!isCorrect(questions[i],text)){
+        if(questions[i][6]==='choix'){button.disabled=true;button.classList.add('wrong');}
+        $('feedback').textContent='Ce n’est pas encore la bonne réponse. Relis la question ou demande un coup de pouce, puis réessaie.';
+        return;
+      }
+      if(attempts[i]===1)firstTry++;
+      solved.add(i);button.classList.add('correct');
+      $('answers').querySelectorAll('button,input').forEach(b=>b.disabled=true);
+      $('feedback').classList.add('success');
+      $('feedback').textContent='Bravo ! '+questions[i][5]+'\n🔎 Indice retrouvé : '+MESSAGES[i];
+      $('continue').textContent=solved.size===5?'Découvrir la cachette de Tina':'Retourner au jardin';
+      $('continue').hidden=false;updateGarden();
+    }
+    function backToGarden(){
+      stopVoice();active=-1;$('investigation').hidden=true;updateGarden();
+      if(solved.size===5){
+        running=false;updateGarden();$('result').hidden=false;
+        $('score').textContent='5 indices retrouvés · '+firstTry+' réponse'+(firstTry>1?'s':'')+' réussie'+(firstTry>1?'s':'')+' dès le premier essai.';
+        $('review-list').replaceChildren();
+        questions.forEach((q,index)=>{
+          const li=document.createElement('li');
+          li.textContent=q[0]+' : '+(attempts[index]===1?'réussi au premier essai':'réussi après '+attempts[index]+' essais')+(usedHints[index]?' · avec coup de pouce':' · sans coup de pouce');
+          $('review-list').append(li);
+        });
+        $('mission-status').textContent='Enquête terminée — Bravo, détective !';$('result-title').focus();
+      }else {const next=clueButtons.find(b=>!b.disabled);if(next)next.focus();}
+    }
+    function resetSettings(){
+      stopVoice();running=false;active=-1;solved=new Set();firstTry=0;
+      $('grade').disabled=false;$('difficulty').disabled=false;$('start').hidden=false;$('settings').hidden=true;
+      $('investigation').hidden=true;$('result').hidden=true;
+      $('mission-status').textContent='Choisis ton niveau et commence une nouvelle enquête.';
+      updateSettings();updateGarden();$('grade').focus();
+    }
+    $('grade').addEventListener('change',updateSettings);
+    $('difficulty').addEventListener('change',updateSettings);
+    $('start').addEventListener('click',startGame);
+    $('settings').addEventListener('click',resetSettings);
+    $('replay').addEventListener('click',startGame);
+    $('new-level').addEventListener('click',resetSettings);
+    $('hint-button').addEventListener('click',showHint);
+    $('continue').addEventListener('click',backToGarden);
+    clueButtons.forEach((button,i)=>button.addEventListener('click',()=>openClue(i)));
+    $('listen').addEventListener('click',()=>{
+      if(!('speechSynthesis' in window)||active<0)return;
+      stopVoice();const text=questions[active][1].replace(/___/g,'espace à compléter').replace(/🐱/g,'un chat');
+      const voice=new SpeechSynthesisUtterance(text);voice.lang='fr-CA';voice.rate=.85;
+      window.speechSynthesis.speak(voice);
+    });
+    $('listen').hidden=!('speechSynthesis' in window);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopVoice();});
+    window.addEventListener('pagehide',stopVoice);
+    updateSettings();updateGarden();
+  </script>
+</body>
+</html>
