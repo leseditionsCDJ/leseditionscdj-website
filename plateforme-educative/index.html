@@ -253,9 +253,16 @@ function subjectsFor(year){
 }
 function yearPath(year){return '#/annees/'+year.key;}
 function catalogPath(year,key){return yearPath(year)+'/matieres/'+key;}
-document.querySelector('#year-groups').innerHTML=['Préscolaire','Primaire','Secondaire'].map(group=>`<section class="year-group" aria-label="${group}"><h3>${group}</h3><div class="year-grid">${YEARS.filter(y=>y.group===group).map(year=>`<a class="year-card" href="${yearPath(year)}">${sprite(group==='Préscolaire'?'🐢':group==='Primaire'?'📚':'carte')}<span><strong>${year.label}</strong><small>Découvrir mes matières →</small></span></a>`).join('')}</div></section>`).join('');
+document.querySelector('#year-groups').innerHTML=['Préscolaire','Primaire','Secondaire'].map(group=>`<section class="year-group" aria-label="${group}"><h3>${group}</h3><div class="year-grid">${YEARS.filter(y=>y.group===group).map(year=>`<a class="year-card" href="${year.key==='prescolaire-4'?'prescolaire-4-ans.html':yearPath(year)}">${sprite(group==='Préscolaire'?'🐢':group==='Primaire'?'📚':'carte')}<span><strong>${year.label}</strong><small>${year.grade===0?'Découvrir mes jeux →':'Découvrir mes matières →'}</small></span></a>`).join('')}</div></section>`).join('');
 const views={accueil:document.querySelector('#home-view'),inscription:document.querySelector('#signup-view'),matieres:document.querySelector('#subjects-view'),catalogue:document.querySelector('#catalog-view'),jeux:document.querySelector('#game-view')};
 function renderSubjects(year){
+  document.querySelector('#subjects-title').textContent=year.grade===0?'Mes jeux préscolaires':'Choisis une matière';
+  if(year.key==='prescolaire-5'){
+    document.querySelector('#subjects-year').textContent=year.label;
+    document.querySelector('#subjects-intro').textContent='Les aventures pour les 5 ans arrivent bientôt !';
+    document.querySelector('#year-subjects').innerHTML='<section class="catalog-coming"><h2>Des jeux pour découvrir et grandir</h2><p>Les jeux du préscolaire 5 ans sont en préparation.</p><a class="secondary" href="prescolaire-4-ans.html">Découvrir la page des 4 ans</a></section>';
+    return;
+  }
   document.querySelector('#subjects-year').textContent=year.label;
   document.querySelector('#subjects-intro').textContent=year.grade===0?'Écoute, observe et découvre en jouant. Les activités du préscolaire privilégient l’oral et les images.':year.grade===11?'Choisis une matière. La physique est une option; les sciences, l’histoire et la géographie permettront aussi de revoir des notions déjà apprises.':'Choisis une matière, puis découvre les jeux de ton année scolaire.';
   document.querySelector('#year-subjects').innerHTML=subjectsFor(year).map(key=>{const subject=SUBJECTS[key];return `<a class="subject-card" href="${catalogPath(year,key)}"><span class="subject-icon" aria-hidden="true">${sprite(subject.icon)}</span><h3>${subject.title}</h3><p>${year.grade===0?({mathematiques:'Observer, comparer et compter en jouant.',francais:'Écouter des mots, des sons et des consignes.',sciences:'Explorer les animaux et la nature.'}[key]):SUBJECT_DETAILS[key]}</p><span class="availability ${subject.hasGame?'available':''}">${subject.hasGame?'1 jeu gratuit à essayer':'Jeux à venir'}</span></a>`;}).join('');
@@ -278,6 +285,8 @@ function renderCatalog(year,key){
 function routePage(){
   const parts=location.hash.replace(/^#\/?/,'').split('/'),requested=parts[0]||'accueil';
   const year=YEARS.find(y=>y.key===parts[1]);
+  if(requested==='annees'&&year?.key==='prescolaire-4'){location.replace('prescolaire-4-ans.html');return;}
+  if(requested==='annees'&&year?.key==='prescolaire-5'&&parts[2]){location.replace('#/annees/prescolaire-5');return;}
   let active='accueil',title='Les petits aventuriers',focusTarget=null;
   if(requested==='inscription'){active='inscription';title='Inscription';focusTarget='#signup-title';}
   else if(requested==='annees'&&year){
@@ -285,7 +294,7 @@ function routePage(){
       active='catalogue';renderCatalog(year,parts[3]);title=year.label+' · '+SUBJECTS[parts[3]].title;focusTarget='#catalog-title';
     }else if(parts[2]==='jeux'&&parts[3]==='clinique-nombres'){
       active='jeux';mathController.selectYear(year);document.querySelector('#math-back').href=catalogPath(year,'mathematiques');title=year.label+' · La clinique des nombres';focusTarget='#play-title';
-    }else{active='matieres';renderSubjects(year);title=year.label+' · Matières';focusTarget='#subjects-title';}
+    }else{active='matieres';renderSubjects(year);title=year.label+(year.grade===0?' · Jeux':' · Matières');focusTarget='#subjects-title';}
   }
   if(active!=='jeux')mathController.leave();
   Object.entries(views).forEach(([name,element])=>element.hidden=name!==active);
