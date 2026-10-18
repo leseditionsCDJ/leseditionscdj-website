@@ -142,13 +142,13 @@ function chime(final=false){
 
 const SAVE_KEY='cdj-safari-couleurs-v1';
 const shuffled=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-let memory={schema:1,queue:[],lastCount:0,lastScene:'',lastVersions:{},lastOrder:[]};
-function validParty(p){return Array.isArray(p)&&p.length===6&&p.every(id=>VERSION_BY_ID[id])&&new Set(p.map(id=>VERSION_BY_ID[id].scene)).size===6;}
+let memory={schema:2,queue:[],lastCount:0,lastScene:'',lastVersions:{},lastOrder:[]};
+function validParty(p){return Array.isArray(p)&&p.length===6&&p.every(id=>VERSION_BY_ID[id])&&new Set(p.map(id=>VERSION_BY_ID[id].scene)).size===6&&new Set(p.map(id=>VERSION_BY_ID[id].color)).size===6&&[2,3,4].every(n=>p.filter(id=>VERSION_BY_ID[id].count===n).length===2);}
 function validQueue(q,prior){
  if(!Array.isArray(q)||q.length>5)return false;const seen=new Set();let prev=prior;
  for(const party of q){if(!validParty(party))return false;for(const id of party){const v=VERSION_BY_ID[id];if(seen.has(id)||v.count===prev)return false;seen.add(id);prev=v.count;}}return true;
 }
-try{const parsed=JSON.parse(localStorage.getItem(SAVE_KEY));if(parsed&&parsed.schema===1&&[0,2,3,4].includes(parsed.lastCount)&&validQueue(parsed.queue,parsed.lastCount)&&parsed.lastVersions&&typeof parsed.lastVersions==='object'&&!Array.isArray(parsed.lastVersions)){
+try{const parsed=JSON.parse(localStorage.getItem(SAVE_KEY));if(parsed&&parsed.schema===2&&[0,2,3,4].includes(parsed.lastCount)&&validQueue(parsed.queue,parsed.lastCount)&&parsed.lastVersions&&typeof parsed.lastVersions==='object'&&!Array.isArray(parsed.lastVersions)){
  memory={...memory,...parsed,lastOrder:Array.isArray(parsed.lastOrder)?parsed.lastOrder:[]};
 }}catch(_){}
 function persist(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(memory));}catch(_){}}
@@ -160,15 +160,35 @@ function arrange(party,previousCount,previousScene,previousOrder){
  let answer;for(let k=0;k<30;k++){answer=walk(party,[],previousCount);if(answer&&answer.map(id=>VERSION_BY_ID[id].scene).join()!==previousOrder.join())return answer;}
  if(answer)return answer;throw Error('No safari ordering available');
 }
+// Each count appears twice in a party. Solve paired parties together so their
+// colors are both unique, while every scene uses both versions of that count.
+function countPatterns(){
+ const out=[];function walk(prefix,remaining){if(prefix.length===6){out.push(prefix);return;}
+ for(let i=0;i<3;i++)if(remaining[i]){const next=[...remaining];next[i]--;walk(prefix.concat(i),next);}}
+ walk([],[2,2,2]);return out;
+}
+function colorPair(counts,avoidLast){
+ const choices=shuffled(SCENES.map((scene,j)=>({scene,options:shuffled(scene.versions.filter(v=>v.count===counts[j]))})))
+ .sort((a,b)=>Number(avoidLast&&b.options.some(v=>v.id===memory.lastVersions[b.scene.id]))-Number(avoidLast&&a.options.some(v=>v.id===memory.lastVersions[a.scene.id])));
+ function walk(j,first,second,colorsA,colorsB){
+ if(j===choices.length)return [first,second];const {scene,options}=choices[j];
+ for(const a of options){const b=options.find(v=>v.id!==a.id);
+ if((avoidLast&&a.id===memory.lastVersions[scene.id])||colorsA.has(a.color)||colorsB.has(b.color))continue;
+ const result=walk(j+1,first.concat(a.id),second.concat(b.id),new Set([...colorsA,a.color]),new Set([...colorsB,b.color]));if(result)return result;
+ }return null;}
+ return walk(0,[],[],new Set(),new Set());
+}
 function prepareCycle(){
- const decors=shuffled(SCENES),offset=Math.floor(Math.random()*3),bags={};
- for(const scene of decors){bags[scene.id]={};for(const n of [2,3,4]){let b=shuffled(scene.versions.filter(v=>v.count===n).map(v=>v.id));if(b[0]===memory.lastVersions[scene.id])b.reverse();bags[scene.id][n]=b;}}
+ for(const pattern of shuffled(countPatterns())){
+ const pairs=[];for(let r=0;r<3;r++){
+ const pair=colorPair(pattern.map(n=>[2,3,4][(n+r)%3]),r===0);if(!pair)break;pairs.push(pair);}
+ if(pairs.length!==3)continue;
+ const parties=[pairs[0][0],...shuffled([pairs[0][1],...pairs.slice(1).flat()])];
  let lastCount=memory.lastCount,lastScene=memory.lastScene,lastOrder=memory.lastOrder;const cycle=[];
- for(let round=0;round<6;round++){
- const choices=decors.map((s,j)=>bags[s.id][[2,3,4][(round+j+offset)%3]].shift());
- const party=arrange(choices,lastCount,lastScene,lastOrder);cycle.push(party);
- const last=VERSION_BY_ID[party.at(-1)];lastCount=last.count;lastScene=last.scene;lastOrder=party.map(id=>VERSION_BY_ID[id].scene);
- }memory.queue=cycle;
+ for(const choices of parties){const party=arrange(choices,lastCount,lastScene,lastOrder);cycle.push(party);
+ const last=VERSION_BY_ID[party.at(-1)];lastCount=last.count;lastScene=last.scene;lastOrder=party.map(id=>VERSION_BY_ID[id].scene);}
+ memory.queue=cycle;return;
+ }throw Error('Unable to prepare a color safari cycle');
 }
 function nextParty(){
  if(!memory.queue.length)prepareCycle();const ids=memory.queue.shift(),last=VERSION_BY_ID[ids.at(-1)];
@@ -224,17 +244,18 @@ function renderScene(){
  if(found.includes(item.id))button.classList.add('found');button.addEventListener('click',event=>choose(item.id,button,event.detail===0));$('subjects').appendChild(button);}
  renderPhotos();renderJourney();$('next').hidden=state.phase!=='complete';$('next').textContent=state.index===5?'Ouvrir mon album →':'Prochaine escale →';
  $('feedback').textContent=state.phase==='complete'?'Toutes les photos sont trouvées. Bravo !':'Touche les objets de la bonne couleur.';
- if(state.phase==='complete')for(const b of $('subjects').children)b.disabled=true;
 }
 function choose(id,button,keyboard=false){
- if(state.phase!=='playing')return;const v=currentVersion(),item=v.items.find(i=>i.id===id),found=state.found[state.index];if(!item||found.includes(id))return;
- initAudio();if(item.color!==v.color){$('feedback').textContent='Essaie encore : cherche la même couleur que le modèle.';button.classList.remove('retry');void button.offsetWidth;button.classList.add('retry');return;}
+ if(!['playing','complete'].includes(state.phase))return;const v=currentVersion(),item=v.items.find(i=>i.id===id),found=state.found[state.index];if(!item)return;
+ initAudio();$('audio-error').hidden=true;speak(COLOR_BY_ID[item.color].name+'.',{fail:()=>{$('audio-error').hidden=false;}});
+ if(state.phase!=='playing'||found.includes(id))return;
+ if(item.color!==v.color){$('feedback').textContent='Essaie encore : cherche la même couleur que le modèle.';button.classList.remove('retry');void button.offsetWidth;button.classList.add('retry');return;}
  found.push(id);button.classList.add('found','captured');button.setAttribute('aria-pressed','true');button.setAttribute('aria-label',button.getAttribute('aria-label')+', photographié');cameraSound();
  $('shutter-frame').classList.remove('snap');void $('shutter-frame').offsetWidth;$('shutter-frame').classList.add('snap');
  const captured=button;setTimeout(()=>{captured.classList.remove('captured');$('shutter-frame').classList.remove('snap');},650);
  renderPhotos();const remaining=v.count-found.length;
  $('feedback').textContent=remaining===0?'Toutes les photos sont trouvées. Bravo !':remaining===1?'Bien vu ! Encore une photo à trouver.':`Bien vu ! Encore ${remaining} photos à trouver.`;
- if(!remaining){state.phase='complete';$('next').hidden=false;for(const b of $('subjects').children)b.disabled=true;chime();if(keyboard)$('next').focus();}
+ if(!remaining){state.phase='complete';$('next').hidden=false;chime();if(keyboard)$('next').focus();}
  saveActive();
 }
 function showNext(keyboard=false){
