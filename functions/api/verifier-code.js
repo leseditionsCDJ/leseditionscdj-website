@@ -152,6 +152,12 @@ export async function onRequestPost(context) {
 
 
 
+        const florentCode =
+            normalizeCode(
+                context.env.CODE_FLORENT
+            );
+
+
         /* =========================
            IDENTIFIER LE TOME
         ========================== */
@@ -175,6 +181,16 @@ export async function onRequestPost(context) {
         ) {
 
             espace = "edouard";
+
+        }
+
+
+        else if (
+            florentCode &&
+            enteredCode === florentCode
+        ) {
+
+            espace = "florent";
 
         }
 
@@ -246,14 +262,19 @@ export async function onRequestPost(context) {
 
 
 
+        else if (espace === "florent") {
+
+            redirect = "/espace-florent/";
+
+        }
+
+
         /* =========================
            COOKIE
         ========================== */
 
         const cookieName =
-            espace === "tina"
-                ? "cdj_tina"
-                : "cdj_edouard";
+            `cdj_${espace}`;
 
 
 

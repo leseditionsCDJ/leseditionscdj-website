@@ -236,6 +236,11 @@ export async function onRequest(context) {
         );
 
 
+    const isFrenchFlorentSpace =
+        url.pathname === "/espace-florent" ||
+        url.pathname.startsWith("/espace-florent/");
+
+
     /*
     =========================
     IDENTIFIER L'ESPACE
@@ -284,6 +289,14 @@ export async function onRequest(context) {
 
         isEnglishSpace =
             isEnglishEdwardSpace;
+
+    }
+
+
+    else if (isFrenchFlorentSpace) {
+
+        espace = "florent";
+        cookieName = "cdj_florent";
 
     }
 
