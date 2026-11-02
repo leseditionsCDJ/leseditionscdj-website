@@ -901,7 +901,7 @@
 
             Utilise les flèches pour le déplacer.
             À chaque déplacement, Florent avance
-            automatiquement jusqu'au prochain mur.
+            automatiquement jusqu’à la prochaine intersection ou au prochain mur.
 
         </p>
 
@@ -1164,7 +1164,7 @@
                     </li>
 
                     <li>
-                        Florent avance jusqu'au prochain mur.
+                        Florent avance jusqu’à la prochaine intersection ou au prochain mur.
                     </li>
 
                     <li>
@@ -1849,26 +1849,58 @@
 
 
     /* =====================================================
-       CHERCHER LE PROCHAIN MUR
+       CHERCHER LA PROCHAINE INTERSECTION OU LE PROCHAIN MUR
     ===================================================== */
 
 
+    // Un déplacement rejoint le prochain embranchement ou le prochain mur.
     function findDestination(direction) {
-        const vector=DIRECTIONS[direction];
-        const step=naturalWidth/REFERENCE_WIDTH;
-        let point={...playerPosition}, travelled=0;
-        while(travelled<naturalWidth*1.3) {
-            const next={x:point.x+vector.x*step,y:point.y+vector.y*step};
-            if(!insideMaze(next)||isWallPixel(next.x,next.y)) break;
-            if(distance(next,goalPoint)<=28*step) return {point:{...goalPoint},reachedGoal:true};
-            point=next;travelled+=step;
+        const vector = DIRECTIONS[direction];
+        const step = naturalWidth / REFERENCE_WIDTH;
+        const sides = [{x:-vector.y,y:vector.x},{x:vector.y,y:-vector.x}];
+        const advance = (point, amount) => ({
+            x:point.x + vector.x * amount,
+            y:point.y + vector.y * amount
+        });
+        const clear = point => insideMaze(point) && !isWallPixel(point.x,point.y);
+        // Une ouverture doit mener au-delà de la largeur du couloir actuel.
+        const opensSide = point => sides.some(side => {
+            for (let offset=step; offset<=70*step; offset+=step) {
+                if (!clear({x:point.x+side.x*offset,y:point.y+side.y*offset})) return false;
+            }
+            return true;
+        });
+        let point = {...playerPosition};
+        let travelled = 0;
+        // Quitter l'intersection actuelle avant d'en chercher une nouvelle.
+        let leftCurrentJunction = !opensSide(point);
+        while (travelled < naturalWidth * 1.3) {
+            const next = advance(point,step);
+            if (!clear(next)) break;
+            if (distance(next,goalPoint)<=28*step) return {point:{...goalPoint},reachedGoal:true};
+            point=next;
+            travelled+=step;
+            const opening=opensSide(point);
+            if (!opening) leftCurrentJunction=true;
+            if (leftCurrentJunction && opening && travelled>10*step) {
+                // Se placer au milieu de l'ouverture pour pouvoir tourner.
+                let last={...point}, openingLength=0;
+                while (openingLength<100*step) {
+                    const candidate=advance(last,step);
+                    if (!clear(candidate)||!opensSide(candidate)) break;
+                    last=candidate;
+                    openingLength+=step;
+                }
+                return {point:advance(point,Math.floor(openingLength/step/2)*step),reachedGoal:false};
+            }
         }
-        if(travelled>25*step) {
-            const safer={x:point.x-vector.x*18*step,y:point.y-vector.y*18*step};
-            if(insideMaze(safer)&&!isWallPixel(safer.x,safer.y)) point=safer;
+        if (travelled>25*step) {
+            const safer=advance(point,-18*step);
+            if (clear(safer)) point=safer;
         }
         return {point,reachedGoal:false};
     }
+
 
     function canMove(
         direction
