@@ -1389,15 +1389,7 @@
             0;
 
 
-        /*
-            Protection contre un remplissage
-            accidentel de tout le fond.
-        */
-
-        const maximumPixels =
-            width *
-            height *
-            0.28;
+        // Les grandes zones ouvertes, y compris le fond, sont coloriables.
 
 
         while (
@@ -1595,21 +1587,6 @@
             changedPixels++;
 
 
-            if (
-                changedPixels >
-                maximumPixels
-            ) {
-
-
-                showMessage(
-                    "Choisis une partie de Florent ou un objet à colorier. 🎨"
-                );
-
-
-                return false;
-
-
-            }
 
 
             stack.push(
