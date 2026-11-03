@@ -1796,11 +1796,18 @@
     ===================================================== */
 
 
+    // Les groupes de rochers occupent une zone entière, y compris leurs bords clairs.
+    function isBlockedReferencePoint(x,y) {
+        return (x<325&&y<480)||(x>1110&&y>695)||
+            (x>=720&&x<=890&&y>=255&&y<=350)||
+            (x>=125&&x<=290&&y>=560&&y<=655);
+    }
+
     function isWallPixel(x,y) {
         const pixel = getPixel(x,y);
         if (!pixel) return true;
         const refX=x*REFERENCE_WIDTH/naturalWidth, refY=y*REFERENCE_HEIGHT/naturalHeight;
-        if ((refX<325 && refY<480) || (refX>1110 && refY>695)) return true;
+        if (isBlockedReferencePoint(refX,refY)) return true;
         const {r,g,b}=pixel;
         return !(r>210 && g>180 && b>115 && r-g<65 && g-b<95);
     }
@@ -2600,7 +2607,7 @@
                 const index=y*width+x, offset=index*4;
                 const r=pixels[offset],g=pixels[offset+1],b=pixels[offset+2];
                 const refX=x*REFERENCE_WIDTH/width,refY=y*REFERENCE_HEIGHT/height;
-                if(!((refX<325&&refY<480)||(refX>1110&&refY>695))&&
+                if(!isBlockedReferencePoint(refX,refY)&&
                    r>210&&g>180&&b>115&&r-g<65&&g-b<95) distances[index]=-2;
             }
         }
