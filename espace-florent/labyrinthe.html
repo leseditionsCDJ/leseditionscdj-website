@@ -1399,6 +1399,7 @@
     ========================== */
 
 
+    let hintDirections = new Map();
     let hintDistances = null;
 
     let naturalWidth =
@@ -1565,6 +1566,7 @@
             true;
 
 
+        hintDirections.clear();
         hintDistances=null;
 
         naturalWidth =
@@ -1870,7 +1872,7 @@
 
 
     // Un déplacement rejoint le prochain embranchement ou le prochain mur.
-    function findDestination(direction) {
+    function findDestination(direction, origin = playerPosition) {
         const vector = DIRECTIONS[direction];
         const step = naturalWidth / REFERENCE_WIDTH;
         const sides = [{x:-vector.y,y:vector.x},{x:vector.y,y:-vector.x}];
@@ -1886,7 +1888,7 @@
             }
             return true;
         });
-        let point = {...playerPosition};
+        let point = {...origin};
         let travelled = 0;
         // Quitter l'intersection actuelle avant d'en chercher une nouvelle.
         let leftCurrentJunction = !opensSide(point);
@@ -2630,19 +2632,38 @@
     function getHintDirection() {
         if(!collisionPixels) return null;
         if(!hintDistances) hintDistances=buildHintDistances();
-        let best=null,bestDistance=Infinity;
-        for(const direction of Object.keys(DIRECTIONS)) {
-            const result=findDestination(direction);
-            if(result.reachedGoal) return direction;
-            if(distance(playerPosition,result.point)<=10) continue;
-            const index=Math.round(result.point.y)*naturalWidth+Math.round(result.point.x);
-            const remaining=hintDistances[index];
-            if(remaining>=0&&remaining<bestDistance) {
-                bestDistance=remaining;
-                best=direction;
+        const remaining=point=>hintDistances[Math.round(point.y)*naturalWidth+Math.round(point.x)];
+        const key=point=>Math.round(point.x)+','+Math.round(point.y);
+        if(hintDirections.has(key(playerPosition))) return hintDirections.get(key(playerPosition));
+        const frontier=[{point:{...playerPosition},cost:0,score:0,parent:null,via:null}];
+        const costs=new Map([[key(playerPosition),0]]);
+        while(frontier.length) {
+            let best=0;
+            for(let i=1;i<frontier.length;i++) if(frontier[i].score<frontier[best].score) best=i;
+            const node=frontier.splice(best,1)[0];
+            if(node.cost>costs.get(key(node.point))) continue;
+            for(const direction of Object.keys(DIRECTIONS)) {
+                const result=findDestination(direction,node.point);
+                if(result.reachedGoal) {
+                    hintDirections.set(key(node.point),direction);
+                    let route=node;
+                    while(route.parent) {
+                        hintDirections.set(key(route.parent.point),route.via);
+                        route=route.parent;
+                    }
+                    return hintDirections.get(key(playerPosition));
+                }
+                const travelled=distance(node.point,result.point);
+                if(travelled<=10) continue;
+                const rest=remaining(result.point);
+                if(rest<0) continue;
+                const cost=node.cost+travelled, nextKey=key(result.point);
+                if(cost>=(costs.get(nextKey)??Infinity)) continue;
+                costs.set(nextKey,cost);
+                frontier.push({point:result.point,cost,score:cost+rest,parent:node,via:direction});
             }
         }
-        return best;
+        return null;
     }
 
     function clearDirectionHint() {
