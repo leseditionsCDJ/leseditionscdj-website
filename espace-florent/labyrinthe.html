@@ -834,6 +834,11 @@
 
         }
 
+        .direction-button.hint-direction {
+            background:#f9c845; color:#173f57;
+            outline:4px solid #bf7b00; outline-offset:3px;
+            box-shadow:0 0 0 7px rgba(249,200,69,.3);
+        }
     </style>
 
 </head>
@@ -1558,6 +1563,8 @@
             true;
 
 
+        hintDistances=null;
+
         naturalWidth =
             image.naturalWidth;
 
@@ -1992,6 +1999,8 @@
         }
 
 
+
+        clearDirectionHint();
 
         moving =
             true;
@@ -2578,71 +2587,71 @@
     ========================== */
 
 
-    hintButton.addEventListener(
-        "click",
-        function() {
+    let hintDistances = null;
 
-
-            if (
-                won
-            ) {
-
-
-                showMessage(
-                    "Florent a déjà rejoint la clinique vétérinaire ! 🎉"
-                );
-
-
-                return;
-
+    function buildHintDistances() {
+        const width=naturalWidth, height=naturalHeight;
+        const distances=new Int32Array(width*height);
+        distances.fill(-1);
+        const pixels=collisionPixels.data;
+        for(let y=Math.ceil(mazeBounds.top);y<=Math.floor(mazeBounds.bottom);y++) {
+            for(let x=Math.ceil(mazeBounds.left);x<=Math.floor(mazeBounds.right);x++) {
+                const index=y*width+x, offset=index*4;
+                const r=pixels[offset],g=pixels[offset+1],b=pixels[offset+2];
+                const refX=x*REFERENCE_WIDTH/width,refY=y*REFERENCE_HEIGHT/height;
+                if(!((refX<325&&refY<480)||(refX>1110&&refY>695))&&
+                   r>210&&g>180&&b>115&&r-g<65&&g-b<95) distances[index]=-2;
             }
-
-
-            if (
-                stars > 1
-            ) {
-
-
-                stars--;
-
-
-                updateStars();
-
-
-            }
-
-
-            goalTarget
-                .classList
-                .add(
-                    "hint"
-                );
-
-
-            showMessage(
-                "💡 La clinique vétérinaire est à droite. Explore les passages et rebrousse chemin si tu trouves un cul-de-sac."
-            );
-
-
-            setTimeout(
-                function() {
-
-
-                    goalTarget
-                        .classList
-                        .remove(
-                            "hint"
-                        );
-
-
-                },
-                2500
-            );
-
-
         }
-    );
+        const queue=new Int32Array(width*height);
+        const goal=Math.round(goalPoint.y)*width+Math.round(goalPoint.x);
+        let head=0,tail=0;
+        distances[goal]=0;queue[tail++]=goal;
+        while(head<tail) {
+            const index=queue[head++],x=index%width,y=Math.floor(index/width);
+            for(const next of [x>0?index-1:-1,x<width-1?index+1:-1,y>0?index-width:-1,y<height-1?index+width:-1]) {
+                if(next>=0&&distances[next]===-2) {
+                    distances[next]=distances[index]+1;
+                    queue[tail++]=next;
+                }
+            }
+        }
+        return distances;
+    }
 
+    function getHintDirection() {
+        if(!collisionPixels) return null;
+        if(!hintDistances) hintDistances=buildHintDistances();
+        let best=null,bestDistance=Infinity;
+        for(const direction of Object.keys(DIRECTIONS)) {
+            const result=findDestination(direction);
+            if(result.reachedGoal) return direction;
+            if(distance(playerPosition,result.point)<=10) continue;
+            const index=Math.round(result.point.y)*naturalWidth+Math.round(result.point.x);
+            const remaining=hintDistances[index];
+            if(remaining>=0&&remaining<bestDistance) {
+                bestDistance=remaining;
+                best=direction;
+            }
+        }
+        return best;
+    }
+
+    function clearDirectionHint() {
+        directionButtons.forEach(button=>button.classList.remove('hint-direction'));
+    }
+
+    hintButton.addEventListener('click',function() {
+        if(won) {showMessage('Florent a déjà rejoint la clinique vétérinaire ! 🎉');return;}
+        if(moving) {showMessage('Attends que Florent soit arrêté pour demander un indice. 🐾');return;}
+        const direction=getHintDirection();
+        if(!direction) {showMessage('Le labyrinthe se prépare. Réessaie dans un instant. 🐾');return;}
+        clearDirectionHint();
+        document.getElementById(direction+'-button').classList.add('hint-direction');
+        const instructions={up:'Monte : appuie sur la flèche ↑.',down:'Descends : appuie sur la flèche ↓.',left:'Va à gauche : appuie sur la flèche ←.',right:'Va à droite : appuie sur la flèche →.'};
+        showMessage('💡 '+instructions[direction]);
+        if(stars>1) {stars--;updateStars();}
+    });
 
 
     /* =========================
@@ -2758,6 +2767,7 @@
 
 
     function resetGame() {
+        clearDirectionHint();
 
 
         trailCtx.clearRect(
