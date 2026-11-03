@@ -378,37 +378,42 @@
         ========================== */
 
         .hint-marker {
-            position: absolute;
-
-            border:
-                5px dashed #F1B83B;
-
-            border-radius: 50%;
-
-            background:
-                rgba(241, 184, 59, .13);
-
-            pointer-events: none;
-
-            animation:
-                hintPulse
-                .7s
-                ease-in-out
-                infinite alternate;
+            position:absolute;
+            border:5px solid #a21caf;
+            border-radius:50%;
+            background:rgba(255,255,255,.08);
+            box-shadow:0 0 0 4px white,0 0 0 7px #581c87;
+            pointer-events:none;
+            z-index:20;
+            animation:hintPulse 1.2s ease-in-out infinite alternate;
         }
-
+        .hint-marker::before {
+            content:"ICI";
+            position:absolute;
+            left:50%;bottom:calc(100% + 10px);
+            transform:translateX(-50%);
+            padding:4px 9px;
+            border:2px solid white;border-radius:7px;
+            background:#7e22ce;color:white;
+            font:800 15px/1.1 Arial,sans-serif;
+            box-shadow:0 2px 5px rgba(0,0,0,.35);
+        }
+        .hint-marker::after {
+            content:"";
+            position:absolute;
+            left:50%;top:-12px;
+            transform:translateX(-50%);
+            border-left:8px solid transparent;
+            border-right:8px solid transparent;
+            border-top:10px solid #7e22ce;
+        }
         @keyframes hintPulse {
-
-            from {
-                opacity: .4;
-            }
-
-            to {
-                opacity: 1;
-            }
-
+            from {transform:scale(1);}
+            to {transform:scale(1.06);}
         }
-
+        @media (prefers-reduced-motion:reduce) {
+            .hint-marker {animation:none;}
+        }
 
         /* =========================
            MAUVAIS CLIC
@@ -1435,6 +1440,8 @@
         false;
 
 
+    let hintedDifferenceId = null;
+
     let hintMarkers =
         [];
 
@@ -1653,7 +1660,7 @@
                 );
 
 
-                clearHints();
+                if(matched.id===hintedDifferenceId) clearHints();
 
 
                 addFoundMarkers(
@@ -2022,6 +2029,8 @@
                 ];
 
 
+            hintedDifferenceId=target.id;
+
             const side =
                 target.areas[
                     Math.floor(
@@ -2044,14 +2053,11 @@
 
 
             showMessage(
-                "💡 Regarde bien la zone qui clignote !"
+                "💡 Regarde dans le cercle violet marqué « ICI »."
             );
 
 
-            setTimeout(
-                clearHints,
-                2500
-            );
+            marker.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});
 
 
         }
@@ -2060,6 +2066,7 @@
 
 
     function clearHints() {
+        hintedDifferenceId=null;
 
 
         hintMarkers.forEach(
