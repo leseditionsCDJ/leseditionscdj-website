@@ -182,7 +182,7 @@ function renderControls(){
  $('swatch-front').setAttribute('fill',currentRound().paint.main);$('swatch-edge').setAttribute('fill',currentRound().paint.dark);$('round-count').textContent=paintedInRound()+' / '+currentRound().count;
  $('step-count').textContent='Couleur '+(state.index+1)+' sur 6';$('step-count').hidden=done;
  for(let i=0;i<6;i++){const dot=$('step-'+i);dot.classList.toggle('done',i<state.index||solved&&i===state.index||done);dot.classList.toggle('current',i===state.index&&!done);dot.style.setProperty('--paint',state.steps[i].paint.main);}
- $('total-count').textContent=state.painted.size+' / '+state.drawing.parts.length;$('color-progress').setAttribute('aria-label',state.painted.size+' formes coloriées sur '+state.drawing.parts.length);$('paper').classList.toggle('finished',done);renderManual();
+ $('total-count').textContent=state.painted.size+' / '+state.drawing.parts.length;$('color-progress').setAttribute('aria-label',state.painted.size+(state.painted.size===1?' forme coloriée':' formes coloriées')+' sur '+state.drawing.parts.length);$('paper').classList.toggle('finished',done);renderManual();
 }
 function startRound(){stopSpeech();state.phase='waiting';state.roundHeard=false;state.hint=false;$('hint-shape').innerHTML='';$('audio-error').hidden=true;$('status').textContent='Écoute, puis touche les formes à colorier.';renderControls();}
 function newGame(){stopSpeech();state.drawing=takeDrawing();state.steps=createSteps(state.drawing);state.index=0;state.painted=new Set();state.introHeard=false;renderDrawing();startRound();}
@@ -193,7 +193,7 @@ function paintPart(id,group){
  const index=Number(id.slice(id.lastIndexOf('-')+1)),part=state.drawing.parts[index];if(!part)return;
  stopSpeech();
  if(part.kind!==currentRound().shape.id){group.classList.add('wrong');setTimeout(()=>group.classList.remove('wrong'),650);$('status').textContent='Regarde bien la forme demandée. Tu peux réessayer !';speak('Regarde bien la forme demandée. Tu peux réessayer !');return;}
- const paint=currentRound().paint;state.painted.add(id);group.classList.add('painted');group.classList.remove('wrong');group.querySelector('.paint-front').setAttribute('fill','url(#paint-'+paint.id+')');group.setAttribute('aria-label',currentRound().shape.label+' colorié en '+paint.word);chime();
+ const paint=currentRound().paint;state.painted.add(id);group.classList.add('painted');group.classList.remove('wrong');group.querySelector('.paint-front').setAttribute('fill','url(#paint-'+paint.id+')');group.setAttribute('aria-label',currentRound().shape.label+(currentRound().shape.id==='etoile'?' coloriée':' colorié')+' en '+paint.word);chime();
  if(paintedInRound()===currentRound().count){state.hint=false;state.phase=state.index===state.steps.length-1?'finished':'solved';$('status').textContent=state.phase==='finished'?'Bravo ! Ton dessin est entièrement colorié !':'Bravo ! Passons à une nouvelle couleur.';speak(state.phase==='finished'?'Bravo ! Ton dessin est entièrement colorié !':'Bravo ! Passons à une nouvelle couleur.');}
  else{$('status').textContent='Bien joué ! Continue avec les formes identiques.';}
  renderControls();if(state.phase==='solved')$('next').focus({preventScroll:true});if(state.phase==='finished')$('completion-title').focus({preventScroll:true});
