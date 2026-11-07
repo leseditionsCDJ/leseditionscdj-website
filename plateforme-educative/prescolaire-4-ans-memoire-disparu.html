@@ -142,7 +142,7 @@ else if(MODE==='difference'){ask('Compare les deux tableaux. Dans celui de droit
 else if(MODE==='search'){let count=2+round%3,found=0,items=shuffle([...Array(count).fill(k),...other.slice(0,6)]);ask(`Cherche les ${label(k)}s. Il y en a ${count}.`);let b=box();items.forEach(x=>b.append(btn(x,e=>{if(e.disabled)return;if(x===k){e.disabled=true;e.classList.add('done');found++;if(found===count)win('Tous les trésors sont trouvés !');else feedback(`${found} sur ${count}`)}else wrong(e)},{color:pick(COLORS)})));}
 else if(MODE==='vanish'){
 let keys=shuffle([k,...other.slice(0,round<2?2:3)]),gone=pick(keys);
-const options=shuffle([gone,...other.filter(x=>x!==gone).slice(0,2)]);
+const options=shuffle([gone,...other.filter(x=>!keys.includes(x)).slice(0,2)]);
 const pictures=new Map([...new Set([...keys,...options])].map(x=>[x,art(x,c)]));
 ask('Observe les objets. Quand tu es prêt, cache-les pour découvrir celui qui manque.');
 let view=box('display-model collection');
