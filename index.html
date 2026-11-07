@@ -454,6 +454,90 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* La plateforme éducative */
+        .platform-section {
+            padding: 48px 5% 64px;
+            background: #EAF6FC;
+        }
+        .platform-card {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 42px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 40px;
+            border: 2px solid #D4E8DF;
+            border-radius: 28px;
+            background: #FFFDF7;
+            box-shadow: 0 12px 30px rgba(23, 78, 120, .06);
+        }
+        .platform-label {
+            margin: 0 0 14px;
+            color: #246F37;
+            font-size: .9rem;
+            font-weight: bold;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+        .platform-card h2 {
+            margin: 0 0 18px;
+            color: #174E78;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            line-height: 1.2;
+        }
+        .platform-intro {
+            margin: 0 0 24px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .platform-note {
+            margin: 16px 0 0;
+            color: #344554;
+            font-size: .95rem;
+            line-height: 1.6;
+        }
+        .platform-topics {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 14px;
+        }
+        .platform-topics li {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 18px;
+            background: white;
+            border: 1px solid #E1EEF3;
+            border-radius: 18px;
+            line-height: 1.5;
+        }
+        .platform-topics .topic-icon {
+            flex: 0 0 48px;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            background: #EAF6FC;
+            border-radius: 14px;
+            font-size: 1.7rem;
+        }
+        .platform-topics li:nth-child(2) .topic-icon { background: #EFF7E8; }
+        .platform-topics li:nth-child(3) .topic-icon { background: #FFF3D6; }
+        .platform-topics strong { display: block; color: #174E78; }
+        .platform-topics .topic-detail { color: #344554; font-size: .95rem; }
+        a:focus-visible { outline: 3px solid #174E78; outline-offset: 5px; }
+        @media (max-width: 900px) {
+            .platform-card { grid-template-columns: 1fr; padding: 30px; gap: 28px; }
+        }
+        @media (max-width: 600px) {
+            .platform-section { padding: 28px 16px 40px; }
+            .platform-card { padding: 26px 20px; border-radius: 22px; }
+            .platform-card .button { width: 100%; text-align: center; }
+        }
     </style>
 </head>
 
@@ -475,6 +559,8 @@
             <a href="#accueil">Accueil</a>
 
             <a href="livres.html">Nos livres</a>
+
+            <a href="/plateforme-educative/">Plateforme éducative</a>
 
             <a href="#a-propos">À propos</a>
 
@@ -515,6 +601,42 @@
                     🔐 J’ai un code secret
                 </a>
             </div>
+        </div>
+    </section>
+
+
+    <section class="platform-section" aria-labelledby="platform-title">
+        <div class="platform-card">
+            <div>
+                <p class="platform-label">Notre plateforme éducative</p>
+                <h2 id="platform-title">Le plaisir d’apprendre continue en jouant !</h2>
+                <p class="platform-intro">
+                    Rejoins Mattéo et les animaux dans le Club des mini-explorateurs :
+                    des jeux, des découvertes et de petits défis pour éveiller
+                    la curiosité des enfants, à leur rythme.
+                </p>
+                <a href="/plateforme-educative/" class="button button-books">
+                    Explorer la plateforme <span aria-hidden="true">→</span>
+                </a>
+                <p class="platform-note">
+                    À découvrir : les activités du préscolaire 4 ans.
+                    De nouvelles aventures s’ajouteront progressivement.
+                </p>
+            </div>
+            <ul class="platform-topics" aria-label="Des idées pour apprendre en jouant">
+                <li>
+                    <span class="topic-icon" aria-hidden="true">🔢</span>
+                    <div><strong>Compter et comparer</strong><span class="topic-detail">Jouer avec les nombres et les quantités.</span></div>
+                </li>
+                <li>
+                    <span class="topic-icon" aria-hidden="true">🎨</span>
+                    <div><strong>Explorer les formes et les couleurs</strong><span class="topic-detail">Observer, reconnaître et associer.</span></div>
+                </li>
+                <li>
+                    <span class="topic-icon" aria-hidden="true">🔎</span>
+                    <div><strong>Observer et réfléchir</strong><span class="topic-detail">Relever de petits défis à son rythme.</span></div>
+                </li>
+            </ul>
         </div>
     </section>
 
