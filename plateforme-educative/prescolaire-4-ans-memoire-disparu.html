@@ -140,7 +140,20 @@ else if(MODE==='lookMatch'){ask('Regarde le modèle. Retrouve exactement le mêm
 else if(MODE==='odd'){let different=other[0],items=shuffle([k,k,k,different]);ask('Un objet est différent des trois autres. Touche-le.');let b=box();items.forEach(x=>b.append(btn(x,e=>x===different?win('Tu as repéré l’intrus !'):wrong(e),{color:c})));}
 else if(MODE==='difference'){ask('Compare les deux tableaux. Dans celui de droite, touche les deux objets qui ont changé.');let keys=[k,...other.slice(0,3)],change=shuffle([0,1,2,3]).slice(0,2),done=0;let both=box('dual-scenes');['Modèle','À comparer'].forEach((title,side)=>{let p=add(both,node('section','scene-panel'));add(p,node('h2','stage-title',title));let tiles=box('tiles',p);keys.forEach((x,i)=>{let color=side&&change.includes(i)?COLORS[(COLORS.indexOf(c)+2)%6]:c;if(!side){let wrap=node('div');wrap.innerHTML=art(x,color);tiles.append(wrap)}else tiles.append(btn(x,e=>{if(e.disabled)return;if(change.includes(i)){e.disabled=true;e.classList.add('done');done++;if(done===2)win('Les deux changements sont trouvés !')}else wrong(e)},{color}));})});}
 else if(MODE==='search'){let count=2+round%3,found=0,items=shuffle([...Array(count).fill(k),...other.slice(0,6)]);ask(`Cherche les ${label(k)}s. Il y en a ${count}.`);let b=box();items.forEach(x=>b.append(btn(x,e=>{if(e.disabled)return;if(x===k){e.disabled=true;e.classList.add('done');found++;if(found===count)win('Tous les trésors sont trouvés !');else feedback(`${found} sur ${count}`)}else wrong(e)},{color:pick(COLORS)})));}
-else if(MODE==='vanish'){let keys=shuffle([k,...other.slice(0,round<2?2:3)]),gone=pick(keys);ask('Observe les objets. Quand tu es prêt, cache-les pour découvrir celui qui manque.');let view=box('display-model collection');keys.forEach(x=>view.insertAdjacentHTML('beforeend',art(x,c)));action('Je suis prêt',b=>{b.remove();view.innerHTML=keys.filter(x=>x!==gone).map(x=>art(x,c)).join('');ask('Quel objet a disparu ?');choose(shuffle([gone,...other.filter(x=>x!==gone).slice(0,2)]),gone)});}
+else if(MODE==='vanish'){
+let keys=shuffle([k,...other.slice(0,round<2?2:3)]),gone=pick(keys);
+const options=shuffle([gone,...other.filter(x=>x!==gone).slice(0,2)]);
+const pictures=new Map([...new Set([...keys,...options])].map(x=>[x,art(x,c)]));
+ask('Observe les objets. Quand tu es prêt, cache-les pour découvrir celui qui manque.');
+let view=box('display-model collection');
+keys.forEach(x=>view.insertAdjacentHTML('beforeend',pictures.get(x)));
+action('Je suis prêt',b=>{
+b.remove();
+view.innerHTML=keys.filter(x=>x!==gone).map(x=>pictures.get(x)).join('');
+ask('Quel objet a disparu ?');
+choose(options,gone,x=>({html:pictures.get(x).replace(/\bart\d+\b/g,id=>id+'choice'+round),label:label(x)}));
+});
+}
 else if(MODE==='emotionListen'){ask(`Touche le visage qui montre la ${label(k)}.`);choose(EMOTIONS,k,faceOptions);}
 else if(MODE==='emotionStory'){let [story,answer]=d.s;ask(story+' Touche un visage.');choose(EMOTIONS,answer,faceOptions);feedback('On peut ressentir plusieurs émotions. Ici, les indices de l’histoire peuvent t’aider.');}
 else if(['social','help','polite','safety','askAdult','boundaries','comfort'].includes(MODE)){let [story,options,index,icon]=d.s;ask(story+' Touche un choix pour l’écouter, puis confirme.');model(icon,c);let selected=null,buttons=[],b=box('choices scenario');shuffle(options.map((text,i)=>({text,i}))).forEach((v,j)=>{let image=icon;let e=btn(image,e=>{selected=v;buttons.forEach(x=>x.classList.remove('selected'));e.classList.add('selected');speak(v.text);feedback(v.text)},{text:v.text,color:COLORS[j]});buttons.push(e);b.append(e)});action('Je choisis cette idée',()=>{if(!selected){feedback('Touche d’abord une idée pour l’écouter.');return}if(selected.i===index)win(options[index]+'.');else wrong(null,'Cette idée peut gêner ou blesser. Écoute les autres idées et essaie encore.');});}
