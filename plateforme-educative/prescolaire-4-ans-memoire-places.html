@@ -182,7 +182,9 @@ button.hidden=true;state.hidden=true;
 targetKey=pick(keys);
 prompt.innerHTML='<p>Retrouve la place de cet objet :</p>'+pictures.get(targetKey).replace(/\bart\d+\b/g,id=>id+'reference'+round);
 prompt.hidden=false;
-ask('Où était '+label(targetKey)+' ? Touche la carte qui le cachait.');
+const namesWithArticles={pomme:'la pomme',fraise:'la fraise',carotte:'la carotte',fleur:'la fleur',ballon:'le ballon',ours:'l’ours',coquillage:'le coquillage',papillon:'le papillon',cle:'la clé',cube:'le cube',crayon:'le crayon',livre:'le livre',camion:'le camion',cadeau:'le cadeau',bottes:'les bottes',chapeau:'le chapeau'};
+const question=targetKey==='bottes'?'Où étaient les bottes ?':'Où était '+(namesWithArticles[targetKey]||'l’objet montré')+' ?';
+ask(question+' Touche la bonne carte.');
 feedback('Regarde l’objet à retrouver, puis touche sa carte.');
 });
 }
