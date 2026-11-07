@@ -216,21 +216,7 @@ export async function onRequestPost(context) {
 
 
 
-        /* =========================
-           LANGUE
-        ==========================
-
-        La page anglaise doit envoyer :
-
-        lang: "en"
-
-        Sinon, le français est utilisé.
-        */
-
-        const language =
-            body.lang === "en"
-                ? "en"
-                : "fr";
+        
 
 
 
@@ -244,9 +230,7 @@ export async function onRequestPost(context) {
         if (espace === "tina") {
 
             redirect =
-                language === "en"
-                    ? "/en/espace-tina/"
-                    : "/espace-tina/";
+                "/espace-tina/";
 
         }
 
@@ -254,9 +238,7 @@ export async function onRequestPost(context) {
         else if (espace === "edouard") {
 
             redirect =
-                language === "en"
-                    ? "/en/espace-edward/"
-                    : "/espace-edouard/";
+                "/espace-edouard/";
 
         }
 

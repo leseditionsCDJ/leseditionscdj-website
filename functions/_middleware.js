@@ -164,6 +164,14 @@ export async function onRequest(context) {
         );
 
 
+    if (url.pathname === "/en" || url.pathname.startsWith("/en/")) {
+        const destination = new URL("/", url);
+        return new Response(null, {
+            status: 301,
+            headers: { Location: destination.toString() }
+        });
+    }
+
     /*
     =========================
     ESPACE TINA FRANÇAIS
@@ -179,24 +187,6 @@ export async function onRequest(context) {
 
         url.pathname.startsWith(
             "/espace-tina/"
-        );
-
-
-    /*
-    =========================
-    ESPACE TINA ANGLAIS
-    =========================
-    */
-
-    const isEnglishTinaSpace =
-
-        url.pathname ===
-            "/en/espace-tina"
-
-        ||
-
-        url.pathname.startsWith(
-            "/en/espace-tina/"
         );
 
 
@@ -218,24 +208,6 @@ export async function onRequest(context) {
         );
 
 
-    /*
-    =========================
-    ESPACE EDWARD ANGLAIS
-    =========================
-    */
-
-    const isEnglishEdwardSpace =
-
-        url.pathname ===
-            "/en/espace-edward"
-
-        ||
-
-        url.pathname.startsWith(
-            "/en/espace-edward/"
-        );
-
-
     const isFrenchFlorentSpace =
         url.pathname === "/espace-florent" ||
         url.pathname.startsWith("/espace-florent/");
@@ -251,12 +223,9 @@ export async function onRequest(context) {
 
     let cookieName = null;
 
-    let isEnglishSpace = false;
-
 
     if (
-        isFrenchTinaSpace ||
-        isEnglishTinaSpace
+        isFrenchTinaSpace
     ) {
 
         espace = "tina";
@@ -264,31 +233,19 @@ export async function onRequest(context) {
         cookieName =
             "cdj_tina";
 
-        isEnglishSpace =
-            isEnglishTinaSpace;
-
     }
 
 
     else if (
-        isFrenchEdouardSpace ||
-        isEnglishEdwardSpace
+        isFrenchEdouardSpace
     ) {
 
-        /*
-        Même si le personnage
-        s'appelle Edward en anglais,
-        le nom interne du token
-        reste "edouard".
-        */
+        
 
         espace = "edouard";
 
         cookieName =
             "cdj_edouard";
-
-        isEnglishSpace =
-            isEnglishEdwardSpace;
 
     }
 
@@ -360,9 +317,7 @@ export async function onRequest(context) {
 
 
         const secretCodePage =
-            isEnglishSpace
-                ? "/en/code-secret.html"
-                : "/code-secret.html";
+            "/code-secret.html";
 
 
         const redirectUrl =
