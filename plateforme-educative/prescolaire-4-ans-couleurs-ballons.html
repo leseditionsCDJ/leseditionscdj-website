@@ -194,7 +194,7 @@ function current(){return state.rounds[state.index];}
 function updateProgress(){
   const n=state.placed.length;$('progress-label').textContent=n+' / 10 décorations';
   $('progress-dots').replaceChildren();for(let i=0;i<10;i++){const d=document.createElement('span');d.className='dot'+(i<n?' done':'');$('progress-dots').appendChild(d);}
-  $('party-decor').innerHTML=garlandSVG(state.placed);$('party-decor').setAttribute('aria-label',n+' ballons ajoutés à la fête');
+  $('party-decor').innerHTML=garlandSVG(state.placed);$('party-decor').setAttribute('aria-label',n+(n===1?' ballon ajouté':' ballons ajoutés')+' à la fête');
 }
 function updateHelp(){
   const r=current();if(!r){$('audio-fallback').hidden=true;return;}
