@@ -215,7 +215,8 @@
       "source": "prescolaire-4-ans-lettre-chemins.html",
       "target": "prescolaire-5-ans-lettre-chemins.html",
       "title": "Les chemins des lettres",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-lettre-chemins.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-lettre-ecoute.html",
