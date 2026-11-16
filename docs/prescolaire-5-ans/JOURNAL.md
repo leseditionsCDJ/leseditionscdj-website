@@ -22,3 +22,5 @@
 - prescolaire-5-ans-chiffre-collections.html : PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
 
 - prescolaire-5-ans-chiffre-train.html : PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
+
+- prescolaire-5-ans-chiffre-compte.html : PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
