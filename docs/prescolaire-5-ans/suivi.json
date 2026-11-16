@@ -231,7 +231,8 @@
     {
       "source": "prescolaire-4-ans-formes-paniers.html",
       "target": "prescolaire-5-ans-formes-paniers.html",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-formes-paniers.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-lettre-chasse.html",
