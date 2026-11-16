@@ -207,7 +207,8 @@
     {
       "source": "prescolaire-4-ans-formes-chasse.html",
       "target": "prescolaire-5-ans-formes-chasse.html",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-formes-chasse.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-formes-coloriage.html",

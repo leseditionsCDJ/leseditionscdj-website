@@ -146,3 +146,5 @@
 - PASS prescolaire-5-ans-espace-photo.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-espace-promenades.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-formes-chasse.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
