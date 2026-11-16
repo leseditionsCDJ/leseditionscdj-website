@@ -158,3 +158,5 @@
 - PASS prescolaire-5-ans-formes-paniers.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
 
 - Contrôle final prescolaire-4-ans-chiffre-collections.html : objets à compter non ambigus (exclusion des paires de bottes); borne 15, fin, redémarrage et mobile revérifiés.
+
+- Contrôle final prescolaire-4-ans-chiffre-compte.html : objets à compter non ambigus (exclusion des paires de bottes); borne 15, fin, redémarrage et mobile revérifiés.
