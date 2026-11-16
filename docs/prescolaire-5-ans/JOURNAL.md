@@ -132,3 +132,5 @@
 - PASS prescolaire-5-ans-couleurs-machine.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-couleurs-safari.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-couleurs-tableaux.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
