@@ -138,3 +138,5 @@
 - PASS prescolaire-5-ans-couleurs-train.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-espace-cache.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-espace-campement.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
