@@ -152,3 +152,5 @@
 - PASS prescolaire-5-ans-formes-coloriage.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-formes-construis.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-formes-jardin.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
