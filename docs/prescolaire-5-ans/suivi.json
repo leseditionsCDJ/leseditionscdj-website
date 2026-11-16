@@ -78,7 +78,8 @@
       "source": "prescolaire-4-ans-corps-humain-bouge.html",
       "target": "prescolaire-5-ans-corps-humain-bouge.html",
       "title": "Bouge avec les amis",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-corps-humain-bouge.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-corps-humain-decouvre.html",
