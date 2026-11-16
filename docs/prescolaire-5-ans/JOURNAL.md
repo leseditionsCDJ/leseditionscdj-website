@@ -10,3 +10,5 @@
 - prescolaire-4-ans-chiffre-manquant.html : PASS total 33 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
 
 - prescolaire-4-ans-quantite-pique-nique.html : PASS total 33 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
+
+- prescolaire-4-ans-quantite-plus-moins.html : PASS total 33 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
