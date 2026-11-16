@@ -307,7 +307,8 @@
       "source": "prescolaire-4-ans-memoire-paires.html",
       "target": "prescolaire-5-ans-memoire-paires.html",
       "title": "Les trésors cachés",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-memoire-paires.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-memoire-places.html",
