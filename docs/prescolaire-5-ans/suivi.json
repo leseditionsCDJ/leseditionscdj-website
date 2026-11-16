@@ -57,7 +57,8 @@
       "source": "prescolaire-4-ans-comparaison-longueur.html",
       "target": "prescolaire-5-ans-comparaison-longueur.html",
       "title": "Les rubans de Daphnée",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-comparaison-longueur.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-comparaison-pareil.html",
