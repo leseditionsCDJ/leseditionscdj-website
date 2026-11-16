@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
 const base = process.argv[2] || 'http://127.0.0.1:8123';
 const only = process.argv[3];
+const smoke = process.env.NUMERIC_SMOKE === '1';
 (async () => {
   const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', headless: true, args: ['--no-sandbox'] });
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
@@ -25,10 +26,11 @@ const only = process.argv[3];
     const ranges = age === 5 ? [[1,10],[11,20],[21,31],[1,31]] : [[1,5],[6,10],[11,15],[1,15]];
     const mode = await page.evaluate(() => CFG.mode);
     await page.locator('.club-settings summary').click(); await page.locator('#effects').uncheck(); await page.locator('.club-settings summary').click();
-    for(const [min,max] of ranges) {
+    for(const [min,max] of (smoke ? ranges.slice(-1) : ranges)) {
       await page.selectOption('#number-band', `${min}-${max}`);
       const seen = new Set();
-      const roundsToRun = Math.ceil((max-min+1)/Math.min(6,max-min+1));
+      if(smoke) await page.evaluate(()=>{rounds=[{n:CLUB_NUMBERS.max,k:'pomme',c:COLORS[0]}];round=0;render()});
+      const roundsToRun = smoke ? 1 : Math.ceil((max-min+1)/Math.min(6,max-min+1));
       for(let run=0;run<roundsToRun;run++) {
         if(run) await page.locator('#replay').click();
         const count = await page.evaluate(() => rounds.length);
@@ -79,7 +81,7 @@ const only = process.argv[3];
         }
         assert(await page.locator('#finish').isVisible());
       }
-      for(let n=min;n<=max;n++)assert(seen.has(n),`Nombre ${n} absent du palier ${min}-${max}`);
+      for(let n=min;n<=max;n++)if(!smoke)assert(seen.has(n),`Nombre ${n} absent du palier ${min}-${max}`);
     }
     await page.setViewportSize({width:390,height:844});
     await page.locator('#replay').click();
@@ -92,7 +94,7 @@ const only = process.argv[3];
     await page.selectOption('#number-band',`${ranges[0][0]}-${ranges[0][1]}`);
     assert((await page.locator('#play').innerHTML()).length>0); assert((await page.locator('#instruction').textContent()).length>0);
     await page.setViewportSize({width:1280,height:900});
-    console.log(`PASS ${filename}: tous les paliers et toutes les valeurs, erreurs, fin, clavier, stockage, mobile`);
+    console.log(`PASS ${filename}: ${smoke?'borne supérieure 15/31':'tous les paliers et toutes les valeurs'}, erreurs, fin, clavier, stockage, mobile`);
   }
   // Navigation and unavailable audio are independently exercised for the first 5-year game.
   if(filenames.includes('prescolaire-5-ans-chiffre-ecoute.html')) {

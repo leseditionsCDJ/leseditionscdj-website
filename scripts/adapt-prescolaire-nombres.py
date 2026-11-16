@@ -13,8 +13,9 @@ s=s.replace("STORE='club4-'+CFG.cat+'-'+CFG.slug+'-v1'",f"STORE='club{age}-'+CFG
 # Supports two-digit numbers as digits, never the fallback drawing.
 s=s.replace("/^[A-Za-zÀ-ÿ0-9]$/", "/^(?:[A-Za-zÀ-ÿ]|[0-9]{1,2})$/")
 s=s.replace('font-size="88" fill="#fffaf0"','font-size="${String(k).length>1?64:88}" fill="#fffaf0"')
-s=s.replace("if(MODE==='numberListen')return sample([1,2,3,4,5].map(n=>({n})),5,'bank');", "if(['numberListen','numberMatch','countTouch','feed','countMake','equal','moreLess','share'].includes(MODE))return sample(CLUB_NUMBERS.values().map(n=>({n,k:pick(OBJECTS),c:pick(COLORS)})),Math.min(6,CLUB_NUMBERS.values().length),'bank-'+CLUB_NUMBERS.key);if(['numberOrder','numberMissing'].includes(MODE))return sample(CLUB_NUMBERS.values().map(n=>({n})),Math.min(6,CLUB_NUMBERS.values().length),'bank-'+CLUB_NUMBERS.key);")
+s=s.replace("if(MODE==='numberListen')return sample([1,2,3,4,5].map(n=>({n})),5,'bank');", "if(['numberListen','numberMatch','countTouch','feed','countMake','equal','moreLess','share'].includes(MODE))return sample(CLUB_NUMBERS.values().map(n=>({n,k:pick(OBJECTS.filter(k=>k!=='bottes')),c:pick(COLORS)})),Math.min(6,CLUB_NUMBERS.values().length),'bank-'+CLUB_NUMBERS.key);if(['numberOrder','numberMissing'].includes(MODE))return sample(CLUB_NUMBERS.values().map(n=>({n})),Math.min(6,CLUB_NUMBERS.values().length),'bank-'+CLUB_NUMBERS.key);")
 s=s.replace("ask(`Touche ${num?'le chiffre':'la lettre'} ${k}.`);let pool=num?['1','2','3','4','5']:LETTERS;choose([k,...shuffle(pool.filter(x=>x!==k)).slice(0,2)],k);", "ask(`Touche ${num?'le nombre':'la lettre'} ${k}.`);let pool=num?CLUB_NUMBERS.values().map(String):LETTERS;choose([k,...shuffle(pool.filter(x=>x!==k)).slice(0,num&&CLUB_NUMBERS.age===5?3:2)],k);postNumberChoices();")
+s=s.replace("other=shuffle(OBJECTS.filter(x=>x!==k))","other=shuffle(OBJECTS.filter(x=>x!==k&&x!=='bottes'))")
 # Numeric render branches are adapted individually; inactive modes stay intact.
 if mode=='numberMatch':
  s=s.replace("let nums=[n,...shuffle([1,2,3,4,5].filter(x=>x!==n)).slice(0,2)];", "let nums=[n,...shuffle(CLUB_NUMBERS.values().filter(x=>x!==n)).slice(0,2)];")
