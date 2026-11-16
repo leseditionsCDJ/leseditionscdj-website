@@ -32,3 +32,5 @@
 - prescolaire-5-ans-quantite-plus-moins.html : PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
 
 - prescolaire-5-ans-quantite-commande.html : PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
+
+- prescolaire-5-ans-quantite-partage.html : PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
