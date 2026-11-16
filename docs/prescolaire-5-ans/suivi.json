@@ -50,7 +50,8 @@
       "source": "prescolaire-4-ans-comparaison-hauteur.html",
       "target": "prescolaire-5-ans-comparaison-hauteur.html",
       "title": "Les tours de Zak",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-comparaison-hauteur.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-comparaison-longueur.html",

@@ -48,3 +48,5 @@
 - PASS prescolaire-5-ans-lettre-prenoms.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-comparaison-escalier.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-comparaison-hauteur.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
