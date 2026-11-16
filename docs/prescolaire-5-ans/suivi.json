@@ -236,7 +236,8 @@
       "source": "prescolaire-4-ans-lettre-prenoms.html",
       "target": "prescolaire-5-ans-lettre-prenoms.html",
       "title": "Les prénoms des amis",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-lettre-prenoms.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-logique-chemin.html",
