@@ -159,7 +159,8 @@
       "source": "prescolaire-4-ans-emotion-souffle.html",
       "target": "prescolaire-5-ans-emotion-souffle.html",
       "title": "Le ballon tranquille",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-emotion-souffle.html : 2 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-emotion-visages.html",
