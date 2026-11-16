@@ -1,0 +1,414 @@
+{
+  "repository": "leseditionsCDJ/leseditionscdj-website",
+  "branch": "codex/prescolaire-5-ans",
+  "max_4_ans": 15,
+  "max_5_ans": 31,
+  "games": [
+    {
+      "source": "prescolaire-4-ans-chiffre-collections.html",
+      "target": "prescolaire-5-ans-chiffre-collections.html",
+      "title": "Le chiffre et ses trésors",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-chiffre-compte.html",
+      "target": "prescolaire-5-ans-chiffre-compte.html",
+      "title": "Touche et compte",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-chiffre-ecoute.html",
+      "target": "prescolaire-5-ans-chiffre-ecoute.html",
+      "title": "Les chiffres qui parlent",
+      "status": "termine",
+      "verification": "72 manches résolues; tous les nombres 1–31 et paliers, erreurs, clavier, audio simulé, navigation, fin, stockage indisponible, mobile 390 px; aucune erreur JS/HTTP."
+    },
+    {
+      "source": "prescolaire-4-ans-chiffre-manquant.html",
+      "target": "prescolaire-5-ans-chiffre-manquant.html",
+      "title": "Le chiffre disparu",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-chiffre-train.html",
+      "target": "prescolaire-5-ans-chiffre-train.html",
+      "title": "Le train des chiffres",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-comparaison-escalier.html",
+      "target": "prescolaire-5-ans-comparaison-escalier.html",
+      "title": "Le petit escalier",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-comparaison-hauteur.html",
+      "target": "prescolaire-5-ans-comparaison-hauteur.html",
+      "title": "Les tours de Zak",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-comparaison-longueur.html",
+      "target": "prescolaire-5-ans-comparaison-longueur.html",
+      "title": "Les rubans de Daphnée",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-comparaison-pareil.html",
+      "target": "prescolaire-5-ans-comparaison-pareil.html",
+      "title": "Les paires de même taille",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-comparaison-taille.html",
+      "target": "prescolaire-5-ans-comparaison-taille.html",
+      "title": "Petit ou grand ?",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-corps-humain-bouge.html",
+      "target": "prescolaire-5-ans-corps-humain-bouge.html",
+      "title": "Bouge avec les amis",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-corps-humain-decouvre.html",
+      "target": "prescolaire-5-ans-corps-humain-decouvre.html",
+      "title": "Mon corps en découverte",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-corps-humain-habille.html",
+      "target": "prescolaire-5-ans-corps-humain-habille.html",
+      "title": "Où va ce vêtement ?",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-corps-humain-routine.html",
+      "target": "prescolaire-5-ans-corps-humain-routine.html",
+      "title": "Les petites routines",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-corps-humain-sens.html",
+      "target": "prescolaire-5-ans-corps-humain-sens.html",
+      "title": "Les cinq sens en jeu",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-couleurs-ballons.html",
+      "target": "prescolaire-5-ans-couleurs-ballons.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-couleurs-machine.html",
+      "target": "prescolaire-5-ans-couleurs-machine.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-couleurs-safari.html",
+      "target": "prescolaire-5-ans-couleurs-safari.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-couleurs-tableaux.html",
+      "target": "prescolaire-5-ans-couleurs-tableaux.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-couleurs-train.html",
+      "target": "prescolaire-5-ans-couleurs-train.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-emotion-histoires.html",
+      "target": "prescolaire-5-ans-emotion-histoires.html",
+      "title": "Les petites histoires du cœur",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-emotion-miroir.html",
+      "target": "prescolaire-5-ans-emotion-miroir.html",
+      "title": "Le miroir des émotions",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-emotion-reconfort.html",
+      "target": "prescolaire-5-ans-emotion-reconfort.html",
+      "title": "La boîte à réconfort",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-emotion-souffle.html",
+      "target": "prescolaire-5-ans-emotion-souffle.html",
+      "title": "Le ballon tranquille",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-emotion-visages.html",
+      "target": "prescolaire-5-ans-emotion-visages.html",
+      "title": "Les visages des émotions",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-espace-cache.html",
+      "target": "prescolaire-5-ans-espace-cache.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-espace-campement.html",
+      "target": "prescolaire-5-ans-espace-campement.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-espace-parcours.html",
+      "target": "prescolaire-5-ans-espace-parcours.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-espace-photo.html",
+      "target": "prescolaire-5-ans-espace-photo.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-espace-promenades.html",
+      "target": "prescolaire-5-ans-espace-promenades.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-formes-chasse.html",
+      "target": "prescolaire-5-ans-formes-chasse.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-formes-coloriage.html",
+      "target": "prescolaire-5-ans-formes-coloriage.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-formes-construis.html",
+      "target": "prescolaire-5-ans-formes-construis.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-formes-jardin.html",
+      "target": "prescolaire-5-ans-formes-jardin.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-formes-paniers.html",
+      "target": "prescolaire-5-ans-formes-paniers.html",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-lettre-chasse.html",
+      "target": "prescolaire-5-ans-lettre-chasse.html",
+      "title": "La récolte des lettres",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-lettre-chemins.html",
+      "target": "prescolaire-5-ans-lettre-chemins.html",
+      "title": "Les chemins des lettres",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-lettre-ecoute.html",
+      "target": "prescolaire-5-ans-lettre-ecoute.html",
+      "title": "Les lettres qui parlent",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-lettre-familles.html",
+      "target": "prescolaire-5-ans-lettre-familles.html",
+      "title": "Les familles de lettres",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-lettre-prenoms.html",
+      "target": "prescolaire-5-ans-lettre-prenoms.html",
+      "title": "Les prénoms des amis",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-logique-chemin.html",
+      "target": "prescolaire-5-ans-logique-chemin.html",
+      "title": "Le chemin du trésor",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-logique-familles.html",
+      "target": "prescolaire-5-ans-logique-familles.html",
+      "title": "Qui va ensemble ?",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-logique-puzzle.html",
+      "target": "prescolaire-5-ans-logique-puzzle.html",
+      "title": "Les petits assemblages",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-logique-suites.html",
+      "target": "prescolaire-5-ans-logique-suites.html",
+      "title": "Les colliers à compléter",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-logique-tri.html",
+      "target": "prescolaire-5-ans-logique-tri.html",
+      "title": "Les paniers bien rangés",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-memoire-disparu.html",
+      "target": "prescolaire-5-ans-memoire-disparu.html",
+      "title": "Qui manque à l’appel ?",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-memoire-ecoute.html",
+      "target": "prescolaire-5-ans-memoire-ecoute.html",
+      "title": "Écoute et souviens-toi",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-memoire-paires.html",
+      "target": "prescolaire-5-ans-memoire-paires.html",
+      "title": "Les trésors cachés",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-memoire-places.html",
+      "target": "prescolaire-5-ans-memoire-places.html",
+      "title": "Les places secrètes",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-memoire-suite.html",
+      "target": "prescolaire-5-ans-memoire-suite.html",
+      "title": "Les images à retenir",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-observation-cherche.html",
+      "target": "prescolaire-5-ans-observation-cherche.html",
+      "title": "Cherche et trouve",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-observation-detail.html",
+      "target": "prescolaire-5-ans-observation-detail.html",
+      "title": "Le détail disparu",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-observation-differences.html",
+      "target": "prescolaire-5-ans-observation-differences.html",
+      "title": "Les petits changements",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-observation-intrus.html",
+      "target": "prescolaire-5-ans-observation-intrus.html",
+      "title": "Le drôle d’intrus",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-observation-jumeau.html",
+      "target": "prescolaire-5-ans-observation-jumeau.html",
+      "title": "Le trésor jumeau",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-quantite-autant.html",
+      "target": "prescolaire-5-ans-quantite-autant.html",
+      "title": "Autant de trésors",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-quantite-commande.html",
+      "target": "prescolaire-5-ans-quantite-commande.html",
+      "title": "La petite commande",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-quantite-partage.html",
+      "target": "prescolaire-5-ans-quantite-partage.html",
+      "title": "Une surprise pour chacun",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-quantite-pique-nique.html",
+      "target": "prescolaire-5-ans-quantite-pique-nique.html",
+      "title": "Le pique-nique des animaux",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-quantite-plus-moins.html",
+      "target": "prescolaire-5-ans-quantite-plus-moins.html",
+      "title": "Les paniers gourmands",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-securite-adulte.html",
+      "target": "prescolaire-5-ans-securite-adulte.html",
+      "title": "Je demande de l’aide",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-securite-equipement.html",
+      "target": "prescolaire-5-ans-securite-equipement.html",
+      "title": "Prêt pour sortir",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-securite-etapes.html",
+      "target": "prescolaire-5-ans-securite-etapes.html",
+      "title": "Je m’arrête et je demande",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-securite-limites.html",
+      "target": "prescolaire-5-ans-securite-limites.html",
+      "title": "Mon corps, mes limites",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-securite-prudence.html",
+      "target": "prescolaire-5-ans-securite-prudence.html",
+      "title": "Les bons réflexes",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-vie-sociale-ensemble.html",
+      "target": "prescolaire-5-ans-vie-sociale-ensemble.html",
+      "title": "Les petits gestes ensemble",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-vie-sociale-entraide.html",
+      "target": "prescolaire-5-ans-vie-sociale-entraide.html",
+      "title": "La mission entraide",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-vie-sociale-equipe.html",
+      "target": "prescolaire-5-ans-vie-sociale-equipe.html",
+      "title": "La tour des amis",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-vie-sociale-mots.html",
+      "target": "prescolaire-5-ans-vie-sociale-mots.html",
+      "title": "Les mots qui font du bien",
+      "status": "a_faire"
+    },
+    {
+      "source": "prescolaire-4-ans-vie-sociale-tour.html",
+      "target": "prescolaire-5-ans-vie-sociale-tour.html",
+      "title": "À chacun son tour",
+      "status": "a_faire"
+    }
+  ]
+}

@@ -320,7 +320,7 @@ function routePage(){
   const parts=location.hash.replace(/^#\/?/,'').split('/'),requested=parts[0]||'accueil';
   const year=YEARS.find(y=>y.key===parts[1]);
   if(requested==='annees'&&year?.key==='prescolaire-4'){location.replace('prescolaire-4-ans.html');return;}
-  if(requested==='annees'&&year?.key==='prescolaire-5'&&parts[2]){location.replace('#/annees/prescolaire-5');return;}
+  if(requested==='annees'&&year?.key==='prescolaire-5'){location.replace('prescolaire-5-ans.html');return;}
   let active='accueil',title='Les petits aventuriers',focusTarget=null;
   if(requested==='inscription'){active='inscription';title='Inscription';focusTarget='#signup-title';}
   else if(requested==='annees'&&year){
