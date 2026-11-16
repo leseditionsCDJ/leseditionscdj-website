@@ -412,7 +412,8 @@
       "source": "prescolaire-4-ans-securite-etapes.html",
       "target": "prescolaire-5-ans-securite-etapes.html",
       "title": "Je m’arrête et je demande",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-securite-etapes.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-securite-limites.html",
