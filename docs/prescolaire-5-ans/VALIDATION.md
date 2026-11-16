@@ -25,8 +25,14 @@ Les nouveaux jeux reprennent le thème, les composants et les illustrations vect
 
 La synthèse vocale est simulée dans les tests pour contrôler les phrases et les parcours sans dépendre des voix du système. La qualité audible réelle et le toucher sur une tablette physique restent à vérifier. La référence pédagogique est le guide fourni et le programme-cycle québécois; aucun document d’une commission scolaire particulière n’a été fourni et aucune certification locale n’est revendiquée.
 
-La lecture HTTP du domaine de production depuis cet environnement renvoie 403. Aucun déploiement de cette branche n’a été confirmé. Le code sauvegardé sur GitHub et les résultats locaux ne prouvent pas sa publication sur le domaine public.
+La lecture HTTP du domaine de production depuis cet environnement renvoie 403. Cloudflare Pages a confirmé le déploiement de prévisualisation du commit 3a16b62 : https://b358b7c3.leseditionscdj-website.pages.dev . Les lectures HTTP du domaine de production et de cette prévisualisation depuis cet environnement renvoient 403; la confirmation de déploiement provient du contrôle Cloudflare sur GitHub, et non d’un test distant du navigateur. La branche n’est pas fusionnée dans main et la production n’a pas été modifiée.
 
 ## Reprise
 
 Lire d’abord `REPRISE.md`, puis `suivi.json` et `JOURNAL.md`. Les 70 entrées du suivi sont terminées; ne pas les recréer à partir des anciens messages de clavardage. La branche est `codex/prescolaire-5-ans`.
+
+## Liens de livraison
+
+- Proposition GitHub : https://github.com/leseditionsCDJ/leseditionscdj-website/pull/2
+- Catalogue en prévisualisation : https://b358b7c3.leseditionscdj-website.pages.dev/plateforme-educative/prescolaire-5-ans
+- Prévisualisation de la branche : https://codex-prescolaire-5-ans.leseditionscdj-website.pages.dev/plateforme-educative/prescolaire-5-ans

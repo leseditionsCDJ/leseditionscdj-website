@@ -56,3 +56,5 @@ Les captures ont été prises à 390 px de largeur et les parcours joués aussi 
 ## Publication
 
 La sauvegarde sur une branche GitHub ne publie pas automatiquement le site de production. Ne pas confondre code prêt, sauvegarde distante et déploiement vérifié. Éviter d’affirmer que les 70 jeux existent tant que le suivi ne le confirme pas.
+
+La proposition complète est https://github.com/leseditionsCDJ/leseditionscdj-website/pull/2 . Cloudflare a confirmé une prévisualisation du code au commit 3a16b62 : https://b358b7c3.leseditionscdj-website.pages.dev/plateforme-educative/prescolaire-5-ans . La production reste distincte, car la proposition n’est pas fusionnée.
