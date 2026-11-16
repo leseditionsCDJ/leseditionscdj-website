@@ -85,7 +85,8 @@
       "source": "prescolaire-4-ans-corps-humain-decouvre.html",
       "target": "prescolaire-5-ans-corps-humain-decouvre.html",
       "title": "Mon corps en découverte",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-corps-humain-decouvre.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-corps-humain-habille.html",
