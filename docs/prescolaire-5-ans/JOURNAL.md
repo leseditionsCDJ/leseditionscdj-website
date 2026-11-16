@@ -16,3 +16,5 @@
 - prescolaire-4-ans-quantite-commande.html : PASS total 33 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
 
 - prescolaire-4-ans-quantite-partage.html : PASS total 33 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
+
+- prescolaire-4-ans-quantite-autant.html : PASS total 33 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile.
