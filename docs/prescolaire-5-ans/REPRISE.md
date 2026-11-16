@@ -24,19 +24,34 @@ Dernières précisions, prioritaires :
 
 ## État et prochaine étape
 
-Consulter `suivi.json` pour les 70 jeux. Un jeu n’est terminé que lorsque ses tests passent et son code est sauvegardé sur cette branche. Les catégories non prêtes sont explicitement affichées « En préparation », sans lien cassé.
+**Développement terminé : 70/70 jeux des 5 ans et 10 adaptations numériques des 4 ans.** Chaque jeu a été vérifié et sauvegardé séparément sur cette branche. `suivi.json` donne le détail; `JOURNAL.md` contient les validations.
 
-Terminé et vérifié : premier jeu des 5 ans, `prescolaire-5-ans-chiffre-ecoute.html` (« Les nombres qui parlent »). Quatre choix, nombres à deux chiffres correctement illustrés, paliers jusqu’à 31, essais libres et audio français.
+- Nombres 4 ans : paliers 1–5, 6–10, 11–15 et mélange 1–15, dans les cinq jeux de nombres et les cinq jeux de quantités.
+- Nombres 5 ans : paliers 1–10, 11–20, 21–31 et mélange 1–31.
+- Lettres : alphabet de 26 lettres, majuscules/minuscules, associations dans les deux sens; les chemins explorent six lettres dans les deux casses.
+- Couleurs : palette de 14 couleurs (dont gris, turquoise, beige et bleu marine); mélanges explicitement simulés.
+- Formes : neuf formes, dont ovale, losange et hexagone; mosaïques, tri, recherche et coloriage.
+- Autres catégories : davantage de choix, d’objets à mémoriser, d’étapes ou de contraintes de placement. Les activités expressives et de détente restent facultatives, sans note ni vitesse.
+- Navigation : le bouton 5 ans ouvre la nouvelle page et ses 14 catégories. Les 70 jeux sont reliés et les retours fonctionnent.
 
-Prochaine étape : adapter séparément les cinq jeux `prescolaire-4-ans-chiffre-*.html`, puis les cinq jeux `prescolaire-4-ans-quantite-*.html`. Ajouter ensuite les autres jeux des 5 ans, chacun avec une vérification et un commit distinct.
+Derniers contrôles : 1 125 manches des 5 ans et 330 manches des 4 ans dans les validations initiales; contrôles supplémentaires après correction des couleurs des pièces d’espace et exclusion des paires de bottes dans les collections à dénombrer. Les bottes restent disponibles dans les jeux de vêtements; on évite seulement de présenter une paire comme un objet unique à compter.
+
+La suite concerne la revue et la publication de cette branche, puis les éventuels ajustements demandés par la propriétaire. Vérifier le statut de la pull request associée avant de supposer que le code est en production. Ne pas recommencer les 70 jeux.
 
 ## Vérifications reproductibles
 
 `node tests/prescolaire-nombres.cjs http://127.0.0.1:8123 NOM_DE_PAGE.html`
 
-Lancer auparavant un serveur statique du dépôt, par exemple `python -m http.server 8123 --bind 127.0.0.1`. Le test utilise Playwright et Chromium (`/usr/bin/chromium` dans l’environnement d’origine). Adapter le chemin du navigateur sur une autre machine.
+Lancer auparavant un serveur statique du dépôt, par exemple `python -m http.server 8123 --bind 127.0.0.1`. Les tests utilisent Playwright et Chromium (`/usr/bin/chromium` dans l’environnement d’origine). Adapter le chemin du navigateur sur une autre machine.
 
 Les tests parcourent tous les paliers et vérifient que chaque nombre peut apparaître; ils résolvent les manches et contrôlent le retour après erreur, la fin, le redémarrage, le stockage indisponible et l’affichage mobile. La synthèse vocale est simulée pour contrôler les phrases émises : la qualité audible de la voix dépend de l’appareil et n’est pas certifiée par ces tests.
+
+Autres commandes :
+
+- `node tests/prescolaire-autres.cjs http://127.0.0.1:8123 NOM_DE_PAGE.html`
+- `node tests/prescolaire-special.cjs http://127.0.0.1:8123 NOM_DE_PAGE.html`
+
+Les captures ont été prises à 390 px de largeur et les parcours joués aussi à 1280 px. Ces contrôles ne remplacent pas un essai tactile sur une tablette réelle.
 
 ## Publication
 

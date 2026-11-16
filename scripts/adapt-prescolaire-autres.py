@@ -87,9 +87,6 @@ elif mode=='puzzle':
  extra="""Object.assign(LABELS,{ovale:'ovale',losange:'losange',hexagone:'hexagone'});\n"""
  s=s.replace('s=map[k];',"Object.assign(map,{ovale:`<ellipse cx=\"80\" cy=\"80\" rx=\"65\" ry=\"43\" fill=\"${g}\" ${w}/>`,losange:`<path d=\"M80 12L140 80L80 148L20 80Z\" fill=\"${g}\" ${w}/>`,hexagone:`<path d=\"M45 20H115L150 80L115 140H45L10 80Z\" fill=\"${g}\" ${w}/>`});s=map[k];")
  desc='Associer cinq pièces à leurs silhouettes parmi neuf formes, dont ovale, losange et hexagone.'
-elif mode=='positions':
- branch(mode,"""else if(MODE==='positions'){let keys=shuffle(OBJECTS).slice(0,8),targets=shuffle(keys).slice(0,3),idx=0,hidden=false,b=box('memory-grid');state.keys=keys;state.targets=targets;ask('Mémorise les places des huit images. Cache-les quand tu es prêt.');keys.forEach((x,i)=>b.append(btn(x,e=>{if(!hidden||e.disabled)return;if(x===targets[idx]){e.innerHTML=art(x,c);e.disabled=true;e.classList.add('done');if(++idx===targets.length)win('Tu as retrouvé les trois places !');else ask(`Où était ${label(targets[idx])} ?`)}else wrong(e,'Essaie une autre place. Tu peux revoir toutes les images.')})));action('Cacher les images',button=>{hidden=true;idx=0;[...b.children].forEach((e,i)=>{e.innerHTML='<span class="memory-back" aria-hidden="true">?</span>';e.disabled=false;e.classList.remove('done');e.setAttribute('aria-label',`Emplacement ${i+1}`)});ask(`Où était ${label(targets[0])} ?`)});action('Revoir les images',()=>{hidden=false;idx=0;[...b.children].forEach((e,i)=>{e.innerHTML=art(keys[i],c);e.disabled=false;e.classList.remove('done');e.setAttribute('aria-label',label(keys[i]))});ask('Observe à nouveau les places, puis cache les images.')});}""")
- desc='Mémoriser huit emplacements et retrouver trois images demandées après les avoir cachées.'
 elif mode=='path':
  s=s.replace("stones=new Set(level.stones)","stones=new Set([...level.stones,12])")
  s=s.replace('Aide l’ourson à trouver le cadeau. Choisis un chemin. Si le passage s’arrête, reviens sur tes pas.','Passe d’abord par l’étoile, puis rejoins le cadeau. Si le chemin s’arrête, reviens sur tes pas.')
@@ -146,9 +143,6 @@ elif mode=='senses':
 elif mode=='movement':
  s=s.replace("Tu peux aussi regarder et imaginer le geste.","Puis fais doucement un signe avec la main, si c’est confortable. Tu peux aussi imaginer les deux gestes.")
  desc='Comprendre et explorer une consigne de deux gestes doux, avec une alternative d’observation.'
-elif mode=='movement':
- branch(mode,"""else if(MODE==='movement'){let moves=[['Bouge doucement une main, puis un pied.','main','pied'],['Lève les bras selon ton confort, puis bouge les doigts.','bras','main'],['Touche doucement ta tête, puis ton ventre.','tete','ventre'],['Bouge un pied, puis fais un signe de la main.','pied','main']][d.variant%4];ask(moves[0]+' Tu peux aussi observer et imaginer.');let b=box('display-model collection');b.innerHTML=art(moves[1],c)+'<span>→</span>'+art(moves[2],c);action('J’ai essayé ou observé',()=>win('Tu as exploré deux gestes dans l’ordre, à ta façon !'));}""")
- desc='Explorer une consigne de deux gestes successifs, avec une alternative assise ou imaginée.'
 elif mode=='routine':
  extra="""ROUTINES.splice(0,ROUTINES.length,['Avant la collation.',['cube','panier','savon','pomme'],['Terminer le jeu','Ranger les jouets','Se laver les mains','Manger la collation']],['Au retour d’une promenade.',['maison','bottes','savon','gourde'],['Rentrer avec son adulte','Enlever les bottes','Se laver les mains','Boire de l’eau']],['Pour un atelier de dessin.',['crayon','livre','panier','savon'],['Préparer les crayons et le papier','Dessiner','Ranger le matériel','Se laver les mains']]);\n"""
  s=s.replace("if(idx===3)win('Les trois étapes sont dans l’ordre !')", "if(idx===icons.length)win('Les étapes sont dans l’ordre !')")
