@@ -166,3 +166,5 @@
 - Contrôle final prescolaire-4-ans-quantite-plus-moins.html : objets à compter non ambigus (exclusion des paires de bottes); borne 15, fin, redémarrage et mobile revérifiés.
 
 - Contrôle final prescolaire-4-ans-quantite-commande.html : objets à compter non ambigus (exclusion des paires de bottes); borne 15, fin, redémarrage et mobile revérifiés.
+
+- Contrôle final prescolaire-4-ans-quantite-autant.html : objets à compter non ambigus (exclusion des paires de bottes); borne 15, fin, redémarrage et mobile revérifiés.
