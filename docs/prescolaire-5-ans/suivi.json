@@ -8,7 +8,8 @@
       "source": "prescolaire-4-ans-chiffre-collections.html",
       "target": "prescolaire-5-ans-chiffre-collections.html",
       "title": "Le chiffre et ses trésors",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS total 72 manches. Aucune erreur JavaScript ou HTTP. Tous les paliers, couverture des nombres, résolution, fin, redémarrage, stockage et mobile."
     },
     {
       "source": "prescolaire-4-ans-chiffre-compte.html",
