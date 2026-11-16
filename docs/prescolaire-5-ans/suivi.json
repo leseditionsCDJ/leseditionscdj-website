@@ -219,7 +219,8 @@
     {
       "source": "prescolaire-4-ans-formes-construis.html",
       "target": "prescolaire-5-ans-formes-construis.html",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-formes-construis.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-formes-jardin.html",
