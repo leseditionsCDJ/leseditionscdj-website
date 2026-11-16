@@ -172,3 +172,5 @@
 - Contrôle final prescolaire-5-ans-chiffre-collections.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
 
 - Contrôle final prescolaire-5-ans-chiffre-compte.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
+
+- Contrôle final prescolaire-5-ans-quantite-pique-nique.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
