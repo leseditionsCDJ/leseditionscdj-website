@@ -286,7 +286,8 @@
       "source": "prescolaire-4-ans-logique-tri.html",
       "target": "prescolaire-5-ans-logique-tri.html",
       "title": "Les paniers bien rangés",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-logique-tri.html : 5 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-memoire-disparu.html",
