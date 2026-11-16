@@ -178,3 +178,5 @@
 - Contrôle final prescolaire-5-ans-quantite-plus-moins.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
 
 - Contrôle final prescolaire-5-ans-quantite-commande.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
+
+- Contrôle final prescolaire-5-ans-quantite-autant.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
