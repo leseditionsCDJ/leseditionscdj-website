@@ -112,7 +112,8 @@
     {
       "source": "prescolaire-4-ans-couleurs-ballons.html",
       "target": "prescolaire-5-ans-couleurs-ballons.html",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "7 manches résolues; quatre ballons parmi quatorze couleurs, fin, reprise, mobile 390 px; aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-couleurs-machine.html",
