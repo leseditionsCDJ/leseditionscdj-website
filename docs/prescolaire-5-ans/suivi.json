@@ -177,7 +177,8 @@
     {
       "source": "prescolaire-4-ans-espace-cache.html",
       "target": "prescolaire-5-ans-espace-cache.html",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-espace-cache.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-espace-campement.html",
