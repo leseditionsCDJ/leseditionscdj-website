@@ -108,3 +108,5 @@
 - PASS prescolaire-5-ans-observation-jumeau.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-securite-adulte.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-securite-equipement.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
