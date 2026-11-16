@@ -138,7 +138,8 @@
       "source": "prescolaire-4-ans-emotion-histoires.html",
       "target": "prescolaire-5-ans-emotion-histoires.html",
       "title": "Les petites histoires du cœur",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-emotion-histoires.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-emotion-miroir.html",
