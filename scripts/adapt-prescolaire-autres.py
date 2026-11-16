@@ -15,6 +15,7 @@ def branch(name,new):
  m=re.search(pattern,s,re.M|re.S)
  if not m:raise Exception('Branche absente : '+name)
  s=s[:m.start()]+new+s[m.end():]
+s=s.replace("c=k==='ours'?'#bf8a52':'#e4b786';", "if(!window.CLUB_COLOR_VARIANTS)c=k==='ours'?'#bf8a52':'#e4b786';")
 extra=''
 desc=''
 if mode=='letterListen':
