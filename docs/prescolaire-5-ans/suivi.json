@@ -145,7 +145,8 @@
       "source": "prescolaire-4-ans-emotion-miroir.html",
       "target": "prescolaire-5-ans-emotion-miroir.html",
       "title": "Le miroir des émotions",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-emotion-miroir.html : 5 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-emotion-reconfort.html",
