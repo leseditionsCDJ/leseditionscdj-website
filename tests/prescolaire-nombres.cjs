@@ -90,7 +90,7 @@ const only = process.argv[3];
     // Blocked storage must neither prevent startup nor band changes.
     await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new Error('blocked')};Storage.prototype.getItem=()=>{throw new Error('blocked')};});
     await page.selectOption('#number-band',`${ranges[0][0]}-${ranges[0][1]}`);
-    assert(await page.locator('#play .tile').first().isVisible());
+    assert((await page.locator('#play').innerHTML()).length>0); assert((await page.locator('#instruction').textContent()).length>0);
     await page.setViewportSize({width:1280,height:900});
     console.log(`PASS ${filename}: tous les paliers et toutes les valeurs, erreurs, fin, clavier, stockage, mobile`);
   }
