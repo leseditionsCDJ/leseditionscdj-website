@@ -130,3 +130,5 @@
 - prescolaire-5-ans-couleurs-ballons.html : 7 manches résolues; quatre ballons parmi quatorze couleurs, fin, reprise, mobile 390 px; aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-couleurs-machine.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-couleurs-safari.html : 7 manches résolues, cibles/formes/couleurs/positions, fin, reprise, mobile, aucune erreur JavaScript.
