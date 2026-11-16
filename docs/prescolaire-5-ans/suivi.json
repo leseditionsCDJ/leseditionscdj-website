@@ -64,7 +64,8 @@
       "source": "prescolaire-4-ans-comparaison-pareil.html",
       "target": "prescolaire-5-ans-comparaison-pareil.html",
       "title": "Les paires de même taille",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-comparaison-pareil.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-comparaison-taille.html",
