@@ -36,7 +36,7 @@ Dernières précisions, prioritaires :
 
 Derniers contrôles : 1 125 manches des 5 ans et 330 manches des 4 ans dans les validations initiales; contrôles supplémentaires après correction des couleurs des pièces d’espace et exclusion des paires de bottes dans les collections à dénombrer. Les bottes restent disponibles dans les jeux de vêtements; on évite seulement de présenter une paire comme un objet unique à compter.
 
-La suite concerne la revue et la publication de cette branche, puis les éventuels ajustements demandés par la propriétaire. Vérifier le statut de la pull request associée avant de supposer que le code est en production. Ne pas recommencer les 70 jeux.
+La proposition #2 est fusionnée dans main. Cloudflare Pages a confirmé le déploiement réussi du commit principal 8999fa0ea7c080b15265db390ae68d0c16aea9f3 le 16 novembre 2026 (UTC). La suite concerne les éventuels ajustements demandés par la propriétaire. Ne pas recommencer les 70 jeux.
 
 ## Vérifications reproductibles
 
@@ -57,4 +57,6 @@ Les captures ont été prises à 390 px de largeur et les parcours joués aussi 
 
 La sauvegarde sur une branche GitHub ne publie pas automatiquement le site de production. Ne pas confondre code prêt, sauvegarde distante et déploiement vérifié. Éviter d’affirmer que les 70 jeux existent tant que le suivi ne le confirme pas.
 
-La proposition complète est https://github.com/leseditionsCDJ/leseditionscdj-website/pull/2 . Cloudflare a confirmé une prévisualisation du code au commit 3a16b62 : https://b358b7c3.leseditionscdj-website.pages.dev/plateforme-educative/prescolaire-5-ans . La production reste distincte, car la proposition n’est pas fusionnée.
+La proposition complète est https://github.com/leseditionsCDJ/leseditionscdj-website/pull/2 . Cloudflare a confirmé une prévisualisation du code au commit 3a16b62 : https://b358b7c3.leseditionscdj-website.pages.dev/plateforme-educative/prescolaire-5-ans . La proposition est maintenant fusionnée et Cloudflare a confirmé le déploiement de production du commit 8999fa0.
+
+Catalogue principal : https://leseditionscdj.ca/plateforme-educative/prescolaire-5-ans . Confirmation Cloudflare : déploiement c56cc686-4347-4c60-90c9-940139692a53 réussi pour le commit main 8999fa0.

@@ -182,3 +182,5 @@
 - Contrôle final prescolaire-5-ans-quantite-autant.html : objets à compter non ambigus (exclusion des paires de bottes); borne 31, fin, redémarrage et mobile revérifiés.
 
 - Livraison finale : 70/70 jeux des 5 ans et 10 adaptations des 4 ans; 720 liens locaux et navigation complète vérifiés. Détail et limites dans VALIDATION.md.
+
+- 16 novembre 2026 UTC : proposition #2 fusionnée dans main; Cloudflare Pages confirme le déploiement de production 8999fa0, c56cc686-4347-4c60-90c9-940139692a53.
