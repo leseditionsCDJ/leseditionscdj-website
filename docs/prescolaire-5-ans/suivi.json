@@ -92,7 +92,8 @@
       "source": "prescolaire-4-ans-corps-humain-habille.html",
       "target": "prescolaire-5-ans-corps-humain-habille.html",
       "title": "Où va ce vêtement ?",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-corps-humain-habille.html : 6 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-corps-humain-routine.html",
