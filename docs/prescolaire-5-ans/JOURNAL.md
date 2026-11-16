@@ -54,3 +54,5 @@
 - PASS prescolaire-5-ans-comparaison-longueur.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-comparaison-pareil.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-comparaison-taille.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.

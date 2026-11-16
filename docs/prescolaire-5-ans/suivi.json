@@ -71,7 +71,8 @@
       "source": "prescolaire-4-ans-comparaison-taille.html",
       "target": "prescolaire-5-ans-comparaison-taille.html",
       "title": "Petit ou grand ?",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-comparaison-taille.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-corps-humain-bouge.html",
