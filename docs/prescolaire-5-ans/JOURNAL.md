@@ -40,3 +40,5 @@
 - PASS prescolaire-5-ans-lettre-chasse.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-lettre-chemins.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-lettre-ecoute.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.

@@ -222,7 +222,8 @@
       "source": "prescolaire-4-ans-lettre-ecoute.html",
       "target": "prescolaire-5-ans-lettre-ecoute.html",
       "title": "Les lettres qui parlent",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-lettre-ecoute.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-lettre-familles.html",
