@@ -342,7 +342,8 @@
       "source": "prescolaire-4-ans-observation-differences.html",
       "target": "prescolaire-5-ans-observation-differences.html",
       "title": "Les petits changements",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-observation-differences.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-observation-intrus.html",
