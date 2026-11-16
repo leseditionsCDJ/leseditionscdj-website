@@ -99,7 +99,8 @@
       "source": "prescolaire-4-ans-corps-humain-routine.html",
       "target": "prescolaire-5-ans-corps-humain-routine.html",
       "title": "Les petites routines",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-corps-humain-routine.html : 4 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-corps-humain-sens.html",
