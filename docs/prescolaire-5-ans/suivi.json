@@ -314,7 +314,8 @@
       "source": "prescolaire-4-ans-memoire-places.html",
       "target": "prescolaire-5-ans-memoire-places.html",
       "title": "Les places secrètes",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-memoire-places.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-memoire-suite.html",
