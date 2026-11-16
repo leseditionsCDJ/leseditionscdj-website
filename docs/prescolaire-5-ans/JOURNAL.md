@@ -76,3 +76,5 @@
 - PASS prescolaire-5-ans-emotion-souffle.html : 2 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
 
 - PASS prescolaire-5-ans-emotion-visages.html : 5 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.
+
+- PASS prescolaire-5-ans-logique-chemin.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript.

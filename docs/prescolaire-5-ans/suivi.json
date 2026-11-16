@@ -258,7 +258,8 @@
       "source": "prescolaire-4-ans-logique-chemin.html",
       "target": "prescolaire-5-ans-logique-chemin.html",
       "title": "Le chemin du trésor",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-logique-chemin.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-logique-familles.html",
