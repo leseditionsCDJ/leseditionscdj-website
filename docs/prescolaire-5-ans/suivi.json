@@ -208,7 +208,8 @@
       "source": "prescolaire-4-ans-lettre-chasse.html",
       "target": "prescolaire-5-ans-lettre-chasse.html",
       "title": "La récolte des lettres",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-lettre-chasse.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-lettre-chemins.html",
