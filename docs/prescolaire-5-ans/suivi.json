@@ -349,7 +349,8 @@
       "source": "prescolaire-4-ans-observation-intrus.html",
       "target": "prescolaire-5-ans-observation-intrus.html",
       "title": "Le drôle d’intrus",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-observation-intrus.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-observation-jumeau.html",
