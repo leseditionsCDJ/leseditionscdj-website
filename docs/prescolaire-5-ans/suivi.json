@@ -398,7 +398,8 @@
       "source": "prescolaire-4-ans-securite-adulte.html",
       "target": "prescolaire-5-ans-securite-adulte.html",
       "title": "Je demande de l’aide",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-securite-adulte.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-securite-equipement.html",
