@@ -166,7 +166,8 @@
       "source": "prescolaire-4-ans-emotion-visages.html",
       "target": "prescolaire-5-ans-emotion-visages.html",
       "title": "Les visages des émotions",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-emotion-visages.html : 5 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-espace-cache.html",
