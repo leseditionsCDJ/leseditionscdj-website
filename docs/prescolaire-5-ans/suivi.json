@@ -106,7 +106,8 @@
       "source": "prescolaire-4-ans-corps-humain-sens.html",
       "target": "prescolaire-5-ans-corps-humain-sens.html",
       "title": "Les cinq sens en jeu",
-      "status": "a_faire"
+      "status": "termine",
+      "verification": "PASS prescolaire-5-ans-corps-humain-sens.html : 7 manches résolues, fin, reprise, clavier quand applicable, mobile 390 px, aucune erreur JavaScript."
     },
     {
       "source": "prescolaire-4-ans-couleurs-ballons.html",
