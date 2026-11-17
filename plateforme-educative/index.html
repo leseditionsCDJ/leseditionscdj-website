@@ -146,6 +146,7 @@ function spriteFrameStyle(sheet,index){
 }
 function sprite(key,extra=''){
  if(key==='matteo')return `<span class="sprite matteo ${extra}" aria-hidden="true"></span>`;
+ if(key==='🎨')return '<img class="sprite" src="./icone-arts.webp" alt="" width="280" height="280">';
  const art=PLATFORM_ART[key];if(!art)return '';
  return `<span class="sprite ${art.sheet} ${extra}" aria-hidden="true" style="${spriteFrameStyle(art.sheet,art.index)}"></span>`;
 }
@@ -281,8 +282,8 @@ const FIRST_GRADE_SUBJECTS={
   francais:{...SUBJECTS.francais,hasGame:false},
   mathematiques:{...SUBJECTS.mathematiques,title:'Mathématique',hasGame:false},
   anglais:{...SUBJECTS.anglais,title:'Anglais, langue seconde'},
-  sciences:{...SUBJECTS.sciences,title:'Exploration scientifique'},
-  univers_social:{title:'Univers social',icon:'🌍',hasGame:false},
+  sciences:{...SUBJECTS.sciences,title:'Exploration scientifique',levelNote:'Exploration du premier cycle'},
+  univers_social:{title:'Univers social',icon:'🌍',hasGame:false,levelNote:'Exploration du premier cycle'},
   ccq:{title:'Culture et citoyenneté québécoise',icon:'💬',hasGame:false},
   arts:{title:'Arts',icon:'🎨',hasGame:false}
 };
@@ -321,7 +322,7 @@ function renderSubjects(year){
   }
   document.querySelector('#subjects-year').textContent=year.label;
   document.querySelector('#subjects-intro').textContent=year.grade===0?'Écoute, observe et découvre en jouant. Les activités du préscolaire privilégient l’oral et les images.':year.grade===11?'Choisis une matière. La physique est une option; les sciences, l’histoire et la géographie permettront aussi de revoir des notions déjà apprises.':year.key==='primaire-1'?'Une aventure par matière. Les deux premiers tableaux seront gratuits.':'Choisis une matière, puis découvre les jeux de ton année scolaire.';
-  document.querySelector('#year-subjects').innerHTML=subjectsFor(year).map(key=>{const subject=subjectFor(year,key);return `<a class="subject-card" href="${catalogPath(year,key)}"><span class="subject-icon" aria-hidden="true">${(sprite(subject.icon)||subject.icon)}</span><h3>${subject.title}</h3><p>${year.grade===0?({mathematiques:'Observer, comparer et compter en jouant.',francais:'Écouter des mots, des sons et des consignes.',sciences:'Explorer les animaux et la nature.'}[key]):year.key==='primaire-1'?FIRST_GRADE_DETAILS[key]:SUBJECT_DETAILS[key]}</p><span class="availability ${subject.hasGame?'available':''}">${subject.hasGame?'1 jeu gratuit à essayer':'Jeux à venir'}</span></a>`;}).join('');
+  document.querySelector('#year-subjects').innerHTML=subjectsFor(year).map(key=>{const subject=subjectFor(year,key);return `<a class="subject-card" href="${catalogPath(year,key)}"><span class="subject-icon" aria-hidden="true">${(sprite(subject.icon)||subject.icon)}</span><h3>${subject.title}</h3>${subject.levelNote?`<small>${subject.levelNote}</small>`:''}<p>${year.grade===0?({mathematiques:'Observer, comparer et compter en jouant.',francais:'Écouter des mots, des sons et des consignes.',sciences:'Explorer les animaux et la nature.'}[key]):year.key==='primaire-1'?FIRST_GRADE_DETAILS[key]:SUBJECT_DETAILS[key]}</p><span class="availability ${subject.hasGame?'available':''}">${subject.hasGame?'1 jeu gratuit à essayer':'Jeux à venir'}</span></a>`;}).join('');
 }
 function renderCatalog(year,key){
   const subject=subjectFor(year,key);
