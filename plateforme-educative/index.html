@@ -278,8 +278,8 @@ const SUBJECTS = {
 };
 const SUBJECT_DETAILS={mathematiques:'Des nombres, des formes et des défis.',francais:'Des mots, des histoires et le plaisir de lire.',sciences:'Les animaux, la nature et les inventions.',histoire:'Le passé, ses personnages et ses histoires.',physique:'Les mouvements, la lumière et l’énergie.',geographie:'Les cartes, les paysages et les territoires.',anglais:'Des mots et des expressions en anglais.'};
 const FIRST_GRADE_SUBJECTS={
-  francais:{...SUBJECTS.francais},
-  mathematiques:{...SUBJECTS.mathematiques,title:'Mathématique'},
+  francais:{...SUBJECTS.francais,hasGame:false},
+  mathematiques:{...SUBJECTS.mathematiques,title:'Mathématique',hasGame:false},
   anglais:{...SUBJECTS.anglais,title:'Anglais, langue seconde'},
   sciences:{...SUBJECTS.sciences,title:'Exploration scientifique'},
   univers_social:{title:'Univers social',icon:'🌍',hasGame:false},
@@ -333,7 +333,7 @@ function renderCatalog(year,key){
     const french=key==='francais';
     document.querySelector('#catalog-games').innerHTML=`<article class="catalog-game"><div class="catalog-cover" aria-hidden="true">${sprite(french?'🔎':'🔢')}</div><div class="catalog-info"><span class="availability available">Jeu gratuit · version en test</span><h2>${french?'Détective des mots':'La clinique des nombres'}</h2><p>${french?'Explore le jardin de Mattéo, résous cinq défis de français et retrouve Tina la tortue.':'Aide Mattéo à soigner ses huit petits patients en résolvant des énigmes de nombres.'}</p><a class="primary" href="${french?'detective-des-mots.html?annee='+year.key:yearPath(year)+'/jeux/clinique-nombres'}">Jouer</a><p class="catalog-note">${note}</p></div></article>`;
   }else{
-    document.querySelector('#catalog-games').innerHTML=`<section class="catalog-coming">${sprite(subject.icon)}<div><h2>Les jeux arrivent bientôt !</h2><p>Les jeux de ${subject.title.toLowerCase()} pour cette année scolaire sont en préparation. Tu peux déjà essayer les mathématiques ou le français.</p><a class="secondary" href="${yearPath(year)}">Revenir à mes matières</a></div></section>`;
+    document.querySelector('#catalog-games').innerHTML=`<section class="catalog-coming">${sprite(subject.icon)}<div><h2>Les jeux arrivent bientôt !</h2><p>Les jeux de ${subject.title.toLowerCase()} pour cette année scolaire sont en préparation. ${year.key==='primaire-1'?'':'Tu peux déjà essayer les mathématiques ou le français.'}</p><a class="secondary" href="${yearPath(year)}">Revenir à mes matières</a></div></section>`;
   }
 }
 function routePage(){
@@ -346,7 +346,7 @@ function routePage(){
   else if(requested==='annees'&&year){
     if(parts[2]==='matieres'&&subjectsFor(year).includes(parts[3])){
       active='catalogue';renderCatalog(year,parts[3]);title=year.label+' · '+subjectFor(year,parts[3]).title;focusTarget='#catalog-title';
-    }else if(parts[2]==='jeux'&&parts[3]==='clinique-nombres'){
+    }else if(parts[2]==='jeux'&&parts[3]==='clinique-nombres'&&subjectFor(year,'mathematiques').hasGame){
       active='jeux';mathController.selectYear(year);document.querySelector('#math-back').href=catalogPath(year,'mathematiques');title=year.label+' · La clinique des nombres';focusTarget='#play-title';
     }else{active='matieres';renderSubjects(year);title=year.label+(year.grade===0?' · Jeux':' · Matières');focusTarget='#subjects-title';}
   }
