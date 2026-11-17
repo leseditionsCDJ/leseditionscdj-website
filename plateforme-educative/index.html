@@ -283,7 +283,9 @@ const FIRST_GRADE_SUBJECTS={
   anglais:{...SUBJECTS.anglais,title:'Anglais, langue seconde'},
   sciences:{...SUBJECTS.sciences,title:'Exploration scientifique'},
   univers_social:{title:'Univers social',icon:'🌍',hasGame:false},
-  ccq:{title:'Culture et citoyenneté québécoise',icon:'💬',hasGame:false}
+  ccq:{title:'Culture et citoyenneté québécoise',icon:'💬',hasGame:false},
+  arts:{title:'Arts',icon:'🎨',hasGame:false},
+  education_physique:{title:'Éducation physique et à la santé',icon:'🤸',hasGame:false}
 };
 const FIRST_GRADE_DETAILS={
   francais:'Lire, écrire et jouer avec les mots.',
@@ -291,7 +293,9 @@ const FIRST_GRADE_DETAILS={
   anglais:'Écouter et utiliser des mots en anglais.',
   sciences:'Observer le vivant, les matières et les saisons.',
   univers_social:'Se repérer dans le temps et dans son quartier.',
-  ccq:'Découvrir les familles et les rituels du quotidien.'
+  ccq:'Découvrir les familles et les rituels du quotidien.',
+  arts:'Créer et découvrir les arts plastiques, la musique, la danse et le théâtre.',
+  education_physique:'Bouger, jouer et découvrir des habitudes de vie saines.'
 };
 function subjectFor(year,key){
   return year.key==='primaire-1'?FIRST_GRADE_SUBJECTS[key]:SUBJECTS[key];
@@ -319,21 +323,21 @@ function renderSubjects(year){
   }
   document.querySelector('#subjects-year').textContent=year.label;
   document.querySelector('#subjects-intro').textContent=year.grade===0?'Écoute, observe et découvre en jouant. Les activités du préscolaire privilégient l’oral et les images.':year.grade===11?'Choisis une matière. La physique est une option; les sciences, l’histoire et la géographie permettront aussi de revoir des notions déjà apprises.':year.key==='primaire-1'?'Une aventure par matière. Les deux premiers tableaux seront gratuits.':'Choisis une matière, puis découvre les jeux de ton année scolaire.';
-  document.querySelector('#year-subjects').innerHTML=subjectsFor(year).map(key=>{const subject=subjectFor(year,key);return `<a class="subject-card" href="${catalogPath(year,key)}"><span class="subject-icon" aria-hidden="true">${sprite(subject.icon)}</span><h3>${subject.title}</h3><p>${year.grade===0?({mathematiques:'Observer, comparer et compter en jouant.',francais:'Écouter des mots, des sons et des consignes.',sciences:'Explorer les animaux et la nature.'}[key]):year.key==='primaire-1'?FIRST_GRADE_DETAILS[key]:SUBJECT_DETAILS[key]}</p><span class="availability ${subject.hasGame?'available':''}">${subject.hasGame?'1 jeu gratuit à essayer':'Jeux à venir'}</span></a>`;}).join('');
+  document.querySelector('#year-subjects').innerHTML=subjectsFor(year).map(key=>{const subject=subjectFor(year,key);return `<a class="subject-card" href="${catalogPath(year,key)}"><span class="subject-icon" aria-hidden="true">${(sprite(subject.icon)||subject.icon)}</span><h3>${subject.title}</h3><p>${year.grade===0?({mathematiques:'Observer, comparer et compter en jouant.',francais:'Écouter des mots, des sons et des consignes.',sciences:'Explorer les animaux et la nature.'}[key]):year.key==='primaire-1'?FIRST_GRADE_DETAILS[key]:SUBJECT_DETAILS[key]}</p><span class="availability ${subject.hasGame?'available':''}">${subject.hasGame?'1 jeu gratuit à essayer':'Jeux à venir'}</span></a>`;}).join('');
 }
 function renderCatalog(year,key){
   const subject=subjectFor(year,key);
   document.querySelector('#catalog-back').href=yearPath(year);
   document.querySelector('#catalog-title').textContent=subject.title;
   document.querySelector('#catalog-year').textContent=year.label;
-  document.querySelector('#catalog-illustration').innerHTML=sprite(subject.icon);
+  document.querySelector('#catalog-illustration').innerHTML=(sprite(subject.icon)||subject.icon);
   document.querySelector('#catalog-description').textContent=subject.hasGame?'Ton année est déjà choisie. Sélectionne un jeu, puis ta difficulté.':'Les aventures de cette matière sont en préparation.';
   const note=year.grade===0?'Les 4 et 5 ans partagent actuellement une première banque d’activités en test.':key==='mathematiques'&&year.grade>=10?'Les défis disponibles suivent actuellement la séquence CST.':'Facile, Modéré ou Difficile : choisis ton défi dans le jeu.';
   if(subject.hasGame){
     const french=key==='francais';
     document.querySelector('#catalog-games').innerHTML=`<article class="catalog-game"><div class="catalog-cover" aria-hidden="true">${sprite(french?'🔎':'🔢')}</div><div class="catalog-info"><span class="availability available">Jeu gratuit · version en test</span><h2>${french?'Détective des mots':'La clinique des nombres'}</h2><p>${french?'Explore le jardin de Mattéo, résous cinq défis de français et retrouve Tina la tortue.':'Aide Mattéo à soigner ses huit petits patients en résolvant des énigmes de nombres.'}</p><a class="primary" href="${french?'detective-des-mots.html?annee='+year.key:yearPath(year)+'/jeux/clinique-nombres'}">Jouer</a><p class="catalog-note">${note}</p></div></article>`;
   }else{
-    document.querySelector('#catalog-games').innerHTML=`<section class="catalog-coming">${sprite(subject.icon)}<div><h2>Les jeux arrivent bientôt !</h2><p>Les jeux de ${subject.title.toLowerCase()} pour cette année scolaire sont en préparation. ${year.key==='primaire-1'?'':'Tu peux déjà essayer les mathématiques ou le français.'}</p><a class="secondary" href="${yearPath(year)}">Revenir à mes matières</a></div></section>`;
+    document.querySelector('#catalog-games').innerHTML=`<section class="catalog-coming">${(sprite(subject.icon)||subject.icon)}<div><h2>Les jeux arrivent bientôt !</h2><p>Les jeux de ${subject.title.toLowerCase()} pour cette année scolaire sont en préparation. ${year.key==='primaire-1'?'':'Tu peux déjà essayer les mathématiques ou le français.'}</p><a class="secondary" href="${yearPath(year)}">Revenir à mes matières</a></div></section>`;
   }
 }
 function routePage(){
