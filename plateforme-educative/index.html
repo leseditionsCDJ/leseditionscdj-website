@@ -146,6 +146,7 @@ function spriteFrameStyle(sheet,index){
 }
 function sprite(key,extra=''){
  if(key==='matteo')return `<span class="sprite matteo ${extra}" aria-hidden="true"></span>`;
+ if(key==='ccq')return '<img class="sprite" src="./icone-ccq.webp" alt="" width="280" height="280">';
  if(key==='🎨')return '<img class="sprite" src="./icone-arts.webp" alt="" width="280" height="280">';
  const art=PLATFORM_ART[key];if(!art)return '';
  return `<span class="sprite ${art.sheet} ${extra}" aria-hidden="true" style="${spriteFrameStyle(art.sheet,art.index)}"></span>`;
@@ -284,7 +285,7 @@ const FIRST_GRADE_SUBJECTS={
   anglais:{...SUBJECTS.anglais,title:'Anglais, langue seconde'},
   sciences:{...SUBJECTS.sciences,title:'Exploration scientifique',levelNote:'Exploration du premier cycle'},
   univers_social:{title:'Univers social',icon:'🌍',hasGame:false,levelNote:'Exploration du premier cycle'},
-  ccq:{title:'Culture et citoyenneté québécoise',icon:'💬',hasGame:false},
+  ccq:{title:'Culture et citoyenneté québécoise',icon:'ccq',hasGame:false},
   arts:{title:'Arts',icon:'🎨',hasGame:false}
 };
 const FIRST_GRADE_DETAILS={
