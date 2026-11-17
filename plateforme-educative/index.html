@@ -284,8 +284,7 @@ const FIRST_GRADE_SUBJECTS={
   sciences:{...SUBJECTS.sciences,title:'Exploration scientifique'},
   univers_social:{title:'Univers social',icon:'🌍',hasGame:false},
   ccq:{title:'Culture et citoyenneté québécoise',icon:'💬',hasGame:false},
-  arts:{title:'Arts',icon:'🎨',hasGame:false},
-  education_physique:{title:'Éducation physique et à la santé',icon:'🤸',hasGame:false}
+  arts:{title:'Arts',icon:'🎨',hasGame:false}
 };
 const FIRST_GRADE_DETAILS={
   francais:'Lire, écrire et jouer avec les mots.',
@@ -294,8 +293,7 @@ const FIRST_GRADE_DETAILS={
   sciences:'Observer le vivant, les matières et les saisons.',
   univers_social:'Se repérer dans le temps et dans son quartier.',
   ccq:'Découvrir les familles et les rituels du quotidien.',
-  arts:'Créer et découvrir les arts plastiques, la musique, la danse et le théâtre.',
-  education_physique:'Bouger, jouer et découvrir des habitudes de vie saines.'
+  arts:'Créer et découvrir les arts plastiques, la musique, la danse et le théâtre.'
 };
 function subjectFor(year,key){
   return year.key==='primaire-1'?FIRST_GRADE_SUBJECTS[key]:SUBJECTS[key];
