@@ -92,10 +92,10 @@ if('speechSynthesis' in window){
  refreshVoice();speechSynthesis.addEventListener('voiceschanged',refreshVoice);
 }
 function spokenText(text){
- return String(text).replace(/←\\s*→/g,'les flèches gauche et droite')
+ return String(text).replace(/←\s*→/g,'les flèches gauche et droite')
  .replace(/↑/g,'la flèche du haut').replace(/↓/g,'la flèche du bas')
  .replace(/→/g,'vers la droite').replace(/←/g,'vers la gauche')
- .replace(/\\bE\\b/g,'la touche e').replace(/·/g,'. ').replace(/\\s+/g,' ').trim();
+ .replace(/\bE\b/g,'la touche e').replace(/·/g,'. ').replace(/\s+/g,' ').trim();
 }
 function stopVoice(){
  speechToken++;speechBusy=false;currentSpeech=null;pendingWord=null;
