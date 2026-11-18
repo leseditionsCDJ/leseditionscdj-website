@@ -4,7 +4,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Les pages envolées · L’aventure</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#102c36;color:#fdf6dc;font:17px/1.5 Nunito,system-ui,sans-serif}main{max-width:1220px;margin:auto;padding:16px}a{color:#e1eef5}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 15px}h1{font-size:clamp(23px,4vw,34px);margin:0}p{margin:5px 0}button,select,textarea{font:inherit}button,select{border:1px solid #48727a;border-radius:12px;padding:10px 16px;cursor:pointer;background:#f8edce;color:#163a44}button:hover{background:#fff9e8}button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd05d;outline-offset:3px}button:disabled{opacity:.55;cursor:default}.game{position:relative;overflow:hidden;border:3px solid #537d77;border-radius:20px;box-shadow:0 16px 40px #0006;background:#aedce1}canvas{display:block;width:100%;aspect-ratio:16/9;outline:none;touch-action:none}.hud{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;margin:10px 0}.help{font-size:15px;color:#c1d8d9}.touch{display:flex;justify-content:space-between;gap:10px;margin-top:14px}.touch div{display:flex;gap:10px}.touch button{min-width:58px;min-height:48px;touch-action:none;user-select:none}.primary{background:#ffd56e}.veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#132f4075;padding:15px}.card{color:#183d45;background:#fff8e6;border:3px solid #dab77a;border-radius:22px;max-width:660px;width:100%;padding:clamp(18px,3vw,30px);box-shadow:0 12px 35px #0005;max-height:96%;overflow:auto}.card h2{font-size:clamp(20px,3vw,30px);line-height:1.2;margin:0 0 12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.passage{white-space:pre-line;background:#ecedd8;padding:12px;border-radius:10px}.tokens{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.assembled{padding:12px;border:2px dashed #98b8aa;min-height:52px;border-radius:10px}.feedback{min-height:28px;font-weight:700;margin-top:10px}textarea{width:100%;min-height:90px;padding:12px;border:2px solid #9cbaae;border-radius:10px}.note{font-size:13px;color:#bfd0d0}.card .note{color:#4a666c}[hidden]{display:none!important}@media(max-width:650px){main{padding:8px}.help{font-size:13px}.card{padding:14px}.card h2{font-size:19px}.card p{font-size:15px}canvas{aspect-ratio:4/3}.touch button{padding:9px}.hud{font-size:14px}}
+*{box-sizing:border-box}body{margin:0;background:#204b67;color:#fdf6dc;font:17px/1.5 Nunito,system-ui,sans-serif}main{max-width:1220px;margin:auto;padding:16px}a{color:#e1eef5}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 15px}h1{font-size:clamp(23px,4vw,34px);margin:0}p{margin:5px 0}button,select,textarea{font:inherit}button,select{border:1px solid #48727a;border-radius:12px;padding:10px 16px;cursor:pointer;background:#f8edce;color:#163a44}button:hover{background:#fff9e8}button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd05d;outline-offset:3px}button:disabled{opacity:.55;cursor:default}.game{position:relative;overflow:hidden;border:3px solid #537d77;border-radius:20px;box-shadow:0 16px 40px #0006;background:#aedce1}canvas{display:block;width:100%;aspect-ratio:16/9;outline:none;touch-action:none}.hud{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;margin:10px 0}.help{font-size:15px;color:#c1d8d9}.touch{display:flex;justify-content:space-between;gap:10px;margin-top:14px}.touch div{display:flex;gap:10px}.touch button{min-width:58px;min-height:48px;touch-action:none;user-select:none}.primary{background:#ffd56e}.veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#132f4075;padding:15px}.card{color:#183d45;background:#fff8e6;border:3px solid #dab77a;border-radius:22px;max-width:660px;width:100%;padding:clamp(18px,3vw,30px);box-shadow:0 12px 35px #0005;max-height:96%;overflow:auto}.card h2{font-size:clamp(20px,3vw,30px);line-height:1.2;margin:0 0 12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.passage{white-space:pre-line;background:#ecedd8;padding:12px;border-radius:10px}.tokens{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.assembled{padding:12px;border:2px dashed #98b8aa;min-height:52px;border-radius:10px}.feedback{min-height:28px;font-weight:700;margin-top:10px}textarea{width:100%;min-height:90px;padding:12px;border:2px solid #9cbaae;border-radius:10px}.note{font-size:13px;color:#bfd0d0}.card .note{color:#4a666c}[hidden]{display:none!important}@media(max-width:650px){main{padding:8px}.help{font-size:13px}.card{padding:14px}.card h2{font-size:19px}.card p{font-size:15px}canvas{aspect-ratio:4/3}.touch button{padding:9px}.hud{font-size:14px}}
+.world-clue{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;margin-top:12px;border-radius:14px;background:#fff3d5;color:#254d61}.world-clue p{font-weight:700}.world-clue button{flex-shrink:0}@media(max-width:650px){.world-clue{display:block}.world-clue button{margin-top:8px}}
 </style>
 </head><body><main>
 <a href="./#/annees/primaire-1/matieres/francais">← Français · 1re année</a>
@@ -14,7 +15,7 @@
 <canvas id="world" width="960" height="540" tabindex="0" role="img" aria-label="Jeu d’aventure. Déplace ton personnage avec les flèches, saute avec Espace ou la flèche du haut et interagis avec E près d’un objet brillant."></canvas>
 <div class="veil" id="overlay"><section class="card" id="dialogue" role="dialog" aria-modal="true" aria-labelledby="dialogue-title"></section></div>
 </div>
-<p class="help">← → Se déplacer · ↑ ou Espace Sauter · E ou ↓ Examiner · P Pause</p>
+<div class="world-clue"><p id="world-message" role="status"></p><button id="clue">Écouter / lire l’indice</button></div><p class="help">← → Se déplacer · ↑ ou Espace Sauter · E ou ↓ Examiner · P Pause</p>
 <div class="touch" aria-label="Commandes tactiles"><div><button id="left" aria-label="Aller à gauche">◀</button><button id="right" aria-label="Aller à droite">▶</button></div><div><button id="jump">Sauter</button><button id="interact">Examiner</button><button id="pause">Pause</button></div></div>
 <p class="note">Version d’essai. Les huit tableaux sont accessibles. Progression sauvegardée dans ce navigateur. Les deux premiers tableaux seront gratuits à la sortie et la suite sera réservée aux abonnés.</p>
 </main><script>
@@ -36,9 +37,33 @@ try{
 let level=progress.level,camera=0,mode='intro',gateIndex=0,near=null,frame=0,clock=0,previousTime=0;
 let player={x:80,y:398,vx:0,vy:0,w:34,h:60,grounded:true,facing:1};
 let solved=[],selected=[],answerLocked=false;
-const WORLD=2840,GROUND=458,GRAVITY=1500,SPEED=235,JUMP=570;
-const gates=[640,1420,2150];
-const platforms=[{x:330,y:386,w:110},{x:850,y:380,w:135},{x:1080,y:310,w:125},{x:1650,y:382,w:130},{x:1870,y:330,w:120},{x:2390,y:385,w:125}];
+const WORLD=1700,GROUND=488,GRAVITY=1500,SPEED=235,JUMP=570;
+let platforms=[];
+const backgrounds=new Image();backgrounds.src='./pages-decors.webp';
+const hero=new Image();hero.src='./pages-personnage.webp';
+const sceneLayouts=[
+ [{x:460,y:397,w:150},{x:1000,y:390,w:150}],
+ [],
+ [{x:550,y:430,w:190},{x:1030,y:415,w:190}],
+ [{x:330,y:385,w:180},{x:1000,y:365,w:190}],
+ [{x:430,y:409,w:150},{x:1030,y:409,w:150}],
+ [{x:310,y:412,w:190},{x:740,y:380,w:190},{x:1150,y:412,w:190}],
+ [{x:410,y:395,w:180},{x:890,y:330,w:180},{x:1200,y:400,w:160}],
+ [{x:630,y:425,w:220},{x:1020,y:380,w:220}]
+];
+let objects=[],collected=[],worldMessage='',lastRound=-1,wrongUntil=0,loadFailed=false;
+backgrounds.onerror=()=>{loadFailed=true;setWorldMessage('Le décor ne charge pas. Recharge la page pour réessayer.')};
+hero.onerror=()=>setWorldMessage('Le personnage ne charge pas. Recharge la page pour réessayer.');
+const locationGoals=[
+ 'Écoute les mots. Trouve la bonne lettre ou le bon mot dans la cour.',
+ 'Ramasse les syllabes dans le bon ordre pour réparer le pont.',
+ 'Lis le carnet du quai, puis embarque dans la bonne barque.',
+ 'Trie les étiquettes de l’atelier et retrouve les objets.',
+ 'Ramasse les mots de ton affiche dans le bon ordre.',
+ 'Retrouve les acteurs et remets les scènes dans l’ordre.',
+ 'Explore les histoires de la bibliothèque et partage tes idées.',
+ 'Rassemble le livre et invente la fin de l’aventure.'
+];
 const themes=[
  ['#9edce9','#d8eed5','#b9d59a','#447758','#775535'],
  ['#b2dfec','#e7f5dc','#9dc99b','#427356','#7a5a35'],
@@ -66,19 +91,66 @@ function show(content,nextMode){
 }
 function closeDialogue(){overlay.hidden=true;mode='play';clearKeys();stopVoice();canvas.focus()}
 function loadLevel(index){
- level=index;select.value=index;gateIndex=0;solved=[];camera=0;near=null;
- player={x:80,y:GROUND-60,vx:0,vy:0,w:34,h:60,grounded:true,facing:1};
- save();document.querySelector('#mission').textContent=stages[level].title;updateInventory();
- show('<h2 id="dialogue-title">'+escapeHtml(stages[level].title)+'</h2><p>'+escapeHtml(stages[level].scene)+'</p><p>Explore le décor. Approche des objets qui brillent et appuie sur <strong>E</strong> pour les examiner. Chaque défi réussi ouvre le passage.</p><p>Utilise <strong>← →</strong> pour marcher et <strong>↑ ou Espace</strong> pour sauter.</p><div class="actions"><button id="listen">Écouter</button><button class="primary" id="begin">Commencer l’aventure</button></div>','intro');
- document.querySelector('#listen').onclick=()=>speak(stages[level].scene);
+ level=index;select.value=index;gateIndex=0;solved=[];collected=[];camera=0;near=null;lastRound=-1;
+ platforms=sceneLayouts[level];player={x:65,y:GROUND-88,vx:0,vy:0,w:38,h:88,grounded:true,facing:1};
+ save();document.querySelector('#mission').textContent=stages[level].title;updateInventory();setupRound();
+ show('<h2 id="dialogue-title">'+escapeHtml(stages[level].title)+'</h2><p>'+escapeHtml(stages[level].scene)+'</p><p>'+escapeHtml(locationGoals[level])+'</p><p><strong>← →</strong> Marcher · <strong>↑ ou Espace</strong> Sauter · <strong>E</strong> Ramasser ou examiner.</p><div class="actions"><button id="listen">Écouter la mission</button><button class="primary" id="begin">Entrer dans le décor</button></div>','intro');
+ document.querySelector('#listen').onclick=()=>speak(stages[level].scene+' '+locationGoals[level]);
  document.querySelector('#begin').onclick=closeDialogue;
 }
-function updateInventory(){document.querySelector('#inventory').textContent='Pages retrouvées '+progress.completed.length+' / 8 · Passages ouverts '+solved.length+' / 3'}
+function setWorldMessage(text){
+ worldMessage=text;const element=document.querySelector('#world-message');if(element)element.textContent=text;
+}
+function currentTask(){return stages[level].tasks[Math.min(solved.length,2)]}
+function setupRound(){
+ const round=solved.length;lastRound=round;collected=[];
+ if(round===3){objects=[];setWorldMessage(level===1?'Le pont est réparé ! Traverse et récupère la page.':'La page est apparue ! Rejoins-la à droite du décor.');return}
+ const task=currentTask();
+ let values=task.order||task.choices||[task.writing?'Mon cahier':'À toi de raconter'];
+ const positions=level===1?[180,360,540,650]:level===2?[440,820,1200]:level===3?[270,640,1050,1280]:level===5?[380,830,1270]:[330,720,1140,1370];
+ const order=values.map((value,index)=>({value,index})).reverse();
+ objects=order.map((item,i)=>({...item,x:positions[i]||1450,y:GROUND-45,taken:false}));
+ if(level===1)objects.forEach(o=>o.x=Math.min(o.x,625));
+ setWorldMessage(task.q+(task.passage?' Lis le carnet pour trouver l’indice.':''));
+}
+function readClue(){
+ if(mode!=='play'||solved.length===3)return;
+ const task=currentTask();
+ if(task.passage||task.listen){
+  const text=task.passage||task.listen;
+  show('<h2 id="dialogue-title">Le carnet de l’aventure</h2><p class="passage">'+escapeHtml(text)+'</p><p>'+escapeHtml(task.q)+'</p><div class="actions"><button id="clue-voice">Écouter</button><button id="clue-close">Chercher dans le décor</button></div>','clue');
+  document.querySelector('#clue-voice').onclick=()=>speak(text);
+  document.querySelector('#clue-close').onclick=closeDialogue;
+ }else speak(task.q);
+}
+function solveWorld(){
+ const round=solved.length,task=currentTask();
+ progress.texts[level+'-'+round]=collected.length?collected.join(' '):task.answer||'Défi réalisé';solved.push(round);save();
+ updateInventory();setupRound();
+}
+function examineObject(object){
+ const task=currentTask();
+ if(task.writing||task.oral){openTask(solved.length);return}
+ if(task.passage&&!progress.texts['read-'+level+'-'+solved.length]){
+  progress.texts['read-'+level+'-'+solved.length]=true;readClue();return;
+ }
+ if(task.order){
+  if(object.value===task.order[collected.length]){
+   object.taken=true;collected.push(object.value);
+   setWorldMessage('Tu as ramassé « '+object.value+' ». '+collected.join(' · '));
+   if(collected.length===task.order.length)solveWorld();
+  }else{wrongUntil=clock+1.2;setWorldMessage('Essaie une autre étiquette. '+task.hint)}
+ }else if(task.opinion||object.value===task.answer){
+  collected=[object.value];solveWorld();
+ }else{wrongUntil=clock+1.2;setWorldMessage('Essaie encore. '+task.hint)}
+}
+
+function updateInventory(){document.querySelector('#inventory').textContent='Pages retrouvées '+progress.completed.length+' / 8 · Missions accomplies '+solved.length+' / 3'}
 function jump(){if(mode==='play'&&player.grounded){player.vy=-JUMP;player.grounded=false}}
 function interact(){
  if(mode!=='play')return;
  if(near==='exit'){finish();return}
- if(Number.isInteger(near))openTask(near);
+ if(near&&typeof near==='object')examineObject(near);
 }
 function pause(){
  if(mode==='play'){
@@ -163,30 +235,35 @@ function bindHold(id,direction){
  button.onpointerdown=event=>{event.preventDefault();button.setPointerCapture(event.pointerId);if(mode==='play')keys[direction]=true};
  button.onpointerup=()=>keys[direction]=false;button.onpointercancel=()=>keys[direction]=false;button.onlostpointercapture=()=>keys[direction]=false;
 }
+document.querySelector('#clue').onclick=readClue;
 bindHold('#left','left');bindHold('#right','right');
 document.querySelector('#jump').onclick=jump;document.querySelector('#interact').onclick=interact;document.querySelector('#pause').onclick=pause;
 function update(dt){
  if(mode!=='play')return;
+ if(lastRound!==solved.length)setupRound();
  const oldBottom=player.y+player.h;
  player.vx=(Number(keys.right)-Number(keys.left))*SPEED;
  if(player.vx)player.facing=Math.sign(player.vx);
  player.x=Math.max(18,Math.min(WORLD-player.w-18,player.x+player.vx*dt));
- gates.forEach((x,index)=>{
-  if(!solved.includes(index)&&player.x+player.w>x-17&&player.x<x+17){
-   player.x=player.vx>=0?x-17-player.w:x+17;
-  }
- });
  player.vy+=GRAVITY*dt;player.y+=player.vy*dt;player.grounded=false;
- const surfaces=[{x:0,y:GROUND,w:WORLD},...platforms];
+ let surfaces=[{x:0,y:GROUND,w:WORLD},...platforms];
+ if(level===1){
+  surfaces=[{x:0,y:GROUND,w:730},{x:1120,y:GROUND,w:WORLD-1120}];
+  for(let i=0;i<solved.length;i++)surfaces.push({x:730+i*130,y:GROUND,w:130});
+ }
  surfaces.forEach(p=>{
   if(player.vy>=0&&oldBottom<=p.y+1&&player.y+player.h>=p.y&&player.x+player.w>p.x&&player.x<p.x+p.w){
    player.y=p.y-player.h;player.vy=0;player.grounded=true;
   }
  });
+ if(player.y>650){
+  player.x=level===1?630:65;player.y=GROUND-player.h;player.vy=0;player.grounded=true;
+  setWorldMessage('Tu es revenu sur la rive. Assemble les syllabes pour terminer le pont.');
+ }
  near=null;
- gates.forEach((x,i)=>{if(!solved.includes(i)&&Math.abs(player.x+17-(x-62))<82)near=i});
- if(player.x>2640&&solved.length===3)near='exit';
- camera=Math.max(0,Math.min(WORLD-960,player.x-310));
+ objects.forEach(object=>{if(!object.taken&&Math.abs(player.x+19-object.x)<75&&Math.abs(player.y+player.h-GROUND)<120)near=object});
+ if(player.x>1530&&solved.length===3)near='exit';
+ camera=Math.max(0,Math.min(WORLD-960,player.x-400));
 }
 function rounded(x,y,w,h,r,fill,stroke){
  ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}
@@ -213,56 +290,89 @@ function building(x,kind){
  }
 }
 function drawPlayer(){
- const x=player.x+17,y=player.y,walk=player.grounded&&player.vx?Math.sin(clock*13)*7:0;
- ctx.save();ctx.translate(x,y);ctx.scale(player.facing,1);
- ellipse(0,61,22,5,'#183d3435');
- rounded(-18,24,12,27,5,'#b0783c','#855829');
- ctx.strokeStyle='#23485f';ctx.lineWidth=9;ctx.lineCap='round';
- ctx.beginPath();ctx.moveTo(-7,43);ctx.lineTo(-9+walk,57);ctx.moveTo(7,43);ctx.lineTo(9-walk,57);ctx.stroke();
- rounded(-15+walk,54,15,7,3,'#433c36');rounded(3-walk,54,16,7,3,'#433c36');
- rounded(-13,23,26,25,8,'#1989ac','#136781');
- ctx.strokeStyle='#f1bc8d';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(10,29);ctx.lineTo(17,39+walk/2);ctx.stroke();
- ellipse(0,15,15,16,'#f4c69a');
- ellipse(-3,4,15,9,'#62442d');ellipse(-10,10,6,10,'#62442d');
- ctx.fillStyle='#273c45';ctx.fillRect(6,13,3,4);
- ctx.strokeStyle='#b06d54';ctx.lineWidth=2;ctx.beginPath();ctx.arc(6,20,4,0,Math.PI*.65);ctx.stroke();
+ const x=player.x+19,y=player.y+player.h;
+ const bob=player.grounded&&player.vx?Math.sin(clock*16)*2:0;
+ ctx.save();ctx.translate(x,y+bob);ctx.scale(player.facing,1);
+ ellipse(0,0,24,5,'#183d3445');
+ if(hero.complete&&hero.naturalWidth)ctx.drawImage(hero,-32,-98,65,98);
+ else{rounded(-13,-60,26,50,9,'#278ac4');ellipse(0,-72,18,20,'#f3c795')}
  ctx.restore();
 }
+
 function draw(){
- const theme=themes[level],sky=ctx.createLinearGradient(0,0,0,540);sky.addColorStop(0,theme[0]);sky.addColorStop(1,theme[1]);ctx.fillStyle=sky;ctx.fillRect(0,0,960,540);
- ellipse(800-camera*.08,80,40,40,'#fff1ad');
- for(let i=0;i<8;i++){const x=i*260-camera*.2;ellipse(x,90+(i%3)*34,65,16,'#ffffffa0');ellipse(x+27,78+(i%3)*34,32,22,'#ffffffa0')}
- ctx.fillStyle=theme[2];ctx.beginPath();ctx.moveTo(0,380);for(let x=0;x<=1020;x+=30)ctx.lineTo(x,315+Math.sin((x+camera*.3)/150)*45);ctx.lineTo(960,540);ctx.lineTo(0,540);ctx.fill();
+ ctx.fillStyle=themes[level][0];ctx.fillRect(0,0,960,540);
  ctx.save();ctx.translate(-camera,0);
- for(let i=0;i<11;i++)tree(i*285+45,330,(i%2?.9:1.15));
- building(60,level===0?0:1);building(2470,level===7?0:1);
- if(level===1||level===2){
-  ctx.fillStyle='#79bac8';ctx.fillRect(850,440,450,100);
-  for(let x=850;x<1300;x+=55){ctx.strokeStyle='#c4e8df';ctx.beginPath();ctx.moveTo(x,485+Math.sin(clock+x)*3);ctx.lineTo(x+25,485);ctx.stroke()}
+ if(backgrounds.complete&&backgrounds.naturalWidth){
+  const sw=backgrounds.naturalWidth/2,sh=backgrounds.naturalHeight/4;
+  ctx.drawImage(backgrounds,(level%2)*sw,Math.floor(level/2)*sh,sw,sh,0,0,WORLD,540);
  }
- ctx.fillStyle=theme[4];ctx.fillRect(0,GROUND, WORLD,100);
- ctx.fillStyle=theme[3];ctx.fillRect(0,GROUND, WORLD,16);
- ctx.fillStyle='#9db65f';for(let x=0;x<WORLD;x+=20){ctx.beginPath();ctx.moveTo(x,GROUND+2);ctx.lineTo(x+5,GROUND-5);ctx.lineTo(x+9,GROUND+5);ctx.fill()}
- for(let i=0;i<45;i++){const x=i*67+12;ellipse(x,500+(i%3)*15,3,2,'#a7895655')}
- platforms.forEach(p=>{rounded(p.x,p.y,p.w,18,6,'#bd965d','#886c43');rounded(p.x,p.y,p.w,5,3,'#80a35a');ctx.fillStyle='#8f7451';ctx.fillRect(p.x+15,p.y+18,8,GROUND-p.y-18);ctx.fillRect(p.x+p.w-23,p.y+18,8,GROUND-p.y-18)});
- gates.forEach((x,index)=>{
-  const open=solved.includes(index);
-  if(!open){
-   rounded(x-7,210,14,248,5,'#92704d');
-   ctx.fillStyle='#d0a76e';for(let y=245;y<440;y+=54)rounded(x-23,y,46,19,5,'#cc975e','#a57747');
-   ellipse(x-63,382+Math.sin(clock*3+index)*5,25,25,'#ffdd7580');
-   rounded(x-79,361+Math.sin(clock*3+index)*5,32,38,5,'#fff5cf','#cead64');
-   ctx.fillStyle='#548789';ctx.fillRect(x-72,372+Math.sin(clock*3+index)*5,18,3);ctx.fillRect(x-72,380+Math.sin(clock*3+index)*5,12,3);
-   label('Indice '+(index+1),x-62,332);
-  }else{label('Passage ouvert',x,240,'#dcecc8')}
+ if(level===1){
+  ctx.fillStyle='#329dc3aa';ctx.fillRect(730,GROUND-18,390,80);
+  for(let i=0;i<solved.length*5;i++){
+   const x=730+i*26;
+   rounded(x,GROUND-5,25,16,3,'#bd884c','#80572d');
+   ctx.fillStyle='#e6c381';ctx.fillRect(x+3,GROUND-3,18,3);
+  }
+ }else{
+  platforms.forEach(p=>{
+   const g=ctx.createLinearGradient(0,p.y,0,p.y+20);g.addColorStop(0,'#f1c780');g.addColorStop(.5,'#ac7039');g.addColorStop(1,'#70471e');
+   rounded(p.x,p.y,p.w,18,6,g,'#744c2b');
+   for(let x=p.x+12;x<p.x+p.w;x+=32){ctx.fillStyle='#78512b';ctx.fillRect(x,p.y+4,2,9)}
+  });
+ }
+ const pulse=Math.sin(clock*3)*4;
+ objects.forEach((object,i)=>{
+  if(object.taken)return;
+  const x=object.x,y=object.y+pulse;
+  ellipse(x,y,55,40,'#fff5b54d');
+  if(level===2){
+   const color=['#258ac8','#cc4b47','#e6b52c'][i%3];
+   ctx.beginPath();ctx.moveTo(x-70,GROUND-12);ctx.lineTo(x-48,GROUND+14);ctx.lineTo(x+45,GROUND+14);ctx.lineTo(x+70,GROUND-12);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.lineWidth=4;ctx.strokeStyle='#ffe2a7';ctx.stroke();
+   label(object.value,x,GROUND-34);
+  }else if(level===3){
+   rounded(x-53,GROUND-75,106,76,9,'#bc8449','#76502c');
+   rounded(x-40,GROUND-68,80,8,3,'#dfb47a');
+   label(object.value,x,GROUND-26);
+  }else if(level===5){
+   rounded(x-65,GROUND-95,130,96,10,'#943c41','#f1cf6c');
+   label('Scène '+(object.index+1),x,GROUND-108);
+   wrapLabel(object.value,x,GROUND-71,118);
+  }else if(level===6){
+   rounded(x-40,GROUND-84,80,85,7,i%2?'#437bb9':'#bb6749','#ebd184');
+   ctx.fillStyle='#fff3d0';ctx.fillRect(x-28,GROUND-72,56,8);
+   wrapLabel(object.value,x,GROUND-52,74);
+  }else{
+   const w=Math.min(220,Math.max(60,object.value.length*9+24));
+   rounded(x-w/2,y-23,w,48,10,wrongUntil>clock&&near===object?'#ffe1d5':'#fff6d5','#c18a36');
+   ctx.font='bold 20px system-ui';ctx.textAlign='center';ctx.fillStyle='#244c69';ctx.fillText(object.value,x,y+6);
+  }
+  if(near===object)label('E · '+(level===2?'Embarquer':level===3?'Étiqueter':level===6?'Ouvrir':'Ramasser'),x,GROUND-137,'#ffe394');
  });
- const exit=2690;rounded(exit-8,260,16,198,5,'#926b45');ctx.fillStyle='#e7bb52';ctx.beginPath();ctx.moveTo(exit+8,265);ctx.lineTo(exit+98,285);ctx.lineTo(exit+8,310);ctx.fill();
- ellipse(exit+25,360+Math.sin(clock*3)*7,32,32,'#fff5b380');rounded(exit+5,338+Math.sin(clock*3)*7,38,44,5,'#fffdf1','#d3af5a');label('La page !',exit+25,326);
- for(let i=0;i<13;i++){const x=260+i*180;ctx.strokeStyle='#48855f';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,GROUND);ctx.lineTo(x,GROUND-17);ctx.stroke();ellipse(x,GROUND-20,5,5,i%2?'#f5cf66':'#e8a0a1')}
- drawPlayer();
- if(near!==null&&mode==='play')label(near==='exit'?'E · Récupérer la page':'E · Examiner',player.x+17,player.y-20);
- ctx.restore();
- if(mode==='play'){rounded(16,16,250,38,12,'#ffffffd0');ctx.textAlign='left';ctx.font='bold 16px system-ui';ctx.fillStyle='#24505c';ctx.fillText('Trouve les 3 indices →',31,41)}
+ if(level===4){
+  rounded(475,137,680,90,12,'#fff4c8e8','#ab7739');
+  wrapLabel(collected.join(' ')||'Construis ton affiche',815,166,640);
+ }
+ if(solved.length===3){
+  const x=1600,y=360+Math.sin(clock*3)*8;
+  ellipse(x,y,42,55,'#fff4b18c');rounded(x-24,y-32,48,63,6,'#fffaf0','#d1a853');
+  for(let n=0;n<3;n++){ctx.fillStyle='#789ead';ctx.fillRect(x-14,y-17+n*12,27-(n%2)*6,3)}
+  label('La page retrouvée',x,280);
+  if(near==='exit')label('E · Récupérer',player.x+19,player.y-20,'#ffe394');
+ }
+ drawPlayer();ctx.restore();
+ rounded(14,14,330,37,10,'#fff7dded','#bd9f5a');
+ ctx.fillStyle='#234f60';ctx.textAlign='left';ctx.font='bold 15px system-ui';
+ ctx.fillText(solved.length===3?'Rejoins la page à droite →':locationGoals[level].split('.')[0],26,38,306);
+}
+function wrapLabel(text,x,y,maxWidth){
+ ctx.font='bold 16px system-ui';ctx.fillStyle='#244a60';ctx.textAlign='center';
+ const words=text.split(' ');let line='',row=0;
+ for(const word of words){
+  const candidate=line?line+' '+word:word;
+  if(ctx.measureText(candidate).width>maxWidth&&line){ctx.fillText(line,x,y+row*21);line=word;row++}
+  else line=candidate;
+ }
+ ctx.fillText(line,x,y+row*21);
 }
 function animate(time){
  const dt=Math.min((time-previousTime)/1000||0,.032);previousTime=time;clock+=dt;
