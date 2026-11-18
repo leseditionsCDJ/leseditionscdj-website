@@ -5,7 +5,7 @@
 <title>Les pages envolées · L’aventure</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#204b67;color:#fdf6dc;font:17px/1.5 Nunito,system-ui,sans-serif}main{max-width:1220px;margin:auto;padding:16px}a{color:#e1eef5}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 15px}h1{font-size:clamp(23px,4vw,34px);margin:0}p{margin:5px 0}button,select,textarea{font:inherit}button,select{border:1px solid #48727a;border-radius:12px;padding:10px 16px;cursor:pointer;background:#f8edce;color:#163a44}button:hover{background:#fff9e8}button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd05d;outline-offset:3px}button:disabled{opacity:.55;cursor:default}.game{position:relative;overflow:hidden;border:3px solid #537d77;border-radius:20px;box-shadow:0 16px 40px #0006;background:#aedce1}canvas{display:block;width:100%;aspect-ratio:16/9;outline:none;touch-action:none}.hud{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;margin:10px 0}.help{font-size:15px;color:#c1d8d9}.touch{display:flex;justify-content:space-between;gap:10px;margin-top:14px}.touch div{display:flex;gap:10px}.touch button{min-width:58px;min-height:48px;touch-action:none;user-select:none}.primary{background:#ffd56e}.veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#132f4075;padding:15px}.card{color:#183d45;background:#fff8e6;border:3px solid #dab77a;border-radius:22px;max-width:660px;width:100%;padding:clamp(18px,3vw,30px);box-shadow:0 12px 35px #0005;max-height:96%;overflow:auto}.card h2{font-size:clamp(20px,3vw,30px);line-height:1.2;margin:0 0 12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.passage{white-space:pre-line;background:#ecedd8;padding:12px;border-radius:10px}.tokens{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.assembled{padding:12px;border:2px dashed #98b8aa;min-height:52px;border-radius:10px}.feedback{min-height:28px;font-weight:700;margin-top:10px}textarea{width:100%;min-height:90px;padding:12px;border:2px solid #9cbaae;border-radius:10px}.note{font-size:13px;color:#bfd0d0}.card .note{color:#4a666c}[hidden]{display:none!important}@media(max-width:650px){main{padding:8px}.help{font-size:13px}.card{padding:14px}.card h2{font-size:19px}.card p{font-size:15px}canvas{aspect-ratio:4/3}.touch button{padding:9px}.hud{font-size:14px}}
-.world-clue{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;margin-top:12px;border-radius:14px;background:#fff3d5;color:#254d61}.world-clue p{font-weight:700}.world-clue button{flex-shrink:0}@media(max-width:650px){.world-clue{display:block}.world-clue button{margin-top:8px}}
+.world-clue{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;margin-top:12px;border-radius:14px;background:#fff3d5;color:#254d61}.world-clue p{font-weight:700;font-size:18px;line-height:1.55}.world-clue{align-items:flex-start}.world-clue button{max-width:220px;white-space:normal}.world-clue button{flex-shrink:0}@media(max-width:650px){.world-clue{display:block}.world-clue button{margin-top:8px}}
 </style>
 </head><body><main>
 <a href="./#/annees/primaire-1/matieres/francais">← Français · 1re année</a>
@@ -15,7 +15,7 @@
 <canvas id="world" width="960" height="540" tabindex="0" role="img" aria-label="Jeu d’aventure. Déplace ton personnage avec les flèches, saute avec Espace ou la flèche du haut et interagis avec E près d’un objet brillant."></canvas>
 <div class="veil" id="overlay"><section class="card" id="dialogue" role="dialog" aria-modal="true" aria-labelledby="dialogue-title"></section></div>
 </div>
-<div class="world-clue"><p id="world-message" role="status"></p><button id="clue">Écouter / lire l’indice</button></div><p class="help">← → Se déplacer · ↑ ou Espace Sauter · E ou ↓ Examiner · P Pause</p>
+<div class="world-clue"><p id="world-message" role="status"></p><button id="clue">Écouter la consigne / lire le carnet</button></div><p class="help">← → Se déplacer · ↑ ou Espace Sauter · E ou ↓ Examiner · P Pause</p>
 <div class="touch" aria-label="Commandes tactiles"><div><button id="left" aria-label="Aller à gauche">◀</button><button id="right" aria-label="Aller à droite">▶</button></div><div><button id="jump">Sauter</button><button id="interact">Examiner</button><button id="pause">Pause</button></div></div>
 <p class="note">Version d’essai. Les huit tableaux sont accessibles. Progression sauvegardée dans ce navigateur. Les deux premiers tableaux seront gratuits à la sortie et la suite sera réservée aux abonnés.</p>
 </main><script>
@@ -92,26 +92,31 @@ function show(content,nextMode){
 function closeDialogue(){overlay.hidden=true;mode='play';clearKeys();stopVoice();canvas.focus()}
 function loadLevel(index){
  level=index;select.value=index;gateIndex=0;solved=[];collected=[];camera=0;near=null;lastRound=-1;
- platforms=sceneLayouts[level];player={x:65,y:GROUND-88,vx:0,vy:0,w:38,h:88,grounded:true,facing:1};
+ platforms=sceneLayouts[level];player={x:65,y:GROUND-154,vx:0,vy:0,w:54,h:154,grounded:true,facing:1};
  save();document.querySelector('#mission').textContent=stages[level].title;updateInventory();setupRound();
- show('<h2 id="dialogue-title">'+escapeHtml(stages[level].title)+'</h2><p>'+escapeHtml(stages[level].scene)+'</p><p>'+escapeHtml(locationGoals[level])+'</p><p><strong>← →</strong> Marcher · <strong>↑ ou Espace</strong> Sauter · <strong>E</strong> Ramasser ou examiner.</p><div class="actions"><button id="listen">Écouter la mission</button><button class="primary" id="begin">Entrer dans le décor</button></div>','intro');
+ show('<h2 id="dialogue-title">'+escapeHtml(stages[level].title)+'</h2><p>'+escapeHtml(stages[level].scene)+'</p><p>'+escapeHtml(locationGoals[level])+'</p><ol><li>Écoute la consigne avec le bouton sous le décor.</li><li>Marche vers la bonne étiquette avec les flèches <strong>← →</strong>.</li><li>Quand « E · Ramasser » apparaît, appuie sur <strong>E</strong> ou touche <strong>Examiner</strong>.</li></ol><p>Pour sauter, utilise <strong>↑</strong> ou <strong>Espace</strong>. Termine les trois missions pour faire apparaître la page à récupérer.</p><div class="actions"><button id="listen">Écouter la mission</button><button class="primary" id="begin">Entrer dans le décor</button></div>','intro');
  document.querySelector('#listen').onclick=()=>speak(stages[level].scene+' '+locationGoals[level]);
- document.querySelector('#begin').onclick=closeDialogue;
+ document.querySelector('#begin').onclick=()=>{closeDialogue();speak(instructionFor(currentTask()))};
 }
 function setWorldMessage(text){
  worldMessage=text;const element=document.querySelector('#world-message');if(element)element.textContent=text;
 }
+function instructionFor(task){
+ const action=task.writing?'Va au cahier. Appuie sur E pour écrire.':task.oral?'Va au livre. Appuie sur E pour raconter.':task.order?'Ramasse les étiquettes dans le bon ordre.':'Choisis la bonne étiquette dans le décor.';
+ const controls='Marche avec ← →. Quand tu es près de ton choix, appuie sur E ou sur Examiner.';
+ return task.q+' '+action+' '+controls+(task.passage||task.listen?' Le bouton « Écouter la consigne / lire le carnet » donne le texte à lire ou à écouter.':'');
+}
 function currentTask(){return stages[level].tasks[Math.min(solved.length,2)]}
 function setupRound(){
  const round=solved.length;lastRound=round;collected=[];
- if(round===3){objects=[];setWorldMessage(level===1?'Le pont est réparé ! Traverse et récupère la page.':'La page est apparue ! Rejoins-la à droite du décor.');return}
+ if(round===3){objects=[];setWorldMessage(level===1?'Le pont est réparé ! Marche sur les planches vers la droite. Approche de la page brillante et appuie sur E pour la récupérer.':'Bravo ! Marche tout à droite du décor. Approche de la page brillante et appuie sur E pour la récupérer.');return}
  const task=currentTask();
  let values=task.order||task.choices||[task.writing?'Mon cahier':'À toi de raconter'];
  const positions=level===1?[180,360,540,650]:level===2?[440,820,1200]:level===3?[270,640,1050,1280]:level===5?[380,830,1270]:[330,720,1140,1370];
  const order=values.map((value,index)=>({value,index})).reverse();
- objects=order.map((item,i)=>({...item,x:positions[i]||1450,y:GROUND-45,taken:false}));
+ objects=order.map((item,i)=>({...item,x:positions[i]||1450,y:GROUND-152,taken:false}));
  if(level===1)objects.forEach(o=>o.x=Math.min(o.x,625));
- setWorldMessage(task.q+(task.passage?' Lis le carnet pour trouver l’indice.':''));
+ setWorldMessage(instructionFor(task));
 }
 function readClue(){
  if(mode!=='play'||solved.length===3)return;
@@ -121,12 +126,14 @@ function readClue(){
   show('<h2 id="dialogue-title">Le carnet de l’aventure</h2><p class="passage">'+escapeHtml(text)+'</p><p>'+escapeHtml(task.q)+'</p><div class="actions"><button id="clue-voice">Écouter</button><button id="clue-close">Chercher dans le décor</button></div>','clue');
   document.querySelector('#clue-voice').onclick=()=>speak(text);
   document.querySelector('#clue-close').onclick=closeDialogue;
- }else speak(task.q);
+ }else speak(instructionFor(task));
 }
 function solveWorld(){
  const round=solved.length,task=currentTask();
  progress.texts[level+'-'+round]=collected.length?collected.join(' '):task.answer||'Défi réalisé';solved.push(round);save();
  updateInventory();setupRound();
+ setWorldMessage('Mission réussie ! '+worldMessage);
+ speak(solved.length===3?'Bravo ! Tu as terminé les trois missions. Va tout à droite et appuie sur E près de la page.':instructionFor(currentTask()));
 }
 function examineObject(object){
  const task=currentTask();
@@ -139,10 +146,11 @@ function examineObject(object){
    object.taken=true;collected.push(object.value);
    setWorldMessage('Tu as ramassé « '+object.value+' ». '+collected.join(' · '));
    if(collected.length===task.order.length)solveWorld();
-  }else{wrongUntil=clock+1.2;setWorldMessage('Essaie une autre étiquette. '+task.hint)}
+   else setWorldMessage('Bien ! Tu as ramassé « '+object.value+' ». Continue dans le même ordre. Ta réponse est « '+collected.join(' ')+' ». '+instructionFor(task));
+  }else{wrongUntil=clock+1.2;setWorldMessage('Ce n’est pas la prochaine étiquette. '+task.hint+' '+instructionFor(task))}
  }else if(task.opinion||object.value===task.answer){
   collected=[object.value];solveWorld();
- }else{wrongUntil=clock+1.2;setWorldMessage('Essaie encore. '+task.hint)}
+ }else{wrongUntil=clock+1.2;setWorldMessage('Essaie un autre choix. '+task.hint+' '+instructionFor(task))}
 }
 
 function updateInventory(){document.querySelector('#inventory').textContent='Pages retrouvées '+progress.completed.length+' / 8 · Missions accomplies '+solved.length+' / 3'}
@@ -261,7 +269,7 @@ function update(dt){
   setWorldMessage('Tu es revenu sur la rive. Assemble les syllabes pour terminer le pont.');
  }
  near=null;
- objects.forEach(object=>{if(!object.taken&&Math.abs(player.x+19-object.x)<75&&Math.abs(player.y+player.h-GROUND)<120)near=object});
+ objects.forEach(object=>{if(!object.taken&&Math.abs(player.x+player.w/2-object.x)<75&&Math.abs(player.y+player.h-GROUND)<120)near=object});
  if(player.x>1530&&solved.length===3)near='exit';
  camera=Math.max(0,Math.min(WORLD-960,player.x-400));
 }
@@ -290,11 +298,11 @@ function building(x,kind){
  }
 }
 function drawPlayer(){
- const x=player.x+19,y=player.y+player.h;
+ const x=player.x+player.w/2,y=player.y+player.h;
  const bob=player.grounded&&player.vx?Math.sin(clock*16)*2:0;
  ctx.save();ctx.translate(x,y+bob);ctx.scale(player.facing,1);
  ellipse(0,0,24,5,'#183d3445');
- if(hero.complete&&hero.naturalWidth)ctx.drawImage(hero,-32,-98,65,98);
+ if(hero.complete&&hero.naturalWidth)ctx.drawImage(hero,-55,-166,110,166);
  else{rounded(-13,-60,26,50,9,'#278ac4');ellipse(0,-72,18,20,'#f3c795')}
  ctx.restore();
 }
@@ -326,11 +334,11 @@ function draw(){
   const x=object.x,y=object.y+pulse;
   ellipse(x,y,55,40,'#fff5b54d');
   if(level===2){
-   label(object.value,x,GROUND-34,'#fff3c8');
+   label(object.value,x,GROUND-166,'#fff3c8');
   }else if(level===3){
    rounded(x-53,GROUND-75,106,76,9,'#bc8449','#76502c');
    rounded(x-40,GROUND-68,80,8,3,'#dfb47a');
-   label(object.value,x,GROUND-26);
+   label(object.value,x,GROUND-166);
   }else if(level===5){
    rounded(x-65,GROUND-95,130,96,10,'#943c41','#f1cf6c');
    label('Scène '+(object.index+1),x,GROUND-108);
@@ -344,7 +352,7 @@ function draw(){
    rounded(x-w/2,y-23,w,48,10,wrongUntil>clock&&near===object?'#ffe1d5':'#fff6d5','#c18a36');
    ctx.font='bold 20px system-ui';ctx.textAlign='center';ctx.fillStyle='#244c69';ctx.fillText(object.value,x,y+6);
   }
-  if(near===object)label('E · '+(level===2?'Embarquer':level===3?'Étiqueter':level===6?'Ouvrir':'Ramasser'),x,GROUND-137,'#ffe394');
+  if(near===object)label('E · '+(currentTask().writing?'Écrire':currentTask().oral?'Raconter':level===2?'Choisir':level===3?'Étiqueter':level===6?'Ouvrir':'Ramasser'),x,GROUND-212,'#ffe394');
  });
  if(level===4){
   rounded(475,137,680,90,12,'#fff4c8e8','#ab7739');
@@ -355,12 +363,14 @@ function draw(){
   ellipse(x,y,42,55,'#fff4b18c');rounded(x-24,y-32,48,63,6,'#fffaf0','#d1a853');
   for(let n=0;n<3;n++){ctx.fillStyle='#789ead';ctx.fillRect(x-14,y-17+n*12,27-(n%2)*6,3)}
   label('La page retrouvée',x,280);
-  if(near==='exit')label('E · Récupérer',player.x+19,player.y-20,'#ffe394');
+  if(near==='exit')label('E · Récupérer',player.x+player.w/2,player.y-20,'#ffe394');
  }
  drawPlayer();ctx.restore();
- rounded(14,14,330,37,10,'#fff7dded','#bd9f5a');
- ctx.fillStyle='#234f60';ctx.textAlign='left';ctx.font='bold 15px system-ui';
- ctx.fillText(solved.length===3?'Rejoins la page à droite →':locationGoals[level].split('.')[0],26,38,306);
+ rounded(14,14,932,83,12,'#fff7ddf5','#bd9f5a');
+ ctx.fillStyle='#234f60';ctx.textAlign='left';ctx.font='bold 19px system-ui';
+ ctx.fillText(solved.length===3?'Va chercher la page à droite →':'Mission '+(solved.length+1)+' sur 3 · '+currentTask().q,28,44,900);
+ ctx.font='16px system-ui';
+ ctx.fillText(solved.length===3?'Approche de la page brillante, puis appuie sur E.':'Marche avec ← →. Approche de ton choix, puis appuie sur E ou sur Examiner.',28,74,900);
 }
 function wrapLabel(text,x,y,maxWidth){
  ctx.font='bold 16px system-ui';ctx.fillStyle='#244a60';ctx.textAlign='center';
