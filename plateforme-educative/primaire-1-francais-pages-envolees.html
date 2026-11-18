@@ -326,9 +326,7 @@ function draw(){
   const x=object.x,y=object.y+pulse;
   ellipse(x,y,55,40,'#fff5b54d');
   if(level===2){
-   const color=['#258ac8','#cc4b47','#e6b52c'][i%3];
-   ctx.beginPath();ctx.moveTo(x-70,GROUND-12);ctx.lineTo(x-48,GROUND+14);ctx.lineTo(x+45,GROUND+14);ctx.lineTo(x+70,GROUND-12);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.lineWidth=4;ctx.strokeStyle='#ffe2a7';ctx.stroke();
-   label(object.value,x,GROUND-34);
+   label(object.value,x,GROUND-34,'#fff3c8');
   }else if(level===3){
    rounded(x-53,GROUND-75,106,76,9,'#bc8449','#76502c');
    rounded(x-40,GROUND-68,80,8,3,'#dfb47a');
