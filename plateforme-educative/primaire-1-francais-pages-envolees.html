@@ -281,13 +281,13 @@ function openTask(index){
   const instruction='Les amis doivent déposer leurs pages dans la boîte bleue, à côté du kiosque. Écris dans la boîte bleue pour terminer le message, puis appuie sur Afficher mon message.';
   activity.innerHTML='<p>Les amis ont retrouvé des pages. <strong>Tina veut les recevoir dans la boîte bleue, à côté du kiosque.</strong></p><div class="writing-target" aria-label="Une boîte bleue pour recevoir les pages"><span aria-hidden="true">📥</span><strong>La boîte bleue</strong></div><p><strong>Où faut-il déposer la page ?</strong></p><div class="message-preview"><span>Dépose la page </span><label for="writing" class="field-label">Complète avec le lieu</label><textarea id="writing" maxlength="120" placeholder="dans la boîte bleue"></textarea></div><p class="note">Écris « dans la boîte bleue ». Tu peux demander à un adulte de t’aider.</p><button class="primary" id="post-message">Afficher mon message</button>';
   const input=document.querySelector('#writing');
-  input.value=String(progress.texts[id]||'').replace(/^Dépose la page[.\\s]*/i,'');
+  input.value=String(progress.texts[id]||'').replace(/^Dépose la page[.\s]*/i,'');
   input.oninput=()=>{progress.texts[id]='Dépose la page '+input.value;save()};
   document.querySelector('#read').onclick=()=>speak(instruction);
   document.querySelector('#hint').onclick=()=>{message('Écris ces mots dans le cadre : dans la boîte bleue.');speak('Écris dans la boîte bleue.')};
   document.querySelector('#post-message').onclick=()=>{
-   const answer=input.value.trim().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
-   if(!/^dans\\s+(la|cette|une)\\s+boite(?:\\s+bleue)?[.!]?$/u.test(answer)){
+   const answer=input.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+   if(!/^dans\s+(la|cette|une)\s+boite(?:\s+bleue)?[.!]?$/u.test(answer)){
     message('Complète le lieu avec les mots « dans la boîte bleue », puis appuie sur Afficher mon message.');
     speak('Écris dans la boîte bleue, puis appuie sur Afficher mon message.');input.focus();return;
    }
