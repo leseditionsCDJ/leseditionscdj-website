@@ -141,7 +141,8 @@ function queueWord(object){
  const task=currentTask();
  if(task.writing||task.oral)return;
  const key=wordKey(object);
- if(key===lastReadWord||pendingWord?.key===key)return;
+ if(key===lastReadWord){pendingWord=null;return}
+ if(pendingWord?.key===key)return;
  pendingWord=null;
  wordDwellTimer=setTimeout(()=>{
   if(mode!=='play'||object.taken||(!objects.includes(object)))return;
