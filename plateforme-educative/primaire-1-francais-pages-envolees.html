@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Les pages envolées · Français 1re année</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#edf5ef;color:#193e47;font:18px/1.5 Nunito,system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:20px}a{color:#234e88}button,textarea{font:inherit}button{cursor:pointer;border:2px solid #bed4d6;border-radius:14px;padding:12px 18px;background:#fff;color:#193e47}button:hover{background:#edf5ff}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:4px solid #e09a25;outline-offset:3px}button:disabled{cursor:default;opacity:.55}h1{font-size:clamp(26px,5vw,44px);line-height:1.15;margin:14px 0}h2{margin:0 0 12px}header{padding:18px 0}header p{margin:8px 0}.panel{background:#fffdf5;border:2px solid #d8d9bb;border-radius:24px;padding:clamp(18px,4vw,38px);box-shadow:0 7px 0 #cbdccf}.layout{display:grid;grid-template-columns:250px 1fr;gap:20px}.map{display:grid;gap:10px;align-content:start}.map button{text-align:left;font-size:16px}.map [aria-current=step]{border-color:#246f85;background:#d9f0ed}.hero{min-height:170px;border-radius:18px;background:linear-gradient(130deg,#d7eee6,#e4f0ff);padding:20px;display:flex;gap:20px;align-items:center}.scene-icon{font-size:64px}.choices,.actions,.tokens{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}.primary{background:#235f75;color:white;border-color:#235f75}.primary:hover{background:#19495c}.passage{white-space:pre-line;background:#f4efdb;padding:20px;border-radius:12px;font-size:21px}.answer{min-height:64px;padding:12px;border:2px dashed #94b8b9;border-radius:12px;margin-top:20px}.feedback{min-height:36px;font-weight:700;margin-top:16px}.note{font-size:14px;color:#47636c}textarea{width:100%;min-height:130px;margin-top:15px;padding:14px;border-radius:12px;border:2px solid #aac4c8}.progress{margin:15px 0}.progress progress{width:100%;height:16px}.hidden,[hidden]{display:none!important}@media(max-width:740px){.layout{grid-template-columns:1fr}.map{grid-template-columns:repeat(2,1fr)}.hero{display:block}.scene-icon{font-size:44px}main{padding:12px}}
+</style>
+</head><body><main>
+<a href="./#/annees/primaire-1/matieres/francais">← Français · 1re année</a>
+<header><h1>Les pages envolées</h1><p>Retrouve les pages du livre de la fête !</p><p class="note">Version d’essai · Les huit tableaux sont accessibles. Les deux premiers seront gratuits à la sortie. La suite sera réservée aux abonnés.</p></header>
+<div class="progress"><label for="journey">Pages retrouvées <span id="count"></span></label><progress id="journey" max="8" value="0"></progress></div>
+<div class="layout"><nav class="map" aria-label="Les huit tableaux" id="map"></nav><section class="panel" id="play" aria-label="Ton aventure"></section></div>
+<p class="note" id="save">La progression et les textes sont conservés dans ce navigateur. Les activités orales se font à voix haute avec un adulte ou un ami.</p>
+</main><script>
+'use strict';
+const stages=[{"title":"La cour aux échos","scene":"Le vent a emporté le livre de la fête ! Écoute les indices pour retrouver le sac de Tina.","icon":"🎒","tasks":[{"q":"Écoute le mot « sac ». Quelle lettre fait le premier son ?","choices":["s","m","v"],"answer":"s","hint":"Sssac commence par le son sss."},{"q":"Quel mot commence comme « vélo » ?","choices":["vase","sac","lune"],"answer":"vase","hint":"Vélo et vase commencent par vvv."},{"q":"Quel mot rime avec « bateau » ?","choices":["château","lapin","soleil"],"answer":"château","hint":"Écoute la fin des mots bateau et château."}]},{"title":"La passerelle des syllabes","scene":"Une page brille de l’autre côté du ruisseau. Assemble les mots pour réparer les planches.","icon":"🌉","tasks":[{"q":"Assemble les syllabes pour écrire « vélo ».","order":["vé","lo"],"hint":"Le mot commence par vé."},{"q":"Assemble les syllabes pour écrire « pirate ».","order":["pi","ra","te"],"hint":"Écoute pi, ra, te."},{"q":"Lis « Tina a un vélo. » Quel objet possède Tina ?","choices":["un vélo","un sac","une pomme"],"answer":"un vélo","hint":"Relis le dernier mot de la phrase."}]},{"title":"Le quai aux messages","scene":"La page retrouvée montre le quai. Lis les messages pour choisir ta barque.","icon":"⛵","tasks":[{"passage":"Léo attend Tina au quai. Il porte un chapeau rouge. Une barque bleue les attend.","q":"Qui attend Tina ?","choices":["Léo","Mila","un chat"],"answer":"Léo","hint":"Relis le début du texte."},{"passage":"Léo attend Tina au quai. Il porte un chapeau rouge. Une barque bleue les attend.","q":"Quelle barque faut-il prendre ?","choices":["la bleue","la rouge","la verte"],"answer":"la bleue","hint":"Lis la dernière phrase."},{"passage":"AVIS — La bibliothèque ouvre après le dîner. Dépose les pages dans la boîte jaune.","q":"Où déposer les pages ?","choices":["dans la boîte jaune","sous le banc","dans la barque"],"answer":"dans la boîte jaune","hint":"Cherche la phrase qui commence par Dépose."}]},{"title":"L’atelier des étiquettes","scene":"La barque te mène à un atelier. Aide Mila à ranger les objets et elle te confiera une page.","icon":"🧰","tasks":[{"q":"Écris le mot « sac » avec les lettres.","order":["s","a","c"],"hint":"Écoute sss, a, k."},{"q":"Complète « ___ sacs » pour parler de plusieurs sacs.","choices":["des","un","une"],"answer":"des","hint":"Des accompagne ici plusieurs sacs."},{"q":"Quel mot désigne un animal ?","choices":["chat","courir","rouge"],"answer":"chat","hint":"Le chat est un animal."}]},{"title":"Le kiosque des annonces","scene":"Il faut annoncer la collecte des pages dans le quartier. Prépare une affiche.","icon":"📜","tasks":[{"q":"Place les mots pour écrire une phrase.","order":["Tina","cherche","les","pages."],"hint":"Commence par Tina. Le mot avec le point vient à la fin."},{"q":"Quelle phrase est bien écrite ?","choices":["Le livre est bleu.","le livre est bleu","Le livreest bleu."],"answer":"Le livre est bleu.","hint":"Cherche une majuscule, des espaces et un point."},{"q":"Écris une phrase pour dire où déposer une page.","writing":true,"prompt":"Tu peux commencer par « Dépose la page… »","hint":"Choisis un lieu. Commence par une majuscule et termine par un point."}]},{"title":"La petite scène","scene":"Un oiseau a vu les pages s’envoler. Écoute son récit, puis raconte-le avec tes mots.","icon":"🐦","tasks":[{"listen":"Tina ouvre le livre. Le vent emporte les pages. Léo trouve une page sous le banc.","q":"Après l’écoute, qui trouve une page ?","choices":["Léo","Mila","un poisson"],"answer":"Léo","hint":"Réécoute la dernière phrase."},{"q":"Remets les événements dans l’ordre.","order":["Tina ouvre le livre.","Le vent emporte les pages.","Léo trouve une page."],"hint":"L’histoire commence quand Tina ouvre le livre."},{"q":"Raconte à voix haute ce qui est arrivé au livre.","oral":true,"prompt":"Pense au début, à ce qui arrive ensuite et à la fin.","hint":"Tu peux dire D’abord, Ensuite et Enfin."}]},{"title":"La cabane des histoires","scene":"Deux pages racontent des histoires différentes. Choisis celle que tu aimerais partager à la fête.","icon":"🏡","tasks":[{"passage":"LE PETIT NUAGE\nUn petit nuage cherche un ami. Il arrose une fleur. « Merci ! » dit la fleur. Le nuage sourit.\n\nLE CHAT CURIEUX\nUn chat entre dans une boîte. Il y trouve une plume. Il la touche du bout de la patte… Atchoum !","q":"Choisis ton histoire préférée.","choices":["Le petit nuage","Le chat curieux"],"opinion":true,"hint":"Les deux choix sont possibles. Pense à ce qui t’a plu."},{"q":"Explique ton choix à voix haute.","oral":true,"prompt":"J’ai aimé… parce que… Parle d’un personnage ou d’un moment précis.","hint":"Par exemple, le nuage aide la fleur."},{"q":"Écris un mot ou une phrase pour décrire ton personnage préféré.","writing":true,"prompt":"Tu peux choisir le nuage, la fleur ou le chat.","hint":"Pense à ce que le personnage fait dans l’histoire."}]},{"title":"Le grand livre retrouvé","scene":"Toutes les pages sont revenues ! Il reste à inventer la dernière page et à présenter le livre.","icon":"📚","tasks":[{"passage":"Tina apporte les pages à l’école. Mila les range dans le livre. Léo invite les amis à écouter l’histoire.","q":"Qui range les pages dans le livre ?","choices":["Mila","Tina","Léo"],"answer":"Mila","hint":"Relis la deuxième phrase."},{"q":"Invente la fin de l’aventure en une ou deux phrases.","writing":true,"prompt":"Que se passe-t-il à la fête ? Comment se sentent les personnages ?","hint":"Écris tes idées, puis relis les mots, les espaces, la majuscule et le point."},{"q":"Présente ton livre à voix haute.","oral":true,"prompt":"Raconte ta fin et explique quel passage de l’aventure tu as préféré.","hint":"Parle assez fort pour ton auditeur. Tu peux recommencer."}]}];
+const storageKey='cdj-pages-envolees-v1';
+let saved={completed:[],answers:{},stage:0};
+try{
+ const raw=JSON.parse(localStorage.getItem(storageKey)||'null');
+ if(raw&&Array.isArray(raw.completed)&&raw.answers&&typeof raw.answers==='object'){
+  saved.completed=raw.completed.filter(n=>Number.isInteger(n)&&n>=0&&n<stages.length);
+  saved.answers=raw.answers;
+  saved.stage=Number.isInteger(raw.stage)&&raw.stage>=0&&raw.stage<stages.length?raw.stage:0;
+ }
+}catch{}
+let stageIndex=saved.stage,taskIndex=0,selected=[],solved=false;
+const play=document.querySelector('#play');
+function save(){
+ saved.stage=stageIndex;
+ try{localStorage.setItem(storageKey,JSON.stringify(saved))}
+ catch{document.querySelector('#save').textContent='La sauvegarde est indisponible dans ce navigateur. Garde cette page ouverte pour poursuivre.'}
+}
+function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function speak(value){
+ if(!('speechSynthesis' in window)){feedback('La lecture audio est indisponible. Tu peux demander à un adulte de lire le texte.');return}
+ speechSynthesis.cancel();const message=new SpeechSynthesisUtterance(value);message.lang='fr-CA';message.rate=.85;speechSynthesis.speak(message);
+}
+function stopVoice(){if('speechSynthesis' in window)speechSynthesis.cancel()}
+function feedback(message){document.querySelector('#feedback').textContent=message}
+function map(){
+ document.querySelector('#count').textContent=saved.completed.length+' / 8';
+ document.querySelector('#journey').value=saved.completed.length;
+ const nav=document.querySelector('#map');nav.replaceChildren();
+ stages.forEach((stage,index)=>{
+  const button=document.createElement('button');button.type='button';
+  button.textContent=(saved.completed.includes(index)?'✓ ':'')+(index+1)+'. '+stage.title;
+  if(index===stageIndex)button.setAttribute('aria-current','step');
+  button.addEventListener('click',()=>{stageIndex=index;taskIndex=0;save();intro()});nav.append(button);
+ });
+}
+function intro(){
+ stopVoice();map();const stage=stages[stageIndex];
+ play.innerHTML='<div class="hero"><span class="scene-icon" aria-hidden="true">'+stage.icon+'</span><div><h2>'+escapeHtml(stage.title)+'</h2><p>'+escapeHtml(stage.scene)+'</p></div></div><div class="actions"><button id="listen">Écouter la mission</button><button class="primary" id="start">Entrer dans le tableau</button></div>';
+ document.querySelector('#listen').onclick=()=>speak(stage.scene);
+ document.querySelector('#start').onclick=renderTask;
+}
+function finishTask(){
+ solved=true;document.querySelector('#next').hidden=false;
+}
+function renderTask(){
+ stopVoice();selected=[];solved=false;
+ const task=stages[stageIndex].tasks[taskIndex],key=stageIndex+'-'+taskIndex;
+ play.innerHTML='<p class="note">Tableau '+(stageIndex+1)+' · Défi '+(taskIndex+1)+' sur '+stages[stageIndex].tasks.length+'</p><h2 tabindex="-1" id="question">'+escapeHtml(task.q)+'</h2>'
+ +(task.passage?'<p class="passage">'+escapeHtml(task.passage)+'</p>':'')
+ +'<div class="actions"><button id="read">'+(task.listen?'Écouter le récit':'Écouter la consigne')+'</button><button id="hint">Un indice</button></div><div id="activity"></div><p class="feedback" id="feedback" role="status" aria-live="polite"></p><button class="primary" id="next" hidden>Continuer →</button>';
+ document.querySelector('#question').focus();
+ document.querySelector('#read').onclick=()=>speak(task.listen||task.q);
+ document.querySelector('#hint').onclick=()=>feedback(task.hint);
+ document.querySelector('#next').onclick=()=>{
+  taskIndex++;
+  if(taskIndex<stages[stageIndex].tasks.length){renderTask();return}
+  complete();
+ };
+ const activity=document.querySelector('#activity');
+ if(task.choices){
+  activity.className='choices';
+  task.choices.forEach(choice=>{
+   const button=document.createElement('button');button.type='button';button.textContent=choice;
+   button.onclick=()=>{
+    if(solved)return;
+    if(task.opinion||choice===task.answer){
+     saved.answers[key]=choice;save();feedback(task.opinion?'Garde ce choix en tête pour expliquer ce que tu as aimé.':'Bravo ! Tu peux avancer.');finishTask();
+    }else feedback('Essaie encore. '+task.hint);
+   };activity.append(button);
+  });
+ }else if(task.order){
+  activity.innerHTML='<div class="answer" aria-label="Ta réponse" id="assembled">Ta réponse apparaîtra ici.</div><div class="tokens" id="tokens"></div><div class="actions"><button id="clear">Recommencer</button><button id="check">Vérifier</button></div>';
+  const tokens=document.querySelector('#tokens');
+  const indices=task.order.map((_,i)=>i).reverse();
+  if(indices.length>2)indices.push(indices.shift());
+  indices.forEach(index=>{
+   const button=document.createElement('button');button.type='button';button.textContent=task.order[index];
+   button.onclick=()=>{if(solved)return;selected.push(index);button.disabled=true;document.querySelector('#assembled').textContent=selected.map(i=>task.order[i]).join(task.order.every(t=>t.length===1)?'':' · ')};
+   tokens.append(button);
+  });
+  document.querySelector('#clear').onclick=()=>{if(!solved)renderTask()};
+  document.querySelector('#check').onclick=()=>{
+   if(solved)return;
+   if(selected.length===task.order.length&&selected.every((n,i)=>n===i)){saved.answers[key]=task.order.join(' ');save();feedback('Tu as trouvé ! Le chemin est ouvert.');finishTask()}
+   else feedback('Essaie encore. '+task.hint);
+  };
+ }else if(task.writing){
+  activity.innerHTML='<p>'+escapeHtml(task.prompt)+'</p><label for="writing">Ton texte</label><textarea id="writing" maxlength="1200"></textarea><div class="actions"><button id="check-text">J’ai écrit mon texte</button></div><div id="review" hidden><p>Relis ton texte. As-tu exprimé ton idée ? Vérifie les espaces, la majuscule et le point si tu as écrit une phrase. Tu peux demander de l’aide à un adulte.</p><button id="accept-text">J’ai relu mon texte</button></div>';
+  const input=document.querySelector('#writing');input.value=saved.answers[key]||'';
+  input.oninput=()=>{saved.answers[key]=input.value;save();document.querySelector('#review').hidden=true;document.querySelector('#next').hidden=true;solved=false};
+  document.querySelector('#check-text').onclick=()=>{
+   if(!input.value.trim()){feedback('Écris ton idée avant de continuer.');return}
+   document.querySelector('#review').hidden=false;feedback('Prends un moment pour te relire.');
+  };
+  document.querySelector('#accept-text').onclick=()=>{feedback('Ton texte est gardé dans ton carnet.');finishTask()};
+ }else if(task.oral){
+  activity.innerHTML='<p>'+escapeHtml(task.prompt)+'</p><p class="note">Raconte à un adulte ou à un ami. Demande-lui ce qu’il a compris.</p><button id="oral-done">J’ai raconté et échangé</button>';
+  document.querySelector('#oral-done').onclick=()=>{saved.answers[key]='Activité orale réalisée';save();feedback('Merci d’avoir partagé tes idées !');finishTask()};
+ }
+}
+function complete(){
+ stopVoice();
+ if(!saved.completed.includes(stageIndex))saved.completed.push(stageIndex);
+ save();map();
+ const done=saved.completed.length===stages.length;
+ play.innerHTML='<div class="hero"><span class="scene-icon" aria-hidden="true">📖</span><div><h2 tabindex="-1" id="finished">'+(done?'Le livre de la fête est prêt !':'Une page retrouvée !')+'</h2><p>'+(done?'Tu as parcouru les huit tableaux. Tu peux revenir pour relire tes textes et rejouer.':stageIndex===1?'La première page révèle la carte du quartier. La piste continue au quai !':'Ton carnet garde cette étape. Tu peux poursuivre la piste.')+'</p></div></div><div class="actions"><button id="replay">Rejouer ce tableau</button>'+(stageIndex<stages.length-1?'<button class="primary" id="continue">Vers le tableau suivant →</button>':'')+'</div>';
+ document.querySelector('#finished').focus();
+ document.querySelector('#replay').onclick=()=>{taskIndex=0;intro()};
+ const next=document.querySelector('#continue');if(next)next.onclick=()=>{stageIndex++;taskIndex=0;save();intro()};
+}
+window.addEventListener('pagehide',stopVoice);
+intro();
+</script></body></html>
