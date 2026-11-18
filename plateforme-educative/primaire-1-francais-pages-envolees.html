@@ -15,7 +15,7 @@
 <canvas id="world" width="960" height="540" tabindex="0" role="img" aria-label="Jeu d’aventure. Déplace ton personnage avec les flèches, saute avec Espace ou la flèche du haut et interagis avec E près d’un objet brillant."></canvas>
 <div class="veil" id="overlay"><section class="card" id="dialogue" role="dialog" aria-modal="true" aria-labelledby="dialogue-title"></section></div>
 </div>
-<div class="world-clue"><p id="world-message" role="status"></p><button id="clue">Écouter la consigne / lire le carnet</button></div><p class="help">← → Se déplacer · ↑ ou Espace Sauter · E ou ↓ Examiner · P Pause</p>
+<div class="world-clue"><p id="world-message" role="status"></p><button id="clue">Écouter la consigne / lire le carnet</button></div><p id="audio-status" class="note" role="status"></p><p class="help">← → Se déplacer · ↑ ou Espace Sauter · E ou ↓ Examiner · P Pause</p>
 <div class="touch" aria-label="Commandes tactiles"><div><button id="left" aria-label="Aller à gauche">◀</button><button id="right" aria-label="Aller à droite">▶</button></div><div><button id="jump">Sauter</button><button id="interact">Examiner</button><button id="pause">Pause</button></div></div>
 <p class="note">Version d’essai. Les huit tableaux sont accessibles. Progression sauvegardée dans ce navigateur. Les deux premiers tableaux seront gratuits à la sortie et la suite sera réservée aux abonnés.</p>
 </main><script>
@@ -79,23 +79,93 @@ stages.forEach((stage,i)=>{const option=document.createElement('option');option.
 select.onchange=()=>loadLevel(Number(select.value));
 function save(){progress.level=level;try{localStorage.setItem(storageKey,JSON.stringify(progress))}catch{}}
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function stopVoice(){if('speechSynthesis' in window)speechSynthesis.cancel()}
-function speak(text){
- if(!('speechSynthesis' in window)){message('La voix est indisponible. Demande à un adulte de lire le texte.');return}
- stopVoice();const speech=new SpeechSynthesisUtterance(text);speech.lang='fr-CA';speech.rate=.85;speechSynthesis.speak(speech);
+let speechToken=0,currentSpeech=null,speechBusy=false,pendingWord=null;
+let lastNearObject=null,hoveredObject=null,lastReadWord='',wordDwellTimer=null;
+let preferredVoice=null;
+function refreshVoice(){
+ if(!('speechSynthesis' in window))return;
+ const french=speechSynthesis.getVoices().filter(voice=>/^fr([-_]|$)/i.test(voice.lang));
+ const score=voice=>(/^fr[-_]CA$/i.test(voice.lang)?100:0)+(voice.localService?20:0)+(/natural|neural|premium/i.test(voice.name)?10:0);
+ french.sort((a,b)=>score(b)-score(a));preferredVoice=french[0]||null;
 }
-function message(text){const element=document.querySelector('#feedback');if(element)element.textContent=text}
+if('speechSynthesis' in window){
+ refreshVoice();speechSynthesis.addEventListener('voiceschanged',refreshVoice);
+}
+function spokenText(text){
+ return String(text).replace(/←\\s*→/g,'les flèches gauche et droite')
+ .replace(/↑/g,'la flèche du haut').replace(/↓/g,'la flèche du bas')
+ .replace(/→/g,'vers la droite').replace(/←/g,'vers la gauche')
+ .replace(/\\bE\\b/g,'la touche e').replace(/·/g,'. ').replace(/\\s+/g,' ').trim();
+}
+function stopVoice(){
+ speechToken++;speechBusy=false;currentSpeech=null;pendingWord=null;
+ clearTimeout(wordDwellTimer);
+ if('speechSynthesis' in window)speechSynthesis.cancel();
+}
+function playSpeech(text,token){
+ if(token!==speechToken)return;
+ refreshVoice();
+ const utterance=new SpeechSynthesisUtterance(spokenText(text));
+ if(preferredVoice)utterance.voice=preferredVoice;
+ utterance.lang=preferredVoice?.lang||'fr-CA';utterance.rate=.98;utterance.pitch=1;utterance.volume=1;
+ currentSpeech=utterance;speechBusy=true;
+ utterance.onstart=()=>{if(token===speechToken)document.querySelector('#audio-status').textContent=''};
+ const ended=()=>{
+  if(token!==speechToken)return;
+  currentSpeech=null;speechBusy=false;flushWord();
+ };
+ utterance.onend=ended;
+ utterance.onerror=event=>{
+  if(token!==speechToken)return;
+  currentSpeech=null;speechBusy=false;
+  if(event.error==='not-allowed'){
+   document.querySelector('#audio-status').textContent='Touche « Écouter la consigne » pour activer la voix.';
+   pendingWord=null;
+  }else if(!['canceled','interrupted'].includes(event.error)){
+   document.querySelector('#audio-status').textContent='La voix est indisponible. Tu peux réessayer avec le bouton Écouter.';
+   pendingWord=null;
+  }
+ };
+ speechSynthesis.resume();speechSynthesis.speak(utterance);
+}
+function speak(text){
+ if(!('speechSynthesis' in window)){document.querySelector('#audio-status').textContent='La lecture vocale est indisponible sur ce navigateur.';return}
+ stopVoice();const token=speechToken;speechBusy=true;
+ // A short delay lets cancellation finish before the next utterance is submitted.
+ setTimeout(()=>playSpeech(text,token),100);
+}
+function wordKey(object){return level+'-'+solved.length+'-'+object.index+'-'+object.value}
+function queueWord(object){
+ clearTimeout(wordDwellTimer);
+ if(!object||object.taken||solved.length>=3){pendingWord=null;lastReadWord='';return}
+ const task=currentTask();
+ if(task.writing||task.oral)return;
+ const key=wordKey(object);
+ if(key===lastReadWord||pendingWord?.key===key)return;
+ pendingWord=null;
+ wordDwellTimer=setTimeout(()=>{
+  if(mode!=='play'||object.taken||(!objects.includes(object)))return;
+  pendingWord={key,text:object.value};flushWord();
+ },220);
+}
+function flushWord(){
+ if(speechBusy||!pendingWord||mode!=='play')return;
+ const word=pendingWord;pendingWord=null;lastReadWord=word.key;
+ if('speechSynthesis' in window)playSpeech(word.text,speechToken);
+}
 function clearKeys(){keys.left=false;keys.right=false;player.vx=0}
 function show(content,nextMode){
  clearKeys();stopVoice();mode=nextMode;overlay.hidden=false;dialogue.innerHTML=content;requestAnimationFrame(()=>dialogue.querySelector('button,textarea')?.focus());
 }
-function closeDialogue(){overlay.hidden=true;mode='play';clearKeys();stopVoice();canvas.focus()}
+function closeDialogue(){overlay.hidden=true;mode='play';clearKeys();stopVoice();lastNearObject=null;hoveredObject=null;lastReadWord='';canvas.focus()}
 function loadLevel(index){
  level=index;select.value=index;gateIndex=0;solved=[];collected=[];camera=0;near=null;lastRound=-1;
  platforms=sceneLayouts[level];player={x:65,y:GROUND-154,vx:0,vy:0,w:54,h:154,grounded:true,facing:1};
  save();document.querySelector('#mission').textContent=stages[level].title;updateInventory();setupRound();
  show('<h2 id="dialogue-title">'+escapeHtml(stages[level].title)+'</h2><p>'+escapeHtml(stages[level].scene)+'</p><p>'+escapeHtml(locationGoals[level])+'</p><ol><li>Écoute la consigne avec le bouton sous le décor.</li><li>Marche vers la bonne étiquette avec les flèches <strong>← →</strong>.</li><li>Quand « E · Ramasser » apparaît, appuie sur <strong>E</strong> ou touche <strong>Examiner</strong>.</li></ol><p>Pour sauter, utilise <strong>↑</strong> ou <strong>Espace</strong>. Termine les trois missions pour faire apparaître la page à récupérer.</p><div class="actions"><button id="listen">Écouter la mission</button><button class="primary" id="begin">Entrer dans le décor</button></div>','intro');
- document.querySelector('#listen').onclick=()=>speak(stages[level].scene+' '+locationGoals[level]);
+ const introduction=stages[level].scene+' '+locationGoals[level]+' Déplace ton personnage avec les flèches gauche et droite. Approche de ton choix, puis appuie sur la touche e, ou sur le bouton Examiner.';
+ document.querySelector('#listen').onclick=()=>speak(introduction);
+ speak(introduction);
  document.querySelector('#begin').onclick=()=>{closeDialogue();speak(instructionFor(currentTask()))};
 }
 function setWorldMessage(text){
@@ -108,7 +178,7 @@ function instructionFor(task){
 }
 function currentTask(){return stages[level].tasks[Math.min(solved.length,2)]}
 function setupRound(){
- const round=solved.length;lastRound=round;collected=[];
+ const round=solved.length;lastRound=round;collected=[];lastNearObject=null;hoveredObject=null;lastReadWord='';pendingWord=null;clearTimeout(wordDwellTimer);
  if(round===3){objects=[];setWorldMessage(level===1?'Le pont est réparé ! Marche sur les planches vers la droite. Approche de la page brillante et appuie sur E pour la récupérer.':'Bravo ! Marche tout à droite du décor. Approche de la page brillante et appuie sur E pour la récupérer.');return}
  const task=currentTask();
  let values=task.order||task.choices||[task.writing?'Mon cahier':'À toi de raconter'];
@@ -124,7 +194,8 @@ function readClue(){
  if(task.passage||task.listen){
   const text=task.passage||task.listen;
   show('<h2 id="dialogue-title">Le carnet de l’aventure</h2><p class="passage">'+escapeHtml(text)+'</p><p>'+escapeHtml(task.q)+'</p><div class="actions"><button id="clue-voice">Écouter</button><button id="clue-close">Chercher dans le décor</button></div>','clue');
-  document.querySelector('#clue-voice').onclick=()=>speak(text);
+  document.querySelector('#clue-voice').onclick=()=>speak(text+' '+task.q);
+  speak(text+' '+task.q);
   document.querySelector('#clue-close').onclick=closeDialogue;
  }else speak(instructionFor(task));
 }
@@ -246,6 +317,20 @@ function bindHold(id,direction){
 document.querySelector('#clue').onclick=readClue;
 bindHold('#left','left');bindHold('#right','right');
 document.querySelector('#jump').onclick=jump;document.querySelector('#interact').onclick=interact;document.querySelector('#pause').onclick=pause;
+canvas.addEventListener('pointermove',event=>{
+ if(mode!=='play')return;
+ const bounds=canvas.getBoundingClientRect();
+ const x=(event.clientX-bounds.left)*960/bounds.width+camera;
+ const y=(event.clientY-bounds.top)*540/bounds.height;
+ const object=objects.find(item=>!item.taken&&Math.abs(item.x-x)<Math.min(110,Math.max(45,item.value.length*5+18))&&y>GROUND-205&&y<GROUND);
+ if(object!==hoveredObject){
+  hoveredObject=object||null;queueWord(object||(near&&typeof near==='object'?near:null));
+ }
+});
+canvas.addEventListener('pointerleave',()=>{
+ if(hoveredObject){hoveredObject=null;queueWord(near&&typeof near==='object'?near:null)}
+});
+
 function update(dt){
  if(mode!=='play')return;
  if(lastRound!==solved.length)setupRound();
@@ -271,6 +356,10 @@ function update(dt){
  near=null;
  objects.forEach(object=>{if(!object.taken&&Math.abs(player.x+player.w/2-object.x)<75&&Math.abs(player.y+player.h-GROUND)<120)near=object});
  if(player.x>1530&&solved.length===3)near='exit';
+ if(near!==lastNearObject){
+  lastNearObject=near;
+  if(!hoveredObject)queueWord(near&&typeof near==='object'?near:null);
+ }
  camera=Math.max(0,Math.min(WORLD-960,player.x-400));
 }
 function rounded(x,y,w,h,r,fill,stroke){
